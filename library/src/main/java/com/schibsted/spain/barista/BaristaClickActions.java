@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
@@ -20,25 +21,49 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaClickActions {
 
+    public static void clickScrollingIfNeeded(@IdRes int id) {
+        try {
+            scrollToAndClick(id);
+        } catch (Exception e) {
+            click(id);
+        }
+    }
+
+    public static void clickScrollingIfNeeded(String text) {
+        try {
+            scrollToAndClick(text);
+        } catch (Exception e) {
+            click(text);
+        }
+    }
+
     public static void click(@IdRes int id) {
-        onView(withId(id)).perform(scrollTo(), ViewActions.click());
+        onView(withId(id)).perform(ViewActions.click());
     }
 
     public static void click(String text) {
-        onView(withText(text)).perform(scrollTo(), ViewActions.click());
+        onView(withText(text)).perform(ViewActions.click());
     }
 
-    public static void clickWithoutScrolling(@IdRes int id) {
-        onView(withId(id)).perform(ViewActions.click());
+    public static void scrollToAndClick(@IdRes int id) {
+        onView(withId(id)).perform(scrollTo(), ViewActions.click());
+    }
+
+    public static void scrollToAndClick(String text) {
+        onView(withText(text)).perform(scrollTo(), ViewActions.click());
     }
 
     public static void clickRadioButtonItem(@IdRes int radioButtonId, int itemToClick) {
         onView(allOf(withParent(withId(radioButtonId)), withId(itemToClick))).perform(ViewActions.click());
     }
 
+    public static void clickBack() {
+        pressBack();
+    }
+
     public static void clickListItem(@IdRes int listViewId, int position, Class<?> modelClass) {
         // This is ugly, I know. But depending on the layout only one of the following methods will work.
-        // The try/catch let's us forget about it and always use the same generic method to click on lists.
+        // The try/catch let's us forget about it and always use the same generic method to clickScrollingIfNeeded on lists.
         try {
             clickListItemForMultipleListsOnScreen(listViewId, position, modelClass);
         } catch (NoMatchingViewException e) {

@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 public class BaristaSpinnerActions {
 
     public static void chooseSpinnerPosition(@IdRes int id, Class<?> itemClass, int position) {
-        click(id);
+        BaristaClickActions.clickScrollingIfNeeded(id);
 
         onData(is(instanceOf(itemClass)))
                 .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
@@ -26,7 +26,7 @@ public class BaristaSpinnerActions {
     }
 
     public static void chooseSpinnerPositions(@IdRes int id, Class<?> itemClass, List<Integer> positions) {
-        click(id);
+        BaristaClickActions.clickScrollingIfNeeded(id);
         for (int i : positions) {
             onData(is(instanceOf(itemClass))).inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed())).atPosition(i).perform(ViewActions.click());
         }

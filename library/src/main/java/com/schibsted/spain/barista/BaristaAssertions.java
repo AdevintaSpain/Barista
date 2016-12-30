@@ -17,35 +17,47 @@ import static org.junit.Assert.fail;
 
 public class BaristaAssertions {
 
-    public static void assertTextIsDisplayed(int id) {
-        onView(withText(id)).check(matches(isDisplayed()));
+    public static void assertViewIsDisplayed(@IdRes int id) {
+        onView(withId(id)).check(matches(isDisplayed()));
+    }
+
+    public static void assertTextIsDisplayed(@StringRes int text) {
+        onView(withText(text)).check(matches(isDisplayed()));
     }
 
     public static void assertTextIsDisplayed(String text) {
         onView(withText(text)).check(matches(isDisplayed()));
     }
 
-    public static void assertTextDoesNotExist(@StringRes int id) {
-        onView(withText(id)).check(doesNotExist());
+    public static void assertViewDoesNotExist(@IdRes int viewId) {
+        onView(withId(viewId)).check(doesNotExist());
     }
 
-    public static void assertViewIsDisplayed(@IdRes int id) {
-        onView(withId(id)).check(matches(isDisplayed()));
+    public static void assertTextDoesNotExist(@StringRes int text) {
+        onView(withText(text)).check(doesNotExist());
+    }
+
+    public static void assertTextDoesNotExist(String text) {
+        onView(withText(text)).check(doesNotExist());
     }
 
     public static void assertViewIsNotDisplayed(@IdRes int id) {
         onView(withId(id)).check(matches(not(isDisplayed())));
     }
 
-    public static void assertViewDoesNotExist(@IdRes int viewId) {
-        onView(withId(viewId)).check(doesNotExist());
+    public static void assertTextIsNotDisplayed(@StringRes int text) {
+        onView(withText(text)).check(matches(not(isDisplayed())));
     }
 
-    public static void assertViewWithIdIsEnabled(@IdRes int viewId) {
+    public static void assertTextIsNotDisplayed(String text) {
+        onView(withText(text)).check(matches(not(isDisplayed())));
+    }
+
+    public static void assertViewIsEnabled(@IdRes int viewId) {
         onView(withId(viewId)).check(matches(isEnabled()));
     }
 
-    public static void assertViewWithIdIsDisabled(@IdRes int viewId) {
+    public static void assertViewIsDisabled(@IdRes int viewId) {
         onView(withId(viewId)).check(matches(not(isEnabled())));
     }
 
@@ -57,5 +69,4 @@ public class BaristaAssertions {
             // We expect this Exception if the Activity is the first one of the stack
         }
     }
-
 }

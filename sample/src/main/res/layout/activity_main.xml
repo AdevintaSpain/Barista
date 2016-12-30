@@ -5,19 +5,33 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_hello_world"
+        android:id="@+id/visible_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/invisible_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/im_invisible"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/gone_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'm hidden!"
+        android:visibility="gone" />
 
     <Button
-        android:id="@+id/bt_enabled"
+        android:id="@+id/enabled_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enabled button" />
 
     <Button
-        android:id="@+id/bt_disabled"
+        android:id="@+id/disabled_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
