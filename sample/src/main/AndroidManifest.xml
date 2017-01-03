@@ -20,6 +20,7 @@
         <activity android:name=".RadioButtonsActivity" />
         <activity android:name=".EditTextActivity" />
         <activity android:name=".DatePickerActivity" />
+        <activity android:name=".AutoCompleteTextViewActivity" />
     </application>
 
 </manifest>
