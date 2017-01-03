@@ -21,36 +21,20 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaClickActions {
 
-    public static void clickScrollingIfNeeded(@IdRes int id) {
-        try {
-            scrollToAndClick(id);
-        } catch (Exception e) {
-            click(id);
-        }
-    }
-
-    public static void clickScrollingIfNeeded(String text) {
-        try {
-            scrollToAndClick(text);
-        } catch (Exception e) {
-            click(text);
-        }
-    }
-
     public static void click(@IdRes int id) {
-        onView(withId(id)).perform(ViewActions.click());
+        try {
+            onView(withId(id)).perform(scrollTo(), ViewActions.click());
+        } catch (Exception e) {
+            onView(withId(id)).perform(ViewActions.click());
+        }
     }
 
     public static void click(String text) {
-        onView(withText(text)).perform(ViewActions.click());
-    }
-
-    public static void scrollToAndClick(@IdRes int id) {
-        onView(withId(id)).perform(scrollTo(), ViewActions.click());
-    }
-
-    public static void scrollToAndClick(String text) {
-        onView(withText(text)).perform(scrollTo(), ViewActions.click());
+        try {
+            onView(withText(text)).perform(scrollTo(), ViewActions.click());
+        } catch (Exception e) {
+            onView(withText(text)).perform(ViewActions.click());
+        }
     }
 
     public static void clickRadioButtonItem(@IdRes int radioButtonId, int itemToClick) {
