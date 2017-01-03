@@ -11,15 +11,19 @@ import static com.schibsted.spain.barista.custom.AutocompleteViewActions.replace
 public class BaristaEditTextActions {
 
     public static void writeToEditText(@IdRes int id, String text) {
-        onView(withId(id)).perform(scrollTo(), replaceText(text));
-    }
-
-    public static void writeToEditTextWithoutScrolling(@IdRes int id, String text) {
-        onView(withId(id)).perform(replaceText(text));
+        try {
+            onView(withId(id)).perform(scrollTo(), replaceText(text));
+        } catch (Exception e) {
+            onView(withId(id)).perform(replaceText(text));
+        }
     }
 
     public static void writeToAutocompleteEditText(@IdRes int id, String text) {
-        onView(withId(id)).perform(scrollTo(), replaceAutocomplete(text));
+        try {
+            onView(withId(id)).perform(scrollTo(), replaceAutocomplete(text));
+        } catch (Exception e) {
+            onView(withId(id)).perform(replaceAutocomplete(text));
+        }
     }
 
 }

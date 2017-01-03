@@ -18,6 +18,8 @@
         <activity android:name=".FlowFirstScreen" />
         <activity android:name=".FlowSecondScreen" />
         <activity android:name=".RadioButtonsActivity" />
+        <activity android:name=".EditTextActivity" />
+        <activity android:name=".DatePickerActivity" />
     </application>
 
 </manifest>
