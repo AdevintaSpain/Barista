@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
 
 @RunWith(AndroidJUnit4.class)
 public class RadioButtonsTest {
