@@ -21,6 +21,7 @@
         <activity android:name=".EditTextActivity" />
         <activity android:name=".DatePickerActivity" />
         <activity android:name=".AutoCompleteTextViewActivity" />
+        <activity android:name=".SpinnerActivity" />
     </application>
 
 </manifest>
