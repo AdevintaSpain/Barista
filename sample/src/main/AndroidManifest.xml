@@ -22,6 +22,9 @@
         <activity android:name=".DatePickerActivity" />
         <activity android:name=".AutoCompleteTextViewActivity" />
         <activity android:name=".SpinnerActivity" />
+        <activity android:name=".RecyclerViewActivity" />
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".LabelActivity" />
     </application>
 
 </manifest>

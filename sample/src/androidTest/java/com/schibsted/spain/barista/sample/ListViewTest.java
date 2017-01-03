@@ -1,0 +1,30 @@
+package com.schibsted.spain.barista.sample;
+
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaListViewActions.clickListItem;
+
+@RunWith(AndroidJUnit4.class)
+public class ListViewTest {
+
+    @Rule
+    public ActivityTestRule<ListViewActivity> activityRule = new ActivityTestRule<>(ListViewActivity.class);
+
+    @Test
+    public void checkClickListViewItem_withFirstItem() {
+        clickListItem(R.id.listview, 0, String.class);
+        assertTextIsDisplayed("Banana");
+    }
+
+    @Test
+    public void checkClickListViewItem_withFourthItem() {
+        clickListItem(R.id.listview, 3, String.class);
+        assertTextIsDisplayed("Raspberry");
+    }
+}
