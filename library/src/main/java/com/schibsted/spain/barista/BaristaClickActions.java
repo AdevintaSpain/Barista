@@ -37,8 +37,8 @@ public class BaristaClickActions {
         }
     }
 
-    public static void clickRadioButtonItem(@IdRes int radioButtonId, int itemToClick) {
-        onView(allOf(withParent(withId(radioButtonId)), withId(itemToClick))).perform(ViewActions.click());
+    public static void clickRadioButtonItem(@IdRes int radioGroupId, int itemToClick) {
+        onView(allOf(withParent(withId(radioGroupId)), withId(itemToClick))).perform(ViewActions.click());
     }
 
     public static void clickBack() {

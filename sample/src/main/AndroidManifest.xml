@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".FlowFirstScreen" />
         <activity android:name=".FlowSecondScreen" />
+        <activity android:name=".RadioButtonsActivity" />
     </application>
 
 </manifest>
