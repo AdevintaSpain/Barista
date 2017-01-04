@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaSpinnerActions.chooseSpinnerPosition;
+import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
 
 @RunWith(AndroidJUnit4.class)
 public class SpinnerTest {
@@ -18,13 +18,13 @@ public class SpinnerTest {
 
     @Test
     public void checkSelectSpinnerPosition() {
-        chooseSpinnerPosition(R.id.spinner, String.class, 0);
+        clickSpinnerItem(R.id.spinner, 0, String.class);
         assertTextIsDisplayed("Banana");
     }
 
     @Test
     public void checkSelectSpinnerThirdPosition() {
-        chooseSpinnerPosition(R.id.spinner, String.class, 2);
+        clickSpinnerItem(R.id.spinner, 2, String.class);
         assertTextIsDisplayed("Orange");
     }
 }

@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.allOf;
 
 public class BaristaRadioButtonActions {
 
-    public static void clickRadioButtonItem(@IdRes int radioGroupId, int itemToClick) {
-        onView(allOf(withParent(withId(radioGroupId)), withId(itemToClick))).perform(ViewActions.click());
+    public static void clickRadioButtonItem(@IdRes int radioGroupId, int itemToClickId) {
+        onView(allOf(withParent(withId(radioGroupId)), withId(itemToClickId))).perform(ViewActions.click());
     }
 }

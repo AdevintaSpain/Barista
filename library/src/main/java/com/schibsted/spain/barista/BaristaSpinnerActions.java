@@ -16,20 +16,20 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaSpinnerActions {
 
-    public static void chooseSpinnerPosition(@IdRes int id, Class<?> itemClass, int position) {
+    public static void clickSpinnerItem(@IdRes int id, int position, Class<?> modelClass) {
         click(id);
 
-        onData(is(instanceOf(itemClass)))
+        onData(is(instanceOf(modelClass)))
                 .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
                 .atPosition(position)
                 .perform(ViewActions.click());
     }
 
-    public static void chooseSpinnerPositions(@IdRes int id, Class<?> itemClass, List<Integer> positions) {
+    public static void clickSpinnerItems(@IdRes int id, List<Integer> positions, Class<?> modelClass) {
         click(id);
 
         for (int i : positions) {
-            onData(is(instanceOf(itemClass))).inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed())).atPosition(i).perform(ViewActions.click());
+            onData(is(instanceOf(modelClass))).inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed())).atPosition(i).perform(ViewActions.click());
         }
     }
 }
