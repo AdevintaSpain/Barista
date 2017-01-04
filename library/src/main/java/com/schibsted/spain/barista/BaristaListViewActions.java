@@ -17,8 +17,6 @@ import static org.hamcrest.Matchers.is;
 public class BaristaListViewActions {
 
     public static void clickListItem(@IdRes int listViewId, int position, Class<?> modelClass) {
-        // This is ugly, I know. But depending on the layout only one of the following methods will work.
-        // The try/catch let's us forget about it and always use the same generic method to clickScrollingIfNeeded on lists.
         try {
             clickListItemForMultipleListsOnScreen(listViewId, position, modelClass);
         } catch (NoMatchingViewException e) {
