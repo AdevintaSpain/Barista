@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaEditTextActions.*;
 
 @RunWith(AndroidJUnit4.class)
 public class EditTextTest {
@@ -19,13 +20,13 @@ public class EditTextTest {
 
     @Test
     public void checkWriteOnEditText_whenEditTextIsVisible() {
-        BaristaEditTextActions.writeToEditText(R.id.edittext, "Hello!");
+        writeToEditText(R.id.edittext, "Hello!");
         assertTextIsDisplayed("Hello!");
     }
 
     @Test
     public void checkWriteOnEditText_whenScrollIsNeeded() {
-        BaristaEditTextActions.writeToEditText(R.id.edittext_very_far_away, "Hello!");
+        writeToEditText(R.id.edittext_very_far_away, "Hello!");
         assertTextIsDisplayed("Hello!");
     }
 }
