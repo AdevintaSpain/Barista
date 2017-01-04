@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
+import android.support.test.espresso.PerformException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.replaceText;
@@ -10,7 +11,12 @@ import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 public class BaristaEditTextActions {
 
     public static void writeToEditText(@IdRes int id, String text) {
-        scrollTo(id);
-        onView(withId(id)).perform(replaceText(text));
+        try {
+            scrollTo(id);
+        } catch (PerformException exception) {
+            // We expect this exception if the parent is not a ScrollView
+        } finally {
+            onView(withId(id)).perform(replaceText(text));
+        }
     }
 }
