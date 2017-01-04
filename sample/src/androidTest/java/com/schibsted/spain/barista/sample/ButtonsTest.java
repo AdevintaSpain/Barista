@@ -30,6 +30,12 @@ public class ButtonsTest {
     }
 
     @Test
+    public void checkClickWhenParentIsNotAnScrollView() {
+        click("Centered button");
+        assertTextIsDisplayed("Hi! I'm the second screen!");
+    }
+
+    @Test
     public void checkBackButton() {
         click("Next");
         assertTextIsDisplayed("Hi! I'm the second screen!");

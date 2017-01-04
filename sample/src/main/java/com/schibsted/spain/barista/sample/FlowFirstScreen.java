@@ -14,6 +14,7 @@ public class FlowFirstScreen extends AppCompatActivity {
 
         setOnClickListener(R.id.next);
         setOnClickListener(R.id.really_far_away_button);
+        setOnClickListener(R.id.centered_button);
     }
 
     private void setOnClickListener(int view) {
