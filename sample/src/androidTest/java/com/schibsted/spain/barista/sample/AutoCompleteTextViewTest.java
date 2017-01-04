@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutocompleteEditText;
+import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 
 @RunWith(AndroidJUnit4.class)
@@ -19,13 +19,13 @@ public class AutoCompleteTextViewTest {
 
     @Test
     public void checkWriteOnAutocomplete_whenIsVisible() {
-        writeToAutocompleteEditText(R.id.autocomplete, "Apple");
+        writeToAutoCompleteTextView(R.id.autocomplete, "Apple");
         assertTextIsDisplayed("Apple");
     }
 
     @Test
     public void checkWriteOnAutocomplete_whenScrollIsNeeded() {
-        writeToAutocompleteEditText(R.id.autocomplete_very_far_away, "Apple");
+        writeToAutoCompleteTextView(R.id.autocomplete_very_far_away, "Apple");
         assertTextIsDisplayed("Apple");
     }
 

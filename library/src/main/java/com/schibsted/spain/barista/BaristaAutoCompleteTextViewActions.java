@@ -10,7 +10,7 @@ import static com.schibsted.spain.barista.custom.AutocompleteViewActions.replace
 
 public class BaristaAutoCompleteTextViewActions {
 
-    public static void writeToAutocompleteEditText(@IdRes int id, String text) {
+    public static void writeToAutoCompleteTextView(@IdRes int id, String text) {
         try {
             scrollTo(id);
         } catch (PerformException exception) {
