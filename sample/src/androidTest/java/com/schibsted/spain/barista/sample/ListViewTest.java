@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaListViewActions.clickListItem;
+import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
 
 @RunWith(AndroidJUnit4.class)
 public class ListViewTest {
@@ -18,13 +18,13 @@ public class ListViewTest {
 
     @Test
     public void checkClickListViewItem_withFirstItem() {
-        clickListItem(R.id.listview, 0, String.class);
+        clickListViewItem(R.id.listview, 0, String.class);
         assertTextIsDisplayed("Banana");
     }
 
     @Test
     public void checkClickListViewItem_withFourthItem() {
-        clickListItem(R.id.listview, 3, String.class);
+        clickListViewItem(R.id.listview, 3, String.class);
         assertTextIsDisplayed("Raspberry");
     }
 }

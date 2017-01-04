@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaListViewActions {
 
-    public static void clickListItem(@IdRes int listViewId, int position, Class<?> modelClass) {
+    public static void clickListViewItem(@IdRes int listViewId, int position, Class<?> modelClass) {
         try {
             clickListItemForMultipleListsOnScreen(listViewId, position, modelClass);
         } catch (NoMatchingViewException e) {
