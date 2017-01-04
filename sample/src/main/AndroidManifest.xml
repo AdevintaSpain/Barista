@@ -25,6 +25,7 @@
         <activity android:name=".RecyclerViewActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".LabelActivity" />
+        <activity android:name=".ViewPagerActivity" />
     </application>
 
 </manifest>

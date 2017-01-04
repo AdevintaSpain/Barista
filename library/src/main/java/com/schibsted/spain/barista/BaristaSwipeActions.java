@@ -9,11 +9,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 public class BaristaSwipeActions {
 
-    public static void swipePagerToLeft(@IdRes int id) {
+    public static void swipePagerForward(@IdRes int id) {
         onView(withId(id)).perform(swipeLeft());
     }
 
-    public static void swipePagerToRight(@IdRes int id) {
+    public static void swipePagerBack(@IdRes int id) {
         onView(withId(id)).perform(swipeRight());
     }
 
