@@ -18,13 +18,13 @@ public class ListViewTest {
 
     @Test
     public void checkClickListViewItem_withFirstItem() {
-        clickListViewItem(R.id.listview, 0, String.class);
+        clickListViewItem(R.id.listview, String.class, 0);
         assertTextIsDisplayed("Banana");
     }
 
     @Test
     public void checkClickListViewItem_withFourthItem() {
-        clickListViewItem(R.id.listview, 3, String.class);
+        clickListViewItem(R.id.listview, String.class, 3);
         assertTextIsDisplayed("Raspberry");
     }
 }

@@ -4,8 +4,6 @@ import android.support.annotation.IdRes;
 import android.support.test.espresso.action.ViewActions;
 import android.widget.AdapterView;
 
-import java.util.List;
-
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -16,20 +14,18 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaSpinnerActions {
 
-    public static void clickSpinnerItem(@IdRes int id, int position, Class<?> modelClass) {
+    public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int... positions) {
         click(id);
 
+        for (int p : positions) {
+            performClick(p, modelClass);
+        }
+    }
+
+    private static void performClick(int position, Class<?> modelClass) {
         onData(is(instanceOf(modelClass)))
                 .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
                 .atPosition(position)
                 .perform(ViewActions.click());
-    }
-
-    public static void clickSpinnerItems(@IdRes int id, List<Integer> positions, Class<?> modelClass) {
-        click(id);
-
-        for (int i : positions) {
-            onData(is(instanceOf(modelClass))).inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed())).atPosition(i).perform(ViewActions.click());
-        }
     }
 }

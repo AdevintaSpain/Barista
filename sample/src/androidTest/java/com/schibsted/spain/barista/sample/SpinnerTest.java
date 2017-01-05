@@ -18,13 +18,13 @@ public class SpinnerTest {
 
     @Test
     public void checkSelectSpinnerPosition() {
-        clickSpinnerItem(R.id.spinner, 0, String.class);
+        clickSpinnerItem(R.id.spinner, String.class, 0);
         assertTextIsDisplayed("Banana");
     }
 
     @Test
     public void checkSelectSpinnerThirdPosition() {
-        clickSpinnerItem(R.id.spinner, 2, String.class);
+        clickSpinnerItem(R.id.spinner, String.class, 2);
         assertTextIsDisplayed("Orange");
     }
 }
