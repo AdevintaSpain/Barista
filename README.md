@@ -1,9 +1,9 @@
 # Barista
 **The guy who serves great Espresso**
 
-Espresso is a great tool to test our Android apps via instrumental tests. With them, we can mimic user actions like clicking a button, scrolling a list, select an item on a spinner or swiping on a pager. Then, we can assert that a text appears in the screen, an image is visible or invisible, or a button is enabled or not.
+Espresso is a great tool to test our Android apps via instrumental tests. With them, we can mimic user actions like clicking a button, scrolling a list, selecting an item on a spinner or swiping on a pager. Then, we can assert that a text appears in the screen, an image is visible or invisible, or a button is enabled or not.
 
-In the other hand, if you tried Espresso, you’ll agree that its API is not discoverable.
+On the other hand, if you tried Espresso, you’ll agree that its API is not discoverable.
 
 Barista introduces a discoverable API for the Espresso features. So, you and all the Android team will write instrumental tests with no effort. 
 
