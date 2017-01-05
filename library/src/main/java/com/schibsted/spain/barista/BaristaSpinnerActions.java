@@ -15,12 +15,9 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaSpinnerActions {
 
-    public static void clickSpinnerItem(@IdRes int id, int... positions) {
+    public static void clickSpinnerItem(@IdRes int id, int position) {
         click(id);
-
-        for (int p : positions) {
-            performClick(p);
-        }
+        performClick(position);
     }
 
     public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int... positions) {
