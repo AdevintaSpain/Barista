@@ -18,12 +18,18 @@ import static org.hamcrest.Matchers.is;
 public class BaristaListViewActions {
 
     public static void clickListViewItem(@IdRes int listViewId, int... positions) {
+        if (positions.length == 0) {
+            throw new RuntimeException("positions cannot be empty");
+        }
         for (int p : positions) {
             performClick(listViewId, p);
         }
     }
 
     public static void clickListViewItem(@IdRes int listViewId, Class<?> modelClass, int... positions) {
+        if (positions.length == 0) {
+            throw new RuntimeException("positions cannot be empty");
+        }
         for (int p : positions) {
             performClick(listViewId, p, modelClass);
         }

@@ -10,6 +10,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class BaristaRecyclerViewActions {
 
     public static void clickRecyclerViewItem(@IdRes int recyclerViewId, int... positions) {
+        if (positions.length == 0) {
+            throw new RuntimeException("positions cannot be empty");
+        }
         for (int p : positions) {
             performClick(recyclerViewId, p);
         }
