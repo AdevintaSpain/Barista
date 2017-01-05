@@ -20,12 +20,9 @@ public class BaristaSpinnerActions {
         performClick(position);
     }
 
-    public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int... positions) {
+    public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int position) {
         click(id);
-
-        for (int p : positions) {
-            performClick(p, modelClass);
-        }
+        performClick(position, modelClass);
     }
 
     private static void performClick(int position) {
