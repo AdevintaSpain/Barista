@@ -17,6 +17,18 @@ public class ListViewTest {
     public ActivityTestRule<ListViewActivity> activityRule = new ActivityTestRule<>(ListViewActivity.class);
 
     @Test
+    public void checkClickListViewItem_withFirstItem_withoutExplicitViewModel() {
+        clickListViewItem(R.id.listview, 0);
+        assertTextIsDisplayed("Banana");
+    }
+
+    @Test
+    public void checkClickListViewItem_withFourthItem_withoutExplicitViewModel() {
+        clickListViewItem(R.id.listview, 3);
+        assertTextIsDisplayed("Raspberry");
+    }
+
+    @Test
     public void checkClickListViewItem_withFirstItem() {
         clickListViewItem(R.id.listview, String.class, 0);
         assertTextIsDisplayed("Banana");
