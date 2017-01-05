@@ -18,14 +18,14 @@ public class ViewPagerTest {
     public ActivityTestRule<ViewPagerActivity> activityRule = new ActivityTestRule<>(ViewPagerActivity.class);
 
     @Test
-    public void checkSwipeRight() {
+    public void checkSwipeForward() {
         BaristaSwipeActions.swipePagerForward(R.id.viewPager);
 
         assertTextIsDisplayed("2");
     }
 
     @Test
-    public void checkSwipeRightAndLeft() {
+    public void checkSwipeBack() {
         BaristaSwipeActions.swipePagerForward(R.id.viewPager);
         BaristaSwipeActions.swipePagerBack(R.id.viewPager);
 
