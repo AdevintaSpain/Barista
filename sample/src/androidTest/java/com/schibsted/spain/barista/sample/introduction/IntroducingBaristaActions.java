@@ -2,7 +2,6 @@ package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.sample.R;
 
 import org.junit.Ignore;
@@ -30,7 +29,7 @@ public class IntroducingBaristaActions {
     @Ignore
     public void letsIntroduceBarista() {
         // Click widgets
-        BaristaClickActions.click(R.id.button);
+        click(R.id.button);
         click("Next");
         clickBack();
 
