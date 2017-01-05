@@ -32,4 +32,18 @@ public class ViewPagerTest {
         assertTextIsDisplayed("1");
     }
 
+    @Test
+    public void swipingBackInTheFirstPageDoesntCrash() {
+        BaristaSwipeActions.swipePagerBack(R.id.viewPager);
+
+        assertTextIsDisplayed("1");
+    }
+
+    @Test
+    public void swipingForwardInTheLastPageDoesntCrash() {
+        BaristaSwipeActions.swipePagerForward(R.id.viewPager);
+        BaristaSwipeActions.swipePagerForward(R.id.viewPager);
+
+        assertTextIsDisplayed("2");
+    }
 }
