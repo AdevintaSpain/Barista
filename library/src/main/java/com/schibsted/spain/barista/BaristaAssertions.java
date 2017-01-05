@@ -57,8 +57,24 @@ public class BaristaAssertions {
         onView(withId(viewId)).check(matches(isEnabled()));
     }
 
+    public static void assertTextIsEnabled(@StringRes int text) {
+        onView(withText(text)).check(matches(isEnabled()));
+    }
+
+    public static void assertTextIsEnabled(String text) {
+        onView(withText(text)).check(matches(isEnabled()));
+    }
+
     public static void assertViewIsDisabled(@IdRes int viewId) {
         onView(withId(viewId)).check(matches(not(isEnabled())));
+    }
+
+    public static void assertTextIsDisabled(@StringRes int text) {
+        onView(withText(text)).check(matches(not(isEnabled())));
+    }
+
+    public static void assertTextIsDisabled(String text) {
+        onView(withText(text)).check(matches(not(isEnabled())));
     }
 
     public static void assertThatBackButtonClosesTheApp() {

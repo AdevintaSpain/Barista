@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextDoesNotExist;
+import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsEnabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.BaristaAssertions.assertViewDoesNotExist;
@@ -42,23 +44,26 @@ public class AssertionsTest {
 
     @Test
     public void checkUnexistingView() {
+        assertViewDoesNotExist(R.id.view_in_another_layout);
+
         assertTextDoesNotExist(R.string.unknown);
         assertTextDoesNotExist("Unknown");
     }
 
     @Test
-    public void cantFindAnIdThatDoesntExist() {
-        assertViewDoesNotExist(R.id.view_in_another_layout);
-    }
-
-    @Test
     public void checkEnabledView() {
         assertViewIsEnabled(R.id.enabled_button);
+
+        assertTextIsEnabled(R.string.enabled_button);
+        assertTextIsEnabled("Enabled button");
     }
 
     @Test
     public void checkDisabledView() {
         assertViewIsDisabled(R.id.disabled_button);
+
+        assertTextIsDisabled(R.string.disabled_button);
+        assertTextIsDisabled("Disabled button");
     }
 
     @Test

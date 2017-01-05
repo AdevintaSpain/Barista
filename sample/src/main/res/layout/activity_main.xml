@@ -28,14 +28,14 @@
         android:id="@+id/enabled_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enabled button" />
+        android:text="@string/enabled_button" />
 
     <Button
         android:id="@+id/disabled_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Disabled button" />
+        android:text="@string/disabled_button" />
 
     <Button
         android:id="@+id/button"
