@@ -37,26 +37,27 @@ public class IntroducingBaristaActions {
         writeToEditText(R.id.edittext, "A great text");
         writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
 
-        // Select item on AdapterViews
+        // Select items on AdapterViews
         clickListViewItem(R.id.listview, 4);
         clickListViewItem(R.id.listview, 4, 5, 6);
         clickRecyclerViewItem(R.id.recycler, 2);
         clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
         clickSpinnerItem(R.id.spinner, 1);
 
-        // Picker inputs
+        // Select items on RadioButtons and CheckBoxes
+        clickCheckBoxItem(R.id.first_item);
+        clickCheckBoxItem("The checkbox text");
+        clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
+        clickRadioButtonItem(R.id.radiogroup, "The radio text");
+
+        // Pick data on pickers
         setDateOnPicker(1986, 03, 23);
 
-        // Scroll on widgets
+        // Scroll on scrolls and pagers
         scrollTo(R.id.button);
         scrollTo("A widget with this text");
         swipePagerForward(R.id.viewPager);
         swipePagerBack(R.id.viewPager);
 
-        // Actions on RadioButtons and CheckBoxes
-        clickCheckBoxItem(R.id.first_item);
-        clickCheckBoxItem("The checkbox text");
-        clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
-        clickRadioButtonItem(R.id.radiogroup, "The radio text");
     }
 }

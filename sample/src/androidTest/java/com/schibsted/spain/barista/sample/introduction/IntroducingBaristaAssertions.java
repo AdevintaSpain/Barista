@@ -52,7 +52,7 @@ public class IntroducingBaristaAssertions {
         assertTextDoesNotExist(R.string.hello_world);
         assertViewDoesNotExist(R.id.button);
 
-        // Tricky things
+        // And another tricky feature
         assertThatBackButtonClosesTheApp();
     }
 }
