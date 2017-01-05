@@ -17,14 +17,26 @@ public class RadioButtonsTest {
     public ActivityTestRule<RadioButtonsActivity> activityRule = new ActivityTestRule<>(RadioButtonsActivity.class);
 
     @Test
-    public void checkRadioButtons_firstItem() {
+    public void checkRadioButtonsById_firstItem() {
         clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
         assertTextIsDisplayed("" + R.id.first_item);
     }
 
     @Test
-    public void checkRadioButtons_secondItem() {
+    public void checkRadioButtonsById_secondItem() {
         clickRadioButtonItem(R.id.radiogroup, R.id.second_item);
+        assertTextIsDisplayed("" + R.id.second_item);
+    }
+
+    @Test
+    public void checkRadioButtonsByText_firstItem() {
+        clickRadioButtonItem(R.id.radiogroup, "Hello");
+        assertTextIsDisplayed("" + R.id.first_item);
+    }
+
+    @Test
+    public void checkRadioButtonsByText_secondItem() {
+        clickRadioButtonItem(R.id.radiogroup, "Bye bye");
         assertTextIsDisplayed("" + R.id.second_item);
     }
 }
