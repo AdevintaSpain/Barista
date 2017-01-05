@@ -9,10 +9,19 @@ import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFro
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
 public class BaristaSpinnerActions {
+
+    public static void clickSpinnerItem(@IdRes int id, int... positions) {
+        click(id);
+
+        for (int p : positions) {
+            performClick(p);
+        }
+    }
 
     public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int... positions) {
         click(id);
@@ -20,6 +29,13 @@ public class BaristaSpinnerActions {
         for (int p : positions) {
             performClick(p, modelClass);
         }
+    }
+
+    private static void performClick(int position) {
+        onData(anything())
+                .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
+                .atPosition(position)
+                .perform(ViewActions.click());
     }
 
     private static void performClick(int position, Class<?> modelClass) {

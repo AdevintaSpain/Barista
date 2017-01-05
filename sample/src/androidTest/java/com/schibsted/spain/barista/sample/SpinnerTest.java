@@ -17,6 +17,18 @@ public class SpinnerTest {
     public ActivityTestRule<SpinnerActivity> activityRule = new ActivityTestRule<>(SpinnerActivity.class);
 
     @Test
+    public void checkSelectSpinnerPosition_withoutExplicitViewModel() {
+        clickSpinnerItem(R.id.spinner, 0);
+        assertTextIsDisplayed("Banana");
+    }
+
+    @Test
+    public void checkSelectSpinnerThirdPosition_withoutExplicitViewModel() {
+        clickSpinnerItem(R.id.spinner, 2);
+        assertTextIsDisplayed("Orange");
+    }
+
+    @Test
     public void checkSelectSpinnerPosition() {
         clickSpinnerItem(R.id.spinner, String.class, 0);
         assertTextIsDisplayed("Banana");
