@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
 import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
-import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 
 @RunWith(AndroidJUnit4.class)
 public class AutoCompleteTextViewTest {
@@ -31,7 +30,7 @@ public class AutoCompleteTextViewTest {
 
     @Test
     public void checkWriteOnAutocomplete_whenParentIsNotAScrollView() {
-        writeToEditText(R.id.autocomplete_centered, "Hello!");
+        writeToAutoCompleteTextView(R.id.autocomplete_centered, "Hello!");
         assertTextIsDisplayed("Hello!");
     }
 }
