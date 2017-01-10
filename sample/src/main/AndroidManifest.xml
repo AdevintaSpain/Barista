@@ -25,6 +25,7 @@
         <activity android:name=".ListViewActivity"/>
         <activity android:name=".LabelActivity"/>
         <activity android:name=".ViewPagerActivity"/>
+        <activity android:name=".DialogActivity"/>
         <activity android:name=".NavigationDrawerActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
