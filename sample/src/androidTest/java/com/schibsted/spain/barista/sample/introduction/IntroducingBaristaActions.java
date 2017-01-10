@@ -12,6 +12,9 @@ import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.wri
 import static com.schibsted.spain.barista.BaristaCheckBoxActions.clickCheckBoxItem;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
+import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
+import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
+import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
@@ -52,6 +55,11 @@ public class IntroducingBaristaActions {
 
         // Pick data on pickers
         setDateOnPicker(1986, 03, 23);
+
+        // Interact with dialogs
+        clickDialogPositiveButton();
+        clickDialogNeutralButton();
+        clickDialogNegativeButton();
 
         // Scroll on scrolls and pagers
         scrollTo(R.id.button);

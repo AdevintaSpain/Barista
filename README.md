@@ -34,6 +34,11 @@ clickRadioButtonItem(R.id.radiogroup, "The radio text");
 // Pick data on pickers
 setDateOnPicker(1986, 03, 23);
 
+// Interact with dialogs
+clickDialogPositiveButton();
+clickDialogNeutralButton();
+clickDialogNegativeButton();
+
 // Scroll on scrolls and pagers
 scrollTo(R.id.button);
 scrollTo("A widget with this text");
