@@ -8,6 +8,8 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
+import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -84,5 +86,13 @@ public class BaristaAssertions {
         } catch (NoActivityResumedException expectedException) {
             // We expect this Exception if the Activity is the first one of the stack
         }
+    }
+
+    public static void assertDrawerIsOpen(@IdRes int id) {
+        onView(withId(id)).check(matches(isOpen()));
+    }
+
+    public static void assertDrawerIsClosed(@IdRes int id) {
+        onView(withId(id)).check(matches(isClosed()));
     }
 }
