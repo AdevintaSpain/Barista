@@ -13,6 +13,12 @@ android {
     }
 }
 
+android {
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
