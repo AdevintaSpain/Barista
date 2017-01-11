@@ -15,27 +15,27 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaSpinnerActions {
 
-    public static void clickSpinnerItem(@IdRes int id, int position) {
-        click(id);
-        performClick(position);
-    }
+  public static void clickSpinnerItem(@IdRes int id, int position) {
+    click(id);
+    performClick(position);
+  }
 
-    public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int position) {
-        click(id);
-        performClick(position, modelClass);
-    }
+  public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int position) {
+    click(id);
+    performClick(position, modelClass);
+  }
 
-    private static void performClick(int position) {
-        onData(anything())
-                .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void performClick(int position) {
+    onData(anything())
+        .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 
-    private static void performClick(int position, Class<?> modelClass) {
-        onData(is(instanceOf(modelClass)))
-                .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void performClick(int position, Class<?> modelClass) {
+    onData(is(instanceOf(modelClass)))
+        .inAdapterView(allOf(isAssignableFrom(AdapterView.class), isDisplayed()))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 }

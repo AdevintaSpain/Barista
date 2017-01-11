@@ -10,47 +10,47 @@ import android.support.v4.view.ViewPager;
 
 public class ViewPagerActivity extends FragmentActivity {
 
-    private static final int NUM_PAGES = 2;
+  private static final int NUM_PAGES = 2;
 
-    private ViewPager pager;
-    private PagerAdapter adapter;
+  private ViewPager pager;
+  private PagerAdapter adapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewpager);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_viewpager);
 
-        pager = (ViewPager) findViewById(R.id.viewPager);
-        adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);
+    pager = (ViewPager) findViewById(R.id.viewPager);
+    adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+    pager.setAdapter(adapter);
+  }
+
+  @Override
+  public void onBackPressed() {
+    if (pager.getCurrentItem() == 0) {
+      super.onBackPressed();
+    } else {
+      pager.setCurrentItem(pager.getCurrentItem() - 1);
+    }
+  }
+
+  private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+    ScreenSlidePagerAdapter(FragmentManager fm) {
+      super(fm);
     }
 
     @Override
-    public void onBackPressed() {
-        if (pager.getCurrentItem() == 0) {
-            super.onBackPressed();
-        } else {
-            pager.setCurrentItem(pager.getCurrentItem() - 1);
-        }
+    public Fragment getItem(int position) {
+      if (position == 0) {
+        return new ViewPagerFirstFragment();
+      } else {
+        return new ViewPagerSecondFragment();
+      }
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            if (position == 0) {
-                return new ViewPagerFirstFragment();
-            } else {
-                return new ViewPagerSecondFragment();
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
+    @Override
+    public int getCount() {
+      return NUM_PAGES;
     }
+  }
 } 

@@ -17,73 +17,73 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaListViewActions {
 
-    public static void clickListViewItem(@IdRes int listViewId, int... positions) {
-        if (positions.length == 0) {
-            throw new RuntimeException("positions cannot be empty");
-        }
-        for (int p : positions) {
-            performClick(listViewId, p);
-        }
+  public static void clickListViewItem(@IdRes int listViewId, int... positions) {
+    if (positions.length == 0) {
+      throw new RuntimeException("positions cannot be empty");
     }
+    for (int p : positions) {
+      performClick(listViewId, p);
+    }
+  }
 
-    public static void clickListViewItem(@IdRes int listViewId, Class<?> modelClass, int... positions) {
-        if (positions.length == 0) {
-            throw new RuntimeException("positions cannot be empty");
-        }
-        for (int p : positions) {
-            performClick(listViewId, p, modelClass);
-        }
+  public static void clickListViewItem(@IdRes int listViewId, Class<?> modelClass, int... positions) {
+    if (positions.length == 0) {
+      throw new RuntimeException("positions cannot be empty");
     }
+    for (int p : positions) {
+      performClick(listViewId, p, modelClass);
+    }
+  }
 
-    private static void performClick(@IdRes int listViewId, int position) {
-        try {
-            clickListItemForMultipleListsOnScreen(listViewId, position);
-        } catch (NoMatchingViewException e) {
-            clickListItemForSingleListOnScreen(position);
-        }
+  private static void performClick(@IdRes int listViewId, int position) {
+    try {
+      clickListItemForMultipleListsOnScreen(listViewId, position);
+    } catch (NoMatchingViewException e) {
+      clickListItemForSingleListOnScreen(position);
     }
+  }
 
-    private static void performClick(@IdRes int listViewId, int position, Class<?> modelClass) {
-        try {
-            clickListItemForMultipleListsOnScreen(listViewId, position, modelClass);
-        } catch (NoMatchingViewException e) {
-            clickListItemForSingleListOnScreen(position, modelClass);
-        }
+  private static void performClick(@IdRes int listViewId, int position, Class<?> modelClass) {
+    try {
+      clickListItemForMultipleListsOnScreen(listViewId, position, modelClass);
+    } catch (NoMatchingViewException e) {
+      clickListItemForSingleListOnScreen(position, modelClass);
     }
+  }
 
-    private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position) {
-        // This method only seems to work when there are multiple ListViews in the same activity
-        onData(anything()).inAdapterView(
-                allOf(
-                        isAssignableFrom(AdapterView.class),
-                        isDescendantOfA(withId(listViewId)),
-                        isDisplayed()))
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position) {
+    // This method only seems to work when there are multiple ListViews in the same activity
+    onData(anything()).inAdapterView(
+        allOf(
+            isAssignableFrom(AdapterView.class),
+            isDescendantOfA(withId(listViewId)),
+            isDisplayed()))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 
-    private static void clickListItemForSingleListOnScreen(int position) {
-        // This method only seems to work when there is just one ListView in the same activity
-        onData(anything())
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void clickListItemForSingleListOnScreen(int position) {
+    // This method only seems to work when there is just one ListView in the same activity
+    onData(anything())
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 
-    private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position, Class<?> modelClass) {
-        // This method only seems to work when there are multiple ListViews in the same activity
-        onData(is(instanceOf(modelClass))).inAdapterView(
-                allOf(
-                        isAssignableFrom(AdapterView.class),
-                        isDescendantOfA(withId(listViewId)),
-                        isDisplayed()))
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position, Class<?> modelClass) {
+    // This method only seems to work when there are multiple ListViews in the same activity
+    onData(is(instanceOf(modelClass))).inAdapterView(
+        allOf(
+            isAssignableFrom(AdapterView.class),
+            isDescendantOfA(withId(listViewId)),
+            isDisplayed()))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 
-    private static void clickListItemForSingleListOnScreen(int position, Class<?> modelClass) {
-        // This method only seems to work when there is just one ListView in the same activity
-        onData(is(instanceOf(modelClass)))
-                .atPosition(position)
-                .perform(ViewActions.click());
-    }
+  private static void clickListItemForSingleListOnScreen(int position, Class<?> modelClass) {
+    // This method only seems to work when there is just one ListView in the same activity
+    onData(is(instanceOf(modelClass)))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
 }

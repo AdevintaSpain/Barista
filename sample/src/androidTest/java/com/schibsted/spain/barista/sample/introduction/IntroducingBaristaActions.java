@@ -1,9 +1,7 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
-
 import com.schibsted.spain.barista.sample.R;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,44 +26,43 @@ import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaActions {
 
-    @Test
-    @Ignore
-    public void letsIntroduceBarista() {
-        // Click widgets
-        click(R.id.button);
-        click("Next");
-        clickBack();
+  @Test
+  @Ignore
+  public void letsIntroduceBarista() {
+    // Click widgets
+    click(R.id.button);
+    click("Next");
+    clickBack();
 
-        // Writing into widgets
-        writeToEditText(R.id.edittext, "A great text");
-        writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
+    // Writing into widgets
+    writeToEditText(R.id.edittext, "A great text");
+    writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
 
-        // Select items on AdapterViews
-        clickListViewItem(R.id.listview, 4);
-        clickListViewItem(R.id.listview, 4, 5, 6);
-        clickRecyclerViewItem(R.id.recycler, 2);
-        clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
-        clickSpinnerItem(R.id.spinner, 1);
+    // Select items on AdapterViews
+    clickListViewItem(R.id.listview, 4);
+    clickListViewItem(R.id.listview, 4, 5, 6);
+    clickRecyclerViewItem(R.id.recycler, 2);
+    clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
+    clickSpinnerItem(R.id.spinner, 1);
 
-        // Select items on RadioButtons and CheckBoxes
-        clickCheckBoxItem(R.id.first_item);
-        clickCheckBoxItem("The checkbox text");
-        clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
-        clickRadioButtonItem(R.id.radiogroup, "The radio text");
+    // Select items on RadioButtons and CheckBoxes
+    clickCheckBoxItem(R.id.first_item);
+    clickCheckBoxItem("The checkbox text");
+    clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
+    clickRadioButtonItem(R.id.radiogroup, "The radio text");
 
-        // Pick data on pickers
-        setDateOnPicker(1986, 03, 23);
+    // Pick data on pickers
+    setDateOnPicker(1986, 03, 23);
 
-        // Interact with dialogs
-        clickDialogPositiveButton();
-        clickDialogNeutralButton();
-        clickDialogNegativeButton();
+    // Interact with dialogs
+    clickDialogPositiveButton();
+    clickDialogNeutralButton();
+    clickDialogNegativeButton();
 
-        // Scroll on scrolls and pagers
-        scrollTo(R.id.button);
-        scrollTo("A widget with this text");
-        swipePagerForward(R.id.viewPager);
-        swipePagerBack(R.id.viewPager);
-
-    }
+    // Scroll on scrolls and pagers
+    scrollTo(R.id.button);
+    scrollTo("A widget with this text");
+    swipePagerForward(R.id.viewPager);
+    swipePagerBack(R.id.viewPager);
+  }
 }

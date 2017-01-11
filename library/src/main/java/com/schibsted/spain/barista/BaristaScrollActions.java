@@ -15,30 +15,29 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  */
 public class BaristaScrollActions {
 
-    private static final int MAX_SCROLL_ATTEMPTS = 100;
+  private static final int MAX_SCROLL_ATTEMPTS = 100;
 
-    public static void scrollTo(@IdRes int id) {
-        for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
-            try {
-                onView(withId(id)).perform(ViewActions.scrollTo());
-            } catch (PerformException exception) {
-                if (i == MAX_SCROLL_ATTEMPTS) {
-                    throw exception;
-                }
-            }
+  public static void scrollTo(@IdRes int id) {
+    for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
+      try {
+        onView(withId(id)).perform(ViewActions.scrollTo());
+      } catch (PerformException exception) {
+        if (i == MAX_SCROLL_ATTEMPTS) {
+          throw exception;
         }
+      }
     }
+  }
 
-    public static void scrollTo(String text) {
-        for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
-            try {
-                onView(withText(text)).perform(ViewActions.scrollTo());
-            } catch (PerformException exception) {
-                if (i == MAX_SCROLL_ATTEMPTS) {
-                    throw exception;
-                }
-            }
+  public static void scrollTo(String text) {
+    for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
+      try {
+        onView(withText(text)).perform(ViewActions.scrollTo());
+      } catch (PerformException exception) {
+        if (i == MAX_SCROLL_ATTEMPTS) {
+          throw exception;
         }
+      }
     }
-
+  }
 }

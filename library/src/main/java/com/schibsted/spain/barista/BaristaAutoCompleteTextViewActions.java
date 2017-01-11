@@ -10,13 +10,13 @@ import static com.schibsted.spain.barista.custom.AutocompleteViewActions.replace
 
 public class BaristaAutoCompleteTextViewActions {
 
-    public static void writeToAutoCompleteTextView(@IdRes int id, String text) {
-        try {
-            scrollTo(id);
-        } catch (PerformException exception) {
-            // We expect this exception if the parent is not a ScrollView
-        } finally {
-            onView(withId(id)).perform(replaceAutocomplete(text));
-        }
+  public static void writeToAutoCompleteTextView(@IdRes int id, String text) {
+    try {
+      scrollTo(id);
+    } catch (PerformException exception) {
+      // We expect this exception if the parent is not a ScrollView
+    } finally {
+      onView(withId(id)).perform(replaceAutocomplete(text));
     }
+  }
 }

@@ -3,35 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/edittext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="I'm an edittext" />
-
-            <EditText
-                android:id="@+id/edittext_very_far_away"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="800dp"
-                android:hint="I'm an edittext, too!" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <EditText
-        android:id="@+id/edittext_centered"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="I'm a centered edittext!" />
+        android:orientation="vertical">
+
+      <EditText
+          android:id="@+id/edittext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:hint="I'm an edittext"/>
+
+      <EditText
+          android:id="@+id/edittext_very_far_away"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="800dp"
+          android:hint="I'm an edittext, too!"/>
+
+    </LinearLayout>
+  </ScrollView>
+
+  <EditText
+      android:id="@+id/edittext_centered"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:hint="I'm a centered edittext!"/>
 </FrameLayout>

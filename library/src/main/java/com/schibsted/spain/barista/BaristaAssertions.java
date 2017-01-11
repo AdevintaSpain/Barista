@@ -19,80 +19,80 @@ import static org.junit.Assert.fail;
 
 public class BaristaAssertions {
 
-    public static void assertViewIsDisplayed(@IdRes int id) {
-        onView(withId(id)).check(matches(isDisplayed()));
-    }
+  public static void assertViewIsDisplayed(@IdRes int id) {
+    onView(withId(id)).check(matches(isDisplayed()));
+  }
 
-    public static void assertTextIsDisplayed(@StringRes int text) {
-        onView(withText(text)).check(matches(isDisplayed()));
-    }
+  public static void assertTextIsDisplayed(@StringRes int text) {
+    onView(withText(text)).check(matches(isDisplayed()));
+  }
 
-    public static void assertTextIsDisplayed(String text) {
-        onView(withText(text)).check(matches(isDisplayed()));
-    }
+  public static void assertTextIsDisplayed(String text) {
+    onView(withText(text)).check(matches(isDisplayed()));
+  }
 
-    public static void assertViewDoesNotExist(@IdRes int viewId) {
-        onView(withId(viewId)).check(doesNotExist());
-    }
+  public static void assertViewDoesNotExist(@IdRes int viewId) {
+    onView(withId(viewId)).check(doesNotExist());
+  }
 
-    public static void assertTextDoesNotExist(@StringRes int text) {
-        onView(withText(text)).check(doesNotExist());
-    }
+  public static void assertTextDoesNotExist(@StringRes int text) {
+    onView(withText(text)).check(doesNotExist());
+  }
 
-    public static void assertTextDoesNotExist(String text) {
-        onView(withText(text)).check(doesNotExist());
-    }
+  public static void assertTextDoesNotExist(String text) {
+    onView(withText(text)).check(doesNotExist());
+  }
 
-    public static void assertViewIsNotDisplayed(@IdRes int id) {
-        onView(withId(id)).check(matches(not(isDisplayed())));
-    }
+  public static void assertViewIsNotDisplayed(@IdRes int id) {
+    onView(withId(id)).check(matches(not(isDisplayed())));
+  }
 
-    public static void assertTextIsNotDisplayed(@StringRes int text) {
-        onView(withText(text)).check(matches(not(isDisplayed())));
-    }
+  public static void assertTextIsNotDisplayed(@StringRes int text) {
+    onView(withText(text)).check(matches(not(isDisplayed())));
+  }
 
-    public static void assertTextIsNotDisplayed(String text) {
-        onView(withText(text)).check(matches(not(isDisplayed())));
-    }
+  public static void assertTextIsNotDisplayed(String text) {
+    onView(withText(text)).check(matches(not(isDisplayed())));
+  }
 
-    public static void assertViewIsEnabled(@IdRes int viewId) {
-        onView(withId(viewId)).check(matches(isEnabled()));
-    }
+  public static void assertViewIsEnabled(@IdRes int viewId) {
+    onView(withId(viewId)).check(matches(isEnabled()));
+  }
 
-    public static void assertTextIsEnabled(@StringRes int text) {
-        onView(withText(text)).check(matches(isEnabled()));
-    }
+  public static void assertTextIsEnabled(@StringRes int text) {
+    onView(withText(text)).check(matches(isEnabled()));
+  }
 
-    public static void assertTextIsEnabled(String text) {
-        onView(withText(text)).check(matches(isEnabled()));
-    }
+  public static void assertTextIsEnabled(String text) {
+    onView(withText(text)).check(matches(isEnabled()));
+  }
 
-    public static void assertViewIsDisabled(@IdRes int viewId) {
-        onView(withId(viewId)).check(matches(not(isEnabled())));
-    }
+  public static void assertViewIsDisabled(@IdRes int viewId) {
+    onView(withId(viewId)).check(matches(not(isEnabled())));
+  }
 
-    public static void assertTextIsDisabled(@StringRes int text) {
-        onView(withText(text)).check(matches(not(isEnabled())));
-    }
+  public static void assertTextIsDisabled(@StringRes int text) {
+    onView(withText(text)).check(matches(not(isEnabled())));
+  }
 
-    public static void assertTextIsDisabled(String text) {
-        onView(withText(text)).check(matches(not(isEnabled())));
-    }
+  public static void assertTextIsDisabled(String text) {
+    onView(withText(text)).check(matches(not(isEnabled())));
+  }
 
-    public static void assertThatBackButtonClosesTheApp() {
-        try {
-            pressBack(); // Will launch an Exception if it closes the app
-            fail(); // One of our Activities is appearing on the screen :(
-        } catch (NoActivityResumedException expectedException) {
-            // We expect this Exception if the Activity is the first one of the stack
-        }
+  public static void assertThatBackButtonClosesTheApp() {
+    try {
+      pressBack(); // Will launch an Exception if it closes the app
+      fail(); // One of our Activities is appearing on the screen :(
+    } catch (NoActivityResumedException expectedException) {
+      // We expect this Exception if the Activity is the first one of the stack
     }
+  }
 
-    public static void assertDrawerIsOpen(@IdRes int id) {
-        onView(withId(id)).check(matches(isOpen()));
-    }
+  public static void assertDrawerIsOpen(@IdRes int id) {
+    onView(withId(id)).check(matches(isOpen()));
+  }
 
-    public static void assertDrawerIsClosed(@IdRes int id) {
-        onView(withId(id)).check(matches(isClosed()));
-    }
+  public static void assertDrawerIsClosed(@IdRes int id) {
+    onView(withId(id)).check(matches(isClosed()));
+  }
 }

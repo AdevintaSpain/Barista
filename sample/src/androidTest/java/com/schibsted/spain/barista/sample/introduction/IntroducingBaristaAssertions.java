@@ -1,9 +1,7 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
-
 import com.schibsted.spain.barista.sample.R;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,36 +21,36 @@ import static com.schibsted.spain.barista.BaristaAssertions.assertViewIsNotDispl
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaAssertions {
 
-    @Test
-    @Ignore
-    public void letsIntroduceBarista() {
+  @Test
+  @Ignore
+  public void letsIntroduceBarista() {
 
-        // Is this view displayed?
-        assertTextIsDisplayed("Hello world");
-        assertTextIsDisplayed(R.string.hello_world);
-        assertViewIsDisplayed(R.id.button);
+    // Is this view displayed?
+    assertTextIsDisplayed("Hello world");
+    assertTextIsDisplayed(R.string.hello_world);
+    assertViewIsDisplayed(R.id.button);
 
-        // ...or not?
-        assertTextIsNotDisplayed("Hello world");
-        assertTextIsNotDisplayed(R.string.hello_world);
-        assertViewIsNotDisplayed(R.id.button);
+    // ...or not?
+    assertTextIsNotDisplayed("Hello world");
+    assertTextIsNotDisplayed(R.string.hello_world);
+    assertViewIsNotDisplayed(R.id.button);
 
-        // Is this view enabled?
-        assertTextIsEnabled("Hello world");
-        assertTextIsEnabled(R.string.hello_world);
-        assertViewIsEnabled(R.id.button);
+    // Is this view enabled?
+    assertTextIsEnabled("Hello world");
+    assertTextIsEnabled(R.string.hello_world);
+    assertViewIsEnabled(R.id.button);
 
-        // ...or not?
-        assertTextIsDisabled("Hello world");
-        assertTextIsDisabled(R.string.hello_world);
-        assertViewIsDisabled(R.id.button);
+    // ...or not?
+    assertTextIsDisabled("Hello world");
+    assertTextIsDisabled(R.string.hello_world);
+    assertViewIsDisabled(R.id.button);
 
-        // Hope this view doesn't exist!
-        assertTextDoesNotExist("Hello world");
-        assertTextDoesNotExist(R.string.hello_world);
-        assertViewDoesNotExist(R.id.button);
+    // Hope this view doesn't exist!
+    assertTextDoesNotExist("Hello world");
+    assertTextDoesNotExist(R.string.hello_world);
+    assertViewDoesNotExist(R.id.button);
 
-        // And another tricky feature
-        assertThatBackButtonClosesTheApp();
-    }
+    // And another tricky feature
+    assertThatBackButtonClosesTheApp();
+  }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/activity_dialog"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="16dp"
@@ -11,17 +11,17 @@
     android:paddingTop="16dp"
     tools:context="com.schibsted.spain.barista.sample.DialogActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Open dialog"/>
+  <Button
+      android:id="@+id/button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Open dialog"/>
 
-    <TextView
-        android:id="@+id/dialog_selected_button_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button"
-        android:layout_marginTop="24dp"/>
+  <TextView
+      android:id="@+id/dialog_selected_button_value"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/button"
+      android:layout_marginTop="24dp"/>
 
 </RelativeLayout>
