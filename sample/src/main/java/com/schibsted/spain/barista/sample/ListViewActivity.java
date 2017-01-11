@@ -25,7 +25,7 @@ public class ListViewActivity extends AppCompatActivity {
     listView.setAdapter(new TextAdapter(this, FRUITS));
   }
 
-  public class TextAdapter extends BaseAdapter {
+  public static class TextAdapter extends BaseAdapter {
     private Activity activity;
     private String[] items;
 
