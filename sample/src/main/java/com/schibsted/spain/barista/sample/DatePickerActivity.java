@@ -29,8 +29,6 @@ public class DatePickerActivity extends AppCompatActivity {
   public static class DatePickerFragment extends DialogFragment
       implements DatePickerDialog.OnDateSetListener {
 
-    TextView result = (TextView) getActivity().findViewById(R.id.date_picker_result);
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
       // Use the current date as the default date in the picker
@@ -44,6 +42,7 @@ public class DatePickerActivity extends AppCompatActivity {
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
+      TextView result = (TextView) getActivity().findViewById(R.id.date_picker_result);
       result.setText(year + "+" + month + "+" + day);
     }
   }
