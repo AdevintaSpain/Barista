@@ -22,4 +22,4 @@ before_script:
   - adb shell settings put global animator_duration_scale 0 &
   - adb shell input keyevent 82 &
 script:
-    - ./gradlew connectedAndroidTest
+    - ./gradlew check connectedAndroidTest
