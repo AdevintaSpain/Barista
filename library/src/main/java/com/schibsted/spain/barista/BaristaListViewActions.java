@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.action.ViewActions;
 import android.widget.AdapterView;
+import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
@@ -19,7 +20,7 @@ public class BaristaListViewActions {
 
   public static void clickListViewItem(@IdRes int listViewId, int... positions) {
     if (positions.length == 0) {
-      throw new RuntimeException("positions cannot be empty");
+      throw new BaristaException("positions cannot be empty");
     }
     for (int p : positions) {
       performClick(listViewId, p);
@@ -28,7 +29,7 @@ public class BaristaListViewActions {
 
   public static void clickListViewItem(@IdRes int listViewId, Class<?> modelClass, int... positions) {
     if (positions.length == 0) {
-      throw new RuntimeException("positions cannot be empty");
+      throw new BaristaException("positions cannot be empty");
     }
     for (int p : positions) {
       performClick(listViewId, p, modelClass);
