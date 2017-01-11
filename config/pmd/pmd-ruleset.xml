@@ -286,6 +286,7 @@
   <rule ref="rulesets/java/basic.xml/DoubleCheckedLocking">
     <priority>3</priority>
   </rule>
+  <!--
   <rule name="UseApisFromJDK8" message="Please use the new API in Java 8" class="net.sourceforge.pmd.lang.rule.XPathRule" language="java">
     <description>Please use the new API in Java 8</description>
     <priority>1</priority>
@@ -311,5 +312,6 @@
     ]]>
     </example>
   </rule>
+  -->
 </ruleset>
 
