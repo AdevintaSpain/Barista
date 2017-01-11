@@ -17,11 +17,10 @@ public class DatePickerActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_date_picker);
 
-    final TextView result = (TextView) findViewById(R.id.date_picker_result);
     findViewById(R.id.launch_date_picker).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        DialogFragment newFragment = new DatePickerFragment(result);
+        DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
       }
     });
@@ -30,11 +29,7 @@ public class DatePickerActivity extends AppCompatActivity {
   public static class DatePickerFragment extends DialogFragment
       implements DatePickerDialog.OnDateSetListener {
 
-    private final TextView result;
-
-    public DatePickerFragment(TextView result) {
-      this.result = result;
-    }
+    TextView result = (TextView) getActivity().findViewById(R.id.date_picker_result);
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
