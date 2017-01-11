@@ -159,11 +159,13 @@
             <property name="caseIndent" value="2"/>
         </module>
         <module name="UpperEll"/>
+        <!-- Disabled 'cause we're not going to add Retrolambda to a library project
         <module name="DescendantToken">
             <property name="tokens" value="METHOD_CALL"/>
             <property name="limitedTokens" value="METHOD_DEF"/>
             <property name="maximumNumber" value="0"/>
             <property name="maximumMessage" value="Use Java 8 Lambdas!"/>
         </module>
+        -->
     </module>
 </module>
