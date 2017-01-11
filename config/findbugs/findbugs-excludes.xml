@@ -1,0 +1,30 @@
+<FindBugsFilter>
+    <!-- Fallback excludes file.  This file will be used when a project lacks a findbugs-excludes.xml file -->
+    <Match>
+        <Source name="~.*\.groovy" />
+        <Or>
+            <Field name="~__.*" />
+            <Field name="~\$.*" />
+            <Method name="~\$.*" />
+        </Or>
+    </Match>
+    <Match>
+        <Source name="~.*\.groovy" />
+        <Bug code="UPM" />
+    </Match>
+    <Match>
+        <!-- ignore all issues in resource generation -->
+        <Class name="~.*\.R\$.*"/>
+    </Match>
+    <Match>
+        <Class name="~.*\.Manifest\$.*"/>
+    </Match>
+    <!-- ignore all bugs in test classes, except for those bugs specifically relating to JUnit tests -->
+    <Match>
+        <Class name="~.*\.*Test" />
+        <!-- test classes are suffixed by 'Test' -->
+        <Not>
+            <Bug code="IJU" /> <!-- 'IJU' is the code for bugs related to JUnit test code -->
+        </Not>
+    </Match>
+</FindBugsFilter>

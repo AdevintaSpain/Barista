@@ -1,0 +1,104 @@
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
+
+def isTravis = "true".equals(System.getenv("TRAVIS"))
+
+pmd {
+  ruleSetFiles = files("${project.rootDir}/config/pmd/pmd-ruleset.xml")
+}
+
+findbugs {
+  includeFilter = file("${project.rootDir}/config/findbugs/findbugs-config.xml")
+  excludeFilter = file("${project.rootDir}/config/findbugs/findbugs-excludes.xml")
+}
+
+checkstyle {
+  toolVersion = "7.1.1"
+  showViolations isTravis
+}
+
+android.lintOptions {
+  abortOnError true
+  lintConfig file("${project.rootDir}/config/lint/lint.xml")
+  textReport isTravis
+  textOutput 'stdout'
+
+}
+
+task pmd (type: Pmd) {
+  description 'Run pmd'
+  group 'verification'
+
+  source = fileTree('src/main/java')
+  consoleOutput = isTravis
+  ignoreFailures = false
+
+  reports {
+    xml.enabled = false
+    html.enabled = !isTravis
+  }
+}
+
+task findbugs (type: FindBugs, dependsOn: assemble) {
+  description 'Run findbugs'
+  group 'verification'
+
+  classes = fileTree('build/intermediates/classes/')
+  source = fileTree('src/main/java/')
+  classpath = files()
+  includeFilter = file("$rootProject.projectDir/config/findbugs/findbugs-config.xml")
+  excludeFilter = file("$rootProject.projectDir/config/findbugs/findbugs-excludes.xml")
+  ignoreFailures = false
+
+  reports {
+    xml.enabled = false
+    html.enabled = true
+  }
+}
+
+task checkstyle(type: Checkstyle) {
+  description 'Run checkstyle'
+  group 'verification'
+
+  configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+  configProperties = [rootDir: "${project.rootDir}"]
+  source 'src'
+  include '**/*.java'
+  exclude '**/gen/**'
+  classpath = files()
+}
+
+check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+
+apply plugin: 'jacoco'
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+  group = 'reporting'
+  description = 'Generate Jacoco coverage reports after running tests.'
+  reports {
+    xml.enabled = true
+    html.enabled = true
+  }
+
+  jacocoClasspath = configurations['androidJacocoAnt']
+
+  def fileFilter = ['**/R.class',
+                    '**/R$*.class',
+                    '**/*$ViewInjector*.*',
+                    '**/BuildConfig.*',
+                    '**/Manifest*.*',
+                    '**/*Test*.*',
+                    '**/*$InjectAdapter.class',
+                    '**/*$ModuleAdapter.class',
+                    '**/*$$*',
+                    'android/**/*.*']
+  def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+  def mainSrc = "${project.projectDir}/src/main/java"
+
+  sourceDirectories = files([mainSrc])
+  classDirectories = files([debugTree])
+  executionData = files(["${buildDir}/jacoco/testDebugUnitTest.exec",
+                         "${buildDir}/outputs/code-coverage/connected/coverage.ec"
+  ])
+}
