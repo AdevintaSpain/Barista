@@ -175,28 +175,29 @@ public class TenRepetitionsActivityTestRule<T extends Activity> extends UiThread
    * @see ActivityTestRule#getActivityIntent()
    */
   public T launchActivity(@Nullable Intent startIntent) {
+    Intent intent = startIntent;
+
     // set initial touch mode
     mInstrumentation.setInTouchMode(mInitialTouchMode);
 
     final String targetPackage = mInstrumentation.getTargetContext().getPackageName();
     // inject custom intent, if provided
-    if (null == startIntent) {
-      startIntent = getActivityIntent();
-      if (null == startIntent) {
-        Log.w(TAG, "getActivityIntent() returned null using default: " +
-            "Intent(Intent.ACTION_MAIN)");
-        startIntent = new Intent(Intent.ACTION_MAIN);
+    if (null == intent) {
+      intent = getActivityIntent();
+      if (null == intent) {
+        Log.w(TAG, "getActivityIntent() returned null using default: " + "Intent(Intent.ACTION_MAIN)");
+        intent = new Intent(Intent.ACTION_MAIN);
       }
     }
-    startIntent.setClassName(targetPackage, mActivityClass.getName());
-    startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.setClassName(targetPackage, mActivityClass.getName());
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     Log.d(TAG, String.format("Launching activity %s",
         mActivityClass.getName()));
 
     beforeActivityLaunched();
     // The following cast is correct because the activity we're creating is of the same type as
     // the one passed in
-    mActivity = mActivityClass.cast(mInstrumentation.startActivitySync(startIntent));
+    mActivity = mActivityClass.cast(mInstrumentation.startActivitySync(intent));
 
     mInstrumentation.waitForIdleSync();
 
@@ -237,7 +238,7 @@ public class TenRepetitionsActivityTestRule<T extends Activity> extends UiThread
 
     private final Statement mBase;
 
-    public ActivityStatement(Statement base) {
+    ActivityStatement(Statement base) {
       mBase = base;
     }
 

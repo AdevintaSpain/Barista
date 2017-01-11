@@ -53,4 +53,4 @@ public class ViewPagerActivity extends FragmentActivity {
       return NUM_PAGES;
     }
   }
-} 
+}

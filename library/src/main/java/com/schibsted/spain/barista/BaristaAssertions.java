@@ -3,6 +3,7 @@ package com.schibsted.spain.barista;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
+import android.util.Log;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -84,7 +85,8 @@ public class BaristaAssertions {
       pressBack(); // Will launch an Exception if it closes the app
       fail(); // One of our Activities is appearing on the screen :(
     } catch (NoActivityResumedException expectedException) {
-      // We expect this Exception if the Activity is the first one of the stack
+      Log.d("Barista",
+          "As the Activity is the first one of the stack, we expected this error. Yes, the back button closes the app!");
     }
   }
 

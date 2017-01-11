@@ -62,13 +62,6 @@ public class BaristaListViewActions {
         .perform(ViewActions.click());
   }
 
-  private static void clickListItemForSingleListOnScreen(int position) {
-    // This method only seems to work when there is just one ListView in the same activity
-    onData(anything())
-        .atPosition(position)
-        .perform(ViewActions.click());
-  }
-
   private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position, Class<?> modelClass) {
     // This method only seems to work when there are multiple ListViews in the same activity
     onData(is(instanceOf(modelClass))).inAdapterView(
@@ -76,6 +69,13 @@ public class BaristaListViewActions {
             isAssignableFrom(AdapterView.class),
             isDescendantOfA(withId(listViewId)),
             isDisplayed()))
+        .atPosition(position)
+        .perform(ViewActions.click());
+  }
+
+  private static void clickListItemForSingleListOnScreen(int position) {
+    // This method only seems to work when there is just one ListView in the same activity
+    onData(anything())
         .atPosition(position)
         .perform(ViewActions.click());
   }

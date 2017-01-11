@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
+import android.support.test.espresso.PerformException;
 import android.support.test.espresso.action.ViewActions;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -14,7 +15,7 @@ public class BaristaClickActions {
   public static void click(@IdRes int id) {
     try {
       onView(withId(id)).perform(scrollTo(), ViewActions.click());
-    } catch (Exception e) {
+    } catch (PerformException e) {
       onView(withId(id)).perform(ViewActions.click());
     }
   }
@@ -22,7 +23,7 @@ public class BaristaClickActions {
   public static void click(String text) {
     try {
       onView(withText(text)).perform(scrollTo(), ViewActions.click());
-    } catch (Exception e) {
+    } catch (PerformException e) {
       onView(withText(text)).perform(ViewActions.click());
     }
   }
