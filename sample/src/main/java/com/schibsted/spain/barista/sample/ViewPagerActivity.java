@@ -13,15 +13,14 @@ public class ViewPagerActivity extends FragmentActivity {
   private static final int NUM_PAGES = 2;
 
   private ViewPager pager;
-  private PagerAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_viewpager);
 
+    PagerAdapter adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
     pager = (ViewPager) findViewById(R.id.viewPager);
-    adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
     pager.setAdapter(adapter);
   }
 
