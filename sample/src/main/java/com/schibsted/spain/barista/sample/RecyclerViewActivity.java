@@ -30,11 +30,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
   public static class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
     private final Activity activity;
-    private final String[] dataset;
+    private final String[] items;
 
     TextAdapter(Activity activity, String[] myDataset) {
       this.activity = activity;
-      dataset = myDataset;
+      items = myDataset.clone();
     }
 
     public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,7 +43,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
-      holder.textView.setText(dataset[position]);
+      holder.textView.setText(items[position]);
       holder.textView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -55,7 +55,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public int getItemCount() {
-      return dataset.length;
+      return items.length;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

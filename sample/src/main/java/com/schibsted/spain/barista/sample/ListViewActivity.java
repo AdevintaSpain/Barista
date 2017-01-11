@@ -31,7 +31,7 @@ public class ListViewActivity extends AppCompatActivity {
 
     TextAdapter(Activity activity, String[] items) {
       this.activity = activity;
-      this.items = items;
+      this.items = items.clone();
     }
 
     @Override
