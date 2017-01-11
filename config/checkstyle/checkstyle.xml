@@ -86,8 +86,9 @@
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->
-
-        <module name="MethodName"/>
+        <module name="MethodName">
+            <property name="format" value="^[a-z](_?[a-zA-Z0-9]+)*$"/>
+        </module>
         <module name="PackageName"/>
         <module name="ParameterName"/>
         <module name="TypeName"/>
