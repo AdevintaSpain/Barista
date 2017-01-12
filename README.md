@@ -46,6 +46,10 @@ scrollTo(R.id.button);
 scrollTo("A widget with this text");
 swipePagerForward(R.id.viewPager);
 swipePagerBack(R.id.viewPager);
+
+// Interact with the navigation drawer
+openDrawer(R.id.drawer_layout);
+closeDrawer(R.id.drawer_layout);
 ```
 
 ### Barista’s Assertions API
@@ -74,6 +78,10 @@ assertViewIsDisabled(R.id.button);
 assertTextDoesNotExist("Hello world");
 assertTextDoesNotExist(R.string.hello_world);
 assertViewDoesNotExist(R.id.button);
+
+// What's the state of the Drawer
+assertDrawerIsOpen(R.id.drawer_layout);
+assertDrawerIsClosed(R.id.drawer_layout);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();

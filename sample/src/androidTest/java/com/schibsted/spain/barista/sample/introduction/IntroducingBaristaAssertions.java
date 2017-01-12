@@ -6,6 +6,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextDoesNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
@@ -49,6 +51,10 @@ public class IntroducingBaristaAssertions {
     assertTextDoesNotExist("Hello world");
     assertTextDoesNotExist(R.string.hello_world);
     assertViewDoesNotExist(R.id.button);
+
+    // What's the state of the Drawer
+    assertDrawerIsOpen(R.id.drawer_layout);
+    assertDrawerIsClosed(R.id.drawer_layout);
 
     // And another tricky feature
     assertThatBackButtonClosesTheApp();

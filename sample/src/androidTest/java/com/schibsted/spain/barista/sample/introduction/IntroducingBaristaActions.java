@@ -15,6 +15,8 @@ import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutra
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
+import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
@@ -64,5 +66,9 @@ public class IntroducingBaristaActions {
     scrollTo("A widget with this text");
     swipePagerForward(R.id.viewPager);
     swipePagerBack(R.id.viewPager);
+
+    // Interact with the navigation drawer
+    openDrawer(R.id.drawer_layout);
+    closeDrawer(R.id.drawer_layout);
   }
 }
