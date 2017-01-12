@@ -23,6 +23,7 @@
         <module name="EmptyBlock"/>
         <module name="EmptyCatchBlock">
             <property name="commentFormat" value="Intentionally blank"/>
+            <property name="exceptionVariableName" value="ignore|expected"/>
         </module>
         <module name="LeftCurly"/>
         <module name="NeedBraces"/>
