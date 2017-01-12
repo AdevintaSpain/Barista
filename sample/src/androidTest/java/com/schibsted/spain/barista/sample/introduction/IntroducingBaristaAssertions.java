@@ -21,7 +21,6 @@ public class IntroducingBaristaAssertions {
   @Test
   @Ignore
   public void letsIntroduceBarista() {
-
     // Is this view displayed?
     assertDisplayed("Hello world");
     assertDisplayed(R.string.hello_world);
