@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
 
@@ -20,9 +21,9 @@ import static org.junit.Assert.fail;
 public class BaristaAssertions {
 
   public static void assertDisplayed(int id) {
-    try {
+    if (isIdResource(id)) {
       onView(withId(id)).check(matches(isDisplayed()));
-    } catch (Exception e) {
+    } else {
       onView(withText(id)).check(matches(isDisplayed()));
     }
   }
@@ -32,9 +33,9 @@ public class BaristaAssertions {
   }
 
   public static void assertNotExist(int id) {
-    try {
+    if (isIdResource(id)) {
       onView(withId(id)).check(doesNotExist());
-    } catch (Exception e) {
+    } else {
       onView(withText(id)).check(doesNotExist());
     }
   }
@@ -44,9 +45,9 @@ public class BaristaAssertions {
   }
 
   public static void assertNotDisplayed(int id) {
-    try {
+    if (isIdResource(id)) {
       onView(withId(id)).check(matches(not(isDisplayed())));
-    } catch (Exception e) {
+    } else {
       onView(withText(id)).check(matches(not(isDisplayed())));
     }
   }
@@ -56,9 +57,9 @@ public class BaristaAssertions {
   }
 
   public static void assertEnabled(int id) {
-    try {
+    if (isIdResource(id)) {
       onView(withId(id)).check(matches(isEnabled()));
-    } catch (Exception e) {
+    } else {
       onView(withText(id)).check(matches(isEnabled()));
     }
   }
@@ -68,9 +69,9 @@ public class BaristaAssertions {
   }
 
   public static void assertDisabled(int id) {
-    try {
+    if (isIdResource(id)) {
       onView(withId(id)).check(matches(not(isEnabled())));
-    } catch (Exception e) {
+    } else {
       onView(withText(id)).check(matches(not(isEnabled())));
     }
   }
@@ -95,5 +96,9 @@ public class BaristaAssertions {
 
   public static void assertDrawerIsClosed(@IdRes int id) {
     onView(withId(id)).check(matches(isClosed()));
+  }
+
+  private static boolean isIdResource(int id) {
+    return "id".equals(InstrumentationRegistry.getTargetContext().getResources().getResourceTypeName(id));
   }
 }
