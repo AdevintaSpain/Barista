@@ -21,7 +21,7 @@ import static org.junit.Assert.fail;
 
 public class BaristaAssertions {
 
-  private static final ResourceTypeChecker resourceTypeChecker = new ResourceTypeChecker();
+  private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
 
   public static void assertDisplayed(int id) {
     if (isIdResource(id)) {
@@ -112,10 +112,10 @@ public class BaristaAssertions {
   }
 
   private static boolean isIdResource(int id) {
-    return resourceTypeChecker.isIdResource(id);
+    return RESOURCE_TYPE_CHECKER.isIdResource(id);
   }
 
   private static boolean isStringResource(int id) {
-    return resourceTypeChecker.isStringResource(id);
+    return RESOURCE_TYPE_CHECKER.isStringResource(id);
   }
 }
