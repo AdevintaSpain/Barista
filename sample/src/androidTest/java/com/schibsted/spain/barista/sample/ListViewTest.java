@@ -2,10 +2,12 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.BaristaAssertions;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.*;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
 import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
 
@@ -18,24 +20,24 @@ public class ListViewTest {
   @Test
   public void checkClickListViewItem_withFirstItem_withoutExplicitViewModel() {
     clickListViewItem(R.id.listview, 0);
-    assertTextIsDisplayed("Banana");
+    assertDisplayed("Banana");
   }
 
   @Test
   public void checkClickListViewItem_withFourthItem_withoutExplicitViewModel() {
     clickListViewItem(R.id.listview, 3);
-    assertTextIsDisplayed("Raspberry");
+    assertDisplayed("Raspberry");
   }
 
   @Test
   public void checkClickListViewItem_withFirstItem() {
     clickListViewItem(R.id.listview, String.class, 0);
-    assertTextIsDisplayed("Banana");
+    assertDisplayed("Banana");
   }
 
   @Test
   public void checkClickListViewItem_withFourthItem() {
     clickListViewItem(R.id.listview, String.class, 3);
-    assertTextIsDisplayed("Raspberry");
+    assertDisplayed("Raspberry");
   }
 }

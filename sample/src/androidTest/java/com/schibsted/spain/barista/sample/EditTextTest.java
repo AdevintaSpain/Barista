@@ -1,11 +1,13 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.BaristaAssertions;
 import com.schibsted.spain.barista.sample.rule.TenRepetitionsActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.*;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 
@@ -18,18 +20,18 @@ public class EditTextTest {
   @Test
   public void checkWriteOnEditText_whenEditTextIsVisible() {
     writeToEditText(R.id.edittext, "Hello!");
-    assertTextIsDisplayed("Hello!");
+    assertDisplayed("Hello!");
   }
 
   @Test
   public void checkWriteOnEditText_whenScrollIsNeeded() {
     writeToEditText(R.id.edittext_very_far_away, "Hello!");
-    assertTextIsDisplayed("Hello!");
+    assertDisplayed("Hello!");
   }
 
   @Test
   public void checkWriteOnEditText_whenParentIsNotAScrollView() {
     writeToEditText(R.id.edittext_centered, "Hello!");
-    assertTextIsDisplayed("Hello!");
+    assertDisplayed("Hello!");
   }
 }

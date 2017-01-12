@@ -2,12 +2,14 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.BaristaAssertions;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.*;
 import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
@@ -29,18 +31,18 @@ public class DialogActivityTest {
   @Ignore
   public void positiveButton() {
     clickDialogPositiveButton();
-    assertTextIsDisplayed("positive");
+    assertDisplayed("positive");
   }
 
   @Test
   public void negativeButton() {
     clickDialogNegativeButton();
-    assertTextIsDisplayed("negative");
+    assertDisplayed("negative");
   }
 
   @Test
   public void neutralButton() {
     clickDialogNeutralButton();
-    assertTextIsDisplayed("neutral");
+    assertDisplayed("neutral");
   }
 }

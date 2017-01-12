@@ -6,13 +6,13 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextDoesNotExist;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsEnabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsNotDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.BaristaAssertions.assertViewDoesNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertViewIsDisabled;
@@ -28,28 +28,28 @@ public class IntroducingBaristaAssertions {
   public void letsIntroduceBarista() {
 
     // Is this view displayed?
-    assertTextIsDisplayed("Hello world");
-    assertTextIsDisplayed(R.string.hello_world);
+    assertDisplayed("Hello world");
+    assertDisplayed(R.string.hello_world);
     assertViewIsDisplayed(R.id.button);
 
     // ...or not?
-    assertTextIsNotDisplayed("Hello world");
-    assertTextIsNotDisplayed(R.string.hello_world);
+    assertNotDisplayed("Hello world");
+    assertNotDisplayed(R.string.hello_world);
     assertViewIsNotDisplayed(R.id.button);
 
     // Is this view enabled?
-    assertTextIsEnabled("Hello world");
-    assertTextIsEnabled(R.string.hello_world);
+    assertEnabled("Hello world");
+    assertEnabled(R.string.hello_world);
     assertViewIsEnabled(R.id.button);
 
     // ...or not?
-    assertTextIsDisabled("Hello world");
-    assertTextIsDisabled(R.string.hello_world);
+    assertDisabled("Hello world");
+    assertDisabled(R.string.hello_world);
     assertViewIsDisabled(R.id.button);
 
     // Hope this view doesn't exist!
-    assertTextDoesNotExist("Hello world");
-    assertTextDoesNotExist(R.string.hello_world);
+    assertNotExist("Hello world");
+    assertNotExist(R.string.hello_world);
     assertViewDoesNotExist(R.id.button);
 
     // What's the state of the Drawer

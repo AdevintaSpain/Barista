@@ -6,11 +6,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextDoesNotExist;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsEnabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsNotDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.BaristaAssertions.assertViewDoesNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertViewIsDisabled;
@@ -29,8 +29,8 @@ public class AssertionsTest {
   public void checkVisibleViews() {
     assertViewIsDisplayed(R.id.visible_view);
 
-    assertTextIsDisplayed(R.string.hello_world);
-    assertTextIsDisplayed("Hello world!");
+    assertDisplayed(R.string.hello_world);
+    assertDisplayed("Hello world!");
   }
 
   @Test
@@ -38,32 +38,32 @@ public class AssertionsTest {
     assertViewIsNotDisplayed(R.id.invisible_view);
     assertViewIsNotDisplayed(R.id.gone_view);
 
-    assertTextIsNotDisplayed(R.string.im_invisible);
-    assertTextIsNotDisplayed("I'm invisible!");
+    assertNotDisplayed(R.string.im_invisible);
+    assertNotDisplayed("I'm invisible!");
   }
 
   @Test
   public void checkUnexistingView() {
     assertViewDoesNotExist(R.id.view_in_another_layout);
 
-    assertTextDoesNotExist(R.string.unknown);
-    assertTextDoesNotExist("Unknown");
+    assertNotExist(R.string.unknown);
+    assertNotExist("Unknown");
   }
 
   @Test
   public void checkEnabledView() {
     assertViewIsEnabled(R.id.enabled_button);
 
-    assertTextIsEnabled(R.string.enabled_button);
-    assertTextIsEnabled("Enabled button");
+    assertEnabled(R.string.enabled_button);
+    assertEnabled("Enabled button");
   }
 
   @Test
   public void checkDisabledView() {
     assertViewIsDisabled(R.id.disabled_button);
 
-    assertTextIsDisabled(R.string.disabled_button);
-    assertTextIsDisabled("Disabled button");
+    assertDisabled(R.string.disabled_button);
+    assertDisabled("Disabled button");
   }
 
   @Test

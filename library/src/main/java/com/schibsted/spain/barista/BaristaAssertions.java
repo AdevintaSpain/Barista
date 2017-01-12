@@ -24,11 +24,11 @@ public class BaristaAssertions {
     onView(withId(id)).check(matches(isDisplayed()));
   }
 
-  public static void assertTextIsDisplayed(@StringRes int text) {
+  public static void assertDisplayed(@StringRes int text) {
     onView(withText(text)).check(matches(isDisplayed()));
   }
 
-  public static void assertTextIsDisplayed(String text) {
+  public static void assertDisplayed(String text) {
     onView(withText(text)).check(matches(isDisplayed()));
   }
 
@@ -36,11 +36,11 @@ public class BaristaAssertions {
     onView(withId(viewId)).check(doesNotExist());
   }
 
-  public static void assertTextDoesNotExist(@StringRes int text) {
+  public static void assertNotExist(@StringRes int text) {
     onView(withText(text)).check(doesNotExist());
   }
 
-  public static void assertTextDoesNotExist(String text) {
+  public static void assertNotExist(String text) {
     onView(withText(text)).check(doesNotExist());
   }
 
@@ -48,11 +48,11 @@ public class BaristaAssertions {
     onView(withId(id)).check(matches(not(isDisplayed())));
   }
 
-  public static void assertTextIsNotDisplayed(@StringRes int text) {
+  public static void assertNotDisplayed(@StringRes int text) {
     onView(withText(text)).check(matches(not(isDisplayed())));
   }
 
-  public static void assertTextIsNotDisplayed(String text) {
+  public static void assertNotDisplayed(String text) {
     onView(withText(text)).check(matches(not(isDisplayed())));
   }
 
@@ -60,11 +60,11 @@ public class BaristaAssertions {
     onView(withId(viewId)).check(matches(isEnabled()));
   }
 
-  public static void assertTextIsEnabled(@StringRes int text) {
+  public static void assertEnabled(@StringRes int text) {
     onView(withText(text)).check(matches(isEnabled()));
   }
 
-  public static void assertTextIsEnabled(String text) {
+  public static void assertEnabled(String text) {
     onView(withText(text)).check(matches(isEnabled()));
   }
 
@@ -72,11 +72,11 @@ public class BaristaAssertions {
     onView(withId(viewId)).check(matches(not(isEnabled())));
   }
 
-  public static void assertTextIsDisabled(@StringRes int text) {
+  public static void assertDisabled(@StringRes int text) {
     onView(withText(text)).check(matches(not(isEnabled())));
   }
 
-  public static void assertTextIsDisabled(String text) {
+  public static void assertDisabled(String text) {
     onView(withText(text)).check(matches(not(isEnabled())));
   }
 

@@ -6,10 +6,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsNotDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 
@@ -22,11 +22,11 @@ public class NavigationDrawerActivityTest {
   @Test
   public void openAndCloseDrawer() {
     openDrawer(R.id.drawer);
-    assertTextIsDisplayed("menu item");
+    assertDisplayed("menu item");
     assertDrawerIsOpen(R.id.drawer);
 
     closeDrawer(R.id.drawer);
-    assertTextIsNotDisplayed("menu item");
+    assertNotDisplayed("menu item");
     assertDrawerIsClosed(R.id.drawer);
   }
 }
