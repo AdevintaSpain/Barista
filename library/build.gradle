@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply from: '../config/android-quality.gradle'
 
 android {
     compileSdkVersion 25
@@ -9,6 +10,12 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+    }
+}
+
+android {
+    lintOptions {
+        disable 'InvalidPackage'
     }
 }
 

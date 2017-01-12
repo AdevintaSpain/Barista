@@ -11,11 +11,11 @@ import static org.hamcrest.Matchers.allOf;
 
 public class BaristaRadioButtonActions {
 
-    public static void clickRadioButtonItem(@IdRes int radioGroupId, int itemToClickId) {
-        onView(allOf(withParent(withId(radioGroupId)), withId(itemToClickId))).perform(ViewActions.click());
-    }
+  public static void clickRadioButtonItem(@IdRes int radioGroupId, int itemToClickId) {
+    onView(allOf(withParent(withId(radioGroupId)), withId(itemToClickId))).perform(ViewActions.click());
+  }
 
-    public static void clickRadioButtonItem(@IdRes int radioGroupId, String text) {
-        onView(allOf(withParent(withId(radioGroupId)), withText(text))).perform(ViewActions.click());
-    }
+  public static void clickRadioButtonItem(@IdRes int radioGroupId, String text) {
+    onView(allOf(withParent(withId(radioGroupId)), withText(text))).perform(ViewActions.click());
+  }
 }

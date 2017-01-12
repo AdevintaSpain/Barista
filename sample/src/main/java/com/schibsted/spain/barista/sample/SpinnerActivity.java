@@ -7,15 +7,14 @@ import android.widget.Spinner;
 
 public class SpinnerActivity extends AppCompatActivity {
 
-    private static final String[] FRUITS = {"Banana", "Apple", "Orange", "Raspberry"};
+  private static final String[] FRUITS = { "Banana", "Apple", "Orange", "Raspberry" };
 
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_spinner);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spinner);
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, FRUITS));
-    }
+    Spinner spinner = (Spinner) findViewById(R.id.spinner);
+    spinner.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, FRUITS));
+  }
 }

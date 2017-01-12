@@ -6,11 +6,11 @@ import static com.schibsted.spain.barista.BaristaClickActions.click;
 
 public class BaristaCheckBoxActions {
 
-    public static void clickCheckBoxItem(@IdRes int checkBoxId) {
-        click(checkBoxId);
-    }
+  public static void clickCheckBoxItem(@IdRes int checkBoxId) {
+    click(checkBoxId);
+  }
 
-    public static void clickCheckBoxItem(String text) {
-        click(text);
-    }
+  public static void clickCheckBoxItem(String text) {
+    click(text);
+  }
 }

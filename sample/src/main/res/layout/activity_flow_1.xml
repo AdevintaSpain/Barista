@@ -3,39 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Hi! I'm the first screen!"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hi! I'm the first screen!" />
+      <Button
+          android:id="@+id/next"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Next"/>
 
-            <Button
-                android:id="@+id/next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Next" />
+      <Button
+          android:id="@+id/really_far_away_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="1000dp"
+          android:text="Really far away button"/>
+    </LinearLayout>
+  </ScrollView>
 
-            <Button
-                android:id="@+id/really_far_away_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1000dp"
-                android:text="Really far away button" />
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/centered_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Centered button" />
+  <Button
+      android:id="@+id/centered_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Centered button"/>
 </FrameLayout>
