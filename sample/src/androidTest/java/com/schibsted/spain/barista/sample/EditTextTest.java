@@ -1,14 +1,12 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.BaristaAssertions;
 import com.schibsted.spain.barista.sample.rule.TenRepetitionsActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.*;
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 
 @RunWith(AndroidJUnit4.class)
