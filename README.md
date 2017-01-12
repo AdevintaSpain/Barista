@@ -44,12 +44,12 @@ clickDialogNegativeButton();
 // Scroll on scrolls and pagers
 scrollTo(R.id.button);
 scrollTo("A widget with this text");
-swipePagerForward(R.id.viewPager);
-swipePagerBack(R.id.viewPager);
+swipePagerForward(R.id.pager);
+swipePagerBack(R.id.pager);
 
 // Interact with the navigation drawer
-openDrawer(R.id.drawer_layout);
-closeDrawer(R.id.drawer_layout);
+openDrawer(R.id.drawer);
+closeDrawer(R.id.drawer);
 ```
 
 ### Barista’s Assertions API
@@ -80,8 +80,8 @@ assertTextDoesNotExist(R.string.hello_world);
 assertViewDoesNotExist(R.id.button);
 
 // What's the state of the Drawer
-assertDrawerIsOpen(R.id.drawer_layout);
-assertDrawerIsClosed(R.id.drawer_layout);
+assertDrawerIsOpen(R.id.drawer);
+assertDrawerIsClosed(R.id.drawer);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();

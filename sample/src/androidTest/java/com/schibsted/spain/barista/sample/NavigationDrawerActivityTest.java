@@ -21,12 +21,12 @@ public class NavigationDrawerActivityTest {
 
   @Test
   public void openAndCloseDrawer() {
-    openDrawer(R.id.drawer_layout);
+    openDrawer(R.id.drawer);
     assertTextIsDisplayed("menu item");
-    assertDrawerIsOpen(R.id.drawer_layout);
+    assertDrawerIsOpen(R.id.drawer);
 
-    closeDrawer(R.id.drawer_layout);
+    closeDrawer(R.id.drawer);
     assertTextIsNotDisplayed("menu item");
-    assertDrawerIsClosed(R.id.drawer_layout);
+    assertDrawerIsClosed(R.id.drawer);
   }
 }

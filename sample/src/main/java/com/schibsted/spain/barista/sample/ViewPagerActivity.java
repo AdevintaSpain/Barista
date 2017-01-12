@@ -20,7 +20,7 @@ public class ViewPagerActivity extends FragmentActivity {
     setContentView(R.layout.activity_viewpager);
 
     PagerAdapter adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-    pager = (ViewPager) findViewById(R.id.viewPager);
+    pager = (ViewPager) findViewById(R.id.pager);
     pager.setAdapter(adapter);
   }
 

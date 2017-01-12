@@ -18,30 +18,30 @@ public class ViewPagerTest {
 
   @Test
   public void checkSwipeForward() {
-    swipePagerForward(R.id.viewPager);
+    swipePagerForward(R.id.pager);
 
     assertTextIsDisplayed("2");
   }
 
   @Test
   public void checkSwipeBack() {
-    swipePagerForward(R.id.viewPager);
-    swipePagerBack(R.id.viewPager);
+    swipePagerForward(R.id.pager);
+    swipePagerBack(R.id.pager);
 
     assertTextIsDisplayed("1");
   }
 
   @Test
   public void swipingBackInTheFirstPageDoesntCrash() {
-    swipePagerBack(R.id.viewPager);
+    swipePagerBack(R.id.pager);
 
     assertTextIsDisplayed("1");
   }
 
   @Test
   public void swipingForwardInTheLastPageDoesntCrash() {
-    swipePagerForward(R.id.viewPager);
-    swipePagerForward(R.id.viewPager);
+    swipePagerForward(R.id.pager);
+    swipePagerForward(R.id.pager);
 
     assertTextIsDisplayed("2");
   }

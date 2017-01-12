@@ -21,7 +21,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
     toolbar.setNavigationIcon(R.drawable.ic_action_menu);
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {

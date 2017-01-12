@@ -64,11 +64,11 @@ public class IntroducingBaristaActions {
     // Scroll on scrolls and pagers
     scrollTo(R.id.button);
     scrollTo("A widget with this text");
-    swipePagerForward(R.id.viewPager);
-    swipePagerBack(R.id.viewPager);
+    swipePagerForward(R.id.pager);
+    swipePagerBack(R.id.pager);
 
     // Interact with the navigation drawer
-    openDrawer(R.id.drawer_layout);
-    closeDrawer(R.id.drawer_layout);
+    openDrawer(R.id.drawer);
+    closeDrawer(R.id.drawer);
   }
 }

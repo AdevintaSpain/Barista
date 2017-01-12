@@ -53,8 +53,8 @@ public class IntroducingBaristaAssertions {
     assertViewDoesNotExist(R.id.button);
 
     // What's the state of the Drawer
-    assertDrawerIsOpen(R.id.drawer_layout);
-    assertDrawerIsClosed(R.id.drawer_layout);
+    assertDrawerIsOpen(R.id.drawer);
+    assertDrawerIsClosed(R.id.drawer);
 
     // And another tricky feature
     assertThatBackButtonClosesTheApp();
