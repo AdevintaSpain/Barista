@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -154,6 +155,35 @@ public class AssertionsTest {
       assertDisabled("Enabled button");
       fail();
     } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void methodsByIdLaunchExceptionWhenThePassedIdIsNotAResIdOrAStringId() {
+    try {
+      assertDisplayed(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertNotDisplayed(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertNotExist(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertEnabled(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertDisabled(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
     }
   }
 

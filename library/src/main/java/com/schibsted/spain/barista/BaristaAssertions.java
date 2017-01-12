@@ -1,9 +1,10 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
+import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
+import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -20,11 +21,15 @@ import static org.junit.Assert.fail;
 
 public class BaristaAssertions {
 
+  private static final ResourceTypeChecker resourceTypeChecker = new ResourceTypeChecker();
+
   public static void assertDisplayed(int id) {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(isDisplayed()));
-    } else {
+    } else if (isStringResource(id)) {
       onView(withText(id)).check(matches(isDisplayed()));
+    } else {
+      throw new BaristaArgumentTypeException();
     }
   }
 
@@ -35,8 +40,10 @@ public class BaristaAssertions {
   public static void assertNotExist(int id) {
     if (isIdResource(id)) {
       onView(withId(id)).check(doesNotExist());
-    } else {
+    } else if (isStringResource(id)) {
       onView(withText(id)).check(doesNotExist());
+    } else {
+      throw new BaristaArgumentTypeException();
     }
   }
 
@@ -47,8 +54,10 @@ public class BaristaAssertions {
   public static void assertNotDisplayed(int id) {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(not(isDisplayed())));
-    } else {
+    } else if (isStringResource(id)) {
       onView(withText(id)).check(matches(not(isDisplayed())));
+    } else {
+      throw new BaristaArgumentTypeException();
     }
   }
 
@@ -59,8 +68,10 @@ public class BaristaAssertions {
   public static void assertEnabled(int id) {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(isEnabled()));
-    } else {
+    } else if (isStringResource(id)) {
       onView(withText(id)).check(matches(isEnabled()));
+    } else {
+      throw new BaristaArgumentTypeException();
     }
   }
 
@@ -71,8 +82,10 @@ public class BaristaAssertions {
   public static void assertDisabled(int id) {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(not(isEnabled())));
-    } else {
+    } else if (isStringResource(id)) {
       onView(withText(id)).check(matches(not(isEnabled())));
+    } else {
+      throw new BaristaArgumentTypeException();
     }
   }
 
@@ -99,6 +112,10 @@ public class BaristaAssertions {
   }
 
   private static boolean isIdResource(int id) {
-    return "id".equals(InstrumentationRegistry.getTargetContext().getResources().getResourceTypeName(id));
+    return resourceTypeChecker.isIdResource(id);
+  }
+
+  private static boolean isStringResource(int id) {
+    return resourceTypeChecker.isStringResource(id);
   }
 }
