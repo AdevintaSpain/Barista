@@ -79,7 +79,7 @@ assertNotExist("Hello world");
 assertNotExist(R.string.hello_world);
 assertNotExist(R.id.button);
 
-// What's the state of the Drawer
+// What's the state of the Drawer?
 assertDrawerIsOpen(R.id.drawer);
 assertDrawerIsClosed(R.id.drawer);
 
