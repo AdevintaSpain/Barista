@@ -184,10 +184,6 @@ public class TenRepetitionsActivityTestRule<T extends Activity> extends UiThread
     // inject custom intent, if provided
     if (null == intent) {
       intent = getActivityIntent();
-      if (null == intent) {
-        Log.w(TAG, "getActivityIntent() returned null using default: " + "Intent(Intent.ACTION_MAIN)");
-        intent = new Intent(Intent.ACTION_MAIN);
-      }
     }
     intent.setClassName(targetPackage, mActivityClass.getName());
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

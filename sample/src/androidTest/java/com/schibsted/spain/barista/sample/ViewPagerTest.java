@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerBack;
 import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
 
@@ -20,7 +20,7 @@ public class ViewPagerTest {
   public void checkSwipeForward() {
     swipePagerForward(R.id.pager);
 
-    assertTextIsDisplayed("2");
+    assertDisplayed("2");
   }
 
   @Test
@@ -28,14 +28,14 @@ public class ViewPagerTest {
     swipePagerForward(R.id.pager);
     swipePagerBack(R.id.pager);
 
-    assertTextIsDisplayed("1");
+    assertDisplayed("1");
   }
 
   @Test
   public void swipingBackInTheFirstPageDoesntCrash() {
     swipePagerBack(R.id.pager);
 
-    assertTextIsDisplayed("1");
+    assertDisplayed("1");
   }
 
   @Test
@@ -43,6 +43,6 @@ public class ViewPagerTest {
     swipePagerForward(R.id.pager);
     swipePagerForward(R.id.pager);
 
-    assertTextIsDisplayed("2");
+    assertDisplayed("2");
   }
 }

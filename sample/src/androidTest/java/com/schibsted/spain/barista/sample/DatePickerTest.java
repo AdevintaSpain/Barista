@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 
@@ -20,6 +20,6 @@ public class DatePickerTest {
   public void checkDatePicker() {
     click(R.id.launch_date_picker);
     setDateOnPicker(1986, 04, 23);
-    assertTextIsDisplayed("1986+3+23");
+    assertDisplayed("1986+3+23");
   }
 }

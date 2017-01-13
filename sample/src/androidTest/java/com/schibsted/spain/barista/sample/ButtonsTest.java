@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
 
@@ -19,26 +19,26 @@ public class ButtonsTest {
   @Test
   public void checkClickById() {
     click(R.id.next);
-    assertTextIsDisplayed("Hi! I'm the second screen!");
+    assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
   public void checkClickByText() {
     click("Next");
-    assertTextIsDisplayed("Hi! I'm the second screen!");
+    assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
   public void checkClickWhenParentIsNotAnScrollView() {
     click("Centered button");
-    assertTextIsDisplayed("Hi! I'm the second screen!");
+    assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
   public void checkBackButton() {
     click("Next");
-    assertTextIsDisplayed("Hi! I'm the second screen!");
+    assertDisplayed("Hi! I'm the second screen!");
     clickBack();
-    assertTextIsDisplayed("Hi! I'm the first screen!");
+    assertDisplayed("Hi! I'm the first screen!");
   }
 }

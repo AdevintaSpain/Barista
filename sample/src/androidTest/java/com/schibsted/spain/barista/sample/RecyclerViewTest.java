@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 
 @RunWith(AndroidJUnit4.class)
@@ -18,12 +18,12 @@ public class RecyclerViewTest {
   @Test
   public void checkClickRecyclerViewItem_byPosition_atTwo() {
     clickRecyclerViewItem(R.id.recycler, 2);
-    assertTextIsDisplayed("Orange");
+    assertDisplayed("Orange");
   }
 
   @Test
   public void checkClickRecyclerViewItem_byPosition_atThree() {
     clickRecyclerViewItem(R.id.recycler, 3);
-    assertTextIsDisplayed("Raspberry");
+    assertDisplayed("Raspberry");
   }
 }

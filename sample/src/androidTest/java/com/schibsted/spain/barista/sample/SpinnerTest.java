@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertTextIsDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
 
 @RunWith(AndroidJUnit4.class)
@@ -18,24 +18,24 @@ public class SpinnerTest {
   @Test
   public void checkSelectSpinnerPosition_withoutExplicitViewModel() {
     clickSpinnerItem(R.id.spinner, 0);
-    assertTextIsDisplayed("Banana");
+    assertDisplayed("Banana");
   }
 
   @Test
   public void checkSelectSpinnerThirdPosition_withoutExplicitViewModel() {
     clickSpinnerItem(R.id.spinner, 2);
-    assertTextIsDisplayed("Orange");
+    assertDisplayed("Orange");
   }
 
   @Test
   public void checkSelectSpinnerPosition() {
     clickSpinnerItem(R.id.spinner, String.class, 0);
-    assertTextIsDisplayed("Banana");
+    assertDisplayed("Banana");
   }
 
   @Test
   public void checkSelectSpinnerThirdPosition() {
     clickSpinnerItem(R.id.spinner, String.class, 2);
-    assertTextIsDisplayed("Orange");
+    assertDisplayed("Orange");
   }
 }

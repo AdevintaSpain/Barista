@@ -55,29 +55,29 @@ closeDrawer(R.id.drawer);
 ### Barista’s Assertions API
 ```java
 // Is this view displayed?
-assertTextIsDisplayed("Hello world");
-assertTextIsDisplayed(R.string.hello_world);
-assertViewIsDisplayed(R.id.button);
+assertDisplayed("Hello world");
+assertDisplayed(R.string.hello_world);
+assertDisplayed(R.id.button);
 
 // ...or not?
-assertTextIsNotDisplayed("Hello world");
-assertTextIsNotDisplayed(R.string.hello_world);
-assertViewIsNotDisplayed(R.id.button);
+assertNotDisplayed("Hello world");
+assertNotDisplayed(R.string.hello_world);
+assertNotDisplayed(R.id.button);
 
 // Is this view enabled?
-assertTextIsEnabled("Hello world");
-assertTextIsEnabled(R.string.hello_world);
-assertViewIsEnabled(R.id.button);
+assertEnabled("Hello world");
+assertEnabled(R.string.hello_world);
+assertEnabled(R.id.button);
 
 // ...or not?
-assertTextIsDisabled("Hello world");
-assertTextIsDisabled(R.string.hello_world);
-assertViewIsDisabled(R.id.button);
+assertDisabled("Hello world");
+assertDisabled(R.string.hello_world);
+assertDisabled(R.id.button);
 
 // Hope this view doesn't exist!
-assertTextDoesNotExist("Hello world");
-assertTextDoesNotExist(R.string.hello_world);
-assertViewDoesNotExist(R.id.button);
+assertNotExist("Hello world");
+assertNotExist(R.string.hello_world);
+assertNotExist(R.id.button);
 
 // What's the state of the Drawer
 assertDrawerIsOpen(R.id.drawer);

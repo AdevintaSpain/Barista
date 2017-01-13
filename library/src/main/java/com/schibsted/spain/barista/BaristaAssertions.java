@@ -1,9 +1,10 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
-import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
+import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
+import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -20,63 +21,75 @@ import static org.junit.Assert.fail;
 
 public class BaristaAssertions {
 
-  public static void assertViewIsDisplayed(@IdRes int id) {
-    onView(withId(id)).check(matches(isDisplayed()));
+  private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
+
+  public static void assertDisplayed(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(isDisplayed()));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(isDisplayed()));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
   }
 
-  public static void assertTextIsDisplayed(@StringRes int text) {
+  public static void assertDisplayed(String text) {
     onView(withText(text)).check(matches(isDisplayed()));
   }
 
-  public static void assertTextIsDisplayed(String text) {
-    onView(withText(text)).check(matches(isDisplayed()));
+  public static void assertNotExist(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(doesNotExist());
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(doesNotExist());
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
   }
 
-  public static void assertViewDoesNotExist(@IdRes int viewId) {
-    onView(withId(viewId)).check(doesNotExist());
-  }
-
-  public static void assertTextDoesNotExist(@StringRes int text) {
+  public static void assertNotExist(String text) {
     onView(withText(text)).check(doesNotExist());
   }
 
-  public static void assertTextDoesNotExist(String text) {
-    onView(withText(text)).check(doesNotExist());
+  public static void assertNotDisplayed(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(not(isDisplayed())));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(not(isDisplayed())));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
   }
 
-  public static void assertViewIsNotDisplayed(@IdRes int id) {
-    onView(withId(id)).check(matches(not(isDisplayed())));
-  }
-
-  public static void assertTextIsNotDisplayed(@StringRes int text) {
+  public static void assertNotDisplayed(String text) {
     onView(withText(text)).check(matches(not(isDisplayed())));
   }
 
-  public static void assertTextIsNotDisplayed(String text) {
-    onView(withText(text)).check(matches(not(isDisplayed())));
+  public static void assertEnabled(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(isEnabled()));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(isEnabled()));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
   }
 
-  public static void assertViewIsEnabled(@IdRes int viewId) {
-    onView(withId(viewId)).check(matches(isEnabled()));
-  }
-
-  public static void assertTextIsEnabled(@StringRes int text) {
+  public static void assertEnabled(String text) {
     onView(withText(text)).check(matches(isEnabled()));
   }
 
-  public static void assertTextIsEnabled(String text) {
-    onView(withText(text)).check(matches(isEnabled()));
+  public static void assertDisabled(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(not(isEnabled())));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(not(isEnabled())));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
   }
 
-  public static void assertViewIsDisabled(@IdRes int viewId) {
-    onView(withId(viewId)).check(matches(not(isEnabled())));
-  }
-
-  public static void assertTextIsDisabled(@StringRes int text) {
-    onView(withText(text)).check(matches(not(isEnabled())));
-  }
-
-  public static void assertTextIsDisabled(String text) {
+  public static void assertDisabled(String text) {
     onView(withText(text)).check(matches(not(isEnabled())));
   }
 
@@ -96,5 +109,13 @@ public class BaristaAssertions {
 
   public static void assertDrawerIsClosed(@IdRes int id) {
     onView(withId(id)).check(matches(isClosed()));
+  }
+
+  private static boolean isIdResource(int id) {
+    return RESOURCE_TYPE_CHECKER.isIdResource(id);
+  }
+
+  private static boolean isStringResource(int id) {
+    return RESOURCE_TYPE_CHECKER.isStringResource(id);
   }
 }
