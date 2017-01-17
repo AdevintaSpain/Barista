@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply from: '../config/android-quality.gradle'
 
 android {
@@ -28,4 +29,13 @@ dependencies {
     compile('com.android.support.test.espresso:espresso-contrib:2.0') {
         exclude module: 'support-v4'
     }
+}
+
+publish {
+    userOrg = 'schibstedspain'
+    groupId = 'com.schibsted.spain'
+    artifactId = 'barista'
+    publishVersion = '0.0.1'
+    desc = 'The guy who serves great Espresso'
+    website = 'https://github.com/SchibstedSpain/barista'
 }
