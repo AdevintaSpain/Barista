@@ -23,3 +23,9 @@ before_script:
   - adb shell input keyevent 82 &
 script:
     - ./gradlew check connectedAndroidTest
+deploy:
+  - provider: script
+    script: scripts/bintrayUpload.sh
+    skip_cleanup: true
+    on:
+      tags: true
