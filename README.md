@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/SchibstedSpain/Barista.svg?branch=master)](https://travis-ci.org/SchibstedSpain/Barista)
+[![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 
 # Barista
 **The guy who serves a great Espresso**
