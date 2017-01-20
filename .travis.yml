@@ -3,6 +3,7 @@ jdk: oraclejdk8
 branches:
   only:
     - master
+    - /^v\d+\.\d+\.\d+$/
 android:
   components:
   - tools
