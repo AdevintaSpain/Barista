@@ -1,4 +1,4 @@
-[![Build Status](https://travis.schibsted.io/scmspain/barista.svg?token=3kFC3MqgXJW7rpZEMFFo&branch=master)](https://travis.schibsted.io/scmspain/barista)
+[![Build Status](https://travis-ci.org/SchibstedSpain/Barista.svg?branch=master)](https://travis-ci.org/SchibstedSpain/Barista)
 
 # Barista
 **The guy who serves great Espresso**
