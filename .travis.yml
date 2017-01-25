@@ -19,8 +19,6 @@ android:
   - addon
 script:
   - ./gradlew build bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
-
-after_success:
   - openssl aes-256-cbc -K $encrypted_72bcab8ac73d_key -iv $encrypted_72bcab8ac73d_iv -in secret.json.enc -out secret.json -d
   - wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-127.0.0-linux-x86_64.tar.gz
   - tar xf google-cloud-sdk-127.0.0-linux-x86_64.tar.gz
