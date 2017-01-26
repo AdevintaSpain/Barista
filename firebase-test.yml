@@ -6,10 +6,10 @@ test-suite:
   locales: es
   orientations: portrait
   device-ids:
-    - Nexus6
-    #- m0 # Samsung Galaxy S3
+    - Nexus5
+    - m0 # Samsung Galaxy S3
     #- zerolte # Galaxy S6 Edge
     #- condor_umts # Moto E
   os-version-ids:
-    #- 18
+    - 18
     - 22
