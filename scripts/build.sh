@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./gradlew build assembleAndroidTest
+#TODO ./gradlew build assembleAndroidTest
+./gradlew assembleDebug assembleAndroidTest
