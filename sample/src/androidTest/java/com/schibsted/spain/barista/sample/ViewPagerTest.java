@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.sample.rule.TenRepetitionsActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
 public class ViewPagerTest {
 
   @Rule
-  public ActivityTestRule<ViewPagerActivity> activityRule = new ActivityTestRule<>(ViewPagerActivity.class);
+  public TenRepetitionsActivityTestRule<ViewPagerActivity> activityRule = new TenRepetitionsActivityTestRule<>(ViewPagerActivity.class);
 
   @Test
   public void checkSwipeForward() {
