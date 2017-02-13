@@ -90,7 +90,7 @@ assertThatBackButtonClosesTheApp();
 
 # Download
 
-```groovy
+```gradle
 compile 'com.schibsted.spain:barista:0.0.1'
 ```
 
