@@ -87,6 +87,13 @@ assertDrawerIsClosed(R.id.drawer);
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
 ```
+
+# Download
+
+```gradle
+compile 'com.schibsted.spain:barista:0.0.1'
+```
+
 # License
 
 ```
