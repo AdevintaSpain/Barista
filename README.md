@@ -91,7 +91,9 @@ assertThatBackButtonClosesTheApp();
 # Download
 
 ```gradle
-androidTestCompile 'com.schibsted.spain:barista:0.0.1'
+androidTestCompile('com.schibsted.spain:barista:0.0.1') {
+  exclude group: 'com.android.support'
+}
 ```
 
 # License
