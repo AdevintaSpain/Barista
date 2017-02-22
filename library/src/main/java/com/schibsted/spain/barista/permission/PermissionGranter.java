@@ -34,7 +34,7 @@ public class PermissionGranter {
         }
       }
     } catch (UiObjectNotFoundException e) {
-      Log.e("Barista", "There is no permissions dialog to interact with");
+      Log.e("Barista", "There is no permissions dialog to interact with", e);
     }
   }
 
