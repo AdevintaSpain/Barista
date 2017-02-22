@@ -51,6 +51,10 @@ swipePagerBack(R.id.pager);
 // Interact with the navigation drawer
 openDrawer(R.id.drawer);
 closeDrawer(R.id.drawer);
+
+// And another tricky feature
+sleep(2000);
+sleep(2, SECONDS);
 ```
 
 ### Barista’s Assertions API
