@@ -103,7 +103,7 @@ PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 # Download
 
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:0.0.1') {
+androidTestCompile('com.schibsted.spain:barista:0.0.2') {
   exclude group: 'com.android.support'
 }
 ```
