@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
@@ -14,6 +15,7 @@ import android.util.Log;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 
+@RequiresApi(18)
 public class PermissionGranter {
 
   private static final int PERMISSIONS_DIALOG_DELAY = 3000;
