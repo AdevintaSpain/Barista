@@ -92,6 +92,14 @@ assertDrawerIsClosed(R.id.drawer);
 assertThatBackButtonClosesTheApp();
 ```
 
+## Dealing with the runtime permissions dialog
+
+The new Marshmallow permissions system requires checking for permissions at runtime. As Espresso can't interact with the system dialog, Barista offers a way to allow permissions when needed.
+
+```java
+PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
+```
+
 # Download
 
 ```gradle
