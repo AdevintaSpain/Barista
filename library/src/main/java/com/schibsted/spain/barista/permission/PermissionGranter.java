@@ -11,6 +11,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.support.v4.content.ContextCompat;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 
 public class PermissionGranter {
 
@@ -39,13 +40,5 @@ public class PermissionGranter {
   private static boolean hasNeededPermission(Context context, String permissionNeeded) {
     int permissionStatus = ContextCompat.checkSelfPermission(context, permissionNeeded);
     return permissionStatus == PackageManager.PERMISSION_GRANTED;
-  }
-
-  private static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException("Cannot execute Thread.sleep()");
-    }
   }
 }
