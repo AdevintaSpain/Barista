@@ -21,9 +21,11 @@ import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
+import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
 import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerBack;
 import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaActions {
@@ -70,5 +72,9 @@ public class IntroducingBaristaActions {
     // Interact with the navigation drawer
     openDrawer(R.id.drawer);
     closeDrawer(R.id.drawer);
+
+    // And another tricky feature
+    sleep(2000);
+    sleep(2, SECONDS);
   }
 }
