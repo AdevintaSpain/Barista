@@ -9,6 +9,7 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
+import android.util.Log;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
@@ -33,7 +34,7 @@ public class PermissionGranter {
         }
       }
     } catch (UiObjectNotFoundException e) {
-      System.out.println("There is no permissions dialog to interact with");
+      Log.e("Barista", "setup");
     }
   }
 
