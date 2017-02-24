@@ -37,6 +37,7 @@ public class RepeatFlakyRule implements TestRule {
     }
 
     @Override
+    @SuppressWarnings("PMD.AvoidCatchingThrowable")
     public void evaluate() throws Throwable {
       for (int i = 0; i < times; i++) {
         try {

@@ -54,7 +54,7 @@ public class FlakyActivityTest {
   }
 
   private static class TestException extends Exception {
-    public TestException(String message) {
+    TestException(String message) {
       super(message);
     }
   }

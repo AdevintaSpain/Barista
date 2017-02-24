@@ -19,6 +19,7 @@ public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<
   }
 
   @Override
+  @SuppressWarnings({"PMD.CloseResource", "PMD.UnnecessaryLocalBeforeReturn"})
   public Statement apply(Statement base, Description description) {
     Statement activityStatement = super.apply(base, description);
     Statement repeatStatement = RepeatFlakyRule.createStatement(activityStatement, description);

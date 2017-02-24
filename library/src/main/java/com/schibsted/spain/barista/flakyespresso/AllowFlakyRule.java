@@ -9,6 +9,7 @@ import static com.schibsted.spain.barista.flakyespresso.FlakyUtil.finishAllActiv
 
 public class AllowFlakyRule implements TestRule {
 
+  private static final String TAG = "FLAKY";
   private static final int DEFAULT_FLAKY_ATTEMPTS = 5;
 
   @Override
@@ -37,20 +38,21 @@ public class AllowFlakyRule implements TestRule {
     }
 
     @Override
+    @SuppressWarnings("PMD.AvoidCatchingThrowable")
     public void evaluate() throws Throwable {
 
       for (int i = 1; i <= attempts; i++) {
         try {
-          Log.d("FLAKY", "--> Attempt #" + i);
+          Log.d(TAG, "--> Attempt #" + i);
           statement.evaluate();
-          Log.d("FLAKY", "<-- Success at #" + i);
+          Log.d(TAG, "<-- Success at #" + i);
           break;
         } catch (Throwable e) {
           if (i == attempts) {
-            Log.d("FLAKY", "<-- Attempt #" + i + " failed. No more attempts.");
+            Log.d(TAG, "<-- Attempt #" + i + " failed. No more attempts.");
             throw e;
           }
-          Log.d("FLAKY", "<-- Attempt #" + i + " failed. Repeating again");
+          Log.d(TAG, "<-- Attempt #" + i + " failed. Repeating again");
 
           // This is what JUnit and Espresso do after each test method:
           finishAllActivitiesOnUiThread();
