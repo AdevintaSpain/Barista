@@ -6,6 +6,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
+
   public FlakyActivityTestRule(Class<T> activityClass) {
     super(activityClass);
   }
@@ -19,11 +20,30 @@ public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<
   }
 
   @Override
-  @SuppressWarnings({"PMD.CloseResource", "PMD.UnnecessaryLocalBeforeReturn"})
+  @SuppressWarnings("PMD.CloseResource")
   public Statement apply(Statement base, Description description) {
     Statement activityStatement = super.apply(base, description);
-    Statement repeatStatement = RepeatFlakyRule.createStatement(activityStatement, description);
-    Statement flakyStatement = AllowFlakyRule.createStatement(repeatStatement, description);
-    return flakyStatement;
+    return createAllowOrRepeatStatement(activityStatement, description);
+  }
+
+  static Statement createAllowOrRepeatStatement(Statement base, Description description) {
+    Repeat repeat = description.getAnnotation(Repeat.class);
+    AllowFlaky allowFlaky = description.getAnnotation(AllowFlaky.class);
+    boolean hasRepeatAnnotation = repeat != null;
+    boolean hasAllowFlakyAnnotation = allowFlaky != null;
+
+    if (hasAllowFlakyAnnotation && hasRepeatAnnotation) {
+      throw new IllegalStateException("Both @Repeat and @AllowFlaky annotations are not allowed on "
+          + "the same test method. Found both at "
+          + description.getDisplayName());
+    } else if (hasRepeatAnnotation) {
+      int times = repeat.times();
+      return new RepeatStatement(times, base);
+    } else if (hasAllowFlakyAnnotation) {
+      int attempts = allowFlaky.attempts();
+      return new AllowFlakyStatement(attempts, base);
+    } else {
+      return base;
+    }
   }
 }
