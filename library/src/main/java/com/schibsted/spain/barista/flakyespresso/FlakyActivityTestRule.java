@@ -21,13 +21,18 @@ public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<
     super(activityClass, initialTouchMode, launchActivity);
   }
 
+  public FlakyActivityTestRule<T> allowFlakyAttemptsByDefault(int defaultAttempts) {
+    statementBuilder.allowFlakyAttemptsByDefault(defaultAttempts);
+    return this;
+  }
+
   @Override
   @SuppressWarnings("PMD.CloseResource")
   public Statement apply(Statement base, Description description) {
     Statement activityStatement = super.apply(base, description);
     return statementBuilder
-        .withBase(activityStatement)
-        .withDescription(description)
+        .setBase(activityStatement)
+        .setDescription(description)
         .build();
   }
 }

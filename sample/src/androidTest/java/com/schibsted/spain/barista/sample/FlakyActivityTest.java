@@ -20,6 +20,10 @@ public class FlakyActivityTest {
   @Rule
   public FlakyActivityTestRule<FlakyActivity> activityRule = new FlakyActivityTestRule<>(FlakyActivity.class, true, false);
 
+  @Rule
+  public FlakyActivityTestRule<FlakyActivity> activityRuleWithDefaultFlaky = new FlakyActivityTestRule<>(FlakyActivity.class, true, false)
+      .allowFlakyAttemptsByDefault(5);
+
   // WARNING: this test must fail when run
   @Test
   @Repeat(times = 5)
@@ -38,6 +42,17 @@ public class FlakyActivityTest {
   @AllowFlaky(attempts = 5)
   public void some_flaky_test() throws Exception {
     activityRule.launchActivity(null);
+
+    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
+
+    if (random.nextFloat() > 0.3) {
+      throw new TestException("Random test failure");
+    }
+  }
+
+  @Test
+  public void some_default_flaky_test() throws Exception {
+    activityRuleWithDefaultFlaky.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
 

@@ -57,8 +57,8 @@ public class FlakyActivityStatementBuilderTest {
     Description description = Description.EMPTY;
 
     Statement resultStatement = new FlakyActivityStatementBuilder()
-        .withBase(baseStatement)
-        .withDescription(description)
+        .setBase(baseStatement)
+        .setDescription(description)
         .allowFlakyAttemptsByDefault(5)
         .build();
 
@@ -68,8 +68,8 @@ public class FlakyActivityStatementBuilderTest {
   //region Shortcut methods
   private Statement createStatement(Statement baseStatement, Description description) {
     return new FlakyActivityStatementBuilder()
-        .withBase(baseStatement)
-        .withDescription(description)
+        .setBase(baseStatement)
+        .setDescription(description)
         .build();
   }
 

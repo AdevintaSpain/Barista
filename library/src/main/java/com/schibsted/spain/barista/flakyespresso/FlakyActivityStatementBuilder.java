@@ -7,14 +7,22 @@ public class FlakyActivityStatementBuilder {
 
   private Statement base;
   private Description description;
+  private boolean useAllowFlakyByDefault = false;
+  private int defaultAllowFlakyAttempts = 0;
 
-  public FlakyActivityStatementBuilder withBase(Statement base) {
+  public FlakyActivityStatementBuilder setBase(Statement base) {
     this.base = base;
     return this;
   }
 
-  public FlakyActivityStatementBuilder withDescription(Description description) {
+  public FlakyActivityStatementBuilder setDescription(Description description) {
     this.description = description;
+    return this;
+  }
+
+  public FlakyActivityStatementBuilder allowFlakyAttemptsByDefault(int attempts) {
+    useAllowFlakyByDefault = true;
+    defaultAllowFlakyAttempts = attempts;
     return this;
   }
 
@@ -34,6 +42,8 @@ public class FlakyActivityStatementBuilder {
     } else if (hasAllowFlakyAnnotation) {
       int attempts = allowFlaky.attempts();
       return new AllowFlakyStatement(attempts, base);
+    } else if (useAllowFlakyByDefault) {
+      return new AllowFlakyStatement(defaultAllowFlakyAttempts, base);
     } else {
       return base;
     }
