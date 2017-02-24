@@ -8,7 +8,7 @@ import org.junit.runners.model.Statement;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
-public class FlakyActivityTestRuleTest {
+public class FlakyActivityStatementBuilderTest {
 
   private static final String CLASS = "class name";
   private static final String TEST = "test name";
@@ -51,9 +51,26 @@ public class FlakyActivityTestRuleTest {
     assertTrue(resultStatement instanceof AllowFlakyStatement);
   }
 
+  @Test
+  public void allowFlakyStatementReturnedWhenNoAnnotationsFoundButUsesDefault() throws Exception {
+    Statement baseStatement = new SomeStatement();
+    Description description = Description.EMPTY;
+
+    Statement resultStatement = new FlakyActivityStatementBuilder()
+        .withBase(baseStatement)
+        .withDescription(description)
+        .allowFlakyAttemptsByDefault(5)
+        .build();
+
+    assertTrue(resultStatement instanceof AllowFlakyStatement);
+  }
+
   //region Shortcut methods
   private Statement createStatement(Statement baseStatement, Description description) {
-    return FlakyActivityTestRule.createAllowOrRepeatStatement(baseStatement, description);
+    return new FlakyActivityStatementBuilder()
+        .withBase(baseStatement)
+        .withDescription(description)
+        .build();
   }
 
   private Description withAnnotations(Annotation... annotations) {
