@@ -105,7 +105,7 @@ PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 As tests should be isolated, they need to set the environment before running. As Espresso doesn't help achieving it, Barista offers a set of rules to clear the app's data before running each test.
 
 ```java
-@Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule();
+@Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
 ```
 
 # Download
