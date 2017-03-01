@@ -100,7 +100,7 @@ The new Marshmallow permissions system requires checking for permissions at runt
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 ```
 
-## Resetting the app before running each test
+## Resetting the app's data before running each test
 
 As tests should be isolated, they need to set the environment before running. As Espresso doesn't help achieving it, Barista offers a set of rules to clear the app's data before running each test.
 
