@@ -13,7 +13,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 /**
- * This rule clears all SharedPreferences before running each test
+ * This rule clears all app's SharedPreferences before running each test
  */
 public class ClearPreferencesRule implements TestRule {
 
