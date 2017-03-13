@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class RecyclerViewTest {
@@ -24,6 +25,12 @@ public class RecyclerViewTest {
   @Test
   public void checkClickRecyclerViewItem_byPosition_atThree() {
     clickRecyclerViewItem(R.id.recycler, 3);
+    assertDisplayed("Raspberry");
+  }
+
+  @Test
+  public void checkScrollToRecyclerViewItem_byPosition_atThree() {
+    scrollTo(R.id.recycler, 3);
     assertDisplayed("Raspberry");
   }
 }

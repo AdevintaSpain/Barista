@@ -6,6 +6,7 @@ import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 public class BaristaRecyclerViewActions {
@@ -22,5 +23,9 @@ public class BaristaRecyclerViewActions {
   private static void performClick(@IdRes int recyclerViewId, int position) {
     onView(withId(recyclerViewId))
         .perform(RecyclerViewActions.actionOnItemAtPosition(position, click()));
+  }
+
+  public static void scrollTo(int recyclerViewId, int position) {
+    onView(withId(recyclerViewId)).perform(scrollToPosition(position));
   }
 }
