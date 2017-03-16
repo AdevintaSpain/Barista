@@ -1,6 +1,8 @@
 package com.schibsted.spain.barista.sample.introduction;
 
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,6 +21,7 @@ import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDr
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.*;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
@@ -48,6 +51,9 @@ public class IntroducingBaristaActions {
     clickRecyclerViewItem(R.id.recycler, 2);
     clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
     clickSpinnerItem(R.id.spinner, 1);
+
+    // Scroll on AdapterViews
+    BaristaRecyclerViewActions.scrollTo(R.id.recycler, 42);
 
     // Select items on RadioButtons and CheckBoxes
     clickCheckBoxItem(R.id.first_item);
