@@ -1,6 +1,5 @@
 package com.schibsted.spain.barista.sample.introduction;
 
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
@@ -21,7 +20,6 @@ import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDr
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.*;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
