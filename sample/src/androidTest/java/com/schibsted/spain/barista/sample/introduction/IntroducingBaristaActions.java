@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,6 +49,9 @@ public class IntroducingBaristaActions {
     clickRecyclerViewItem(R.id.recycler, 2);
     clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
     clickSpinnerItem(R.id.spinner, 1);
+
+    // Scroll on AdapterViews
+    BaristaRecyclerViewActions.scrollTo(R.id.recycler, 42);
 
     // Select items on RadioButtons and CheckBoxes
     clickCheckBoxItem(R.id.first_item);

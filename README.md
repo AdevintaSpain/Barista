@@ -28,6 +28,9 @@ clickRecyclerViewItem(R.id.recycler, 2);
 clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
 clickSpinnerItem(R.id.spinner, 1);
 
+// Scroll on AdapterViews
+scrollTo(R.id.recycler, 42);
+
 // Select items on RadioButtons and CheckBoxes
 clickCheckBoxItem(R.id.first_item);
 clickCheckBoxItem("The checkbox text");
