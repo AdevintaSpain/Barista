@@ -19,18 +19,58 @@ public class RecyclerViewTest {
   @Test
   public void checkClickRecyclerViewItem_byPosition_atTwo() {
     clickRecyclerViewItem(R.id.recycler, 2);
-    assertDisplayed("Orange");
+    assertDisplayed("Avocado");
   }
 
+  //region Clicks
   @Test
   public void checkClickRecyclerViewItem_byPosition_atThree() {
     clickRecyclerViewItem(R.id.recycler, 3);
-    assertDisplayed("Raspberry");
+    assertDisplayed("Banana");
   }
 
   @Test
-  public void checkScrollToRecyclerViewItem_byPosition_atThree() {
-    scrollTo(R.id.recycler, 3);
-    assertDisplayed("Raspberry");
+  public void checkClickRecyclerViewItem_byPosition_atTwenty() {
+    clickRecyclerViewItem(R.id.recycler, 20);
+    assertDisplayed("Durian");
   }
+
+  @Test
+  public void checkClickRecyclerViewItem_byPosition_atFourty() {
+    clickRecyclerViewItem(R.id.recycler, 40);
+    assertDisplayed("Lime");
+  }
+
+  @Test
+  public void checkClickRecyclerViewItem_byPosition_atSixty() {
+    clickRecyclerViewItem(R.id.recycler, 60);
+    assertDisplayed("Papaya");
+  }
+  //endregion
+
+  //region Scrolls
+  @Test
+  public void checkScrollToRecyclerViewItem_byPosition_atZero() {
+    scrollTo(R.id.recycler, 0);
+    assertDisplayed("Apple");
+  }
+
+  @Test
+  public void checkScrollToRecyclerViewItem_byPosition_atTwenty() {
+    scrollTo(R.id.recycler, 20);
+    assertDisplayed("Durian");
+  }
+
+  @Test
+  public void checkScrollToRecyclerViewItem_byPosition_atFourty() {
+    scrollTo(R.id.recycler, 40);
+    assertDisplayed("Lime");
+  }
+
+  @Test
+  public void checkScrollToRecyclerViewItem_byPosition_atSixty() {
+    scrollTo(R.id.recycler, 60);
+    assertDisplayed("Papaya");
+  }
+  //endregion
 }
