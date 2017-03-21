@@ -13,15 +13,15 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-public class FlakyActivityTest {
+public class HelloWorldActivityTest {
 
   private final Random random = new Random();
 
   @Rule
-  public FlakyActivityTestRule<FlakyActivity> activityRule = new FlakyActivityTestRule<>(FlakyActivity.class, true, false);
+  public FlakyActivityTestRule<HelloWorldActivity> activityRule = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false);
 
   @Rule
-  public FlakyActivityTestRule<FlakyActivity> activityRuleWithDefaultFlaky = new FlakyActivityTestRule<>(FlakyActivity.class, true, false)
+  public FlakyActivityTestRule<HelloWorldActivity> activityRuleWithDefaultFlaky = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false)
       .allowFlakyAttemptsByDefault(5);
 
   // WARNING: this test must fail when run
