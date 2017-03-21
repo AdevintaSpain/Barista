@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.sample.rule.TenRepetitionsActivityTestRule;
+import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,8 @@ import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
 public class ViewPagerTest {
 
   @Rule
-  public TenRepetitionsActivityTestRule<ViewPagerActivity> activityRule = new TenRepetitionsActivityTestRule<>(ViewPagerActivity.class);
+  public FlakyActivityTestRule<ViewPagerActivity> activityRule = new FlakyActivityTestRule<>(ViewPagerActivity.class)
+      .allowFlakyAttemptsByDefault(10);
 
   @Test
   public void checkSwipeForward() {
