@@ -111,7 +111,7 @@ As tests should be isolated, they need to set the environment before running. As
 @Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
 ```
 
-## Dealing with Flaky tests
+## Dealing with Flaky tests
 
 We should try to write deterministic tests, but when everything else fails Barista helps you deal with flaky tests using a specific ActivityTestRule and a couple of annotations that repeat your tests multiple times.
 
