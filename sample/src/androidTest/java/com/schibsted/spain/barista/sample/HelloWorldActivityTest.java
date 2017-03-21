@@ -21,8 +21,9 @@ public class HelloWorldActivityTest {
   public FlakyActivityTestRule<HelloWorldActivity> activityRule = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false);
 
   @Rule
-  public FlakyActivityTestRule<HelloWorldActivity> activityRuleWithDefaultFlaky = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false)
-      .allowFlakyAttemptsByDefault(5);
+  public FlakyActivityTestRule<HelloWorldActivity> activityRuleWithDefaultFlaky =
+      new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false)
+          .allowFlakyAttemptsByDefault(5);
 
   // WARNING: this test must fail when run
   @Test
