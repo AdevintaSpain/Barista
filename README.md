@@ -111,6 +111,30 @@ As tests should be isolated, they need to set the environment before running. As
 @Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
 ```
 
+## Dealing with Flaky tests
+
+We should try to write deterministic tests, but when everything else fails Barista helps you deal with flaky tests using a specific ActivityTestRule and a couple of annotations that repeat your tests multiple times.
+
+```java
+// Use this rule instead of Espresso's ActivityTestRule
+@Rule
+public FlakyActivityTestRule<FlakyActivity> activityRule = new FlakyActivityTestRule<>(FlakyActivity.class, true, false);
+
+// Use @AllowFlaky to let flaky tests pass if they pass any time.
+@Test
+@AllowFlaky(attempts = 5)
+public void some_flaky_test() throws Exception {
+  // ...
+}
+
+// Use @Repeat to avoid flaky tests from passing if any repetition fails.
+@Test
+@Repeat(times = 5)
+public void some_important_test() throws Exception {
+  // ...
+}
+```
+
 # Download
 
 ```gradle
