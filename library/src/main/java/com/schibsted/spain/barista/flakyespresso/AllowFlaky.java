@@ -6,10 +6,10 @@ import java.lang.annotation.Target;
 
 /**
  * It let's flaky tests pass.
- * <br/>
+ * <br>
  * This annotation together with {@link FlakyActivityTestRule} repeats the annotated test several times, and makes the test pass if any of
  * the executions passed. It's the opposite of {@link Repeat}.
- * <br/>
+ * <br>
  * You can use {@link FlakyActivityTestRule#allowFlakyAttemptsByDefault(int)} instead.
  */
 @Retention(RetentionPolicy.RUNTIME)
