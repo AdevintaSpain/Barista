@@ -5,6 +5,10 @@ import android.support.test.rule.ActivityTestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+/**
+ * This is a subclass of {@link ActivityTestRule} that enables repetition of flaky tests using the annotations {@link AllowFlaky} and {@link
+ * Repeat}. Check out the docs on each one to see how they behave.
+ */
 public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
 
   private final FlakyActivityStatementBuilder statementBuilder = new FlakyActivityStatementBuilder();
