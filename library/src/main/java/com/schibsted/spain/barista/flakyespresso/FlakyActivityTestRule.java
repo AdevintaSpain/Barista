@@ -25,6 +25,14 @@ public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<
     super(activityClass, initialTouchMode, launchActivity);
   }
 
+  /**
+   * Utility method to use {@link AllowFlaky} by default in all test methods.
+   * <br/>
+   * Use this method when constructing the Rule to apply a default behavior of {@link AllowFlaky} without having to add the annotation to
+   * each test. Use it wisely when your tests are very flaky, something quite common with Espresso.
+   * <br/>
+   * The behavior will be overridden with {@link Repeat} or {@link AllowFlaky}.
+   */
   public FlakyActivityTestRule<T> allowFlakyAttemptsByDefault(int defaultAttempts) {
     statementBuilder.allowFlakyAttemptsByDefault(defaultAttempts);
     return this;
