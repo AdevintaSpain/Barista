@@ -114,7 +114,7 @@ As tests should be isolated, they need to set the environment before running. As
 # Download
 
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:0.0.3') {
+androidTestCompile('com.schibsted.spain:barista:0.0.4') {
   exclude group: 'com.android.support'
 }
 ```
