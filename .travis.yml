@@ -27,7 +27,7 @@ before_script:
   - adb shell settings put global animator_duration_scale 0 &
   - adb shell input keyevent 82 &
 script:
-  - scripts/bintrayUpload.sh
+  - scripts/build.sh
 deploy:
   - provider: script
     script: scripts/bintrayUpload.sh
