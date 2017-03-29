@@ -13,10 +13,17 @@
       android:id="@+id/repeated_view_1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:visibility="gone"
       android:text="Repeated"
       />
   <TextView
       android:id="@+id/repeated_view_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Repeated"
+      />
+  <TextView
+      android:id="@+id/repeated_view_3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="Repeated"
