@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
+import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
 import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
@@ -14,6 +15,7 @@ import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
@@ -109,6 +111,14 @@ public class BaristaAssertions {
 
   public static void assertDrawerIsClosed(@IdRes int id) {
     onView(withId(id)).check(matches(isClosed()));
+  }
+
+  public static void assertHint(@IdRes int id, @StringRes int text) {
+    onView(withId(id)).check(matches(withHint(text)));
+  }
+
+  public static void assertHint(@IdRes int id, String text) {
+    onView(withId(id)).check(matches(withHint(text)));
   }
 
   private static boolean isIdResource(int id) {
