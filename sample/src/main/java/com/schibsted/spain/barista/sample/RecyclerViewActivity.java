@@ -69,6 +69,22 @@ public class RecyclerViewActivity extends AppCompatActivity {
           activity.startActivity(i);
         }
       });
+      holder.yesButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' has been clicked");
+          activity.startActivity(i);
+        }
+      });
+      holder.noButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'no' has been clicked");
+          activity.startActivity(i);
+        }
+      });
     }
 
     public int getItemCount() {

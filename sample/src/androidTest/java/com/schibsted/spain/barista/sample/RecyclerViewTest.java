@@ -1,12 +1,17 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.schibsted.spain.barista.BaristaRecyclerViewActions;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.*;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
 
@@ -71,6 +76,15 @@ public class RecyclerViewTest {
   public void checkScrollToRecyclerViewItem_byPosition_atSixty() {
     scrollTo(R.id.recycler, 60);
     assertDisplayed("Papaya");
+  }
+  //endregion
+
+  //region Clicking row buttons
+  @Test
+  public void checkClickYesButton_byPosition_atZero() {
+    int position = 0;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    assertDisplayed("'yes' has been clicked");
   }
   //endregion
 }

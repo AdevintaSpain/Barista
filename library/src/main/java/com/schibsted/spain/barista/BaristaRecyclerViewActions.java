@@ -28,4 +28,8 @@ public class BaristaRecyclerViewActions {
   public static void scrollTo(int recyclerViewId, int position) {
     onView(withId(recyclerViewId)).perform(scrollToPosition(position));
   }
+
+  public static void clickRecyclerAdapterItem(@IdRes int recyclerViewId, int position, @IdRes int itemToClickId) {
+
+  }
 }
