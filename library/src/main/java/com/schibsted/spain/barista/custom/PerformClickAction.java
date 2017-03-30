@@ -16,7 +16,7 @@ public class PerformClickAction {
    * be clicked instead of the View itself.
    *
    * This Action fixes that behavior, just clicking on the View using its
-   * instance, not his position.
+   * instance, not its position.
    *
    * @see ViewActions.click()
    */
