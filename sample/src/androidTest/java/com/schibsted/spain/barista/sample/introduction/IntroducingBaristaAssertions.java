@@ -11,6 +11,7 @@ import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
@@ -49,6 +50,10 @@ public class IntroducingBaristaAssertions {
     // What's the state of the Drawer
     assertDrawerIsOpen(R.id.drawer);
     assertDrawerIsClosed(R.id.drawer);
+
+    // I expect this hint!
+    assertHint(R.id.edittext, R.string.hint);
+    assertHint(R.id.edittext, "Hint");
 
     // And another tricky feature
     assertThatBackButtonClosesTheApp();

@@ -6,4 +6,5 @@
   <string name="enabled_button">Enabled button</string>
   <string name="disabled_button">Disabled button</string>
   <string name="centered_edittext">I\'m a centered edittext!</string>
+  <string name="hint">Hint</string>
 </resources>
