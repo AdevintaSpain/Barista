@@ -2,12 +2,14 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
 
 @RunWith(AndroidJUnit4.class)
 public class RadioButtonsTest {
@@ -36,6 +38,18 @@ public class RadioButtonsTest {
   @Test
   public void checkRadioButtonsByText_secondItem() {
     clickRadioButtonItem(R.id.radiogroup, "Bye bye");
+    assertDisplayed("" + R.id.second_item);
+  }
+
+  @Test
+  public void checkRadioButtonsByPosition_firstItem() {
+    clickRadioButtonPosition(R.id.radiogroup, 0);
+    assertDisplayed("" + R.id.first_item);
+  }
+
+  @Test
+  public void checkRadioButtonsByPosition_secondItem() {
+    clickRadioButtonPosition(R.id.radiogroup, 1);
     assertDisplayed("" + R.id.second_item);
   }
 }
