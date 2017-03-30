@@ -2,10 +2,8 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.NoMatchingViewException;
-import android.support.test.espresso.action.ViewActions;
 import android.widget.AdapterView;
 
-import com.schibsted.spain.barista.custom.PerformClickAction;
 import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -13,7 +11,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFro
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static com.schibsted.spain.barista.custom.PerformClickAction.*;
+import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.instanceOf;
