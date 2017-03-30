@@ -91,6 +91,10 @@ assertNotExist(R.id.button);
 assertDrawerIsOpen(R.id.drawer);
 assertDrawerIsClosed(R.id.drawer);
 
+// Check EditText's hints
+assertHint(R.id.edittext, R.string.hint);
+assertHint(R.id.edittext, "Hint");
+
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
 ```

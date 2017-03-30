@@ -51,7 +51,7 @@ public class IntroducingBaristaAssertions {
     assertDrawerIsOpen(R.id.drawer);
     assertDrawerIsClosed(R.id.drawer);
 
-    // I expect this hint!
+    // Check EditText's hints
     assertHint(R.id.edittext, R.string.hint);
     assertHint(R.id.edittext, "Hint");
 
