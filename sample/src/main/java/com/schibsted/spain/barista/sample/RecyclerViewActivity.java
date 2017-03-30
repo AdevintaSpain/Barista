@@ -52,7 +52,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_textview, parent, false);
+      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_with_buttons, parent, false);
       TextView textView = (TextView) root.findViewById(R.id.textview);
       View yesButton = root.findViewById(R.id.yes);
       View noButton = root.findViewById(R.id.no);

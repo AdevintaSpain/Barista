@@ -55,7 +55,7 @@ public class ListViewActivity extends AppCompatActivity {
 
       if (convertView == null) {
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        rowView = inflater.inflate(R.layout.row_textview, parent, false);
+        rowView = inflater.inflate(R.layout.row_with_buttons, parent, false);
       }
 
       final TextView textView = (TextView) rowView.findViewById(R.id.textview);
