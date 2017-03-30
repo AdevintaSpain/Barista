@@ -50,6 +50,7 @@ public class IntroducingBaristaActions {
     clickRecyclerViewItem(R.id.recycler, 2);
     clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
     clickRecyclerViewItemChild(R.id.recycler, 3, R.id.button);
+    clickRecyclerViewItemChild(R.id.recycler, 3, "Button");
     clickSpinnerItem(R.id.spinner, 1);
 
     // Scroll on AdapterViews
