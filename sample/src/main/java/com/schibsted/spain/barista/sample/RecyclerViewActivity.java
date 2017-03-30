@@ -52,8 +52,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.row_textview, parent, false);
-      return new ViewHolder(v);
+      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_textview, parent, false);
+      TextView textView = (TextView) root.findViewById(R.id.textview);
+      View yesButton = root.findViewById(R.id.yes);
+      View noButton = root.findViewById(R.id.no);
+      return new ViewHolder(root, textView, yesButton, noButton);
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -74,10 +77,14 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
       TextView textView;
+      View yesButton;
+      View noButton;
 
-      ViewHolder(TextView v) {
-        super(v);
-        textView = v;
+      ViewHolder(View root, TextView textView, View yesButton, View noButton) {
+        super(root);
+        this.textView = textView;
+        this.yesButton = yesButton;
+        this.noButton = noButton;
       }
     }
   }
