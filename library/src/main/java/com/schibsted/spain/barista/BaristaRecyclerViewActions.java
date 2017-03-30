@@ -31,7 +31,7 @@ public class BaristaRecyclerViewActions {
     onView(withId(recyclerViewId)).perform(scrollToPosition(position));
   }
 
-  public static void clickRecyclerAdapterItem(@IdRes int recyclerViewId, int position, @IdRes int itemToClickId) {
+  public static void clickRecyclerViewItemChild(@IdRes int recyclerViewId, int position, @IdRes int itemToClickId) {
     onView(withId(recyclerViewId)).perform(
         RecyclerViewActions.actionOnItemAtPosition(position, clickChildWithId(itemToClickId)));
   }

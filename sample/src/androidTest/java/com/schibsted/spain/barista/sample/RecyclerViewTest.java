@@ -1,10 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
-import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -83,42 +80,42 @@ public class RecyclerViewTest {
   @Test
   public void checkClickYesButton_byPosition_atZero() {
     int position = 0;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.yes);
     assertDisplayed("'yes' has been clicked");
   }
 
   @Test
   public void checkClickYesButton_byPosition_atFourty() {
     int position = 40;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.yes);
     assertDisplayed("'yes' has been clicked");
   }
 
   @Test
   public void checkClickYesButton_byPosition_atSixty() {
     int position = 60;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.yes);
     assertDisplayed("'yes' has been clicked");
   }
 
   @Test
   public void checkClickNoButton_byPosition_atZero() {
     int position = 0;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.no);
     assertDisplayed("'no' has been clicked");
   }
 
   @Test
   public void checkClickNoButton_byPosition_atFourty() {
     int position = 40;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.no);
     assertDisplayed("'no' has been clicked");
   }
 
   @Test
   public void checkClickNoButton_byPosition_atSixty() {
     int position = 60;
-    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.no);
     assertDisplayed("'no' has been clicked");
   }
   //endregion
