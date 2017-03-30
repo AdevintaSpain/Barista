@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 
 @RunWith(AndroidJUnit4.class)
@@ -33,5 +34,15 @@ public class EditTextTest {
   public void checkWriteOnEditText_whenParentIsNotAScrollView() {
     writeToEditText(R.id.edittext_centered, "Hello!");
     assertDisplayed("Hello!");
+  }
+
+  @Test
+  public void assertHintById() {
+    assertHint(R.id.edittext_centered, R.string.centered_edittext);
+  }
+
+  @Test
+  public void assertHintByString() {
+    assertHint(R.id.edittext_centered, "I'm a centered edittext!");
   }
 }
