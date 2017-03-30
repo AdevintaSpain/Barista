@@ -2,7 +2,6 @@ package com.schibsted.spain.barista.custom;
 
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.action.ViewActions;
 import android.view.View;
 
 import org.hamcrest.Matcher;
