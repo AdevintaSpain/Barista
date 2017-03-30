@@ -17,8 +17,6 @@ public class PerformClickAction {
    *
    * This Action fixes that behavior, just clicking on the View using its
    * instance, not its position.
-   *
-   * @see ViewActions.click()
    */
   public static ViewAction clickUsingPerformClick() {
     return new ViewAction() {
