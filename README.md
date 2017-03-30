@@ -36,6 +36,7 @@ clickCheckBoxItem(R.id.first_item);
 clickCheckBoxItem("The checkbox text");
 clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
 clickRadioButtonItem(R.id.radiogroup, "The radio text");
+clickRadioButtonPosition(R.id.radiogroup, 42);
 
 // Pick data on pickers
 setDateOnPicker(1986, 03, 23);
