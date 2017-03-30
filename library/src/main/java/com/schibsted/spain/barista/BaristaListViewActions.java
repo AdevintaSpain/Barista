@@ -4,6 +4,8 @@ import android.support.annotation.IdRes;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.action.ViewActions;
 import android.widget.AdapterView;
+
+import com.schibsted.spain.barista.custom.PerformClickAction;
 import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -11,6 +13,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFro
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static com.schibsted.spain.barista.custom.PerformClickAction.*;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.instanceOf;
@@ -60,7 +63,7 @@ public class BaristaListViewActions {
             isDescendantOfA(withId(listViewId)),
             isDisplayed()))
         .atPosition(position)
-        .perform(ViewActions.click());
+        .perform(clickUsingPerformClick());
   }
 
   private static void clickListItemForMultipleListsOnScreen(@IdRes int listViewId, int position, Class<?> modelClass) {
@@ -71,20 +74,20 @@ public class BaristaListViewActions {
             isDescendantOfA(withId(listViewId)),
             isDisplayed()))
         .atPosition(position)
-        .perform(ViewActions.click());
+        .perform(clickUsingPerformClick());
   }
 
   private static void clickListItemForSingleListOnScreen(int position) {
     // This method only seems to work when there is just one ListView in the same activity
     onData(anything())
         .atPosition(position)
-        .perform(ViewActions.click());
+        .perform(clickUsingPerformClick());
   }
 
   private static void clickListItemForSingleListOnScreen(int position, Class<?> modelClass) {
     // This method only seems to work when there is just one ListView in the same activity
     onData(is(instanceOf(modelClass)))
         .atPosition(position)
-        .perform(ViewActions.click());
+        .perform(clickUsingPerformClick());
   }
 }

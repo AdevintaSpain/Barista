@@ -7,6 +7,8 @@ import android.view.View;
 
 import org.hamcrest.Matcher;
 
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+
 public class PerformClickAction {
 
   /**
@@ -23,7 +25,7 @@ public class PerformClickAction {
     return new ViewAction() {
       @Override
       public Matcher<View> getConstraints() {
-        return null;
+        return isDisplayed();
       }
 
       @Override
