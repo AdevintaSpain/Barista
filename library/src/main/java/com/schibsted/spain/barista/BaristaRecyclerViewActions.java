@@ -2,12 +2,13 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.contrib.RecyclerViewActions;
+
 import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithId;
 
 public class BaristaRecyclerViewActions {
 
@@ -30,6 +31,7 @@ public class BaristaRecyclerViewActions {
   }
 
   public static void clickRecyclerAdapterItem(@IdRes int recyclerViewId, int position, @IdRes int itemToClickId) {
-
+    onView(withId(recyclerViewId)).perform(
+        RecyclerViewActions.actionOnItemAtPosition(position, clickChildWithId(itemToClickId)));
   }
 }

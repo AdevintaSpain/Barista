@@ -86,5 +86,40 @@ public class RecyclerViewTest {
     clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
     assertDisplayed("'yes' has been clicked");
   }
+
+  @Test
+  public void checkClickYesButton_byPosition_atFourty() {
+    int position = 40;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    assertDisplayed("'yes' has been clicked");
+  }
+
+  @Test
+  public void checkClickYesButton_byPosition_atSixty() {
+    int position = 60;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.yes);
+    assertDisplayed("'yes' has been clicked");
+  }
+
+  @Test
+  public void checkClickNoButton_byPosition_atZero() {
+    int position = 0;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    assertDisplayed("'no' has been clicked");
+  }
+
+  @Test
+  public void checkClickNoButton_byPosition_atFourty() {
+    int position = 40;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    assertDisplayed("'no' has been clicked");
+  }
+
+  @Test
+  public void checkClickNoButton_byPosition_atSixty() {
+    int position = 60;
+    clickRecyclerAdapterItem(R.id.recycler, position, R.id.no);
+    assertDisplayed("'no' has been clicked");
+  }
   //endregion
 }
