@@ -20,6 +20,7 @@ import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDr
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerAdapterItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
@@ -48,6 +49,7 @@ public class IntroducingBaristaActions {
     clickListViewItem(R.id.listview, 4, 5, 6);
     clickRecyclerViewItem(R.id.recycler, 2);
     clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
+    clickRecyclerAdapterItem(R.id.recycler, 3, R.id.yes);
     clickSpinnerItem(R.id.spinner, 1);
 
     // Scroll on AdapterViews
