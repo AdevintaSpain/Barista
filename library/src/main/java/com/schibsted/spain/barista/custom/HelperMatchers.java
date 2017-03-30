@@ -12,16 +12,14 @@ public class HelperMatchers {
 
       @Override
       public boolean matches(final Object item) {
-        boolean result = false;
-
-        if (matcher.matches(item)) {
-          if (matchingPosition == position) {
-            result = true;
-          }
-          matchingPosition++;
+        if (!matcher.matches(item)) {
+          return false;
         }
 
-        return result;
+        if (matchingPosition++ == position) {
+          return true;
+        }
+        return false;
       }
 
       @Override
