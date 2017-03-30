@@ -9,7 +9,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithId;
-import static com.schibsted.spain.barista.custom.ClickRootAction.clickRoot;
+import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
 
 public class BaristaRecyclerViewActions {
 
@@ -24,7 +24,7 @@ public class BaristaRecyclerViewActions {
 
   private static void performClick(@IdRes int recyclerViewId, int position) {
     onView(withId(recyclerViewId)).perform(
-        RecyclerViewActions.actionOnItemAtPosition(position, clickRoot()));
+        RecyclerViewActions.actionOnItemAtPosition(position, clickUsingPerformClick()));
   }
 
   public static void scrollTo(int recyclerViewId, int position) {

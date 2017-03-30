@@ -2,13 +2,24 @@ package com.schibsted.spain.barista.custom;
 
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.action.ViewActions;
 import android.view.View;
 
 import org.hamcrest.Matcher;
 
-public class ClickRootAction {
+public class PerformClickAction {
 
-  public static ViewAction clickRoot() {
+  /**
+   * Common Espresso's ViewActions.click() taps on the center of the View.
+   * But, if that View has a children placed on its center, that child will
+   * be clicked instead of the View itself.
+   *
+   * This Action fixes that behavior, just clicking on the View using its
+   * instance, not his position.
+   *
+   * @see ViewActions.click()
+   */
+  public static ViewAction clickUsingPerformClick() {
     return new ViewAction() {
       @Override
       public Matcher<View> getConstraints() {
