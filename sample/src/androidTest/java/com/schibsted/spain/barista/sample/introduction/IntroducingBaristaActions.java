@@ -21,6 +21,7 @@ import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDra
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
+import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
@@ -61,6 +62,7 @@ public class IntroducingBaristaActions {
     clickCheckBoxItem("The checkbox text");
     clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
     clickRadioButtonItem(R.id.radiogroup, "The radio text");
+    clickRadioButtonPosition(R.id.radiogroup, 42);
 
     // Pick data on pickers
     setDateOnPicker(1986, 03, 23);
