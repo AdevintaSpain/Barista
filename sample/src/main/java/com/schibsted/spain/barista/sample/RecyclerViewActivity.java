@@ -52,8 +52,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.row_textview, parent, false);
-      return new ViewHolder(v);
+      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_with_buttons, parent, false);
+      TextView textView = (TextView) root.findViewById(R.id.textview);
+      View yesButton = root.findViewById(R.id.yes);
+      View noButton = root.findViewById(R.id.no);
+      return new ViewHolder(root, textView, yesButton, noButton);
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -66,6 +69,22 @@ public class RecyclerViewActivity extends AppCompatActivity {
           activity.startActivity(i);
         }
       });
+      holder.yesButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' has been clicked");
+          activity.startActivity(i);
+        }
+      });
+      holder.noButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'no' has been clicked");
+          activity.startActivity(i);
+        }
+      });
     }
 
     public int getItemCount() {
@@ -74,10 +93,14 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
       TextView textView;
+      View yesButton;
+      View noButton;
 
-      ViewHolder(TextView v) {
-        super(v);
-        textView = v;
+      ViewHolder(View root, TextView textView, View yesButton, View noButton) {
+        super(root);
+        this.textView = textView;
+        this.yesButton = yesButton;
+        this.noButton = noButton;
       }
     }
   }

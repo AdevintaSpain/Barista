@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class ListViewActivity extends AppCompatActivity {
 
-  private static final String[] FRUITS = { "Banana", "Apple", "Orange", "Raspberry" };
+  private static final String[] FRUITS = {"Banana", "Apple", "Orange", "Raspberry"};
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +55,17 @@ public class ListViewActivity extends AppCompatActivity {
 
       if (convertView == null) {
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        rowView = inflater.inflate(R.layout.row_textview, parent, false);
+        rowView = inflater.inflate(R.layout.row_with_buttons, parent, false);
       }
 
-      TextView textView = (TextView) rowView;
+      final TextView textView = (TextView) rowView.findViewById(R.id.textview);
       textView.setText(items[position]);
 
       rowView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
-          i.putExtra(LabelActivity.EXTRA_TEXT, ((TextView) view).getText().toString());
+          i.putExtra(LabelActivity.EXTRA_TEXT, textView.getText().toString());
           activity.startActivity(i);
         }
       });
