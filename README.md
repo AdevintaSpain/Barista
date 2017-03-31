@@ -143,7 +143,7 @@ public void some_important_test() throws Exception {
 # Download
 
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:0.0.5') {
+androidTestCompile('com.schibsted.spain:barista:0.0.6') {
   exclude group: 'com.android.support'
 }
 ```
