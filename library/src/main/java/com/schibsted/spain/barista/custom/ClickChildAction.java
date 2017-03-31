@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.custom;
 
+import android.support.annotation.IdRes;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
 import android.view.View;
@@ -11,7 +12,7 @@ import org.hamcrest.Matcher;
 
 public class ClickChildAction {
 
-  public static ViewAction clickChildWithId(final int id) {
+  public static ViewAction clickChildWithId(@IdRes final int id) {
     return new ViewAction() {
       @Override
       public Matcher<View> getConstraints() {
