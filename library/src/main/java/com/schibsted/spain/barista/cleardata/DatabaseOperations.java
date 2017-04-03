@@ -42,8 +42,7 @@ public class DatabaseOperations {
     for (String databaseName : context.databaseList()) {
       allDatabaseFiles.add(context.getDatabasePath(databaseName));
     }
-    List<File> filtered = filterUnwantedDatabaseFiles(allDatabaseFiles);
-    return filtered;
+    return filterUnwantedDatabaseFiles(allDatabaseFiles);
   }
 
   @VisibleForTesting
