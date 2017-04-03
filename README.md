@@ -113,10 +113,11 @@ PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 
 ## Resetting the app's data before running each test
 
-As tests should be isolated, they need to set the environment before running. As Espresso doesn't help achieving it, Barista offers a set of rules to clear the app's data before running each test.
+As tests should be isolated, they need to set the environment before running. Espresso doesn't help achieving it but Barista offers a set of rules to clear the app's data before running each test.
 
 ```java
 @Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
+@Rule public ClearDatabaseRule clearDatabaseRule = new ClearDatabaseRule(); // Delete all tables from all the app's SQLite Databases
 ```
 
 ## Dealing with Flaky tests
