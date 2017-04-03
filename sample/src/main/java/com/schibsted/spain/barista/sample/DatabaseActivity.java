@@ -57,7 +57,7 @@ public class DatabaseActivity extends Activity {
     private static final int DB_VERSION = 1;
 
     DatabaseOpenHelper(Context context) {
-      super(context, "mydatabase", null, DB_VERSION);
+      super(context, "mydatabase.db", null, DB_VERSION);
     }
 
     @Override
