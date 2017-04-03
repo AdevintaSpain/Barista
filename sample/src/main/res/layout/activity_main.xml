@@ -14,19 +14,19 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:visibility="gone"
-      android:text="Repeated"
+      android:text="@string/repeated"
       />
   <TextView
       android:id="@+id/repeated_view_2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Repeated"
+      android:text="@string/repeated"
       />
   <TextView
       android:id="@+id/repeated_view_3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Repeated"
+      android:text="@string/repeated"
       />
 
   <TextView

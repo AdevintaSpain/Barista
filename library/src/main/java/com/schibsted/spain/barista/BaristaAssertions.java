@@ -31,7 +31,7 @@ public class BaristaAssertions {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(isDisplayed()));
     } else if (isStringResource(id)) {
-      onView(withText(id)).check(matches(isDisplayed()));
+      onView(firstViewOf(allOf(withText(id), isDisplayed()))).check(matches(isDisplayed()));
     } else {
       throw new BaristaArgumentTypeException();
     }

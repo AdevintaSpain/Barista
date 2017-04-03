@@ -52,6 +52,7 @@ public class AssertionsTest {
   @Test
   public void checkVisible_withRepeatedViews() throws Exception {
     assertDisplayed("Repeated");
+    assertDisplayed(R.string.repeated);
   }
 
   @Test
