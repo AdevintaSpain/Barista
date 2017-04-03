@@ -3,7 +3,6 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.cleardata.ClearDatabaseRule;
-import com.schibsted.spain.barista.cleardata.ClearPreferencesRule;
 import org.junit.Rule;
 import org.junit.Test;
 

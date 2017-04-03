@@ -54,7 +54,7 @@ public class DatabaseActivity extends Activity {
 
   private static class OpenHelper extends SQLiteOpenHelper {
 
-    public OpenHelper(Context context) {
+    OpenHelper(Context context) {
       super(context, "mydatabase", null, 1);
     }
 
