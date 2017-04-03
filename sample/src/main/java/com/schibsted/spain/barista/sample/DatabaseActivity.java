@@ -54,8 +54,10 @@ public class DatabaseActivity extends Activity {
 
   private static class DatabaseOpenHelper extends SQLiteOpenHelper {
 
+    private static final int DB_VERSION = 1;
+
     DatabaseOpenHelper(Context context) {
-      super(context, "mydatabase", null, 1);
+      super(context, "mydatabase", null, DB_VERSION);
     }
 
     @Override
