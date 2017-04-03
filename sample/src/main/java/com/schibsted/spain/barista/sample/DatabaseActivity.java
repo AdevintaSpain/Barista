@@ -13,14 +13,14 @@ import android.widget.TextView;
 public class DatabaseActivity extends Activity {
 
   private TextView currentValueText;
-  private OpenHelper openHelper;
+  private DatabaseOpenHelper databaseOpenHelper;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_database);
 
-    openHelper = new OpenHelper(this);
+    databaseOpenHelper = new DatabaseOpenHelper(this);
     currentValueText = ((TextView) findViewById(R.id.database_current_value));
     findViewById(R.id.database_increment_button).setOnClickListener(new View.OnClickListener() {
       @Override
@@ -34,7 +34,7 @@ public class DatabaseActivity extends Activity {
   }
 
   private void showCurrentValue() {
-    SQLiteDatabase readableDatabase = openHelper.getReadableDatabase();
+    SQLiteDatabase readableDatabase = databaseOpenHelper.getReadableDatabase();
     Cursor cursor = readableDatabase.query("User", new String[] { "name" }, null, null, null, null, null);
 
     int currentValue = cursor.getCount();
@@ -45,16 +45,16 @@ public class DatabaseActivity extends Activity {
   }
 
   private void incrementValue() {
-    SQLiteDatabase writableDatabase = openHelper.getWritableDatabase();
+    SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
     ContentValues contentValues = new ContentValues(1);
     contentValues.put("name", "Mr T");
     writableDatabase.insert("User", null, contentValues);
     writableDatabase.close();
   }
 
-  private static class OpenHelper extends SQLiteOpenHelper {
+  private static class DatabaseOpenHelper extends SQLiteOpenHelper {
 
-    OpenHelper(Context context) {
+    DatabaseOpenHelper(Context context) {
       super(context, "mydatabase", null, 1);
     }
 
