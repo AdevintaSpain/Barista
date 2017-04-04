@@ -50,6 +50,14 @@ public class AssertionsTest {
   }
 
   @Test
+  public void checkVisible_withRepeatedViews() throws Exception {
+    assertNotDisplayed(R.id.repeated_view_1_gone);
+
+    assertDisplayed("Repeated");
+    assertDisplayed(R.string.repeated);
+  }
+
+  @Test
   public void checkInvisibleViews() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);

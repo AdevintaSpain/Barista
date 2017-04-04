@@ -18,6 +18,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.schibsted.spain.barista.custom.HelperMatchers.firstViewOf;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.fail;
 
@@ -29,14 +31,14 @@ public class BaristaAssertions {
     if (isIdResource(id)) {
       onView(withId(id)).check(matches(isDisplayed()));
     } else if (isStringResource(id)) {
-      onView(withText(id)).check(matches(isDisplayed()));
+      onView(firstViewOf(allOf(withText(id), isDisplayed()))).check(matches(isDisplayed()));
     } else {
       throw new BaristaArgumentTypeException();
     }
   }
 
   public static void assertDisplayed(String text) {
-    onView(withText(text)).check(matches(isDisplayed()));
+    onView(firstViewOf(allOf(withText(text), isDisplayed()))).check(matches(isDisplayed()));
   }
 
   public static void assertNotExist(int id) {
