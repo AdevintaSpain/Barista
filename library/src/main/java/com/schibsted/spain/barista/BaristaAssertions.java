@@ -13,8 +13,10 @@ import static android.support.test.espresso.assertion.ViewAssertions.doesNotExis
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -95,6 +97,34 @@ public class BaristaAssertions {
 
   public static void assertDisabled(String text) {
     onView(withText(text)).check(matches(not(isEnabled())));
+  }
+
+  public static void assertChecked(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(isChecked()));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(isChecked()));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
+  }
+
+  public static void assertChecked(String text) {
+    onView(withText(text)).check(matches(isChecked()));
+  }
+
+  public static void assertUnchecked(int id) {
+    if (isIdResource(id)) {
+      onView(withId(id)).check(matches(isNotChecked()));
+    } else if (isStringResource(id)) {
+      onView(withText(id)).check(matches(isNotChecked()));
+    } else {
+      throw new BaristaArgumentTypeException();
+    }
+  }
+
+  public static void assertUnchecked(String text) {
+    onView(withText(text)).check(matches(isNotChecked()));
   }
 
   public static void assertThatBackButtonClosesTheApp() {
