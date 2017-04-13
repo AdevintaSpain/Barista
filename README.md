@@ -91,6 +91,16 @@ assertNotExist("Hello world");
 assertNotExist(R.string.hello_world);
 assertNotExist(R.id.button);
 
+// Is the expected checkbox checked?
+assertChecked("Checked checkbox");
+assertChecked(R.string.checked_checkbox);
+assertChecked(R.id.checked_checkbox);
+
+// ...And the other checkbox unchecked?
+assertUnchecked("Unchecked checkbox");
+assertUnchecked(R.string.unchecked_checkbox);
+assertUnchecked(R.id.unchecked_checkbox);
+
 // What's the state of the Drawer?
 assertDrawerIsOpen(R.id.drawer);
 assertDrawerIsClosed(R.id.drawer);

@@ -43,6 +43,22 @@
       android:text="I'm hidden!"
       android:visibility="gone"/>
 
+  <CheckBox
+      android:id="@+id/checked_checkbox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/checked_checkbox"
+      android:checked="true"
+      />
+
+  <CheckBox
+      android:id="@+id/unchecked_checkbox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/unchecked_checkbox"
+      android:checked="false"
+      />
+
   <Button
       android:id="@+id/enabled_button"
       android:layout_width="wrap_content"

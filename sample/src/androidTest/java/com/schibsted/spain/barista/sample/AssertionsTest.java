@@ -7,12 +7,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
+import static com.schibsted.spain.barista.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
@@ -161,6 +163,72 @@ public class AssertionsTest {
     }
     try {
       assertDisabled("Enabled button");
+      fail();
+    } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void checkCheckedView() {
+    assertChecked(R.id.checked_checkbox);
+    assertChecked(R.string.checked_checkbox);
+    assertChecked("Checked checkbox");
+  }
+
+  @Test
+  public void checkCheckedView_breaksWhenNeeded() {
+    try {
+      assertChecked(R.id.unchecked_checkbox);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertChecked(R.string.unchecked_checkbox);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertChecked("Unchecked checkbox");
+      fail();
+    } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void checkUncheckedView() {
+    assertUnchecked(R.id.unchecked_checkbox);
+    assertUnchecked(R.string.unchecked_checkbox);
+    assertUnchecked("Unchecked checkbox");
+  }
+
+  @Test
+  public void checkUncheckedView_breaksWhenNeeded() {
+    try {
+      assertChecked(R.id.checked_checkbox);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertChecked(R.string.checked_checkbox);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertChecked("Checked checkbox");
+      fail();
+    } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void checkNonCheckableView_breaksWhenCheckStateAsserted() {
+    try {
+      assertChecked(R.id.button);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertUnchecked(R.id.button);
       fail();
     } catch (Throwable expected) {
     }
