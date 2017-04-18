@@ -6,6 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
@@ -15,6 +16,7 @@ import static com.schibsted.spain.barista.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
+import static com.schibsted.spain.barista.BaristaAssertions.assertUnchecked;
 
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaAssertions {
@@ -46,6 +48,16 @@ public class IntroducingBaristaAssertions {
     assertNotExist("Hello world");
     assertNotExist(R.string.hello_world);
     assertNotExist(R.id.button);
+
+    // Is the expected checkbox checked?
+    assertChecked("Checked checkbox");
+    assertChecked(R.string.checked_checkbox);
+    assertChecked(R.id.checked_checkbox);
+
+    // ...And the other checkbox unchecked?
+    assertUnchecked("Unchecked checkbox");
+    assertUnchecked(R.string.unchecked_checkbox);
+    assertUnchecked(R.id.unchecked_checkbox);
 
     // What's the state of the Drawer
     assertDrawerIsOpen(R.id.drawer);

@@ -8,4 +8,6 @@
   <string name="disabled_button">Disabled button</string>
   <string name="centered_edittext">I\'m a centered edittext!</string>
   <string name="hint">Hint</string>
+  <string name="checked_checkbox">Checked checkbox</string>
+  <string name="unchecked_checkbox">Unchecked checkbox</string>
 </resources>
