@@ -29,6 +29,7 @@
     <activity android:name=".PreferencesActivity"/>
     <activity android:name=".DatabaseActivity"/>
     <activity android:name=".HelloWorldActivity"/>
+    <activity android:name=".WrappedViewActivity" />
     <activity android:name=".NavigationDrawerActivity"
         android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
