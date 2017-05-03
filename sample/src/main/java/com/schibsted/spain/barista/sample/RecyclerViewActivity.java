@@ -59,13 +59,13 @@ public class RecyclerViewActivity extends AppCompatActivity {
       return new ViewHolder(root, textView, yesButton, noButton);
     }
 
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
       holder.textView.setText(items[position]);
-      holder.textView.setOnClickListener(new View.OnClickListener() {
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
-          i.putExtra(LabelActivity.EXTRA_TEXT, ((TextView) view).getText().toString() + " has been clicked");
+          i.putExtra(LabelActivity.EXTRA_TEXT, holder.textView.getText().toString() + " has been clicked");
           activity.startActivity(i);
         }
       });
