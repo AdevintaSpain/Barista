@@ -6,6 +6,7 @@ import android.view.View;
 
 import org.hamcrest.Matcher;
 
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 public class PerformClickAction {
@@ -32,7 +33,15 @@ public class PerformClickAction {
 
       @Override
       public void perform(UiController uiController, View view) {
-        view.performClick();
+        if (view.isClickable()) {
+          view.performClick();
+        } else {
+          propagateClickToChildren(uiController, view);
+        }
+      }
+
+      private void propagateClickToChildren(UiController uiController, View view) {
+        click().perform(uiController, view);
       }
     };
   }
