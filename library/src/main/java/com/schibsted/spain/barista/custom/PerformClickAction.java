@@ -36,8 +36,12 @@ public class PerformClickAction {
         if (view.isClickable()) {
           view.performClick();
         } else {
-          click().perform(uiController, view);
+          propagateClickToChildren(uiController, view);
         }
+      }
+
+      private void propagateClickToChildren(UiController uiController, View view) {
+        click().perform(uiController, view);
       }
     };
   }
