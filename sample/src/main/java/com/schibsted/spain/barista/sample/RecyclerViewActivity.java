@@ -65,7 +65,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
-          i.putExtra(LabelActivity.EXTRA_TEXT, ((TextView) view).getText().toString());
+          i.putExtra(LabelActivity.EXTRA_TEXT, ((TextView) view).getText().toString() + " has been clicked");
           activity.startActivity(i);
         }
       });
