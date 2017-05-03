@@ -17,28 +17,28 @@ public class WrappedViewClickTest {
       new ActivityTestRule<>(WrappedViewActivity.class);
 
   @Test
-  public void click_on_button() throws Exception {
+  public void clickOnButton() throws Exception {
     onView(withId(R.id.button)).perform(click());
 
     assertDisplayed("Clicked");
   }
 
   @Test
-  public void click_on_button_with_custom_action() throws Exception {
+  public void clickOnButtonWithCustomAction() throws Exception {
     onView(withId(R.id.button)).perform(clickUsingPerformClick());
 
     assertDisplayed("Clicked");
   }
 
   @Test
-  public void click_on_button_wrapper() throws Exception {
+  public void clickOnButtonWrapper() throws Exception {
     onView(withId(R.id.button_wrapper)).perform(click());
 
     assertDisplayed("Clicked");
   }
 
   @Test
-  public void click_on_button_wrapper_with_custom_action() throws Exception {
+  public void clickOnButtonWrapperWithCustomAction() throws Exception {
     onView(withId(R.id.button_wrapper)).perform(clickUsingPerformClick());
 
     assertDisplayed("Clicked");
