@@ -13,7 +13,7 @@ import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
 
 @RunWith(AndroidJUnit4.class) public class RecyclerViewInsideViewPagerTest {
 
-  int POSITION_AT_LAST_PAGE = 60;
+  private static int POSITION_AT_LAST_PAGE = 60;
 
   @Rule public ActivityTestRule<RecyclerViewsInsideViewPagerActivity> activityRule =
       new ActivityTestRule<>(RecyclerViewsInsideViewPagerActivity.class);
