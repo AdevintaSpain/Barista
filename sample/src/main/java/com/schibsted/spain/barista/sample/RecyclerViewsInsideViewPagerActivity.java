@@ -24,20 +24,19 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
       "Apple", "Apricot", "Avocado", "Banana", "Bilberry", "Blackberry", "Blackcurrant",
       "Blueberry", "Boysenberry", "Currant", "Cherry", "Cherimoya", "Cloudberry", "Coconut",
       "Cranberry", "Cucumber", "Custardapple", "Damson", "Date", "Dragonfruit", "Durian",
-      "Elderberry", "Feijoa", "Fig", "Gojiberry", "Gooseberry", "Grape", "Raisin",
-      "Grapefruit", "Guava", "Honeyberry", "Huckleberry", "Jabuticaba", "Jackfruit", "Jambul",
-      "Jujube", "Juniperberry", "Kiwifruit", "Kumquat", "Lemon", "Lime", "Loquat",
-      "Longan", "Lychee", "Mango", "Marionberry", "Melon", "Cantaloupe", "Honeydew",
-      "Watermelon", "Miraclefruit", "Mulberry", "Nectarine", "Nance", "Olive", "Orange",
-      "Bloodorange", "Clementine", "Mandarine", "Tangerine", "Papaya", "Passionfruit", "Peach",
-      "Pear", "Persimmon", "Physalis", "Plantain", "Plum", "Prune(driedplum)", "Pineapple",
-      "Plumcot(orPluot)", "Pomegranate", "Pomelo", "Purplemangosteen", "Quince", "Raspberry",
-      "Salmonberry", "Rambutan", "Redcurrant", "Salalberry", "Salak", "Satsuma", "Starfruit",
-      "Solanumquitoense", "Strawberry", "Tamarillo", "Tamarind", "Uglifruit", "Yuzu"
+      "Elderberry", "Feijoa", "Fig", "Gojiberry", "Gooseberry", "Grape", "Raisin", "Grapefruit",
+      "Guava", "Honeyberry", "Huckleberry", "Jabuticaba", "Jackfruit", "Jambul", "Jujube",
+      "Juniperberry", "Kiwifruit", "Kumquat", "Lemon", "Lime", "Loquat", "Longan", "Lychee",
+      "Mango", "Marionberry", "Melon", "Cantaloupe", "Honeydew", "Watermelon", "Miraclefruit",
+      "Mulberry", "Nectarine", "Nance", "Olive", "Orange", "Bloodorange", "Clementine", "Mandarine",
+      "Tangerine", "Papaya", "Passionfruit", "Peach", "Pear", "Persimmon", "Physalis", "Plantain",
+      "Plum", "Prune(driedplum)", "Pineapple", "Plumcot(orPluot)", "Pomegranate", "Pomelo",
+      "Purplemangosteen", "Quince", "Raspberry", "Salmonberry", "Rambutan", "Redcurrant",
+      "Salalberry", "Salak", "Satsuma", "Starfruit", "Solanumquitoense", "Strawberry", "Tamarillo",
+      "Tamarind", "Uglifruit", "Yuzu"
   };
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_viewpager);
 
@@ -51,22 +50,21 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
       super(fm);
     }
 
-    @Override
-    public Fragment getItem(int position) {
+    @Override public Fragment getItem(int position) {
       return new ScreenSlidePageFragment();
     }
 
-    @Override
-    public int getCount() {
+    @Override public int getCount() {
       return NUM_PAGES;
     }
   }
 
   public static class ScreenSlidePageFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_recyclerview, container, false);
+    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        Bundle savedInstanceState) {
+      ViewGroup rootView =
+          (ViewGroup) inflater.inflate(R.layout.activity_recyclerview, container, false);
 
       RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler);
       recyclerView.setHasFixedSize(true);
@@ -89,7 +87,8 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
     }
 
     public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_with_buttons, parent, false);
+      View root = LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.row_with_buttons, parent, false);
       TextView textView = (TextView) root.findViewById(R.id.textview);
       View yesButton = root.findViewById(R.id.yes);
       View noButton = root.findViewById(R.id.no);
@@ -99,24 +98,22 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
     public void onBindViewHolder(final ViewHolder holder, int position) {
       holder.textView.setText(items[position]);
       holder.itemView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        @Override public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
-          i.putExtra(LabelActivity.EXTRA_TEXT, holder.textView.getText().toString() + " has been clicked");
+          i.putExtra(LabelActivity.EXTRA_TEXT,
+              holder.textView.getText().toString() + " has been clicked");
           activity.startActivity(i);
         }
       });
       holder.yesButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        @Override public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
           i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' has been clicked");
           activity.startActivity(i);
         }
       });
       holder.noButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        @Override public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
           i.putExtra(LabelActivity.EXTRA_TEXT, "'no' has been clicked");
           activity.startActivity(i);
