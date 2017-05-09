@@ -5,9 +5,9 @@ import android.support.test.espresso.PerformException;
 import android.util.Log;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.custom.AutocompleteViewActions.replaceAutocomplete;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
 
 public class BaristaAutoCompleteTextViewActions {
 
@@ -18,7 +18,7 @@ public class BaristaAutoCompleteTextViewActions {
       Log.d("Barista",
           "The View's parent is not a ScrollView. Due to the power of Barista, you can ignore this error message");
     } finally {
-      onView(withId(id)).perform(replaceAutocomplete(text));
+      onView(displayedWithId(id)).perform(replaceAutocomplete(text));
     }
   }
 }
