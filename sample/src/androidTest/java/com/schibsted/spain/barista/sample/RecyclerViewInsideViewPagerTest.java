@@ -33,9 +33,16 @@ public class RecyclerViewInsideViewPagerTest {
   }
 
   @Test
-  public void checkClickNoButton_byPosition_atSixty() {
+  public void checkClickNoButton_byPosition_andText_atSixty() {
     int position = 60;
     clickRecyclerViewItemChild(R.id.recycler, position, "No");
+    assertDisplayed("'no' has been clicked");
+  }
+
+  @Test
+  public void checkClickNoButton_byPosition_andResId_atSixty() {
+    int position = 60;
+    clickRecyclerViewItemChild(R.id.recycler, position, R.id.no);
     assertDisplayed("'no' has been clicked");
   }
 }
