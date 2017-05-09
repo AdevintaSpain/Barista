@@ -45,7 +45,7 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
     mPager.setAdapter(mPagerAdapter);
   }
 
-  private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+  private static class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     ScreenSlidePagerAdapter(FragmentManager fm) {
       super(fm);
     }
