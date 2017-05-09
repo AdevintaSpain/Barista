@@ -154,6 +154,12 @@ public void some_important_test() throws Exception {
 }
 ```
 
+## Magic that Barista does for you
+
+In order to speed up testing, Barista keeps in mind some considerations.
+- **Scrolls when needed**: Filling a form inside a `ScrollView` requests you to scroll to the next item several times to avoid interacting with undisplayed widgets. To keep tests concise, Barista scrolls automatically before clicking a `Button` and before writing into an `EditText`.
+- **Just interacts with displayed Views**: Interacting with `Fragments` inside a `ViewPager` throws `AmbiguousViewMatcherException`, cos the widgets you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.  
+
 # Download
 
 ```gradle
