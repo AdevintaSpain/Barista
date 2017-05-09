@@ -36,7 +36,8 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
       "Tamarind", "Uglifruit", "Yuzu"
   };
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_viewpager);
 
@@ -50,19 +51,22 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
       super(fm);
     }
 
-    @Override public Fragment getItem(int position) {
+    @Override
+    public Fragment getItem(int position) {
       return new ScreenSlidePageFragment();
     }
 
-    @Override public int getCount() {
+    @Override
+    public int getCount() {
       return NUM_PAGES;
     }
   }
 
   public static class ScreenSlidePageFragment extends Fragment {
 
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
       ViewGroup rootView =
           (ViewGroup) inflater.inflate(R.layout.activity_recyclerview, container, false);
 
@@ -98,7 +102,8 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
     public void onBindViewHolder(final ViewHolder holder, int position) {
       holder.textView.setText(items[position]);
       holder.itemView.setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View view) {
+        @Override
+        public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
           i.putExtra(LabelActivity.EXTRA_TEXT,
               holder.textView.getText().toString() + " has been clicked");
@@ -106,14 +111,16 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
         }
       });
       holder.yesButton.setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View view) {
+        @Override
+        public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
           i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' has been clicked");
           activity.startActivity(i);
         }
       });
       holder.noButton.setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View view) {
+        @Override
+        public void onClick(View view) {
           Intent i = new Intent(activity, LabelActivity.class);
           i.putExtra(LabelActivity.EXTRA_TEXT, "'no' has been clicked");
           activity.startActivity(i);
