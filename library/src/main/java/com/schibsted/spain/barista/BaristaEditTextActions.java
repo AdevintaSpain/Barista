@@ -6,8 +6,8 @@ import android.util.Log;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
 
 public class BaristaEditTextActions {
 
@@ -18,7 +18,7 @@ public class BaristaEditTextActions {
       Log.d("Barista",
           "The View's parent is not a ScrollView. Due to the power of Barista, you can ignore this error message");
     } finally {
-      onView(withId(id)).perform(replaceText(text));
+      onView(displayedWithId(id)).perform(replaceText(text));
     }
   }
 }
