@@ -7,13 +7,10 @@ import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithId;
 import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithText;
 import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
 import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
-import static org.hamcrest.core.AllOf.allOf;
 
 public class BaristaRecyclerViewActions {
 
