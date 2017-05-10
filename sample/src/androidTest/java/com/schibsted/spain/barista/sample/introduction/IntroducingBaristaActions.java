@@ -26,8 +26,8 @@ import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecycl
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
-import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerBack;
-import static com.schibsted.spain.barista.BaristaSwipeActions.swipePagerForward;
+import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerBack;
+import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(AndroidJUnit4.class)
@@ -75,8 +75,8 @@ public class IntroducingBaristaActions {
     // Scroll on scrolls and pagers
     scrollTo(R.id.button);
     scrollTo("A widget with this text");
-    swipePagerForward(R.id.pager);
-    swipePagerBack(R.id.pager);
+    swipeViewPagerForward(R.id.pager);
+    swipeViewPagerBack(R.id.pager);
 
     // Interact with the navigation drawer
     openDrawer(R.id.drawer);
