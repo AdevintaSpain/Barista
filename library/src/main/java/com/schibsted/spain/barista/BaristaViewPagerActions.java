@@ -21,10 +21,22 @@ public class BaristaViewPagerActions {
     onView(displayedWithId(id)).perform(swipeRight());
   }
 
+  /*
+   * Finds a ViewPager and swipes it forward.
+   *
+   * It only works if there's only one ViewPager displayed on the screen.
+   * If there are more than one, use swipeViewPagerForward(@IdRes int id)
+   */
   public static void swipeViewPagerForward() {
     onView(allOf(isDisplayed(), isAssignableFrom(ViewPager.class))).perform(swipeLeft());
   }
 
+  /*
+   * Finds a ViewPager and swipes it back.
+   *
+   * It only works if there's only one ViewPager displayed on the screen.
+   * If there are more than one, use swipeViewPagerBack(@IdRes int id)
+   */
   public static void swipeViewPagerBack() {
     onView(allOf(isDisplayed(), isAssignableFrom(ViewPager.class))).perform(swipeRight());
   }
