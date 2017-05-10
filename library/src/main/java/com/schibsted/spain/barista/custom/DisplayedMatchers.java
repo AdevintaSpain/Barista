@@ -16,16 +16,16 @@ public class DisplayedMatchers {
 
   @NonNull
   public static Matcher<View> displayedWithId(@IdRes int id) {
-    return allOf(withId(id), isDisplayed());
+    return allOf(isDisplayed(), withId(id));
   }
 
   @NonNull
   public static Matcher<View> displayedWithText(@StringRes int text) {
-    return allOf(withText(text), isDisplayed());
+    return allOf(isDisplayed(), withText(text));
   }
 
   @NonNull
   public static Matcher<View> displayedWithText(String text) {
-    return allOf(withText(text), isDisplayed());
+    return allOf(isDisplayed(), withText(text));
   }
 }
