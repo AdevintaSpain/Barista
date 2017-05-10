@@ -75,7 +75,9 @@ public class IntroducingBaristaActions {
     // Scroll on scrolls and pagers
     scrollTo(R.id.button);
     scrollTo("A widget with this text");
+    swipeViewPagerForward();
     swipeViewPagerForward(R.id.pager);
+    swipeViewPagerBack();
     swipeViewPagerBack(R.id.pager);
 
     // Interact with the navigation drawer
