@@ -7,10 +7,12 @@ import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithId;
 import static com.schibsted.spain.barista.custom.ClickChildAction.clickChildWithText;
 import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
+import static org.hamcrest.core.AllOf.allOf;
 
 public class BaristaRecyclerViewActions {
 
@@ -24,21 +26,21 @@ public class BaristaRecyclerViewActions {
   }
 
   private static void performClick(@IdRes int recyclerViewId, int position) {
-    onView(withId(recyclerViewId)).perform(
+    onView(allOf(withId(recyclerViewId), isDisplayed())).perform(
         RecyclerViewActions.actionOnItemAtPosition(position, clickUsingPerformClick()));
   }
 
   public static void scrollTo(int recyclerViewId, int position) {
-    onView(withId(recyclerViewId)).perform(scrollToPosition(position));
+    onView(allOf(withId(recyclerViewId), isDisplayed())).perform(scrollToPosition(position));
   }
 
   public static void clickRecyclerViewItemChild(@IdRes int recyclerViewId, int position, @IdRes int itemToClickId) {
-    onView(withId(recyclerViewId)).perform(
+    onView(allOf(withId(recyclerViewId), isDisplayed())).perform(
         RecyclerViewActions.actionOnItemAtPosition(position, clickChildWithId(itemToClickId)));
   }
 
   public static void clickRecyclerViewItemChild(@IdRes int recyclerViewId, int position, String text) {
-    onView(withId(recyclerViewId)).perform(
+    onView(allOf(withId(recyclerViewId), isDisplayed())).perform(
         RecyclerViewActions.actionOnItemAtPosition(position, clickChildWithText(text)));
   }
 }
