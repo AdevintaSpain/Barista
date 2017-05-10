@@ -154,6 +154,12 @@ public void some_important_test() throws Exception {
 }
 ```
 
+## Magic that Barista does for you
+
+In order to speed up testing, Barista keeps in mind some considerations.
+- **Scrolls when needed**: Interacting with Espresso in a ScrollView requires you to scroll to each view, which sometimes doesn't work the first time. Also trying to scroll outside a ScrollView makes produces an Exception, forcing you to change the test depending on the layout. To keep tests simpler, Barista scrolls automatically before clicking a `Button` and before writing into an `EditText`.
+- **Just interacts with displayed Views**: Interacting with `View`s inside a `ViewPager` throws `AmbiguousViewMatcherException`, cos the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.  
+
 # Download
 
 ```gradle
