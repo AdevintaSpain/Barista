@@ -30,7 +30,7 @@ public class DisplayedMatchers {
   }
 
   @NonNull
-  public static Matcher<View> displayedAssignableFrom(final Class<? extends View> clazz) {
-    return allOf(isDisplayed(), isAssignableFrom(clazz));
+  public static Matcher<View> displayedAssignableFrom(final Class<? extends View> viewClass) {
+    return allOf(isDisplayed(), isAssignableFrom(viewClass));
   }
 }
