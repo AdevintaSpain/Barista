@@ -28,4 +28,9 @@ public class DisplayedMatchers {
   public static Matcher<View> displayedWithText(String text) {
     return allOf(isDisplayed(), withText(text));
   }
+
+  @NonNull
+  public static Matcher<View> displayedAssignableFrom(final Class<? extends View> clazz) {
+    return allOf(isDisplayed(), displayedAssignableFrom(clazz));
+  }
 }
