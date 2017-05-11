@@ -4,9 +4,9 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.view.View;
-
 import org.hamcrest.Matcher;
 
+import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -27,5 +27,10 @@ public class DisplayedMatchers {
   @NonNull
   public static Matcher<View> displayedWithText(String text) {
     return allOf(isDisplayed(), withText(text));
+  }
+
+  @NonNull
+  public static Matcher<View> displayedAssignableFrom(final Class<? extends View> viewClass) {
+    return allOf(isDisplayed(), isAssignableFrom(viewClass));
   }
 }
