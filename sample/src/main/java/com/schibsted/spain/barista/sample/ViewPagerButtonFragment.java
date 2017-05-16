@@ -11,13 +11,13 @@ public class ViewPagerButtonFragment extends Fragment {
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.activity_centered_button, container, false);
-    view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+    final View root = inflater.inflate(R.layout.activity_centered_button, container, false);
+    root.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
-        TextView tv = (TextView) view.findViewById(R.id.textview);
+        TextView tv = (TextView) root.findViewById(R.id.textview);
         tv.setText(R.string.click);
       }
     });
-    return view;
+    return root;
   }
 }

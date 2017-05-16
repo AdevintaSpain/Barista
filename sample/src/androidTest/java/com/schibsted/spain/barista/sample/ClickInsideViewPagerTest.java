@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 
 @RunWith(AndroidJUnit4.class)
@@ -17,8 +18,14 @@ public class ClickInsideViewPagerTest {
       new ActivityTestRule<>(ViewPagerWithFiveSamePagesActivity.class);
 
   @Test
-  public void clickWorksAlsoWhenButtonIsRepeatedInMultipleViewPagerViews() {
+  public void clickWorksAlsoWhenButtonIsRepeatedInMultipleViewPagerViews_byId() {
     click(R.id.button);
-    assertDisabled(R.string.click);
+    assertDisplayed(R.string.click);
+  }
+
+  @Test
+  public void clickWorksAlsoWhenButtonIsRepeatedInMultipleViewPagerViews_byText() {
+    click("Centered button");
+    assertDisplayed(R.string.click);
   }
 }

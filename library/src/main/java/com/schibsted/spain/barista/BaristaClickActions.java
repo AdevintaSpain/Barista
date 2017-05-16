@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
+import android.support.test.espresso.AmbiguousViewMatcherException;
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.action.ViewActions;
 
@@ -17,7 +18,13 @@ public class BaristaClickActions {
   public static void click(@IdRes int id) {
     try {
       onView(withId(id)).perform(scrollTo(), ViewActions.click());
-    } catch (PerformException e) {
+    } catch (AmbiguousViewMatcherException e) {
+      try {
+        onView(displayedWithId(id)).perform(scrollTo(), ViewActions.click());
+      } catch (PerformException e2) {
+        onView(displayedWithId(id)).perform(ViewActions.click());
+      }
+    } catch (PerformException e2) {
       onView(displayedWithId(id)).perform(ViewActions.click());
     }
   }
@@ -25,7 +32,13 @@ public class BaristaClickActions {
   public static void click(String text) {
     try {
       onView(withText(text)).perform(scrollTo(), ViewActions.click());
-    } catch (PerformException e) {
+    } catch (AmbiguousViewMatcherException e) {
+      try {
+        onView(displayedWithText(text)).perform(scrollTo(), ViewActions.click());
+      } catch (PerformException e2) {
+        onView(displayedWithText(text)).perform(ViewActions.click());
+      }
+    } catch (PerformException e2) {
       onView(displayedWithText(text)).perform(ViewActions.click());
     }
   }
