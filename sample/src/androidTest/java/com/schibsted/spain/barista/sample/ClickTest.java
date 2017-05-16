@@ -11,7 +11,7 @@ import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
 
 @RunWith(AndroidJUnit4.class)
-public class ButtonsTest {
+public class ClickTest {
 
   @Rule
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
