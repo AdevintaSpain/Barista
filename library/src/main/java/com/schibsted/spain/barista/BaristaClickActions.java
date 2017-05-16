@@ -18,13 +18,13 @@ public class BaristaClickActions {
   public static void click(@IdRes int id) {
     try {
       onView(withId(id)).perform(scrollTo(), ViewActions.click());
-    } catch (AmbiguousViewMatcherException e) {
+    } catch (AmbiguousViewMatcherException multipleViewsMatched) {
       try {
         onView(displayedWithId(id)).perform(scrollTo(), ViewActions.click());
-      } catch (PerformException e2) {
+      } catch (PerformException parentIsNotAnScrollView) {
         onView(displayedWithId(id)).perform(ViewActions.click());
       }
-    } catch (PerformException e2) {
+    } catch (PerformException parentIsNotAnScrollView) {
       onView(displayedWithId(id)).perform(ViewActions.click());
     }
   }
@@ -32,13 +32,13 @@ public class BaristaClickActions {
   public static void click(String text) {
     try {
       onView(withText(text)).perform(scrollTo(), ViewActions.click());
-    } catch (AmbiguousViewMatcherException e) {
+    } catch (AmbiguousViewMatcherException multipleViewsMatched) {
       try {
         onView(displayedWithText(text)).perform(scrollTo(), ViewActions.click());
-      } catch (PerformException e2) {
+      } catch (PerformException parentIsNotAnScrollView) {
         onView(displayedWithText(text)).perform(ViewActions.click());
       }
-    } catch (PerformException e2) {
+    } catch (PerformException parentIsNotAnScrollView) {
       onView(displayedWithText(text)).perform(ViewActions.click());
     }
   }
