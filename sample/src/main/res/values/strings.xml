@@ -1,5 +1,8 @@
 <resources>
   <string name="app_name">Barista</string>
+  <string name="next">Next</string>
+  <string name="really_far_away_button">Really far away button</string>
+  <string name="centered_button">Centered button</string>
   <string name="hello_world">Hello world!</string>
   <string name="repeated">Repeated</string>
   <string name="im_invisible">I\'m invisible!</string>
