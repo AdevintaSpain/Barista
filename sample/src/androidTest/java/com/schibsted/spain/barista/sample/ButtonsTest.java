@@ -17,19 +17,37 @@ public class ButtonsTest {
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
 
   @Test
-  public void checkClickById() {
+  public void checkClick_byId() {
     click(R.id.next);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
-  public void checkClickByText() {
+  public void checkClick_byText() {
     click("Next");
     assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
-  public void checkClickWhenParentIsNotAnScrollView() {
+  public void checkClickScrollsIfNeeded_byId() {
+    click(R.id.really_far_away_button);
+    assertDisplayed("Hi! I'm the second screen!");
+  }
+
+  @Test
+  public void checkClickScrollsIfNeeded_byText() {
+    click("Really far away button");
+    assertDisplayed("Hi! I'm the second screen!");
+  }
+
+  @Test
+  public void checkClickWhenParentIsNotAnScrollView_byId() {
+    click(R.id.centered_button);
+    assertDisplayed("Hi! I'm the second screen!");
+  }
+
+  @Test
+  public void checkClickWhenParentIsNotAnScrollView_byText() {
     click("Centered button");
     assertDisplayed("Hi! I'm the second screen!");
   }
