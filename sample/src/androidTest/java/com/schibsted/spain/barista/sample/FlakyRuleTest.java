@@ -13,7 +13,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-public class HelloWorldActivityTest {
+public class FlakyRuleTest {
 
   private final Random random = new Random();
 
@@ -29,7 +29,7 @@ public class HelloWorldActivityTest {
   @Test
   @Repeat(times = 5)
   @Ignore
-  public void some_important_flaky_test() throws Exception {
+  public void someImportantFlakyTest() throws Exception {
     activityRule.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
@@ -41,7 +41,7 @@ public class HelloWorldActivityTest {
 
   @Test
   @AllowFlaky(attempts = 5)
-  public void some_flaky_test() throws Exception {
+  public void someFlakyTest() throws Exception {
     activityRule.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
@@ -52,7 +52,7 @@ public class HelloWorldActivityTest {
   }
 
   @Test
-  public void some_default_flaky_test() throws Exception {
+  public void someDefaultFlakyTest() throws Exception {
     activityRuleWithDefaultFlaky.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
@@ -63,7 +63,7 @@ public class HelloWorldActivityTest {
   }
 
   @Test
-  public void some_deterministic_test() throws Exception {
+  public void someDeterministicTest() throws Exception {
     activityRule.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
