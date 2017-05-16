@@ -17,33 +17,57 @@ public class BaristaClickActions {
 
   public static void click(@IdRes int id) {
     try {
-      onView(withId(id)).perform(scrollTo(), ViewActions.click());
+      scrollAndClickView(id);
     } catch (AmbiguousViewMatcherException multipleViewsMatched) {
       try {
-        onView(displayedWithId(id)).perform(scrollTo(), ViewActions.click());
+        scrollAndClickDisplayedView(id);
       } catch (PerformException parentIsNotAnScrollView) {
-        onView(displayedWithId(id)).perform(ViewActions.click());
+        clickDisplayedView(id);
       }
     } catch (PerformException parentIsNotAnScrollView) {
-      onView(displayedWithId(id)).perform(ViewActions.click());
+      clickDisplayedView(id);
     }
   }
 
   public static void click(String text) {
     try {
-      onView(withText(text)).perform(scrollTo(), ViewActions.click());
+      scrollAndClickView(text);
     } catch (AmbiguousViewMatcherException multipleViewsMatched) {
       try {
-        onView(displayedWithText(text)).perform(scrollTo(), ViewActions.click());
+        scrollAndClickDisplayedView(text);
       } catch (PerformException parentIsNotAnScrollView) {
-        onView(displayedWithText(text)).perform(ViewActions.click());
+        clickDisplayedView(text);
       }
     } catch (PerformException parentIsNotAnScrollView) {
-      onView(displayedWithText(text)).perform(ViewActions.click());
+      clickDisplayedView(text);
     }
   }
 
   public static void clickBack() {
     pressBack();
+  }
+
+  private static void scrollAndClickView(@IdRes int id) {
+    onView(withId(id)).perform(scrollTo(), ViewActions.click());
+  }
+
+  private static void scrollAndClickView(String text) {
+    onView(withText(text)).perform(scrollTo(), ViewActions.click());
+  }
+
+  private static void scrollAndClickDisplayedView(@IdRes int id) {
+    onView(displayedWithId(id)).perform(scrollTo(), ViewActions.click());
+  }
+
+  private static void scrollAndClickDisplayedView(String text) {
+    onView(displayedWithText(text)).perform(scrollTo(), ViewActions.click());
+  }
+
+  private static void clickDisplayedView(@IdRes int id) {
+    onView(displayedWithId(id)).perform(ViewActions.click());
+  }
+
+  private static void clickDisplayedView(String text) {
+    onView(displayedWithText(text)).perform(ViewActions.click());
   }
 }
