@@ -167,7 +167,7 @@ In order to speed up testing, Barista keeps in mind some considerations.
 # Download
 
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:1.0.0') {
+androidTestCompile('com.schibsted.spain:barista:1.0.1') {
   exclude group: 'com.android.support'
 }
 ```
