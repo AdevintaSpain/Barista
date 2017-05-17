@@ -17,17 +17,14 @@ android:
   - android-25
   - extra
   - addon
-  - sys-img-armeabi-v7a-android-19
+
 before_script:
-  - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a -s WXGA800
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell settings put global window_animation_scale 0 &
-  - adb shell settings put global transition_animation_scale 0 &
-  - adb shell settings put global animator_duration_scale 0 &
-  - adb shell input keyevent 82 &
+  - openssl aes-256-cbc -K $encrypted_72bcab8ac73d_key -iv $encrypted_72bcab8ac73d_iv -in secret.json.enc -out secret.json -d
+
 script:
-  - ./gradlew build bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
+  - ./gradlew build assembleAndroidTest bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
+  - scripts/androidTests.sh
+
 deploy:
   - provider: script
     script: scripts/bintrayUpload.sh
