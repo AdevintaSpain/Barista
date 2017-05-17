@@ -24,7 +24,8 @@
     <activity android:name=".RecyclerViewActivity"/>
     <activity android:name=".ListViewActivity"/>
     <activity android:name=".LabelActivity"/>
-    <activity android:name=".ViewPagerActivity"/>
+    <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
+    <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
     <activity android:name=".DialogActivity"/>
     <activity android:name=".PreferencesActivity"/>
     <activity android:name=".DatabaseActivity"/>

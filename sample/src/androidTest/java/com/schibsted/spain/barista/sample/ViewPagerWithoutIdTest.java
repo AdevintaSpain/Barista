@@ -14,8 +14,9 @@ import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPager
 public class ViewPagerWithoutIdTest {
 
   @Rule
-  public FlakyActivityTestRule<ViewPagerActivity> activityRule = new FlakyActivityTestRule<>(ViewPagerActivity.class)
-      .allowFlakyAttemptsByDefault(10);
+  public FlakyActivityTestRule<ViewPagerWithTwoDifferentPagesActivity> activityRule =
+      new FlakyActivityTestRule<>(ViewPagerWithTwoDifferentPagesActivity.class)
+          .allowFlakyAttemptsByDefault(10);
 
   @Test
   public void checkSwipeForward() {

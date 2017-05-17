@@ -25,7 +25,7 @@ public class RadioButtonsActivity extends AppCompatActivity {
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
       TextView textView = (TextView) findViewById(R.id.selected_item);
-      textView.setText("" + checkedId);
+      textView.setText(String.valueOf(checkedId));
     }
   }
 }

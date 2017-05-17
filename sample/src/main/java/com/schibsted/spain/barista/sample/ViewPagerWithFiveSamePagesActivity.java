@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
-public class ViewPagerActivity extends FragmentActivity {
+public class ViewPagerWithFiveSamePagesActivity extends FragmentActivity {
 
-  private static final int NUM_PAGES = 2;
+  private static final int NUM_PAGES = 5;
 
   private ViewPager pager;
 
@@ -40,11 +40,7 @@ public class ViewPagerActivity extends FragmentActivity {
 
     @Override
     public Fragment getItem(int position) {
-      if (position == 0) {
-        return new ViewPagerFirstFragment();
-      } else {
-        return new ViewPagerSecondFragment();
-      }
+      return new ViewPagerButtonFragment();
     }
 
     @Override

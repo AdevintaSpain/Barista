@@ -21,14 +21,14 @@
           android:id="@+id/next"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Next"/>
+          android:text="@string/next"/>
 
       <Button
           android:id="@+id/really_far_away_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="1000dp"
-          android:text="Really far away button"/>
+          android:text="@string/really_far_away_button"/>
     </LinearLayout>
   </ScrollView>
 
@@ -37,5 +37,5 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:text="Centered button"/>
+      android:text="@string/centered_button"/>
 </FrameLayout>
