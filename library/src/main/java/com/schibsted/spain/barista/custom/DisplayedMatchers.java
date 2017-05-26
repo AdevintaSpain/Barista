@@ -3,6 +3,7 @@ package com.schibsted.spain.barista.custom;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.view.View;
 import org.hamcrest.Matcher;
 
@@ -27,6 +28,11 @@ public class DisplayedMatchers {
   @NonNull
   public static Matcher<View> displayedWithText(String text) {
     return allOf(isDisplayed(), withText(text));
+  }
+
+  @NonNull
+  public static Matcher<View> displayedWithDescription(String text) {
+    return allOf(isDisplayed(), ViewMatchers.withContentDescription(text));
   }
 
   @NonNull

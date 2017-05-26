@@ -28,20 +28,20 @@ public class MenuClickActions {
   }
 
   @Test
-  public void checkMenuWIthIconClick_byIdOrText() {
-    menuClick(R.id.menu_action_2,"Menu 1");
-    assertDisplayed("Second menu option");
-  }
-
-  @Test
-  public void checkMenuWithIconClick_byIdOrText() {
+  public void checkMenuWithIconClick_byId() {
     menuClick(R.id.menu_action_2);
     assertDisplayed("Second menu option");
   }
 
   @Test
+  public void checkMenuWithIconClick_byText() {
+    menuClick("Menu 2");
+    assertDisplayed("Second menu option");
+  }
+
+  @Test
   public void checkMenuOnOverflowClick_byId() {
-    menuClick(R.id.menu_action_3, "Menu 3");
+    menuClick(R.id.menu_action_3);
     assertDisplayed("Third menu option");
   }
 
