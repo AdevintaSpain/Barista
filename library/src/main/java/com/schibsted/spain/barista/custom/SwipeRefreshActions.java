@@ -14,24 +14,24 @@ import static org.hamcrest.Matchers.allOf;
 
 public class SwipeRefreshActions {
 
-    public static ViewAction pullToRefresh() {
-        return actionWithAssertions(new PullToRefresh());
+  public static ViewAction pullToRefresh() {
+    return actionWithAssertions(new PullToRefresh());
+  }
+
+  public static class PullToRefresh implements ViewAction {
+    @Override
+    public Matcher<View> getConstraints() {
+      return allOf(isDisplayingAtLeast(80), isAssignableFrom(SwipeRefreshLayout.class));
     }
 
-    public static class PullToRefresh implements ViewAction {
-        @Override
-        public Matcher<View> getConstraints() {
-            return allOf(isDisplayingAtLeast(80), isAssignableFrom(SwipeRefreshLayout.class));
-        }
-
-        @Override
-        public String getDescription() {
-            return "Perform pull-to-refresh action";
-        }
-
-        @Override
-        public void perform(UiController uiController, View view) {
-            swipeDown().perform(uiController, view);
-        }
+    @Override
+    public String getDescription() {
+      return "Perform pull-to-refresh action";
     }
+
+    @Override
+    public void perform(UiController uiController, View view) {
+      swipeDown().perform(uiController, view);
+    }
+  }
 }
