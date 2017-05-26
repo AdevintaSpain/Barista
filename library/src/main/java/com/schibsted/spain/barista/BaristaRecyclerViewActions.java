@@ -2,8 +2,6 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.contrib.RecyclerViewActions;
-
-import com.schibsted.spain.barista.custom.RecyclerViewItemCountAssertion;
 import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -43,10 +41,5 @@ public class BaristaRecyclerViewActions {
                                                 String text) {
     onView(displayedWithId(recyclerViewId)).perform(
         RecyclerViewActions.actionOnItemAtPosition(position, clickChildWithText(text)));
-  }
-
-  public static void checkRecyclerViewItemCount(@IdRes int recyclerViewId, int expectedItemCount) {
-    onView(displayedWithId(recyclerViewId)).check(
-        new RecyclerViewItemCountAssertion(expectedItemCount));
   }
 }

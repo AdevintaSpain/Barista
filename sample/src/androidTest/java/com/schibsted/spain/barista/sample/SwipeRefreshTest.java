@@ -15,7 +15,7 @@ import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.pullToRefre
       new ActivityTestRule<>(SwipeRefreshActivity.class);
 
   @Test
-  public void testSwipeRefresh_isRefreshing() {
+  public void checkSwipeRefresh_isRefreshing() {
     pullToRefresh(R.id.swiperefresh);
     assertDisplayed("I am refreshing!");
   }

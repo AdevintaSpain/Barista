@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.checkRecyclerViewItemCount;
+import static com.schibsted.spain.barista.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
@@ -164,9 +164,9 @@ public class RecyclerViewTest {
 
   //region Item count
   @Test
-  public void checkRecyclerViewItemCount_byDataSetCount() {
+  public void assertItemCount_byDataSetCount() {
     int expectedCount = RecyclerViewActivity.DATA_COUNT;
-    checkRecyclerViewItemCount(R.id.recycler, expectedCount);
+    assertRecyclerViewItemCount(R.id.recycler, expectedCount);
   }
   //endRegion
 }
