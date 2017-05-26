@@ -15,6 +15,7 @@ import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
+import static com.schibsted.spain.barista.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.BaristaAssertions.assertUnchecked;
 
@@ -66,6 +67,9 @@ public class IntroducingBaristaAssertions {
     // Check EditText's hints
     assertHint(R.id.edittext, R.string.hint);
     assertHint(R.id.edittext, "Hint");
+
+    //Check recyclerView item count against expected item count
+    assertRecyclerViewItemCount(R.id.recycler, 10);
 
     // And another tricky feature
     assertThatBackButtonClosesTheApp();

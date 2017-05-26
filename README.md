@@ -63,6 +63,9 @@ swipeViewPagerBack(R.id.pager);
 openDrawer(R.id.drawer);
 closeDrawer(R.id.drawer);
 
+//Interact with SwipeRefreshLayout (pullToRefresh)
+refresh(R.id.swiperefresh);
+
 // And another tricky feature
 sleep(2000);
 sleep(2, SECONDS);
@@ -112,6 +115,9 @@ assertDrawerIsClosed(R.id.drawer);
 // Check EditText's hints
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
+
+//Check recyclerView item count against expected item count
+assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
