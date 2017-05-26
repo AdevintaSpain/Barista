@@ -16,7 +16,7 @@ public class BaristaMenuClickActions {
     try {
       clickDisplayedView(id);
     } catch (NoMatchingViewException noMatchingViewexception) {
-      openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+      clickOverflow();
       clickDisplayedView(id);
     }
   }
@@ -25,7 +25,7 @@ public class BaristaMenuClickActions {
     try {
       clickDisplayedView(text);
     } catch (NoMatchingViewException noMatchingViewexception) {
-      openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+      clickOverflow();
       clickDisplayedView(text);
     }
   }
@@ -35,12 +35,16 @@ public class BaristaMenuClickActions {
       clickDisplayedView(id);
     } catch (NoMatchingViewException noMatchingViewException) {
       try {
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+        clickOverflow();
         clickDisplayedView(id);
       } catch (NoMatchingViewException noMatchingViewException2) {
         menuClick(text);
       }
     }
+  }
+
+  private static void clickOverflow() {
+    openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
   }
 
   private static void clickDisplayedView(@IdRes int id) {
