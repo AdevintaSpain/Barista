@@ -4,20 +4,15 @@ import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewAssertion;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import org.hamcrest.Matcher;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class RecyclerViewItemCountAssertion implements ViewAssertion {
-  private final Matcher<Integer> matcher;
+  private final int expectedCount;
 
-  public RecyclerViewItemCountAssertion(Matcher<Integer> matcher) {
-    this.matcher = matcher;
-  }
-
-  public RecyclerViewItemCountAssertion(int count) {
-    this.matcher = is(count);
+  public RecyclerViewItemCountAssertion(int expectedCount) {
+    this.expectedCount = expectedCount;
   }
 
   @Override
@@ -28,6 +23,6 @@ public class RecyclerViewItemCountAssertion implements ViewAssertion {
     RecyclerView recyclerView = (RecyclerView) view;
     RecyclerView.Adapter adapter = recyclerView.getAdapter();
     int recyclerViewItemCount = adapter.getItemCount();
-    assertThat(recyclerViewItemCount, matcher);
+    assertThat(recyclerViewItemCount, is(expectedCount));
   }
 }

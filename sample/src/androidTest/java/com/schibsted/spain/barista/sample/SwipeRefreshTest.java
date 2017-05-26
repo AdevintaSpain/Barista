@@ -7,16 +7,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.pullToRefresh;
+import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.refresh;
 
-@RunWith(AndroidJUnit4.class) public class SwipeRefreshTest {
+@RunWith(AndroidJUnit4.class)
+public class SwipeRefreshTest {
 
   @Rule public ActivityTestRule<SwipeRefreshActivity> activityRule =
       new ActivityTestRule<>(SwipeRefreshActivity.class);
 
   @Test
   public void checkSwipeRefresh_isRefreshing() {
-    pullToRefresh(R.id.swiperefresh);
+    refresh(R.id.swiperefresh);
     assertDisplayed("I am refreshing!");
   }
 }
