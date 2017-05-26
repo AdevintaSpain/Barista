@@ -5,6 +5,7 @@ import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
 import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
+import com.schibsted.spain.barista.custom.RecyclerViewItemCountAssertion;
 import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -20,6 +21,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
 import static com.schibsted.spain.barista.custom.HelperMatchers.firstViewOf;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNot.not;
@@ -135,6 +137,11 @@ public class BaristaAssertions {
       Log.d("Barista",
           "As the Activity is the first one of the stack, we expected this error. Yes, the back button closes the app!");
     }
+  }
+
+  public static void assertRecyclerViewItemCount(@IdRes int recyclerViewId, int expectedItemCount) {
+    onView(displayedWithId(recyclerViewId)).check(
+        new RecyclerViewItemCountAssertion(expectedItemCount));
   }
 
   public static void assertDrawerIsOpen(@IdRes int id) {

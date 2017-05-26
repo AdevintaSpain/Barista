@@ -26,6 +26,7 @@ import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecycl
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
+import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.refresh;
 import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerBack;
 import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -83,6 +84,9 @@ public class IntroducingBaristaActions {
     // Interact with the navigation drawer
     openDrawer(R.id.drawer);
     closeDrawer(R.id.drawer);
+
+    //Interact with SwipeRefreshLayout (pullToRefresh)
+    refresh(R.id.swiperefresh);
 
     // And another tricky feature
     sleep(2000);

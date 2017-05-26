@@ -29,6 +29,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
       "Solanumquitoense", "Strawberry", "Tamarillo", "Tamarind", "Uglifruit", "Yuzu"
   };
 
+  public static final int DATA_COUNT = FRUITS.length;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

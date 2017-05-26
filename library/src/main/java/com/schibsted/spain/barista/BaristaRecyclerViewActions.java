@@ -2,7 +2,6 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.contrib.RecyclerViewActions;
-
 import com.schibsted.spain.barista.exception.BaristaException;
 
 import static android.support.test.espresso.Espresso.onView;

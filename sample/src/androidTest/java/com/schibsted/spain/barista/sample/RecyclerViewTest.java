@@ -2,12 +2,12 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
@@ -161,4 +161,12 @@ public class RecyclerViewTest {
     assertDisplayed("'no' has been clicked");
   }
   //endregion
+
+  //region Item count
+  @Test
+  public void assertItemCount_byDataSetCount() {
+    int expectedCount = RecyclerViewActivity.DATA_COUNT;
+    assertRecyclerViewItemCount(R.id.recycler, expectedCount);
+  }
+  //endRegion
 }
