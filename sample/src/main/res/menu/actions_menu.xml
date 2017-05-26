@@ -6,14 +6,20 @@
   <item
       android:title="Menu 1"
       android:id="@+id/menu_action_1"
-      app:showAsAction="ifRoom"
+      app:showAsAction="always"
       />
 
   <item
       android:title="Menu 2"
       android:icon="@mipmap/ic_launcher"
       android:id="@+id/menu_action_2"
-      app:showAsAction="ifRoom"
+      app:showAsAction="always"
+      />
+
+  <item
+      android:title="Menu 3"
+      android:id="@+id/menu_action_3"
+      app:showAsAction="never"
       />
 
 </menu>
