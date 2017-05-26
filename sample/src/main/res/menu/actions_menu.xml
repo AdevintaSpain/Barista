@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+  <item
+      android:title="Menu 1"
+      android:id="@+id/menu_action_1"
+      app:showAsAction="ifRoom"
+      />
+
+  <item
+      android:title="Menu 2"
+      android:icon="@mipmap/ic_launcher"
+      android:id="@+id/menu_action_2"
+      app:showAsAction="ifRoom"
+      />
+
+</menu>
