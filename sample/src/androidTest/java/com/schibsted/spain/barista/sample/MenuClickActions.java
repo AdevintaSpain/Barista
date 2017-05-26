@@ -28,6 +28,12 @@ public class MenuClickActions {
   }
 
   @Test
+  public void checkMenuWIthIconClick_byIdOrText() {
+    menuClick(R.id.menu_action_2,"Menu 1");
+    assertDisplayed("Second menu option");
+  }
+
+  @Test
   public void checkMenuWithIconClick_byIdOrText() {
     menuClick(R.id.menu_action_2);
     assertDisplayed("Second menu option");
