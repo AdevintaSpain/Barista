@@ -31,19 +31,16 @@
     <activity android:name=".HelloWorldActivity"/>
     <activity android:name=".WrappedViewActivity"/>
     <activity android:name=".SwipeRefreshActivity"/>
-    <activity android:name=".MenuActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
     <activity
         android:name=".NavigationDrawerActivity"
         android:theme="@style/AppTheme.NoActionBar"
         />
     <activity android:name=".RecyclerViewsInsideViewPagerActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
     </activity>
   </application>
 

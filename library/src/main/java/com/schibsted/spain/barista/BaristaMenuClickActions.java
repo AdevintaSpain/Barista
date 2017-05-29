@@ -18,7 +18,7 @@ import static org.hamcrest.core.Is.is;
 
 public class BaristaMenuClickActions {
 
-  public static void menuClick(@IdRes int id) {
+  public static void clickMenu(@IdRes int id) {
     try {
       clickDisplayedView(id);
     } catch (NoMatchingViewException noMatchingViewException) {
@@ -27,7 +27,7 @@ public class BaristaMenuClickActions {
     }
   }
 
-  public static void menuClick(String text) {
+  public static void clickMenu(String text) {
     try {
       clickDisplayedView(text);
     } catch (NoMatchingViewException noMatchingViewException) {
