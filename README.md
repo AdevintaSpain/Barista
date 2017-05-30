@@ -176,10 +176,12 @@ In order to speed up testing, Barista keeps in mind some considerations.
 # Download
 
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:1.1.0') {
+androidTestCompile('com.schibsted.spain:barista:x.y.z') {
   exclude group: 'com.android.support'
 }
 ```
+
+> `x.y.z` version can be found at the top of this README (badge)
 
 # License
 
