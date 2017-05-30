@@ -3,12 +3,16 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.cleardata.ClearDatabaseRule;
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 
 public class ClearDatabaseRuleTest {
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public ActivityTestRule<DatabaseActivity> activityRule = new ActivityTestRule<>(DatabaseActivity.class, true, false);

@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -11,6 +12,9 @@ import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
 
 public class WrappedViewClickTest {
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public ActivityTestRule<WrappedViewActivity> activityTestRule =

@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import com.schibsted.spain.barista.flakyespresso.AllowFlaky;
 import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
 import com.schibsted.spain.barista.flakyespresso.Repeat;
@@ -16,6 +17,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class FlakyRuleTest {
 
   private final Random random = new Random();
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public FlakyActivityTestRule<HelloWorldActivity> activityRule = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false);

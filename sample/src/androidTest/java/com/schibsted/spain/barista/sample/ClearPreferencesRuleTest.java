@@ -3,12 +3,16 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.cleardata.ClearPreferencesRule;
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
 
 public class ClearPreferencesRuleTest {
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public ActivityTestRule<PreferencesActivity> activityRule = new ActivityTestRule<>(PreferencesActivity.class, true, false);
