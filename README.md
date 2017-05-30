@@ -40,9 +40,9 @@ clickSpinnerItem(R.id.spinner, 1);
 scrollTo(R.id.recycler, 42);
 
 // Select items on RadioButtons and CheckBoxes
-clickCheckBoxItem(R.id.checkbox_item);
+clickCheckBoxItem(R.id.first_item);
 clickCheckBoxItem("The checkbox text");
-clickRadioButtonItem(R.id.radiogroup, R.id.radio_item);
+clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
 clickRadioButtonItem(R.id.radiogroup, "The radio text");
 clickRadioButtonPosition(R.id.radiogroup, 42);
 
