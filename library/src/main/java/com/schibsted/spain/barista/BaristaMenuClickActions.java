@@ -42,12 +42,12 @@ public class BaristaMenuClickActions {
     onView(displayedWithText(text)).perform(click());
   }
 
-  private static void clickViewWithDescription(String text) {
-    onView(displayedWithDescription(text)).perform(click());
-  }
-
   private static void clickDisplayedView(@IdRes int id) {
     onView(displayedWithId(id)).perform(click());
+  }
+
+  private static void clickViewWithDescription(String text) {
+    onView(displayedWithDescription(text)).perform(click());
   }
 
   private static void clickOverflowListMenu(@IdRes int id) {
