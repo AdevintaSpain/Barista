@@ -66,8 +66,8 @@ swipeViewPagerBack(R.id.pager);
 openDrawer(R.id.drawer);
 closeDrawer(R.id.drawer);
 
-// Pull to refresh a SwipeRefreshLayout
-refresh(R.id.swipe_refresh);
+//Interact with SwipeRefreshLayout (pullToRefresh)
+refresh(R.id.swiperefresh);
 
 // And another tricky feature
 sleep(2000);
@@ -119,7 +119,7 @@ assertDrawerIsClosed(R.id.drawer);
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
 
-// Check recyclerView item count against expected item count
+//Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
