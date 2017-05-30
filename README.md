@@ -37,9 +37,9 @@ clickSpinnerItem(R.id.spinner, 1);
 scrollTo(R.id.recycler, 42);
 
 // Select items on RadioButtons and CheckBoxes
-clickCheckBoxItem(R.id.first_item);
+clickCheckBoxItem(R.id.checkbox_item);
 clickCheckBoxItem("The checkbox text");
-clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
+clickRadioButtonItem(R.id.radiogroup, R.id.radio_item);
 clickRadioButtonItem(R.id.radiogroup, "The radio text");
 clickRadioButtonPosition(R.id.radiogroup, 42);
 
@@ -63,7 +63,7 @@ swipeViewPagerBack(R.id.pager);
 openDrawer(R.id.drawer);
 closeDrawer(R.id.drawer);
 
-//Interact with SwipeRefreshLayout (pullToRefresh)
+// Pull to refresh in SwipeRefreshLayout
 refresh(R.id.swiperefresh);
 
 // And another tricky feature
@@ -116,7 +116,7 @@ assertDrawerIsClosed(R.id.drawer);
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
 
-//Check recyclerView item count against expected item count
+// Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature

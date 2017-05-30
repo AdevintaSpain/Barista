@@ -85,7 +85,7 @@ public class IntroducingBaristaActions {
     openDrawer(R.id.drawer);
     closeDrawer(R.id.drawer);
 
-    //Interact with SwipeRefreshLayout (pullToRefresh)
+    // Pull to refresh in SwipeRefreshLayout
     refresh(R.id.swiperefresh);
 
     // And another tricky feature
