@@ -19,6 +19,9 @@ click(R.id.button);
 click("Next");
 clickBack();
 
+// Click menu items, also overflowed ones
+clickMenu(R.id.menu_item);
+
 // Writing into widgets
 writeToEditText(R.id.edittext, "A great text");
 writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
