@@ -25,7 +25,7 @@ before_script:
   - adb shell input keyevent 82 &
 script:
   - ./gradlew build bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
-  - ./gradlew :sample:connectedAndroidTest --stacktrace --info
+  - ./gradlew :sample:connectedAndroidTest --stacktrace --info -Pandroid.testInstrumentationRunnerArguments.notAnnotation=com.schibsted.spain.barista.ci.IgnoreContinousIntegration
 deploy:
   - provider: script
     script: scripts/bintrayUpload.sh
