@@ -1,8 +1,10 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +18,14 @@ import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutra
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
+import static com.schibsted.spain.barista.BaristaMenuClickActions.clickMenu;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
 import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
@@ -41,6 +44,9 @@ public class IntroducingBaristaActions {
     click(R.id.button);
     click("Next");
     clickBack();
+
+    // Click menu items, also overflowed ones
+    clickMenu(R.id.menu_action_1);
 
     // Writing into widgets
     writeToEditText(R.id.edittext, "A great text");
