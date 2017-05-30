@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,6 +13,9 @@ import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText
 
 @RunWith(AndroidJUnit4.class)
 public class EditTextTest {
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public FlakyActivityTestRule<EditTextActivity> activityRule =

@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.cleardata.MonitorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,9 @@ import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class ScrollsTest {
+
+  @Rule
+  public MonitorRule monitorRule = new MonitorRule();
 
   @Rule
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
