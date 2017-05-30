@@ -1,5 +1,8 @@
 package com.schibsted.spain.barista.custom;
 
+import android.support.annotation.IdRes;
+import android.support.test.espresso.matcher.BoundedMatcher;
+import android.view.MenuItem;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -45,6 +48,21 @@ public class HelperMatchers {
       @Override
       public void describeTo(final Description description) {
         description.appendText("should return first matching item");
+      }
+    };
+  }
+
+  public static Matcher<MenuItem> menuMatcher(final @IdRes int id) {
+    return new BoundedMatcher<MenuItem, MenuItem>(MenuItem.class) {
+
+      @Override
+      protected boolean matchesSafely(MenuItem item) {
+        return item.getItemId() == id;
+      }
+
+      @Override
+      public void describeTo(Description description) {
+        description.appendText("should return menu item with id " + id);
       }
     };
   }

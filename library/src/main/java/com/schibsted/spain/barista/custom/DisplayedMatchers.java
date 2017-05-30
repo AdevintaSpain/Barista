@@ -8,6 +8,7 @@ import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
@@ -27,6 +28,11 @@ public class DisplayedMatchers {
   @NonNull
   public static Matcher<View> displayedWithText(String text) {
     return allOf(isDisplayed(), withText(text));
+  }
+
+  @NonNull
+  public static Matcher<View> displayedWithDescription(String text) {
+    return allOf(isDisplayed(), withContentDescription(text));
   }
 
   @NonNull
