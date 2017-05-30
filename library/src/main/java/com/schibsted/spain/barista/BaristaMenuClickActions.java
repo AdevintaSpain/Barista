@@ -22,8 +22,7 @@ public class BaristaMenuClickActions {
     try {
       clickDisplayedView(id);
     } catch (NoMatchingViewException noMatchingViewException) {
-      openOverflow();
-      onData(menuMatcher(id)).inRoot(isPlatformPopup()).perform(click());
+      clickOverflowListMenu(id);
     }
   }
 
@@ -32,23 +31,36 @@ public class BaristaMenuClickActions {
       clickDisplayedView(text);
     } catch (NoMatchingViewException noMatchingViewException) {
       try {
-        onView(displayedWithDescription(text)).perform(click());
+        clickViewWithDescription(text);
       } catch (NoMatchingViewException noMatchingViewByTextException) {
-        openOverflow();
-        onData(hasToString(is(text))).inRoot(isPlatformPopup()).perform(click());
+        clickOverflowListMenu(text);
       }
     }
   }
 
-  private static void openOverflow() {
-    openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+  private static void clickDisplayedView(String text) {
+    onView(displayedWithText(text)).perform(click());
+  }
+
+  private static void clickViewWithDescription(String text) {
+    onView(displayedWithDescription(text)).perform(click());
   }
 
   private static void clickDisplayedView(@IdRes int id) {
     onView(displayedWithId(id)).perform(click());
   }
 
-  private static void clickDisplayedView(String text) {
-    onView(displayedWithText(text)).perform(click());
+  private static void clickOverflowListMenu(@IdRes int id) {
+    openOverflow();
+    onData(menuMatcher(id)).inRoot(isPlatformPopup()).perform(click());
+  }
+
+  private static void clickOverflowListMenu(String text) {
+    openOverflow();
+    onData(hasToString(is(text))).inRoot(isPlatformPopup()).perform(click());
+  }
+
+  private static void openOverflow() {
+    openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
   }
 }
