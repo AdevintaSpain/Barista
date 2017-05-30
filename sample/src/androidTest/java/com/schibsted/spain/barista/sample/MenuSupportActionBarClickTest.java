@@ -1,8 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.flakyespresso.AllowFlaky;
-import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,7 @@ import static com.schibsted.spain.barista.BaristaMenuClickActions.clickMenu;
 public class MenuSupportActionBarClickTest {
 
   @Rule
-  public FlakyActivityTestRule<MenuSupportActionBarActivity> activityRule = new FlakyActivityTestRule<>(MenuSupportActionBarActivity.class);
+  public ActivityTestRule<MenuSupportActionBarActivity> activityRule = new ActivityTestRule<>(MenuSupportActionBarActivity.class);
 
   @Test
   public void checkMenuClick_byId() {
@@ -41,14 +40,12 @@ public class MenuSupportActionBarClickTest {
   }
 
   @Test
-  @AllowFlaky
   public void checkMenuOnOverflowClick_byId() {
     clickMenu(R.id.menu_action_3);
     assertDisplayed("Third menu option");
   }
 
   @Test
-  @AllowFlaky
   public void checkMenuOnOverflowClick_byText() {
     clickMenu("Menu 3");
     assertDisplayed("Third menu option");
