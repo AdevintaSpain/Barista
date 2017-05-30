@@ -16,10 +16,12 @@ import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutra
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
 import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
 import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
+import static com.schibsted.spain.barista.BaristaMenuClickActions.clickMenu;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
 import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.BaristaRecyclerViewActions.*;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
 import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
@@ -41,6 +43,9 @@ public class IntroducingBaristaActions {
     click(R.id.button);
     click("Next");
     clickBack();
+
+    // Click menu items, also overflowed ones
+    clickMenu(R.id.menu_action_1);
 
     // Writing into widgets
     writeToEditText(R.id.edittext, "A great text");
