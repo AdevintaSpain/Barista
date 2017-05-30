@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
+apply from: "$project.rootDir/tools/git-version.gradle"
 apply from: '../config/android-quality.gradle'
 
 android {
@@ -9,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode gitVersionCode
+        versionName gitVersionName
     }
 }
 
@@ -44,7 +45,7 @@ publish {
     userOrg = 'schibstedspain'
     groupId = 'com.schibsted.spain'
     artifactId = 'barista'
-    publishVersion = '1.1.0'
+    publishVersion = gitVersionName
     desc = 'The guy who serves a great Espresso'
     website = 'https://github.com/SchibstedSpain/Barista'
 }
