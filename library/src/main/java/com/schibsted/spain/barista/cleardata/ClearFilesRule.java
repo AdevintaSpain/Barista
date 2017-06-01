@@ -24,7 +24,7 @@ public class ClearFilesRule implements TestRule {
   }
 
   private void clearData() {
-    FileOperations.clearAllFiles(getAppContext());
+    FileOperations.deleteAllFiles(getAppContext());
   }
 
   private Context getAppContext() {

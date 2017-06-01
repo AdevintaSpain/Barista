@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class FileOperations {
 
-  static void clearAllFiles(Context appContext) {
+  static void deleteAllFiles(Context appContext) {
     for (File file : getFiles(appContext)) {
       file.delete();
     }
