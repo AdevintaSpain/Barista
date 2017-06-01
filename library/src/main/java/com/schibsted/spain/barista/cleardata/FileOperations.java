@@ -11,7 +11,7 @@ public class FileOperations {
 
   static void clearAllFiles(Context appContext) {
     for (File file : getFiles(appContext)) {
-      removeFile(file);
+      file.delete();
     }
   }
 
@@ -33,9 +33,5 @@ public class FileOperations {
       }
     }
     return fileTree;
-  }
-
-  private static void removeFile(File file) {
-    file.delete();
   }
 }
