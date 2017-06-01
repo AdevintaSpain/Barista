@@ -52,8 +52,8 @@ public class FileActivity extends Activity {
       Writer out = new OutputStreamWriter(new FileOutputStream(getFile()));
       out.write("" + incrementedValue);
       out.close();
-    } catch (Exception e) {
-      Log.e("ERROR", "Error saving the File", e);
+    } catch (Exception ignore) {
+      Log.e("ERROR", "Error saving the File", ignore);
     }
   }
 
