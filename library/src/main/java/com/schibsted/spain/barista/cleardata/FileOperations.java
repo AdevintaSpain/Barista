@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class FilesOperations {
+public class FileOperations {
 
   static void clearAllFiles(Context appContext) {
     for (File file : getFiles(appContext)) {
