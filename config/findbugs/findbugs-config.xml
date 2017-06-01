@@ -563,9 +563,6 @@
         <Bug pattern="RV_RETURN_VALUE_IGNORED"/>
     </Match>
     <Match>
-        <Bug pattern="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"/>
-    </Match>
-    <Match>
         <Bug pattern="RV_EXCEPTION_NOT_THROWN"/>
     </Match>
     <Match>
@@ -591,9 +588,6 @@
     </Match>
     <Match>
         <Bug pattern="NP_NULL_ON_SOME_PATH_EXCEPTION"/>
-    </Match>
-    <Match>
-        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
     </Match>
     <Match>
         <Bug pattern="NP_NULL_PARAM_DEREF_NONVIRTUAL"/>
