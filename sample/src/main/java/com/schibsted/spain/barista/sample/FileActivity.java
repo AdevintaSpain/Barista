@@ -1,6 +1,8 @@
 package com.schibsted.spain.barista.sample;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +15,8 @@ import java.io.Writer;
 import java.util.Scanner;
 
 public class FileActivity extends Activity {
+
+  public static final String EXTRA_PATH = "path";
 
   private TextView currentValueText;
 
@@ -66,6 +70,7 @@ public class FileActivity extends Activity {
   }
 
   private File getFile() {
-    return new File(this.getFilesDir() + "/", "sample.txt");
+    String path = getIntent().getStringExtra(EXTRA_PATH);
+    return new File(this.getFilesDir() + path, "sample.txt");
   }
 }

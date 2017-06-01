@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.cleardata.ClearFilesRule;
@@ -23,8 +24,8 @@ public class ClearFilesRuleTest {
   //
 
   @Test
-  public void checkOnceThatValueIsZeroFistAndOneAfterIncrement() throws Exception {
-    activityRule.launchActivity(null);
+  public void checkOnceThatValueIsZeroFistAndOneAfterIncrement_whenSavingAtPath() throws Exception {
+    launchActivitySavingFileAtPath("/");
 
     assertCurrentValueIs("0");
     incrementValue();
@@ -32,12 +33,36 @@ public class ClearFilesRuleTest {
   }
 
   @Test
-  public void checkTwiceThatValueIsZeroFistAndOneAfterIncrement() throws Exception {
-    activityRule.launchActivity(null);
+  public void checkTwiceThatValueIsZeroFistAndOneAfterIncrement_whenSavingAtPath() throws Exception {
+    launchActivitySavingFileAtPath("/");
 
     assertCurrentValueIs("0");
     incrementValue();
     assertCurrentValueIs("1");
+  }
+
+  @Test
+  public void checkOnceThatValueIsZeroFistAndOneAfterIncrement_whenSavingAtSubdirectory() throws Exception {
+    launchActivitySavingFileAtPath("/subdirectory/");
+
+    assertCurrentValueIs("0");
+    incrementValue();
+    assertCurrentValueIs("1");
+  }
+
+  @Test
+  public void checkTwiceThatValueIsZeroFistAndOneAfterIncrement_whenSavingAtSubdirectory() throws Exception {
+    launchActivitySavingFileAtPath("/subdirectory/");
+
+    assertCurrentValueIs("0");
+    incrementValue();
+    assertCurrentValueIs("1");
+  }
+
+  private void launchActivitySavingFileAtPath(String path) {
+    Intent i = new Intent();
+    i.putExtra(FileActivity.EXTRA_PATH, path);
+    activityRule.launchActivity(i);
   }
 
   private void assertCurrentValueIs(String expectedValue) {
