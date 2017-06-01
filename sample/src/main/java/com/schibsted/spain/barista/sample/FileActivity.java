@@ -17,7 +17,8 @@ import java.util.Scanner;
 public class FileActivity extends Activity {
 
   public static final String EXTRA_PATH = "path";
-  public static final String SAMPLE_FILE_NAME = "sample.txt";
+
+  private static final String SAMPLE_FILE_NAME = "sample.txt";
 
   private TextView currentValueText;
 
@@ -58,21 +59,18 @@ public class FileActivity extends Activity {
 
   private int getOldValue() {
     File file = getFile();
-    int readValue = -1;
-    Scanner scanner = null;
+
     try {
-      scanner = new Scanner(new FileInputStream(file));
+      int readValue = 0;
+      Scanner scanner = new Scanner(new FileInputStream(file));
       while (scanner.hasNextLine()) {
         readValue = Integer.parseInt(scanner.nextLine());
       }
+      scanner.close();
+      return readValue;
     } catch (FileNotFoundException notFound) {
       return 0;
-    } finally {
-      if (scanner != null) {
-        scanner.close();
-      }
     }
-    return readValue;
   }
 
   @NonNull
