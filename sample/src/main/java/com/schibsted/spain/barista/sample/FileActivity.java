@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class FileActivity extends Activity {
 
   public static final String EXTRA_PATH = "path";
+  public static final String SAMPLE_FILE_NAME = "sample.txt";
 
   private TextView currentValueText;
 
@@ -76,8 +77,7 @@ public class FileActivity extends Activity {
 
   @NonNull
   private File getFile() {
-    String path = getIntent().getStringExtra(EXTRA_PATH);
-    return new File(this.getFilesDir() + path, "sample.txt");
+    return new File(getDirectory(), SAMPLE_FILE_NAME);
   }
 
   @NonNull
