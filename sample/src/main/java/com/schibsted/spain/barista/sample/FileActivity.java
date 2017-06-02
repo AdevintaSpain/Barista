@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
@@ -52,7 +53,7 @@ public class FileActivity extends Activity {
       Writer out = new OutputStreamWriter(new FileOutputStream(getFile()));
       out.write("" + incrementedValue);
       out.close();
-    } catch (Exception ignore) {
+    } catch (IOException ignore) {
       Log.e("ERROR", "Error saving the File", ignore);
     }
   }
