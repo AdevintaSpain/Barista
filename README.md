@@ -141,6 +141,7 @@ As tests should be isolated, they need to set the environment before running. Es
 ```java
 @Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
 @Rule public ClearDatabaseRule clearDatabaseRule = new ClearDatabaseRule(); // Delete all tables from all the app's SQLite Databases
+@Rule public ClearFilesRule clearFilesRule = new ClearFilesRule(); // Delete all files in context.getFilesDir()
 ```
 
 ## Dealing with Flaky tests
