@@ -51,9 +51,7 @@ public class FlakyRuleTest {
     }
   }
 
-  // WARNING: this test is flaky. Avoid running it at the C.I.
   @Test
-  @Ignore
   public void someDefaultFlakyTest() throws Exception {
     activityRuleWithDefaultFlaky.launchActivity(null);
 
