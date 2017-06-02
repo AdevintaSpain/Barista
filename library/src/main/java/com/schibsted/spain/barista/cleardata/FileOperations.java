@@ -2,9 +2,11 @@ package com.schibsted.spain.barista.cleardata;
 
 import android.content.Context;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FileOperations {
@@ -16,8 +18,10 @@ public class FileOperations {
   }
 
   private static Collection<File> getFiles(Context appContext) {
-    File filesDir = appContext.getFilesDir();
-    return listFileTree(filesDir);
+    List<File> allFiles = new ArrayList<>();
+    allFiles.addAll(listFileTree(appContext.getCacheDir()));
+    allFiles.addAll(listFileTree(appContext.getFilesDir()));
+    return allFiles;
   }
 
   private static Collection<File> listFileTree(File dir) {
