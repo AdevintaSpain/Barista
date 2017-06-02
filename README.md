@@ -16,6 +16,7 @@ Barista introduces a discoverable API for the Espresso features. So, you and all
 ```java
 // Click widgets
 click(R.id.button);
+click(R.string.button_text);
 click("Next");
 clickBack();
 
