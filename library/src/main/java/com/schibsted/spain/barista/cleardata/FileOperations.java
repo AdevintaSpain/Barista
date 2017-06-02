@@ -18,10 +18,15 @@ public class FileOperations {
   }
 
   private static Collection<File> getFiles(Context appContext) {
-    List<File> allFiles = new ArrayList<>();
-    allFiles.addAll(listFileTree(appContext.getCacheDir()));
-    allFiles.addAll(listFileTree(appContext.getFilesDir()));
-    return allFiles;
+    File[] androidDirectories = new File[] {
+        appContext.getCacheDir(), appContext.getFilesDir()
+    };
+
+    List<File> appFiles = new ArrayList<>();
+    for (File directory : androidDirectories) {
+      appFiles.addAll(listFileTree(directory));
+    }
+    return appFiles;
   }
 
   private static Collection<File> listFileTree(File dir) {
