@@ -4,42 +4,44 @@ import android.support.annotation.IdRes;
 import android.support.test.espresso.AmbiguousViewMatcherException;
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.action.ViewActions;
+import android.view.View;
+import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
+import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
-import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithText;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedAnd;
 
 public class BaristaClickActions {
 
+  private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
+
   public static void click(@IdRes int id) {
-    try {
-      scrollAndClickView(id);
-    } catch (AmbiguousViewMatcherException multipleViewsMatched) {
-      try {
-        scrollAndClickDisplayedView(id);
-      } catch (PerformException parentIsNotAnScrollView) {
-        clickDisplayedView(id);
-      }
-    } catch (PerformException parentIsNotAnScrollView) {
-      clickDisplayedView(id);
+    if (isIdResource(id)) {
+      click(withId(id));
+    } else if (isStringResource(id)) {
+      click(withText(id));
     }
   }
 
   public static void click(String text) {
+    click(withText(text));
+  }
+
+  public static void click(Matcher<View> viewMatcher) {
     try {
-      scrollAndClickView(text);
+      scrollAndClickView(viewMatcher);
     } catch (AmbiguousViewMatcherException multipleViewsMatched) {
       try {
-        scrollAndClickDisplayedView(text);
+        scrollAndClickDisplayedView(viewMatcher);
       } catch (PerformException parentIsNotAnScrollView) {
-        clickDisplayedView(text);
+        clickDisplayedView(viewMatcher);
       }
     } catch (PerformException parentIsNotAnScrollView) {
-      clickDisplayedView(text);
+      clickDisplayedView(viewMatcher);
     }
   }
 
@@ -47,27 +49,23 @@ public class BaristaClickActions {
     pressBack();
   }
 
-  private static void scrollAndClickView(@IdRes int id) {
-    onView(withId(id)).perform(scrollTo(), ViewActions.click());
+  private static void scrollAndClickView(Matcher<View> viewMatcher) {
+    onView(viewMatcher).perform(scrollTo(), ViewActions.click());
   }
 
-  private static void scrollAndClickView(String text) {
-    onView(withText(text)).perform(scrollTo(), ViewActions.click());
+  private static void scrollAndClickDisplayedView(Matcher<View> viewMatcher) {
+    onView(displayedAnd(viewMatcher)).perform(scrollTo(), ViewActions.click());
   }
 
-  private static void scrollAndClickDisplayedView(@IdRes int id) {
-    onView(displayedWithId(id)).perform(scrollTo(), ViewActions.click());
+  private static void clickDisplayedView(Matcher<View> viewMatcher) {
+    onView(displayedAnd(viewMatcher)).perform(ViewActions.click());
   }
 
-  private static void scrollAndClickDisplayedView(String text) {
-    onView(displayedWithText(text)).perform(scrollTo(), ViewActions.click());
+  private static boolean isIdResource(int id) {
+    return RESOURCE_TYPE_CHECKER.isIdResource(id);
   }
 
-  private static void clickDisplayedView(@IdRes int id) {
-    onView(displayedWithId(id)).perform(ViewActions.click());
-  }
-
-  private static void clickDisplayedView(String text) {
-    onView(displayedWithText(text)).perform(ViewActions.click());
+  private static boolean isStringResource(int id) {
+    return RESOURCE_TYPE_CHECKER.isStringResource(id);
   }
 }

@@ -39,4 +39,9 @@ public class DisplayedMatchers {
   public static Matcher<View> displayedAssignableFrom(final Class<? extends View> viewClass) {
     return allOf(isDisplayed(), isAssignableFrom(viewClass));
   }
+
+  @NonNull
+  public static Matcher<View> displayedAnd(Matcher<View> anotherMatcher) {
+    return allOf(isDisplayed(), anotherMatcher);
+  }
 }

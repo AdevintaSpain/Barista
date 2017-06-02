@@ -29,6 +29,12 @@ public class ClickTest {
   }
 
   @Test
+  public void checkClick_byStringResource() {
+    click(R.string.centered_button);
+    assertDisplayed("Hi! I'm the second screen!");
+  }
+
+  @Test
   public void checkClickScrollsIfNeeded_byId() {
     click(R.id.really_far_away_button);
     assertDisplayed("Hi! I'm the second screen!");
