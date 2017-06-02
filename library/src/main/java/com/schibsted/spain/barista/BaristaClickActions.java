@@ -13,6 +13,7 @@ import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedAnd;
 
 public class BaristaClickActions {
 
@@ -53,11 +54,11 @@ public class BaristaClickActions {
   }
 
   private static void scrollAndClickDisplayedView(Matcher<View> viewMatcher) {
-    onView(viewMatcher).perform(scrollTo(), ViewActions.click());
+    onView(displayedAnd(viewMatcher)).perform(scrollTo(), ViewActions.click());
   }
 
   private static void clickDisplayedView(Matcher<View> viewMatcher) {
-    onView(viewMatcher).perform(ViewActions.click());
+    onView(displayedAnd(viewMatcher)).perform(ViewActions.click());
   }
 
   private static boolean isIdResource(int id) {
