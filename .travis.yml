@@ -32,7 +32,11 @@ jobs:
   include:
   - stage: build
     jdk: oraclejdk8
-    script: ./gradlew build
+    script: ./gradlew assembleRelease
+
+  - stage: check
+    jdk: oraclejdk8
+    script: ./gradlew check
 
   - stage: check
     jdk: oraclejdk8
