@@ -36,7 +36,19 @@ jobs:
 
   - stage: check
     jdk: oraclejdk8
-    script: ./gradlew check
+    script: ./gradlew lint
+
+  - stage: check
+    jdk: oraclejdk8
+    script: ./gradlew checkstyle
+
+  - stage: check
+    jdk: oraclejdk8
+    script: ./gradlew pmd
+
+  - stage: check
+    jdk: oraclejdk8
+    script: ./gradlew findbugs
 
   - stage: check
     jdk: oraclejdk8
