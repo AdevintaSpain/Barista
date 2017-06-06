@@ -68,7 +68,7 @@ jobs:
       - secure: "pqbCHzhC2ePQt22kFqwA5RqQiJiQmlT8BEv5cPn84FVtGX0x1Qaw6NQ9k5ap2h/KGD0Axif5AdpruYRp4bicpscYOMLpk4fznXkNAX6U6MaQXR0ITgC2JTDtAZnAYuXo377uvdtHT0zPPfv/9mv5qY1bKdaCcRCSL8GX60ywf1YspJZNo7gC9yDZ6TiGTFTKycQqx1lPuPvtTopbp9oP6gDTnGhHDCrnn4Xi1NyyFnKJYVqaHSR25WgWAevNLnOA1Rbc7T67mrzzfeVv6wgS5+lJOuLCY1OgUwGrNmfqKVL67vUWYm5KuGFuHrV5pSiL6Y0CzJuI5gQl4H2h5tpadaEqOV5PswaWbqRW3aQGMsOKsLwv0oJIBcjE0NjkMx4Jusa7f1ofBkXWN2S8ozPDF8oVpJohzl8p2Fnhdrj+2f0eR+MBWFagWFwFeEKFGB1HDqF+XDQW21/Mar6nKc4tj2/wEtBcwfXL0Jo4c6O1GrUanyXLh4fXxIyuetoYIqwkG6hAvshXyoe0RP6UdifWiWnyEKu5Db6JV8IzjuR1QHCbcXjtXpl7Z6JodkRMw5bQzW9rrXTybRqK+ha+p3e/d1iynhjerxzavMadqSamWv02wQYD+vmeuf58SwZcy6XJJtJZ4M6yVL8msiVpsxpX/ln1jWHFEUKwJRRxKBkTHZo="
     deploy:
       - provider: script
-        script: echo "Deploy stage"
+        script: ./scripts/bintrayUpload.sh
         skip_cleanup: true
         on:
           tags: true
