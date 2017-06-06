@@ -32,21 +32,31 @@ jobs:
   include:
   - stage: check
     jdk: oraclejdk8
+    env:
+      - Type: Lint
     script: ./gradlew lint
 
   - stage: check
     jdk: oraclejdk8
+    env:
+      - Type: Checkstyle
     script: ./gradlew checkstyle
 
   - stage: check
     jdk: oraclejdk8
+    env:
+      - Type: PMD
     script: ./gradlew pmd
 
   - stage: check
     jdk: oraclejdk8
+    env:
+      - Type: findbugs
     script: ./gradlew findbugs
 
   - stage: check
+    env:
+      - Type: bintray
     jdk: oraclejdk8
     script: ./gradlew library:assembleRelease bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
 
