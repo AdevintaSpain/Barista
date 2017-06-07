@@ -10,7 +10,7 @@ Espresso is a great tool to test our Android apps via instrumental tests. With t
 
 On the other hand, if you tried Espresso, you’ll agree that its API is not discoverable.
 
-Barista introduces a discoverable API for the Espresso features. So, you and all the Android team will write instrumental tests with no effort. 
+Barista introduces a discoverable API for the Espresso features. So, you and all the Android team will write instrumental tests with no effort.
 
 ### Barista’s Actions API
 ```java
@@ -168,6 +168,26 @@ public void some_important_test() throws Exception {
   // ...
 }
 ```
+
+## One rule to rule them all
+
+All previous rules can be added at the same time by just adding the BaristaRule.
+```java
+@Rule
+public BaristaRule<MyActivity> baristaRule = BaristaRule.create(MyActivity.class);
+
+//...
+
+baristaRule.launchActivity();
+```
+
+The rule assumes some sane defaults:
+- Retry flaky tests: 10 attempts
+- Launch activity automatically: false
+- Initial touch mode enabled: true
+- Clear preferences
+- Clear databases
+
 
 ## Magic that Barista does for you
 
