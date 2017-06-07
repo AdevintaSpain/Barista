@@ -187,6 +187,7 @@ The rule assumes some sane defaults:
 - Initial touch mode enabled: true
 - Clear preferences
 - Clear databases
+- Clear files
 
 
 ## Magic that Barista does for you

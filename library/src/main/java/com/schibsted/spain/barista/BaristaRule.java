@@ -3,6 +3,7 @@ package com.schibsted.spain.barista;
 import android.app.Activity;
 import android.content.Intent;
 import com.schibsted.spain.barista.cleardata.ClearDatabaseRule;
+import com.schibsted.spain.barista.cleardata.ClearFilesRule;
 import com.schibsted.spain.barista.cleardata.ClearPreferencesRule;
 import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
 import org.junit.rules.RuleChain;
@@ -22,11 +23,13 @@ public class BaristaRule<T extends Activity> implements TestRule {
 
   private final ClearPreferencesRule clearPreferencesRule;
   private final ClearDatabaseRule clearDatabaseRule;
+  private final ClearFilesRule clearFilesRule;
   private final FlakyActivityTestRule<T> activityTestRule;
 
   private BaristaRule(Class<T> activityClass) {
     this.clearDatabaseRule = new ClearDatabaseRule();
     this.clearPreferencesRule = new ClearPreferencesRule();
+    this.clearFilesRule = new ClearFilesRule();
     this.activityTestRule = new FlakyActivityTestRule<>(activityClass,
         INITIAL_TOUCH_MODE_ENABLED,
         LAUNCH_ACTIVITY_AUTOMATICALLY)
@@ -38,6 +41,7 @@ public class BaristaRule<T extends Activity> implements TestRule {
     return RuleChain.outerRule(activityTestRule)
         .around(clearPreferencesRule)
         .around(clearDatabaseRule)
+        .around(clearFilesRule)
         .apply(base, description);
   }
 
