@@ -24,7 +24,7 @@ public class BaristaRule<T extends Activity> implements TestRule {
   private final ClearDatabaseRule clearDatabaseRule;
   private final FlakyActivityTestRule<T> activityTestRule;
 
-  public BaristaRule(Class<T> activityClass) {
+  private BaristaRule(Class<T> activityClass) {
     this.clearDatabaseRule = new ClearDatabaseRule();
     this.clearPreferencesRule = new ClearPreferencesRule();
     this.activityTestRule = new FlakyActivityTestRule<>(activityClass,
