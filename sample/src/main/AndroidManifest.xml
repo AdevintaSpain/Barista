@@ -47,6 +47,7 @@
         android:theme="@style/AppTheme.NoActionBar"
         />
     <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
+    <activity android:name=".NestedScrollViewActivity"/>
   </application>
 
 </manifest>
