@@ -19,7 +19,7 @@ public class BaristaScrollActions {
   public static void scrollTo(@IdRes int id) {
     for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
       try {
-        onView(withId(id)).perform(BaristaScrollToAction.scrollTo());
+        onView(withId(id)).perform(NestedEnabledScrollToAction.scrollTo());
       } catch (PerformException exception) {
         if (i == MAX_SCROLL_ATTEMPTS) {
           throw exception;
@@ -31,7 +31,7 @@ public class BaristaScrollActions {
   public static void scrollTo(String text) {
     for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
       try {
-        onView(withText(text)).perform(BaristaScrollToAction.scrollTo());
+        onView(withText(text)).perform(NestedEnabledScrollToAction.scrollTo());
       } catch (PerformException exception) {
         if (i == MAX_SCROLL_ATTEMPTS) {
           throw exception;

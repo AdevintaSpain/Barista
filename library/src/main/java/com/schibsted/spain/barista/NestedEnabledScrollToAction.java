@@ -16,14 +16,14 @@ import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVi
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
-public class BaristaScrollToAction implements ViewAction {
+public class NestedEnabledScrollToAction implements ViewAction {
   private final ScrollToAction scrollToAction;
 
-  public static BaristaScrollToAction scrollTo() {
-    return new BaristaScrollToAction();
+  public static NestedEnabledScrollToAction scrollTo() {
+    return new NestedEnabledScrollToAction();
   }
 
-  private BaristaScrollToAction() {
+  private NestedEnabledScrollToAction() {
     scrollToAction = new ScrollToAction();
   }
 
