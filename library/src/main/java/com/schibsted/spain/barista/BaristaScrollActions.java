@@ -2,7 +2,6 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.PerformException;
-import android.support.test.espresso.action.ViewActions;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -20,7 +19,7 @@ public class BaristaScrollActions {
   public static void scrollTo(@IdRes int id) {
     for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
       try {
-        onView(withId(id)).perform(ViewActions.scrollTo());
+        onView(withId(id)).perform(NestedEnabledScrollToAction.scrollTo());
       } catch (PerformException exception) {
         if (i == MAX_SCROLL_ATTEMPTS) {
           throw exception;
@@ -32,7 +31,7 @@ public class BaristaScrollActions {
   public static void scrollTo(String text) {
     for (int i = 0; i <= MAX_SCROLL_ATTEMPTS; i++) {
       try {
-        onView(withText(text)).perform(ViewActions.scrollTo());
+        onView(withText(text)).perform(NestedEnabledScrollToAction.scrollTo());
       } catch (PerformException exception) {
         if (i == MAX_SCROLL_ATTEMPTS) {
           throw exception;

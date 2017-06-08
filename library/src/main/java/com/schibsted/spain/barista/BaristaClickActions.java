@@ -10,9 +10,9 @@ import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.schibsted.spain.barista.NestedEnabledScrollToAction.scrollTo;
 import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedAnd;
 
 public class BaristaClickActions {
