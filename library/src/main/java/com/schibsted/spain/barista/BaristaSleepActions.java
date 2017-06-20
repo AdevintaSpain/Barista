@@ -20,7 +20,7 @@ public class BaristaSleepActions {
     try {
       Thread.sleep(millis);
     } catch (InterruptedException e) {
-      throw new RuntimeException(e);
+      throw new IllegalStateException(e);
     }
   }
 
