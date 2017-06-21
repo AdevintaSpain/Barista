@@ -13,7 +13,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
+import static com.schibsted.spain.barista.BaristaSleepActions.sleepThread;
 
 @RequiresApi(18)
 public class PermissionGranter {
@@ -25,7 +25,7 @@ public class PermissionGranter {
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(InstrumentationRegistry.getTargetContext(),
           permissionNeeded)) {
-        sleep(PERMISSIONS_DIALOG_DELAY);
+        sleepThread(PERMISSIONS_DIALOG_DELAY);
         UiDevice device = UiDevice.getInstance(getInstrumentation());
         UiObject allowPermissions = device.findObject(new UiSelector()
             .clickable(true)

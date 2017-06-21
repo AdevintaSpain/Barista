@@ -15,4 +15,16 @@ public class BaristaSleepActions {
   public static void sleep(long units, TimeUnit timeunit) {
     sleep(timeunit.toMillis(units));
   }
+
+  public static void sleepThread(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
+  public static void sleepThread(long units, TimeUnit timeunit) {
+    sleepThread(timeunit.toMillis(units));
+  }
 }
