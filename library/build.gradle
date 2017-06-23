@@ -44,7 +44,7 @@ publish {
     userOrg = 'schibstedspain'
     groupId = 'com.schibsted.spain'
     artifactId = 'barista'
-    publishVersion = '1.5.0'
+    publishVersion = '1.5.1'
     desc = 'The guy who serves a great Espresso'
     website = 'https://github.com/SchibstedSpain/Barista'
 }
