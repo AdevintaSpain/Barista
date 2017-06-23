@@ -1,6 +1,5 @@
 package com.schibsted.spain.barista;
 
-import android.support.annotation.IdRes;
 import android.support.test.espresso.AmbiguousViewMatcherException;
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.action.ViewActions;
@@ -19,7 +18,7 @@ public class BaristaClickActions {
 
   private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
 
-  public static void click(@IdRes int id) {
+  public static void click(int id) {
     if (isIdResource(id)) {
       click(withId(id));
     } else if (isStringResource(id)) {
