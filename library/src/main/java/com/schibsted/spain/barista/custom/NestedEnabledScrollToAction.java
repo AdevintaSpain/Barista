@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista;
+package com.schibsted.spain.barista.custom;
 
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;

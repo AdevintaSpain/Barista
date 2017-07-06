@@ -2,6 +2,7 @@ package com.schibsted.spain.barista;
 
 import android.support.annotation.IdRes;
 import android.support.test.espresso.PerformException;
+import com.schibsted.spain.barista.custom.NestedEnabledScrollToAction;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
