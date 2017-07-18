@@ -32,7 +32,7 @@ public class AllowFlakyStatement extends Statement {
           Log.d(TAG, "<-- Attempt #" + i + " failed. No more attempts.");
           throw e;
         }
-        Log.d(TAG, "<-- Attempt #" + i + " failed. Repeating again");
+        Log.d(TAG, "<-- Attempt #" + i + " failed. Repeating again. The cause was:", e);
 
         // This is what JUnit and Espresso do after each test method:
         finishAllActivitiesOnUiThread();
