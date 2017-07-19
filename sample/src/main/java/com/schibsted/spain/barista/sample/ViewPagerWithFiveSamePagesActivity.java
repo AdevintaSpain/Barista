@@ -31,7 +31,7 @@ public class ViewPagerWithFiveSamePagesActivity extends FragmentActivity {
 
     @Override
     public Fragment getItem(int position) {
-      return new ViewPagerButtonFragment();
+      return new ViewPagerRepeatedFragment();
     }
 
     @Override

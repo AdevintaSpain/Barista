@@ -16,4 +16,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/hello_world"/>
+
+  <EditText
+      android:id="@+id/edittext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint"/>
+
 </LinearLayout>
