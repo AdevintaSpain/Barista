@@ -24,15 +24,6 @@ public class ViewPagerWithFiveSamePagesActivity extends FragmentActivity {
     pager.setAdapter(adapter);
   }
 
-  @Override
-  public void onBackPressed() {
-    if (pager.getCurrentItem() == 0) {
-      super.onBackPressed();
-    } else {
-      pager.setCurrentItem(pager.getCurrentItem() - 1);
-    }
-  }
-
   private static class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     ScreenSlidePagerAdapter(FragmentManager fm) {
       super(fm);
