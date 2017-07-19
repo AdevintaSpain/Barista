@@ -26,9 +26,11 @@ public class PermissionGranterTest {
 
   @Before
   public void setUp() throws Exception {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+      throw new IllegalStateException("This test needs to run on a device with Android 23 or above");
+    }
     if (hasNeededPermission(InstrumentationRegistry.getTargetContext(), RuntimePermissionActivity.SOME_PERMISSION)) {
-      throw new IllegalStateException("This test expects you to not have the permission granted."
-          + "In addition, use an emulator with Android 23 or above, or this test will fail.");
+      throw new IllegalStateException("This test expects you to not have the permission granted, remember to clear data");
     }
   }
 
