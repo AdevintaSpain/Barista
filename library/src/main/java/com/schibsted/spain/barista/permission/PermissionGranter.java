@@ -17,7 +17,8 @@ import static com.schibsted.spain.barista.BaristaSleepActions.sleepThread;
 public class PermissionGranter {
 
   private static final int PERMISSIONS_DIALOG_DELAY = 3000;
-  private static final int GRANT_BUTTON_INDEX = 1;
+  private static final String PERMISSIONS_DIALOG_ALLOW_ID = "com.android.packageinstaller:id/permission_allow_button";
+//    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
 
   public static void allowPermissionsIfNeeded(String permissionNeeded) {
     try {
@@ -28,7 +29,7 @@ public class PermissionGranter {
         UiObject allowPermissions = device.findObject(new UiSelector()
             .clickable(true)
             .checkable(false)
-            .index(GRANT_BUTTON_INDEX));
+            .resourceId(PERMISSIONS_DIALOG_ALLOW_ID));
         if (allowPermissions.exists()) {
           allowPermissions.click();
         }
