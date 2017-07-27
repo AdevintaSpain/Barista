@@ -208,7 +208,7 @@ repositories {
 
 Finally just import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:1.5.3') {
+androidTestCompile('com.schibsted.spain:barista:1.6.0') {
   exclude group: 'com.android.support'
 }
 ```
