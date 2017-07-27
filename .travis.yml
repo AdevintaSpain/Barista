@@ -17,6 +17,10 @@ android:
   - android-25
   - extra
   - addon
+
+  licenses:
+    - 'android-sdk-license-.+'
+
 script:
   - ./gradlew build bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
 deploy:
