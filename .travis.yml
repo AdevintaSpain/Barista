@@ -13,7 +13,7 @@ android:
   - tools
   - tools
   - platform-tools
-  - build-tools-25.0.1
+  - build-tools-25.0.3
   - android-25
   - extra
   - addon
