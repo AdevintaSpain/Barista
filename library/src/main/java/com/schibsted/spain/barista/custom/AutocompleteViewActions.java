@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.action.ViewActions.actionWithAssertions;
-import static android.support.test.espresso.core.deps.guava.base.Preconditions.checkNotNull;
+import static android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.allOf;

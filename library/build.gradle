@@ -3,38 +3,27 @@ apply plugin: 'com.novoda.bintray-release'
 apply from: '../config/android-quality.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion compileSdkVersionDeclared
+    buildToolsVersion buildToolsVersionDeclared
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion minSdkVersionDeclared
+        targetSdkVersion compileSdkVersionDeclared
     }
-}
 
-android {
     lintOptions {
         disable 'InvalidPackage'
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    compile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+    compile "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
 
-    compile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile('com.android.support.test.espresso:espresso-contrib:2.0') {
-        exclude module: 'support-v4'
-    }
-
-    compile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
-
-    compile 'com.android.support:support-annotations:25.1.0'
-    compile 'com.android.support:support-core-ui:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile "com.android.support:support-annotations:$supportLibVersion"
+    compile "com.android.support:support-core-ui:$supportLibVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:1.7.0'
@@ -44,7 +33,7 @@ publish {
     userOrg = 'schibstedspain'
     groupId = 'com.schibsted.spain'
     artifactId = 'barista'
-    publishVersion = '1.5.3'
+    publishVersion = baristaVersion
     desc = 'The guy who serves a great Espresso'
     website = 'https://github.com/SchibstedSpain/Barista'
 }

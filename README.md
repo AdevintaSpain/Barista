@@ -199,11 +199,21 @@ In order to speed up testing, Barista keeps in mind some considerations.
 
 # Download
 
+Include the Google Maven repository, required by Espresso 3:
+```gradle
+repositories {
+    maven { url "https://maven.google.com" }
+}
+```
+
+Finally just import Barista as a testing dependency:
 ```gradle
 androidTestCompile('com.schibsted.spain:barista:1.5.3') {
   exclude group: 'com.android.support'
 }
 ```
+
+Barista already includes `espresso-core` and `espresso-contrib`. If you need [any other Espresso package](https://developer.android.com/topic/libraries/testing-support-library/packages.html#atsl-dependencies) you can add them yourself.
 
 # License
 

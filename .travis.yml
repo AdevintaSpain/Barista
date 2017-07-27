@@ -13,10 +13,14 @@ android:
   - tools
   - tools
   - platform-tools
-  - build-tools-25.0.1
+  - build-tools-25.0.3
   - android-25
   - extra
   - addon
+
+  licenses:
+    - 'android-sdk-license-.+'
+
 script:
   - ./gradlew build bintrayUpload -PbintrayUser=dryrun-user -PbintrayKey=dryrun-key -PdryRun=true
 deploy:
