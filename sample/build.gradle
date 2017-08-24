@@ -32,6 +32,3 @@ dependencies {
 
   androidTestCompile project(':library')
 }
-repositories {
-  mavenCentral()
-}
