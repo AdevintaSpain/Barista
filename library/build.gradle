@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 apply from: '../config/android-quality.gradle'
 
@@ -24,6 +25,8 @@ dependencies {
     compile "com.android.support:support-annotations:$supportLibVersion"
     compile "com.android.support:support-core-ui:$supportLibVersion"
     compile "com.android.support:recyclerview-v7:$supportLibVersion"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:1.7.0'
