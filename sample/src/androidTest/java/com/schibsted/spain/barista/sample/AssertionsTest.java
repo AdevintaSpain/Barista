@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
@@ -266,5 +267,19 @@ public class AssertionsTest {
   @Test
   public void checkBackButton() {
     assertThatBackButtonClosesTheApp();
+  }
+
+  @Test
+  public void checkSameDrawable() throws Exception {
+    assertDrawable(R.id.image_view, R.mipmap.ic_barista);
+  }
+
+  @Test
+  public void checkDifferentDrawable() throws Exception {
+    try {
+      assertDrawable(R.id.image_view, R.mipmap.ic_launcher);
+      fail();
+    } catch (Throwable expected) {
+    }
   }
 }
