@@ -125,6 +125,9 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
+
+// Check ImageView's drawable
+assertDrawable(R.id.image_view, R.mipmap.ic_barista);
 ```
 
 ## Dealing with the runtime permissions dialog
