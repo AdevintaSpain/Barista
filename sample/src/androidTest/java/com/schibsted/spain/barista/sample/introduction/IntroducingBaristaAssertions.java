@@ -75,7 +75,7 @@ public class IntroducingBaristaAssertions {
     // And another tricky feature
     assertThatBackButtonClosesTheApp();
 
-    // Check ImageView's drawable
+    // Is this ImageView showing this drawable?
     assertDrawable(R.id.image_view, R.mipmap.ic_barista);
   }
 }
