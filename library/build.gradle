@@ -42,7 +42,7 @@ publish {
     website = 'https://github.com/SchibstedSpain/Barista'
 }
 
-// Exclude Kotlin files from Javadoc.
+// Exclude Kotlin files from Javadoc due to an error generating docs from Kotlin files.
 // More info: https://github.com/novoda/bintray-release/issues/71
 tasks.withType(Javadoc) {
     excludes = ['**/*.kt']
