@@ -3,6 +3,7 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
+import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -274,12 +275,8 @@ public class AssertionsTest {
     assertDrawable(R.id.image_view, R.mipmap.ic_barista);
   }
 
-  @Test
+  @Test(expected = AssertionFailedError.class)
   public void checkDifferentDrawable() throws Exception {
-    try {
-      assertDrawable(R.id.image_view, R.mipmap.ic_launcher);
-      fail();
-    } catch (Throwable expected) {
-    }
+    assertDrawable(R.id.image_view, R.mipmap.ic_launcher);
   }
 }
