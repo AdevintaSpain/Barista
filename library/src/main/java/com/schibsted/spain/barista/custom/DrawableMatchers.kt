@@ -1,7 +1,9 @@
 package com.schibsted.spain.barista.custom
 
-object DrawableMatchers {
+class DrawableMatchers {
 
-  @JvmStatic
-  fun withDrawable(resourceId: Int) = DrawableMatcher(resourceId)
+  companion object {
+    @JvmStatic
+    fun withDrawable(resourceId: Int) = DrawableMatcher(resourceId)
+  }
 }
