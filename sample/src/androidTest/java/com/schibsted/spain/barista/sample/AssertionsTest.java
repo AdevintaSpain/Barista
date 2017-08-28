@@ -272,11 +272,11 @@ public class AssertionsTest {
 
   @Test
   public void checkSameDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.mipmap.ic_barista);
+    assertDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
   @Test(expected = AssertionFailedError.class)
   public void checkDifferentDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.mipmap.ic_launcher);
+    assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
   }
 }

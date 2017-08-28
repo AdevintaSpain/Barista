@@ -11,8 +11,8 @@ class BitmapComparatorTest {
 
   @Test
   fun returnTrueWhenComparingTheSameDrawable() {
-    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.mipmap.ic_barista)
-    val theSameBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.mipmap.ic_barista)
+    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
+    val theSameBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
 
     val result = BitmapComparator.compare(aBitmap, theSameBitmap)
 
@@ -21,8 +21,8 @@ class BitmapComparatorTest {
 
   @Test
   fun returnFalseWhenComparingDifferentDrawables() {
-    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.mipmap.ic_barista)
-    val aDifferentBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.mipmap.ic_launcher)
+    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
+    val aDifferentBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_launcher)
 
     val result = BitmapComparator.compare(aBitmap, aDifferentBitmap)
 
