@@ -42,6 +42,8 @@ publish {
     website = 'https://github.com/SchibstedSpain/Barista'
 }
 
+// Exclude Kotlin files from Javadoc.
+// More info: https://github.com/novoda/bintray-release/issues/71
 tasks.withType(Javadoc) {
-    options.addBooleanOption('Xdoclint:none', true)
+    excludes = ['**/*.kt']
 }
