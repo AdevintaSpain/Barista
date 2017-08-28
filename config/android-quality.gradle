@@ -102,3 +102,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
                          "${buildDir}/outputs/code-coverage/connected/coverage.ec"
   ])
 }
+
+task javadoc(type: Javadoc) {
+  excludes = ['**/*.kt']
+}
