@@ -104,5 +104,5 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
 }
 
 task javadoc(type: Javadoc) {
-  excludes = ['**/*.kt']
+  options.addBooleanOption('Xdoclint:none', true)
 }
