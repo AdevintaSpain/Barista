@@ -58,7 +58,7 @@ public class ClearDatabaseRuleTest {
   public void deleteMultipleDatabases() throws Throwable {
     given(operations.getAllDatabaseFiles()).willReturn(asList(DB_1_FILE, DB_2_FILE));
 
-    executeRule();
+    executeRule(new ClearDatabaseRule(operations));
 
     verify(operations, atLeastOnce()).deleteTableContent(eq(DB_1), anyString());
     verify(operations, atLeastOnce()).deleteTableContent(eq(DB_2), anyString());
@@ -68,7 +68,7 @@ public class ClearDatabaseRuleTest {
   public void deleteAllTablesFromDatabase() throws Throwable {
     given(operations.getAllDatabaseFiles()).willReturn(asList(DB_1_FILE, DB_2_FILE));
 
-    executeRule();
+    executeRule(new ClearDatabaseRule(operations));
 
     verify(operations, atLeastOnce()).deleteTableContent(DB_1, DB_1_TABLES.get(0));
     verify(operations, atLeastOnce()).deleteTableContent(DB_1, DB_1_TABLES.get(1));
@@ -82,7 +82,7 @@ public class ClearDatabaseRuleTest {
     File unwantedFile = new File("unwanted.db" + suffix);
     given(operations.getAllDatabaseFiles()).willReturn(singletonList(unwantedFile));
 
-    executeRule();
+    executeRule(new ClearDatabaseRule(operations));
 
     verify(operations, never()).deleteTableContent(any(SQLiteDatabase.class), anyString());
   }
@@ -96,12 +96,26 @@ public class ClearDatabaseRuleTest {
   public void closesDatabase() throws Throwable {
     given(operations.getAllDatabaseFiles()).willReturn(singletonList(DB_1_FILE));
 
-    executeRule();
+    executeRule(new ClearDatabaseRule(operations));
 
     verify(DB_1, atLeastOnce()).close();
   }
 
-  private void executeRule() throws Throwable {
-    new ClearDatabaseRule(operations).apply(dummyStatement, dummyDescription).evaluate();
+  @Test
+  public void doesNotDeleteTable_whenNameMatchesRegex() throws Throwable {
+    given(operations.getAllDatabaseFiles()).willReturn(singletonList(DB_1_FILE));
+    given(operations.getTableNames(DB_1)).willReturn(asList("some_table", "excluded_table"));
+    String excludedRegex = "excluded_.+";
+
+    ClearDatabaseRule rule = new ClearDatabaseRule(operations)
+        .excludeTablesMatching(excludedRegex);
+    executeRule(rule);
+
+    verify(operations, never()).deleteTableContent(DB_1, "excluded_table");
+    verify(operations, atLeastOnce()).deleteTableContent(DB_1, "some_table");
+  }
+
+  private void executeRule(ClearDatabaseRule rule) throws Throwable {
+    rule.apply(dummyStatement, dummyDescription).evaluate();
   }
 }

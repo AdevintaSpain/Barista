@@ -15,6 +15,13 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
         internal val UNWANTED_FILENAME_SUFFIXES = arrayOf("-journal", "-shm", "-uid", "-wal")
     }
 
+    private var excludeTablesRegex: Regex? = null
+
+    fun excludeTablesMatching(tableNameRegexFilter: String): ClearDatabaseRule {
+        excludeTablesRegex = Regex(tableNameRegexFilter)
+        return this
+    }
+
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
@@ -33,6 +40,7 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
                         openDatabase(dbFile)
                                 .use { database ->
                                     getTableNames(database)
+                                            .filterNot { excludeTablesRegex?.matches(it) ?: false }
                                             .forEach { tableName ->
                                                 deleteTableContent(database, tableName)
                                             }
