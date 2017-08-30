@@ -1,6 +1,9 @@
 <FindBugsFilter>
     <!-- Fallback excludes file.  This file will be used when a project lacks a findbugs-excludes.xml file -->
     <Match>
+        <Source name="~.*\.kt"/>
+    </Match>
+    <Match>
         <Source name="~.*\.groovy" />
         <Or>
             <Field name="~__.*" />
