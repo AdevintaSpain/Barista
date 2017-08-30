@@ -10,6 +10,7 @@ android {
     defaultConfig {
         minSdkVersion minSdkVersionDeclared
         targetSdkVersion compileSdkVersionDeclared
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     lintOptions {
@@ -39,4 +40,10 @@ publish {
     publishVersion = baristaVersion
     desc = 'The guy who serves a great Espresso'
     website = 'https://github.com/SchibstedSpain/Barista'
+}
+
+// Exclude Kotlin files from Javadoc due to an error generating docs from Kotlin files.
+// More info: https://github.com/novoda/bintray-release/issues/71
+tasks.withType(Javadoc) {
+    excludes = ['**/*.kt']
 }

@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
@@ -73,5 +74,8 @@ public class IntroducingBaristaAssertions {
 
     // And another tricky feature
     assertThatBackButtonClosesTheApp();
+
+    // Is this ImageView showing this drawable?
+    assertDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 }

@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
@@ -22,6 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
+import static com.schibsted.spain.barista.custom.DrawableMatchers.withDrawable;
 import static com.schibsted.spain.barista.custom.HelperMatchers.firstViewOf;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNot.not;
@@ -158,6 +160,10 @@ public class BaristaAssertions {
 
   public static void assertHint(@IdRes int id, String text) {
     onView(withId(id)).check(matches(withHint(text)));
+  }
+
+  public static void assertDrawable(@IdRes int id, @DrawableRes int drawable) {
+    onView(withId(id)).check(matches(withDrawable(drawable)));
   }
 
   private static boolean isIdResource(int id) {

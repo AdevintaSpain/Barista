@@ -125,6 +125,9 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
+
+// Is this ImageView showing this drawable?
+assertDrawable(R.id.image_view, R.drawable.ic_barista);
 ```
 
 ## Dealing with the runtime permissions dialog
@@ -208,7 +211,7 @@ repositories {
 
 Finally just import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:1.6.0') {
+androidTestCompile('com.schibsted.spain:barista:1.7.0') {
   exclude group: 'com.android.support'
 }
 ```

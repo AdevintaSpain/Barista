@@ -3,6 +3,7 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
+import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith;
 import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
@@ -266,5 +268,15 @@ public class AssertionsTest {
   @Test
   public void checkBackButton() {
     assertThatBackButtonClosesTheApp();
+  }
+
+  @Test
+  public void checkSameDrawable() throws Exception {
+    assertDrawable(R.id.image_view, R.drawable.ic_barista);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDifferentDrawable() throws Exception {
+    assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
   }
 }
