@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ViewPagerButtonFragment extends Fragment {
+public class ViewPagerRepeatedFragment extends Fragment {
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    final View root = inflater.inflate(R.layout.activity_centered_button, container, false);
+    final View root = inflater.inflate(R.layout.page_repeated, container, false);
     root.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
         TextView tv = (TextView) root.findViewById(R.id.textview);
