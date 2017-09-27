@@ -27,4 +27,10 @@ public class ClickInsideViewPagerTest {
     click("Centered button");
     assertDisplayed(R.string.click);
   }
+
+  @Test
+  public void clickWorksAlsoWhenButtonIsRepeatedInMultipleViewPagerViews_belowScroll_byText() {
+    click("Really far away button");
+    assertDisplayed(R.string.click_far_away);
+  }
 }
