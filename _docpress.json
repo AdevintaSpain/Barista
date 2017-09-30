@@ -1,0 +1,113 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "Barista",
+        "source": "README.md",
+        "expand": true,
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Download",
+            "depth": 2,
+            "id": "download"
+          },
+          {
+            "title": "API Overview",
+            "depth": 2,
+            "id": "api-overview",
+            "headings": [
+              {
+                "title": "Actions",
+                "depth": 3,
+                "id": "actions"
+              },
+              {
+                "title": "Assertions",
+                "depth": 3,
+                "id": "assertions"
+              },
+              {
+                "title": "Permission Granter",
+                "depth": 3,
+                "id": "permission-granter"
+              },
+              {
+                "title": "Useful rules",
+                "depth": 3,
+                "id": "useful-rules"
+              }
+            ]
+          },
+          {
+            "title": "Magic that Barista does for you",
+            "depth": 2,
+            "id": "magic-that-barista-does-for-you"
+          },
+          {
+            "title": "License",
+            "depth": 2,
+            "id": "license"
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "Barista",
+      "pageTitle": "Barista",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Download",
+          "depth": 2,
+          "id": "download"
+        },
+        {
+          "title": "API Overview",
+          "depth": 2,
+          "id": "api-overview",
+          "headings": [
+            {
+              "title": "Actions",
+              "depth": 3,
+              "id": "actions"
+            },
+            {
+              "title": "Assertions",
+              "depth": 3,
+              "id": "assertions"
+            },
+            {
+              "title": "Permission Granter",
+              "depth": 3,
+              "id": "permission-granter"
+            },
+            {
+              "title": "Useful rules",
+              "depth": 3,
+              "id": "useful-rules"
+            }
+          ]
+        },
+        {
+          "title": "Magic that Barista does for you",
+          "depth": 2,
+          "id": "magic-that-barista-does-for-you"
+        },
+        {
+          "title": "License",
+          "depth": 2,
+          "id": "license"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/barista-logo-300.png": "barista-logo-300.png"
+  }
+}
