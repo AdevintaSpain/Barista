@@ -14,5 +14,6 @@
   <string name="checked_checkbox">Checked checkbox</string>
   <string name="unchecked_checkbox">Unchecked checkbox</string>
   <string name="click">Click</string>
+  <string name="click_far_away">Click far away</string>
   <string name="refreshing">I am refreshing!</string>
 </resources>
