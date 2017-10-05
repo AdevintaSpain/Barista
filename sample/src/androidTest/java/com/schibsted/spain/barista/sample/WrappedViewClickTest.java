@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -15,6 +16,9 @@ public class WrappedViewClickTest {
   @Rule
   public ActivityTestRule<WrappedViewActivity> activityTestRule =
       new ActivityTestRule<>(WrappedViewActivity.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void clickOnButton() throws Exception {
