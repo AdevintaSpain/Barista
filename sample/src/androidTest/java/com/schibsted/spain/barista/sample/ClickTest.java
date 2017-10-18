@@ -69,4 +69,10 @@ public class ClickTest {
     clickBack();
     assertDisplayed("Hi! I'm the first screen!");
   }
+
+  @Test
+  public void checkClickOnHalfHiddenButton() throws Exception {
+    click(R.id.half_hidden);
+    assertDisplayed("Hi! I'm the second screen!");
+  }
 }
