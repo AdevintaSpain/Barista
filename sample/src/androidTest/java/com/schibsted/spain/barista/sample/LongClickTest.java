@@ -29,31 +29,31 @@ public class LongClickTest {
   }
 
   @Test
-  public void checkClick_byStringResource() {
+  public void checkLongClick_byStringResource() {
     longClick(R.string.centered_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
-  public void checkClickScrollsIfNeeded_byId() {
+  public void checkLongClickScrollsIfNeeded_byId() {
     longClick(R.id.really_far_away_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
-  public void checkClickScrollsIfNeeded_byText() {
+  public void checkLongClickScrollsIfNeeded_byText() {
     longClick("Really far away button");
     assertDisplayed("I was long pressed");
   }
 
   @Test
-  public void checkClickWhenParentIsNotAnScrollView_byId() {
+  public void checkLongClickWhenParentIsNotAnScrollView_byId() {
     longClick(R.id.centered_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
-  public void checkClickWhenParentIsNotAnScrollView_byText() {
+  public void checkLongClickWhenParentIsNotAnScrollView_byText() {
     longClick("Centered button");
     assertDisplayed("I was long pressed");
   }
