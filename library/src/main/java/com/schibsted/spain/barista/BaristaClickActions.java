@@ -2,6 +2,7 @@ package com.schibsted.spain.barista;
 
 import android.support.test.espresso.AmbiguousViewMatcherException;
 import android.support.test.espresso.NoMatchingViewException;
+import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.action.ViewActions;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
@@ -27,26 +28,40 @@ public class BaristaClickActions {
 
   private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
 
+  // SingleClick Actions
   public static void click(int id) {
-    if (isIdResource(id)) {
-      click(withId(id));
-    } else if (isStringResource(id)) {
-      click(withText(id));
-    }
+    performWithResource(id, ViewActions.click());
   }
 
   public static void click(String text) {
-    click(withText(text));
+    performWithMatcher(withText(text), ViewActions.click());
   }
 
-  public static void click(Matcher<View> viewMatcher) {
+  // LongClick Actions
+  public static void longClick(int id) {
+    performWithResource(id, ViewActions.longClick());
+  }
+
+  public static void longClick(String text) {
+    performWithMatcher(withText(text), ViewActions.longClick());
+  }
+
+  private static void performWithResource(int id, ViewAction clickType) {
+    if (isIdResource(id)) {
+      performWithMatcher(withId(id), clickType);
+    } else if (isStringResource(id)) {
+      performWithMatcher(withText(id), clickType);
+    }
+  }
+
+  private static void performWithMatcher(Matcher<View> viewMatcher, ViewAction clickType) {
     try {
-      clickDisplayedView(viewMatcher);
+      clickDisplayedView(viewMatcher, clickType);
     } catch (NoMatchingViewException noMatchingError) {
       try {
-        scrollAndClickView(viewMatcher);
+        scrollAndClickView(viewMatcher, clickType);
       } catch (AmbiguousViewMatcherException multipleViewsError) {
-        scrollAndClickDisplayedView(viewMatcher);
+        scrollAndClickDisplayedView(viewMatcher, clickType);
       }
     }
   }
@@ -55,11 +70,11 @@ public class BaristaClickActions {
     pressBack();
   }
 
-  private static void scrollAndClickView(Matcher<View> viewMatcher) {
-    onView(viewMatcher).perform(scrollTo(), ViewActions.click());
+  private static void scrollAndClickView(Matcher<View> viewMatcher, ViewAction clickType) {
+    onView(viewMatcher).perform(scrollTo(), clickType);
   }
 
-  private static void scrollAndClickDisplayedView(Matcher<View> viewMatcher) {
+  private static void scrollAndClickDisplayedView(Matcher<View> viewMatcher, ViewAction clickType) {
     onView(allOf(
         viewMatcher,
         isDescendantOfA(allOf(
@@ -71,11 +86,11 @@ public class BaristaClickActions {
                 isAssignableFrom(NestedScrollView.class)
             )
         ))
-    )).perform(scrollTo(), ViewActions.click());
+    )).perform(scrollTo(), clickType);
   }
 
-  private static void clickDisplayedView(Matcher<View> viewMatcher) {
-    onView(displayedAnd(viewMatcher)).perform(ViewActions.click());
+  private static void clickDisplayedView(Matcher<View> viewMatcher, ViewAction clickType) {
+    onView(displayedAnd(viewMatcher)).perform(clickType);
   }
 
   private static boolean isIdResource(int id) {
