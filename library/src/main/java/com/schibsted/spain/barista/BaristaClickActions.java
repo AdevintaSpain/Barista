@@ -30,31 +30,31 @@ public class BaristaClickActions {
 
   // SingleClick Actions
   public static void click(int id) {
-    performClick(id, ViewActions.click());
+    performWithResource(id, ViewActions.click());
   }
 
   public static void click(String text) {
-    click(withText(text), ViewActions.click());
+    performWithMatcher(withText(text), ViewActions.click());
   }
 
   // LongClick Actions
   public static void longClick(int id) {
-    performClick(id, ViewActions.longClick());
+    performWithResource(id, ViewActions.longClick());
   }
 
   public static void longClick(String text) {
-    click(withText(text), ViewActions.longClick());
+    performWithMatcher(withText(text), ViewActions.longClick());
   }
 
-  private static void performClick(int id, ViewAction clickType) {
+  private static void performWithResource(int id, ViewAction clickType) {
     if (isIdResource(id)) {
-      click(withId(id), clickType);
+      performWithMatcher(withId(id), clickType);
     } else if (isStringResource(id)) {
-      click(withText(id), clickType);
+      performWithMatcher(withText(id), clickType);
     }
   }
 
-  public static void click(Matcher<View> viewMatcher, ViewAction clickType) {
+  private static void performWithMatcher(Matcher<View> viewMatcher, ViewAction clickType) {
     try {
       clickDisplayedView(viewMatcher, clickType);
     } catch (NoMatchingViewException noMatchingError) {
