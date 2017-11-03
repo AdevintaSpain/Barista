@@ -30,7 +30,7 @@ public class FlowFirstScreen extends AppCompatActivity {
     }
   }
 
-  class ChangeButtonText implements View.OnLongClickListener {
+  static class ChangeButtonText implements View.OnLongClickListener {
     @Override
     public boolean onLongClick(View view) {
       ((Button) view).setText("I was long pressed");
