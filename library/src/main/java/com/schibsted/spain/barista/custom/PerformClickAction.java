@@ -12,7 +12,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 public class PerformClickAction {
 
   /**
-   * Common Espresso's ViewActions.click() taps on the center of the View.
+   * Common Espresso's ViewActions.clickOn() taps on the center of the View.
    * But, if that View has a children placed on its center, that child will
    * be clicked instead of the View itself.
    *
