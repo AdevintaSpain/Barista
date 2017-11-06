@@ -7,6 +7,8 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.PerformException;
+
+import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.BaristaRule;
 import com.schibsted.spain.barista.permission.PermissionGranter;
 import org.junit.Before;
@@ -38,7 +40,7 @@ public class PermissionGranterTest {
   public void fails_when_using_permission() throws Exception {
     activityRule.launchActivity();
 
-    click(R.id.use_permission_button);
+    BaristaClickActions.clickOn(R.id.use_permission_button);
   }
 
   @Test
@@ -46,11 +48,11 @@ public class PermissionGranterTest {
   public void works_after_granting_permission() throws Exception {
     activityRule.launchActivity();
 
-    click(R.id.request_permission_button);
+    BaristaClickActions.clickOn(R.id.request_permission_button);
 
     PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.READ_CONTACTS);
 
-    click(R.id.use_permission_button);
+    BaristaClickActions.clickOn(R.id.use_permission_button);
   }
 
   private static boolean hasNeededPermission(Context context, String permissionNeeded) {

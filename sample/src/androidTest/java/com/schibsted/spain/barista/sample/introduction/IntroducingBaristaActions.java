@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
 
@@ -13,6 +14,7 @@ import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.wri
 import static com.schibsted.spain.barista.BaristaCheckBoxActions.clickCheckBoxItem;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
@@ -41,8 +43,8 @@ public class IntroducingBaristaActions {
   @Ignore
   public void letsIntroduceBarista() {
     // Click widgets
-    click(R.id.button);
-    click("Next");
+    clickOn(R.id.button);
+    clickOn("Next");
     clickBack();
 
     // Click menu items, also overflowed ones

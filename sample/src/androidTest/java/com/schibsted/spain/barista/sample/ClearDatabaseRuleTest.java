@@ -44,6 +44,6 @@ public class ClearDatabaseRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.database_increment_button);
+    BaristaClickActions.clickOn(R.id.database_increment_button);
   }
 }

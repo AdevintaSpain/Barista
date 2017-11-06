@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.click;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.instanceOf;
@@ -16,12 +16,12 @@ import static org.hamcrest.Matchers.is;
 public class BaristaSpinnerActions {
 
   public static void clickSpinnerItem(@IdRes int id, int position) {
-    click(id);
+    clickOn(id);
     performClick(position);
   }
 
   public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int position) {
-    click(id);
+    clickOn(id);
     performClick(position, modelClass);
   }
 

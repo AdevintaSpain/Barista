@@ -2,6 +2,9 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.schibsted.spain.barista.BaristaClickActions;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -22,7 +25,7 @@ public class DialogActivityTest {
 
   @Before
   public void setup() {
-    click(R.id.button);
+    BaristaClickActions.clickOn(R.id.button);
   }
 
   @Test

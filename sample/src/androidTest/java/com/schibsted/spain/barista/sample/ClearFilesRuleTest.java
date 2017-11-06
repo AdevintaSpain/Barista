@@ -70,6 +70,6 @@ public class ClearFilesRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.file_increment_button);
+    BaristaClickActions.clickOn(R.id.file_increment_button);
   }
 }

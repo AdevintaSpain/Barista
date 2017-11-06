@@ -29,6 +29,15 @@ public class BaristaClickActions {
   private static final ResourceTypeChecker RESOURCE_TYPE_CHECKER = new ResourceTypeChecker();
 
   // SingleClick Actions
+  public static void clickOn(int id) {
+    performWithResource(id, ViewActions.click());
+  }
+
+  public static void clickOn(String text) {
+    performWithMatcher(withText(text), ViewActions.click());
+  }
+
+  // Deprecated SingleClick Actions
   public static void click(int id) {
     performWithResource(id, ViewActions.click());
   }
