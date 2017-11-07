@@ -13,12 +13,13 @@ import org.hamcrest.Matcher
 
 /**
  * Scrolls in Espresso are not as great as we could except. For that reason, we will try
- * to scroll several times instead of just one. If any of them worked, we will share the
- * Espresso's Exception to the caller.
+ * to scroll several times instead of just one.
  */
 object BaristaScrollActions {
 
-    private val MAX_SCROLL_ATTEMPTS = 5
+    // This value has been mathematically calculated and proven to be precisely the exact number of retries needed to always work.
+    // Not really, we just tried hundreds of times with different values and this seems to be the best one.
+    private val MAX_SCROLL_ATTEMPTS = 50
 
     @JvmStatic
     fun scrollTo(@IdRes id: Int) {
