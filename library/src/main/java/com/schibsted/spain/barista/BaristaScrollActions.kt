@@ -43,7 +43,7 @@ object BaristaScrollActions {
 
     private fun scrollWithMultipleAttempts(matcher: Matcher<View>, failAtEnd: Boolean) {
         val spyFailureHandler = SpyFailureHandler()
-        for (i in 0..MAX_SCROLL_ATTEMPTS) {
+        for (i in 1..MAX_SCROLL_ATTEMPTS) {
             try {
                 onView(matcher)
                         .withFailureHandler(spyFailureHandler)
