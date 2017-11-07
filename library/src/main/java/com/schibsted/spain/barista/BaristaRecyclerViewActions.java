@@ -14,7 +14,7 @@ public class BaristaRecyclerViewActions {
 
   public static void clickRecyclerViewItem(@IdRes int recyclerViewId, int... positions) {
     if (positions.length == 0) {
-      throw new IllegalArgumentException("positions cannot be empty");
+      throw new IllegalArgumentException("Plisositions cannot be empty");
     }
     for (int p : positions) {
       performClick(recyclerViewId, p);
