@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.view.ViewTreeObserver;
+import android.widget.ScrollView;
 
 public class FlowFirstScreen extends AppCompatActivity {
 
@@ -13,9 +15,28 @@ public class FlowFirstScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_flow_1);
 
+    setOnClickListener(R.id.half_hidden);
     setOnClickListener(R.id.next);
     setOnClickListener(R.id.really_far_away_button);
     setOnClickListener(R.id.centered_button);
+
+    hideUpperButtonAtHalf();
+  }
+
+  private void hideUpperButtonAtHalf() {
+    final View halfHiddenButton = findViewById(R.id.half_hidden);
+    halfHiddenButton.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+      @Override
+      public void onGlobalLayout() {
+        int height = halfHiddenButton.getHeight();
+        int topPos = halfHiddenButton.getTop();
+        int halfHiddenDistance = topPos + height / 2;
+
+        ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
+        scroll.scrollTo(0, halfHiddenDistance);
+        halfHiddenButton.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      }
+    });
   }
 
   private void setOnClickListener(int view) {

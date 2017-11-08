@@ -1,7 +1,8 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,9 +15,10 @@ import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText
 public class EditTextTest {
 
   @Rule
-  public FlakyActivityTestRule<EditTextActivity> activityRule =
-      new FlakyActivityTestRule<>(EditTextActivity.class)
-          .allowFlakyAttemptsByDefault(10);
+  public ActivityTestRule<EditTextActivity> activityRule = new ActivityTestRule<>(EditTextActivity.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void checkWriteOnEditText_whenEditTextIsVisible() {

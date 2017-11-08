@@ -19,8 +19,13 @@ import static org.hamcrest.Matchers.anyOf;
 public class NestedEnabledScrollToAction implements ViewAction {
   private final ScrollToAction scrollToAction;
 
-  public static NestedEnabledScrollToAction scrollTo() {
+  public static NestedEnabledScrollToAction nestedScrollToAction() {
     return new NestedEnabledScrollToAction();
+  }
+
+  @Deprecated
+  public static NestedEnabledScrollToAction scrollTo() {
+    return nestedScrollToAction();
   }
 
   private NestedEnabledScrollToAction() {
