@@ -7,8 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
 
 @RunWith(AndroidJUnit4.class)
 public class AutoCompleteTextViewTest {

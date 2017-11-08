@@ -8,10 +8,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.BaristaScrollActions.safelyScrollTo;
-import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.action.BaristaScrollActions.safelyScrollTo;
+import static com.schibsted.spain.barista.action.BaristaScrollActions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class ScrollsTest {

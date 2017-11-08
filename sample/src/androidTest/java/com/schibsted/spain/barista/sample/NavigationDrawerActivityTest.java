@@ -7,12 +7,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsClosed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDrawerIsOpen;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsClosed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsOpen;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationDrawerActivityTest {

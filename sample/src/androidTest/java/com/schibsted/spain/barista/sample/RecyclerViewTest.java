@@ -7,11 +7,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertRecyclerViewItemCount;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.scrollTo;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertRecyclerViewItemCount;
+import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItem;
+import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
+import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class RecyclerViewTest {

@@ -1,14 +1,14 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
+import com.schibsted.spain.barista.rule.flaky.FlakyActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerBack;
-import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerBack;
+import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerForward;
 
 @RunWith(AndroidJUnit4.class)
 public class ViewPagerWithoutIdTest {

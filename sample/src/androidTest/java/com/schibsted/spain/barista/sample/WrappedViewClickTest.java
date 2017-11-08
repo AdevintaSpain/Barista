@@ -8,8 +8,8 @@ import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.custom.PerformClickAction.clickUsingPerformClick;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick;
 
 public class WrappedViewClickTest {
 

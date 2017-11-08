@@ -2,21 +2,21 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
+import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
 import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDrawable;
-import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
-import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
-import static com.schibsted.spain.barista.BaristaAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertChecked;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisabled;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)

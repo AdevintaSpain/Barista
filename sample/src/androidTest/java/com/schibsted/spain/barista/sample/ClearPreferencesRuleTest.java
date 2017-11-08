@@ -1,14 +1,12 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
-
-import com.schibsted.spain.barista.cleardata.ClearPreferencesRule;
-
+import com.schibsted.spain.barista.rule.cleardata.ClearPreferencesRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 
 public class ClearPreferencesRuleTest {
 
