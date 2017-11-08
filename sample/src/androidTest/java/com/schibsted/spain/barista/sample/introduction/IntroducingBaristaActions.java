@@ -6,7 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
+import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoComplete;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickBack;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
@@ -46,7 +46,7 @@ public class IntroducingBaristaActions {
 
     // Writing into widgets
     writeTo(R.id.edittext, "A great text");
-    writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
+    writeToAutoComplete(R.id.autocomplete, "Another great text");
 
     // Select items on AdapterViews
     clickListItem(4);

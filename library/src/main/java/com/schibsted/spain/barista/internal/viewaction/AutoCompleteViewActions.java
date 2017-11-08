@@ -16,7 +16,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFro
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.allOf;
 
-public class AutocompleteViewActions {
+public class AutoCompleteViewActions {
 
   public static ViewAction replaceAutocomplete(@Nonnull String stringToBeSet) {
     return actionWithAssertions(new ReplaceAutocompleteTextAction(stringToBeSet));
