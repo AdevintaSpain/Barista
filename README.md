@@ -15,10 +15,15 @@ Barista introduces a discoverable API for the Espresso features. So, you and all
 ### Barista’s Actions API
 ```java
 // Click widgets
-click(R.id.button);
-click(R.string.button_text);
-click("Next");
+clickOn(R.id.button);
+clickOn(R.string.button_text);
+clickOn("Next");
 clickBack();
+
+// Long click widgets
+longClickOn(R.id.button);
+longClickOn(R.string.button_text);
+longClickOn("Next");
 
 // Click menu items, also overflowed ones
 clickMenu(R.id.menu_item);

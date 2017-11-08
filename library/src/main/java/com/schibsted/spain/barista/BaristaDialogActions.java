@@ -1,18 +1,18 @@
 package com.schibsted.spain.barista;
 
-import static com.schibsted.spain.barista.BaristaClickActions.click;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 
 public class BaristaDialogActions {
 
   public static void clickDialogPositiveButton() {
-    click(android.R.id.button1);
+    clickOn(android.R.id.button1);
   }
 
   public static void clickDialogNegativeButton() {
-    click(android.R.id.button2);
+    clickOn(android.R.id.button2);
   }
 
   public static void clickDialogNeutralButton() {
-    click(android.R.id.button3);
+    clickOn(android.R.id.button3);
   }
 }
