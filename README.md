@@ -29,7 +29,7 @@ longClickOn("Next");
 clickMenu(R.id.menu_item);
 
 // Writing into widgets
-writeToEditText(R.id.edittext, "A great text");
+writeTo(R.id.edittext, "A great text");
 writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
 
 // Select items on AdapterViews

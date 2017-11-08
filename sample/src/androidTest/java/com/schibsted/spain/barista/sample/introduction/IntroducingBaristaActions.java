@@ -12,7 +12,7 @@ import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogPositiveButton;
-import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeToEditText;
+import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeTo;
 import static com.schibsted.spain.barista.action.BaristaListActions.clickListItem;
 import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
 import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
@@ -45,7 +45,7 @@ public class IntroducingBaristaActions {
     clickMenu(R.id.menu_action_1);
 
     // Writing into widgets
-    writeToEditText(R.id.edittext, "A great text");
+    writeTo(R.id.edittext, "A great text");
     writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
 
     // Select items on AdapterViews
