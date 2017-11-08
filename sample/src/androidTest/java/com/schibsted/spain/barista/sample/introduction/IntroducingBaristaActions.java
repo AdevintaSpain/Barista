@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
 import static com.schibsted.spain.barista.BaristaCheckBoxActions.clickCheckBoxItem;
-import static com.schibsted.spain.barista.BaristaClickActions.click;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
@@ -41,8 +41,8 @@ public class IntroducingBaristaActions {
   @Ignore
   public void letsIntroduceBarista() {
     // Click widgets
-    click(R.id.button);
-    click("Next");
+    clickOn(R.id.button);
+    clickOn("Next");
     clickBack();
 
     // Click menu items, also overflowed ones

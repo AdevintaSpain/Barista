@@ -2,14 +2,16 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.click;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
@@ -25,7 +27,7 @@ public class DialogActivityTest {
 
   @Before
   public void setup() {
-    click(R.id.button);
+    clickOn(R.id.button);
   }
 
   @Test

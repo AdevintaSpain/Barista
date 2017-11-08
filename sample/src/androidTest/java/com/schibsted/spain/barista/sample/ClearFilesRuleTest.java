@@ -2,12 +2,14 @@ package com.schibsted.spain.barista.sample;
 
 import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
-import com.schibsted.spain.barista.BaristaClickActions;
+
 import com.schibsted.spain.barista.cleardata.ClearFilesRule;
+
 import org.junit.Rule;
 import org.junit.Test;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 
 public class ClearFilesRuleTest {
 
@@ -70,6 +72,6 @@ public class ClearFilesRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.file_increment_button);
+    clickOn(R.id.file_increment_button);
   }
 }
