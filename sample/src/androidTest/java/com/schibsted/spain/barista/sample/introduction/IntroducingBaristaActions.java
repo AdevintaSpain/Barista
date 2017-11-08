@@ -42,7 +42,7 @@ public class IntroducingBaristaActions {
   @Ignore
   public void letsIntroduceBarista() {
     // Click widgets
-    BaristaClickActions.clickOn(R.id.button);
+    clickOn(R.id.button);
     clickOn("Next");
     clickBack();
 

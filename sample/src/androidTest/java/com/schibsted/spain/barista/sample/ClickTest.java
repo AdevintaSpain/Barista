@@ -24,7 +24,7 @@ public class ClickTest {
 
   @Test
   public void checkClick_byId() {
-    BaristaClickActions.clickOn(R.id.next);
+    clickOn(R.id.next);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
@@ -36,13 +36,13 @@ public class ClickTest {
 
   @Test
   public void checkClick_byStringResource() {
-    BaristaClickActions.clickOn(R.string.centered_button);
+    clickOn(R.string.centered_button);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
   @Test
   public void checkClickScrollsIfNeeded_byId() {
-    BaristaClickActions.clickOn(R.id.really_far_away_button);
+    clickOn(R.id.really_far_away_button);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
@@ -54,7 +54,7 @@ public class ClickTest {
 
   @Test
   public void checkClickWhenParentIsNotAnScrollView_byId() {
-    BaristaClickActions.clickOn(R.id.centered_button);
+    clickOn(R.id.centered_button);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
@@ -74,7 +74,7 @@ public class ClickTest {
 
   @Test
   public void checkClickOnHalfHiddenButton() throws Exception {
-    BaristaClickActions.clickOn(R.id.half_hidden);
+    clickOn(R.id.half_hidden);
     assertDisplayed("Hi! I'm the second screen!");
   }
 }

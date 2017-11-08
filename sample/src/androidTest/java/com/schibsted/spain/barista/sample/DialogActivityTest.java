@@ -27,7 +27,7 @@ public class DialogActivityTest {
 
   @Before
   public void setup() {
-    BaristaClickActions.clickOn(R.id.button);
+    clickOn(R.id.button);
   }
 
   @Test

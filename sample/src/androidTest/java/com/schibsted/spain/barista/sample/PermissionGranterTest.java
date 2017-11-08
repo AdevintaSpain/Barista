@@ -40,7 +40,7 @@ public class PermissionGranterTest {
   public void fails_when_using_permission() throws Exception {
     activityRule.launchActivity();
 
-    BaristaClickActions.clickOn(R.id.use_permission_button);
+    clickOn(R.id.use_permission_button);
   }
 
   @Test
@@ -48,11 +48,11 @@ public class PermissionGranterTest {
   public void works_after_granting_permission() throws Exception {
     activityRule.launchActivity();
 
-    BaristaClickActions.clickOn(R.id.request_permission_button);
+    clickOn(R.id.request_permission_button);
 
     PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.READ_CONTACTS);
 
-    BaristaClickActions.clickOn(R.id.use_permission_button);
+    clickOn(R.id.use_permission_button);
   }
 
   private static boolean hasNeededPermission(Context context, String permissionNeeded) {

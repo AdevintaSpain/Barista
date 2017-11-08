@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 
 public class ClearFilesRuleTest {
 
@@ -70,6 +71,6 @@ public class ClearFilesRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.clickOn(R.id.file_increment_button);
+    clickOn(R.id.file_increment_button);
   }
 }

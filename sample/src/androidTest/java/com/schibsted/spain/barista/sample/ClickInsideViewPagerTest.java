@@ -24,7 +24,7 @@ public class ClickInsideViewPagerTest {
 
   @Test
   public void clickWorksAlsoWhenButtonIsRepeatedInMultipleViewPagerViews_byId() {
-    BaristaClickActions.clickOn(R.id.button);
+    clickOn(R.id.button);
     assertDisplayed(R.string.click);
   }
 

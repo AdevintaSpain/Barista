@@ -59,7 +59,7 @@ object BaristaClickActions {
                 }
             }
         } catch (fatalError: RuntimeException) {
-            spyHandler.resendFirstError("Could not clickOn view ${viewMatcher.description()}")
+            spyHandler.resendFirstError("Could not click on view ${viewMatcher.description()}")
         }
     }
 

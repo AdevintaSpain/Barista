@@ -24,7 +24,7 @@ public class DatePickerTest {
 
   @Test
   public void checkDatePicker() {
-    BaristaClickActions.clickOn(R.id.launch_date_picker);
+    clickOn(R.id.launch_date_picker);
     setDateOnPicker(1986, 04, 23);
     assertDisplayed("1986+3+23");
   }

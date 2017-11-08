@@ -23,7 +23,7 @@ public class NestedScrollClickTest {
 
   @Test
   public void checkClickScrollsIfNeeded_byId() {
-    BaristaClickActions.clickOn(R.id.really_far_away_button);
+    clickOn(R.id.really_far_away_button);
     assertDisplayed("Hi! I'm the second screen!");
   }
 
