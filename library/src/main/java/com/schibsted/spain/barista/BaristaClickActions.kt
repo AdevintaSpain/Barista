@@ -27,12 +27,12 @@ object BaristaClickActions {
     }
 
     @JvmStatic
-    fun click(resId: Int) {
+    fun clickOn(resId: Int) {
         performClickTypeOnMatcher(resId.resourceMatcher(), click())
     }
 
     @JvmStatic
-    fun click(text: String) {
+    fun clickOn(text: String) {
         performClickTypeOnMatcher(withText(text), click())
     }
 
@@ -59,7 +59,7 @@ object BaristaClickActions {
                 }
             }
         } catch (fatalError: RuntimeException) {
-            spyHandler.resendFirstError("Could not click view ${viewMatcher.description()}")
+            spyHandler.resendFirstError("Could not clickOn view ${viewMatcher.description()}")
         }
     }
 

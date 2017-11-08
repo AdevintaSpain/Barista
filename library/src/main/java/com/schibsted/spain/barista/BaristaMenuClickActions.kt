@@ -26,7 +26,7 @@ object BaristaMenuClickActions {
             try {
                 clickOverflowListMenu(menuIdMatcher(id), spyFailureHandler)
             } catch (error: Exception) {
-                spyFailureHandler.resendFirstError("Could not click menu id, neither as action or overflow")
+                spyFailureHandler.resendFirstError("Could not clickOn menu id, neither as action or overflow")
             }
         }
     }
@@ -43,7 +43,7 @@ object BaristaMenuClickActions {
                 try {
                     clickOverflowListMenu(hasToString<String>(text), spyFailureHandler)
                 } catch (error: Exception) {
-                    spyFailureHandler.resendFirstError("Could not click menu title <$text>, neither as action or overflow")
+                    spyFailureHandler.resendFirstError("Could not clickOn menu title <$text>, neither as action or overflow")
                 }
             }
         }

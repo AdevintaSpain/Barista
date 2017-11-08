@@ -31,7 +31,7 @@ object BaristaListViewActions {
         try {
             withFailureHandler(spyHandler) { clickListItemByPosition(position) }
         } catch (e: NoMatchingViewException) {
-            spyHandler.resendLastError("Could not click on list item $position")
+            spyHandler.resendLastError("Could not clickOn on list item $position")
         }
     }
 
@@ -40,7 +40,7 @@ object BaristaListViewActions {
         try {
             withFailureHandler(spyHandler) { clickListItemByPositionAndClass(position, modelClass) }
         } catch (e: Throwable) {
-            spyHandler.resendLastError("Could not click on list item $position of type ${modelClass.simpleName}")
+            spyHandler.resendLastError("Could not clickOn on list item $position of type ${modelClass.simpleName}")
         }
     }
 

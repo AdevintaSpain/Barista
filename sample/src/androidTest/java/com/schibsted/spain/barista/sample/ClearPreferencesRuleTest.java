@@ -44,6 +44,6 @@ public class ClearPreferencesRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.preference_increment_button);
+    BaristaClickActions.clickOn(R.id.preference_increment_button);
   }
 }
