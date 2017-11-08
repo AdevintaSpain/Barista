@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
-import static com.schibsted.spain.barista.action.BaristaCheckBoxActions.clickCheckBoxItem;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickBack;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
@@ -58,9 +57,7 @@ public class IntroducingBaristaActions {
     // Scroll on AdapterViews
     scrollListToPosition(R.id.recycler, 42);
 
-    // Select items on RadioButtons and CheckBoxes
-    clickCheckBoxItem(R.id.first_item);
-    clickCheckBoxItem("The checkbox text");
+    // Select items on RadioButtons
     clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
     clickRadioButtonItem(R.id.radiogroup, "The radio text");
     clickRadioButtonPosition(R.id.radiogroup, 42);
