@@ -20,7 +20,7 @@ public class LongClickTest {
 
   @Test
   public void checkLongClick_byId() {
-    BaristaClickActions.longClickOn(R.id.next);
+    longClickOn(R.id.next);
     assertDisplayed("I was long pressed");
   }
 
@@ -32,13 +32,13 @@ public class LongClickTest {
 
   @Test
   public void checkLongClick_byStringResource() {
-    BaristaClickActions.longClickOn(R.string.centered_button);
+    longClickOn(R.string.centered_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClickScrollsIfNeeded_byId() {
-    BaristaClickActions.longClickOn(R.id.really_far_away_button);
+    longClickOn(R.id.really_far_away_button);
     assertDisplayed("I was long pressed");
   }
 
@@ -50,7 +50,7 @@ public class LongClickTest {
 
   @Test
   public void checkLongClickWhenParentIsNotAnScrollView_byId() {
-    BaristaClickActions.longClickOn(R.id.centered_button);
+    longClickOn(R.id.centered_button);
     assertDisplayed("I was long pressed");
   }
 
