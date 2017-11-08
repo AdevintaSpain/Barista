@@ -7,8 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.action.BaristaSpinnerActions.clickSpinnerItem;
 
 @RunWith(AndroidJUnit4.class)
 public class SpinnerTest {

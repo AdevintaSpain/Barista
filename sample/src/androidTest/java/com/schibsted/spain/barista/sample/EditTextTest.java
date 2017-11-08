@@ -7,9 +7,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertHint;
-import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
+import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeToEditText;
 
 @RunWith(AndroidJUnit4.class)
 public class EditTextTest {

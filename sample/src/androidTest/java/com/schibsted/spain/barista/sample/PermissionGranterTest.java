@@ -7,16 +7,15 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.test.InstrumentationRegistry;
 
-import com.schibsted.spain.barista.BaristaRule;
+import com.schibsted.spain.barista.rule.BaristaRule;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
-import com.schibsted.spain.barista.permission.PermissionGranter;
-
+import com.schibsted.spain.barista.action.PermissionGranter;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
 import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeTrue;
 

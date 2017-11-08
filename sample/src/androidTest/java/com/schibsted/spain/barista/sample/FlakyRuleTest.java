@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.sample;
 
-import com.schibsted.spain.barista.flakyespresso.AllowFlaky;
-import com.schibsted.spain.barista.flakyespresso.FlakyActivityTestRule;
-import com.schibsted.spain.barista.flakyespresso.Repeat;
+import com.schibsted.spain.barista.rule.flaky.AllowFlaky;
+import com.schibsted.spain.barista.rule.flaky.FlakyActivityTestRule;
+import com.schibsted.spain.barista.rule.flaky.Repeat;
 import java.util.Random;
 import org.junit.Ignore;
 import org.junit.Rule;

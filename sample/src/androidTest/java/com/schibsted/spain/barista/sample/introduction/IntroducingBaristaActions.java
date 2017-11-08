@@ -2,36 +2,36 @@ package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.schibsted.spain.barista.BaristaRecyclerViewActions;
+import com.schibsted.spain.barista.action.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
 
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
-import static com.schibsted.spain.barista.BaristaCheckBoxActions.clickCheckBoxItem;
-import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
-import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
-import static com.schibsted.spain.barista.BaristaEditTextActions.writeToEditText;
-import static com.schibsted.spain.barista.BaristaListViewActions.clickListViewItem;
-import static com.schibsted.spain.barista.BaristaMenuClickActions.clickMenu;
-import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.BaristaNavigationDrawerActions.openDrawer;
-import static com.schibsted.spain.barista.BaristaPickerActions.setDateOnPicker;
-import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
-import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItem;
-import static com.schibsted.spain.barista.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
-import static com.schibsted.spain.barista.BaristaScrollActions.scrollTo;
-import static com.schibsted.spain.barista.BaristaSleepActions.sleep;
-import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
-import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.refresh;
-import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerBack;
-import static com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward;
+import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
+import static com.schibsted.spain.barista.action.BaristaCheckBoxActions.clickCheckBoxItem;
+import static com.schibsted.spain.barista.action.BaristaClickActions.clickBack;
+import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNeutralButton;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogPositiveButton;
+import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeToEditText;
+import static com.schibsted.spain.barista.action.BaristaListViewActions.clickListViewItem;
+import static com.schibsted.spain.barista.action.BaristaMenuClickActions.clickMenu;
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
+import static com.schibsted.spain.barista.action.BaristaPickerActions.setDateOnPicker;
+import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonPosition;
+import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItem;
+import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
+import static com.schibsted.spain.barista.action.BaristaScrollActions.scrollTo;
+import static com.schibsted.spain.barista.action.BaristaSleepActions.sleep;
+import static com.schibsted.spain.barista.action.BaristaSpinnerActions.clickSpinnerItem;
+import static com.schibsted.spain.barista.action.BaristaSwipeRefreshActions.refresh;
+import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerBack;
+import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerForward;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(AndroidJUnit4.class)
