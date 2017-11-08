@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,9 @@ public class NavigationDrawerActivityTest {
 
   @Rule
   public ActivityTestRule<NavigationDrawerActivity> activityRule = new ActivityTestRule<>(NavigationDrawerActivity.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void openAndCloseDrawer() {

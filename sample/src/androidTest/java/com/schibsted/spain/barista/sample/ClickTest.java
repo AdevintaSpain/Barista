@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,9 @@ public class ClickTest {
 
   @Rule
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void checkClick_byId() {
@@ -64,5 +68,11 @@ public class ClickTest {
     assertDisplayed("Hi! I'm the second screen!");
     clickBack();
     assertDisplayed("Hi! I'm the first screen!");
+  }
+
+  @Test
+  public void checkClickOnHalfHiddenButton() throws Exception {
+    click(R.id.half_hidden);
+    assertDisplayed("Hi! I'm the second screen!");
   }
 }

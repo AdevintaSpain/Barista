@@ -52,7 +52,7 @@ public class HelperMatchers {
     };
   }
 
-  public static Matcher<MenuItem> menuMatcher(final @IdRes int id) {
+  public static Matcher<MenuItem> menuIdMatcher(final @IdRes int id) {
     return new BoundedMatcher<MenuItem, MenuItem>(MenuItem.class) {
 
       @Override
