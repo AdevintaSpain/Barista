@@ -2,7 +2,6 @@ package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.schibsted.spain.barista.BaristaClickActions;
 import com.schibsted.spain.barista.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
 
@@ -12,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
 import static com.schibsted.spain.barista.BaristaCheckBoxActions.clickCheckBoxItem;
-import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.BaristaClickActions.clickBack;
+import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
