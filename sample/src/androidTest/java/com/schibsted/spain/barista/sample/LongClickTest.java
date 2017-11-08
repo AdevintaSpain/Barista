@@ -3,12 +3,14 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.schibsted.spain.barista.BaristaClickActions;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.longClick;
+import static com.schibsted.spain.barista.BaristaClickActions.longClickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class LongClickTest {
@@ -18,43 +20,43 @@ public class LongClickTest {
 
   @Test
   public void checkLongClick_byId() {
-    longClick(R.id.next);
+    BaristaClickActions.longClickOn(R.id.next);
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClick_byText() {
-    longClick("Next");
+    longClickOn("Next");
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClick_byStringResource() {
-    longClick(R.string.centered_button);
+    BaristaClickActions.longClickOn(R.string.centered_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClickScrollsIfNeeded_byId() {
-    longClick(R.id.really_far_away_button);
+    BaristaClickActions.longClickOn(R.id.really_far_away_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClickScrollsIfNeeded_byText() {
-    longClick("Really far away button");
+    longClickOn("Really far away button");
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClickWhenParentIsNotAnScrollView_byId() {
-    longClick(R.id.centered_button);
+    BaristaClickActions.longClickOn(R.id.centered_button);
     assertDisplayed("I was long pressed");
   }
 
   @Test
   public void checkLongClickWhenParentIsNotAnScrollView_byText() {
-    longClick("Centered button");
+    longClickOn("Centered button");
     assertDisplayed("I was long pressed");
   }
 

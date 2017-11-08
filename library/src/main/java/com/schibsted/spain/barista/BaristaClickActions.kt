@@ -37,12 +37,12 @@ object BaristaClickActions {
     }
 
     @JvmStatic
-    fun longClick(resId: Int) {
+    fun longClickOn(resId: Int) {
         performClickTypeOnMatcher(resId.resourceMatcher(), longClick())
     }
 
     @JvmStatic
-    fun longClick(text: String) {
+    fun longClickOn(text: String) {
         performClickTypeOnMatcher(withText(text), longClick())
     }
 
