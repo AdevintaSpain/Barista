@@ -10,11 +10,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNegativeButton;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogNeutralButton;
-import static com.schibsted.spain.barista.BaristaDialogActions.clickDialogPositiveButton;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNeutralButton;
+import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogPositiveButton;
 
 @RunWith(AndroidJUnit4.class)
 public class DialogActivityTest {

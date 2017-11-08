@@ -7,9 +7,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonItem;
-import static com.schibsted.spain.barista.BaristaRadioButtonActions.clickRadioButtonPosition;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonItem;
+import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonPosition;
 
 @RunWith(AndroidJUnit4.class)
 public class RadioButtonsTest {

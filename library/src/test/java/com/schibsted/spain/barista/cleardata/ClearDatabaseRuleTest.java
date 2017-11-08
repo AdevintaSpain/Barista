@@ -1,6 +1,8 @@
 package com.schibsted.spain.barista.cleardata;
 
 import android.database.sqlite.SQLiteDatabase;
+import com.schibsted.spain.barista.rule.cleardata.internal.DatabaseOperations;
+import com.schibsted.spain.barista.rule.cleardata.ClearDatabaseRule;
 import java.io.File;
 import java.util.List;
 import junitparams.JUnitParamsRunner;
