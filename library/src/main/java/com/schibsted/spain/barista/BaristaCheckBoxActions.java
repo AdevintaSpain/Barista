@@ -7,7 +7,7 @@ import static com.schibsted.spain.barista.BaristaClickActions.clickOn;
 public class BaristaCheckBoxActions {
 
   public static void clickCheckBoxItem(@IdRes int checkBoxId) {
-    BaristaClickActions.clickOn(checkBoxId);
+    clickOn(checkBoxId);
   }
 
   public static void clickCheckBoxItem(String text) {

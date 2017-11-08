@@ -16,12 +16,12 @@ import static org.hamcrest.Matchers.is;
 public class BaristaSpinnerActions {
 
   public static void clickSpinnerItem(@IdRes int id, int position) {
-    BaristaClickActions.clickOn(id);
+    clickOn(id);
     performClick(position);
   }
 
   public static void clickSpinnerItem(@IdRes int id, Class<?> modelClass, int position) {
-    BaristaClickActions.clickOn(id);
+    clickOn(id);
     performClick(position, modelClass);
   }
 
