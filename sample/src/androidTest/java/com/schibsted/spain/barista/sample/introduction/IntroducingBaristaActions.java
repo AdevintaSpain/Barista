@@ -17,8 +17,8 @@ import static com.schibsted.spain.barista.action.BaristaListActions.clickListIte
 import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
 import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
 import static com.schibsted.spain.barista.action.BaristaMenuClickActions.clickMenu;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
+import static com.schibsted.spain.barista.action.BaristaDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.action.BaristaDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.action.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonPosition;

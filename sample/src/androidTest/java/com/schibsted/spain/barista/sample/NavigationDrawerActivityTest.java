@@ -7,12 +7,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationDrawerActivityTest {
@@ -24,7 +24,7 @@ public class NavigationDrawerActivityTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void openAndCloseDrawer() {
+  public void openAndCloseDrawerById() {
     openDrawer(R.id.drawer);
     assertDisplayed("menu item");
     assertDrawerIsOpen(R.id.drawer);
@@ -32,5 +32,16 @@ public class NavigationDrawerActivityTest {
     closeDrawer(R.id.drawer);
     assertNotDisplayed("menu item");
     assertDrawerIsClosed(R.id.drawer);
+  }
+
+  @Test
+  public void openAndCloseTheOnlyDrawer() {
+    openDrawer();
+    assertDisplayed("menu item");
+    assertDrawerIsOpen();
+
+    closeDrawer();
+    assertNotDisplayed("menu item");
+    assertDrawerIsClosed();
   }
 }
