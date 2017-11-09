@@ -10,8 +10,6 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertChec
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsClosed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
@@ -19,6 +17,8 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotE
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
+import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpen;
 
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaAssertions {
@@ -62,8 +62,8 @@ public class IntroducingBaristaAssertions {
     assertUnchecked(R.id.unchecked_checkbox);
 
     // What's the state of the Drawer
-    assertDrawerIsOpen(R.id.drawer);
-    assertDrawerIsClosed(R.id.drawer);
+    assertDrawerIsOpen();
+    assertDrawerIsClosed();
 
     // Check EditText's hints
     assertHint(R.id.edittext, R.string.hint);
