@@ -7,12 +7,14 @@ import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.FailureHandler
 import android.support.test.espresso.NoMatchingViewException
+import android.support.test.espresso.ViewAction
 import android.support.test.espresso.action.ViewActions.scrollTo
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.ViewHolder
 import android.widget.ListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
@@ -24,64 +26,36 @@ object BaristaListActions {
     @JvmStatic
     @JvmOverloads
     fun clickListItem(@IdRes id: Int? = null, position: Int) {
-        verifyOneSingleMatch(id)
-
-        val spyFailureHandler = SpyFailureHandler()
-        try {
-            clickRecycler(id, position, spyFailureHandler)
-        } catch (noRecyclerMatching: NoMatchingViewException) {
-            clickListView(id, position, spyFailureHandler)
-        }
-    }
-
-    private fun clickRecycler(@IdRes id: Int?, position: Int, failureHandler: FailureHandler) {
-        val matcher = findRecyclerMatcher(id)
-        onView(matcher)
-                .withFailureHandler(failureHandler)
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(position, clickUsingPerformClick()))
-    }
-
-    private fun clickListView(@IdRes id: Int?, position: Int, failureHandler: FailureHandler) {
-        val matcher = findListViewMatcher(id)
-        withFailureHandler(failureHandler) {
-            onData(anything())
-                    .inAdapterView(matcher)
-                    .atPosition(position)
-                    .perform(clickUsingPerformClick())
-        }
+        performMagicAction(id, position,
+                recyclerAction = actionOnItemAtPosition<ViewHolder>(position, clickUsingPerformClick()),
+                listViewAction = clickUsingPerformClick()
+        )
     }
 
     @JvmStatic
     @JvmOverloads
     fun scrollListToPosition(@IdRes id: Int? = null, position: Int) {
+        performMagicAction(id, position,
+                recyclerAction = scrollToPosition<ViewHolder>(position),
+                listViewAction = scrollTo()
+        )
+    }
+
+    @JvmStatic
+    @JvmOverloads
+    fun clickListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int) {
+        TODO()
+    }
+
+    private fun performMagicAction(@IdRes id: Int?, position: Int, recyclerAction: ViewAction, listViewAction: ViewAction) {
         verifyOneSingleMatch(id)
 
         val spyFailureHandler = SpyFailureHandler()
         try {
-            scrollRecycler(id, spyFailureHandler, position)
+            performOnRecycler(id, spyFailureHandler, recyclerAction)
         } catch (noRecyclerMatching: NoMatchingViewException) {
-            scrollListView(spyFailureHandler, id, position)
+            performOnListView(spyFailureHandler, id, position, listViewAction)
         }
-    }
-
-    private fun scrollRecycler(id: Int?, spyFailureHandler: SpyFailureHandler, position: Int) {
-        onView(findRecyclerMatcher(id))
-                .withFailureHandler(spyFailureHandler)
-                .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
-    }
-
-    private fun scrollListView(spyFailureHandler: SpyFailureHandler, id: Int?, position: Int) {
-        withFailureHandler(spyFailureHandler) {
-            onData(anything())
-                    .inAdapterView(findListViewMatcher(id))
-                    .atPosition(position)
-                    .perform(scrollTo())
-        }
-    }
-
-    @JvmStatic
-    fun clickListItemChild(position: Int, @IdRes childId: Int) {
-        TODO()
     }
 
     private fun verifyOneSingleMatch(@IdRes id: Int?) {
@@ -99,6 +73,21 @@ object BaristaListActions {
                 "No ListView or RecyclerView with id ${resourceName(id)} was found in the hierarchy. Did you use a wrong id?"
             }
             spyFailureHandler.resendLastError(message)
+        }
+    }
+
+    private fun performOnRecycler(id: Int?, failureHandler: FailureHandler, recyclerAction: ViewAction) {
+        onView(findRecyclerMatcher(id))
+                .withFailureHandler(failureHandler)
+                .perform(recyclerAction)
+    }
+
+    private fun performOnListView(failureHandler: FailureHandler, id: Int?, position: Int, listViewAction: ViewAction) {
+        withFailureHandler(failureHandler) {
+            onData(anything())
+                    .inAdapterView(findListViewMatcher(id))
+                    .atPosition(position)
+                    .perform(listViewAction)
         }
     }
 
