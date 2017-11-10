@@ -3,7 +3,7 @@ package com.schibsted.spain.barista.internal.util
 import android.graphics.Bitmap
 import java.util.*
 
-class BitmapComparator {
+internal class BitmapComparator {
 
   companion object {
     fun compare(b1: Bitmap, b2: Bitmap): Boolean {
