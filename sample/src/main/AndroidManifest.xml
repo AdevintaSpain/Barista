@@ -24,6 +24,7 @@
     <activity android:name=".SpinnerActivity"/>
     <activity android:name=".RecyclerViewActivity"/>
     <activity android:name=".ListViewActivity"/>
+    <activity android:name=".ListsActivity" />
     <activity android:name=".LabelActivity"/>
     <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
     <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
