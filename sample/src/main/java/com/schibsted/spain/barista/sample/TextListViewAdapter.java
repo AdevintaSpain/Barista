@@ -43,13 +43,28 @@ public class TextListViewAdapter extends BaseAdapter {
       rowView = inflater.inflate(R.layout.row_with_buttons, parent, false);
     }
 
-    final TextView textView = (TextView) rowView.findViewById(R.id.textview);
+    TextView textView = (TextView) rowView.findViewById(R.id.textview);
+    View yesButton = rowView.findViewById(R.id.yes);
+    View noButton = rowView.findViewById(R.id.no);
     textView.setText(items[position]);
 
     rowView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         clickedResult.setText(ListsActivity.getComplexListViewTextAt(position));
+      }
+    });
+    yesButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        clickedResult.setText("yes");
+
+      }
+    });
+    noButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        clickedResult.setText("no");
       }
     });
 

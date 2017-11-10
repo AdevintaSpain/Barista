@@ -32,8 +32,4 @@
             android:text="No" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/tappingMeDoesntDoNothing"
-        android:layout_width="5dp"
-        android:layout_height="5dp" />
 </LinearLayout>

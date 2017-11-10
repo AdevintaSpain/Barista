@@ -18,6 +18,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder
 import android.widget.ListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
+import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
 import org.hamcrest.Matchers.*
 
@@ -44,7 +45,10 @@ object BaristaListActions {
     @JvmStatic
     @JvmOverloads
     fun clickListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int) {
-        TODO()
+        performMagicAction(id, position,
+                recyclerAction = actionOnItemAtPosition<ViewHolder>(position, clickChildWithId(childId)),
+                listViewAction = clickChildWithId(childId)
+        )
     }
 
     private fun performMagicAction(@IdRes id: Int?, position: Int, recyclerAction: ViewAction, listViewAction: ViewAction) {

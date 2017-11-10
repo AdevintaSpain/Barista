@@ -1,7 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,17 +39,14 @@ public class TextRecyclerViewAdapter extends RecyclerView.Adapter<TextRecyclerVi
     holder.yesButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent i = new Intent(activity, LabelActivity.class);
-        i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' clicked");
-        activity.startActivity(i);
+        clickedResult.setText("yes");
+
       }
     });
     holder.noButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent i = new Intent(activity, LabelActivity.class);
-        i.putExtra(LabelActivity.EXTRA_TEXT, "'no' clicked");
-        activity.startActivity(i);
+        clickedResult.setText("no");
       }
     });
   }
