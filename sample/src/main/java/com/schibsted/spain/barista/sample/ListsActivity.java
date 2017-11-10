@@ -117,7 +117,7 @@ public class ListsActivity extends AppCompatActivity {
         ));
   }
 
-  public static class IntentBuilder{
+  public static class IntentBuilder {
     private int[] simpleListViewIds = {};
     private int[] complexListViewIds = {};
     private int[] recyclerViewIds = {};
