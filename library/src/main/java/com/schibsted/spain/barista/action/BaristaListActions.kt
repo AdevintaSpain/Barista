@@ -7,7 +7,9 @@ import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.FailureHandler
 import android.support.test.espresso.NoMatchingViewException
+import android.support.test.espresso.action.ViewActions.scrollTo
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v7.widget.RecyclerView
@@ -50,8 +52,31 @@ object BaristaListActions {
     }
 
     @JvmStatic
-    fun scrollListToPosition(position: Int) {
-        TODO()
+    @JvmOverloads
+    fun scrollListToPosition(@IdRes id: Int? = null, position: Int) {
+        verifyOneSingleMatch(id)
+
+        val spyFailureHandler = SpyFailureHandler()
+        try {
+            scrollRecycler(id, spyFailureHandler, position)
+        } catch (noRecyclerMatching: NoMatchingViewException) {
+            scrollListView(spyFailureHandler, id, position)
+        }
+    }
+
+    private fun scrollRecycler(id: Int?, spyFailureHandler: SpyFailureHandler, position: Int) {
+        onView(findRecyclerMatcher(id))
+                .withFailureHandler(spyFailureHandler)
+                .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
+    }
+
+    private fun scrollListView(spyFailureHandler: SpyFailureHandler, id: Int?, position: Int) {
+        withFailureHandler(spyFailureHandler) {
+            onData(anything())
+                    .inAdapterView(findListViewMatcher(id))
+                    .atPosition(position)
+                    .perform(scrollTo())
+        }
     }
 
     @JvmStatic

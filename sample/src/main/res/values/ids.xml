@@ -2,5 +2,6 @@
 <resources>
   <item name="listview" type="id" />
   <item name="listview2" type="id" />
-  <item name="recyler" type="id" />
+  <item name="recycler" type="id" />
+  <item name="recycler2" type="id" />
 </resources>
