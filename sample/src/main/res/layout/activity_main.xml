@@ -84,4 +84,16 @@
       android:layout_height="wrap_content"
       android:src="@drawable/ic_barista"
       />
+
+  <EditText
+      android:id="@+id/edittext_with_focus"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="EditText with focus"/>
+
+  <EditText
+      android:id="@+id/edittext_without_focus"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="EditText without focus"/>
 </LinearLayout>
