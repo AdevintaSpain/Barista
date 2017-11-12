@@ -15,6 +15,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.doesNotExis
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
+import static android.support.test.espresso.matcher.ViewMatchers.hasFocus;
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
@@ -164,6 +165,14 @@ public class BaristaAssertions {
 
   public static void assertDrawable(@IdRes int id, @DrawableRes int drawable) {
     onView(withId(id)).check(matches(withDrawable(drawable)));
+  }
+
+  public static void assertHasFocus(@IdRes int id) {
+    onView(withId(id)).check(matches(hasFocus()));
+  }
+
+  public static void assertNotHasFocus(@IdRes int id) {
+    onView(withId(id)).check(matches(not(hasFocus())));
   }
 
   private static boolean isIdResource(int id) {
