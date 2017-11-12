@@ -12,7 +12,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity android:name=".SomeViewsWithDifferentVisibilitesActivity">
+    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity">
     </activity>
     <activity android:name=".FlowFirstScreen"/>
     <activity android:name=".FlowSecondScreen"/>
