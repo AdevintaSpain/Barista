@@ -23,8 +23,8 @@ import static junit.framework.Assert.fail;
 public class AssertionsTest {
 
   @Rule
-  public ActivityTestRule<SomeViewsWithDifferentVisibilitesActivity> activityRule =
-      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitesActivity.class);
+  public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
+      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
   @Test
   public void checkVisibleViews() {
