@@ -181,4 +181,14 @@ object BaristaAssertions {
     fun assertDrawable(@IdRes id: Int, @DrawableRes drawable: Int) {
         onView(withId(id)).check(matches(withDrawable(drawable)))
     }
+
+    @JvmStatic
+    fun assertHasFocus(@IdRes id: Int) {
+        onView(withId(id)).check(matches(hasFocus()))
+    }
+
+    @JvmStatic
+    fun assertHasNotFocus(@IdRes id: Int) {
+        onView(withId(id)).check(matches(not(hasFocus())))
+    }
 }
