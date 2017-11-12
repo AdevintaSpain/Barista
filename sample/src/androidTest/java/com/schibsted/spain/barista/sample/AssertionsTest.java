@@ -13,6 +13,8 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisa
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHasFocus;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHasNotFocus;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
@@ -278,5 +280,15 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkDifferentDrawable() throws Exception {
     assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
+  }
+
+  @Test
+  public void checkViewHasFocus() throws Exception {
+    assertHasFocus(R.id.edittext_with_focus);
+  }
+
+  @Test
+  public void checkViewHasNotFocus() throws Exception {
+    assertHasNotFocus(R.id.edittext_without_focus);
   }
 }
