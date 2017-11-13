@@ -9,5 +9,7 @@ public class SomeViewsWithDifferentVisibilitiesActivity extends AppCompatActivit
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    findViewById(R.id.edittext_with_focus).requestFocus();
   }
 }

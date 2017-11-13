@@ -16,4 +16,6 @@
   <string name="click">Click</string>
   <string name="click_far_away">Click far away</string>
   <string name="refreshing">I am refreshing!</string>
+  <string name="edittext_with_focus">EditText with focus</string>
+  <string name="edittext_with_no_focus">EditText with no focus</string>
 </resources>

@@ -13,8 +13,10 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisa
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertFocused;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
@@ -263,6 +265,16 @@ public class AssertionsTest {
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
+    try {
+      assertFocused(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertNotFocused(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
   }
 
   @Test
@@ -278,5 +290,19 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkDifferentDrawable() throws Exception {
     assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
+  }
+
+  @Test
+  public void checkViewHasFocus() throws Exception {
+    assertFocused(R.id.edittext_with_focus);
+    assertFocused(R.string.edittext_with_focus);
+    assertFocused("EditText with focus");
+  }
+
+  @Test
+  public void checkViewHasNotFocus() throws Exception {
+    assertNotFocused(R.id.edittext_without_focus);
+    assertNotFocused(R.string.edittext_with_no_focus);
+    assertNotFocused("EditText with no focus");
   }
 }
