@@ -183,12 +183,22 @@ object BaristaAssertions {
     }
 
     @JvmStatic
-    fun assertHasFocus(@IdRes id: Int) {
-        onView(withId(id)).check(matches(hasFocus()))
+    fun assertHasFocus(@IdRes resId: Int) {
+        onView(resId.resourceMatcher()).check(matches(hasFocus()))
     }
 
     @JvmStatic
-    fun assertHasNotFocus(@IdRes id: Int) {
-        onView(withId(id)).check(matches(not(hasFocus())))
+    fun assertHasNotFocus(@IdRes resId: Int) {
+        onView(resId.resourceMatcher()).check(matches(not(hasFocus())))
+    }
+
+    @JvmStatic
+    fun assertHasFocus(text: String) {
+        onView(withText(text)).check(matches(hasFocus()))
+    }
+
+    @JvmStatic
+    fun assertHasNotFocus(text: String) {
+        onView(withText(text)).check(matches(not(hasFocus())))
     }
 }
