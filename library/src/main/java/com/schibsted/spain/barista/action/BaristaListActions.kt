@@ -56,9 +56,9 @@ object BaristaListActions {
 
         val spyFailureHandler = SpyFailureHandler()
         try {
-            performOnRecycler(id, spyFailureHandler, recyclerAction)
+            performOnRecycler(id, recyclerAction, spyFailureHandler)
         } catch (noRecyclerMatching: NoMatchingViewException) {
-            performOnListView(spyFailureHandler, id, position, listViewAction)
+            performOnListView(id, position, listViewAction, spyFailureHandler)
         }
     }
 
@@ -80,13 +80,13 @@ object BaristaListActions {
         }
     }
 
-    private fun performOnRecycler(id: Int?, failureHandler: FailureHandler, recyclerAction: ViewAction) {
+    private fun performOnRecycler(@IdRes id: Int?, recyclerAction: ViewAction, failureHandler: FailureHandler) {
         onView(findRecyclerMatcher(id))
                 .withFailureHandler(failureHandler)
                 .perform(recyclerAction)
     }
 
-    private fun performOnListView(failureHandler: FailureHandler, id: Int?, position: Int, listViewAction: ViewAction) {
+    private fun performOnListView(@IdRes id: Int?, position: Int, listViewAction: ViewAction, failureHandler: FailureHandler) {
         withFailureHandler(failureHandler) {
             onData(anything())
                     .inAdapterView(findListViewMatcher(id))
