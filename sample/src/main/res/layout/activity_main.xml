@@ -89,11 +89,11 @@
       android:id="@+id/edittext_with_focus"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="EditText with focus"/>
+      android:text="@string/edittext_with_focus"/>
 
   <EditText
       android:id="@+id/edittext_without_focus"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="EditText without focus"/>
+      android:text="@string/edittext_with_no_focus"/>
 </LinearLayout>

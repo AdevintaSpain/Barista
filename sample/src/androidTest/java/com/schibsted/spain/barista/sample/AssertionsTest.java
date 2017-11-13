@@ -265,6 +265,16 @@ public class AssertionsTest {
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
+    try {
+      assertHasFocus(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertHasNotFocus(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
   }
 
   @Test
@@ -285,10 +295,14 @@ public class AssertionsTest {
   @Test
   public void checkViewHasFocus() throws Exception {
     assertHasFocus(R.id.edittext_with_focus);
+    assertHasFocus(R.string.edittext_with_focus);
+    assertHasFocus("EditText with focus");
   }
 
   @Test
   public void checkViewHasNotFocus() throws Exception {
     assertHasNotFocus(R.id.edittext_without_focus);
+    assertHasNotFocus(R.string.edittext_with_no_focus);
+    assertHasNotFocus("EditText with no focus");
   }
 }
