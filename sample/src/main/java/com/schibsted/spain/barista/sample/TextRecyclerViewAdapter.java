@@ -33,7 +33,7 @@ public class TextRecyclerViewAdapter extends RecyclerView.Adapter<TextRecyclerVi
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        clickedResult.setText(getRecyclerViewTextAt(position));
+        clickedResult.setText(getRecyclerViewTextAt(holder.getAdapterPosition()));
       }
     });
     holder.yesButton.setOnClickListener(new View.OnClickListener() {
