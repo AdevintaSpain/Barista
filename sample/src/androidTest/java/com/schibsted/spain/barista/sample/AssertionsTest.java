@@ -13,10 +13,10 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisa
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHasFocus;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHasNotFocus;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertFocused;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
@@ -266,12 +266,12 @@ public class AssertionsTest {
     } catch (BaristaArgumentTypeException expected) {
     }
     try {
-      assertHasFocus(R.color.colorAccent);
+      assertFocused(R.color.colorAccent);
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
     try {
-      assertHasNotFocus(R.color.colorAccent);
+      assertNotFocused(R.color.colorAccent);
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
@@ -294,15 +294,15 @@ public class AssertionsTest {
 
   @Test
   public void checkViewHasFocus() throws Exception {
-    assertHasFocus(R.id.edittext_with_focus);
-    assertHasFocus(R.string.edittext_with_focus);
-    assertHasFocus("EditText with focus");
+    assertFocused(R.id.edittext_with_focus);
+    assertFocused(R.string.edittext_with_focus);
+    assertFocused("EditText with focus");
   }
 
   @Test
   public void checkViewHasNotFocus() throws Exception {
-    assertHasNotFocus(R.id.edittext_without_focus);
-    assertHasNotFocus(R.string.edittext_with_no_focus);
-    assertHasNotFocus("EditText with no focus");
+    assertNotFocused(R.id.edittext_without_focus);
+    assertNotFocused(R.string.edittext_with_no_focus);
+    assertNotFocused("EditText with no focus");
   }
 }

@@ -15,13 +15,13 @@ import android.support.test.espresso.contrib.DrawerMatchers.isOpen
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v4.view.GravityCompat
 import android.view.View
-import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers.withDrawable
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers.firstViewOf
+import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -183,22 +183,22 @@ object BaristaAssertions {
     }
 
     @JvmStatic
-    fun assertHasFocus(@IdRes resId: Int) {
+    fun assertFocused(@IdRes resId: Int) {
         onView(resId.resourceMatcher()).check(matches(hasFocus()))
     }
 
     @JvmStatic
-    fun assertHasNotFocus(@IdRes resId: Int) {
+    fun assertNotFocused(@IdRes resId: Int) {
         onView(resId.resourceMatcher()).check(matches(not(hasFocus())))
     }
 
     @JvmStatic
-    fun assertHasFocus(text: String) {
+    fun assertFocused(text: String) {
         onView(withText(text)).check(matches(hasFocus()))
     }
 
     @JvmStatic
-    fun assertHasNotFocus(text: String) {
+    fun assertNotFocused(text: String) {
         onView(withText(text)).check(matches(not(hasFocus())))
     }
 }
