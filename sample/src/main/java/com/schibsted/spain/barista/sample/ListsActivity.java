@@ -104,7 +104,7 @@ public class ListsActivity extends AppCompatActivity {
 
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(mLayoutManager);
-    recyclerView.setAdapter(new TextRecyclerViewAdapter(this, FRUITS, clickedResult));
+    recyclerView.setAdapter(new TextRecyclerViewAdapter(FRUITS, clickedResult));
     addList(recyclerView);
   }
 

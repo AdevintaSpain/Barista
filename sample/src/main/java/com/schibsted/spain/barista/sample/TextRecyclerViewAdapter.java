@@ -1,6 +1,5 @@
 package com.schibsted.spain.barista.sample;
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,11 @@ import android.widget.TextView;
 import static com.schibsted.spain.barista.sample.ListsActivity.getRecyclerViewTextAt;
 
 public class TextRecyclerViewAdapter extends RecyclerView.Adapter<TextRecyclerViewAdapter.ViewHolder> {
-  private final Activity activity;
   private final String[] items;
   private final TextView clickedResult;
 
-  TextRecyclerViewAdapter(Activity activity, String[] items, TextView clickedResult) {
-    this.activity = activity;
-    this.items = items;
+  TextRecyclerViewAdapter(String[] items, TextView clickedResult) {
+    this.items = items.clone();
     this.clickedResult = clickedResult;
   }
 

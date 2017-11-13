@@ -15,7 +15,7 @@ public class TextListViewAdapter extends BaseAdapter {
 
   TextListViewAdapter(Activity activity, String[] items, TextView clickedResult) {
     this.activity = activity;
-    this.items = items;
+    this.items = items.clone();
     this.clickedResult = clickedResult;
   }
 
