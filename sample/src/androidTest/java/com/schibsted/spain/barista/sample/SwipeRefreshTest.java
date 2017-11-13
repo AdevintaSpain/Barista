@@ -20,4 +20,10 @@ public class SwipeRefreshTest {
     refresh(R.id.swiperefresh);
     assertDisplayed("I am refreshing!");
   }
+
+  @Test
+  public void checkSwipeRefresh_isRefreshing_withoutPassingTheIdParameter() {
+    refresh();
+    assertDisplayed("I am refreshing!");
+  }
 }
