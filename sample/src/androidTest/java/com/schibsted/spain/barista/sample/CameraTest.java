@@ -3,20 +3,20 @@ package com.schibsted.spain.barista.sample;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.BaristaAssertions;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.intent.Intents.intending;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static com.schibsted.spain.barista.BaristaClickActions.click;
+import static com.schibsted.spain.barista.intents.BaristaIntentMatchers.hasAction;
 
 @RunWith(AndroidJUnit4.class)
 public class CameraTest {
@@ -36,8 +36,6 @@ public class CameraTest {
 
   private Instrumentation.ActivityResult createImageCaptureStub() {
     Bundle resultBundle = new Bundle();
-    //resultBundle.putParcelable("result", BitmapFactory.decodeResource(
-    //    activityRule.getActivity().getResources(), R.drawable.ic_barista));
 
     Intent resultData = new Intent();
     resultData.putExtras(resultBundle);
