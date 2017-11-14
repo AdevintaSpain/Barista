@@ -17,7 +17,7 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertFocu
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotFocused;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertText;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
@@ -62,6 +62,11 @@ public class AssertionsTest {
 
     assertDisplayed("Repeated");
     assertDisplayed(R.string.repeated);
+  }
+
+  @Test
+  public void checkExpectedText() throws Exception {
+    assertDisplayed(R.id.visible_view, "Hello world!");
   }
 
   @Test
@@ -277,7 +282,7 @@ public class AssertionsTest {
     } catch (BaristaArgumentTypeException expected) {
     }
     try {
-      assertText(R.color.colorAccent, "Dummy text");
+      assertDisplayed(R.color.colorAccent, "Dummy text");
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
@@ -310,10 +315,5 @@ public class AssertionsTest {
     assertNotFocused(R.id.edittext_without_focus);
     assertNotFocused(R.string.edittext_with_no_focus);
     assertNotFocused("EditText with no focus");
-  }
-
-  @Test
-  public void checkExpectedText() throws Exception {
-    assertText(R.id.visible_view, "Hello world!");
   }
 }

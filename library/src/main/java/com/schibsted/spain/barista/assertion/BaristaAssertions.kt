@@ -40,6 +40,11 @@ object BaristaAssertions {
         assertDisplayed(withText(text))
     }
 
+    @JvmStatic
+    fun assertDisplayed(@IdRes resId: Int, text: String) {
+        onView(resId.resourceMatcher()).check(matches(withText(text)));
+    }
+
     private fun assertDisplayed(matcher: Matcher<View>) {
         val spyFailureHandler = SpyFailureHandler()
         try {
@@ -200,10 +205,5 @@ object BaristaAssertions {
     @JvmStatic
     fun assertNotFocused(text: String) {
         onView(withText(text)).check(matches(not(hasFocus())))
-    }
-
-    @JvmStatic
-    fun assertText(@IdRes resId: Int, text: String) {
-        onView(resId.resourceMatcher()).check(matches(withText(text)));
     }
 }
