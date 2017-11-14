@@ -6,6 +6,7 @@ import android.support.annotation.StringRes;
 import android.support.test.espresso.NoActivityResumedException;
 import android.util.Log;
 import com.schibsted.spain.barista.androidresource.ResourceTypeChecker;
+import com.schibsted.spain.barista.custom.DrawableMatcher;
 import com.schibsted.spain.barista.custom.RecyclerViewItemCountAssertion;
 import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
 
@@ -160,6 +161,10 @@ public class BaristaAssertions {
 
   public static void assertHint(@IdRes int id, String text) {
     onView(withId(id)).check(matches(withHint(text)));
+  }
+
+  public static void assertDrawable(@IdRes int id) {
+    onView(withId(id)).check(matches(withDrawable(DrawableMatcher.Companion.getANY())));
   }
 
   public static void assertDrawable(@IdRes int id, @DrawableRes int drawable) {
