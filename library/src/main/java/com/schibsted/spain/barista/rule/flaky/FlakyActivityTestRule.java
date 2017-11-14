@@ -2,17 +2,21 @@ package com.schibsted.spain.barista.rule.flaky;
 
 import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
-import com.schibsted.spain.barista.rule.flaky.internal.FlakyActivityStatementBuilder;
+import com.schibsted.spain.barista.rule.BaristaRule;
+import com.schibsted.spain.barista.rule.flaky.internal.FlakyStatementBuilder;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 /**
  * This is a subclass of {@link ActivityTestRule} that enables repetition of flaky tests using the annotations {@link AllowFlaky} and {@link
  * Repeat}. Check out the docs on each one to see how they behave.
+ *
+ * @deprecated Use a {@link FlakyTestRule} in combination with {@link ActivityTestRule}, or use {@link BaristaRule}.
  */
+@Deprecated
 public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
 
-  private final FlakyActivityStatementBuilder statementBuilder = new FlakyActivityStatementBuilder();
+  private final FlakyStatementBuilder statementBuilder = new FlakyStatementBuilder();
 
   public FlakyActivityTestRule(Class<T> activityClass) {
     super(activityClass);
@@ -34,7 +38,7 @@ public class FlakyActivityTestRule<T extends Activity> extends ActivityTestRule<
    * <br>
    * The behavior will be overridden with {@link Repeat} or {@link AllowFlaky}.
    */
-  public FlakyActivityTestRule<T> allowFlakyAttemptsByDefault(int defaultAttempts) {
+  public FlakyActivityTestRule<T> allowFlakyByDefault(int defaultAttempts) {
     statementBuilder.allowFlakyAttemptsByDefault(defaultAttempts);
     return this;
   }

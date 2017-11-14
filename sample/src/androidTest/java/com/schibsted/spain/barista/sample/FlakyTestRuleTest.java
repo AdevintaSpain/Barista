@@ -1,29 +1,32 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.rule.flaky.AllowFlaky;
-import com.schibsted.spain.barista.rule.flaky.FlakyActivityTestRule;
+import com.schibsted.spain.barista.rule.flaky.FlakyTestRule;
 import com.schibsted.spain.barista.rule.flaky.Repeat;
 import java.util.Random;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.RuleChain;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-public class FlakyRuleTest {
+public class FlakyTestRuleTest {
 
   private final Random random = new Random();
 
-  @Rule
-  public FlakyActivityTestRule<HelloWorldActivity> activityRule = new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false);
+  private ActivityTestRule<HelloWorldActivity> activityRule = new ActivityTestRule<>(HelloWorldActivity.class, true, false);
+  private FlakyTestRule flakyRule = new FlakyTestRule()
+      .allowFlakyAttemptsByDefault(1);
 
   @Rule
-  public FlakyActivityTestRule<HelloWorldActivity> activityRuleWithDefaultFlaky =
-      new FlakyActivityTestRule<>(HelloWorldActivity.class, true, false)
-          .allowFlakyAttemptsByDefault(5);
+  public RuleChain chain = RuleChain.outerRule(flakyRule)
+      .around(activityRule);
+
 
   // WARNING: this test must fail when run
   @Test
@@ -40,20 +43,9 @@ public class FlakyRuleTest {
   }
 
   @Test
-  @AllowFlaky(attempts = 5)
+  @AllowFlaky(attempts = 10)
   public void someFlakyTest() throws Exception {
     activityRule.launchActivity(null);
-
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
-
-    if (random.nextFloat() > 0.3) {
-      throw new TestException("Random test failure");
-    }
-  }
-
-  @Test
-  public void someDefaultFlakyTest() throws Exception {
-    activityRuleWithDefaultFlaky.launchActivity(null);
 
     onView(withId(R.id.some_view)).check(matches(isDisplayed()));
 

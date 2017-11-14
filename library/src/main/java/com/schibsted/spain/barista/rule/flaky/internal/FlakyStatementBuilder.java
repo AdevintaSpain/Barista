@@ -5,24 +5,24 @@ import com.schibsted.spain.barista.rule.flaky.Repeat;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-public class FlakyActivityStatementBuilder {
+public class FlakyStatementBuilder {
 
   private Statement base;
   private Description description;
   private boolean useAllowFlakyByDefault = false;
   private int defaultAllowFlakyAttempts = 0;
 
-  public FlakyActivityStatementBuilder setBase(Statement base) {
+  public FlakyStatementBuilder setBase(Statement base) {
     this.base = base;
     return this;
   }
 
-  public FlakyActivityStatementBuilder setDescription(Description description) {
+  public FlakyStatementBuilder setDescription(Description description) {
     this.description = description;
     return this;
   }
 
-  public FlakyActivityStatementBuilder allowFlakyAttemptsByDefault(int attempts) {
+  public FlakyStatementBuilder allowFlakyAttemptsByDefault(int attempts) {
     useAllowFlakyByDefault = true;
     defaultAllowFlakyAttempts = attempts;
     return this;

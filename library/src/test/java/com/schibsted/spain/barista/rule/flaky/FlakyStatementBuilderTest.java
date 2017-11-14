@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.rule.flaky;
 
 import com.schibsted.spain.barista.rule.flaky.internal.AllowFlakyStatement;
-import com.schibsted.spain.barista.rule.flaky.internal.FlakyActivityStatementBuilder;
+import com.schibsted.spain.barista.rule.flaky.internal.FlakyStatementBuilder;
 import com.schibsted.spain.barista.rule.flaky.internal.RepeatStatement;
 import java.lang.annotation.Annotation;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.junit.runners.model.Statement;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
-public class FlakyActivityStatementBuilderTest {
+public class FlakyStatementBuilderTest {
 
   private static final String CLASS = "class name";
   private static final String TEST = "test name";
@@ -59,7 +59,7 @@ public class FlakyActivityStatementBuilderTest {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
-    Statement resultStatement = new FlakyActivityStatementBuilder()
+    Statement resultStatement = new FlakyStatementBuilder()
         .setBase(baseStatement)
         .setDescription(description)
         .allowFlakyAttemptsByDefault(5)
@@ -70,7 +70,7 @@ public class FlakyActivityStatementBuilderTest {
 
   //region Shortcut methods
   private Statement createStatement(Statement baseStatement, Description description) {
-    return new FlakyActivityStatementBuilder()
+    return new FlakyStatementBuilder()
         .setBase(baseStatement)
         .setDescription(description)
         .build();
