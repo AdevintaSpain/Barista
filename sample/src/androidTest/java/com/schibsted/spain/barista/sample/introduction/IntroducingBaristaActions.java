@@ -1,10 +1,7 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
-
-import com.schibsted.spain.barista.action.BaristaRecyclerViewActions;
 import com.schibsted.spain.barista.sample.R;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,15 +14,15 @@ import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialo
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogPositiveButton;
 import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeToEditText;
-import static com.schibsted.spain.barista.action.BaristaListViewActions.clickListViewItem;
+import static com.schibsted.spain.barista.action.BaristaListActions.clickListItem;
+import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
+import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
 import static com.schibsted.spain.barista.action.BaristaMenuClickActions.clickMenu;
 import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
 import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.action.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonPosition;
-import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItem;
-import static com.schibsted.spain.barista.action.BaristaRecyclerViewActions.clickRecyclerViewItemChild;
 import static com.schibsted.spain.barista.action.BaristaScrollActions.scrollTo;
 import static com.schibsted.spain.barista.action.BaristaSleepActions.sleep;
 import static com.schibsted.spain.barista.action.BaristaSpinnerActions.clickSpinnerItem;
@@ -53,16 +50,13 @@ public class IntroducingBaristaActions {
     writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
 
     // Select items on AdapterViews
-    clickListViewItem(R.id.listview, 4);
-    clickListViewItem(R.id.listview, 4, 5, 6);
-    clickRecyclerViewItem(R.id.recycler, 2);
-    clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
-    clickRecyclerViewItemChild(R.id.recycler, 3, R.id.button);
-    clickRecyclerViewItemChild(R.id.recycler, 3, "Button");
+    clickListItem(4);
+    clickListItem(R.id.listview, 4);
+    clickListItemChild(R.id.recycler, 3, R.id.button);
     clickSpinnerItem(R.id.spinner, 1);
 
     // Scroll on AdapterViews
-    BaristaRecyclerViewActions.scrollTo(R.id.recycler, 42);
+    scrollListToPosition(R.id.recycler, 42);
 
     // Select items on RadioButtons and CheckBoxes
     clickCheckBoxItem(R.id.first_item);
