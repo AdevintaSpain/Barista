@@ -4,36 +4,36 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../config/android-quality.gradle'
 
 android {
-    compileSdkVersion compileSdkVersionDeclared
-    buildToolsVersion buildToolsVersionDeclared
-    defaultConfig {
-        applicationId "com.schibsted.spain.barista.sample"
-        minSdkVersion minSdkVersionDeclared
-        targetSdkVersion compileSdkVersionDeclared
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  compileSdkVersion compileSdkVersionDeclared
+  buildToolsVersion buildToolsVersionDeclared
+  defaultConfig {
+    applicationId "com.schibsted.spain.barista.sample"
+    minSdkVersion minSdkVersionDeclared
+    targetSdkVersion compileSdkVersionDeclared
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:support-v4:$supportLibVersion"
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
-    compile "com.android.support:design:$supportLibVersion"
-    compile "com.android.support:support-annotations:$supportLibVersion"
-    compile 'com.github.bumptech.glide:glide:3.8.0'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile "com.android.support:support-v4:$supportLibVersion"
+  compile "com.android.support:appcompat-v7:$supportLibVersion"
+  compile "com.android.support:recyclerview-v7:$supportLibVersion"
+  compile "com.android.support:design:$supportLibVersion"
+  compile "com.android.support:support-annotations:$supportLibVersion"
+  compile 'com.github.bumptech.glide:glide:3.8.0'
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    testCompile 'junit:junit:4.12'
+  testCompile 'junit:junit:4.12'
 
-    androidTestCompile project(':library')
+  androidTestCompile project(':library')
 }
