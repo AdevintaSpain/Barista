@@ -287,6 +287,6 @@ public class AssertionsTest {
 
   @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withoutId_withoutDrawable() throws Exception {
-      assertDrawable(R.id.image_view_without_image);
+    assertDrawable(R.id.image_view_without_image);
   }
 }
