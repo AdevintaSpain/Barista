@@ -7,7 +7,7 @@ import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_camera.image
+import kotlinx.android.synthetic.main.activity_camera.image_view
 import kotlinx.android.synthetic.main.activity_camera.take_picture
 import java.io.File
 
@@ -23,7 +23,7 @@ class CameraActivity : AppCompatActivity() {
         take_picture.setOnClickListener {
             val uri = getPictureUri()
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             intent.putExtra("return-data", false)
             startActivityForResult(intent, TAKE_PICTURE_REQUEST_CODE)
         }
@@ -31,7 +31,7 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == TAKE_PICTURE_REQUEST_CODE) {
-            Glide.with(this).load(getPictureUri()).into(image)
+            Glide.with(this).load(getPictureUri()).into(image_view)
         }
     }
 
