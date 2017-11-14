@@ -285,12 +285,8 @@ public class AssertionsTest {
     assertDrawable(R.id.image_view);
   }
 
-  @Test
+  @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withoutId_withoutDrawable() throws Exception {
-    try {
       assertDrawable(R.id.image_view_without_image);
-      fail();
-    } catch (Throwable expected) {
-    }
   }
 }
