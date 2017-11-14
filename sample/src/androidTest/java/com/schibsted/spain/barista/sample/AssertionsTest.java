@@ -17,7 +17,6 @@ import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertFocu
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotFocused;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
 import static junit.framework.Assert.fail;
