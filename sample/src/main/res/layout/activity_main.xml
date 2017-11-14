@@ -79,9 +79,15 @@
       android:text="The last button"/>
 
   <ImageView
-      android:id="@+id/image_view"
+      android:id="@+id/image_view_with_image"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:src="@drawable/ic_barista"
+      />
+
+  <ImageView
+      android:id="@+id/image_view_without_image"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       />
 </LinearLayout>

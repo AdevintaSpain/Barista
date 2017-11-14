@@ -17,7 +17,7 @@ class DrawableMatcher(private val expectedId: Int) : TypeSafeMatcher<View>(View:
 
   companion object {
     private val EMPTY = -1
-    private val ANY = -2
+    val ANY = -2
   }
 
   private var resourceName: String? = null
