@@ -10,11 +10,11 @@ import static com.schibsted.spain.barista.intents.BaristaIntentMatchers.captureI
 
 public class BaristaIntents {
 
-  public static void captureIntent() {
-    captureIntent(100, 100);
+  public static void mockAndroidCamera() {
+    mockAndroidCamera(100, 100);
   }
 
-  public static void captureIntent(int width, int height) {
+  public static void mockAndroidCamera(int width, int height) {
     Instrumentation.ActivityResult result = createImageCaptureStub();
     intending(captureImage(width, height)).respondWith(result);
   }
