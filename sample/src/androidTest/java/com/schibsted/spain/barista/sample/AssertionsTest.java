@@ -285,11 +285,6 @@ public class AssertionsTest {
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
-    try {
-      assertDisplayed(R.color.colorAccent, "Dummy text");
-      fail();
-    } catch (BaristaArgumentTypeException expected) {
-    }
   }
 
   @Test
