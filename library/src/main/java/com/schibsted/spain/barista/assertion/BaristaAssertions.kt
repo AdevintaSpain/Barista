@@ -10,10 +10,7 @@ import android.support.test.espresso.NoMatchingViewException
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.contrib.DrawerMatchers.isClosed
-import android.support.test.espresso.contrib.DrawerMatchers.isOpen
 import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.v4.view.GravityCompat
 import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
@@ -135,36 +132,6 @@ object BaristaAssertions {
     fun assertRecyclerViewItemCount(@IdRes recyclerViewId: Int, expectedItemCount: Int) {
         onView(displayedWithId(recyclerViewId)).check(
                 RecyclerViewItemCountAssertion(expectedItemCount))
-    }
-
-    @JvmStatic
-    fun assertDrawerIsOpen(@IdRes id: Int) {
-        assertStartDrawerOpen(id)
-    }
-
-    @JvmStatic
-    fun assertDrawerIsClosed(@IdRes id: Int) {
-        assertStartDrawerClosed(id)
-    }
-
-    @JvmStatic
-    fun assertStartDrawerOpen(@IdRes id: Int) {
-        onView(withId(id)).check(matches(isOpen(GravityCompat.START)))
-    }
-
-    @JvmStatic
-    fun assertStartDrawerClosed(@IdRes id: Int) {
-        onView(withId(id)).check(matches(isClosed(GravityCompat.START)))
-    }
-
-    @JvmStatic
-    fun assertEndDrawerOpen(@IdRes id: Int) {
-        onView(withId(id)).check(matches(isOpen(GravityCompat.END)))
-    }
-
-    @JvmStatic
-    fun assertEndDrawerClosed(@IdRes id: Int) {
-        onView(withId(id)).check(matches(isClosed(GravityCompat.END)))
     }
 
     @JvmStatic

@@ -10,8 +10,8 @@ import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedA
 object BaristaEditTextActions {
 
     @JvmStatic
-    fun writeToEditText(@IdRes id: Int, text: String) {
-        safelyScrollTo(id)
-        onView(displayedAnd(withId(id))).perform(replaceText(text))
+    fun writeTo(@IdRes editTextId: Int, text: String) {
+        safelyScrollTo(editTextId)
+        onView(displayedAnd(withId(editTextId))).perform(replaceText(text))
     }
 }

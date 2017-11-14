@@ -6,20 +6,19 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
-import static com.schibsted.spain.barista.action.BaristaCheckBoxActions.clickCheckBoxItem;
+import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoComplete;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickBack;
 import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNegativeButton;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogNeutralButton;
 import static com.schibsted.spain.barista.action.BaristaDialogActions.clickDialogPositiveButton;
-import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeToEditText;
+import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeTo;
 import static com.schibsted.spain.barista.action.BaristaListActions.clickListItem;
 import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
 import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
 import static com.schibsted.spain.barista.action.BaristaMenuClickActions.clickMenu;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.action.BaristaNavigationDrawerActions.openDrawer;
+import static com.schibsted.spain.barista.action.BaristaDrawerActions.closeDrawer;
+import static com.schibsted.spain.barista.action.BaristaDrawerActions.openDrawer;
 import static com.schibsted.spain.barista.action.BaristaPickerActions.setDateOnPicker;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.action.BaristaRadioButtonActions.clickRadioButtonPosition;
@@ -46,8 +45,8 @@ public class IntroducingBaristaActions {
     clickMenu(R.id.menu_action_1);
 
     // Writing into widgets
-    writeToEditText(R.id.edittext, "A great text");
-    writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
+    writeTo(R.id.edittext, "A great text");
+    writeToAutoComplete(R.id.autocomplete, "Another great text");
 
     // Select items on AdapterViews
     clickListItem(4);
@@ -58,9 +57,7 @@ public class IntroducingBaristaActions {
     // Scroll on AdapterViews
     scrollListToPosition(R.id.recycler, 42);
 
-    // Select items on RadioButtons and CheckBoxes
-    clickCheckBoxItem(R.id.first_item);
-    clickCheckBoxItem("The checkbox text");
+    // Select items on RadioButtons
     clickRadioButtonItem(R.id.radiogroup, R.id.first_item);
     clickRadioButtonItem(R.id.radiogroup, "The radio text");
     clickRadioButtonPosition(R.id.radiogroup, 42);
