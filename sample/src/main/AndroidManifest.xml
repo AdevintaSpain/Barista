@@ -1,33 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.schibsted.spain.barista.sample">
+        package="com.schibsted.spain.barista.sample"
+        >
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CameraActivity">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            >
+        <activity android:name=".SomeViewsWithDifferentVisibilitesActivity">
+        </activity>
+        <activity android:name=".FlowFirstScreen"/>
+        <activity android:name=".FlowSecondScreen"/>
+        <activity android:name=".RadioButtonsActivity"/>
+        <activity android:name=".CheckBoxActivity"/>
+        <activity android:name=".EditTextActivity"/>
+        <activity android:name=".DatePickerActivity"/>
+        <activity android:name=".AutoCompleteTextViewActivity"/>
+        <activity android:name=".SpinnerActivity"/>
+        <activity android:name=".RecyclerViewActivity"/>
+        <activity android:name=".ListViewActivity"/>
+        <activity android:name=".LabelActivity"/>
+        <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
+        <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
+        <activity android:name=".DialogActivity"/>
+        <activity android:name=".PreferencesActivity"/>
+        <activity android:name=".DatabaseActivity"/>
+        <activity android:name=".FileActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SomeViewsWithDifferentVisibilitesActivity" />
-        <activity android:name=".FlowFirstScreen" />
-        <activity android:name=".FlowSecondScreen" />
-        <activity android:name=".RadioButtonsActivity" />
-        <activity android:name=".CheckBoxActivity" />
-        <activity android:name=".EditTextActivity" />
-        <activity android:name=".DatePickerActivity" />
-        <activity android:name=".AutoCompleteTextViewActivity" />
-        <activity android:name=".SpinnerActivity" />
-        <activity android:name=".RecyclerViewActivity" />
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".LabelActivity" />
-        <activity android:name=".ViewPagerActivity" />
+        <activity android:name=".HelloWorldActivity"/>
+        <activity android:name=".WrappedViewActivity"/>
+        <activity android:name=".SwipeRefreshActivity"/>
+        <activity android:name=".MenuActivity"/>
+        <activity
+                android:name=".MenuSupportActionBarActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".NavigationDrawerActivity"
+                android:theme="@style/AppTheme.NoActionBar"
+                />
+        <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
+        <activity android:name=".NestedScrollViewActivity"/>
+        <activity android:name=".RuntimePermissionActivity"/>
+
+        <activity android:name=".CameraActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

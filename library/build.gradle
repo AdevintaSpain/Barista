@@ -1,24 +1,51 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
+apply from: '../config/android-quality.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion compileSdkVersionDeclared
+    buildToolsVersion buildToolsVersionDeclared
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion minSdkVersionDeclared
+        targetSdkVersion compileSdkVersionDeclared
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    compile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+    compile "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
 
-    compile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile('com.android.support.test.espresso:espresso-contrib:2.0') {
-        exclude module: 'support-v4'
-    }
+    compile "com.android.support:support-annotations:$supportLibVersion"
+    compile "com.android.support:support-core-ui:$supportLibVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'pl.pragmatists:JUnitParams:1.1.0'
+    testCompile 'org.assertj:assertj-core:1.7.0'
+    testCompile 'org.mockito:mockito-core:2.8.9'
+}
+
+publish {
+    userOrg = 'schibstedspain'
+    groupId = 'com.schibsted.spain'
+    artifactId = 'barista'
+    publishVersion = baristaVersion
+    desc = 'The guy who serves a great Espresso'
+    website = 'https://github.com/SchibstedSpain/Barista'
+}
+
+// Exclude Kotlin files from Javadoc due to an error generating docs from Kotlin files.
+// More info: https://github.com/novoda/bintray-release/issues/71
+tasks.withType(Javadoc) {
+    excludes = ['**/*.kt']
 }

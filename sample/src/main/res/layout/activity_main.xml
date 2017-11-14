@@ -4,42 +4,84 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/visible_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+  <TextView
+      android:id="@+id/visible_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/hello_world"/>
+  <TextView
+      android:id="@+id/repeated_view_1_gone"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      android:text="@string/repeated"
+      />
+  <TextView
+      android:id="@+id/repeated_view_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/repeated"
+      />
+  <TextView
+      android:id="@+id/repeated_view_3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/repeated"
+      />
 
-    <TextView
-        android:id="@+id/invisible_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/im_invisible"
-        android:visibility="invisible" />
+  <TextView
+      android:id="@+id/invisible_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/im_invisible"
+      android:visibility="invisible"/>
 
-    <TextView
-        android:id="@+id/gone_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="I'm hidden!"
-        android:visibility="gone" />
+  <TextView
+      android:id="@+id/gone_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="I'm hidden!"
+      android:visibility="gone"/>
 
-    <Button
-        android:id="@+id/enabled_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enabled_button" />
+  <CheckBox
+      android:id="@+id/checked_checkbox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/checked_checkbox"
+      android:checked="true"
+      />
 
-    <Button
-        android:id="@+id/disabled_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/disabled_button" />
+  <CheckBox
+      android:id="@+id/unchecked_checkbox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/unchecked_checkbox"
+      android:checked="false"
+      />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The last button" />
+  <Button
+      android:id="@+id/enabled_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/enabled_button"/>
+
+  <Button
+      android:id="@+id/disabled_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:enabled="false"
+      android:text="@string/disabled_button"/>
+
+  <Button
+      android:id="@+id/button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="The last button"/>
+
+  <ImageView
+      android:id="@+id/image_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_barista"
+      />
 </LinearLayout>

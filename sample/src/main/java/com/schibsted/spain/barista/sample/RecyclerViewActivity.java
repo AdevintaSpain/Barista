@@ -13,59 +13,97 @@ import android.widget.TextView;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 
-    private static final String[] FRUITS = {"Banana", "Apple", "Orange", "Raspberry"};
+  private static final String[] FRUITS = {
+      "Apple", "Apricot", "Avocado", "Banana", "Bilberry", "Blackberry", "Blackcurrant",
+      "Blueberry", "Boysenberry", "Currant", "Cherry", "Cherimoya", "Cloudberry", "Coconut",
+      "Cranberry", "Cucumber", "Custardapple", "Damson", "Date", "Dragonfruit", "Durian",
+      "Elderberry", "Feijoa", "Fig", "Gojiberry", "Gooseberry", "Grape", "Raisin",
+      "Grapefruit", "Guava", "Honeyberry", "Huckleberry", "Jabuticaba", "Jackfruit", "Jambul",
+      "Jujube", "Juniperberry", "Kiwifruit", "Kumquat", "Lemon", "Lime", "Loquat",
+      "Longan", "Lychee", "Mango", "Marionberry", "Melon", "Cantaloupe", "Honeydew",
+      "Watermelon", "Miraclefruit", "Mulberry", "Nectarine", "Nance", "Olive", "Orange",
+      "Bloodorange", "Clementine", "Mandarine", "Tangerine", "Papaya", "Passionfruit", "Peach",
+      "Pear", "Persimmon", "Physalis", "Plantain", "Plum", "Prune(driedplum)", "Pineapple",
+      "Plumcot(orPluot)", "Pomegranate", "Pomelo", "Purplemangosteen", "Quince", "Raspberry",
+      "Salmonberry", "Rambutan", "Redcurrant", "Salalberry", "Salak", "Satsuma", "Starfruit",
+      "Solanumquitoense", "Strawberry", "Tamarillo", "Tamarind", "Uglifruit", "Yuzu"
+  };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recyclerview);
+  public static final int DATA_COUNT = FRUITS.length;
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        recyclerView.setHasFixedSize(true);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_recyclerview);
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(new TextAdapter(this, FRUITS));
+    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
+    recyclerView.setHasFixedSize(true);
 
+    LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(mLayoutManager);
+    recyclerView.setAdapter(new TextAdapter(this, FRUITS));
+  }
+
+  public static class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
+    private final Activity activity;
+    private final String[] items;
+
+    TextAdapter(Activity activity, String[] myDataset) {
+      this.activity = activity;
+      items = myDataset.clone();
     }
 
-    public static class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
-        private final Activity activity;
-        private final String[] dataset;
-
-        TextAdapter(Activity activity, String[] myDataset) {
-            this.activity = activity;
-            dataset = myDataset;
-        }
-
-        public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.row_textview, parent, false);
-            return new ViewHolder(v);
-        }
-
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.textView.setText(dataset[position]);
-            holder.textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(activity, LabelActivity.class);
-                    i.putExtra(LabelActivity.EXTRA_TEXT, ((TextView) view).getText().toString());
-                    activity.startActivity(i);
-                }
-            });
-        }
-
-        public int getItemCount() {
-            return dataset.length;
-        }
-
-        static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView textView;
-
-            ViewHolder(TextView v) {
-                super(v);
-                textView = v;
-            }
-        }
+    public TextAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_with_buttons, parent, false);
+      TextView textView = (TextView) root.findViewById(R.id.textview);
+      View yesButton = root.findViewById(R.id.yes);
+      View noButton = root.findViewById(R.id.no);
+      return new ViewHolder(root, textView, yesButton, noButton);
     }
+
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+      holder.textView.setText(items[position]);
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, holder.textView.getText().toString() + " has been clicked");
+          activity.startActivity(i);
+        }
+      });
+      holder.yesButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'yes' has been clicked");
+          activity.startActivity(i);
+        }
+      });
+      holder.noButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(activity, LabelActivity.class);
+          i.putExtra(LabelActivity.EXTRA_TEXT, "'no' has been clicked");
+          activity.startActivity(i);
+        }
+      });
+    }
+
+    public int getItemCount() {
+      return items.length;
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+      TextView textView;
+      View yesButton;
+      View noButton;
+
+      ViewHolder(View root, TextView textView, View yesButton, View noButton) {
+        super(root);
+        this.textView = textView;
+        this.yesButton = yesButton;
+        this.noButton = noButton;
+      }
+    }
+  }
 }

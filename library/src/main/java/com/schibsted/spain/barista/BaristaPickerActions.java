@@ -8,12 +8,13 @@ import org.hamcrest.Matchers;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static com.schibsted.spain.barista.custom.DisplayedMatchers.displayedWithId;
 
 public class BaristaPickerActions {
 
-    public static void setDateOnPicker(int year, int month, int day) {
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(year, month, day));
-        onView(withId(android.R.id.button1)).perform(click());
-    }
+  public static void setDateOnPicker(int year, int month, int day) {
+    onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(
+        PickerActions.setDate(year, month, day));
+    onView(displayedWithId(android.R.id.button1)).perform(click());
+  }
 }

@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+
+<!-- Based on https://github.com/square/java-code-styles -->
+<!-- Modified for Checkstyle v6.7 -->
+
+<module name="Checker">
+    <module name="SuppressionFilter">
+        <property name="file" value="${rootDir}/config/checkstyle/checkstyle-suppressions.xml"/>
+    </module>
+
+    <!-- Reviewed values -->
+    <module name="TreeWalker">
+
+        <!-- Block Checks -->
+        <!-- See http://checkstyle.sf.net/config_blocks.html -->
+        <module name="AvoidNestedBlocks">
+            <property name="allowInSwitchCase" value="true"/>
+        </module>
+        <module name="EmptyBlock"/>
+        <module name="EmptyCatchBlock">
+            <property name="commentFormat" value="Intentionally blank"/>
+            <property name="exceptionVariableName" value="ignore|expected"/>
+        </module>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+
+        <!-- Checks for common coding problems               -->
+        <!-- See http://checkstyle.sf.net/config_coding.html -->
+        <module name="CovariantEquals"/>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+            <property name="setterCanReturnItsClass" value="true"/>
+        </module>
+        <module name="InnerAssignment"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="ModifiedControlVariable"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+
+        <module name="IllegalCatch">
+            <property name="illegalClassNames" value="Exception"/>
+        </module>
+
+        <module name="ParameterAssignment"/>
+        <module name="FallThrough"/>
+        <module name="OneStatementPerLine"/>
+        <module name="OverloadMethodsDeclarationOrder"/>
+
+    </module>
+
+    <!-- Old values -->
+
+    <!--module name="NewlineAtEndOfFile"/-->
+    <module name="FileLength"/>
+    <module name="FileTabCharacter"/>
+
+    <!-- Trailing spaces -->
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <property name="message" value="Line has trailing spaces."/>
+    </module>
+
+    <!-- For each spacing -->
+    <module name="RegexpSingleline">
+        <property name="format" value="^\s*for \(.*?([^ ]:|:[^ ])"/>
+        <property name="message" value="Space needed around ':' character."/>
+    </module>
+
+    <module name="TreeWalker">
+
+        <!-- Checks for Javadoc comments.                     -->
+        <!-- See http://checkstyle.sf.net/config_javadoc.html -->
+        <!--module name="JavadocMethod"/-->
+        <!--module name="JavadocType"/-->
+        <!--module name="JavadocVariable"/-->
+        <!--module name="JavadocStyle"/-->
+
+
+        <!-- Checks for Naming Conventions.                  -->
+        <!-- See http://checkstyle.sf.net/config_naming.html -->
+        <module name="MethodName">
+            <property name="format" value="^[a-z](_?[a-zA-Z0-9]+)*$"/>
+        </module>
+        <module name="PackageName"/>
+        <module name="ParameterName"/>
+        <module name="TypeName"/>
+        <module name="ConstantName"/>
+        <module name="MemberName"/>
+
+        <!-- Checks for imports                              -->
+        <!-- See http://checkstyle.sf.net/config_import.html -->
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport"/>
+        <!-- defaults to sun.* packages -->
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="true"/>
+        </module>
+
+        <!-- Checks for Size Violations.                    -->
+        <!-- See http://checkstyle.sf.net/config_sizes.html -->
+        <module name="LineLength">
+            <property name="max" value="140"/>
+        </module>
+
+        <!--module name="ParameterNumber"/-->
+
+
+        <!-- Checks for whitespace                               -->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+        <module name="GenericWhitespace"/>
+        <module name="EmptyForIteratorPad"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter">
+            <property name="tokens" value="INC"/>
+            <property name="tokens" value="DEC"/>
+            <property name="tokens" value="UNARY_MINUS"/>
+            <property name="tokens" value="UNARY_PLUS"/>
+            <property name="tokens" value="BNOT"/>
+            <property name="tokens" value="LNOT"/>
+            <property name="tokens" value="DOT"/>
+            <property name="tokens" value="ARRAY_DECLARATOR"/>
+            <property name="tokens" value="INDEX_OP"/>
+        </module>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+
+
+        <!-- Modifier Checks                                    -->
+        <!-- See http://checkstyle.sf.net/config_modifiers.html -->
+        <!--module name="ModifierOrder"/-->
+        <module name="RedundantModifier"/>
+
+        <!-- Checks for class design                         -->
+        <!-- See http://checkstyle.sf.net/config_design.html -->
+        <!--module name="DesignForExtension"/-->
+        <!--module name="FinalClass"/-->
+        <!--module name="HideUtilityClassConstructor"/-->
+        <!--module name="InterfaceIsType"/-->
+        <!--module name="VisibilityModifier"/-->
+
+
+        <!-- Miscellaneous other checks.                   -->
+        <!-- See http://checkstyle.sf.net/config_misc.html -->
+        <module name="Indentation">
+            <property name="basicOffset" value="2"/>
+            <property name="caseIndent" value="2"/>
+        </module>
+        <module name="UpperEll"/>
+        <!-- Disabled 'cause we're not going to add Retrolambda to a library project
+        <module name="DescendantToken">
+            <property name="tokens" value="METHOD_CALL"/>
+            <property name="limitedTokens" value="METHOD_DEF"/>
+            <property name="maximumNumber" value="0"/>
+            <property name="maximumMessage" value="Use Java 8 Lambdas!"/>
+        </module>
+        -->
+    </module>
+</module>

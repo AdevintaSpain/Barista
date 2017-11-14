@@ -1,29 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
-    <RadioGroup
-        android:id="@+id/radiogroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+      <RadioGroup
+          android:id="@+id/radiogroup_really_far_away"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="right|bottom"
+          android:layout_marginTop="1000dp"
+          >
 
         <RadioButton
-            android:id="@+id/first_item"
+            android:id="@+id/first_item_really_far_away"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello" />
+            android:text="First far away option"
+            />
 
         <RadioButton
-            android:id="@+id/second_item"
+            android:id="@+id/last_item_really_far_away"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bye bye" />
-    </RadioGroup>
+            android:text="Last far away option"
+            />
+      </RadioGroup>
+    </FrameLayout>
+  </ScrollView>
 
-    <TextView
-        android:id="@+id/selected_item"
+  <RadioGroup
+      android:id="@+id/radiogroup"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      >
+
+    <RadioButton
+        android:id="@+id/first_item"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        />
+
+    <RadioButton
+        android:id="@+id/second_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bye bye"
+        />
+  </RadioGroup>
+
+  <TextView
+      android:id="@+id/selected_item"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="left|bottom"
+      />
+</FrameLayout>
