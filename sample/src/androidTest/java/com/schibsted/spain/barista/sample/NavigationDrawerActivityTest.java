@@ -51,7 +51,7 @@ public class NavigationDrawerActivityTest {
   }
 
   @Test
-  public void openAndCloseDrawerAtRight() {
+  public void openAndCloseDrawerAtEndGravity() {
     openDrawerWithGravity(GravityCompat.END);
     assertDisplayed("right drawer");
     assertDrawerIsOpenWithGravity(GravityCompat.END);
