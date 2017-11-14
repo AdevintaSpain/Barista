@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action;
+package com.schibsted.spain.barista.interaction;
 
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
@@ -9,7 +9,7 @@ import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAssignableFrom;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId;
 
-public class BaristaViewPagerActions {
+public class BaristaViewPagerInteractions {
 
   /*
    * Finds a ViewPager and swipes it forward.

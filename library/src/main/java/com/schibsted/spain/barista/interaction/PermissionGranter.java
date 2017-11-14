@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action;
+package com.schibsted.spain.barista.interaction;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -12,7 +12,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static com.schibsted.spain.barista.action.BaristaSleepActions.sleepThread;
+import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThread;
 
 public class PermissionGranter {
 

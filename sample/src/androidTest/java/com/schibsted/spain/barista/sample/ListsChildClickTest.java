@@ -13,11 +13,11 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
 
 @RunWith(AndroidJUnit4.class)
-public class ListsChildClickActionsTest {
+public class ListsChildClickTest {
 
   @Rule
   public ActivityTestRule<ListsActivity> activity = new ActivityTestRule<>(ListsActivity.class, true, false);

@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class ClickInsideViewPagerTest {

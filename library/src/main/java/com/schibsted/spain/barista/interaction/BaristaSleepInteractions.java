@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action;
+package com.schibsted.spain.barista.interaction;
 
 import com.schibsted.spain.barista.internal.viewaction.SleepViewAction;
 import java.util.concurrent.TimeUnit;
@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 
-public class BaristaSleepActions {
+public class BaristaSleepInteractions {
 
   public static void sleep(long millis) {
     onView(isRoot()).perform(SleepViewAction.sleep(millis));

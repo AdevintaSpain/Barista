@@ -5,7 +5,7 @@ import com.schibsted.spain.barista.rule.cleardata.ClearPreferencesRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 
 public class ClearPreferencesRuleTest {

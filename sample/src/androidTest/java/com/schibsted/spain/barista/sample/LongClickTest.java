@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.action.BaristaClickActions.longClickOn;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.longClickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class LongClickTest {

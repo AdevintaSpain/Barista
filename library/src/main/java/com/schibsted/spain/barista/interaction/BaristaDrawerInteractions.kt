@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action
+package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
@@ -9,7 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 
-object BaristaDrawerActions {
+object BaristaDrawerInteractions {
 
     private const val DEFAULT_GRAVITY = GravityCompat.START
 
