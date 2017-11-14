@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 
+import com.schibsted.spain.barista.exception.BaristaException;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -24,78 +26,78 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaIntentMatchers {
 
-    public static Matcher<Intent> captureImage() {
-        return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), 100, 100);
-    }
+  public static Matcher<Intent> captureImage() {
+    return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), 100, 100);
+  }
 
-    public static Matcher<Intent> captureImage(int width, int height) {
-        return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), width, height);
-    }
+  public static Matcher<Intent> captureImage(int width, int height) {
+    return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), width, height);
+  }
 
-    private static Matcher<Intent> hasAction(final Matcher<String> actionMatcher, final int width, final int height) {
-        checkNotNull(actionMatcher);
+  private static Matcher<Intent> hasAction(final Matcher<String> actionMatcher, final int width, final int height) {
+    checkNotNull(actionMatcher);
 
-        return new TypeSafeMatcher<Intent>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("has action: ");
-                description.appendDescriptionOf(actionMatcher);
+    return new TypeSafeMatcher<Intent>() {
+      @Override
+      public void describeTo(Description description) {
+        description.appendText("has action: ");
+        description.appendDescriptionOf(actionMatcher);
+      }
+
+      @Override
+      public boolean matchesSafely(Intent intent) {
+        if (actionMatcher.matches(intent.getAction())) {
+          Bundle extras = intent.getExtras();
+          if (extras != null) {
+            Uri uri = extras.getParcelable(MediaStore.EXTRA_OUTPUT);
+
+            try {
+              generateBitmapOnGivenUri(uri, width, height);
+            } catch (IOException e) {
+              throw new BaristaException(e.getMessage());
             }
-
-            @Override
-            public boolean matchesSafely(Intent intent) {
-                if (actionMatcher.matches(intent.getAction())) {
-                    Bundle extras = intent.getExtras();
-                    if (extras != null) {
-                        Uri uri = extras.getParcelable(MediaStore.EXTRA_OUTPUT);
-
-                        generateBitmapOnGivenUri(uri, width, height);
-                    }
-                    return true;
-                }
-                return false;
-            }
-        };
-    }
-
-    private static void generateBitmapOnGivenUri(Uri uri, int width, int height) {
-        try {
-            OutputStream stream = InstrumentationRegistry.getTargetContext().getContentResolver().openOutputStream(uri);
-            if (stream != null) {
-                Bitmap bmp = createBitmap(width, height);
-
-                writeBitmap(stream, bmp);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+          }
+          return true;
         }
+        return false;
+      }
+    };
+  }
+
+  private static void generateBitmapOnGivenUri(Uri uri, int width, int height) throws IOException {
+    OutputStream stream = InstrumentationRegistry.getTargetContext().getContentResolver().openOutputStream(uri);
+    if (stream != null) {
+      Bitmap bmp = createBitmap(width, height);
+
+      writeBitmap(stream, bmp);
     }
+  }
 
-    @NonNull
-    private static Bitmap createBitmap(int width, int height) {
-        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
-        Bitmap bmp = Bitmap.createBitmap(width, height, conf);
+  @NonNull
+  private static Bitmap createBitmap(int width, int height) {
+    Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+    Bitmap bmp = Bitmap.createBitmap(width, height, conf);
 
-        Canvas canvas = new Canvas(bmp);
+    Canvas canvas = new Canvas(bmp);
 
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
+    Paint paint = new Paint();
+    paint.setColor(Color.RED);
 
-        int widthPart = width / 10;
-        int heightPart = height / 10;
-        canvas.drawRect(widthPart, heightPart, width - widthPart, height - heightPart, paint);
+    int widthPart = width / 10;
+    int heightPart = height / 10;
+    canvas.drawRect(widthPart, heightPart, width - widthPart, height - heightPart, paint);
 
-        canvas.save();
+    canvas.save();
 
-        return bmp;
-    }
+    return bmp;
+  }
 
-    private static void writeBitmap(OutputStream stream, Bitmap bmp) throws IOException {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] bitmapData = byteArrayOutputStream.toByteArray();
-        stream.write(bitmapData);
-        stream.flush();
-        stream.close();
-    }
+  private static void writeBitmap(OutputStream stream, Bitmap bmp) throws IOException {
+    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+    byte[] bitmapData = byteArrayOutputStream.toByteArray();
+    stream.write(bitmapData);
+    stream.flush();
+    stream.close();
+  }
 }
