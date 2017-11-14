@@ -20,19 +20,19 @@ public class AutoCompleteTextViewTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void checkWriteOnAutocomplete_whenIsVisible() {
+  public void checkWriteOnAutoComplete_whenIsVisible() {
     writeToAutoComplete(R.id.autocomplete, "Apple");
     assertDisplayed("Apple");
   }
 
   @Test
-  public void checkWriteOnAutocomplete_whenScrollIsNeeded() {
+  public void checkWriteOnAutoComplete_whenScrollIsNeeded() {
     writeToAutoComplete(R.id.autocomplete_very_far_away, "Apple");
     assertDisplayed("Apple");
   }
 
   @Test
-  public void checkWriteOnAutocomplete_whenParentIsNotAScrollView() {
+  public void checkWriteOnAutoComplete_whenParentIsNotAScrollView() {
     writeToAutoComplete(R.id.autocomplete_centered, "Hello!");
     assertDisplayed("Hello!");
   }

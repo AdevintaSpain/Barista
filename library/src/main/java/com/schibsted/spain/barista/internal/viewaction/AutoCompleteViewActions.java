@@ -18,8 +18,8 @@ import static org.hamcrest.Matchers.allOf;
 
 public class AutoCompleteViewActions {
 
-  public static ViewAction replaceAutocomplete(@Nonnull String stringToBeSet) {
-    return actionWithAssertions(new ReplaceAutocompleteTextAction(stringToBeSet));
+  public static ViewAction replaceAutoComplete(@Nonnull String stringToBeSet) {
+    return actionWithAssertions(new ReplaceAutoCompleteTextAction(stringToBeSet));
   }
 
   /**
@@ -30,10 +30,10 @@ public class AutoCompleteViewActions {
    * Bear in mind it won't work if you use a custom adapter not extending {@link ArrayAdapter}.
    * <p>
    */
-  public static class ReplaceAutocompleteTextAction implements ViewAction {
+  public static class ReplaceAutoCompleteTextAction implements ViewAction {
     private final String stringToBeSet;
 
-    public ReplaceAutocompleteTextAction(String value) {
+    public ReplaceAutoCompleteTextAction(String value) {
       checkNotNull(value);
       this.stringToBeSet = value;
     }
@@ -46,14 +46,14 @@ public class AutoCompleteViewActions {
 
     @Override
     public void perform(UiController uiController, View view) {
-      AutoCompleteTextView autocomplete = (AutoCompleteTextView) view;
+      AutoCompleteTextView autoComplete = (AutoCompleteTextView) view;
 
-      ArrayAdapter adapter = (ArrayAdapter) autocomplete.getAdapter();
-      autocomplete.setAdapter(null);
+      ArrayAdapter adapter = (ArrayAdapter) autoComplete.getAdapter();
+      autoComplete.setAdapter(null);
 
       ((EditText) view).setText(stringToBeSet);
 
-      autocomplete.setAdapter(adapter);
+      autoComplete.setAdapter(adapter);
     }
 
     @Override
