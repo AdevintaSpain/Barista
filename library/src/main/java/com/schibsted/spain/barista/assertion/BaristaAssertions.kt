@@ -201,4 +201,9 @@ object BaristaAssertions {
     fun assertNotFocused(text: String) {
         onView(withText(text)).check(matches(not(hasFocus())))
     }
+
+    @JvmStatic
+    fun assertText(@IdRes resId: Int, text: String) {
+        onView(resId.resourceMatcher()).check(matches(withText(text)));
+    }
 }
