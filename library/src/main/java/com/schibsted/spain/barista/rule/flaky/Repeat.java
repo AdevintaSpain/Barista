@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 /**
  * It avoids flaky test from passing.
  * <br>
- * This annotation together with {@link FlakyActivityTestRule} repeats the annotated test several times, and makes the test fail if any of
+ * This annotation together with {@link FlakyTestRule} repeats the annotated test several times, and makes the test fail if any of
  * the executions failed. It's the opposite of {@link AllowFlaky}.
  */
 @Retention(RetentionPolicy.RUNTIME)
