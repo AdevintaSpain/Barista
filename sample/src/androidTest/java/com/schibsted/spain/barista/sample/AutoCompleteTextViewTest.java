@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoCompleteTextView;
+import static com.schibsted.spain.barista.action.BaristaAutoCompleteTextViewActions.writeToAutoComplete;
 
 @RunWith(AndroidJUnit4.class)
 public class AutoCompleteTextViewTest {
@@ -20,20 +20,20 @@ public class AutoCompleteTextViewTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void checkWriteOnAutocomplete_whenIsVisible() {
-    writeToAutoCompleteTextView(R.id.autocomplete, "Apple");
+  public void checkWriteOnAutoComplete_whenIsVisible() {
+    writeToAutoComplete(R.id.autocomplete, "Apple");
     assertDisplayed("Apple");
   }
 
   @Test
-  public void checkWriteOnAutocomplete_whenScrollIsNeeded() {
-    writeToAutoCompleteTextView(R.id.autocomplete_very_far_away, "Apple");
+  public void checkWriteOnAutoComplete_whenScrollIsNeeded() {
+    writeToAutoComplete(R.id.autocomplete_very_far_away, "Apple");
     assertDisplayed("Apple");
   }
 
   @Test
-  public void checkWriteOnAutocomplete_whenParentIsNotAScrollView() {
-    writeToAutoCompleteTextView(R.id.autocomplete_centered, "Hello!");
+  public void checkWriteOnAutoComplete_whenParentIsNotAScrollView() {
+    writeToAutoComplete(R.id.autocomplete_centered, "Hello!");
     assertDisplayed("Hello!");
   }
 }
