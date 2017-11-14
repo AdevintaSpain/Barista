@@ -42,7 +42,7 @@ object BaristaAssertions {
 
     @JvmStatic
     fun assertDisplayed(@IdRes resId: Int, text: String) {
-        onView(resId.resourceMatcher()).check(matches(withText(text)));
+        onView(withId(resId)).check(matches(withText(text)))
     }
 
     private fun assertDisplayed(matcher: Matcher<View>) {
