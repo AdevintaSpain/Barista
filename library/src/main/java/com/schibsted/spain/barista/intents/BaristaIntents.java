@@ -10,8 +10,10 @@ import static com.schibsted.spain.barista.intents.BaristaIntentMatchers.captureI
 
 public class BaristaIntents {
 
+  private static final int DEFAULT_SIZE = 100;
+
   public static void mockAndroidCamera() {
-    mockAndroidCamera(100, 100);
+    mockAndroidCamera(DEFAULT_SIZE, DEFAULT_SIZE);
   }
 
   public static void mockAndroidCamera(int width, int height) {
