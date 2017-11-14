@@ -24,11 +24,15 @@ import static org.hamcrest.Matchers.is;
 
 public class BaristaIntentMatchers {
 
-    public static Matcher<Intent> hasAction(final String action) {
-        return hasAction(is(action));
+    public static Matcher<Intent> captureImage() {
+        return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), 100, 100);
     }
 
-    public static Matcher<Intent> hasAction(final Matcher<String> actionMatcher) {
+    public static Matcher<Intent> captureImage(int width, int height) {
+        return hasAction(is(MediaStore.ACTION_IMAGE_CAPTURE), width, height);
+    }
+
+    private static Matcher<Intent> hasAction(final Matcher<String> actionMatcher, final int width, final int height) {
         checkNotNull(actionMatcher);
 
         return new TypeSafeMatcher<Intent>() {
@@ -45,7 +49,7 @@ public class BaristaIntentMatchers {
                     if (extras != null) {
                         Uri uri = extras.getParcelable(MediaStore.EXTRA_OUTPUT);
 
-                        createBitmap(uri);
+                        generateBitmapOnGivenUri(uri, width, height);
                     }
                     return true;
                 }
@@ -54,18 +58,13 @@ public class BaristaIntentMatchers {
         };
     }
 
-    private static void createBitmap(Uri uri) {
+    private static void generateBitmapOnGivenUri(Uri uri, int width, int height) {
         try {
             OutputStream stream = InstrumentationRegistry.getTargetContext().getContentResolver().openOutputStream(uri);
             if (stream != null) {
-                Bitmap bmp = createBitmap();
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                Bitmap bmp = createBitmap(width, height);
 
-                byte[] bitmapData = byteArrayOutputStream.toByteArray();
-                stream.write(bitmapData);
-                stream.flush();
-                stream.close();
+                writeBitmap(stream, bmp);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,14 +72,30 @@ public class BaristaIntentMatchers {
     }
 
     @NonNull
-    private static Bitmap createBitmap() {
+    private static Bitmap createBitmap(int width, int height) {
         Bitmap.Config conf = Bitmap.Config.ARGB_8888;
-        Bitmap bmp = Bitmap.createBitmap(100, 100, conf);
+        Bitmap bmp = Bitmap.createBitmap(width, height, conf);
+
         Canvas canvas = new Canvas(bmp);
+
         Paint paint = new Paint();
         paint.setColor(Color.RED);
-        canvas.drawRect(10, 10, 90, 90, paint);
+
+        int widthPart = width / 10;
+        int heightPart = height / 10;
+        canvas.drawRect(widthPart, heightPart, width - widthPart, height - heightPart, paint);
+
         canvas.save();
+
         return bmp;
+    }
+
+    private static void writeBitmap(OutputStream stream, Bitmap bmp) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] bitmapData = byteArrayOutputStream.toByteArray();
+        stream.write(bitmapData);
+        stream.flush();
+        stream.close();
     }
 }
