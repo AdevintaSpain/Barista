@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
     android:orientation="vertical">
 
     <TextView
@@ -31,8 +32,4 @@
             android:text="No" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/tappingMeDoesntDoNothing"
-        android:layout_width="5dp"
-        android:layout_height="5dp" />
 </LinearLayout>
