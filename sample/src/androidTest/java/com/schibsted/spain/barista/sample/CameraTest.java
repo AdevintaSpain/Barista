@@ -4,14 +4,13 @@ import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.schibsted.spain.barista.BaristaAssertions;
-import com.schibsted.spain.barista.intents.BaristaIntents;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.BaristaClickActions.click;
-import static com.schibsted.spain.barista.intents.BaristaIntents.captureIntent;
+import static com.schibsted.spain.barista.intents.BaristaIntents.mockAndroidCamera;
 
 @RunWith(AndroidJUnit4.class)
 public class CameraTest {
@@ -21,7 +20,7 @@ public class CameraTest {
 
   @Test
   public void takePictureAndShowIt() {
-    BaristaIntents.mockAndroidCamera();
+    mockAndroidCamera();
 
     click(R.id.take_picture);
 
