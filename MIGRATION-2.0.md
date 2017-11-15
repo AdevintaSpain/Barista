@@ -30,7 +30,7 @@ com.schibsted.spain.barista.rule
 - `ListView` or `RecyclerView` id is optional when only one instance of `ListView` or `RecyclerView` is displayed in the hierarchy. ([#146](https://github.com/SchibstedSpain/Barista/pull/146)
 - Drawer id on drawer actions and assertions is optional when only one DrawerLayout is present in the hierarchy. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
 - Drawer actions and assertions allow using non-default gravity with `openDrawerWithGravity()`, `closeDrawerWithGravity()`, `assertDrawerIsOpenWithGravity()` and `assertDrawerIsClosedWithGravity()`. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
-- `SwipeRefreshLayout` id is not optional in `refresh()` method when only one `SwipeRefreshLayout` is present in the hierarchy. ([#150](https://github.com/SchibstedSpain/Barista/pull/150))
+- `SwipeRefreshLayout` id is now optional in `refresh()` method when only one `SwipeRefreshLayout` is present in the hierarchy. ([#150](https://github.com/SchibstedSpain/Barista/pull/150))
 - Added `assertFocused()` and `assertNotFocused()` methods.
 ([#157](https://github.com/SchibstedSpain/Barista/pull/157))
 - Added `assertDisplayed(id, text)` to check some text in a specific view. ([#150](https://github.com/SchibstedSpain/Barista/pull/150))

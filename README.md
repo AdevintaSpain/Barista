@@ -6,13 +6,34 @@
 
 ![Barista logo](art/barista-logo.png)
 
-Espresso is a great tool to test our Android apps via instrumental tests. With them, we can mimic user actions like clicking a button, scrolling a list, selecting an item on a spinner or swiping on a pager. Then, we can assert that a text appears in the screen, an image is visible or invisible, or a button is enabled or not.
+Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
-On the other hand, if you tried Espresso, you’ll agree that its API is not discoverable.
 
-Barista introduces a discoverable API for the Espresso features. So, you and all the Android team will write instrumental tests with no effort.
+# Download
 
-### Barista’s Actions API
+_Pss, hey. Migrating to Barista 2.0? [Check out this guide](MIGRATION-2.0.md) to help you with the transition._
+
+Import Barista as a testing dependency:
+```gradle
+androidTestCompile('com.schibsted.spain:barista:2.0.0') {
+  exclude group: 'com.android.support'
+  exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
+}
+```
+
+You might need to include the Google Maven repository, required by Espresso 3:
+```gradle
+repositories {
+    maven { url "https://maven.google.com" }
+}
+```
+
+
+Barista already includes `espresso-core` and `espresso-contrib`. If you need [any other Espresso package](https://developer.android.com/topic/libraries/testing-support-library/packages.html#atsl-dependencies) you can add them yourself.
+
+# API Overview
+
+## Barista’s Interactions API
 ```java
 // Click widgets
 clickOn(R.id.button);
@@ -25,29 +46,22 @@ longClickOn(R.id.button);
 longClickOn(R.string.button_text);
 longClickOn("Next");
 
-// Click menu items, also overflowed ones
+// Click menu items, with or without overflow
 clickMenu(R.id.menu_item);
 
 // Writing into widgets
 writeTo(R.id.edittext, "A great text");
 writeToAutoComplete(R.id.autocomplete, "Another great text");
 
-// Select items on AdapterViews
-clickListViewItem(R.id.listview, 4);
-clickListViewItem(R.id.listview, 4, 5, 6);
-clickRecyclerViewItem(R.id.recycler, 2);
-clickRecyclerViewItem(R.id.recycler, 2, 3, 4);
-clickRecyclerViewItemChild(R.id.recycler, 3, R.id.button);
-clickRecyclerViewItemChild(R.id.recycler, 3, "Button");
+// Operate on ListViews and RecyclerViews indistinctly by position
+clickListItem(R.id.list, 4);
+scrollListToPosition(R.id.list, 4);
+clickListItemChild(R.id.list, 3, R.id.row_button);
+clickListItemChild(R.id.list, 3, "Button");
 
 clickSpinnerItem(R.id.spinner, 1);
 
-// Scroll on AdapterViews
-scrollTo(R.id.recycler, 42);
-
-// Select items on RadioButtons and CheckBoxes
-clickCheckBoxItem(R.id.checkbox_item);
-clickCheckBoxItem("The checkbox text");
+// Select items on RadioButtons
 clickRadioButtonItem(R.id.radiogroup, R.id.radio_item);
 clickRadioButtonItem(R.id.radiogroup, "The radio text");
 clickRadioButtonPosition(R.id.radiogroup, 42);
@@ -61,27 +75,27 @@ clickDialogNeutralButton();
 clickDialogNegativeButton();
 
 // Scroll on scrolls and pagers
-scrollTo(R.id.button);
-scrollTo(R.string.text);
+scrollTo(R.id.far_away_widget);
 scrollTo("A widget with this text");
 swipeViewPagerForward();
-swipeViewPagerForward(R.id.pager);
 swipeViewPagerBack();
-swipeViewPagerBack(R.id.pager);
 
 // Interact with the navigation drawer
-openDrawer(R.id.drawer);
-closeDrawer(R.id.drawer);
+openDrawer();
+closeDrawer();
+openDrawerWithGravity(Gravity.RIGHT);
+closeDrawerWithGravity(Gravity.RIGHT);
 
 // Pull to refresh in SwipeRefreshLayout
-refresh(R.id.swiperefresh);
+refresh(R.id.swipe_refresh);
+refresh(); // Id is optional! We'll find it for you :D
 
-// And another tricky feature
+// And another tricky feature, but try not to use it
 sleep(2000);
 sleep(2, SECONDS);
 ```
 
-### Barista’s Assertions API
+## Barista’s Assertions API
 ```java
 // Is this view displayed?
 assertDisplayed("Hello world");
@@ -92,6 +106,9 @@ assertDisplayed(R.id.button);
 assertNotDisplayed("Hello world");
 assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
+
+// Is this text displayed in this exact view?
+assertDisplayed(R.id.view, "Hello world")
 
 // Is this view enabled?
 assertEnabled("Hello world");
@@ -113,14 +130,24 @@ assertChecked("Checked checkbox");
 assertChecked(R.string.checked_checkbox);
 assertChecked(R.id.checked_checkbox);
 
-// ...And the other checkbox unchecked?
+// ...and the other checkbox unchecked?
 assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
 
+// Does this view have the focus?
+assertFocused(R.id.focused_view)
+assertFocused("Button")
+
+// ... or not?
+assertFocused(R.id.focused_view)
+assertFocused("Button")
+
 // What's the state of the Drawer?
-assertDrawerIsOpen(R.id.drawer);
-assertDrawerIsClosed(R.id.drawer);
+assertDrawerIsOpen();
+assertDrawerIsClosed();
+assertDrawerIsOpenWithGravity(Gravity.RIGHT);
+assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
 // Check EditText's hints
 assertHint(R.id.edittext, R.string.hint);
@@ -136,7 +163,7 @@ assertThatBackButtonClosesTheApp();
 assertDrawable(R.id.image_view, R.drawable.ic_barista);
 ```
 
-## Dealing with the runtime permissions dialog
+## Runtime Permissions
 
 The new Marshmallow permissions system requires checking for permissions at runtime. As Espresso can't interact with the system dialog, Barista offers a way to allow permissions when needed.
 
@@ -144,17 +171,26 @@ The new Marshmallow permissions system requires checking for permissions at runt
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 ```
 
-## Resetting the app's data before running each test
+## Useful test rules
+Barista includes a set of useful rules test rules to help your tests.
+
+### Reseting app data
 
 As tests should be isolated, they need to set the environment before running. Espresso doesn't help achieving it but Barista offers a set of rules to clear the app's data before running each test.
 
 ```java
-@Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule(); // Clear all app's SharedPreferences
-@Rule public ClearDatabaseRule clearDatabaseRule = new ClearDatabaseRule(); // Delete all tables from all the app's SQLite Databases
-@Rule public ClearFilesRule clearFilesRule = new ClearFilesRule(); // Delete all files in getFilesDir() and getCacheDir()
+// Clear all app's SharedPreferences
+@Rule public ClearPreferencesRule clearPreferencesRule = new ClearPreferencesRule();
+
+// Delete all tables from all the app's SQLite Databases
+@Rule public ClearDatabaseRule clearDatabaseRule = new ClearDatabaseRule();
+
+// Delete all files in getFilesDir() and getCacheDir()
+@Rule public ClearFilesRule clearFilesRule = new ClearFilesRule();
 ```
 
-## Dealing with Flaky tests
+
+### Dealing with Flaky tests
 
 We should try to write deterministic tests, but when everything else fails Barista helps you deal with flaky tests using a specific ActivityTestRule and a couple of annotations that repeat your tests multiple times.
 
@@ -178,7 +214,7 @@ public void some_important_test() throws Exception {
 }
 ```
 
-## One rule to rule them all
+### One rule to rule them all
 
 All previous rules can be added at the same time by just adding the BaristaRule.
 ```java
@@ -199,30 +235,12 @@ The rule assumes some sane defaults:
 - Clear files
 
 
-## Magic that Barista does for you
+# Magic that Barista does for you
 
 In order to speed up testing, Barista keeps in mind some considerations.
 - **Scrolls when needed**: Interacting with Espresso in a `ScrollView` requires you to scroll to each view, which sometimes doesn't work the first time. Also trying to scroll outside a `ScrollView` produces an `Exception`, forcing you to change the test depending on the layout. To keep tests simpler, Barista scrolls automatically before interacting with any `View`, and only does it if needed.
 - **Scrolls on all views**: Barista scrolls on all scrollable views, including `NestedScrollView`. Espresso only handles `ScrollView` and `HorizontalScrollView`, so people need to open questions on [StackOverflow like this](https://stackoverflow.com/questions/35272953/espresso-scrolling-not-working-when-nestedscrollview-or-recyclerview-is-in-coor). Or... just use **Barista**.
 - **Just interacts with displayed Views**: Interacting with `View`s inside a `ViewPager` throws `AmbiguousViewMatcherException`, because the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.
-
-# Download
-
-Include the Google Maven repository, required by Espresso 3:
-```gradle
-repositories {
-    maven { url "https://maven.google.com" }
-}
-```
-
-Finally just import Barista as a testing dependency:
-```gradle
-androidTestCompile('com.schibsted.spain:barista:1.9.0') {
-  exclude group: 'com.android.support'
-}
-```
-
-Barista already includes `espresso-core` and `espresso-contrib`. If you need [any other Espresso package](https://developer.android.com/topic/libraries/testing-support-library/packages.html#atsl-dependencies) you can add them yourself.
 
 # License
 
