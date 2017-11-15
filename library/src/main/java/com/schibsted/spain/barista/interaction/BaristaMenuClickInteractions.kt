@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action
+package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
 import android.support.test.InstrumentationRegistry
@@ -15,7 +15,7 @@ import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.hasToString
 
-object BaristaMenuClickActions {
+object BaristaMenuClickInteractions {
 
     @JvmStatic
     fun clickMenu(@IdRes id: Int) {

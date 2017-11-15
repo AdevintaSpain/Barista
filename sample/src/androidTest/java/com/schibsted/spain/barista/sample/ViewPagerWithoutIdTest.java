@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerBack;
-import static com.schibsted.spain.barista.action.BaristaViewPagerActions.swipeViewPagerForward;
+import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
+import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 
 @RunWith(AndroidJUnit4.class)

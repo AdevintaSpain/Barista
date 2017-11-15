@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
-import static com.schibsted.spain.barista.action.BaristaPickerActions.setDateOnPicker;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
+import static com.schibsted.spain.barista.interaction.BaristaPickerInteractions.setDateOnPicker;
 
 @RunWith(AndroidJUnit4.class)
 public class DatePickerTest {

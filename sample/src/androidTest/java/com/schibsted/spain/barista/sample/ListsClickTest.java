@@ -13,13 +13,13 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.schibsted.spain.barista.action.BaristaListActions.clickListItem;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItem;
 import static com.schibsted.spain.barista.sample.ListsActivity.getComplexListViewTextAt;
 import static com.schibsted.spain.barista.sample.ListsActivity.getRecyclerViewTextAt;
 import static com.schibsted.spain.barista.sample.ListsActivity.getSimpleListViewTextAt;
 
 @RunWith(AndroidJUnit4.class)
-public class ListsClickActionsTest {
+public class ListsClickTest {
 
   @Rule
   public ActivityTestRule<ListsActivity> activity = new ActivityTestRule<>(ListsActivity.class, true, false);

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
-import static com.schibsted.spain.barista.action.BaristaEditTextActions.writeTo;
+import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
 
 @RunWith(AndroidJUnit4.class)
 public class EditTextTest {

@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action
+package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
@@ -15,7 +15,7 @@ import org.hamcrest.Matcher
  * Scrolls in Espresso are not as great as we could except. For that reason, we will try
  * to scroll several times instead of just one.
  */
-object BaristaScrollActions {
+object BaristaScrollInteractions {
 
     // This value has been mathematically calculated and proven to be precisely the exact number of retries needed to always work.
     // Not really, we just tried hundreds of times with different values and this seems to be the best one.

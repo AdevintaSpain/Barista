@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action
+package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
 import android.support.test.InstrumentationRegistry
@@ -22,7 +22,7 @@ import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChi
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
 import org.hamcrest.Matchers.*
 
-object BaristaListActions {
+object BaristaListInteractions {
 
     @JvmStatic
     @JvmOverloads
