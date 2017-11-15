@@ -37,6 +37,11 @@ object BaristaAssertions {
         assertDisplayed(withText(text))
     }
 
+    @JvmStatic
+    fun assertDisplayed(@IdRes resId: Int, text: String) {
+        onView(withId(resId)).check(matches(withText(text)))
+    }
+
     private fun assertDisplayed(matcher: Matcher<View>) {
         val spyFailureHandler = SpyFailureHandler()
         try {
