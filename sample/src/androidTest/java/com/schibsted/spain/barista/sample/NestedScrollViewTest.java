@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.action.BaristaScrollActions.scrollTo;
+import static com.schibsted.spain.barista.interaction.BaristaScrollInteractions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class NestedScrollViewTest {

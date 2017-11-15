@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action;
+package com.schibsted.spain.barista.interaction;
 
 import android.support.test.espresso.contrib.PickerActions;
 import android.widget.DatePicker;
@@ -10,7 +10,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId;
 
-public class BaristaPickerActions {
+public class BaristaPickerInteractions {
 
   public static void setDateOnPicker(int year, int month, int day) {
     onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(

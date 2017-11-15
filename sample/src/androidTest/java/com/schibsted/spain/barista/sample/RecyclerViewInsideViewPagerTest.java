@@ -7,9 +7,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaListActions.clickListItem;
-import static com.schibsted.spain.barista.action.BaristaListActions.clickListItemChild;
-import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItem;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 
 @RunWith(AndroidJUnit4.class)

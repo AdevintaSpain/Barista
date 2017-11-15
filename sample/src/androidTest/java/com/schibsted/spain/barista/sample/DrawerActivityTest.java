@@ -8,10 +8,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaDrawerActions.closeDrawer;
-import static com.schibsted.spain.barista.action.BaristaDrawerActions.closeDrawerWithGravity;
-import static com.schibsted.spain.barista.action.BaristaDrawerActions.openDrawer;
-import static com.schibsted.spain.barista.action.BaristaDrawerActions.openDrawerWithGravity;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawerWithGravity;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawerWithGravity;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
@@ -20,7 +20,7 @@ import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.asse
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpenWithGravity;
 
 @RunWith(AndroidJUnit4.class)
-public class NavigationDrawerActivityTest {
+public class DrawerActivityTest {
 
   @Rule
   public ActivityTestRule<NavigationDrawerActivity> activityRule = new ActivityTestRule<>(NavigationDrawerActivity.class);

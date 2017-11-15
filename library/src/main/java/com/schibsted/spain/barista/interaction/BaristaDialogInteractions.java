@@ -1,8 +1,8 @@
-package com.schibsted.spain.barista.action;
+package com.schibsted.spain.barista.interaction;
 
-import static com.schibsted.spain.barista.action.BaristaClickActions.clickOn;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
-public class BaristaDialogActions {
+public class BaristaDialogInteractions {
 
   public static void clickDialogPositiveButton() {
     clickOn(android.R.id.button1);

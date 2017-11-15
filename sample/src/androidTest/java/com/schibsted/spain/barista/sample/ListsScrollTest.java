@@ -8,14 +8,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.action.BaristaListActions.scrollListToPosition;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
 import static com.schibsted.spain.barista.sample.ListsActivity.FRUITS;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
 
 @RunWith(AndroidJUnit4.class)
-public class ListsScrollActionsTest {
+public class ListsScrollTest {
 
   @Rule
   public ActivityTestRule<ListsActivity> activity = new ActivityTestRule<>(ListsActivity.class, true, false);

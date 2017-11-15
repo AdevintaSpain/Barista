@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.action.BaristaSwipeRefreshActions.refresh;
+import static com.schibsted.spain.barista.interaction.BaristaSwipeRefreshInteractions.refresh;
 
 @RunWith(AndroidJUnit4.class)
 public class SwipeRefreshTest {

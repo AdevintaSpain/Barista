@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.action
+package com.schibsted.spain.barista.interaction
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
@@ -19,7 +19,7 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
 
-object BaristaClickActions {
+object BaristaClickInteractions {
 
     @JvmStatic
     fun clickBack() {
