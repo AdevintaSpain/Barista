@@ -6,7 +6,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
@@ -15,6 +14,7 @@ import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.asse
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
