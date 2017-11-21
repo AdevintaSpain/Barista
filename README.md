@@ -62,6 +62,7 @@ clickDialogNegativeButton();
 
 // Scroll on scrolls and pagers
 scrollTo(R.id.button);
+scrollTo(R.string.text);
 scrollTo("A widget with this text");
 swipeViewPagerForward();
 swipeViewPagerForward(R.id.pager);
@@ -216,7 +217,7 @@ repositories {
 
 Finally just import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:1.8.0') {
+androidTestCompile('com.schibsted.spain:barista:1.9.0') {
   exclude group: 'com.android.support'
 }
 ```
