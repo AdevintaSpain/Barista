@@ -9,9 +9,7 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.isRoot
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
-import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers.withDrawable
-import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import org.junit.Assert.fail
 
 object BaristaAssertions {
@@ -30,11 +28,6 @@ object BaristaAssertions {
         }
     }
 
-    @JvmStatic
-    fun assertRecyclerViewItemCount(@IdRes recyclerViewId: Int, expectedItemCount: Int) {
-        onView(displayedWithId(recyclerViewId)).check(
-                RecyclerViewItemCountAssertion(expectedItemCount))
-    }
 
     @JvmStatic
     fun assertDrawable(@IdRes id: Int, @DrawableRes drawable: Int) {
