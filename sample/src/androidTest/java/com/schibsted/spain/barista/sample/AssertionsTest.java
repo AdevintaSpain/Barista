@@ -9,13 +9,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertFocused;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaFocusAssertions.assertFocused;
+import static com.schibsted.spain.barista.assertion.BaristaFocusAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;

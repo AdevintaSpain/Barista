@@ -12,8 +12,6 @@ import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHand
 import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers.withDrawable
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
-import com.schibsted.spain.barista.internal.util.resourceMatcher
-import org.hamcrest.core.IsNot.not
 import org.junit.Assert.fail
 
 object BaristaAssertions {
@@ -51,25 +49,5 @@ object BaristaAssertions {
     @JvmStatic
     fun assertDrawable(@IdRes id: Int, @DrawableRes drawable: Int) {
         onView(withId(id)).check(matches(withDrawable(drawable)))
-    }
-
-    @JvmStatic
-    fun assertFocused(@IdRes resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(hasFocus()))
-    }
-
-    @JvmStatic
-    fun assertNotFocused(@IdRes resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(not(hasFocus())))
-    }
-
-    @JvmStatic
-    fun assertFocused(text: String) {
-        onView(withText(text)).check(matches(hasFocus()))
-    }
-
-    @JvmStatic
-    fun assertNotFocused(text: String) {
-        onView(withText(text)).check(matches(not(hasFocus())))
     }
 }
