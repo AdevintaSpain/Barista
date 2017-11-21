@@ -19,26 +19,6 @@ import org.junit.Assert.fail
 object BaristaAssertions {
 
     @JvmStatic
-    fun assertChecked(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isChecked()))
-    }
-
-    @JvmStatic
-    fun assertChecked(text: String) {
-        onView(withText(text)).check(matches(isChecked()))
-    }
-
-    @JvmStatic
-    fun assertUnchecked(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isNotChecked()))
-    }
-
-    @JvmStatic
-    fun assertUnchecked(text: String) {
-        onView(withText(text)).check(matches(isNotChecked()))
-    }
-
-    @JvmStatic
     fun assertThatBackButtonClosesTheApp() {
         // Will launch an Exception if it closes the app
         try {
