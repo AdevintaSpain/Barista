@@ -19,26 +19,6 @@ import org.junit.Assert.fail
 object BaristaAssertions {
 
     @JvmStatic
-    fun assertEnabled(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isEnabled()))
-    }
-
-    @JvmStatic
-    fun assertEnabled(text: String) {
-        onView(withText(text)).check(matches(isEnabled()))
-    }
-
-    @JvmStatic
-    fun assertDisabled(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(not(isEnabled())))
-    }
-
-    @JvmStatic
-    fun assertDisabled(text: String) {
-        onView(withText(text)).check(matches(not(isEnabled())))
-    }
-
-    @JvmStatic
     fun assertChecked(resId: Int) {
         onView(resId.resourceMatcher()).check(matches(isChecked()))
     }
