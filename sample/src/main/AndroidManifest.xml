@@ -12,7 +12,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity android:name=".SomeViewsWithDifferentVisibilitesActivity">
+    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity">
     </activity>
     <activity android:name=".FlowFirstScreen"/>
     <activity android:name=".FlowSecondScreen"/>
@@ -22,8 +22,7 @@
     <activity android:name=".DatePickerActivity"/>
     <activity android:name=".AutoCompleteTextViewActivity"/>
     <activity android:name=".SpinnerActivity"/>
-    <activity android:name=".RecyclerViewActivity"/>
-    <activity android:name=".ListViewActivity"/>
+    <activity android:name=".ListsActivity" />
     <activity android:name=".LabelActivity"/>
     <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
     <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>

@@ -15,17 +15,22 @@ Barista introduces a discoverable API for the Espresso features. So, you and all
 ### Barista’s Actions API
 ```java
 // Click widgets
-click(R.id.button);
-click(R.string.button_text);
-click("Next");
+clickOn(R.id.button);
+clickOn(R.string.button_text);
+clickOn("Next");
 clickBack();
+
+// Long click widgets
+longClickOn(R.id.button);
+longClickOn(R.string.button_text);
+longClickOn("Next");
 
 // Click menu items, also overflowed ones
 clickMenu(R.id.menu_item);
 
 // Writing into widgets
-writeToEditText(R.id.edittext, "A great text");
-writeToAutoCompleteTextView(R.id.autocomplete, "Another great text");
+writeTo(R.id.edittext, "A great text");
+writeToAutoComplete(R.id.autocomplete, "Another great text");
 
 // Select items on AdapterViews
 clickListViewItem(R.id.listview, 4);
@@ -57,6 +62,7 @@ clickDialogNegativeButton();
 
 // Scroll on scrolls and pagers
 scrollTo(R.id.button);
+scrollTo(R.string.text);
 scrollTo("A widget with this text");
 swipeViewPagerForward();
 swipeViewPagerForward(R.id.pager);

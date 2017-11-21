@@ -2,18 +2,22 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaSpinnerActions.clickSpinnerItem;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaSpinnerInteractions.clickSpinnerItem;
 
 @RunWith(AndroidJUnit4.class)
 public class SpinnerTest {
 
   @Rule
   public ActivityTestRule<SpinnerActivity> activityRule = new ActivityTestRule<>(SpinnerActivity.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void checkSelectSpinnerPosition_withoutExplicitViewModel() {

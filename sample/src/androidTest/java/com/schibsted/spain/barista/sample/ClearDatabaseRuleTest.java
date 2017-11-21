@@ -1,12 +1,12 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
-import com.schibsted.spain.barista.BaristaClickActions;
-import com.schibsted.spain.barista.cleardata.ClearDatabaseRule;
+import com.schibsted.spain.barista.rule.cleardata.ClearDatabaseRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 
 public class ClearDatabaseRuleTest {
 
@@ -44,6 +44,6 @@ public class ClearDatabaseRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.database_increment_button);
+    clickOn(R.id.database_increment_button);
   }
 }

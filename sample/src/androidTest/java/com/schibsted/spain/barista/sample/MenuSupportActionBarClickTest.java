@@ -2,18 +2,22 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaMenuClickActions.clickMenu;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaMenuClickInteractions.clickMenu;
 
 @RunWith(AndroidJUnit4.class)
 public class MenuSupportActionBarClickTest {
 
   @Rule
   public ActivityTestRule<MenuSupportActionBarActivity> activityRule = new ActivityTestRule<>(MenuSupportActionBarActivity.class);
+
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
   public void checkMenuClick_byId() {

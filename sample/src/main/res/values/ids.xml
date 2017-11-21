@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="listview" type="id" />
+  <item name="listview2" type="id" />
+  <item name="recycler" type="id" />
+  <item name="recycler2" type="id" />
+  <item name="unknown" type="id" />
+</resources>
