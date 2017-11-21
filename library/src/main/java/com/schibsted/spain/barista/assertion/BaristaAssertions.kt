@@ -2,12 +2,12 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
-import android.support.annotation.StringRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.NoActivityResumedException
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isRoot
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
 import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers.withDrawable
@@ -34,16 +34,6 @@ object BaristaAssertions {
     fun assertRecyclerViewItemCount(@IdRes recyclerViewId: Int, expectedItemCount: Int) {
         onView(displayedWithId(recyclerViewId)).check(
                 RecyclerViewItemCountAssertion(expectedItemCount))
-    }
-
-    @JvmStatic
-    fun assertHint(@IdRes id: Int, @StringRes text: Int) {
-        onView(withId(id)).check(matches(withHint(text)))
-    }
-
-    @JvmStatic
-    fun assertHint(@IdRes id: Int, text: String) {
-        onView(withId(id)).check(matches(withHint(text)))
     }
 
     @JvmStatic

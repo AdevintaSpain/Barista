@@ -7,8 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
 import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
 
 @RunWith(AndroidJUnit4.class)
