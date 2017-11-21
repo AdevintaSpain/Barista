@@ -15,23 +15,21 @@
           <ul class="submenu">
             <li class="menu-item -level-1"><a class="link title -active link-index" href="index.html">Barista</a>
             </li>
-            <li class="menu-item -level-1"><a class="link title link-download" href="#download">Download</a>
+            <li class="menu-item -level-1"><a class="link title link-barista's-interactions-api" href="#barista's-interactions-api">Barista’s Interactions API</a>
             </li>
-            <li class="menu-item -level-1 -parent"><a class="link title link-api-overview" href="#api-overview">API Overview</a>
+            <li class="menu-item -level-1"><a class="link title link-barista's-assertions-api" href="#barista's-assertions-api">Barista’s Assertions API</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title link-runtime-permissions" href="#runtime-permissions">Runtime Permissions</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><a class="link title link-useful-test-rules" href="#useful-test-rules">Useful test rules</a>
               <ul class="submenu">
-                <li class="menu-item -level-2"><a class="link title link-actions" href="#actions">Actions</a>
+                <li class="menu-item -level-2"><a class="link title link-reseting-app-data" href="#reseting-app-data">Reseting app data</a>
                 </li>
-                <li class="menu-item -level-2"><a class="link title link-assertions" href="#assertions">Assertions</a>
+                <li class="menu-item -level-2"><a class="link title link-dealing-with-flaky-tests" href="#dealing-with-flaky-tests">Dealing with Flaky tests</a>
                 </li>
-                <li class="menu-item -level-2"><a class="link title link-permission-granter" href="#permission-granter">Permission Granter</a>
-                </li>
-                <li class="menu-item -level-2"><a class="link title link-useful-rules" href="#useful-rules">Useful rules</a>
+                <li class="menu-item -level-2"><a class="link title link-one-rule-to-rule-them-all" href="#one-rule-to-rule-them-all">One rule to rule them all</a>
                 </li>
               </ul>
-            </li>
-            <li class="menu-item -level-1"><a class="link title link-magic-that-barista-does-for-you" href="#magic-that-barista-does-for-you">Magic that Barista does for you</a>
-            </li>
-            <li class="menu-item -level-1"><a class="link title link-license" href="#license">License</a>
             </li>
           </ul>
         </li>
@@ -46,52 +44,49 @@
 <h1 id="barista">Barista</h1>
 <p><strong>The guy who serves a great Espresso</strong></p>
 <p><img src="barista-logo-300.png" alt="Barista logo"></p>
-<p>Espresso is a great tool to test our Android apps via instrumental tests. With them, we can mimic user actions like clicking a button, scrolling a list, selecting an item on a spinner or swiping on a pager. Then, we can assert that a text appears in the screen, an image is visible or invisible, or a button is enabled or not.</p>
-<p>On the other hand, if you tried Espresso, you&#x2019;ll agree that its API is not discoverable.</p>
-<p>Barista introduces a discoverable API for the Espresso features. So, you and all the Android team will write instrumental tests with no effort.</p>
-<h2 id="download">Download</h2>
-<p>Include the Google Maven repository, required by Espresso 3:</p>
+<p>Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.</p>
+<h1 id="download">Download</h1>
+<p><em>Psst, hey. Migrating to Barista 2.0? <a href="https://github.com/SchibstedSpain/Barista/blob/master/MIGRATION-2.0.md">Check out this guide</a> to help you with the transition.</em></p>
+<p>Import Barista as a testing dependency:</p>
+<pre><code class="lang-gradle">androidTestCompile(<span class="pl-s">&apos;com.schibsted.spain:barista:2.0.0&apos;</span>) {
+  <span class="pl-k">exclude</span> <span class="pl-k">group</span>: <span class="pl-s">&apos;com.android.support&apos;</span>
+  <span class="pl-k">exclude</span> <span class="pl-k">group</span>: <span class="pl-s">&apos;org.jetbrains.kotlin&apos;</span> <span class="pl-c">// Only if you already use Kotlin in your project</span>
+}
+</code></pre>
+<p>You might need to include the Google Maven repository, required by Espresso 3:</p>
 <pre><code class="lang-gradle"><span class="pl-k">repositories</span> {
     maven { url <span class="pl-s">&quot;https://maven.google.com&quot;</span> }
 }
 </code></pre>
-<p>Finally just import Barista as a testing dependency:</p>
-<pre><code class="lang-gradle">androidTestCompile(<span class="pl-s">&apos;com.schibsted.spain:barista:1.7.0&apos;</span>) {
-  <span class="pl-k">exclude</span> <span class="pl-k">group</span>: <span class="pl-s">&apos;com.android.support&apos;</span>
-}
-</code></pre>
 <p>Barista already includes <code>espresso-core</code> and <code>espresso-contrib</code>. If you need <a href="https://developer.android.com/topic/libraries/testing-support-library/packages.html#atsl-dependencies">any other Espresso package</a> you can add them yourself.</p>
-<h2 id="api-overview">API Overview</h2>
-<h3 id="actions">Actions</h3>
+<h1 id="api-overview">API Overview</h1>
+<h2 id="barista&apos;s-interactions-api">Barista&#x2019;s Interactions API</h2>
 <pre><code class="lang-java"><span class="pl-c">// Click widgets</span>
-click(R.id.button);
-click(R.string.button_text);
-click(<span class="pl-s">&quot;Next&quot;</span>);
+clickOn(R.id.button);
+clickOn(R.string.button_text);
+clickOn(<span class="pl-s">&quot;Next&quot;</span>);
 clickBack();
 
-<span class="pl-c">// Click menu items, also overflowed ones</span>
+<span class="pl-c">// Long click widgets</span>
+longClickOn(R.id.button);
+longClickOn(R.string.button_text);
+longClickOn(<span class="pl-s">&quot;Next&quot;</span>);
+
+<span class="pl-c">// Click menu items, with or without overflow</span>
 clickMenu(R.id.menu_item);
 
 <span class="pl-c">// Writing into widgets</span>
-writeToEditText(R.id.edittext, <span class="pl-s">&quot;A great text&quot;</span>);
-writeToAutoCompleteTextView(R.id.autocomplete, <span class="pl-s">&quot;Another great text&quot;</span>);
+writeTo(R.id.edittext, <span class="pl-s">&quot;A great text&quot;</span>);
+writeToAutoComplete(R.id.autocomplete, <span class="pl-s">&quot;Another great text&quot;</span>);
 
-<span class="pl-c">// Select items on AdapterViews</span>
-clickListViewItem(R.id.listview, <span class="hljs-number">4</span>);
-clickListViewItem(R.id.listview, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>);
-clickRecyclerViewItem(R.id.recycler, <span class="hljs-number">2</span>);
-clickRecyclerViewItem(R.id.recycler, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
-clickRecyclerViewItemChild(R.id.recycler, <span class="hljs-number">3</span>, R.id.button);
-clickRecyclerViewItemChild(R.id.recycler, <span class="hljs-number">3</span>, <span class="pl-s">&quot;Button&quot;</span>);
+<span class="pl-c">// Operate on ListViews and RecyclerViews indistinctly by position</span>
+clickListItem(R.id.list, <span class="hljs-number">4</span>);
+clickListItemChild(R.id.list, <span class="hljs-number">3</span>, R.id.row_button);
+scrollListToPosition(R.id.list, <span class="hljs-number">4</span>);
 
 clickSpinnerItem(R.id.spinner, <span class="hljs-number">1</span>);
 
-<span class="pl-c">// Scroll on AdapterViews</span>
-scrollTo(R.id.recycler, <span class="hljs-number">42</span>);
-
-<span class="pl-c">// Select items on RadioButtons and CheckBoxes</span>
-clickCheckBoxItem(R.id.checkbox_item);
-clickCheckBoxItem(<span class="pl-s">&quot;The checkbox text&quot;</span>);
+<span class="pl-c">// Select items on RadioButtons</span>
 clickRadioButtonItem(R.id.radiogroup, R.id.radio_item);
 clickRadioButtonItem(R.id.radiogroup, <span class="pl-s">&quot;The radio text&quot;</span>);
 clickRadioButtonPosition(R.id.radiogroup, <span class="hljs-number">42</span>);
@@ -105,34 +100,38 @@ clickDialogNeutralButton();
 clickDialogNegativeButton();
 
 <span class="pl-c">// Scroll on scrolls and pagers</span>
-scrollTo(R.id.button);
+scrollTo(R.id.far_away_widget);
 scrollTo(<span class="pl-s">&quot;A widget with this text&quot;</span>);
 swipeViewPagerForward();
-swipeViewPagerForward(R.id.pager);
 swipeViewPagerBack();
-swipeViewPagerBack(R.id.pager);
 
 <span class="pl-c">// Interact with the navigation drawer</span>
-openDrawer(R.id.drawer);
-closeDrawer(R.id.drawer);
+openDrawer();
+openDrawerWithGravity(Gravity.RIGHT);
+closeDrawer();
+closeDrawerWithGravity(Gravity.RIGHT);
 
 <span class="pl-c">// Pull to refresh in SwipeRefreshLayout</span>
-refresh(R.id.swiperefresh);
+refresh(R.id.swipe_refresh);
+refresh(); <span class="pl-c">// Id is optional! We&apos;ll find it for you :D</span>
 
-<span class="pl-c">// And another tricky feature</span>
+<span class="pl-c">// And another tricky feature, but try not to use it</span>
 sleep(<span class="hljs-number">2000</span>);
 sleep(<span class="hljs-number">2</span>, SECONDS);
 </code></pre>
-<h3 id="assertions">Assertions</h3>
+<h2 id="barista&apos;s-assertions-api">Barista&#x2019;s Assertions API</h2>
 <pre><code class="lang-java"><span class="pl-c">// Is this view displayed?</span>
 assertDisplayed(<span class="pl-s">&quot;Hello world&quot;</span>);
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
+assertDisplayed(R.id.button, <span class="pl-s">&quot;Hello world&quot;</span>)
 
 <span class="pl-c">// ...or not?</span>
 assertNotDisplayed(<span class="pl-s">&quot;Hello world&quot;</span>);
 assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
+assertNotDisplayed(R.id.button, <span class="pl-s">&quot;Hello world&quot;</span>)
+
 
 <span class="pl-c">// Is this view enabled?</span>
 assertEnabled(<span class="pl-s">&quot;Hello world&quot;</span>);
@@ -154,14 +153,24 @@ assertChecked(<span class="pl-s">&quot;Checked checkbox&quot;</span>);
 assertChecked(R.string.checked_checkbox);
 assertChecked(R.id.checked_checkbox);
 
-<span class="pl-c">// ...And the other checkbox unchecked?</span>
+<span class="pl-c">// ...and the other checkbox unchecked?</span>
 assertUnchecked(<span class="pl-s">&quot;Unchecked checkbox&quot;</span>);
 assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
 
+<span class="pl-c">// Does this view have the focus?</span>
+assertFocused(R.id.focused_view)
+assertFocused(<span class="pl-s">&quot;Button&quot;</span>)
+
+<span class="pl-c">// ... or not?</span>
+assertNotFocused(R.id.focused_view)
+assertNotFocused(<span class="pl-s">&quot;Button&quot;</span>)
+
 <span class="pl-c">// What&apos;s the state of the Drawer?</span>
-assertDrawerIsOpen(R.id.drawer);
-assertDrawerIsClosed(R.id.drawer);
+assertDrawerIsOpen();
+assertDrawerIsOpenWithGravity(Gravity.RIGHT);
+assertDrawerIsClosed();
+assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
 <span class="pl-c">// Check EditText&apos;s hints</span>
 assertHint(R.id.edittext, R.string.hint);
@@ -173,16 +182,16 @@ assertRecyclerViewItemCount(R.id.recycler, <span class="hljs-number">10</span>);
 <span class="pl-c">// And another tricky feature</span>
 assertThatBackButtonClosesTheApp();
 
-<span class="pl-c">// Check ImageView&apos;s drawable</span>
-assertDrawable(R.id.image_view, R.mipmap.ic_barista);
+<span class="pl-c">// Is this ImageView showing this drawable?</span>
+assertDrawable(R.id.image_view, R.drawable.ic_barista);
 </code></pre>
-<h3 id="permission-granter">Permission Granter</h3>
+<h2 id="runtime-permissions">Runtime Permissions</h2>
 <p>The new Marshmallow permissions system requires checking for permissions at runtime. As Espresso can&apos;t interact with the system dialog, Barista offers a way to allow permissions when needed.</p>
 <pre><code class="lang-java">PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 </code></pre>
-<h3 id="useful-rules">Useful rules</h3>
-<p>Barista includes a set of useful rules test rules to help your tests.</p>
-<h4 id="reseting-app-data">Reseting app data</h4>
+<h2 id="useful-test-rules">Useful test rules</h2>
+<p>Barista includes a set of useful test rules to help you:</p>
+<h3 id="reseting-app-data">Reseting app data</h3>
 <p>As tests should be isolated, they need to set the environment before running. Espresso doesn&apos;t help achieving it but Barista offers a set of rules to clear the app&apos;s data before running each test.</p>
 <pre><code class="lang-java"><span class="pl-c">// Clear all app&apos;s SharedPreferences</span>
 <span class="hljs-meta">@Rule</span> <span class="pl-k">public</span> ClearPreferencesRule clearPreferencesRule = <span class="pl-k">new</span> ClearPreferencesRule();
@@ -193,11 +202,16 @@ assertDrawable(R.id.image_view, R.mipmap.ic_barista);
 <span class="pl-c">// Delete all files in getFilesDir() and getCacheDir()</span>
 <span class="hljs-meta">@Rule</span> <span class="pl-k">public</span> ClearFilesRule clearFilesRule = <span class="pl-k">new</span> ClearFilesRule();
 </code></pre>
-<h4 id="dealing-with-flaky-test">Dealing with flaky test</h4>
+<h3 id="dealing-with-flaky-tests">Dealing with Flaky tests</h3>
 <p>We should try to write deterministic tests, but when everything else fails Barista helps you deal with flaky tests using a specific ActivityTestRule and a couple of annotations that repeat your tests multiple times.</p>
-<pre><code class="lang-java"><span class="pl-c">// Use this rule instead of Espresso&apos;s ActivityTestRule</span>
+<pre><code class="lang-java"><span class="pl-c">// Use a RuleChain to wrap your ActivityTestRule with a FlakyTestRule</span>
+<span class="pl-k">private</span> ActivityTestRule&lt;FlakyActivity&gt; activityRule = <span class="pl-k">new</span> ActivityTestRule&lt;&gt;(FlakyActivity.class);
+<span class="pl-k">private</span> FlakyTestRule flakyRule = <span class="pl-k">new</span> FlakyTestRule();
+
 <span class="hljs-meta">@Rule</span>
-<span class="pl-k">public</span> FlakyActivityTestRule&lt;FlakyActivity&gt; activityRule = <span class="pl-k">new</span> FlakyActivityTestRule&lt;&gt;(FlakyActivity.class, <span class="pl-k">true</span>, <span class="pl-k">false</span>);
+<span class="pl-k">public</span> RuleChain chain = RuleChain.outerRule(flakyRule)
+    .around(activityRule);
+
 
 <span class="pl-c">// Use @AllowFlaky to let flaky tests pass if they pass any time.</span>
 <span class="hljs-meta">@Test</span>
@@ -209,11 +223,11 @@ assertDrawable(R.id.image_view, R.mipmap.ic_barista);
 <span class="pl-c">// Use @Repeat to avoid flaky tests from passing if any repetition fails.</span>
 <span class="hljs-meta">@Test</span>
 <span class="hljs-meta">@Repeat</span>(times = <span class="hljs-number">5</span>)
-<span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-ent">some_important_deterministic_test</span><span class="hljs-params">()</span> <span class="pl-k">throws</span> Exception </span>{
+<span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-ent">some_important_test</span><span class="hljs-params">()</span> <span class="pl-k">throws</span> Exception </span>{
   <span class="pl-c">// ...</span>
 }
 </code></pre>
-<h4 id="one-rule-to-rule-them-all">One rule to rule them all</h4>
+<h3 id="one-rule-to-rule-them-all">One rule to rule them all</h3>
 <p>All previous rules can be added at the same time by just adding the BaristaRule.</p>
 <pre><code class="lang-java"><span class="hljs-meta">@Rule</span>
 <span class="pl-k">public</span> BaristaRule&lt;MyActivity&gt; baristaRule = BaristaRule.create(MyActivity.class);
@@ -231,14 +245,14 @@ baristaRule.launchActivity();
 <li>Clear databases</li>
 <li>Clear files</li>
 </ul>
-<h2 id="magic-that-barista-does-for-you">Magic that Barista does for you</h2>
+<h1 id="magic-that-barista-does-for-you">Magic that Barista does for you</h1>
 <p>In order to speed up testing, Barista keeps in mind some considerations.</p>
 <ul>
 <li><strong>Scrolls when needed</strong>: Interacting with Espresso in a <code>ScrollView</code> requires you to scroll to each view, which sometimes doesn&apos;t work the first time. Also trying to scroll outside a <code>ScrollView</code> produces an <code>Exception</code>, forcing you to change the test depending on the layout. To keep tests simpler, Barista scrolls automatically before interacting with any <code>View</code>, and only does it if needed.</li>
 <li><strong>Scrolls on all views</strong>: Barista scrolls on all scrollable views, including <code>NestedScrollView</code>. Espresso only handles <code>ScrollView</code> and <code>HorizontalScrollView</code>, so people need to open questions on <a href="https://stackoverflow.com/questions/35272953/espresso-scrolling-not-working-when-nestedscrollview-or-recyclerview-is-in-coor">StackOverflow like this</a>. Or... just use <strong>Barista</strong>.</li>
 <li><strong>Just interacts with displayed Views</strong>: Interacting with <code>View</code>s inside a <code>ViewPager</code> throws <code>AmbiguousViewMatcherException</code>, because the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.</li>
 </ul>
-<h2 id="license">License</h2>
+<h1 id="license">License</h1>
 <pre><code>Copyright 2017 Schibsted Classified Media Spain S.L.
 
 

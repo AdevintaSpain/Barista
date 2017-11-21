@@ -9,46 +9,41 @@
         "slug": "index",
         "headings": [
           {
-            "title": "Download",
+            "title": "Barista’s Interactions API",
             "depth": 2,
-            "id": "download"
+            "id": "barista's-interactions-api"
           },
           {
-            "title": "API Overview",
+            "title": "Barista’s Assertions API",
             "depth": 2,
-            "id": "api-overview",
+            "id": "barista's-assertions-api"
+          },
+          {
+            "title": "Runtime Permissions",
+            "depth": 2,
+            "id": "runtime-permissions"
+          },
+          {
+            "title": "Useful test rules",
+            "depth": 2,
+            "id": "useful-test-rules",
             "headings": [
               {
-                "title": "Actions",
+                "title": "Reseting app data",
                 "depth": 3,
-                "id": "actions"
+                "id": "reseting-app-data"
               },
               {
-                "title": "Assertions",
+                "title": "Dealing with Flaky tests",
                 "depth": 3,
-                "id": "assertions"
+                "id": "dealing-with-flaky-tests"
               },
               {
-                "title": "Permission Granter",
+                "title": "One rule to rule them all",
                 "depth": 3,
-                "id": "permission-granter"
-              },
-              {
-                "title": "Useful rules",
-                "depth": 3,
-                "id": "useful-rules"
+                "id": "one-rule-to-rule-them-all"
               }
             ]
-          },
-          {
-            "title": "Magic that Barista does for you",
-            "depth": 2,
-            "id": "magic-that-barista-does-for-you"
-          },
-          {
-            "title": "License",
-            "depth": 2,
-            "id": "license"
           }
         ]
       }
@@ -62,46 +57,41 @@
       "slug": "index",
       "headings": [
         {
-          "title": "Download",
+          "title": "Barista’s Interactions API",
           "depth": 2,
-          "id": "download"
+          "id": "barista's-interactions-api"
         },
         {
-          "title": "API Overview",
+          "title": "Barista’s Assertions API",
           "depth": 2,
-          "id": "api-overview",
+          "id": "barista's-assertions-api"
+        },
+        {
+          "title": "Runtime Permissions",
+          "depth": 2,
+          "id": "runtime-permissions"
+        },
+        {
+          "title": "Useful test rules",
+          "depth": 2,
+          "id": "useful-test-rules",
           "headings": [
             {
-              "title": "Actions",
+              "title": "Reseting app data",
               "depth": 3,
-              "id": "actions"
+              "id": "reseting-app-data"
             },
             {
-              "title": "Assertions",
+              "title": "Dealing with Flaky tests",
               "depth": 3,
-              "id": "assertions"
+              "id": "dealing-with-flaky-tests"
             },
             {
-              "title": "Permission Granter",
+              "title": "One rule to rule them all",
               "depth": 3,
-              "id": "permission-granter"
-            },
-            {
-              "title": "Useful rules",
-              "depth": 3,
-              "id": "useful-rules"
+              "id": "one-rule-to-rule-them-all"
             }
           ]
-        },
-        {
-          "title": "Magic that Barista does for you",
-          "depth": 2,
-          "id": "magic-that-barista-does-for-you"
-        },
-        {
-          "title": "License",
-          "depth": 2,
-          "id": "license"
         }
       ]
     }
