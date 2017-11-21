@@ -195,9 +195,14 @@ As tests should be isolated, they need to set the environment before running. Es
 We should try to write deterministic tests, but when everything else fails Barista helps you deal with flaky tests using a specific ActivityTestRule and a couple of annotations that repeat your tests multiple times.
 
 ```java
-// Use this rule instead of Espresso's ActivityTestRule
+// Use a RuleChain to wrap your ActivityTestRule with a FlakyTestRule
+private ActivityTestRule<FlakyActivity> activityRule = new ActivityTestRule<>(FlakyActivity.class);
+private FlakyTestRule flakyRule = new FlakyTestRule();
+
 @Rule
-public FlakyActivityTestRule<FlakyActivity> activityRule = new FlakyActivityTestRule<>(FlakyActivity.class, true, false);
+public RuleChain chain = RuleChain.outerRule(flakyRule)
+    .around(activityRule);
+
 
 // Use @AllowFlaky to let flaky tests pass if they pass any time.
 @Test
