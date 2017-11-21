@@ -24,67 +24,67 @@ public class ScrollsTest {
 
   @Test
   public void scrollsInsideScrollable_byId() {
-    assertPageUnscrolled();
+    assertTopVisible();
     scrollTo(R.id.really_far_away_button);
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test
   public void scrollsInsideScrollable_byHardcodedText() {
-    assertPageUnscrolled();
+    assertTopVisible();
     scrollTo("Really far away button");
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test
   public void scrollsInsideScrollable_byTextResource() {
-    assertPageUnscrolled();
+    assertTopVisible();
     scrollTo(R.string.really_far_away_button);
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test(expected = BaristaException.class)
   public void scrollsOutsideScrollableFails() throws Exception {
-    assertPageUnscrolled();
+    assertTopVisible();
     scrollTo(R.id.centered_button);
-    assertPageUnscrolled();
+    assertTopVisible();
   }
 
   @Test
   public void safelyScrollsInsideScrollable_byId() throws Exception {
-    assertPageUnscrolled();
+    assertTopVisible();
     safelyScrollTo(R.id.really_far_away_button);
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test
   public void safelyScrollsInsideScrollable_byHardcodedText() throws Exception {
-    assertPageUnscrolled();
+    assertTopVisible();
     safelyScrollTo("Really far away button");
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test
   public void safelyScrollsInsideScrollable_byTextResource() throws Exception {
-    assertPageUnscrolled();
+    assertTopVisible();
     safelyScrollTo(R.string.really_far_away_button);
-    assertPageSuccessfullyScrolled();
+    assertBottomVisible();
   }
 
   @Test
   public void safelyScrollOutsideScrollableDoesNotFail() throws Exception {
-    assertPageUnscrolled();
+    assertTopVisible();
     safelyScrollTo(R.id.centered_button);
-    assertPageUnscrolled();
+    assertTopVisible();
   }
 
-  private void assertPageSuccessfullyScrolled() {
-    assertNotDisplayed("Hi! I'm the first screen!");
-    assertDisplayed("Really far away button");
-  }
-
-  private void assertPageUnscrolled() {
+  private void assertTopVisible() {
     assertDisplayed("Hi! I'm the first screen!");
     assertNotDisplayed("Really far away button");
+  }
+
+  private void assertBottomVisible() {
+    assertNotDisplayed("Hi! I'm the first screen!");
+    assertDisplayed("Really far away button");
   }
 }
