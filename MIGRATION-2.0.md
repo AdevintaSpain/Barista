@@ -20,7 +20,7 @@ com.schibsted.spain.barista.rule
 - `writeToEditText()` method has been renamed to `writeTo()`. ([#140](https://github.com/SchibstedSpain/Barista/issues/140))
 - `writeToAutoCompleteTextView()` method has been renamed to `writeToAutoComplete()`. ([#140](https://github.com/SchibstedSpain/Barista/issues/140))
 - `clickCheckBoxItem()` methods have been deleted. Use `clickOn()` instead. ([#140](https://github.com/SchibstedSpain/Barista/issues/140))
-- `ListView` and `RecyclerView` actions have been merged into `ListActions` with these common methods ([#146](https://github.com/SchibstedSpain/Barista/issues/146)):
+- `ListView` and `RecyclerView` actions have been merged into `ListInteractions` with these common methods ([#146](https://github.com/SchibstedSpain/Barista/issues/146)):
   - `clickListItem(listId, position)`
   - `clickListItemChild(listId, position, childId)`
   - `scrollListToPosition(listId, position)`
@@ -28,8 +28,8 @@ com.schibsted.spain.barista.rule
 ## New features
 - `ListView` and `RecyclerView` methods are the same. No need to use different method depending on the implementation. ([#146](https://github.com/SchibstedSpain/Barista/pull/146))
 - `ListView` or `RecyclerView` id is optional when only one instance of `ListView` or `RecyclerView` is displayed in the hierarchy. ([#146](https://github.com/SchibstedSpain/Barista/pull/146))
-- Drawer id on drawer actions and assertions is optional when only one DrawerLayout is present in the hierarchy. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
-- Drawer actions and assertions allow using non-default gravity with `openDrawerWithGravity()`, `closeDrawerWithGravity()`, `assertDrawerIsOpenWithGravity()` and `assertDrawerIsClosedWithGravity()`. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
+- Drawer id on drawer interactions and assertions is optional when only one DrawerLayout is present in the hierarchy. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
+- Drawer interactions and assertions allow using non-default gravity with `openDrawerWithGravity()`, `closeDrawerWithGravity()`, `assertDrawerIsOpenWithGravity()` and `assertDrawerIsClosedWithGravity()`. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
 - `SwipeRefreshLayout` id is now optional in `refresh()` method when only one `SwipeRefreshLayout` is present in the hierarchy. ([#150](https://github.com/SchibstedSpain/Barista/pull/150))
 - Added `assertFocused()` and `assertNotFocused()` methods.
 ([#157](https://github.com/SchibstedSpain/Barista/pull/157))
