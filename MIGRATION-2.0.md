@@ -22,12 +22,12 @@ com.schibsted.spain.barista.rule
 - `clickCheckBoxItem()` methods have been deleted. Use `clickOn()` instead. ([#140](https://github.com/SchibstedSpain/Barista/issues/140))
 - `ListView` and `RecyclerView` actions have been merged into `ListActions` with these common methods ([#146](https://github.com/SchibstedSpain/Barista/issues/146)):
   - `clickListItem(listId, position)`
-  - `scrollListToPosition(listId, position)`
   - `clickListItemChild(listId, position, childId)`
+  - `scrollListToPosition(listId, position)`
 
 ## New features
 - `ListView` and `RecyclerView` methods are the same. No need to use different method depending on the implementation. ([#146](https://github.com/SchibstedSpain/Barista/pull/146))
-- `ListView` or `RecyclerView` id is optional when only one instance of `ListView` or `RecyclerView` is displayed in the hierarchy. ([#146](https://github.com/SchibstedSpain/Barista/pull/146)
+- `ListView` or `RecyclerView` id is optional when only one instance of `ListView` or `RecyclerView` is displayed in the hierarchy. ([#146](https://github.com/SchibstedSpain/Barista/pull/146))
 - Drawer id on drawer actions and assertions is optional when only one DrawerLayout is present in the hierarchy. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
 - Drawer actions and assertions allow using non-default gravity with `openDrawerWithGravity()`, `closeDrawerWithGravity()`, `assertDrawerIsOpenWithGravity()` and `assertDrawerIsClosedWithGravity()`. ([#161](https://github.com/SchibstedSpain/Barista/pull/161))
 - `SwipeRefreshLayout` id is now optional in `refresh()` method when only one `SwipeRefreshLayout` is present in the hierarchy. ([#150](https://github.com/SchibstedSpain/Barista/pull/150))
@@ -40,4 +40,4 @@ com.schibsted.spain.barista.rule
 
 #### Error handling
 - Espresso's FailureHandler is not invoked anymore while Barista attempts to do its magic. It will only receive errors that actually make your test fail. This means you can use a custom FailureHandler for things like taking screenshots upon failures. ([#134](https://github.com/SchibstedSpain/Barista/pull/134))
-- We also improved some error messages when things go wrong, so you don't need to decipher what they mean. If you find any message that doesn't make much sense, open en issue!
+- We also improved some error messages when things go wrong, so you don't need to decipher what they mean. If you find any message that doesn't make much sense, open an issue!

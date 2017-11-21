@@ -55,9 +55,8 @@ writeToAutoComplete(R.id.autocomplete, "Another great text");
 
 // Operate on ListViews and RecyclerViews indistinctly by position
 clickListItem(R.id.list, 4);
-scrollListToPosition(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
-clickListItemChild(R.id.list, 3, "Button");
+scrollListToPosition(R.id.list, 4);
 
 clickSpinnerItem(R.id.spinner, 1);
 
@@ -82,8 +81,8 @@ swipeViewPagerBack();
 
 // Interact with the navigation drawer
 openDrawer();
-closeDrawer();
 openDrawerWithGravity(Gravity.RIGHT);
+closeDrawer();
 closeDrawerWithGravity(Gravity.RIGHT);
 
 // Pull to refresh in SwipeRefreshLayout
@@ -101,14 +100,14 @@ sleep(2, SECONDS);
 assertDisplayed("Hello world");
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
+assertDisplayed(R.id.button, "Hello world")
 
 // ...or not?
 assertNotDisplayed("Hello world");
 assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
+assertNotDisplayed(R.id.button, "Hello world")
 
-// Is this text displayed in this exact view?
-assertDisplayed(R.id.view, "Hello world")
 
 // Is this view enabled?
 assertEnabled("Hello world");
@@ -140,13 +139,13 @@ assertFocused(R.id.focused_view)
 assertFocused("Button")
 
 // ... or not?
-assertFocused(R.id.focused_view)
-assertFocused("Button")
+assertNotFocused(R.id.focused_view)
+assertNotFocused("Button")
 
 // What's the state of the Drawer?
 assertDrawerIsOpen();
-assertDrawerIsClosed();
 assertDrawerIsOpenWithGravity(Gravity.RIGHT);
+assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
 // Check EditText's hints
@@ -172,7 +171,7 @@ PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 ```
 
 ## Useful test rules
-Barista includes a set of useful rules test rules to help your tests.
+Barista includes a set of useful test rules to help you:
 
 ### Reseting app data
 
