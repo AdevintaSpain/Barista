@@ -13,8 +13,8 @@ import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
-import static com.schibsted.spain.barista.assertion.BaristaFocusAssertions.assertFocused;
-import static com.schibsted.spain.barista.assertion.BaristaFocusAssertions.assertNotFocused;
+import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
+import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;

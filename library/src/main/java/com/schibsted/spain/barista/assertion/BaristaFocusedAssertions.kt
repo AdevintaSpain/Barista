@@ -8,7 +8,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.core.IsNot.not
 
-object BaristaFocusAssertions {
+object BaristaFocusedAssertions {
 
     @JvmStatic
     fun assertFocused(@IdRes resId: Int) {
