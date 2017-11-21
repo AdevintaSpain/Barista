@@ -17,24 +17,33 @@ public class ScrollsTest {
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
 
   @Test
-  public void checkScrollByText() {
-    assertDisplayed("Hi! I'm the first screen!");
-    assertNotDisplayed("Really far away button");
-
+  public void checkScrollByHardcodedText() {
+    assertPageUnscrolled();
     scrollTo("Really far away button");
+    assertPageSuccessfullyScrolled();
+  }
 
-    assertNotDisplayed("Hi! I'm the first screen!");
-    assertDisplayed("Really far away button");
+  @Test
+  public void checkScrollByTextResource() {
+    assertPageUnscrolled();
+    scrollTo(R.string.really_far_away_button);
+    assertPageSuccessfullyScrolled();
   }
 
   @Test
   public void checkScrollById() {
-    assertDisplayed("Hi! I'm the first screen!");
-    assertNotDisplayed("Really far away button");
-
+    assertPageUnscrolled();
     scrollTo(R.id.really_far_away_button);
+    assertPageSuccessfullyScrolled();
+  }
 
+  private void assertPageSuccessfullyScrolled() {
     assertNotDisplayed("Hi! I'm the first screen!");
     assertDisplayed("Really far away button");
+  }
+
+  private void assertPageUnscrolled() {
+    assertDisplayed("Hi! I'm the first screen!");
+    assertNotDisplayed("Really far away button");
   }
 }

@@ -57,6 +57,7 @@ clickDialogNegativeButton();
 
 // Scroll on scrolls and pagers
 scrollTo(R.id.button);
+scrollTo(R.string.text);
 scrollTo("A widget with this text");
 swipeViewPagerForward();
 swipeViewPagerForward(R.id.pager);
