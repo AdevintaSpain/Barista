@@ -8,12 +8,12 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertChecked;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisabled;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;

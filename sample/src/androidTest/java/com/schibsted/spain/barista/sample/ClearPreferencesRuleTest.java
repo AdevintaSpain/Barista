@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 
 public class ClearPreferencesRuleTest {
 
