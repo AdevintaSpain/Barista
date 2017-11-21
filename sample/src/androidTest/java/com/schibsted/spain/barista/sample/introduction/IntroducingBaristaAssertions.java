@@ -6,19 +6,19 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertChecked;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisabled;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertEnabled;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertHint;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotExist;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
+import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpen;
+import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
+import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 
 @RunWith(AndroidJUnit4.class)
 public class IntroducingBaristaAssertions {
