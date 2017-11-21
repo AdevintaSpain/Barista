@@ -311,7 +311,7 @@ public class AssertionsTest {
   public void checkDrawable_withoutId_withoutDrawable() throws Exception {
     assertDrawable(R.id.image_view_without_image);
   }
-  
+
   @Test
   public void checkViewHasFocus() throws Exception {
     assertFocused(R.id.edittext_with_focus);
