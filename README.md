@@ -158,8 +158,12 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
 
-// Is this ImageView showing this drawable?
-assertDrawable(R.id.image_view, R.drawable.ic_barista);
+// Is this ImageView showing a drawable?
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoDrawable(R.id.image_view);
 ```
 
 ## Runtime Permissions

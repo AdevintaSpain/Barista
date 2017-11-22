@@ -3,6 +3,7 @@ package com.schibsted.spain.barista.internal.matcher
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
 import com.schibsted.spain.barista.internal.util.BitmapComparator
@@ -13,11 +14,20 @@ import org.hamcrest.TypeSafeMatcher
  * Thanks Daniele Bottillo!
  * https://medium.com/@dbottillo/android-ui-test-espresso-matcher-for-imageview-1a28c832626f
  */
-class DrawableMatcher(private val expectedId: Int) : TypeSafeMatcher<View>(View::class.java) {
+class DrawableMatcher private constructor(@DrawableRes private val expectedDrawableRes: Int) : TypeSafeMatcher<View>(View::class.java) {
 
   companion object {
-    private val EMPTY = -1
-    private val ANY = -2
+    private const val EMPTY = -1
+    private const val ANY = -2
+
+    @JvmStatic
+    fun withDrawable(@DrawableRes resourceId: Int) = DrawableMatcher(resourceId)
+
+    @JvmStatic
+    fun withAnyDrawable() = DrawableMatcher(ANY)
+
+    @JvmStatic
+    fun withoutDrawable() = DrawableMatcher(EMPTY)
   }
 
   private var resourceName: String? = null
@@ -27,15 +37,15 @@ class DrawableMatcher(private val expectedId: Int) : TypeSafeMatcher<View>(View:
       return false
     }
     val imageView = target
-    if (expectedId == EMPTY) {
+    if (expectedDrawableRes == EMPTY) {
       return imageView.drawable == null
     }
-    if (expectedId == ANY) {
+    if (expectedDrawableRes == ANY) {
       return imageView.drawable != null
     }
     val resources = target.context.resources
-    val expectedDrawable = resources.getDrawable(expectedId)
-    resourceName = resources.getResourceEntryName(expectedId)
+    val expectedDrawable = resources.getDrawable(expectedDrawableRes)
+    resourceName = resources.getResourceEntryName(expectedDrawableRes)
 
     if (expectedDrawable == null) {
       return false
@@ -60,7 +70,7 @@ class DrawableMatcher(private val expectedId: Int) : TypeSafeMatcher<View>(View:
 
   override fun describeTo(description: Description) {
     description.appendText("with drawable from resource id: ")
-    description.appendValue(expectedId)
+    description.appendValue(expectedDrawableRes)
     if (resourceName != null) {
       description.appendText("[")
       description.appendText(resourceName)
