@@ -16,6 +16,7 @@ import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertWithoutDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
@@ -310,6 +311,16 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withAnyDrawable_failure() throws Exception {
     assertDrawable(R.id.image_view_without_image);
+  }
+
+  @Test
+  public void checkDrawable_withoutDrawable() throws Exception {
+    assertWithoutDrawable(R.id.image_view_without_image);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDrawable_withoutDrawable_failure() throws Exception {
+    assertWithoutDrawable(R.id.image_view);
   }
 
   @Test

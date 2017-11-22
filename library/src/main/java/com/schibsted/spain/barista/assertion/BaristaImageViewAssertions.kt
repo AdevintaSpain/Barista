@@ -5,7 +5,6 @@ import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
-import com.schibsted.spain.barista.internal.matcher.DrawableMatcher
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers
 
 object BaristaImageViewAssertions {
@@ -17,7 +16,11 @@ object BaristaImageViewAssertions {
 
     @JvmStatic
     fun assertDrawable(@IdRes id: Int) {
-        onView(withId(id)).check(matches(DrawableMatchers.withDrawable(DrawableMatcher.ANY)))
+        onView(withId(id)).check(matches(DrawableMatchers.withAnyDrawable()))
     }
 
+    @JvmStatic
+    fun assertWithoutDrawable(@IdRes id: Int) {
+        onView(withId(id)).check(matches(DrawableMatchers.withoutDrawable()))
+    }
 }
