@@ -293,22 +293,22 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkDrawable_withId_withSameDrawable() throws Exception {
+  public void checkDrawable_withId() throws Exception {
     assertDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
   @Test(expected = AssertionFailedError.class)
-  public void checkDrawable_withId_withDifferentDrawable() throws Exception {
+  public void checkDrawable_withId_failure() throws Exception {
     assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
   }
 
   @Test
-  public void checkDrawable_withoutId_withDrawable() throws Exception {
+  public void checkDrawable_withAnyDrawable() throws Exception {
     assertDrawable(R.id.image_view);
   }
 
   @Test(expected = AssertionFailedError.class)
-  public void checkDrawable_withoutId_withoutDrawable() throws Exception {
+  public void checkDrawable_withAnyDrawable_failure() throws Exception {
     assertDrawable(R.id.image_view_without_image);
   }
 
