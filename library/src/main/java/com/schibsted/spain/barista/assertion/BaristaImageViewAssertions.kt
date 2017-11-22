@@ -10,17 +10,17 @@ import com.schibsted.spain.barista.internal.matcher.DrawableMatchers
 object BaristaImageViewAssertions {
 
     @JvmStatic
-    fun assertHasDrawable(@IdRes id: Int, @DrawableRes drawable: Int) {
-        onView(withId(id)).check(matches(DrawableMatchers.withDrawable(drawable)))
+    fun assertHasDrawable(@IdRes imageViewId: Int, @DrawableRes drawable: Int) {
+        onView(withId(imageViewId)).check(matches(DrawableMatchers.withDrawable(drawable)))
     }
 
     @JvmStatic
-    fun assertHasAnyDrawable(@IdRes id: Int) {
-        onView(withId(id)).check(matches(DrawableMatchers.withAnyDrawable()))
+    fun assertHasAnyDrawable(@IdRes imageViewId: Int) {
+        onView(withId(imageViewId)).check(matches(DrawableMatchers.withAnyDrawable()))
     }
 
     @JvmStatic
-    fun assertHasNoDrawable(@IdRes id: Int) {
-        onView(withId(id)).check(matches(DrawableMatchers.withoutDrawable()))
+    fun assertHasNoDrawable(@IdRes imageViewId: Int) {
+        onView(withId(imageViewId)).check(matches(DrawableMatchers.withoutDrawable()))
     }
 }
