@@ -21,8 +21,8 @@ object BaristaScrollInteractions {
     private val MAX_SCROLL_ATTEMPTS = 50
 
     @JvmStatic
-    fun scrollTo(id: Int) {
-        scrollWithMultipleAttempts(id.resourceMatcher(), failAtEnd = true)
+    fun scrollTo(resId: Int) {
+        scrollWithMultipleAttempts(resId.resourceMatcher(), failAtEnd = true)
     }
 
     @JvmStatic
