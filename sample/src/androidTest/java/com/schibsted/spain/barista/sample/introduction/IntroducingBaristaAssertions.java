@@ -1,6 +1,7 @@
 package com.schibsted.spain.barista.sample.introduction;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.schibsted.spain.barista.assertion.BaristaImageViewAssertions;
 import com.schibsted.spain.barista.sample.R;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -14,7 +15,7 @@ import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.asse
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
-import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
@@ -76,7 +77,7 @@ public class IntroducingBaristaAssertions {
     assertThatBackButtonClosesTheApp();
 
     // Is this ImageView showing a drawable?
-    assertDrawable(R.id.image_view);
-    assertDrawable(R.id.image_view, R.drawable.ic_barista);
+    assertHasAnyDrawable(R.id.image_view);
+    BaristaImageViewAssertions.assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 }

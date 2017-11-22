@@ -133,11 +133,11 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 assertThatBackButtonClosesTheApp();
 
 // Is this ImageView showing a drawable?
-assertDrawable(R.id.image_view);
-assertDrawable(R.id.image_view, R.drawable.ic_barista);
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
 
 // ...or not?
-assertWithoutDrawable(R.id.image_view);
+assertHasNoDrawable(R.id.image_view);
 ```
 
 ## Dealing with the runtime permissions dialog
