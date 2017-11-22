@@ -54,8 +54,6 @@ public class ScrollsTest {
     assertTopVisible();
 
     scrollTo(R.id.centered_button);
-
-    assertTopVisible();
   }
 
   @Test
