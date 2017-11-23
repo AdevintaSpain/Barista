@@ -142,6 +142,13 @@ assertFocused("Button")
 assertNotFocused(R.id.focused_view)
 assertNotFocused("Button")
 
+// Is this ImageView showing a drawable?
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoDrawable(R.id.image_view);
+
 // What's the state of the Drawer?
 assertDrawerIsOpen();
 assertDrawerIsOpenWithGravity(Gravity.RIGHT);
@@ -157,13 +164,6 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
-
-// Is this ImageView showing a drawable?
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
 ```
 
 ## Runtime Permissions
