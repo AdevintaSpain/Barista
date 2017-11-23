@@ -7,6 +7,7 @@ import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
 import com.schibsted.spain.barista.internal.util.BitmapComparator
+import com.schibsted.spain.barista.internal.util.DrawableToBitmapConverter
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
@@ -54,21 +55,14 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
       return false
     }
 
-    val bitmap = getBitmap(imageView.drawable)
-    val otherBitmap = getBitmap(expectedDrawable)
+    val converter = DrawableToBitmapConverter()
+    val bitmap = converter.getBitmap(imageView.drawable)
+    val otherBitmap = converter.getBitmap(expectedDrawable)
     return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB_MR1) {
       bitmap.sameAs(otherBitmap)
     } else {
       BitmapComparator.compare(bitmap, otherBitmap)
     }
-  }
-
-  private fun getBitmap(drawable: Drawable?): Bitmap {
-    val bitmap = Bitmap.createBitmap(drawable!!.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
-    drawable.setBounds(0, 0, canvas.width, canvas.height)
-    drawable.draw(canvas)
-    return bitmap
   }
 
   override fun describeTo(description: Description) {
