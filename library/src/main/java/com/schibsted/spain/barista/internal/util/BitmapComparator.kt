@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import java.util.*
 
 internal class BitmapComparator {
-
   companion object {
     fun compare(b1: Bitmap, b2: Bitmap): Boolean {
       if (b1.width == b2.width && b1.height == b2.height) {
