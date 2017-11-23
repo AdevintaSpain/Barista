@@ -9,6 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
+import static com.schibsted.spain.barista.assertion.BaristaBackgroundAssertions.assertHasAnyBackground;
+import static com.schibsted.spain.barista.assertion.BaristaBackgroundAssertions.assertHasBackground;
+import static com.schibsted.spain.barista.assertion.BaristaBackgroundAssertions.assertHasNoBackground;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
@@ -322,6 +325,36 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withoutDrawable_failure() throws Exception {
     assertHasNoDrawable(R.id.image_view);
+  }
+
+  @Test
+  public void checkBackground_withId() throws Exception {
+    assertHasBackground(R.id.view_with_backbround, R.drawable.ic_barista);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkBackground_withId_failure() throws Exception {
+    assertHasBackground(R.id.view_without_backbround, R.drawable.ic_action_menu);
+  }
+
+  @Test
+  public void checkBackground_withAnyDrawable() throws Exception {
+    assertHasAnyBackground(R.id.view_with_backbround);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkBackground_withAnyDrawable_failure() throws Exception {
+    assertHasAnyBackground(R.id.view_without_backbround);
+  }
+
+  @Test
+  public void checkBackground_withoutDrawable() throws Exception {
+    assertHasNoBackground(R.id.view_without_backbround);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkBackground_withoutDrawable_failure() throws Exception {
+    assertHasNoBackground(R.id.view_with_backbround);
   }
 
   @Test
