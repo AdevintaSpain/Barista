@@ -43,6 +43,9 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
     if (expectedDrawableRes == ANY) {
       return imageView.drawable != null
     }
+    if (imageView.drawable == null){
+      return false
+    }
     val resources = target.context.resources
     val expectedDrawable = resources.getDrawable(expectedDrawableRes)
     resourceName = resources.getResourceEntryName(expectedDrawableRes)
