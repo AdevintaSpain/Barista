@@ -57,11 +57,8 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
 
     val bitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
     val otherBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB_MR1) {
-      bitmap.sameAs(otherBitmap)
-    } else {
-      BitmapComparator.compare(bitmap, otherBitmap)
-    }
+    return BitmapComparator.compare(bitmap, otherBitmap)
+
   }
 
   override fun describeTo(description: Description) {
