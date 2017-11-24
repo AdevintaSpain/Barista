@@ -9,6 +9,7 @@ import android.view.View
 import com.schibsted.spain.barista.internal.viewaction.NestedEnabledScrollToAction.nestedScrollToAction
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
+import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 
 /**
@@ -22,8 +23,8 @@ object BaristaScrollInteractions {
     private val MAX_SCROLL_ATTEMPTS = 50
 
     @JvmStatic
-    fun scrollTo(@IdRes id: Int) {
-        scrollWithMultipleAttempts(withId(id), failAtEnd = true)
+    fun scrollTo(id: Int) {
+        scrollWithMultipleAttempts(id.resourceMatcher(), failAtEnd = true)
     }
 
     @JvmStatic
@@ -32,8 +33,8 @@ object BaristaScrollInteractions {
     }
 
     @JvmStatic
-    fun safelyScrollTo(@IdRes id: Int) {
-        scrollWithMultipleAttempts(withId(id), failAtEnd = false)
+    fun safelyScrollTo(id: Int) {
+        scrollWithMultipleAttempts(id.resourceMatcher(), failAtEnd = false)
     }
 
     @JvmStatic

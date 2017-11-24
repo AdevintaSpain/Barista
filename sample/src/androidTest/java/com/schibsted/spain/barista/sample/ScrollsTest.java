@@ -23,10 +23,28 @@ public class ScrollsTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void scrollsInsideScrollable() {
+  public void scrollsInsideScrollable_byId() {
     assertTopVisible();
 
     scrollTo(R.id.really_far_away_button);
+
+    assertBottomVisible();
+  }
+
+  @Test
+  public void scrollsInsideScrollable_byHardcodedText() {
+    assertTopVisible();
+
+    scrollTo("Really far away button");
+
+    assertBottomVisible();
+  }
+
+  @Test
+  public void scrollsInsideScrollable_byTextResource() {
+    assertTopVisible();
+
+    scrollTo(R.string.really_far_away_button);
 
     assertBottomVisible();
   }
@@ -39,10 +57,28 @@ public class ScrollsTest {
   }
 
   @Test
-  public void safelyScrollsInsideScrollable() throws Exception {
+  public void safelyScrollsInsideScrollable_byId() throws Exception {
     assertTopVisible();
 
     safelyScrollTo(R.id.really_far_away_button);
+
+    assertBottomVisible();
+  }
+
+  @Test
+  public void safelyScrollsInsideScrollable_byHardcodedText() throws Exception {
+    assertTopVisible();
+
+    safelyScrollTo("Really far away button");
+
+    assertBottomVisible();
+  }
+
+  @Test
+  public void safelyScrollsInsideScrollable_byTextResource() throws Exception {
+    assertTopVisible();
+
+    safelyScrollTo(R.string.really_far_away_button);
 
     assertBottomVisible();
   }
