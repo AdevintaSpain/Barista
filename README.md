@@ -166,8 +166,13 @@ assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
 assertHasNoDrawable(R.id.image_view);
 ```
 
-## Runtime Permissions
+## Barista’s Intents API
+```java
+// Creates a Bitmap on a camera provided URI
+mockAndroidCamera();
+```
 
+## Runtime Permissions
 The new Marshmallow permissions system requires checking for permissions at runtime. As Espresso can't interact with the system dialog, Barista offers a way to allow permissions when needed.
 
 ```java
