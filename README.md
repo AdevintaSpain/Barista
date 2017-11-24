@@ -11,7 +11,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 # Download
 
-_Psst, hey. Migrating to Barista 2.0? [Check out this guide](MIGRATION-2.0.md) to help you with the transition._
+_Psst, hey. Migrating to Barista 2? [Check out this guide](MIGRATION-2.0.md) to help you with the transition._
 
 Import Barista as a testing dependency:
 ```gradle
