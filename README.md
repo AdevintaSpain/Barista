@@ -108,7 +108,6 @@ assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
 assertNotDisplayed(R.id.button, "Hello world")
 
-
 // Is this view enabled?
 assertEnabled("Hello world");
 assertEnabled(R.string.hello_world);
