@@ -2,11 +2,8 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
-
 import junit.framework.AssertionFailedError;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
