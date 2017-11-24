@@ -18,15 +18,12 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.OutputStream
 
-object BaristaIntentMatchers {
+internal object BaristaIntentMatchers {
+
+    private val DEFAULT_SIZE = 100
 
     @JvmStatic
-    fun captureImage(): Matcher<Intent> {
-        return hasAction(`is`(MediaStore.ACTION_IMAGE_CAPTURE), 100, 100)
-    }
-
-    @JvmStatic
-    fun captureImage(width: Int, height: Int): Matcher<Intent> {
+    fun captureImage(width: Int = DEFAULT_SIZE, height: Int = DEFAULT_SIZE): Matcher<Intent> {
         return hasAction(`is`(MediaStore.ACTION_IMAGE_CAPTURE), width, height)
     }
 
