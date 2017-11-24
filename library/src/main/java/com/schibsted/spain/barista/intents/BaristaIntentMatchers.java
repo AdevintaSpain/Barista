@@ -11,7 +11,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 
-import com.schibsted.spain.barista.exception.BaristaException;
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -21,7 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import static android.support.test.espresso.intent.Checks.checkNotNull;
+import static android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
 import static org.hamcrest.Matchers.is;
 
 public class BaristaIntentMatchers {
@@ -54,7 +54,7 @@ public class BaristaIntentMatchers {
             try {
               generateBitmapOnGivenUri(uri, width, height);
             } catch (IOException e) {
-              throw new BaristaException(e.getMessage());
+              throw new BaristaException(e.getMessage(), e);
             }
           }
           return true;

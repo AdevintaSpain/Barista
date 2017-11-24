@@ -3,14 +3,13 @@ package com.schibsted.spain.barista.sample;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.schibsted.spain.barista.BaristaAssertions;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaClickActions.click;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
 import static com.schibsted.spain.barista.intents.BaristaIntents.mockAndroidCamera;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class CameraTest {
@@ -22,8 +21,8 @@ public class CameraTest {
   public void takePictureAndShowIt() {
     mockAndroidCamera();
 
-    click(R.id.take_picture);
+    clickOn(R.id.take_picture);
 
-    BaristaAssertions.assertDrawable(R.id.image_view);
+    assertHasAnyDrawable(R.id.image_view);
   }
 }

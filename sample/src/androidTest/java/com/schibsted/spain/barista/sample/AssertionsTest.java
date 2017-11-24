@@ -2,29 +2,36 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.exception.BaristaArgumentTypeException;
+
+import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
+
 import junit.framework.AssertionFailedError;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertChecked;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertDrawable;
-import static com.schibsted.spain.barista.BaristaAssertions.assertEnabled;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotDisplayed;
-import static com.schibsted.spain.barista.BaristaAssertions.assertNotExist;
-import static com.schibsted.spain.barista.BaristaAssertions.assertThatBackButtonClosesTheApp;
-import static com.schibsted.spain.barista.BaristaAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
+import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
+import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
+import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
+import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
+import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertNotFocused;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static junit.framework.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 public class AssertionsTest {
 
   @Rule
-  public ActivityTestRule<SomeViewsWithDifferentVisibilitesActivity> activityRule =
-      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitesActivity.class);
+  public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
+      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
   @Test
   public void checkVisibleViews() {
@@ -59,6 +66,16 @@ public class AssertionsTest {
 
     assertDisplayed("Repeated");
     assertDisplayed(R.string.repeated);
+  }
+
+  @Test
+  public void checkExpectedText() throws Exception {
+    assertDisplayed(R.id.visible_view, "Hello world!");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkExpectedText_failsWhenTextIsNotTheExpected() throws Exception {
+    assertDisplayed(R.id.visible_view, "This is not the text you are looking for");
   }
 
   @Test
@@ -263,6 +280,16 @@ public class AssertionsTest {
       fail();
     } catch (BaristaArgumentTypeException expected) {
     }
+    try {
+      assertFocused(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
+    try {
+      assertNotFocused(R.color.colorAccent);
+      fail();
+    } catch (BaristaArgumentTypeException expected) {
+    }
   }
 
   @Test
@@ -271,22 +298,46 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkDrawable_withId_withSameDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.drawable.ic_barista);
+  public void checkDrawable_withId() throws Exception {
+    assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
   @Test(expected = AssertionFailedError.class)
-  public void checkDrawable_withId_withDifferentDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
+  public void checkDrawable_withId_failure() throws Exception {
+    assertHasDrawable(R.id.image_view, R.drawable.ic_action_menu);
   }
 
   @Test
-  public void checkDrawable_withoutId_withDrawable() throws Exception {
-    assertDrawable(R.id.image_view);
+  public void checkDrawable_withAnyDrawable() throws Exception {
+    assertHasAnyDrawable(R.id.image_view);
   }
 
   @Test(expected = AssertionFailedError.class)
-  public void checkDrawable_withoutId_withoutDrawable() throws Exception {
-    assertDrawable(R.id.image_view_without_image);
+  public void checkDrawable_withAnyDrawable_failure() throws Exception {
+    assertHasAnyDrawable(R.id.image_view_without_image);
+  }
+
+  @Test
+  public void checkDrawable_withoutDrawable() throws Exception {
+    assertHasNoDrawable(R.id.image_view_without_image);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDrawable_withoutDrawable_failure() throws Exception {
+    assertHasNoDrawable(R.id.image_view);
+  }
+
+  @Test
+  public void checkViewHasFocus() throws Exception {
+    assertFocused(R.id.edittext_with_focus);
+    assertFocused(R.string.edittext_with_focus);
+    assertFocused("EditText with focus");
+  }
+
+  @Test
+  public void checkViewHasNotFocus() throws Exception {
+    assertNotFocused(R.id.edittext_without_focus);
+    assertNotFocused(R.string.edittext_with_no_focus);
+    assertNotFocused("EditText with no focus");
   }
 }

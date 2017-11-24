@@ -1,12 +1,12 @@
 package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
-import com.schibsted.spain.barista.BaristaClickActions;
-import com.schibsted.spain.barista.cleardata.ClearPreferencesRule;
+import com.schibsted.spain.barista.rule.cleardata.ClearPreferencesRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 
 public class ClearPreferencesRuleTest {
 
@@ -44,6 +44,6 @@ public class ClearPreferencesRuleTest {
   }
 
   private void incrementValue() {
-    BaristaClickActions.click(R.id.preference_increment_button);
+    clickOn(R.id.preference_increment_button);
   }
 }

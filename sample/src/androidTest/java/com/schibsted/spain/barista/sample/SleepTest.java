@@ -2,7 +2,8 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.BaristaSleepActions;
+import com.schibsted.spain.barista.interaction.BaristaSleepInteractions;
+import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import java.util.concurrent.TimeUnit;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,10 +17,13 @@ public class SleepTest {
   @Rule
   public ActivityTestRule<FlowFirstScreen> activityRule = new ActivityTestRule<>(FlowFirstScreen.class);
 
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
+
   @Test
   public void sleepForASecondInMillis() {
     long start = System.currentTimeMillis();
-    BaristaSleepActions.sleep(1000);
+    BaristaSleepInteractions.sleep(1000);
     long end = System.currentTimeMillis();
 
     long duration = end - start;
@@ -31,7 +35,7 @@ public class SleepTest {
   @Test
   public void sleepForASecondInTimeUnits() {
     long start = System.currentTimeMillis();
-    BaristaSleepActions.sleep(1, TimeUnit.SECONDS);
+    BaristaSleepInteractions.sleep(1, TimeUnit.SECONDS);
     long end = System.currentTimeMillis();
 
     long duration = end - start;

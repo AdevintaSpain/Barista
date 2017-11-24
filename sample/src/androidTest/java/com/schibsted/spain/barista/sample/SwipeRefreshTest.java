@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.BaristaSwipeRefreshActions.refresh;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaSwipeRefreshInteractions.refresh;
 
 @RunWith(AndroidJUnit4.class)
 public class SwipeRefreshTest {
@@ -18,6 +18,12 @@ public class SwipeRefreshTest {
   @Test
   public void checkSwipeRefresh_isRefreshing() {
     refresh(R.id.swiperefresh);
+    assertDisplayed("I am refreshing!");
+  }
+
+  @Test
+  public void checkSwipeRefresh_isRefreshing_withoutPassingTheIdParameter() {
+    refresh();
     assertDisplayed("I am refreshing!");
   }
 }
