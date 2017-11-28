@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text with color RED"
+            android:textColor="@color/textRed" />
+
+        <TextView
+            android:id="@+id/textViewBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text with color BLUE"
+            android:textColor="@color/textBlue" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/textViewStateRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text with color state RED"
+            android:textColor="@color/text_state_red" />
+
+        <TextView
+            android:id="@+id/textViewStateBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text with color state BLUE"
+            android:textColor="@color/text_state_blue" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/textViewStateRedDisabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="Text with color state RED"
+            android:textColor="@color/text_state_red" />
+
+        <TextView
+            android:id="@+id/textViewStateBlueDisabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="Text with color state BLUE"
+            android:textColor="@color/text_state_blue" />
+
+
+    </LinearLayout>

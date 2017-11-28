@@ -50,6 +50,7 @@
     <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
     <activity android:name=".NestedScrollViewActivity"/>
     <activity android:name=".RuntimePermissionActivity" />
+    <activity android:name=".ColorsActivity" />
   </application>
 
 </manifest>
