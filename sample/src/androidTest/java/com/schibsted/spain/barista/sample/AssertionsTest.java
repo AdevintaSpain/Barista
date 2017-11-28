@@ -2,8 +2,11 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
+
 import junit.framework.AssertionFailedError;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +21,9 @@ import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static junit.framework.Assert.fail;
@@ -28,7 +33,7 @@ public class AssertionsTest {
 
   @Rule
   public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
-      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
+          new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
   @Test
   public void checkVisibleViews() {
@@ -76,12 +81,26 @@ public class AssertionsTest {
   }
 
   @Test
+  public void checkExpectedTextContains() throws Exception {
+    assertContains(R.id.visible_view, "Hello");
+  }
+
+  @Test
   public void checkInvisibleViews() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);
 
     assertNotDisplayed(R.string.im_invisible);
     assertNotDisplayed("I'm invisible!");
+  }
+
+  @Test
+  public void checkInvisibleViewsWithContains() {
+    assertNotDisplayed(R.id.invisible_view);
+    assertNotDisplayed(R.id.gone_view);
+
+    assertNotDisplayed(R.string.im_invisible);
+    assertNotContains("invisible!");
   }
 
   @Test
@@ -336,5 +355,10 @@ public class AssertionsTest {
     assertNotFocused(R.id.edittext_without_focus);
     assertNotFocused(R.string.edittext_with_no_focus);
     assertNotFocused("EditText with no focus");
+  }
+
+  @Test
+  public void checkTextViewContainsText() {
+    assertContains("world");
   }
 }

@@ -11,12 +11,13 @@ import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers
+import com.schibsted.spain.barista.internal.matcher.TextMatchers.withContainsText
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.IsNot.not
 
-object BaristaVisibilityAssertions{
+object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertDisplayed(resId: Int) {
@@ -70,4 +71,18 @@ object BaristaVisibilityAssertions{
         onView(withText(text)).check(matches(not(isDisplayed())))
     }
 
+    @JvmStatic
+    fun assertContains(text: String) {
+        assertDisplayed(withContainsText(text))
+    }
+
+    @JvmStatic
+    fun assertContains(@IdRes resId: Int, text: String) {
+        onView(withId(resId)).check(matches(withContainsText(text)))
+    }
+
+    @JvmStatic
+    fun assertNotContains(text: String) {
+        onView(withContainsText(text)).check(matches(not(isDisplayed())))
+    }
 }

@@ -2,22 +2,26 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonPosition;
+import static com.schibsted.spain.barista.interaction.BaristaScrollInteractions.scrollTo;
 
 @RunWith(AndroidJUnit4.class)
 public class RadioButtonsReallyFarAwayTest {
 
   @Rule
   public ActivityTestRule<RadioButtonsActivity> activityRule =
-      new ActivityTestRule<>(RadioButtonsActivity.class);
+          new ActivityTestRule<>(RadioButtonsActivity.class);
 
   @Rule
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
@@ -61,5 +65,11 @@ public class RadioButtonsReallyFarAwayTest {
   public void checkRadioButtonsByPosition_withLastOption() {
     clickRadioButtonPosition(R.id.radiogroup_really_far_away, 1);
     assertDisplayed("" + R.id.last_item_really_far_away);
+  }
+
+  @Test
+  public void farAwayCheckRadioButtonContainsText() {
+    scrollTo(R.id.radiogroup_really_far_away);
+    assertContains("away");
   }
 }
