@@ -48,9 +48,9 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
       return false
     }
 
-    val bitmap = DrawableToBitmapConverter.getBitmap(view.background)
-    val otherBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return BitmapComparator.compare(bitmap, otherBitmap)
+    val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
+    val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
+    return BitmapComparator.compare(viewBitmap, expectedBitmap)
   }
 
   override fun describeTo(description: Description) {

@@ -55,9 +55,9 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
       return false
     }
 
-    val bitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
-    val otherBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return BitmapComparator.compare(bitmap, otherBitmap)
+    val viewBitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
+    val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
+    return BitmapComparator.compare(viewBitmap, expectedBitmap)
 
   }
 
