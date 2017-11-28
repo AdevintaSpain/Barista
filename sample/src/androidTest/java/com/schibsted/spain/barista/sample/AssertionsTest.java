@@ -81,7 +81,7 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkExpectedTextContains() throws Exception {
+  public void checkPartiallyContainsText() throws Exception {
     assertContains(R.id.visible_view, "Hello");
   }
 
@@ -95,7 +95,7 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkInvisibleViewsWithContains() {
+  public void checkInvisibleViewDoesNotContainText() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);
 
