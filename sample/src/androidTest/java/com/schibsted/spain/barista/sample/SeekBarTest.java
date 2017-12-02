@@ -8,8 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.swipeLeft;
-import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.swipeRight;
+import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgress;
+import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMax;
+import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMin;
 
 @RunWith(AndroidJUnit4.class)
 public class SeekBarTest {
@@ -21,14 +22,20 @@ public class SeekBarTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void checkSwipeSeekBarRight() {
-    swipeRight(R.id.seek_bar);
-    assertDisplayed("2");
+  public void checkSetProgress() {
+    setProgress(R.id.seek_bar, 16);
+    assertDisplayed("16");
   }
 
   @Test
-  public void checkSwipeSeekBarLeft() {
-    swipeLeft(R.id.seek_bar);
+  public void checkSetProgressToMax() {
+    setProgressToMax(R.id.seek_bar);
+    assertDisplayed("100");
+  }
+
+  @Test
+  public void checkSetProgressToMin() {
+    setProgressToMin(R.id.seek_bar);
     assertDisplayed("0");
   }
 }
