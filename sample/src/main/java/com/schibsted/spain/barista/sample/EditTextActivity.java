@@ -17,7 +17,7 @@ public class EditTextActivity extends AppCompatActivity {
     editText.setOnEditorActionListener(new PutActionsOnTextView());
   }
 
-  private class PutActionsOnTextView implements EditText.OnEditorActionListener{
+  private class PutActionsOnTextView implements EditText.OnEditorActionListener {
     @Override
     public boolean onEditorAction(TextView editText, int actionId, KeyEvent keyEvent) {
       TextView textView = (TextView) findViewById(R.id.actions);

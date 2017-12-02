@@ -28,10 +28,25 @@
     </LinearLayout>
   </ScrollView>
 
-  <AutoCompleteTextView
-      android:id="@+id/autocomplete_centered"
-      android:layout_width="wrap_content"
+  <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:hint="I'm a centered autocomplete!"/>
+      android:orientation="vertical"
+      >
+
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_centered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="I'm a centered autocomplete!"/>
+
+    <TextView
+        android:id="@+id/actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        />
+  </LinearLayout>
+
 </FrameLayout>
