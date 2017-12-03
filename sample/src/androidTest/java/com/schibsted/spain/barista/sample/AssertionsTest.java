@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -348,18 +349,38 @@ public class AssertionsTest {
     assertContains(R.id.enabled_button, "Enabled");
   }
 
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewContainsText_withViewId_failsWhenNeeded() {
+    assertContains(R.id.enabled_button, "Disabled");
+  }
+
   @Test
   public void checkTextViewContainsText_withoutViewId() {
     assertContains("Enabled");
   }
 
+  @Test(expected = NoMatchingViewException.class)
+  public void checkTextViewContainsText_withoutViewId_failsWhenNeeded() {
+    assertContains("unexisting text");
+  }
+
   @Test
   public void checkTextViewDoesntContainsText_withViewId() {
-    assertNotContains(R.id.enabled_button, "banana");
+    assertNotContains(R.id.enabled_button, "unexisting text");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewDoesntContainsText_withViewId_failsWhenNeeded() {
+    assertNotContains(R.id.enabled_button, "Enabled");
   }
 
   @Test
   public void checkTextViewDoesntContainsText_withoutViewId() {
-    assertNotContains("banana");
+    assertNotContains("unexisting text");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewDoesntContainsText_withoutViewId_failsWhenNeeded() {
+    assertNotContains("Enabled");
   }
 }
