@@ -95,15 +95,6 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkInvisibleViewDoesNotContainText() {
-    assertNotDisplayed(R.id.invisible_view);
-    assertNotDisplayed(R.id.gone_view);
-
-    assertNotDisplayed(R.string.im_invisible);
-    assertNotContains("invisible!");
-  }
-
-  @Test
   public void checkInvisibleViews_breaksWhenNeeded() {
     try {
       assertNotDisplayed(R.id.visible_view);
