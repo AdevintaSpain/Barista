@@ -81,11 +81,6 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkPartiallyContainsText() throws Exception {
-    assertContains(R.id.visible_view, "Hello");
-  }
-
-  @Test
   public void checkInvisibleViews() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);
