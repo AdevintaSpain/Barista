@@ -360,5 +360,9 @@ public class AssertionsTest {
   @Test
   public void checkTextViewContainsText() {
     assertContains("world");
+  @Test
+  public void checkTextViewDoesntContainsText_withViewId() {
+    assertNotContains(R.id.enabled_button, "banana");
+  }
   }
 }

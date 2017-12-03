@@ -158,6 +158,7 @@ assertContains(R.id.button, "text");
  
 // ...or not?
 assertNotContains("text");
+assertNotContains(R.id.button, "text");
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
