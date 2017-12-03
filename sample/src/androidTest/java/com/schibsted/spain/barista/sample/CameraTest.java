@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
 import static com.schibsted.spain.barista.intents.BaristaIntents.mockAndroidCamera;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
@@ -16,6 +17,11 @@ public class CameraTest {
 
   @Rule
   public IntentsTestRule<CameraActivity> activityRule = new IntentsTestRule<>(CameraActivity.class);
+
+  @Test
+  public void imageViewIsEmptyBeforeTakingThePicture() {
+    assertHasNoDrawable(R.id.image_view);
+  }
 
   @Test
   public void takePictureAndShowIt() {
