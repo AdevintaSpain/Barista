@@ -358,11 +358,22 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkTextViewContainsText() {
-    assertContains("world");
+  public void checkTextViewContainsText_withViewId() {
+    assertContains(R.id.enabled_button, "Enabled");
+  }
+
+  @Test
+  public void checkTextViewContainsText_withoutViewId() {
+    assertContains("Enabled");
+  }
+
   @Test
   public void checkTextViewDoesntContainsText_withViewId() {
     assertNotContains(R.id.enabled_button, "banana");
   }
+
+  @Test
+  public void checkTextViewDoesntContainsText_withoutViewId() {
+    assertNotContains("banana");
   }
 }
