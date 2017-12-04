@@ -48,13 +48,19 @@ public class ColorsTest {
 
   @Test
   public void checkDisabledTextViewTextColorState_isExpectedColor() {
-    assertTextColorIs(R.id.textViewStateRed, R.color.text_state_red);
-    assertTextColorIs(R.id.textViewStateBlue, R.color.text_state_blue);
+    assertTextColorIs(R.id.textViewStateRedDisabled, R.color.text_state_red);
+    assertTextColorIs(R.id.textViewStateBlueDisabled, R.color.text_state_blue);
+  }
+
+  @Test
+  public void checkDisabledTextViewTextColorState_isExpectedColorSimple() {
+    assertTextColorIs(R.id.textViewStateRedDisabled, R.color.colorAccent);
+    assertTextColorIs(R.id.textViewStateBlueDisabled, R.color.colorPrimaryDark);
   }
 
   @Test
   public void checkDisabledTextViewTextColorState_isNotExpectedColor() {
-    assertTextColorIsNot(R.id.textViewStateRed, R.color.text_state_blue);
-    assertTextColorIsNot(R.id.textViewStateBlue, R.color.text_state_red);
+    assertTextColorIsNot(R.id.textViewStateRedDisabled, R.color.text_state_blue);
+    assertTextColorIsNot(R.id.textViewStateBlueDisabled, R.color.text_state_red);
   }
 }
