@@ -86,6 +86,12 @@ openDrawerWithGravity(Gravity.RIGHT);
 closeDrawer();
 closeDrawerWithGravity(Gravity.RIGHT);
 
+// Interact with SeekBars
+setProgress(R.id.seek_bar, 5);
+setProgressToMin(R.id.seek_bar);
+setProgressToMax(R.id.seek_bar);
+
+
 // Pull to refresh in SwipeRefreshLayout
 refresh(R.id.swipe_refresh);
 refresh(); // Id is optional! We'll find it for you :D
@@ -164,6 +170,13 @@ assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
 
 // ...or not?
 assertHasNoDrawable(R.id.image_view);
+
+
+// Is this SeekBar progress?
+assertProgress(R.id.seek_bar, 5)
+assertProgressIsMin(R.id.seek_bar)
+assertProgressIsMax(R.id.seek_bar)
+
 ```
 
 ## Runtime Permissions
