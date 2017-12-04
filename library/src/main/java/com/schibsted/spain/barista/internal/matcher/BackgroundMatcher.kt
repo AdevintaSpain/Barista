@@ -11,40 +11,33 @@ import com.schibsted.spain.barista.internal.util.DrawableToBitmapConverter
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
-/**
- * Thanks Daniele Bottillo!
- * https://medium.com/@dbottillo/android-ui-test-espresso-matcher-for-imageview-1a28c832626f
- */
-class DrawableMatcher private constructor(@DrawableRes private val expectedDrawableRes: Int) : TypeSafeMatcher<View>(View::class.java) {
+class BackgroundMatcher private constructor(@DrawableRes private val expectedDrawableRes: Int) : TypeSafeMatcher<View>(View::class.java) {
 
   companion object {
     private const val EMPTY = -1
     private const val ANY = -2
 
     @JvmStatic
-    fun withDrawable(@DrawableRes resourceId: Int) = DrawableMatcher(resourceId)
+    fun withBackground(@DrawableRes resourceId: Int) = BackgroundMatcher(resourceId)
 
     @JvmStatic
-    fun withAnyDrawable() = DrawableMatcher(ANY)
+    fun withAnyBackground() = BackgroundMatcher(ANY)
 
     @JvmStatic
-    fun withoutDrawable() = DrawableMatcher(EMPTY)
+    fun withoutBackground() = BackgroundMatcher(EMPTY)
   }
 
   private var resourceName: String? = null
 
   override fun matchesSafely(target: View): Boolean {
-    if (target !is ImageView) {
-      return false
-    }
-    val imageView = target
+    val view = target
     if (expectedDrawableRes == EMPTY) {
-      return imageView.drawable == null
+      return view.background == null
     }
     if (expectedDrawableRes == ANY) {
-      return imageView.drawable != null
+      return view.background != null
     }
-    if (imageView.drawable == null){
+    if (view.background == null){
       return false
     }
     val resources = target.context.resources
@@ -55,14 +48,13 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
       return false
     }
 
-    val viewBitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
+    val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
     val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
     return BitmapComparator.compare(viewBitmap, expectedBitmap)
-
   }
 
   override fun describeTo(description: Description) {
-    description.appendText("with drawable from resource id: ")
+    description.appendText("with background from resource id: ")
     description.appendValue(expectedDrawableRes)
     if (resourceName != null) {
       description.appendText("[")
