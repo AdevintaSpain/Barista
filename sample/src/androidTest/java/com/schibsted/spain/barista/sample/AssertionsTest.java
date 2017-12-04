@@ -85,6 +85,16 @@ public class AssertionsTest {
   }
 
   @Test
+  public void checkNotExpectedText() throws Exception {
+    assertNotDisplayed(R.id.visible_view, "This text must not be displayed on the view");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkNotExpectedText_failsWhenTextIsDisplayedOnTheView() throws Exception {
+    assertNotDisplayed(R.id.visible_view, "Hello world!");
+  }
+
+  @Test
   public void checkInvisibleViews() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);
