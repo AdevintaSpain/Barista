@@ -12,11 +12,12 @@ import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers
 import com.schibsted.spain.barista.internal.util.resourceMatcher
+import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.IsNot.not
 
-object BaristaVisibilityAssertions{
+object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertDisplayed(resId: Int) {
@@ -70,4 +71,23 @@ object BaristaVisibilityAssertions{
         onView(withText(text)).check(matches(not(isDisplayed())))
     }
 
+    @JvmStatic
+    fun assertContains(text: String) {
+        assertDisplayed(withText(containsString(text)))
+    }
+
+    @JvmStatic
+    fun assertContains(@IdRes resId: Int, text: String) {
+        onView(withId(resId)).check(matches(withText(containsString(text))))
+    }
+
+    @JvmStatic
+    fun assertNotContains(text: String) {
+        onView(withText(containsString(text))).check(doesNotExist())
+    }
+
+    @JvmStatic
+    fun assertNotContains(@IdRes resId: Int, text: String) {
+        onView(allOf(withId(resId), withText(containsString(text)))).check(doesNotExist())
+    }
 }

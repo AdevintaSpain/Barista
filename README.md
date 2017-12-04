@@ -166,6 +166,14 @@ assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
 
+// Check if text on screen contains given text
+assertContains("text");
+assertContains(R.id.textview, "text");
+ 
+// ...or not?
+assertNotContains("text");
+assertNotContains(R.id.textview, "text");
+
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
 
