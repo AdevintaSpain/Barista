@@ -10,6 +10,8 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 
 object SeekBarActions {
+  const val DESCRIPTION = "Set SeekBar progress."
+
   fun setProgress(progress: Int): ViewAction {
     return object : ViewAction {
       override fun getConstraints(): Matcher<View> {
@@ -17,7 +19,7 @@ object SeekBarActions {
       }
 
       override fun getDescription(): String {
-        return "Set SeekBar progress."
+        return DESCRIPTION
       }
 
       override fun perform(uiController: UiController, view: View) {
@@ -36,7 +38,7 @@ object SeekBarActions {
       }
 
       override fun getDescription(): String {
-        return "Set SeekBar progress."
+        return DESCRIPTION
       }
 
       override fun perform(uiController: UiController, view: View) {
