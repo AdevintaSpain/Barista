@@ -12,7 +12,6 @@ import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers
 import com.schibsted.spain.barista.internal.util.resourceMatcher
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -74,7 +73,7 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertContains(text: String) {
-        assertDisplayed(withText(CoreMatchers.containsString(text)))
+        assertDisplayed(withText(containsString(text)))
     }
 
     @JvmStatic
