@@ -72,6 +72,11 @@ object BaristaVisibilityAssertions {
     }
 
     @JvmStatic
+    fun assertNotDisplayed(@IdRes resId: Int, text: String) {
+        onView(withId(resId)).check(matches(not(withText(text))))
+    }
+
+    @JvmStatic
     fun assertContains(text: String) {
         assertDisplayed(withText(containsString(text)))
     }
