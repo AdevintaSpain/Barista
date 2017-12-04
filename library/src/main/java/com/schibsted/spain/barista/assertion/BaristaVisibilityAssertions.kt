@@ -94,12 +94,12 @@ object BaristaVisibilityAssertions {
     }
 
     @JvmStatic
-    fun assertTextColor(@IdRes resId: Int, @ColorRes colorRes: Int) {
+    fun assertTextColorIs(@IdRes resId: Int, @ColorRes colorRes: Int) {
         onView(withId(resId)).check(matches(TextColorMatcher(colorRes)))
     }
 
     @JvmStatic
-    fun assertNotTextColor(@IdRes resId: Int, @ColorRes colorRes: Int) {
+    fun assertTextColorIsNot(@IdRes resId: Int, @ColorRes colorRes: Int) {
         onView(withId(resId)).check(matches(not(TextColorMatcher(colorRes))))
     }
 }
