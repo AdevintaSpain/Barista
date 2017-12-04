@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -81,26 +82,12 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkPartiallyContainsText() throws Exception {
-    assertContains(R.id.visible_view, "Hello");
-  }
-
-  @Test
   public void checkInvisibleViews() {
     assertNotDisplayed(R.id.invisible_view);
     assertNotDisplayed(R.id.gone_view);
 
     assertNotDisplayed(R.string.im_invisible);
     assertNotDisplayed("I'm invisible!");
-  }
-
-  @Test
-  public void checkInvisibleViewDoesNotContainText() {
-    assertNotDisplayed(R.id.invisible_view);
-    assertNotDisplayed(R.id.gone_view);
-
-    assertNotDisplayed(R.string.im_invisible);
-    assertNotContains("invisible!");
   }
 
   @Test
@@ -358,7 +345,42 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkTextViewContainsText() {
-    assertContains("world");
+  public void checkTextViewContainsText_withViewId() {
+    assertContains(R.id.enabled_button, "Enabled");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewContainsText_withViewId_failsWhenNeeded() {
+    assertContains(R.id.enabled_button, "Disabled");
+  }
+
+  @Test
+  public void checkTextViewContainsText_withoutViewId() {
+    assertContains("Enabled");
+  }
+
+  @Test(expected = NoMatchingViewException.class)
+  public void checkTextViewContainsText_withoutViewId_failsWhenNeeded() {
+    assertContains("unexisting text");
+  }
+
+  @Test
+  public void checkTextViewDoesntContainsText_withViewId() {
+    assertNotContains(R.id.enabled_button, "unexisting text");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewDoesntContainsText_withViewId_failsWhenNeeded() {
+    assertNotContains(R.id.enabled_button, "Enabled");
+  }
+
+  @Test
+  public void checkTextViewDoesntContainsText_withoutViewId() {
+    assertNotContains("unexisting text");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewDoesntContainsText_withoutViewId_failsWhenNeeded() {
+    assertNotContains("Enabled");
   }
 }
