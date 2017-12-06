@@ -12,7 +12,7 @@ import static com.schibsted.spain.barista.assertion.BaristaSeekBarAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaSeekBarAssertions.assertProgressIsMin;
 
 @RunWith(AndroidJUnit4.class)
-public class SeekBarAssertionsTest {
+public class ProgressBarMatchersTest {
 
   @Rule public ActivityTestRule<SomeSeekBarsWithDifferentProgressesActivity> activityRule =
           new ActivityTestRule<>(SomeSeekBarsWithDifferentProgressesActivity.class);
