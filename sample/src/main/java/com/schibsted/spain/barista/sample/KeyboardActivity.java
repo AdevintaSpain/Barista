@@ -8,22 +8,49 @@ import android.widget.TextView;
 
 public class KeyboardActivity extends AppCompatActivity {
 
+  private TextView actionsTextView;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_keyboard);
 
-    EditText editText = (EditText) findViewById(R.id.edittext);
-    editText.clearFocus();
-    editText.setOnEditorActionListener(new PutActionsOnTextView());
+    actionsTextView = (TextView) findViewById(R.id.actions);
+    initEditText();
+    initEditTextNotFocused();
+    initEditTextVeryFarAway();
   }
 
-  private class PutActionsOnTextView implements EditText.OnEditorActionListener {
-    @Override
-    public boolean onEditorAction(TextView editText, int actionId, KeyEvent keyEvent) {
-      TextView textView = (TextView) findViewById(R.id.actions);
-      textView.setText(editText.getText());
-      return true;
-    }
+  private void initEditText() {
+    EditText editText = (EditText) findViewById(R.id.edittext);
+    editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        actionsTextView.setText("Edit text ime action button pressed!");
+        return true;
+      }
+    });
+  }
+
+  private void initEditTextNotFocused() {
+    EditText editText = (EditText) findViewById(R.id.edittext_not_focused);
+    editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        actionsTextView.setText("Edit text not focused ime action button pressed!");
+        return true;
+      }
+    });
+  }
+
+  private void initEditTextVeryFarAway() {
+    EditText editText = (EditText) findViewById(R.id.edittext_very_far_away);
+    editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        actionsTextView.setText("Edit text very far away ime action button pressed!");
+        return true;
+      }
+    });
   }
 }
