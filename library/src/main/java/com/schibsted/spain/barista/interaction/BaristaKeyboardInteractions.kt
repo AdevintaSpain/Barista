@@ -2,23 +2,31 @@ package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.closeSoftKeyboard
-import android.support.test.espresso.action.ViewActions.pressImeActionButton
+import android.support.test.espresso.matcher.ViewMatchers
+import android.support.test.espresso.matcher.ViewMatchers.hasFocus
 import android.support.test.espresso.matcher.ViewMatchers.isRoot
 import android.support.test.espresso.matcher.ViewMatchers.withId
-import com.schibsted.spain.barista.interaction.BaristaScrollInteractions.safelyScrollTo
-import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAnd
+import android.widget.EditText
+import org.hamcrest.core.AllOf.allOf
 
 object BaristaKeyboardInteractions {
 
-    @JvmStatic
-    fun closeKeyboard() {
-        onView(isRoot()).perform(closeSoftKeyboard())
-    }
+  @JvmStatic
+  fun closeKeyboard() {
+    onView(isRoot()).perform(closeSoftKeyboard())
+  }
 
-    @JvmStatic
-    fun pressImeActionButton(@IdRes editTextId: Int) {
-        safelyScrollTo(editTextId)
-        onView(displayedAnd(withId(editTextId))).perform(pressImeActionButton())
-    }
+  @JvmStatic
+  @JvmOverloads
+  fun pressImeActionButton(@IdRes editTextId: Int? = null) {
+    val matcher = findEditText(editTextId)
+    onView(matcher).perform(ViewActions.pressImeActionButton())
+  }
+
+  private fun findEditText(editTextId: Int?) = when (editTextId) {
+    null -> allOf(ViewMatchers.isAssignableFrom(EditText::class.java), hasFocus())
+    else -> withId(editTextId)
+  }
 }

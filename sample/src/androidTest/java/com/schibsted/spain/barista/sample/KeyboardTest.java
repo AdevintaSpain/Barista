@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
@@ -9,6 +10,7 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
+import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
 import static com.schibsted.spain.barista.interaction.BaristaKeyboardInteractions.pressImeActionButton;
 
 @RunWith(AndroidJUnit4.class)
@@ -20,12 +22,42 @@ public class KeyboardTest {
   @Rule
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
-  @Test
-  public void checkPressedImeActionButton_whenIsVisible() {
-    final String buttonPressedText = "Ime action button pressed!";
-    assertNotExist(buttonPressedText);
 
+  @Test
+  public void checkPressedImeActionButton_whenIdProvided() {
+    final String expectedText = "Ime action button pressed!";
+    assertNotExist(expectedText);
+
+    writeTo(R.id.edittext, expectedText);
     pressImeActionButton(R.id.edittext);
-    assertDisplayed(buttonPressedText);
+
+    assertDisplayed(expectedText);
+  }
+
+  @Test
+  public void checkPressedImeActionButton_whenIdNotProvided() {
+    final String expectedText = "Ime action button pressed!";
+    assertNotExist(expectedText);
+
+    writeTo(R.id.edittext, expectedText);
+    pressImeActionButton();
+
+    assertDisplayed(expectedText);
+  }
+
+  @Test(expected = NoMatchingViewException.class)
+  public void checkPressedImeActionButton_whenIdProvidedButNotFocused() {
+    final String expectedText = "Ime action button pressed!";
+    assertNotExist(expectedText);
+    pressImeActionButton(R.id.edittext);
+    assertDisplayed(expectedText);
+  }
+
+  @Test(expected = NoMatchingViewException.class)
+  public void checkPressedImeActionButtonFails_whenNoEditTextFocused() {
+    final String expectedText = "Ime action button pressed!";
+    assertNotExist(expectedText);
+    pressImeActionButton();
+    assertDisplayed(expectedText);
   }
 }

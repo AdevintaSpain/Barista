@@ -14,6 +14,7 @@ public class KeyboardActivity extends AppCompatActivity {
     setContentView(R.layout.activity_keyboard);
 
     EditText editText = (EditText) findViewById(R.id.edittext);
+    editText.clearFocus();
     editText.setOnEditorActionListener(new PutActionsOnTextView());
   }
 
@@ -21,7 +22,7 @@ public class KeyboardActivity extends AppCompatActivity {
     @Override
     public boolean onEditorAction(TextView editText, int actionId, KeyEvent keyEvent) {
       TextView textView = (TextView) findViewById(R.id.actions);
-      textView.setText("Ime action button pressed!");
+      textView.setText(editText.getText());
       return true;
     }
   }
