@@ -12,7 +12,7 @@ import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedA
 object BaristaKeyboardInteractions {
 
     @JvmStatic
-    fun close() {
+    fun closeKeyboard() {
         onView(isRoot()).perform(closeSoftKeyboard())
     }
 
