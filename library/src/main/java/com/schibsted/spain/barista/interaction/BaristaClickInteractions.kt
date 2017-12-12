@@ -3,18 +3,23 @@ package com.schibsted.spain.barista.interaction
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.ViewAction
-import android.support.test.espresso.action.ViewActions.*
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.longClick
+import android.support.test.espresso.action.ViewActions.scrollTo
+import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.v4.widget.NestedScrollView
 import android.view.View
+import android.widget.AbsListView
 import android.widget.HorizontalScrollView
-import android.widget.ListView
 import android.widget.ScrollView
-import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAnd
-import com.schibsted.spain.barista.internal.viewaction.NestedEnabledScrollToAction.nestedScrollToAction
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
+import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAnd
 import com.schibsted.spain.barista.internal.util.resourceMatcher
+import com.schibsted.spain.barista.internal.viewaction.NestedEnabledScrollToAction.nestedScrollToAction
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
@@ -75,7 +80,7 @@ object BaristaClickInteractions {
                         anyOf(
                                 isAssignableFrom(ScrollView::class.java),
                                 isAssignableFrom(HorizontalScrollView::class.java),
-                                isAssignableFrom(ListView::class.java),
+                                isAssignableFrom(AbsListView::class.java),
                                 isAssignableFrom(NestedScrollView::class.java)
                         )
                 ))
