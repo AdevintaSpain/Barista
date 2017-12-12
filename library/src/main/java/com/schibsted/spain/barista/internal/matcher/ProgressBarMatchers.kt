@@ -19,13 +19,13 @@ object ProgressBarMatchers {
   }
 
   @JvmStatic
-  fun assertProgress(expectedProgress: Int) = SeekBarProgressMatcher(expectedProgress)
+  fun withProgress(expectedProgress: Int) = SeekBarProgressMatcher(expectedProgress)
 
   @JvmStatic
-  fun assertProgressIsMin() = SeekBarProgressMatcher(0)
+  fun withMinProgress() = SeekBarProgressMatcher(0)
 
   @JvmStatic
-  fun assertProgressIsMax(): BoundedMatcher<View, SeekBar> {
+  fun withMaxProgress(): BoundedMatcher<View, SeekBar> {
     return object : BoundedMatcher<View, SeekBar>(SeekBar::class.java) {
 
       override fun matchesSafely(seekBar: SeekBar) = seekBar.progress == seekBar.max
