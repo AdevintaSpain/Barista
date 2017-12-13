@@ -3,6 +3,9 @@
   <color name="colorPrimary">#3F51B5</color>
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#FF4081</color>
-  <color name="textRed">#FF0000</color>
-  <color name="textBlue">#0000FF</color>
+
+  <color name="defaultColor">#4CAF50</color>
+  <color name="disabled">#2196F3</color>
+  <color name="checked">#FFC107</color>
+  <color name="red">#F44336</color>
 </resources>

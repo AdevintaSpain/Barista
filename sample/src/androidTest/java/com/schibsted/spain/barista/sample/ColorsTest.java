@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertTextColorIs;
-import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertTextColorIsNot;
 
 @RunWith(AndroidJUnit4.class)
 public class ColorsTest {
@@ -23,44 +22,26 @@ public class ColorsTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void checkTextViewTextColor_isExpectedColor() {
-    assertTextColorIs(R.id.textViewRed, R.color.textRed);
-    assertTextColorIs(R.id.textViewBlue, R.color.textBlue);
+  public void checkSimpleColor() {
+    assertTextColorIs(R.id.textRed, R.color.red);
   }
 
   @Test
-  public void checkTextViewTextColor_isNotExpectedColor() {
-    assertTextColorIsNot(R.id.textViewRed, R.color.textBlue);
-    assertTextColorIsNot(R.id.textViewBlue, R.color.textRed);
+  public void checkColorList_whenDefault() {
+    assertTextColorIs(R.id.textSelectorDefault, R.color.selector_default_disabled_checked);
+    assertTextColorIs(R.id.textSelectorDefault, R.color.defaultColor);
   }
 
   @Test
-  public void checkTextViewTextColorState_isExpectedColor() {
-    assertTextColorIs(R.id.textViewStateRed, R.color.text_state_red);
-    assertTextColorIs(R.id.textViewStateBlue, R.color.text_state_blue);
+  public void checkColorList_whenDisabled() {
+    assertTextColorIs(R.id.textSelectorDisabled, R.color.selector_default_disabled_checked);
+    assertTextColorIs(R.id.textSelectorDisabled, R.color.disabled);
   }
 
   @Test
-  public void checkTextViewTextColorState_isNotExpectedColor() {
-    assertTextColorIsNot(R.id.textViewStateRed, R.color.text_state_blue);
-    assertTextColorIsNot(R.id.textViewStateBlue, R.color.text_state_red);
+  public void checkColorList_whenChecked() {
+    assertTextColorIs(R.id.textSelectorChecked, R.color.selector_default_disabled_checked);
+    assertTextColorIs(R.id.textSelectorChecked, R.color.checked);
   }
 
-  @Test
-  public void checkDisabledTextViewTextColorState_isExpectedColor() {
-    assertTextColorIs(R.id.textViewStateRedDisabled, R.color.text_state_red);
-    assertTextColorIs(R.id.textViewStateBlueDisabled, R.color.text_state_blue);
-  }
-
-  @Test
-  public void checkDisabledTextViewTextColorState_isExpectedColorSimple() {
-    assertTextColorIs(R.id.textViewStateRedDisabled, R.color.colorAccent);
-    assertTextColorIs(R.id.textViewStateBlueDisabled, R.color.colorPrimaryDark);
-  }
-
-  @Test
-  public void checkDisabledTextViewTextColorState_isNotExpectedColor() {
-    assertTextColorIsNot(R.id.textViewStateRedDisabled, R.color.text_state_blue);
-    assertTextColorIsNot(R.id.textViewStateBlueDisabled, R.color.text_state_red);
-  }
 }

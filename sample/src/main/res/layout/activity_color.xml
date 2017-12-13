@@ -5,56 +5,36 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewRed"
+            android:id="@+id/textRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text with color RED"
-            android:textColor="@color/textRed" />
+            android:text="Simple color red"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/red" />
 
         <TextView
-            android:id="@+id/textViewBlue"
+            android:id="@+id/textSelectorDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text with color BLUE"
-            android:textColor="@color/textBlue" />
-
-        <android.support.v4.widget.Space
-            android:layout_width="wrap_content"
-            android:layout_height="16dp" />
+            android:text="Selector default"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/selector_default_disabled_checked" />
 
         <TextView
-            android:id="@+id/textViewStateRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text with color state RED"
-            android:textColor="@color/text_state_red" />
-
-        <TextView
-            android:id="@+id/textViewStateBlue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text with color state BLUE"
-            android:textColor="@color/text_state_blue" />
-
-        <android.support.v4.widget.Space
-            android:layout_width="wrap_content"
-            android:layout_height="16dp" />
-
-        <TextView
-            android:id="@+id/textViewStateRedDisabled"
+            android:id="@+id/textSelectorDisabled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:text="Text with color state RED"
-            android:textColor="@color/text_state_red" />
+            android:text="Selector disabled"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/selector_default_disabled_checked" />
 
-        <TextView
-            android:id="@+id/textViewStateBlueDisabled"
+        <CheckBox
+            android:id="@+id/textSelectorChecked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="Text with color state BLUE"
-            android:textColor="@color/text_state_blue" />
-
+            android:text="Selector checked"
+            android:checked="true"
+            android:textColor="@color/selector_default_disabled_checked" />
 
     </LinearLayout>
