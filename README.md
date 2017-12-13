@@ -175,12 +175,12 @@ assertNotContains("text");
 assertNotContains(R.id.textview, "text");
 
 // Check text is given color
-assertTextColorIs(R.id.textViewRed, R.color.textRed); // color
-assertTextColorIs(R.id.textViewStateRed, R.color.text_state_red); // color state list
+assertTextColorIs(R.id.someRedText, R.color.red);
+assertTextColorIs(R.id.someColorListText, R.color.state_list);
 
 // ...or not?
-assertTextColorIsNot(R.id.textViewRed, R.color.textBlue); // color
-assertTextColorIsNot(R.id.textViewStateRed, R.color.text_state_blue); // color state list
+assertTextColorIs(R.id.someRedText, R.color.blue);
+assertTextColorIs(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
