@@ -1,11 +1,9 @@
 package com.schibsted.spain.barista.sample;
 
-
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
-
+import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,4 +42,23 @@ public class ColorsTest {
     assertTextColorIs(R.id.textSelectorChecked, R.color.checked);
   }
 
+  @Test(expected = AssertionFailedError.class)
+  public void checkSimpleColor_fails() {
+    assertTextColorIs(R.id.textRed, R.color.blue);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkColorList_whenDefault_fails() {
+    assertTextColorIs(R.id.textSelectorDefault, R.color.checked);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkColorList_whenDisabled_fails() {
+    assertTextColorIs(R.id.textSelectorDisabled, R.color.checked);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkColorList_whenChecked_fails() {
+    assertTextColorIs(R.id.textSelectorChecked, R.color.disabled);
+  }
 }
