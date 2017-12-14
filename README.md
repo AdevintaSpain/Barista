@@ -179,8 +179,8 @@ assertTextColorIs(R.id.someRedText, R.color.red);
 assertTextColorIs(R.id.someColorListText, R.color.state_list);
 
 // ...or not?
-assertTextColorIs(R.id.someRedText, R.color.blue);
-assertTextColorIs(R.id.someColorListText, R.color.another_state_list);
+assertTextColorIsNot(R.id.someRedText, R.color.blue);
+assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
