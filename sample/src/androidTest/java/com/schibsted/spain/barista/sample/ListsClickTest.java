@@ -81,6 +81,39 @@ public class ListsClickTest {
     assertResult(getSimpleListViewTextAt(20));
   }
 
+  @Test
+  public void clickSimpleGridView() throws Exception {
+    launchTestActivity(ListsActivity.buildIntent()
+            .withSimpleGrids(R.id.gridview)
+    );
+
+    clickListItem(20);
+
+    assertResult(getSimpleListViewTextAt(20));
+  }
+
+  @Test
+  public void clickComplexGridView() throws Exception {
+    launchTestActivity(ListsActivity.buildIntent()
+            .withComplexGrids(R.id.gridview)
+    );
+
+    clickListItem(20);
+
+    assertResult(getComplexListViewTextAt(20));
+  }
+
+  @Test
+  public void clickMultipleGridView_byId() throws Exception {
+    launchTestActivity(ListsActivity.buildIntent()
+            .withSimpleLists(R.id.gridview, R.id.gridview2)
+    );
+    clickListItem(R.id.gridview, 20);
+
+    assertResult(getSimpleListViewTextAt(20));
+  }
+
+
   @Test(expected = BaristaException.class)
   public void fail_whenNoViewFound() throws Exception {
     launchTestActivity(ListsActivity.buildIntent());
@@ -107,10 +140,20 @@ public class ListsClickTest {
   }
 
   @Test(expected = BaristaException.class)
+  public void fail_whenMultipleGridViews_withoutId() throws Exception {
+    launchTestActivity(ListsActivity.buildIntent()
+            .withSimpleGrids(R.id.gridview, R.id.gridview2)
+    );
+
+    clickListItem(20);
+  }
+
+  @Test(expected = BaristaException.class)
   public void fail_whenRecyclerAndListView_withoutId() throws Exception {
     launchTestActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler)
         .withSimpleLists(R.id.listview)
+        .withSimpleGrids(R.id.gridview)
     );
 
     clickListItem(20);

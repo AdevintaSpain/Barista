@@ -12,15 +12,19 @@ import android.support.test.espresso.action.ViewActions.scrollTo
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
-import android.widget.ListView
+import android.widget.AbsListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.anyOf
+import org.hamcrest.Matchers.anything
 
 object BaristaListInteractions {
 
@@ -101,8 +105,8 @@ object BaristaListInteractions {
     }
 
     private fun findListViewMatcher(@IdRes id: Int?) = when (id) {
-        null -> allOf(isDisplayed(), isAssignableFrom(ListView::class.java))
-        else -> allOf(isDisplayed(), isAssignableFrom(ListView::class.java), withId(id))
+        null -> allOf(isDisplayed(), isAssignableFrom(AbsListView::class.java))
+        else -> allOf(isDisplayed(), isAssignableFrom(AbsListView::class.java), withId(id))
     }
 
     private fun resourceName(resId: Int) = InstrumentationRegistry.getTargetContext().resources.getResourceName(resId)
