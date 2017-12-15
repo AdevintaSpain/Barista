@@ -47,12 +47,12 @@ object BaristaVisibilityAssertions {
             onView(matcher)
                     .withFailureHandler(spyFailureHandler)
                     .check(matches(isDisplayed()))
-        } catch (firstError: Exception) {
+        } catch (firstError: RuntimeException) {
             try {
                 onView(HelperMatchers.firstViewOf(allOf(matcher, isDisplayed())))
                         .withFailureHandler(spyFailureHandler)
                         .check(matches(isDisplayed()))
-            } catch (secondError: Exception) {
+            } catch (secondError: RuntimeException) {
                 spyFailureHandler.resendFirstError("View ${matcher.description()} wasn't displayed on the screen")
             }
         }
