@@ -11,8 +11,8 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
  - [Download](#download)
  - [API Overview](#api-overview)
-    - [Barista’s Interactions API](#baristas-interactions-api)
-    - [Barista’s Assertions API](#baristas-assertions-api)
+    - [Interactions](#baristas-interactions-api)
+    - [Assertions](#baristas-assertions-api)
   - [Runtime Permissions](#runtime-permissions)
   - [Useful test rules](#useful-test-rules)
     - [Reseting app data](#reseting-app-data)
