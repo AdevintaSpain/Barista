@@ -44,8 +44,6 @@
         />
     <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
     <activity android:name=".NestedScrollViewActivity"/>
-    <activity android:name=".RuntimePermissionActivity"/>
-
     <activity android:name=".CameraActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -63,6 +61,10 @@
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/provider_paths"/>
     </provider>
+
+    <activity android:name=".RuntimePermissionActivity" />
+    <activity android:name=".ColorsActivity" android:exported="true" />
+
   </application>
 
 </manifest>
