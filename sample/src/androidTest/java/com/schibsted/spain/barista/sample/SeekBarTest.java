@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgress;
+import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressTo;
 import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMax;
 import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMin;
 
@@ -23,7 +23,7 @@ public class SeekBarTest {
 
   @Test
   public void checkSetProgress() {
-    setProgress(R.id.seek_bar, 16);
+    setProgressTo(R.id.seek_bar, 16);
     assertDisplayed("16");
   }
 
