@@ -7,4 +7,5 @@
   <item name="gridview" type="id" />
   <item name="gridview2" type="id" />
   <item name="unknown" type="id" />
+  <item name="button" type="id" />
 </resources>
