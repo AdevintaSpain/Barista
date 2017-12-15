@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class ListsActivity extends AppCompatActivity {
   private static final String EXTRA_SIMPLE_LISTS = "simpleLists";
   private static final String EXTRA_COMPLEX_LISTS = "complexLists";
   private static final String EXTRA_RECYCLERS = "recyclers";
+  private static final String EXTRA_SIMPLE_GRIDS = "simpleGrids";
+  private static final String EXTRA_COMPLEX_GRIDS = "complexGrids";
 
   static final String[] FRUITS = new String[] {
       "Apple", "Apricot", "Avocado", "Banana", "Bilberry", "Blackberry", "Blackcurrant",
@@ -75,6 +78,14 @@ public class ListsActivity extends AppCompatActivity {
     for (int id : getIntent().getIntArrayExtra(EXTRA_RECYCLERS)) {
       addRecyclerView(id);
     }
+
+    for (int id : getIntent().getIntArrayExtra(EXTRA_SIMPLE_GRIDS)) {
+      addSimpleGridView(id);
+    }
+
+    for (int id : getIntent().getIntArrayExtra(EXTRA_COMPLEX_GRIDS)) {
+      addComplexGridView(id);
+    }
   }
 
   private void addSimpleListView(int id) {
@@ -108,6 +119,26 @@ public class ListsActivity extends AppCompatActivity {
     addList(recyclerView);
   }
 
+  private void addSimpleGridView(int id) {
+    GridView gridView = new GridView(this);
+    gridView.setId(id);
+    gridView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, FRUITS));
+    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        clickedResult.setText(getSimpleListViewTextAt(position));
+      }
+    });
+    addList(gridView);
+  }
+
+  private void addComplexGridView(int id) {
+    GridView gridView = new GridView(this);
+    gridView.setId(id);
+    gridView.setAdapter(new TextListViewAdapter(this, FRUITS, clickedResult));
+    addList(gridView);
+  }
+
   private void addList(View listView) {
     listsContainer.addView(listView,
         new LinearLayout.LayoutParams(
@@ -121,6 +152,8 @@ public class ListsActivity extends AppCompatActivity {
     private int[] simpleListViewIds = {};
     private int[] complexListViewIds = {};
     private int[] recyclerViewIds = {};
+    private int[] simpleGridViewIds = {};
+    private int[] complexGridViewIds = {};
 
     public IntentBuilder withSimpleLists(int... ids) {
       simpleListViewIds = ids;
@@ -137,11 +170,23 @@ public class ListsActivity extends AppCompatActivity {
       return this;
     }
 
+    public IntentBuilder withSimpleGrids(int... ids) {
+      simpleGridViewIds = ids;
+      return this;
+    }
+
+    public IntentBuilder withComplexGrids(int... ids) {
+      complexGridViewIds = ids;
+      return this;
+    }
+
     public Intent build(Context context) {
       Intent intent = new Intent(context, ListsActivity.class);
       intent.putExtra(EXTRA_SIMPLE_LISTS, simpleListViewIds);
       intent.putExtra(EXTRA_COMPLEX_LISTS, complexListViewIds);
       intent.putExtra(EXTRA_RECYCLERS, recyclerViewIds);
+      intent.putExtra(EXTRA_SIMPLE_GRIDS, simpleGridViewIds);
+      intent.putExtra(EXTRA_COMPLEX_GRIDS, complexGridViewIds);
       return intent;
     }
   }

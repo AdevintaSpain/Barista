@@ -175,10 +175,18 @@ assertHint(R.id.edittext, "Hint");
 // Check if text on screen contains given text
 assertContains("text");
 assertContains(R.id.textview, "text");
- 
+
 // ...or not?
 assertNotContains("text");
 assertNotContains(R.id.textview, "text");
+
+// Check text is given color
+assertTextColorIs(R.id.someRedText, R.color.red);
+assertTextColorIs(R.id.someColorListText, R.color.state_list);
+
+// ...or not?
+assertTextColorIs(R.id.someRedText, R.color.blue);
+assertTextColorIs(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
