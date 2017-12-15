@@ -90,6 +90,10 @@ closeDrawerWithGravity(Gravity.RIGHT);
 refresh(R.id.swipe_refresh);
 refresh(); // Id is optional! We'll find it for you :D
 
+// Close or press ime actions on the Keyboard
+closeKeyboard()
+pressImeActionButton()
+
 // And another tricky feature, but try not to use it
 sleep(2000);
 sleep(2, SECONDS);
