@@ -36,18 +36,23 @@ object BaristaVisibilityAssertions {
         onView(withId(resId)).check(matches(withText(text)))
     }
 
+    /**
+     * Attempts to find the view with multiple conditions:
+     * 1. Simplest case
+     * 2. More than one view
+     */
     private fun assertDisplayed(matcher: Matcher<View>) {
         val spyFailureHandler = SpyFailureHandler()
         try {
             onView(matcher)
                     .withFailureHandler(spyFailureHandler)
                     .check(matches(isDisplayed()))
-        } catch (multipleViews: AmbiguousViewMatcherException) {
+        } catch (firstError: Exception) {
             try {
                 onView(HelperMatchers.firstViewOf(allOf(matcher, isDisplayed())))
                         .withFailureHandler(spyFailureHandler)
                         .check(matches(isDisplayed()))
-            } catch (notDisplayedError: NoMatchingViewException) {
+            } catch (secondError: Exception) {
                 spyFailureHandler.resendFirstError("View ${matcher.description()} wasn't displayed on the screen")
             }
         }
