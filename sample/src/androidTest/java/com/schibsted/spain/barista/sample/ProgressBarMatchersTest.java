@@ -7,9 +7,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaSeekBarAssertions.assertProgress;
-import static com.schibsted.spain.barista.assertion.BaristaSeekBarAssertions.assertProgressIsMax;
-import static com.schibsted.spain.barista.assertion.BaristaSeekBarAssertions.assertProgressIsMin;
+import static com.schibsted.spain.barista.assertion.BaristaProgressBarAssertions.assertProgress;
+import static com.schibsted.spain.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMax;
+import static com.schibsted.spain.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMin;
 
 @RunWith(AndroidJUnit4.class)
 public class ProgressBarMatchersTest {
