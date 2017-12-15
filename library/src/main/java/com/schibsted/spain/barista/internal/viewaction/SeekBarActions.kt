@@ -12,7 +12,7 @@ import org.hamcrest.Matchers.allOf
 object SeekBarActions {
   const val DESCRIPTION = "Set SeekBar progress."
 
-  fun setProgress(progress: Int): ViewAction {
+  fun setSeekBarProgressTo(progress: Int): ViewAction {
     return object : ViewAction {
       override fun getConstraints(): Matcher<View> {
         return allOf(isDisplayed(), isAssignableFrom(SeekBar::class.java))
@@ -29,9 +29,9 @@ object SeekBarActions {
     }
   }
 
-  fun setProgressToMin(): ViewAction = setProgress(0)
+  fun setSeekBarProgressToMin(): ViewAction = setSeekBarProgressTo(0)
 
-  fun setProgressToMax(): ViewAction {
+  fun setSeekBarProgressToMax(): ViewAction {
     return object : ViewAction {
       override fun getConstraints(): Matcher<View> {
         return allOf(isDisplayed(), isAssignableFrom(SeekBar::class.java))
