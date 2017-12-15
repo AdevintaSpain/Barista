@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.interaction
 
+import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.ViewAction
@@ -9,6 +10,7 @@ import android.support.test.espresso.action.ViewActions.scrollTo
 import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.v4.widget.NestedScrollView
 import android.view.View
@@ -26,72 +28,84 @@ import org.hamcrest.Matchers.anyOf
 
 object BaristaClickInteractions {
 
-    @JvmStatic
-    fun clickBack() {
-        pressBack()
-    }
+  @JvmStatic
+  fun clickBack() {
+    pressBack()
+  }
 
-    @JvmStatic
-    fun clickOn(resId: Int) {
-        performClickTypeOnMatcher(resId.resourceMatcher(), click())
-    }
+  @JvmStatic
+  fun clickOn(resId: Int) {
+    performClickTypeOnMatcher(resId.resourceMatcher(), click())
+  }
 
-    @JvmStatic
-    fun clickOn(text: String) {
-        performClickTypeOnMatcher(withText(text), click())
-    }
+  @JvmStatic
+  fun clickOn(text: String) {
+    performClickTypeOnMatcher(withText(text), click())
+  }
 
-    @JvmStatic
-    fun longClickOn(resId: Int) {
-        performClickTypeOnMatcher(resId.resourceMatcher(), longClick())
-    }
+  @JvmStatic
+  fun clickOn(@IdRes id: Int, text: String) {
+    performClickTypeOnMatcher(allOf(withId(id), withText(text)), click())
+  }
 
-    @JvmStatic
-    fun longClickOn(text: String) {
-        performClickTypeOnMatcher(withText(text), longClick())
-    }
+  @JvmStatic
+  fun longClickOn(resId: Int) {
+    performClickTypeOnMatcher(resId.resourceMatcher(), longClick())
+  }
 
-    private fun performClickTypeOnMatcher(viewMatcher: Matcher<View>, clickType: ViewAction) {
-        val spyHandler = SpyFailureHandler()
+  @JvmStatic
+  fun longClickOn(text: String) {
+    performClickTypeOnMatcher(withText(text), longClick())
+  }
+
+  @JvmStatic
+  fun longClickOn(@IdRes id: Int, text: String) {
+    performClickTypeOnMatcher(allOf(withId(id), withText(text)), longClick())
+  }
+
+  private fun performClickTypeOnMatcher(viewMatcher: Matcher<View>, clickType: ViewAction) {
+    val spyHandler = SpyFailureHandler()
+    try {
+      try {
+        performOnDisplayedView(viewMatcher, clickType, spyHandler)
+      } catch (firstError: RuntimeException) {
         try {
-            try {
-                performOnDisplayedView(viewMatcher, clickType, spyHandler)
-            } catch (firstError: RuntimeException) {
-                try {
-                    scrollAndPerformOnView(viewMatcher, clickType, spyHandler)
-                } catch (secondError: RuntimeException) {
-                    scrollAndPerformOnDisplayedView(viewMatcher, clickType, spyHandler)
-                }
-            }
-        } catch (fatalError: RuntimeException) {
-            spyHandler.resendFirstError("Could not click on view ${viewMatcher.description()}")
+          scrollAndPerformOnView(viewMatcher, clickType, spyHandler)
+        } catch (secondError: RuntimeException) {
+          scrollAndPerformOnDisplayedView(viewMatcher, clickType, spyHandler)
         }
+      }
+    } catch (fatalError: RuntimeException) {
+      spyHandler.resendFirstError("Could not click on view ${viewMatcher.description()}")
     }
+  }
 
-    private fun scrollAndPerformOnView(viewMatcher: Matcher<View>, clickType: ViewAction, handler: SpyFailureHandler) {
-        onView(viewMatcher).withFailureHandler(handler).perform(nestedScrollToAction(), clickType)
-    }
+  private fun scrollAndPerformOnView(viewMatcher: Matcher<View>, clickType: ViewAction, handler: SpyFailureHandler) {
+    onView(viewMatcher).withFailureHandler(handler).perform(nestedScrollToAction(), clickType)
+  }
 
-    private fun scrollAndPerformOnDisplayedView(viewMatcher: Matcher<View>, clickType: ViewAction, failureHandler: SpyFailureHandler) {
-        onView(allOf(
-                viewMatcher,
-                isDescendantOfA(allOf(
-                        isDisplayed(),
-                        anyOf(
-                                isAssignableFrom(ScrollView::class.java),
-                                isAssignableFrom(HorizontalScrollView::class.java),
-                                isAssignableFrom(AbsListView::class.java),
-                                isAssignableFrom(NestedScrollView::class.java)
-                        )
-                ))
+  private fun scrollAndPerformOnDisplayedView(viewMatcher: Matcher<View>, clickType: ViewAction,
+      failureHandler: SpyFailureHandler) {
+    onView(allOf(
+        viewMatcher,
+        isDescendantOfA(allOf(
+            isDisplayed(),
+            anyOf(
+                isAssignableFrom(ScrollView::class.java),
+                isAssignableFrom(HorizontalScrollView::class.java),
+                isAssignableFrom(AbsListView::class.java),
+                isAssignableFrom(NestedScrollView::class.java)
+            )
         ))
-                .withFailureHandler(failureHandler)
-                .perform(scrollTo(), clickType)
-    }
+    ))
+        .withFailureHandler(failureHandler)
+        .perform(scrollTo(), clickType)
+  }
 
-    private fun performOnDisplayedView(viewMatcher: Matcher<View>, clickType: ViewAction, failureHandler: SpyFailureHandler) {
-        onView(displayedAnd(viewMatcher))
-                .withFailureHandler(failureHandler)
-                .perform(clickType)
-    }
+  private fun performOnDisplayedView(viewMatcher: Matcher<View>, clickType: ViewAction,
+      failureHandler: SpyFailureHandler) {
+    onView(displayedAnd(viewMatcher))
+        .withFailureHandler(failureHandler)
+        .perform(clickType)
+  }
 }
