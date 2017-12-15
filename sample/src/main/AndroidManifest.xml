@@ -51,6 +51,7 @@
     <activity android:name=".NestedScrollViewActivity"/>
     <activity android:name=".RuntimePermissionActivity" />
     <activity android:name=".ColorsActivity" android:exported="true" />
+    <activity android:name=".KeyboardActivity" />
   </application>
 
 </manifest>
