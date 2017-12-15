@@ -34,7 +34,7 @@ public class FailureHandlerTest {
   public void baseFailureHandlerCalledOnce_withBarista() throws Exception {
     try {
       assertDisplayed(NON_EXISTING);
-    } catch (Exception ignored) {
+    } catch (RuntimeException ignored) {
     }
 
     assertBaseHandlerCalledOnce();
@@ -44,7 +44,7 @@ public class FailureHandlerTest {
   public void baseFailureHandlerCalledOnce_withEspresso() throws Exception {
     try {
       onView(withText(NON_EXISTING)).check(matches(isDisplayed()));
-    } catch (Exception ignored) {
+    } catch (RuntimeException ignored) {
     }
 
     assertBaseHandlerCalledOnce();
