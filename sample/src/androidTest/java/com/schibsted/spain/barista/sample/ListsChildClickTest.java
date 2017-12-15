@@ -47,6 +47,17 @@ public class ListsChildClickTest {
     assertResult("yes");
   }
 
+
+  @Test
+  public void clickGridViewItemChild() throws Exception {
+    openActivity(ListsActivity.buildIntent()
+            .withComplexGrids(R.id.gridview)
+    );
+
+    clickListItemChild(20, R.id.yes);
+
+    assertResult("yes");
+  }
   @Test
   public void clickMultipleRecyclerItemChild_byId() throws Exception {
     openActivity(ListsActivity.buildIntent()
@@ -69,10 +80,32 @@ public class ListsChildClickTest {
     assertResult("yes");
   }
 
+  @Test
+  public void clickMultipleGridViewItemChild_byId() throws Exception {
+    openActivity(ListsActivity.buildIntent()
+            .withComplexGrids(R.id.gridview, R.id.gridview2)
+    );
+
+    clickListItemChild(R.id.gridview, 20, R.id.yes);
+
+    assertResult("yes");
+  }
+
   @Test(expected = PerformException.class)
   public void fails_whenListViewChildNotExist() throws Exception {
     openActivity(ListsActivity.buildIntent()
         .withComplexLists(R.id.listview)
+    );
+
+    clickListItemChild(20, R.id.unknown);
+
+    assertResult("");
+  }
+
+  @Test(expected = PerformException.class)
+  public void fails_whenGridViewChildNotExist() throws Exception {
+    openActivity(ListsActivity.buildIntent()
+            .withComplexGrids(R.id.gridview)
     );
 
     clickListItemChild(20, R.id.unknown);

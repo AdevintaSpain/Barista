@@ -142,6 +142,20 @@ assertFocused("Button")
 assertNotFocused(R.id.focused_view)
 assertNotFocused("Button")
 
+// Is this ImageView showing a drawable?
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoDrawable(R.id.image_view);
+
+// Does this View have a background?
+assertHasAnyBackground(R.id.view);
+assertHasBackground(R.id.view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoBackground(R.id.view);
+
 // What's the state of the Drawer?
 assertDrawerIsOpen();
 assertDrawerIsOpenWithGravity(Gravity.RIGHT);
@@ -152,18 +166,27 @@ assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
 
+// Check if text on screen contains given text
+assertContains("text");
+assertContains(R.id.textview, "text");
+
+// ...or not?
+assertNotContains("text");
+assertNotContains(R.id.textview, "text");
+
+// Check text is given color
+assertTextColorIs(R.id.someRedText, R.color.red);
+assertTextColorIs(R.id.someColorListText, R.color.state_list);
+
+// ...or not?
+assertTextColorIsNot(R.id.someRedText, R.color.blue);
+assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
+
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
-
-// Is this ImageView showing a drawable?
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
 ```
 
 ## Runtime Permissions

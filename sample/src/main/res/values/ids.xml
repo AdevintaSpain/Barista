@@ -4,5 +4,7 @@
   <item name="listview2" type="id" />
   <item name="recycler" type="id" />
   <item name="recycler2" type="id" />
+  <item name="gridview" type="id" />
+  <item name="gridview2" type="id" />
   <item name="unknown" type="id" />
 </resources>
