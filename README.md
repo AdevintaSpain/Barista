@@ -9,6 +9,17 @@
 
 Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
+ - [Download](#download)
+ - [API Overview](#api-overview)
+    - [Barista’s Interactions API](#baristas-interactions-api)
+    - [Barista’s Assertions API](#baristas-assertions-api)
+  - [Runtime Permissions](#runtime-permissions)
+  - [Useful test rules](#useful-test-rules)
+    - [Reseting app data](#reseting-app-data)
+    - [Dealing with Flaky tests](#dealing-with-flaky-tests)
+    - [One rule to rule them all](#one-rule-to-rule-them-all)
+  - [Magic that Barista does for you](#magic-that-barista-does-for-you)
+  - [License](#license)
 
 # Download
 
