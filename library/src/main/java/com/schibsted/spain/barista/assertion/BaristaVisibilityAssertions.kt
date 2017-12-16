@@ -2,60 +2,31 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.ColorRes
 import android.support.annotation.IdRes
-import android.support.test.espresso.AmbiguousViewMatcherException
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.NoMatchingViewException
 import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
-import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
-import android.view.View
-import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
-import com.schibsted.spain.barista.internal.failurehandler.description
-import com.schibsted.spain.barista.internal.matcher.HelperMatchers
+import com.schibsted.spain.barista.internal.magicAssert
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
+import com.schibsted.spain.barista.internal.not
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
-import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
-import org.hamcrest.core.IsNot.not
 
 object BaristaVisibilityAssertions {
 
     @JvmStatic
-    fun assertDisplayed(resId: Int) {
-        assertDisplayed(resId.resourceMatcher())
+    fun assertDisplayed(viewId: Int) {
+        viewId magicAssert isDisplayed()
     }
 
     @JvmStatic
     fun assertDisplayed(text: String) {
-        assertDisplayed(withText(text))
+        text magicAssert isDisplayed()
     }
 
     @JvmStatic
-    fun assertDisplayed(@IdRes resId: Int, text: String) {
-        onView(withId(resId)).check(matches(withText(text)))
-    }
-
-    /**
-     * Attempts to find the view with multiple conditions:
-     * 1. Simplest case
-     * 2. More than one view
-     */
-    private fun assertDisplayed(matcher: Matcher<View>) {
-        val spyFailureHandler = SpyFailureHandler()
-        try {
-            onView(matcher)
-                    .withFailureHandler(spyFailureHandler)
-                    .check(matches(isDisplayed()))
-        } catch (firstError: RuntimeException) {
-            try {
-                onView(HelperMatchers.firstViewOf(allOf(matcher, isDisplayed())))
-                        .withFailureHandler(spyFailureHandler)
-                        .check(matches(isDisplayed()))
-            } catch (secondError: RuntimeException) {
-                spyFailureHandler.resendFirstError("View ${matcher.description()} wasn't displayed on the screen")
-            }
-        }
+    fun assertDisplayed(@IdRes viewId: Int, text: String) {
+        viewId magicAssert withText(text)
     }
 
     @JvmStatic
@@ -69,28 +40,28 @@ object BaristaVisibilityAssertions {
     }
 
     @JvmStatic
-    fun assertNotDisplayed(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(not(isDisplayed())))
+    fun assertNotDisplayed(viewId: Int) {
+        viewId magicAssert !isDisplayed()
     }
 
     @JvmStatic
     fun assertNotDisplayed(text: String) {
-        onView(withText(text)).check(matches(not(isDisplayed())))
+        text magicAssert !isDisplayed()
     }
 
     @JvmStatic
-    fun assertNotDisplayed(@IdRes resId: Int, text: String) {
-        onView(withId(resId)).check(matches(not(withText(text))))
+    fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
+        viewId magicAssert !withText(text)
     }
 
     @JvmStatic
     fun assertContains(text: String) {
-        assertDisplayed(withText(containsString(text)))
+        withText(containsString(text)) magicAssert isDisplayed()
     }
 
     @JvmStatic
-    fun assertContains(@IdRes resId: Int, text: String) {
-        onView(withId(resId)).check(matches(withText(containsString(text))))
+    fun assertContains(@IdRes viewId: Int, text: String) {
+        viewId magicAssert withText(containsString(text))
     }
 
     @JvmStatic
@@ -104,12 +75,12 @@ object BaristaVisibilityAssertions {
     }
 
     @JvmStatic
-    fun assertTextColorIs(@IdRes resId: Int, @ColorRes colorRes: Int) {
-        onView(withId(resId)).check(matches(TextColorMatcher(colorRes)))
+    fun assertTextColorIs(@IdRes viewId: Int, @ColorRes colorRes: Int) {
+        viewId magicAssert TextColorMatcher(colorRes)
     }
 
     @JvmStatic
-    fun assertTextColorIsNot(@IdRes resId: Int, @ColorRes colorRes: Int) {
-        onView(withId(resId)).check(matches(not(TextColorMatcher(colorRes))))
+    fun assertTextColorIsNot(@IdRes viewId: Int, @ColorRes colorRes: Int) {
+        viewId magicAssert !TextColorMatcher(colorRes)
     }
 }
