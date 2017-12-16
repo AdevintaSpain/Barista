@@ -6,7 +6,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
 import org.hamcrest.Matcher
 
-class BaristaArgumentTypeException : RuntimeException("The id argument must be R.id.* or R.string.*")
+class BaristaResourceTypeException(message: String) : RuntimeException(message)
 
 enum class ResourceType {
     ID, STRING
@@ -18,7 +18,7 @@ val Int.resourceType: ResourceType
         return when (resourceTypeName) {
             "id" -> ResourceType.ID
             "string" -> ResourceType.STRING
-            else -> throw BaristaArgumentTypeException()
+            else -> throw BaristaResourceTypeException("The id argument must be R.id.* or R.string.*, but was $resourceTypeName")
         }
     }
 
