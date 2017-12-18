@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.sample;
 
-import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
 
 import junit.framework.AssertionFailedError;
@@ -402,7 +402,7 @@ public class AssertionsTest {
     assertContains("Enabled");
   }
 
-  @Test(expected = NoMatchingViewException.class)
+  @Test(expected = BaristaException.class)
   public void checkTextViewContainsText_withoutViewId_failsWhenNeeded() {
     assertContains("unexisting text");
   }
