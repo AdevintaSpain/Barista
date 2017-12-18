@@ -98,6 +98,12 @@ openDrawerWithGravity(Gravity.RIGHT);
 closeDrawer();
 closeDrawerWithGravity(Gravity.RIGHT);
 
+// Interact with SeekBars
+setProgressTo(R.id.seek_bar, 5);
+setProgressToMin(R.id.seek_bar);
+setProgressToMax(R.id.seek_bar);
+
+
 // Pull to refresh in SwipeRefreshLayout
 refresh(R.id.swipe_refresh);
 refresh(); // Id is optional! We'll find it for you :D
@@ -203,6 +209,21 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
+
+// Is this ImageView showing a drawable?
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoDrawable(R.id.image_view);
+
+
+// Is this ProgressBar/SeekBar progress?
+assertProgress(R.id.seek_bar, 5)
+assertProgressIsMin(R.id.seek_bar)
+assertProgressIsMax(R.id.seek_bar)
+
+
 ```
 
 ## Runtime Permissions
