@@ -2,7 +2,7 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.test.espresso.matcher.ViewMatchers.isChecked
 import com.schibsted.spain.barista.internal.magicAssert
-import com.schibsted.spain.barista.internal.not
+import org.hamcrest.Matchers.not
 
 object BaristaCheckedAssertions {
 
@@ -18,11 +18,11 @@ object BaristaCheckedAssertions {
 
     @JvmStatic
     fun assertUnchecked(resId: Int) {
-        resId magicAssert !isChecked()
+        resId magicAssert not(isChecked())
     }
 
     @JvmStatic
     fun assertUnchecked(text: String) {
-        text magicAssert !isChecked()
+        text magicAssert not(isChecked())
     }
 }

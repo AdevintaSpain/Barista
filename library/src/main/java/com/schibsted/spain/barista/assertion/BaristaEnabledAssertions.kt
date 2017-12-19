@@ -2,7 +2,7 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.test.espresso.matcher.ViewMatchers.isEnabled
 import com.schibsted.spain.barista.internal.magicAssert
-import com.schibsted.spain.barista.internal.not
+import org.hamcrest.Matchers.not
 
 object BaristaEnabledAssertions {
 
@@ -18,11 +18,11 @@ object BaristaEnabledAssertions {
 
     @JvmStatic
     fun assertDisabled(resId: Int) {
-        resId magicAssert !isEnabled()
+        resId magicAssert not(isEnabled())
     }
 
     @JvmStatic
     fun assertDisabled(text: String) {
-        text magicAssert !isEnabled()
+        text magicAssert not(isEnabled())
     }
 }

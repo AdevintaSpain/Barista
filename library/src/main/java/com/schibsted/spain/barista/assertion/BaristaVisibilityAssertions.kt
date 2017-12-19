@@ -7,10 +7,10 @@ import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
 import android.support.test.espresso.matcher.ViewMatchers.*
 import com.schibsted.spain.barista.internal.magicAssert
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
-import com.schibsted.spain.barista.internal.not
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.not
 
 object BaristaVisibilityAssertions {
 
@@ -41,17 +41,17 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertNotDisplayed(viewId: Int) {
-        viewId magicAssert !isDisplayed()
+        viewId magicAssert not(isDisplayed())
     }
 
     @JvmStatic
     fun assertNotDisplayed(text: String) {
-        text magicAssert !isDisplayed()
+        text magicAssert not(isDisplayed())
     }
 
     @JvmStatic
     fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
-        viewId magicAssert !withText(text)
+        viewId magicAssert not(withText(text))
     }
 
     @JvmStatic
@@ -81,6 +81,6 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertTextColorIsNot(@IdRes viewId: Int, @ColorRes colorRes: Int) {
-        viewId magicAssert !TextColorMatcher(colorRes)
+        viewId magicAssert not(TextColorMatcher(colorRes))
     }
 }

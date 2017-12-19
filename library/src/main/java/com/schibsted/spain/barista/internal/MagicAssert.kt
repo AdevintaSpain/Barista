@@ -64,8 +64,3 @@ private fun tryToAssert(viewMatcher: Matcher<View>, condition: Matcher<View>, sp
             .withFailureHandler(spyFailureHandler)
             .check(ViewAssertions.matches(condition))
 }
-
-/**
- * Allow using `!viewMatcher` as alias for `not(viewMatcher)`
- */
-operator fun Matcher<View>.not(): Matcher<View> = not(this)

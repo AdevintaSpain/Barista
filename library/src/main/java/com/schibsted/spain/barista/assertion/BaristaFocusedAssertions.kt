@@ -3,7 +3,7 @@ package com.schibsted.spain.barista.assertion
 import android.support.annotation.IdRes
 import android.support.test.espresso.matcher.ViewMatchers.hasFocus
 import com.schibsted.spain.barista.internal.magicAssert
-import com.schibsted.spain.barista.internal.not
+import org.hamcrest.Matchers.not
 
 object BaristaFocusedAssertions {
 
@@ -14,7 +14,7 @@ object BaristaFocusedAssertions {
 
     @JvmStatic
     fun assertNotFocused(@IdRes resId: Int) {
-        resId magicAssert !hasFocus()
+        resId magicAssert not(hasFocus())
     }
 
     @JvmStatic
@@ -24,6 +24,6 @@ object BaristaFocusedAssertions {
 
     @JvmStatic
     fun assertNotFocused(text: String) {
-        text magicAssert !hasFocus()
+        text magicAssert not(hasFocus())
     }
 }
