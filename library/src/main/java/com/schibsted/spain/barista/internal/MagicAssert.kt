@@ -43,18 +43,26 @@ infix fun Matcher<View>.magicAssert(condition: Matcher<View>) {
 fun magicAssertOnView(viewMatcher: Matcher<View>, condition: Matcher<View>) {
     val spyFailureHandler = SpyFailureHandler()
     try {
-        onView(viewMatcher)
-                .withFailureHandler(spyFailureHandler)
-                .check(ViewAssertions.matches(condition))
+        tryToAssert(viewMatcher, condition, spyFailureHandler)
     } catch (firstError: RuntimeException) {
         try {
-            onView(firstViewOf(allOf(viewMatcher, condition)))
-                    .withFailureHandler(spyFailureHandler)
-                    .check(ViewAssertions.matches(condition))
+            tryToAssertFirstView(viewMatcher, condition, spyFailureHandler)
         } catch (secondError: RuntimeException) {
             spyFailureHandler.resendFirstError("View ${viewMatcher.description()} wasn't displayed on the screen")
         }
     }
+}
+
+private fun tryToAssertFirstView(viewMatcher: Matcher<View>, condition: Matcher<View>, spyFailureHandler: SpyFailureHandler) {
+    onView(firstViewOf(allOf(viewMatcher, condition)))
+            .withFailureHandler(spyFailureHandler)
+            .check(ViewAssertions.matches(condition))
+}
+
+private fun tryToAssert(viewMatcher: Matcher<View>, condition: Matcher<View>, spyFailureHandler: SpyFailureHandler) {
+    onView(viewMatcher)
+            .withFailureHandler(spyFailureHandler)
+            .check(ViewAssertions.matches(condition))
 }
 
 /**
