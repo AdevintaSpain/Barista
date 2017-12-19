@@ -27,7 +27,7 @@ _Psst, hey. Migrating to Barista 2? [Check out this guide](MIGRATION-2.md) to he
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:2.1.0') {
+androidTestCompile('com.schibsted.spain:barista:2.2.0') {
   exclude group: 'com.android.support'
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
