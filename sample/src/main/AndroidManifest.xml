@@ -63,7 +63,10 @@
     </provider>
 
     <activity android:name=".RuntimePermissionActivity" />
+    <activity android:name=".SeekBarActivity" />
+    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity" />
     <activity android:name=".ColorsActivity" android:exported="true" />
+    <activity android:name=".KeyboardActivity" />
 
   </application>
 

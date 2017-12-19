@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+  <TextView
+      android:id="@+id/actions"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+  <EditText
+      android:id="@+id/edittext"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="I'm an edittext!"
+      />
+
+  <EditText
+      android:id="@+id/edittext_not_focused"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="I'm an edittext not focused!"
+      />
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <EditText
+          android:id="@+id/edittext_very_far_away"
+          android:layout_marginTop="800dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="I'm an edittext very far away!"
+          />
+    </FrameLayout>
+  </ScrollView>
+</LinearLayout>
