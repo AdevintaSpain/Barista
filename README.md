@@ -5,7 +5,7 @@
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
-![Barista logo](art/barista-logo.png)
+<img src="art/barista-logo.svg" width="30%"/>
 
 Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
