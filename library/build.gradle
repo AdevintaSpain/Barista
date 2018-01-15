@@ -22,6 +22,7 @@ dependencies {
     compile "com.android.support.test.espresso:espresso-core:$espressoVersion"
     compile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
     compile "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
+    compile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
 
     compile "com.android.support:support-annotations:$supportLibVersion"
     compile "com.android.support:support-core-ui:$supportLibVersion"
