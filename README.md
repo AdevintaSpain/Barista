@@ -294,6 +294,11 @@ All previous rules can be added at the same time by just adding the BaristaRule.
 @Rule
 public BaristaRule<MyActivity> baristaRule = BaristaRule.create(MyActivity.class);
 
+or kotlin way...
+
+@get:Rule
+var activityRule = create<MyActivity>()
+
 //...
 
 baristaRule.launchActivity();
