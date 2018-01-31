@@ -3,7 +3,6 @@ jdk: oraclejdk8
 branches:
   only:
     - master
-    - barista2
     - /^v\d+\.\d+\.\d+$/
 env:
   global:
