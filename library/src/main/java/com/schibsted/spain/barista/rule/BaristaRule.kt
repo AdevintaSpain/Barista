@@ -17,16 +17,12 @@ class BaristaRule<T : Activity> private constructor(activityClass: Class<T>) : T
     private val clearPreferencesRule: ClearPreferencesRule = ClearPreferencesRule()
     private val clearDatabaseRule: ClearDatabaseRule = ClearDatabaseRule()
     private val clearFilesRule: ClearFilesRule = ClearFilesRule()
-    private val flakyTestRule: FlakyTestRule
-    private val activityTestRule: ActivityTestRule<T>
-
-    init {
-        this.flakyTestRule = FlakyTestRule()
-                .allowFlakyAttemptsByDefault(DEFAULT_FLAKY_ATTEMPTS)
-        this.activityTestRule = ActivityTestRule(activityClass,
-                INITIAL_TOUCH_MODE_ENABLED,
-                LAUNCH_ACTIVITY_AUTOMATICALLY)
+    private val flakyTestRule: FlakyTestRule = FlakyTestRule().apply {
+        allowFlakyAttemptsByDefault(DEFAULT_FLAKY_ATTEMPTS)
     }
+    private val activityTestRule: ActivityTestRule<T> = ActivityTestRule(activityClass,
+            INITIAL_TOUCH_MODE_ENABLED,
+            LAUNCH_ACTIVITY_AUTOMATICALLY)
 
     override fun apply(base: Statement, description: Description): Statement {
         return RuleChain.outerRule(flakyTestRule)
