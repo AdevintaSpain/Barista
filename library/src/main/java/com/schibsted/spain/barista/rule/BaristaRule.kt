@@ -14,6 +14,20 @@ import org.junit.runners.model.Statement
 
 class BaristaRule<T : Activity> private constructor(activityClass: Class<T>) : TestRule {
 
+    companion object {
+        private const val DEFAULT_FLAKY_ATTEMPTS = 10
+        private const val LAUNCH_ACTIVITY_AUTOMATICALLY = false
+        private const val INITIAL_TOUCH_MODE_ENABLED = true
+
+        @JvmStatic
+        inline fun <reified T : Activity> create(): BaristaRule<T> = BaristaRule.create(T::class.java)
+
+        @JvmStatic
+        fun <T : Activity> create(activityClass: Class<T>): BaristaRule<T> {
+            return BaristaRule(activityClass)
+        }
+    }
+
     private val clearPreferencesRule: ClearPreferencesRule = ClearPreferencesRule()
     private val clearDatabaseRule: ClearDatabaseRule = ClearDatabaseRule()
     private val clearFilesRule: ClearFilesRule = ClearFilesRule()
@@ -41,19 +55,5 @@ class BaristaRule<T : Activity> private constructor(activityClass: Class<T>) : T
 
     fun launchActivity(startIntent: Intent) {
         activityTestRule.launchActivity(startIntent)
-    }
-
-    companion object {
-        private val DEFAULT_FLAKY_ATTEMPTS = 10
-        private val LAUNCH_ACTIVITY_AUTOMATICALLY = false
-        private val INITIAL_TOUCH_MODE_ENABLED = true
-
-        @JvmStatic
-        inline fun <reified T : Activity> create(): BaristaRule<T> = BaristaRule.create(T::class.java)
-
-        @JvmStatic
-        fun <T : Activity> create(activityClass: Class<T>): BaristaRule<T> {
-            return BaristaRule(activityClass)
-        }
     }
 }
