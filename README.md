@@ -293,6 +293,7 @@ All previous rules can be added at the same time by just adding the BaristaRule.
 ```java
 @Rule
 public BaristaRule<MyActivity> baristaRule = BaristaRule.create(MyActivity.class);
+
 //...
 
 baristaRule.launchActivity();
