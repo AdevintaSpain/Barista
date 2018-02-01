@@ -19,7 +19,6 @@ class BaristaRule<T : Activity> private constructor(activityClass: Class<T>) : T
         private const val LAUNCH_ACTIVITY_AUTOMATICALLY = false
         private const val INITIAL_TOUCH_MODE_ENABLED = true
 
-        @JvmStatic
         inline fun <reified T : Activity> create(): BaristaRule<T> = BaristaRule.create(T::class.java)
 
         @JvmStatic
