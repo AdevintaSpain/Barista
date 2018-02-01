@@ -6,21 +6,22 @@ import com.schibsted.spain.barista.internal.magicAssert
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withAnyBackground
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withBackground
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withoutBackground
+import com.schibsted.spain.barista.internal.util.resourceMatcher
 
 object BaristaBackgroundAssertions {
 
     @JvmStatic
     fun assertHasBackground(@IdRes viewId: Int, @DrawableRes drawable: Int) {
-        viewId magicAssert withBackground(drawable)
+        viewId.resourceMatcher().magicAssert(withBackground(drawable))
     }
 
     @JvmStatic
     fun assertHasAnyBackground(@IdRes viewId: Int) {
-        viewId magicAssert withAnyBackground()
+        viewId.resourceMatcher().magicAssert(withAnyBackground())
     }
 
     @JvmStatic
     fun assertHasNoBackground(@IdRes viewId: Int) {
-        viewId magicAssert withoutBackground()
+        viewId.resourceMatcher().magicAssert(withoutBackground())
     }
 }

@@ -16,17 +16,17 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertDisplayed(viewId: Int) {
-        viewId magicAssert isDisplayed()
+        viewId.resourceMatcher().magicAssert(isDisplayed())
     }
 
     @JvmStatic
     fun assertDisplayed(text: String) {
-        text magicAssert isDisplayed()
+        withText(text).magicAssert(isDisplayed())
     }
 
     @JvmStatic
     fun assertDisplayed(@IdRes viewId: Int, text: String) {
-        viewId magicAssert withText(text)
+        viewId.resourceMatcher().magicAssert(withText(text))
     }
 
     @JvmStatic
@@ -41,27 +41,27 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertNotDisplayed(viewId: Int) {
-        viewId magicAssert not(isDisplayed())
+        viewId.resourceMatcher().magicAssert(not(isDisplayed()))
     }
 
     @JvmStatic
     fun assertNotDisplayed(text: String) {
-        text magicAssert not(isDisplayed())
+        withText(text).magicAssert(not(isDisplayed()))
     }
 
     @JvmStatic
     fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
-        viewId magicAssert not(withText(text))
+        viewId.resourceMatcher().magicAssert(not(withText(text)))
     }
 
     @JvmStatic
     fun assertContains(text: String) {
-        withText(containsString(text)) magicAssert isDisplayed()
+        withText(containsString(text)).magicAssert(isDisplayed())
     }
 
     @JvmStatic
     fun assertContains(@IdRes viewId: Int, text: String) {
-        viewId magicAssert withText(containsString(text))
+        viewId.resourceMatcher().magicAssert(withText(containsString(text)))
     }
 
     @JvmStatic
@@ -76,11 +76,11 @@ object BaristaVisibilityAssertions {
 
     @JvmStatic
     fun assertTextColorIs(@IdRes viewId: Int, @ColorRes colorRes: Int) {
-        viewId magicAssert TextColorMatcher(colorRes)
+        viewId.resourceMatcher().magicAssert(TextColorMatcher(colorRes))
     }
 
     @JvmStatic
     fun assertTextColorIsNot(@IdRes viewId: Int, @ColorRes colorRes: Int) {
-        viewId magicAssert not(TextColorMatcher(colorRes))
+        viewId.resourceMatcher().magicAssert(not(TextColorMatcher(colorRes)))
     }
 }

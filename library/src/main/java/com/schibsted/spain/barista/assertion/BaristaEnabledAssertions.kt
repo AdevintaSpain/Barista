@@ -1,28 +1,30 @@
 package com.schibsted.spain.barista.assertion
 
 import android.support.test.espresso.matcher.ViewMatchers.isEnabled
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.magicAssert
+import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not
 
 object BaristaEnabledAssertions {
 
     @JvmStatic
     fun assertEnabled(resId: Int) {
-        resId magicAssert isEnabled()
+        resId.resourceMatcher().magicAssert(isEnabled())
     }
 
     @JvmStatic
     fun assertEnabled(text: String) {
-        text magicAssert isEnabled()
+        withText(text).magicAssert(isEnabled())
     }
 
     @JvmStatic
     fun assertDisabled(resId: Int) {
-        resId magicAssert not(isEnabled())
+        resId.resourceMatcher().magicAssert(not(isEnabled()))
     }
 
     @JvmStatic
     fun assertDisabled(text: String) {
-        text magicAssert not(isEnabled())
+        withText(text).magicAssert(not(isEnabled()))
     }
 }

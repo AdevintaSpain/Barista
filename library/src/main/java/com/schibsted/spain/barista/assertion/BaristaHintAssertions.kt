@@ -10,12 +10,12 @@ object BaristaHintAssertions {
 
     @JvmStatic
     fun assertHint(@IdRes viewId: Int, @StringRes text: Int) {
-        withId(viewId) magicAssert withHint(text)
+        withId(viewId).magicAssert(withHint(text))
     }
 
     @JvmStatic
     fun assertHint(@IdRes viewId: Int, text: String) {
-        withId(viewId) magicAssert withHint(text)
+        withId(viewId).magicAssert(withHint(text))
     }
 
 }
