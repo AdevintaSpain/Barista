@@ -13,7 +13,7 @@ import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 
 /**
- * Scrolls in Espresso are not as great as we could except. For that reason, we will try
+ * Scrolls in Espresso are not as great as we could expect. For that reason, we will try
  * to scroll several times instead of just one.
  */
 object BaristaScrollInteractions {
