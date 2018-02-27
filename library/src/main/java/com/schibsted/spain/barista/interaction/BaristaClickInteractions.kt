@@ -51,6 +51,11 @@ object BaristaClickInteractions {
         performClickTypeOnMatcher(withText(text), longClick())
     }
 
+    @JvmStatic
+    fun clickOn(viewMatcher: Matcher<View>) {
+        performClickTypeOnMatcher(viewMatcher, click())
+    }
+
     private fun performClickTypeOnMatcher(viewMatcher: Matcher<View>, clickType: ViewAction) {
         val spyHandler = SpyFailureHandler()
         try {

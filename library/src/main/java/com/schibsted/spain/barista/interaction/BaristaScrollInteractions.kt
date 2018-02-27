@@ -28,8 +28,18 @@ object BaristaScrollInteractions {
     }
 
     @JvmStatic
+    fun scrollTo(matcher: Matcher<View>) {
+        scrollWithMultipleAttempts(matcher, failAtEnd = true)
+    }
+
+    @JvmStatic
     fun scrollTo(text: String) {
         scrollWithMultipleAttempts(withText(text), failAtEnd = true)
+    }
+
+    @JvmStatic
+    fun safelyScrollTo(matcher: Matcher<View>) {
+        scrollWithMultipleAttempts(matcher, failAtEnd = false)
     }
 
     @JvmStatic
