@@ -6,15 +6,14 @@ import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers.firstViewOf
-import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 
 /**
- * Extension function alias for [magicAssertOnView]
+ * Extension function alias for [assertAnyView]
  */
-fun Matcher<View>.magicAssert(condition: Matcher<View>) {
-    magicAssertOnView(viewMatcher = this, condition = condition)
+fun Matcher<View>.assertAny(condition: Matcher<View>) {
+    assertAnyView(viewMatcher = this, condition = condition)
 }
 
 /**
@@ -24,7 +23,7 @@ fun Matcher<View>.magicAssert(condition: Matcher<View>) {
  * 1. Just one view matches the [viewMatcher].
  * 2. Multiple views match the [viewMatcher]: will pass if at least one of them matches the [condition].
  */
-fun magicAssertOnView(viewMatcher: Matcher<View>, condition: Matcher<View>) {
+fun assertAnyView(viewMatcher: Matcher<View>, condition: Matcher<View>) {
     val spyFailureHandler = SpyFailureHandler()
     try {
         tryToAssert(viewMatcher, condition, spyFailureHandler)
