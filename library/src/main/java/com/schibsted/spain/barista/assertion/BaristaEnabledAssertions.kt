@@ -1,31 +1,30 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.isEnabled
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
-import org.hamcrest.core.IsNot.not
+import org.hamcrest.Matchers.not
 
 object BaristaEnabledAssertions {
 
     @JvmStatic
     fun assertEnabled(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isEnabled()))
+        resId.resourceMatcher().assertAny(isEnabled())
     }
 
     @JvmStatic
     fun assertEnabled(text: String) {
-        onView(withText(text)).check(matches(isEnabled()))
+        withText(text).assertAny(isEnabled())
     }
 
     @JvmStatic
     fun assertDisabled(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(not(isEnabled())))
+        resId.resourceMatcher().assertAny(not(isEnabled()))
     }
 
     @JvmStatic
     fun assertDisabled(text: String) {
-        onView(withText(text)).check(matches(not(isEnabled())))
+        withText(text).assertAny(not(isEnabled()))
     }
 }
