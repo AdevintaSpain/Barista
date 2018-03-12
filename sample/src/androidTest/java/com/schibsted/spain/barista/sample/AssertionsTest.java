@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -23,6 +24,7 @@ import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertNotFocused;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasBitmap;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
@@ -316,6 +318,15 @@ public class AssertionsTest {
   @Test
   public void checkDrawable_withId() throws Exception {
     assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+  }
+
+  @Test
+  public void checkDrawable_withBitmap() throws Exception {
+    BitmapDrawable drawable = (BitmapDrawable)
+            activityRule.getActivity().getResources().getDrawable(R.drawable.ic_barista,
+                    activityRule.getActivity().getTheme());
+
+    assertHasBitmap(R.id.image_view, drawable.getBitmap());
   }
 
   @Test(expected = AssertionFailedError.class)
