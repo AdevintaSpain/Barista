@@ -320,15 +320,6 @@ public class AssertionsTest {
     assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
-  @Test
-  public void checkDrawable_withBitmap() throws Exception {
-    BitmapDrawable drawable = (BitmapDrawable)
-            activityRule.getActivity().getResources().getDrawable(R.drawable.ic_barista,
-                    activityRule.getActivity().getTheme());
-
-    assertHasBitmap(R.id.image_view, drawable.getBitmap());
-  }
-
   @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withId_failure() throws Exception {
     assertHasDrawable(R.id.image_view, R.drawable.ic_action_menu);
@@ -352,6 +343,24 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkDrawable_withoutDrawable_failure() throws Exception {
     assertHasNoDrawable(R.id.image_view);
+  }
+
+  @Test
+  public void checkDrawable_withBitmap() throws Exception {
+    BitmapDrawable drawable = (BitmapDrawable)
+            activityRule.getActivity().getResources().getDrawable(R.drawable.ic_barista,
+                    activityRule.getActivity().getTheme());
+
+    assertHasBitmap(R.id.image_view, drawable.getBitmap());
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDrawable_withBitmap_failure() throws Exception {
+    BitmapDrawable drawable = (BitmapDrawable)
+            activityRule.getActivity().getResources().getDrawable(R.drawable.ic_action_menu,
+                    activityRule.getActivity().getTheme());
+
+    assertHasBitmap(R.id.image_view, drawable.getBitmap());
   }
 
   @Test
