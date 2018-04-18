@@ -2,6 +2,8 @@ package com.schibsted.spain.barista.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class HelloWorldActivity extends AppCompatActivity {
 
@@ -9,5 +11,14 @@ public class HelloWorldActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_hello_world);
+
+    Button btn_closed = (Button) findViewById(R.id.btn_closed);
+
+    btn_closed.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        finish();
+      }
+    });
   }
 }
