@@ -33,7 +33,7 @@ class BaristaRule<T : Activity> private constructor(activityClass: Class<T>) : T
     private val flakyTestRule: FlakyTestRule = FlakyTestRule().apply {
         allowFlakyAttemptsByDefault(DEFAULT_FLAKY_ATTEMPTS)
     }
-    private val activityTestRule: ActivityTestRule<T> = ActivityTestRule(activityClass,
+    val activityTestRule: ActivityTestRule<T> = ActivityTestRule(activityClass,
             INITIAL_TOUCH_MODE_ENABLED,
             LAUNCH_ACTIVITY_AUTOMATICALLY)
 
