@@ -1,10 +1,12 @@
 package com.schibsted.spain.barista.assertion
 
+import android.app.Activity
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.NoActivityResumedException
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.matcher.ViewMatchers.isRoot
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
+import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 
 object BaristaAssertions {
@@ -23,4 +25,8 @@ object BaristaAssertions {
         }
     }
 
+    @JvmStatic
+    fun assertActivityIsFinishing(activity: Activity){
+        assertTrue(activity.isFinishing)
+    }
 }
