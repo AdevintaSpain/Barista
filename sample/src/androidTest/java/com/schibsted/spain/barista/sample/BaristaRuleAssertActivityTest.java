@@ -6,11 +6,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertActivityIsFinishing;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
-import static junit.framework.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
-public class BaristaRuleActivityTestRuleTest {
+public class BaristaRuleAssertActivityTest {
 
   @Rule
   public BaristaRule<HelloWorldActivity> baristaRule = BaristaRule.create(HelloWorldActivity.class);
@@ -21,6 +21,6 @@ public class BaristaRuleActivityTestRuleTest {
 
     clickOn(R.id.btn_closed);
 
-    assertTrue(baristaRule.getActivityTestRule().getActivity().isFinishing());
+    assertActivityIsFinishing(baristaRule.getActivityTestRule().getActivity());
   }
 }
