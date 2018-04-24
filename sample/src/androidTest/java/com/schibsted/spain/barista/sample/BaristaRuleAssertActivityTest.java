@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertActivityIsFinishing;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
+import static junit.framework.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class BaristaRuleAssertActivityTest {
@@ -21,6 +21,6 @@ public class BaristaRuleAssertActivityTest {
 
     clickOn(R.id.btn_closed);
 
-    assertActivityIsFinishing(baristaRule.getActivityTestRule().getActivity());
+    assertTrue(baristaRule.getActivityTestRule().getActivity().isFinishing());
   }
 }
