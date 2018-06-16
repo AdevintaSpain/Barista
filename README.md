@@ -308,6 +308,8 @@ The rule assumes some sane defaults:
 - Clear databases
 - Clear files
 
+### Writing tests in Kotlin?
+[Check this link](https://github.com/SchibstedSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
 
 # Magic that Barista does for you
 
