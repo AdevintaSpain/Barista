@@ -81,7 +81,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     html.enabled = true
   }
 
-  jacocoClasspath = configurations['androidJacocoAnt']
+  jacocoClasspath = configurations['jacocoAnt']
 
   def fileFilter = ['**/R.class',
                     '**/R$*.class',
