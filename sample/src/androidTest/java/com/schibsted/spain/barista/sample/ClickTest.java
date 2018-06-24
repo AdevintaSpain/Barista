@@ -35,6 +35,12 @@ public class ClickTest {
   }
 
   @Test
+  public void checkClick_byIdAndText() {
+    clickOn(R.id.next, "Next");
+    assertDisplayed("Hi! I'm the second screen!");
+  }
+
+  @Test
   public void checkClick_byStringResource() {
     clickOn(R.string.centered_button);
     assertDisplayed("Hi! I'm the second screen!");

@@ -27,6 +27,7 @@ import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.a
 import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayedAfterWait;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
@@ -37,7 +38,7 @@ public class AssertionsTest {
 
   @Rule
   public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
-          new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
+        new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
   @Test
   public void checkVisibleViews() {
@@ -425,5 +426,20 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkTextViewDoesntContainsText_withoutViewId_failsWhenNeeded() {
     assertNotContains("Enabled");
+  }
+
+  @Test
+  public void asertDisplayedAfterDelayById() {
+    assertDisplayedAfterWait(R.id.visible_view, 1000L);
+  }
+
+  @Test
+  public void asertDisplayedAfterDelayByString() {
+    assertDisplayedAfterWait("Hello world!", 1000L);
+  }
+
+  @Test
+  public void asertDisplayedAfterDelayByIdAndString() {
+    assertDisplayedAfterWait(R.id.visible_view, "Hello world!", 1000L);
   }
 }

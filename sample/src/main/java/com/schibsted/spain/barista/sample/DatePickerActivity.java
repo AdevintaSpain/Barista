@@ -2,12 +2,16 @@ package com.schibsted.spain.barista.sample;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
 import java.util.Calendar;
 
 public class DatePickerActivity extends AppCompatActivity {
@@ -22,6 +26,14 @@ public class DatePickerActivity extends AppCompatActivity {
       public void onClick(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
+      }
+    });
+
+    findViewById(R.id.launch_time_picker).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+          TimePickerFragment fragment = new TimePickerFragment();
+          fragment.show(getSupportFragmentManager(), "timePicker");
       }
     });
   }
@@ -44,6 +56,26 @@ public class DatePickerActivity extends AppCompatActivity {
     public void onDateSet(DatePicker view, int year, int month, int day) {
       TextView result = (TextView) getActivity().findViewById(R.id.date_picker_result);
       result.setText(year + "+" + month + "+" + day);
+    }
+  }
+
+  public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+      Calendar calendar = Calendar.getInstance();
+      final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+      final int minute = calendar.get(Calendar.MINUTE);
+
+      return new TimePickerDialog(getActivity(), this, hour, minute, true);
+
+    }
+
+    @Override
+    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+      TextView result = (TextView) getActivity().findViewById(R.id.date_picker_result);
+      result.setText(String.format("%d:%d", hour, minute));
     }
   }
 }
