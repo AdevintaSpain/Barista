@@ -5,7 +5,6 @@ apply from: '../config/android-quality.gradle'
 
 android {
   compileSdkVersion compileSdkVersionDeclared
-  buildToolsVersion buildToolsVersionDeclared
   defaultConfig {
     applicationId "com.schibsted.spain.barista.sample"
     minSdkVersion minSdkVersionDeclared
@@ -23,16 +22,21 @@ android {
 }
 
 dependencies {
-  compile "com.android.support:support-v4:$supportLibVersion"
-  compile "com.android.support:appcompat-v7:$supportLibVersion"
-  compile "com.android.support:recyclerview-v7:$supportLibVersion"
-  compile "com.android.support:design:$supportLibVersion"
-  compile "com.android.support:support-annotations:$supportLibVersion"
-  compile 'com.github.bumptech.glide:glide:3.8.0'
+  implementation "com.android.support:support-v4:$supportLibVersion"
+  implementation "com.android.support:appcompat-v7:$supportLibVersion"
+  implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+  implementation "com.android.support:design:$supportLibVersion"
+  implementation "com.android.support:support-annotations:$supportLibVersion"
+  implementation 'com.github.bumptech.glide:glide:4.7.1'
 
-  compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  androidTestApi "com.android.support.test.espresso:espresso-core:$espressoVersion"
+  androidTestApi "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+  androidTestApi "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
+  androidTestApi "com.android.support.test.espresso:espresso-intents:$espressoVersion"
 
-  testCompile 'junit:junit:4.12'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-  androidTestCompile project(':library')
+  testImplementation 'junit:junit:4.12'
+
+  androidTestImplementation project(':library')
 }
