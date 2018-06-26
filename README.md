@@ -52,6 +52,7 @@ Barista already includes `espresso-core` and `espresso-contrib`. If you need [an
 clickOn(R.id.button);
 clickOn(R.string.button_text);
 clickOn("Next");
+clickOn(R.id.button, "Next");
 clickBack();
 
 // Long click widgets
@@ -65,6 +66,7 @@ clickMenu(R.id.menu_item);
 // Writing into widgets
 writeTo(R.id.edittext, "A great text");
 writeToAutoComplete(R.id.autocomplete, "Another great text");
+clearText(R.id.edittext)
 
 // Operate on ListViews and RecyclerViews indistinctly by position
 clickListItem(R.id.list, 4);
@@ -80,6 +82,7 @@ clickRadioButtonPosition(R.id.radiogroup, 42);
 
 // Pick data on pickers
 setDateOnPicker(1986, 03, 23);
+setTimeOnPicker(17, 2);
 
 // Interact with dialogs
 clickDialogPositiveButton();
@@ -125,6 +128,14 @@ assertDisplayed("Hello world");
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
+
+// Will keep checking until either the view is found or the timeout duration has elaspsed
+assertDisplayedAfterWait(R.id.button);
+assertDisplayedAfterWait(R.id.button, 2000);
+assertDisplayedAfterWait("Hello world");
+assertDisplayedAfterWait("Hello world", 1000);
+assertDisplayedAfterWait(R.id.button, "Hello world");
+assertDisplayedAfterWait(R.id.button, "Hello world", 1000);
 
 // ...or not?
 assertNotDisplayed("Hello world");
@@ -185,9 +196,13 @@ assertDrawerIsOpenWithGravity(Gravity.RIGHT);
 assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
-// Check EditText's hints
+// Check TextInputLayout, TextInputEditText and EditText's hints
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
+
+//Check TextView and TextInputLayout's error text
+assertError(R.id.edittext, R.string.error);
+assertError(R.id.edittext, "Error message");assertHint
 
 // Check if text on screen contains given text
 assertContains("text");
@@ -207,6 +222,8 @@ assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
+assertDisplayedAtPosition(R.id.recycler, 0, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.id.text_field, "text");
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();

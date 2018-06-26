@@ -14,6 +14,9 @@ import org.hamcrest.Matchers.not
 
 object BaristaVisibilityAssertions {
 
+    private const val defaultTimeout = 5000L
+    private const val interval = 50L
+
     @JvmStatic
     fun assertDisplayed(viewId: Int) {
         viewId.resourceMatcher().assertAny(isDisplayed())
@@ -28,6 +31,22 @@ object BaristaVisibilityAssertions {
     fun assertDisplayed(@IdRes viewId: Int, text: String) {
         viewId.resourceMatcher().assertAny(withText(text))
     }
+
+    @JvmStatic
+    fun assertDisplayedAfterWait(@IdRes viewId: Int, delay: Long = defaultTimeout) {
+        doUntilDisplayed(viewId, delay)
+    }
+
+    @JvmStatic
+    fun assertDisplayedAfterWait(text: String, delay: Long = defaultTimeout) {
+        doUntilDisplayed(text, delay)
+    }
+
+    @JvmStatic
+    fun assertDisplayedAfterWait(@IdRes viewId: Int, text: String, delay: Long = defaultTimeout) {
+        doUntilDisplayed(viewId, text, delay)
+    }
+
 
     @JvmStatic
     fun assertNotExist(resId: Int) {
@@ -83,4 +102,51 @@ object BaristaVisibilityAssertions {
     fun assertTextColorIsNot(@IdRes viewId: Int, @ColorRes colorRes: Int) {
         viewId.resourceMatcher().assertAny(not(TextColorMatcher(colorRes)))
     }
+
+    private fun doUntilDisplayed(viewId: Int, timeout: Long = defaultTimeout) {
+        val startTime = System.currentTimeMillis()
+        while (true) {
+            try {
+                viewId.resourceMatcher().assertAny(isDisplayed())
+                break
+            } catch (e: Throwable) {
+                if (System.currentTimeMillis() - startTime > timeout) {
+                    throw e
+                }
+                Thread.sleep(interval)
+            }
+        }
+    }
+
+    private fun doUntilDisplayed(text: String, timeout: Long = defaultTimeout) {
+        val startTime = System.currentTimeMillis()
+        while (true) {
+            try {
+                withText(text).assertAny(isDisplayed())
+                break
+            } catch (e: Throwable) {
+                if (System.currentTimeMillis() - startTime > timeout) {
+                    throw e
+                }
+                Thread.sleep(interval)
+            }
+        }
+    }
+
+    private fun doUntilDisplayed(viewId: Int, text: String, timeout: Long = defaultTimeout) {
+        val startTime = System.currentTimeMillis()
+        while (true) {
+            try {
+                viewId.resourceMatcher().assertAny(withText(text))
+                break
+            } catch (e: Throwable) {
+                if (System.currentTimeMillis() - startTime > timeout) {
+                    throw e
+                }
+                Thread.sleep(interval)
+            }
+        }
+    }
+
+
 }

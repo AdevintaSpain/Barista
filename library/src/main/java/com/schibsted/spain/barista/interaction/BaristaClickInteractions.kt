@@ -1,15 +1,11 @@
 package com.schibsted.spain.barista.interaction
 
+import android.support.annotation.IdRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.ViewAction
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.longClick
-import android.support.test.espresso.action.ViewActions.scrollTo
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.espresso.action.ViewActions.*
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v4.widget.NestedScrollView
 import android.view.View
 import android.widget.AbsListView
@@ -49,6 +45,11 @@ object BaristaClickInteractions {
     @JvmStatic
     fun longClickOn(text: String) {
         performClickTypeOnMatcher(withText(text), longClick())
+    }
+
+    @JvmStatic
+    fun clickOn(@IdRes viewId: Int, text: String) {
+        onView(allOf(withId(viewId), withText(text))).perform(click())
     }
 
     private fun performClickTypeOnMatcher(viewMatcher: Matcher<View>, clickType: ViewAction) {
