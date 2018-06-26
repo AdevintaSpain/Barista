@@ -5,7 +5,6 @@ apply from: '../config/android-quality.gradle'
 
 android {
   compileSdkVersion compileSdkVersionDeclared
-  buildToolsVersion buildToolsVersionDeclared
   defaultConfig {
     applicationId "com.schibsted.spain.barista.sample"
     minSdkVersion minSdkVersionDeclared

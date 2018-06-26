@@ -34,7 +34,6 @@ task clean(type: Delete) {
 
 ext.minSdkVersionDeclared = 14
 ext.compileSdkVersionDeclared = 28
-ext.buildToolsVersionDeclared = '27.0.3'
 
 ext.supportLibVersion = '27.1.1'
 ext.espressoVersion = '3.0.2'
