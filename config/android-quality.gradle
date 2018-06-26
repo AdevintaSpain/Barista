@@ -81,8 +81,6 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     html.enabled = true
   }
 
-  jacocoClasspath = configurations['jacocoAnt']
-
   def fileFilter = ['**/R.class',
                     '**/R$*.class',
                     '**/*$ViewInjector*.*',
