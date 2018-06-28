@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'org.jetbrains.dokka-android'
 apply from: '../config/android-quality.gradle'
 
 android {
@@ -35,6 +36,30 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:1.7.0'
     testImplementation 'org.mockito:mockito-core:2.13.0'
 }
+
+dokka {
+  outputFormat = 'javadoc'
+  outputDirectory = "$buildDir/javadoc"
+
+  packageOptions {
+    prefix = "com.schibsted.spain.barista"
+    reportUndocumented = true
+    includeNonPublic = false
+  }
+  packageOptions {
+    prefix = "com.schibsted.spain.barista.internal"
+    suppress = true
+  }
+  packageOptions {
+    prefix = "com.schibsted.spain.barista.rule.cleardata.internal"
+    suppress = true
+  }
+  packageOptions {
+    prefix = "com.schibsted.spain.barista.rule.flaky.internal"
+    suppress = true
+  }
+}
+
 
 publish {
     userOrg = 'schibstedspain'
