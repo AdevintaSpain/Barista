@@ -4,7 +4,7 @@ import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.longClick
 import android.support.test.espresso.matcher.ViewMatchers.withText
-import com.schibsted.spain.barista.internal.util.ViewActionExecutor
+import com.schibsted.spain.barista.internal.performAction
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 
 object BaristaClickInteractions {
@@ -16,21 +16,21 @@ object BaristaClickInteractions {
 
   @JvmStatic
   fun clickOn(resId: Int) {
-    ViewActionExecutor.performAction(resId.resourceMatcher(), click())
+    resId.resourceMatcher().performAction(click())
   }
 
   @JvmStatic
   fun clickOn(text: String) {
-    ViewActionExecutor.performAction(withText(text), click())
+    withText(text).performAction(click())
   }
 
   @JvmStatic
   fun longClickOn(resId: Int) {
-    ViewActionExecutor.performAction(resId.resourceMatcher(), longClick())
+    resId.resourceMatcher().performAction(longClick())
   }
 
   @JvmStatic
   fun longClickOn(text: String) {
-    ViewActionExecutor.performAction(withText(text), longClick())
+    withText(text).performAction(longClick())
   }
 }

@@ -9,7 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers.hasFocus
 import android.support.test.espresso.matcher.ViewMatchers.isRoot
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.widget.EditText
-import com.schibsted.spain.barista.internal.util.ViewActionExecutor
+import com.schibsted.spain.barista.internal.performAction
 import org.hamcrest.core.AllOf.allOf
 
 object BaristaKeyboardInteractions {
@@ -23,7 +23,7 @@ object BaristaKeyboardInteractions {
   @JvmOverloads
   fun pressImeActionButton(@IdRes editTextId: Int? = null) {
     val matcher = findEditText(editTextId)
-    ViewActionExecutor.performAction(matcher, ViewActions.pressImeActionButton())
+    matcher.performAction(ViewActions.pressImeActionButton())
   }
 
   private fun findEditText(editTextId: Int?) = when (editTextId) {
