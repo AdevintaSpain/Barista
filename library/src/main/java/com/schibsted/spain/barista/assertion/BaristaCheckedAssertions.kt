@@ -1,29 +1,30 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isChecked
+import android.support.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
+import org.hamcrest.Matchers.not
 
 object BaristaCheckedAssertions {
 
     @JvmStatic
     fun assertChecked(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isChecked()))
+        resId.resourceMatcher().assertAny(isChecked())
     }
 
     @JvmStatic
     fun assertChecked(text: String) {
-        onView(withText(text)).check(matches(isChecked()))
+        withText(text).assertAny(isChecked())
     }
 
     @JvmStatic
     fun assertUnchecked(resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(isNotChecked()))
+        resId.resourceMatcher().assertAny(not(isChecked()))
     }
 
     @JvmStatic
     fun assertUnchecked(text: String) {
-        onView(withText(text)).check(matches(isNotChecked()))
+        withText(text).assertAny(not(isChecked()))
     }
 }

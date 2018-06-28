@@ -2,28 +2,26 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
-import android.support.test.espresso.Espresso
-import android.support.test.espresso.Espresso.*
-import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.assertion.ViewAssertions.*
-import android.support.test.espresso.matcher.ViewMatchers
-import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher
-import com.schibsted.spain.barista.internal.matcher.DrawableMatcher
+import com.schibsted.spain.barista.internal.assertAny
+import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withAnyBackground
+import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withBackground
+import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withoutBackground
+import com.schibsted.spain.barista.internal.util.resourceMatcher
 
 object BaristaBackgroundAssertions {
 
-  @JvmStatic
-  fun assertHasBackground(@IdRes id: Int, @DrawableRes drawable: Int) {
-    onView(ViewMatchers.withId(id)).check(matches(BackgroundMatcher.withBackground(drawable)))
-  }
+    @JvmStatic
+    fun assertHasBackground(@IdRes viewId: Int, @DrawableRes drawable: Int) {
+        viewId.resourceMatcher().assertAny(withBackground(drawable))
+    }
 
-  @JvmStatic
-  fun assertHasAnyBackground(@IdRes id: Int) {
-    onView(ViewMatchers.withId(id)).check(matches(BackgroundMatcher.withAnyBackground()))
-  }
+    @JvmStatic
+    fun assertHasAnyBackground(@IdRes viewId: Int) {
+        viewId.resourceMatcher().assertAny(withAnyBackground())
+    }
 
-  @JvmStatic
-  fun assertHasNoBackground(@IdRes id: Int) {
-    onView(ViewMatchers.withId(id)).check(matches(BackgroundMatcher.withoutBackground()))
-  }
+    @JvmStatic
+    fun assertHasNoBackground(@IdRes viewId: Int) {
+        viewId.resourceMatcher().assertAny(withoutBackground())
+    }
 }

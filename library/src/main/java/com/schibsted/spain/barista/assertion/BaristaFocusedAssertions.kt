@@ -1,32 +1,31 @@
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.IdRes
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.hasFocus
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
-import org.hamcrest.core.IsNot.not
+import org.hamcrest.Matchers.not
 
 object BaristaFocusedAssertions {
 
     @JvmStatic
-    fun assertFocused(@IdRes resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(hasFocus()))
+    fun assertFocused(resId: Int) {
+        resId.resourceMatcher().assertAny(hasFocus())
     }
 
     @JvmStatic
     fun assertNotFocused(@IdRes resId: Int) {
-        onView(resId.resourceMatcher()).check(matches(not(hasFocus())))
+        resId.resourceMatcher().assertAny(not(hasFocus()))
     }
 
     @JvmStatic
     fun assertFocused(text: String) {
-        onView(withText(text)).check(matches(hasFocus()))
+        withText(text).assertAny(hasFocus())
     }
 
     @JvmStatic
     fun assertNotFocused(text: String) {
-        onView(withText(text)).check(matches(not(hasFocus())))
+        withText(text).assertAny(not(hasFocus()))
     }
 }

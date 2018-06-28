@@ -1,13 +1,26 @@
-[![Build Status](https://travis-ci.org/SchibstedSpain/Barista.svg?branch=master)](https://travis-ci.org/SchibstedSpain/Barista)
-[![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
-
 # Barista
 **The guy who serves a great Espresso**
 
-![Barista logo](art/barista-logo.png)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/SchibstedSpain/Barista)
+[![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
+
+<img src="art/barista-logo.svg" width="30%"/>
 
 Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
+ - [Download](#download)
+ - [API Overview](#api-overview)
+    - [Interactions](#baristas-interactions-api)
+    - [Assertions](#baristas-assertions-api)
+    - [Intents](#baristas-intents-api)
+    - [Runtime Permissions](#runtime-permissions)
+    - [Useful test rules](#useful-test-rules)
+      - [Reseting app data](#reseting-app-data)
+      - [Dealing with Flaky tests](#dealing-with-flaky-tests)
+      - [One rule to rule them all](#one-rule-to-rule-them-all)
+  - [Magic that Barista does for you](#magic-that-barista-does-for-you)
+  - [License](#license)
 
 # Download
 
@@ -15,7 +28,7 @@ _Psst, hey. Migrating to Barista 2? [Check out this guide](MIGRATION-2.md) to he
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:2.1.0') {
+androidTestImplementation('com.schibsted.spain:barista:2.4.0') {
   exclude group: 'com.android.support'
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
@@ -24,7 +37,7 @@ androidTestCompile('com.schibsted.spain:barista:2.1.0') {
 You might need to include the Google Maven repository, required by Espresso 3:
 ```gradle
 repositories {
-    maven { url "https://maven.google.com" }
+    google()
 }
 ```
 
@@ -85,6 +98,12 @@ openDrawer();
 openDrawerWithGravity(Gravity.RIGHT);
 closeDrawer();
 closeDrawerWithGravity(Gravity.RIGHT);
+
+// Interact with SeekBars
+setProgressTo(R.id.seek_bar, 5);
+setProgressToMin(R.id.seek_bar);
+setProgressToMax(R.id.seek_bar);
+
 
 // Pull to refresh in SwipeRefreshLayout
 refresh(R.id.swipe_refresh);
@@ -191,10 +210,30 @@ assertRecyclerViewItemCount(R.id.recycler, 10);
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
+
+// Is this ImageView showing a drawable?
+assertHasAnyDrawable(R.id.image_view);
+assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
+
+// ...or not?
+assertHasNoDrawable(R.id.image_view);
+
+
+// Is this ProgressBar/SeekBar progress?
+assertProgress(R.id.seek_bar, 5)
+assertProgressIsMin(R.id.seek_bar)
+assertProgressIsMax(R.id.seek_bar)
+
+
+```
+
+## Barista’s Intents API
+```java
+// Creates a Bitmap on a camera provided URI
+mockAndroidCamera();
 ```
 
 ## Runtime Permissions
-
 The new Marshmallow permissions system requires checking for permissions at runtime. As Espresso can't interact with the system dialog, Barista offers a way to allow permissions when needed.
 
 ```java
@@ -269,6 +308,8 @@ The rule assumes some sane defaults:
 - Clear databases
 - Clear files
 
+### Writing tests in Kotlin?
+[Check this link](https://github.com/SchibstedSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
 
 # Magic that Barista does for you
 
@@ -278,20 +319,4 @@ In order to speed up testing, Barista keeps in mind some considerations.
 - **Just interacts with displayed Views**: Interacting with `View`s inside a `ViewPager` throws `AmbiguousViewMatcherException`, because the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.
 
 # License
-
-```
-Copyright 2017 Schibsted Classified Media Spain S.L.
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+**[Apache License, Version 2.0 (the "License")](LICENSE)**

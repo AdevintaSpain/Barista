@@ -1,10 +1,10 @@
 package com.schibsted.spain.barista.sample;
 
-import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
+import com.schibsted.spain.barista.internal.util.BaristaResourceTypeException;
 
 import junit.framework.AssertionFailedError;
 
@@ -274,37 +274,37 @@ public class AssertionsTest {
     try {
       assertDisplayed(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertNotDisplayed(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertNotExist(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertEnabled(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertDisabled(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertFocused(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
     try {
       assertNotFocused(R.color.colorAccent);
       fail();
-    } catch (BaristaArgumentTypeException expected) {
+    } catch (BaristaResourceTypeException expected) {
     }
   }
 
@@ -402,7 +402,7 @@ public class AssertionsTest {
     assertContains("Enabled");
   }
 
-  @Test(expected = NoMatchingViewException.class)
+  @Test(expected = BaristaException.class)
   public void checkTextViewContainsText_withoutViewId_failsWhenNeeded() {
     assertContains("unexisting text");
   }

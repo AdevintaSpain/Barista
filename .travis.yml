@@ -3,7 +3,6 @@ jdk: oraclejdk8
 branches:
   only:
     - master
-    - barista2
     - /^v\d+\.\d+\.\d+$/
 env:
   global:
@@ -14,8 +13,8 @@ android:
   - tools
   - tools
   - platform-tools
-  - build-tools-25.0.3
-  - android-25
+  - build-tools-27.0.3
+  - android-28
   - extra
   - addon
 

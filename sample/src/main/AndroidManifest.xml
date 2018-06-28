@@ -30,11 +30,6 @@
     <activity android:name=".PreferencesActivity"/>
     <activity android:name=".DatabaseActivity"/>
     <activity android:name=".FileActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
     </activity>
     <activity android:name=".HelloWorldActivity"/>
     <activity android:name=".WrappedViewActivity"/>
@@ -49,9 +44,30 @@
         />
     <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
     <activity android:name=".NestedScrollViewActivity"/>
+    <activity android:name=".CameraActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="${applicationId}.barista.sample.provider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/provider_paths"/>
+    </provider>
+
     <activity android:name=".RuntimePermissionActivity" />
+    <activity android:name=".SeekBarActivity" />
+    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity" />
     <activity android:name=".ColorsActivity" android:exported="true" />
     <activity android:name=".KeyboardActivity" />
+
   </application>
 
 </manifest>
