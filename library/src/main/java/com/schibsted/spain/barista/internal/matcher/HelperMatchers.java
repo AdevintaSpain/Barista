@@ -71,7 +71,7 @@ public class HelperMatchers {
     };
   }
 
-  public static Matcher<View> withParentId(@IdRes int parentId){
+  public static Matcher<View> withParentId(@IdRes int parentId) {
     return withParent(withId(parentId));
   }
 }
