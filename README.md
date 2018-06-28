@@ -28,7 +28,7 @@ _Psst, hey. Migrating to Barista 2? [Check out this guide](MIGRATION-2.md) to he
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestCompile('com.schibsted.spain:barista:2.4.0') {
+androidTestImplementation('com.schibsted.spain:barista:2.4.0') {
   exclude group: 'com.android.support'
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
@@ -37,7 +37,7 @@ androidTestCompile('com.schibsted.spain:barista:2.4.0') {
 You might need to include the Google Maven repository, required by Espresso 3:
 ```gradle
 repositories {
-    maven { url "https://maven.google.com" }
+    google()
 }
 ```
 
