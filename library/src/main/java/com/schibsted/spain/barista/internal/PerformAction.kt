@@ -38,12 +38,12 @@ fun performActionOnView(viewMatcher: Matcher<View>, action: ViewAction) {
   val spyHandler = SpyFailureHandler()
   try {
     try {
-      performOnDisplayedView(viewMatcher, action, spyHandler)
+      tryToPerformOnDisplayedView(viewMatcher, action, spyHandler)
     } catch (firstError: RuntimeException) {
       try {
-        scrollAndPerformOnView(viewMatcher, action, spyHandler)
+        tryToScrollAndPerformOnView(viewMatcher, action, spyHandler)
       } catch (secondError: RuntimeException) {
-        scrollAndPerformOnDisplayedView(viewMatcher, action, spyHandler)
+        tryToScrollAndPerformOnDisplayedParentView(viewMatcher, action, spyHandler)
       }
     }
   } catch (fatalError: RuntimeException) {
@@ -51,13 +51,19 @@ fun performActionOnView(viewMatcher: Matcher<View>, action: ViewAction) {
   }
 }
 
-private fun scrollAndPerformOnView(viewMatcher: Matcher<View>, action: ViewAction, handler: SpyFailureHandler) {
+private fun tryToPerformOnDisplayedView(viewMatcher: Matcher<View>, action: ViewAction, failureHandler: SpyFailureHandler) {
+  onView(displayedAnd(viewMatcher))
+      .withFailureHandler(failureHandler)
+      .perform(action)
+}
+
+private fun tryToScrollAndPerformOnView(viewMatcher: Matcher<View>, action: ViewAction, handler: SpyFailureHandler) {
   onView(viewMatcher)
       .withFailureHandler(handler)
       .perform(nestedScrollToAction(), action)
 }
 
-private fun scrollAndPerformOnDisplayedView(viewMatcher: Matcher<View>, action: ViewAction, failureHandler: SpyFailureHandler) {
+private fun tryToScrollAndPerformOnDisplayedParentView(viewMatcher: Matcher<View>, action: ViewAction, failureHandler: SpyFailureHandler) {
   onView(allOf(
       viewMatcher,
       isDescendantOfA(allOf(
@@ -72,10 +78,4 @@ private fun scrollAndPerformOnDisplayedView(viewMatcher: Matcher<View>, action: 
   ))
       .withFailureHandler(failureHandler)
       .perform(scrollTo(), action)
-}
-
-private fun performOnDisplayedView(viewMatcher: Matcher<View>, action: ViewAction, failureHandler: SpyFailureHandler) {
-  onView(displayedAnd(viewMatcher))
-      .withFailureHandler(failureHandler)
-      .perform(action)
 }
