@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
+import static org.hamcrest.Matchers.containsString;
 
 @RunWith(AndroidJUnit4.class)
 public class VisibilityAssertionsTest {
@@ -46,6 +47,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkDisplayedViews_failsWhenInvisible() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("invisible_view"));
+    thrown.expectMessage(containsString("is displayed on the screen"));
 
     assertDisplayed(R.id.invisible_view);
   }
@@ -53,6 +56,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkDisplayed_failsWhenNotExists() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("not_exists"));
+    thrown.expectMessage(containsString("No view matching"));
 
     assertDisplayed(R.string.not_exists);
   }
@@ -65,6 +70,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkDisplayedIdAndText_failsWhenTextIsNotTheExpected() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("visible_view"));
+    thrown.expectMessage(containsString("This is not the text you are looking for"));
 
     assertDisplayed(R.id.visible_view, "This is not the text you are looking for");
   }
@@ -72,6 +79,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkDisplayedIdAndText_failsWhenViewDoesNotExist() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("not_exists"));
+    thrown.expectMessage(containsString("No view matching"));
 
     assertDisplayed(R.id.not_exists, "This is not the text you are looking for");
   }
@@ -92,6 +101,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkNotDisplayedIdAndText_failsWhenTextMatches() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("visible_view"));
+    thrown.expectMessage(containsString("not with text"));
 
     assertNotDisplayed(R.id.visible_view, "Hello world!");
   }
@@ -99,6 +110,8 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkNotDisplayed_failsWhenVisible() {
     thrown.expect(BaristaException.class);
+    thrown.expectMessage(containsString("visible_view"));
+    thrown.expectMessage(containsString("not is displayed"));
 
     assertNotDisplayed(R.id.visible_view);
   }
@@ -113,6 +126,7 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkNotExist_failsWhenViewExists() {
     thrown.expect(AssertionError.class);
+    thrown.expectMessage(containsString("View is present in the hierarchy"));
 
     assertNotExist(R.id.visible_view);
   }

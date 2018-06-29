@@ -1,6 +1,8 @@
 package com.schibsted.spain.barista.internal
 
+import android.support.test.espresso.AmbiguousViewMatcherException
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.NoMatchingViewException
 import android.support.test.espresso.assertion.ViewAssertions
 import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
@@ -27,12 +29,17 @@ fun assertAnyView(viewMatcher: Matcher<View>, condition: Matcher<View>) {
     val spyFailureHandler = SpyFailureHandler()
     try {
         tryToAssert(viewMatcher, condition, spyFailureHandler)
-    } catch (firstError: RuntimeException) {
+    } catch (multipleViewsError: AmbiguousViewMatcherException) {
         try {
             tryToAssertFirstView(viewMatcher, condition, spyFailureHandler)
-        } catch (secondError: RuntimeException) {
-            spyFailureHandler.resendFirstError("View ${viewMatcher.description()} wasn't displayed on the screen")
+        } catch (secondError: Throwable) {
+            spyFailureHandler.resendFirstError(
+                "None of the views matching [${viewMatcher.description()}] did match the condition [${condition.description()}]")
         }
+    } catch (viewNotFound: NoMatchingViewException) {
+        spyFailureHandler.resendFirstError("No view matching [${viewMatcher.description()}] was found")
+    } catch (anotherError: Throwable) {
+        spyFailureHandler.resendFirstError("View [${viewMatcher.description()}] didn't match condition [${condition.description()}]")
     }
 }
 
