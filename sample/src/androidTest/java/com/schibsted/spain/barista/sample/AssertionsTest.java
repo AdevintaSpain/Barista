@@ -2,12 +2,9 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import com.schibsted.spain.barista.internal.util.BaristaResourceTypeException;
-
 import junit.framework.AssertionFailedError;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,116 +35,6 @@ public class AssertionsTest {
   @Rule
   public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
           new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
-
-  @Test
-  public void checkVisibleViews() {
-    assertDisplayed(R.id.visible_view);
-
-    assertDisplayed(R.string.hello_world);
-    assertDisplayed("Hello world!");
-  }
-
-  @Test
-  public void checkVisibleViews_breaksWhenNeeded() {
-    try {
-      assertDisplayed(R.id.invisible_view);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertDisplayed(R.string.unknown);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertDisplayed("Unknown");
-      fail();
-    } catch (Throwable expected) {
-    }
-  }
-
-  @Test
-  public void checkVisible_withRepeatedViews() throws Exception {
-    assertNotDisplayed(R.id.repeated_view_1_gone);
-
-    assertDisplayed("Repeated");
-    assertDisplayed(R.string.repeated);
-  }
-
-  @Test
-  public void checkExpectedText() throws Exception {
-    assertDisplayed(R.id.visible_view, "Hello world!");
-  }
-
-  @Test(expected = AssertionFailedError.class)
-  public void checkExpectedText_failsWhenTextIsNotTheExpected() throws Exception {
-    assertDisplayed(R.id.visible_view, "This is not the text you are looking for");
-  }
-
-  @Test
-  public void checkNotExpectedText() throws Exception {
-    assertNotDisplayed(R.id.visible_view, "This text must not be displayed on the view");
-  }
-
-  @Test(expected = AssertionFailedError.class)
-  public void checkNotExpectedText_failsWhenTextIsDisplayedOnTheView() throws Exception {
-    assertNotDisplayed(R.id.visible_view, "Hello world!");
-  }
-
-  @Test
-  public void checkInvisibleViews() {
-    assertNotDisplayed(R.id.invisible_view);
-    assertNotDisplayed(R.id.gone_view);
-
-    assertNotDisplayed(R.string.im_invisible);
-    assertNotDisplayed("I'm invisible!");
-  }
-
-  @Test
-  public void checkInvisibleViews_breaksWhenNeeded() {
-    try {
-      assertNotDisplayed(R.id.visible_view);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertNotDisplayed(R.string.hello_world);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertNotDisplayed("Hello world!");
-      fail();
-    } catch (Throwable expected) {
-    }
-  }
-
-  @Test
-  public void checkUnexistingView() {
-    assertNotExist(R.id.view_in_another_layout);
-
-    assertNotExist(R.string.unknown);
-    assertNotExist("Unknown");
-  }
-
-  @Test
-  public void checkUnexistingView_breaksWhenNeeded() {
-    try {
-      assertNotExist(R.id.visible_view);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertNotExist(R.string.hello_world);
-      fail();
-    } catch (Throwable expected) {
-    }
-    try {
-      assertNotExist("Hello world!");
-      fail();
-    } catch (Throwable expected) {
-    }
-  }
 
   @Test
   public void checkEnabledView() {

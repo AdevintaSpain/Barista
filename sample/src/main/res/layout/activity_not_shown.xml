@@ -8,6 +8,6 @@
       android:id="@+id/view_in_another_layout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/unknown"/>
+      android:text="@string/not_exists"/>
 
 </LinearLayout>

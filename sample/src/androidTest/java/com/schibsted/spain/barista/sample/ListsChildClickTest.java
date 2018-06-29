@@ -106,7 +106,7 @@ public class ListsChildClickTest {
         .withRecyclers(R.id.recycler)
     );
 
-    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.unknown));
+    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.not_exists));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -122,7 +122,7 @@ public class ListsChildClickTest {
         .withComplexLists(R.id.listview)
     );
 
-    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.unknown));
+    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.not_exists));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
