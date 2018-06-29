@@ -19,10 +19,21 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
 
+/**
+ * Extension function alias for [performActionOnView]
+ */
 fun Matcher<View>.performAction(action: ViewAction) {
   performActionOnView(viewMatcher = this, action = action)
 }
 
+/**
+ * Performs the [action] on a view described by [viewMatcher]
+ *
+ * Attempts to perform it using multiple scenarios for the [viewMatcher]:
+ * 1. One or more views match the [viewMatcher] but only one is currently displayed.
+ * 2. Only one view matches the [viewMatcher] but needs to scroll first to display it.
+ * 3. Multiple views matches the [viewMatcher] and need to scroll first, but only one scrollable view is displayed.
+ */
 fun performActionOnView(viewMatcher: Matcher<View>, action: ViewAction) {
   val spyHandler = SpyFailureHandler()
   try {
