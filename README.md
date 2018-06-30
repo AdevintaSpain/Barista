@@ -185,9 +185,13 @@ assertDrawerIsOpenWithGravity(Gravity.RIGHT);
 assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
-// Check EditText's hints
+// Check TextInputLayout, TextInputEditText and EditText's hints
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
+
+//Check TextView and TextInputLayout's error text
+assertError(R.id.edittext, R.string.error);
+assertError(R.id.edittext, "Error message");assertHint
 
 // Check if text on screen contains given text
 assertContains("text");
