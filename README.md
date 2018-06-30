@@ -80,6 +80,7 @@ clickRadioButtonPosition(R.id.radiogroup, 42);
 
 // Pick data on pickers
 setDateOnPicker(1986, 03, 23);
+setTimeOnPicker(17, 2);
 
 // Interact with dialogs
 clickDialogPositiveButton();
