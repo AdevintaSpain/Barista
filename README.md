@@ -207,6 +207,8 @@ assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
+assertDisplayedAtPosition(R.id.recycler, 0, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.id.text_field, "text");
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
