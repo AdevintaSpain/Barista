@@ -65,6 +65,7 @@ clickMenu(R.id.menu_item);
 // Writing into widgets
 writeTo(R.id.edittext, "A great text");
 writeToAutoComplete(R.id.autocomplete, "Another great text");
+clearText(R.id.edittext)
 
 // Operate on ListViews and RecyclerViews indistinctly by position
 clickListItem(R.id.list, 4);
