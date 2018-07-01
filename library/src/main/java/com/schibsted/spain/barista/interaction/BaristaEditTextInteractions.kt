@@ -10,16 +10,16 @@ import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedA
 
 object BaristaEditTextInteractions {
 
-    @JvmStatic
-    fun writeTo(@IdRes editTextId: Int, text: String) {
-        safelyScrollTo(editTextId)
-        onView(displayedAnd(withId(editTextId))).perform(replaceText(text))
-    }
+  @JvmStatic
+  fun writeTo(@IdRes editTextId: Int, text: String) {
+    safelyScrollTo(editTextId)
+    onView(displayedAnd(withId(editTextId))).perform(replaceText(text))
+  }
 
-    @JvmStatic
-    fun clearText(@IdRes viewId: Int) {
-        safelyScrollTo(viewId)
-        onView(withId(viewId)).perform(clearText())
-    }
+  @JvmStatic
+  fun clearText(@IdRes viewId: Int) {
+    safelyScrollTo(viewId)
+    onView(withId(viewId)).perform(clearText())
+  }
 
 }
