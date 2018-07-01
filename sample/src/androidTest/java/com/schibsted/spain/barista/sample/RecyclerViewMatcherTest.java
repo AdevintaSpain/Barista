@@ -15,32 +15,32 @@ import static com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertion
 @RunWith(AndroidJUnit4.class)
 public class RecyclerViewMatcherTest {
 
-    @Rule
-    public ActivityTestRule<ListsActivity> activityTestRule = new ActivityTestRule<>(ListsActivity.class, true, false);
+  @Rule
+  public ActivityTestRule<ListsActivity> activityTestRule = new ActivityTestRule<>(ListsActivity.class, true, false);
 
-    @Before
-    public void setup() {
-        openActivity(ListsActivity.buildIntent()
-                .withRecyclers(R.id.recycler)
-        );
-    }
+  @Before
+  public void setup() {
+    openActivity(ListsActivity.buildIntent()
+      .withRecyclers(R.id.recycler)
+    );
+  }
 
-    @Test
-    public void shouldHaveFourEntriesInRecyclerView() {
-        assertRecyclerViewItemCount(R.id.recycler, 89);
-    }
+  @Test
+  public void shouldHaveFourEntriesInRecyclerView() {
+    assertRecyclerViewItemCount(R.id.recycler, 89);
+  }
 
-    @Test
-    public void shouldFindItemInRecyclerViewWithoutId() {
-        assertDisplayedAtPosition(R.id.recycler, 2, "Avocado");
-    }
+  @Test
+  public void shouldFindItemInRecyclerViewWithoutId() {
+    assertDisplayedAtPosition(R.id.recycler, 2, "Avocado");
+  }
 
-    @Test
-    public void shouldFindItemInRecyclerViewWithId() {
-        assertDisplayedAtPosition(R.id.recycler, 4, R.id.textview, "Bilberry");
-    }
+  @Test
+  public void shouldFindItemInRecyclerViewWithId() {
+    assertDisplayedAtPosition(R.id.recycler, 4, R.id.textview, "Bilberry");
+  }
 
-    private void openActivity(ListsActivity.IntentBuilder intentBuilder) {
-        activityTestRule.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
-    }
+  private void openActivity(ListsActivity.IntentBuilder intentBuilder) {
+    activityTestRule.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
+  }
 }
