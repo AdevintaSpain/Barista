@@ -65,6 +65,7 @@ clickMenu(R.id.menu_item);
 // Writing into widgets
 writeTo(R.id.edittext, "A great text");
 writeToAutoComplete(R.id.autocomplete, "Another great text");
+clearText(R.id.edittext)
 
 // Operate on ListViews and RecyclerViews indistinctly by position
 clickListItem(R.id.list, 4);
@@ -80,6 +81,7 @@ clickRadioButtonPosition(R.id.radiogroup, 42);
 
 // Pick data on pickers
 setDateOnPicker(1986, 03, 23);
+setTimeOnPicker(17, 2);
 
 // Interact with dialogs
 clickDialogPositiveButton();
@@ -185,9 +187,13 @@ assertDrawerIsOpenWithGravity(Gravity.RIGHT);
 assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
-// Check EditText's hints
+// Check TextInputLayout, TextInputEditText and EditText's hints
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
+
+//Check TextView and TextInputLayout's error text
+assertError(R.id.edittext, R.string.error);
+assertError(R.id.edittext, "Error message");assertHint
 
 // Check if text on screen contains given text
 assertContains("text");
@@ -207,6 +213,8 @@ assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
 
 // Check recyclerView item count against expected item count
 assertRecyclerViewItemCount(R.id.recycler, 10);
+assertDisplayedAtPosition(R.id.recycler, 0, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.id.text_field, "text");
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
