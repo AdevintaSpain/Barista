@@ -32,14 +32,14 @@ public class PickersActivity extends AppCompatActivity {
     findViewById(R.id.launch_time_picker).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-          TimePickerFragment fragment = new TimePickerFragment();
-          fragment.show(getSupportFragmentManager(), "timePicker");
+        TimePickerFragment fragment = new TimePickerFragment();
+        fragment.show(getSupportFragmentManager(), "timePicker");
       }
     });
   }
 
   public static class DatePickerFragment extends DialogFragment
-      implements DatePickerDialog.OnDateSetListener {
+    implements DatePickerDialog.OnDateSetListener {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
