@@ -14,34 +14,34 @@ import org.hamcrest.TypeSafeMatcher
 
 object BaristaErrorAssertions {
 
-    @JvmStatic
-    fun assertError(@IdRes viewId: Int, @StringRes text: Int) {
-        val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
-        assertError(viewId, resourceString)
-    }
+  @JvmStatic
+  fun assertError(@IdRes viewId: Int, @StringRes text: Int) {
+    val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
+    assertError(viewId, resourceString)
+  }
 
-    @JvmStatic
-    fun assertError(@IdRes viewId: Int, text: String) {
-        ViewMatchers.withId(viewId).assertAny(matchError(text))
-    }
+  @JvmStatic
+  fun assertError(@IdRes viewId: Int, text: String) {
+    ViewMatchers.withId(viewId).assertAny(matchError(text))
+  }
 
-    private fun matchError(expectedError: String): Matcher<View> {
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description?) {
-                description?.let {
-                    description.appendText(" $expectedError")
-                }
-            }
-
-            override fun matchesSafely(item: View): Boolean {
-                if (item is TextView) {
-                    return expectedError == item.error.toString()
-                } else if (item is TextInputLayout) {
-                    return expectedError == item.error.toString()
-                } else {
-                    return false
-                }
-            }
+  private fun matchError(expectedError: String): Matcher<View> {
+    return object : TypeSafeMatcher<View>() {
+      override fun describeTo(description: Description?) {
+        description?.let {
+          description.appendText(" $expectedError")
         }
+      }
+
+      override fun matchesSafely(item: View): Boolean {
+        if (item is TextView) {
+          return expectedError == item.error.toString()
+        } else if (item is TextInputLayout) {
+          return expectedError == item.error.toString()
+        } else {
+          return false
+        }
+      }
     }
+  }
 }

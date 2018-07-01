@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/hintanderror_inputlayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:hint="@string/hintanderror_layout_hint">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/hintanderror_inputlayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hintanderror_layout_hint">
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/hintanderror_inputEditText1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+  </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/hintanderror_inputEditText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.design.widget.TextInputLayout>
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/hintanderror_inputlayout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/hintanderror_inputlayout1">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/hintanderror_inputlayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hintanderror_inputlayout1">
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/hintanderror_inputEditText2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hintanderror_text_input_layout_hint" />
+  </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/hintanderror_inputEditText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hintanderror_text_input_layout_hint" />
-    </android.support.design.widget.TextInputLayout>
+  <EditText
+    android:id="@+id/hintanderror_edittext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/hintanderror_inputlayout2"
+    android:hint="@string/hintanderror_edittext_hint" />
 
-    <EditText
-        android:id="@+id/hintanderror_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hintanderror_inputlayout2"
-        android:hint="@string/hintanderror_edittext_hint" />
+  <android.support.v7.widget.AppCompatButton
+    android:id="@+id/hintanderror_showLayoutErrorButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/hintanderror_edittext"
+    android:text="Show layout error" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/hintanderror_showLayoutErrorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hintanderror_edittext"
-        android:text="Show layout error" />
+  <android.support.v7.widget.AppCompatButton
+    android:id="@+id/hintanderror_showInputEditTextError"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/hintanderror_showLayoutErrorButton"
+    android:text="Show input edit text error" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/hintanderror_showInputEditTextError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hintanderror_showLayoutErrorButton"
-        android:text="Show input edit text error" />
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/hintanderror_showEditTextError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hintanderror_showInputEditTextError"
-        android:text="Show edit text error" />
+  <android.support.v7.widget.AppCompatButton
+    android:id="@+id/hintanderror_showEditTextError"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/hintanderror_showInputEditTextError"
+    android:text="Show edit text error" />
 </RelativeLayout>
