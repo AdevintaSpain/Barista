@@ -4,7 +4,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
-import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
+import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +17,8 @@ import static com.schibsted.spain.barista.interaction.BaristaListInteractions.cl
 import static com.schibsted.spain.barista.sample.ListsActivity.getComplexListViewTextAt;
 import static com.schibsted.spain.barista.sample.ListsActivity.getRecyclerViewTextAt;
 import static com.schibsted.spain.barista.sample.ListsActivity.getSimpleListViewTextAt;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 @RunWith(AndroidJUnit4.class)
 public class ListsClickTest {
@@ -25,10 +27,10 @@ public class ListsClickTest {
   public ActivityTestRule<ListsActivity> activity = new ActivityTestRule<>(ListsActivity.class, true, false);
 
   @Rule
-  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
+  public SpyFailureHandlerRule spyFailureHandlerRule = new SpyFailureHandlerRule();
 
   @Test
-  public void clickRecyclerPosition() throws Exception {
+  public void clickRecyclerPosition() {
     launchTestActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler)
     );
@@ -36,10 +38,11 @@ public class ListsClickTest {
     clickListItem(18);
 
     assertResult(getRecyclerViewTextAt(18));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickRecyclerPosition_byId() throws Exception {
+  public void clickRecyclerPosition_byId() {
     launchTestActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler)
     );
@@ -47,10 +50,11 @@ public class ListsClickTest {
     clickListItem(R.id.recycler, 15);
 
     assertResult(getRecyclerViewTextAt(15));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickSimpleListView() throws Exception {
+  public void clickSimpleListView() {
     launchTestActivity(ListsActivity.buildIntent()
         .withSimpleLists(R.id.listview)
     );
@@ -58,10 +62,11 @@ public class ListsClickTest {
     clickListItem(20);
 
     assertResult(getSimpleListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickComplexListView() throws Exception {
+  public void clickComplexListView() {
     launchTestActivity(ListsActivity.buildIntent()
         .withComplexLists(R.id.listview)
     );
@@ -69,94 +74,123 @@ public class ListsClickTest {
     clickListItem(20);
 
     assertResult(getComplexListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickMultipleListView_byId() throws Exception {
+  public void clickMultipleListView_byId() {
     launchTestActivity(ListsActivity.buildIntent()
         .withSimpleLists(R.id.listview, R.id.listview2)
     );
     clickListItem(R.id.listview, 20);
 
     assertResult(getSimpleListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickSimpleGridView() throws Exception {
+  public void clickSimpleGridView() {
     launchTestActivity(ListsActivity.buildIntent()
-            .withSimpleGrids(R.id.gridview)
+        .withSimpleGrids(R.id.gridview)
     );
 
     clickListItem(20);
 
     assertResult(getSimpleListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickComplexGridView() throws Exception {
+  public void clickComplexGridView() {
     launchTestActivity(ListsActivity.buildIntent()
-            .withComplexGrids(R.id.gridview)
+        .withComplexGrids(R.id.gridview)
     );
 
     clickListItem(20);
 
     assertResult(getComplexListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickMultipleGridView_byId() throws Exception {
+  public void clickMultipleGridView_byId() {
     launchTestActivity(ListsActivity.buildIntent()
-            .withSimpleLists(R.id.gridview, R.id.gridview2)
+        .withSimpleLists(R.id.gridview, R.id.gridview2)
     );
     clickListItem(R.id.gridview, 20);
 
     assertResult(getSimpleListViewTextAt(20));
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
-
-  @Test(expected = BaristaException.class)
-  public void fail_whenNoViewFound() throws Exception {
+  @Test
+  public void fail_whenNoViewFound() {
     launchTestActivity(ListsActivity.buildIntent());
 
-    clickListItem(20);
+    Throwable thrown = catchThrowable(() -> clickListItem(20));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("No ListView or RecyclerView found in the hierarchy");
   }
 
-  @Test(expected = BaristaException.class)
-  public void fail_whenNoViewFound_byId() throws Exception {
+  @Test
+  public void fail_whenNoViewFound_byId() {
     launchTestActivity(ListsActivity.buildIntent()
         .withSimpleLists(R.id.listview)
     );
 
-    clickListItem(R.id.listview2, 20);
+    Throwable thrown = catchThrowable(() -> clickListItem(R.id.listview2, 20));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("No ListView or RecyclerView with id")
+        .hasMessageContaining("listview2")
+        .hasMessageContaining("Did you use a wrong id?");
   }
 
-  @Test(expected = BaristaException.class)
-  public void fail_whenMultipleListsViews_withoutId() throws Exception {
+  @Test
+  public void fail_whenMultipleListsViews_withoutId() {
     launchTestActivity(ListsActivity.buildIntent()
         .withSimpleLists(R.id.listview, R.id.listview2)
     );
 
-    clickListItem(20);
+    Throwable thrown = catchThrowable(() -> clickListItem(20));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage(
+            "There are multiple ListView or RecyclerView in the hierarchy. You must specify an id parameter using clickListItem(id, position)");
   }
 
-  @Test(expected = BaristaException.class)
-  public void fail_whenMultipleGridViews_withoutId() throws Exception {
+  @Test
+  public void fail_whenMultipleGridViews_withoutId() {
     launchTestActivity(ListsActivity.buildIntent()
-            .withSimpleGrids(R.id.gridview, R.id.gridview2)
+        .withSimpleGrids(R.id.gridview, R.id.gridview2)
     );
 
-    clickListItem(20);
+    Throwable thrown = catchThrowable(() -> clickListItem(20));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("There are multiple ListView or RecyclerView in the hierarchy. "
+            + "You must specify an id parameter using clickListItem(id, position)");
   }
 
-  @Test(expected = BaristaException.class)
-  public void fail_whenRecyclerAndListView_withoutId() throws Exception {
+  @Test
+  public void fail_whenRecyclerAndListView_withoutId() {
     launchTestActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler)
         .withSimpleLists(R.id.listview)
         .withSimpleGrids(R.id.gridview)
     );
 
-    clickListItem(20);
+    Throwable thrown = catchThrowable(() -> clickListItem(20));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("There are multiple ListView or RecyclerView in the hierarchy. "
+            + "You must specify an id parameter using clickListItem(id, position)");
   }
 
   private void assertResult(String text) {
