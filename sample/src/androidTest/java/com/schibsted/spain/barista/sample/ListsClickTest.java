@@ -193,6 +193,36 @@ public class ListsClickTest {
             + "You must specify an id parameter using clickListItem(id, position)");
   }
 
+  @Test
+  public void fail_whenWrongRecyclerItemPosition() {
+    launchTestActivity(ListsActivity.buildIntent()
+        .withRecyclers(R.id.recycler)
+    );
+
+    Throwable thrown = catchThrowable(() -> clickListItem(999));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("Could not perform action")
+        .hasMessageContaining("performClick() on item at position: 999")
+        .hasMessageContaining("on RecyclerView")
+        .hasStackTraceContaining("No view holder at position: 999");
+  }
+
+  @Test
+  public void fail_whenWrongListViewItemPosition() {
+    launchTestActivity(ListsActivity.buildIntent()
+        .withSimpleLists(R.id.listview)
+    );
+
+    Throwable thrown = catchThrowable(() -> clickListItem(999));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("Could not perform action (Click on the view using performClick()) on ListView")
+        .hasStackTraceContaining("requested 999 element");
+  }
+
   private void assertResult(String text) {
     onView(withId(R.id.clicked_text_result)).check(matches(withText(text)));
   }

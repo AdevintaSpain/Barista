@@ -17,11 +17,14 @@ import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
+import android.view.View
 import android.widget.AbsListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
+import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
 import org.hamcrest.Matchers.anything
@@ -58,11 +61,19 @@ object BaristaListInteractions {
     private fun performMagicAction(@IdRes id: Int?, position: Int, recyclerAction: ViewAction, listViewAction: ViewAction) {
         verifyOneSingleMatch(id)
 
+        val recyclerMatcher = findRecyclerMatcher(id)
+        val listViewMatcher = findListViewMatcher(id)
         val spyFailureHandler = SpyFailureHandler()
         try {
-            performOnRecycler(id, recyclerAction, spyFailureHandler)
+            performOnRecycler(recyclerMatcher, recyclerAction, spyFailureHandler)
         } catch (noRecyclerMatching: NoMatchingViewException) {
-            performOnListView(id, position, listViewAction, spyFailureHandler)
+          try {
+            performOnListView(listViewMatcher, position, listViewAction, spyFailureHandler)
+          } catch (listViewError: Throwable) {
+            spyFailureHandler.resendLastError("Could not perform action (${listViewAction.description}) on ListView ${listViewMatcher.description()}")
+          }
+        } catch (recyclerError: Throwable) {
+            spyFailureHandler.resendLastError("Could not perform action (${recyclerAction.description}) on RecyclerView ${recyclerMatcher.description()}")
         }
     }
 
@@ -84,16 +95,16 @@ object BaristaListInteractions {
         }
     }
 
-    private fun performOnRecycler(@IdRes id: Int?, recyclerAction: ViewAction, failureHandler: FailureHandler) {
-        onView(findRecyclerMatcher(id))
+    private fun performOnRecycler(matcher: Matcher<View>, recyclerAction: ViewAction, failureHandler: FailureHandler) {
+        onView(matcher)
                 .withFailureHandler(failureHandler)
                 .perform(recyclerAction)
     }
 
-    private fun performOnListView(@IdRes id: Int?, position: Int, listViewAction: ViewAction, failureHandler: FailureHandler) {
+    private fun performOnListView(matcher: Matcher<View>, position: Int, listViewAction: ViewAction, failureHandler: FailureHandler) {
         withFailureHandler(failureHandler) {
             onData(anything())
-                    .inAdapterView(findListViewMatcher(id))
+                    .inAdapterView(matcher)
                     .atPosition(position)
                     .perform(listViewAction)
         }
