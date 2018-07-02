@@ -7,13 +7,13 @@ import com.schibsted.spain.barista.sample.R;
 import com.schibsted.spain.barista.sample.SomeViewsWithDifferentVisibilitiesActivity;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
-import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
 @RunWith(AndroidJUnit4.class)
 public class VisibilityAssertionsTest {
@@ -22,10 +22,6 @@ public class VisibilityAssertionsTest {
   public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
       new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-
-  @Test
   public void checkDisplayedViews() {
     assertDisplayed(R.id.visible_view);
 
@@ -46,20 +42,20 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkDisplayedViews_failsWhenInvisible() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("invisible_view"));
-    thrown.expectMessage(containsString("is displayed on the screen"));
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.invisible_view));
 
-    assertDisplayed(R.id.invisible_view);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("invisible_view")
+        .hasMessageContaining("is displayed on the screen");
   }
 
   @Test
   public void checkDisplayed_failsWhenNotExists() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("not_exists"));
-    thrown.expectMessage(containsString("No view matching"));
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.string.not_exists));
 
-    assertDisplayed(R.string.not_exists);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("not_exists")
+        .hasMessageContaining("No view matching");
   }
 
   @Test
@@ -69,20 +65,19 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkDisplayedIdAndText_failsWhenTextIsNotTheExpected() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("visible_view"));
-    thrown.expectMessage(containsString("This is not the text you are looking for"));
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.visible_view, "This is not the text you are looking for"));
 
-    assertDisplayed(R.id.visible_view, "This is not the text you are looking for");
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("visible_view")
+        .hasMessageContaining("This is not the text you are looking for");
   }
 
   @Test
   public void checkDisplayedIdAndText_failsWhenViewDoesNotExist() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("not_exists"));
-    thrown.expectMessage(containsString("No view matching"));
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.not_exists, "This is not the text you are looking for"));
 
-    assertDisplayed(R.id.not_exists, "This is not the text you are looking for");
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("not_exists");
   }
 
   @Test
@@ -100,20 +95,20 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkNotDisplayedIdAndText_failsWhenTextMatches() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("visible_view"));
-    thrown.expectMessage(containsString("not with text"));
+    Throwable thrown = catchThrowable(() -> assertNotDisplayed(R.id.visible_view, "Hello world!"));
 
-    assertNotDisplayed(R.id.visible_view, "Hello world!");
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("visible_view")
+        .hasMessageContaining("not with text");
   }
 
   @Test
   public void checkNotDisplayed_failsWhenVisible() {
-    thrown.expect(BaristaException.class);
-    thrown.expectMessage(containsString("visible_view"));
-    thrown.expectMessage(containsString("not is displayed"));
+    Throwable thrown = catchThrowable(() -> assertNotDisplayed(R.id.visible_view));
 
-    assertNotDisplayed(R.id.visible_view);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("visible_view")
+        .hasMessageContaining("not is displayed");
   }
 
   @Test
@@ -125,9 +120,9 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkNotExist_failsWhenViewExists() {
-    thrown.expect(AssertionError.class);
-    thrown.expectMessage(containsString("View is present in the hierarchy"));
+    Throwable thrown = catchThrowable(() -> assertNotExist(R.id.visible_view));
 
-    assertNotExist(R.id.visible_view);
+    assertThat(thrown).isInstanceOf(AssertionError.class)
+        .hasMessageContaining("View is present in the hierarchy");
   }
 }
