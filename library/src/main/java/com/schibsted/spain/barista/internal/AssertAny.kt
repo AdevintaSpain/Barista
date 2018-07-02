@@ -34,12 +34,12 @@ fun assertAnyView(viewMatcher: Matcher<View>, condition: Matcher<View>) {
             tryToAssertFirstView(viewMatcher, condition, spyFailureHandler)
         } catch (secondError: Throwable) {
             spyFailureHandler.resendFirstError(
-                "None of the views matching [${viewMatcher.description()}] did match the condition [${condition.description()}]")
+                "None of the views matching (${viewMatcher.description()}) did match the condition (${condition.description()})")
         }
     } catch (viewNotFound: NoMatchingViewException) {
-        spyFailureHandler.resendFirstError("No view matching [${viewMatcher.description()}] was found")
+        spyFailureHandler.resendFirstError("No view matching (${viewMatcher.description()}) was found")
     } catch (anotherError: Throwable) {
-        spyFailureHandler.resendFirstError("View [${viewMatcher.description()}] didn't match condition [${condition.description()}]")
+        spyFailureHandler.resendFirstError("View (${viewMatcher.description()}) didn't match condition (${condition.description()})")
     }
 }
 

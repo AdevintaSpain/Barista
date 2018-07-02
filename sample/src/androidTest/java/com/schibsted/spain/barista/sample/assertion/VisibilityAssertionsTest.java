@@ -55,8 +55,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("invisible_view")
-        .hasMessageContaining("is displayed on the screen");
+        .hasMessage(
+            "View (with id: com.schibsted.spain.barista.sample:id/invisible_view) didn't match condition (is displayed on the screen to the user)");
   }
 
   @Test
@@ -65,8 +65,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("not_exists")
-        .hasMessageContaining("No view matching");
+        .hasMessageContaining("No view matching (with string from resource id")
+        .hasMessageContaining("[not_exists] value: Not exists) was found");
   }
 
   @Test
@@ -82,8 +82,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("visible_view")
-        .hasMessageContaining("This is not the text you are looking for");
+        .hasMessage(
+            "View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (with text: is \"This is not the text you are looking for\")");
   }
 
   @Test
@@ -92,7 +92,7 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("not_exists");
+        .hasMessage("No view matching (with id: com.schibsted.spain.barista.sample:id/not_exists) was found");
   }
 
   @Test
@@ -118,8 +118,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("visible_view")
-        .hasMessageContaining("not with text");
+        .hasMessage(
+            "View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (not with text: is \"Hello world!\")");
   }
 
   @Test
@@ -128,8 +128,7 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("visible_view")
-        .hasMessageContaining("not is displayed");
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (not is displayed on the screen to the user)");
   }
 
   @Test
