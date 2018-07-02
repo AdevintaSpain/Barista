@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.clearText;
 import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
@@ -38,6 +39,16 @@ public class EditTextTest {
   public void checkWriteOnEditText_whenParentIsNotAScrollView() {
     writeTo(R.id.edittext_centered, "Hello!");
     assertDisplayed("Hello!");
+  }
+
+  @Test
+  public void assertHintById() {
+    assertHint(R.id.edittext_centered, R.string.centered_edittext);
+  }
+
+  @Test
+  public void assertHintByString() {
+    assertHint(R.id.edittext_centered, "I'm a centered edittext!");
   }
 
   @Test
