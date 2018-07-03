@@ -3,9 +3,13 @@ package com.schibsted.spain.barista.internal.matcher;
 import android.support.annotation.IdRes;
 import android.support.test.espresso.matcher.BoundedMatcher;
 import android.view.MenuItem;
+import android.view.View;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 
 public class HelperMatchers {
 
@@ -65,5 +69,9 @@ public class HelperMatchers {
         description.appendText("should return menu item with id " + id);
       }
     };
+  }
+
+  public static Matcher<View> withParentId(@IdRes int parentId) {
+    return withParent(withId(parentId));
   }
 }
