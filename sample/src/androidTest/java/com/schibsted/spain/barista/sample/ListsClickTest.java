@@ -159,8 +159,8 @@ public class ListsClickTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage(
-            "There are multiple ListView or RecyclerView in the hierarchy. You must specify an id parameter using clickListItem(id, position)");
+        .hasMessage("There are multiple ListView or RecyclerView in the hierarchy."
+            + " You must specify an id parameter using clickListItem(id, position)");
   }
 
   @Test
