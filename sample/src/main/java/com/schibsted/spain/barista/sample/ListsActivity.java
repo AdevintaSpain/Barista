@@ -27,7 +27,7 @@ public class ListsActivity extends AppCompatActivity {
   private static final String EXTRA_SIMPLE_GRIDS = "simpleGrids";
   private static final String EXTRA_COMPLEX_GRIDS = "complexGrids";
 
-  static final String[] FRUITS = new String[] {
+  public static final String[] FRUITS = new String[] {
       "Apple", "Apricot", "Avocado", "Banana", "Bilberry", "Blackberry", "Blackcurrant",
       "Blueberry", "Boysenberry", "Currant", "Cherry", "Cherimoya", "Cloudberry", "Coconut",
       "Cranberry", "Cucumber", "Custardapple", "Damson", "Date", "Dragonfruit", "Durian",

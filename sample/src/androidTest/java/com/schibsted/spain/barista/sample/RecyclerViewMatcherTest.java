@@ -24,8 +24,9 @@ public class RecyclerViewMatcherTest {
   }
 
   @Test
-  public void shouldHaveFourEntriesInRecyclerView() {
-    assertRecyclerViewItemCount(R.id.recycler, 89);
+  public void shouldHaveRightNumberOfEntriesInRecyclerView() {
+    int expectedCount = ListsActivity.FRUITS.length;
+    assertRecyclerViewItemCount(R.id.recycler, expectedCount);
   }
 
   @Test
