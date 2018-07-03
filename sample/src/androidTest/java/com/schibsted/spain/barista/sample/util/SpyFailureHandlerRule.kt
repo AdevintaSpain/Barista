@@ -7,10 +7,8 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-class SpyFailureHandlerRule : TestRule {
+class SpyFailureHandlerRule(private val failureHandler: SpyFailureHandler = SpyFailureHandler()) : TestRule {
 
-  private val failureHandler = SpyFailureHandler()
-  private var failed = false
   private var asserted = false
 
   override fun apply(base: Statement, description: Description): Statement {
@@ -18,15 +16,9 @@ class SpyFailureHandlerRule : TestRule {
     return object : Statement() {
       override fun evaluate() {
         Espresso.setFailureHandler(failureHandler)
-        try {
-          base.evaluate()
-        } catch (t: Throwable) {
-          failed = true
-          throw t
-        } finally {
-          if (!failed && !asserted) {
-            throw AssertionError("Forgot to assert the test method with SpyFailureHandlerRule")
-          }
+        base.evaluate()
+        if (!asserted) {
+          throw AssertionError("Forgot to assert the test method with SpyFailureHandlerRule")
         }
       }
     }
@@ -38,7 +30,7 @@ class SpyFailureHandlerRule : TestRule {
   }
 
   fun assertEspressoFailures(expectedFailures: Int) {
-    val receivedFailures = failureHandler.capturedFailures.size
+    val receivedFailures = failureHandler.capturedFailuresCount
     assertThat(receivedFailures)
         .`as`("Expected %d EspressoFailure but received %d", expectedFailures, receivedFailures)
         .isEqualTo(expectedFailures)
