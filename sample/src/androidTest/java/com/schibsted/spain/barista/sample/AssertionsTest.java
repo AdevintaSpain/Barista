@@ -34,7 +34,7 @@ public class AssertionsTest {
 
   @Rule
   public ActivityTestRule<SomeViewsWithDifferentVisibilitiesActivity> activityRule =
-          new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
+      new ActivityTestRule<>(SomeViewsWithDifferentVisibilitiesActivity.class);
 
   @Test
   public void checkEnabledView() {
@@ -205,7 +205,7 @@ public class AssertionsTest {
     assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkDrawable_withId_failure() throws Exception {
     assertHasDrawable(R.id.image_view, R.drawable.ic_action_menu);
   }
@@ -215,7 +215,7 @@ public class AssertionsTest {
     assertHasAnyDrawable(R.id.image_view);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkDrawable_withAnyDrawable_failure() throws Exception {
     assertHasAnyDrawable(R.id.image_view_without_image);
   }
@@ -225,7 +225,7 @@ public class AssertionsTest {
     assertHasNoDrawable(R.id.image_view_without_image);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkDrawable_withoutDrawable_failure() throws Exception {
     assertHasNoDrawable(R.id.image_view);
   }
@@ -235,7 +235,7 @@ public class AssertionsTest {
     assertHasBackground(R.id.view_with_backbround, R.drawable.ic_barista);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkBackground_withId_failure() throws Exception {
     assertHasBackground(R.id.view_without_backbround, R.drawable.ic_action_menu);
   }
@@ -245,7 +245,7 @@ public class AssertionsTest {
     assertHasAnyBackground(R.id.view_with_backbround);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkBackground_withAnyDrawable_failure() throws Exception {
     assertHasAnyBackground(R.id.view_without_backbround);
   }
@@ -255,7 +255,7 @@ public class AssertionsTest {
     assertHasNoBackground(R.id.view_without_backbround);
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkBackground_withoutDrawable_failure() throws Exception {
     assertHasNoBackground(R.id.view_with_backbround);
   }
@@ -279,7 +279,7 @@ public class AssertionsTest {
     assertContains(R.id.enabled_button, "Enabled");
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = BaristaException.class)
   public void checkTextViewContainsText_withViewId_failsWhenNeeded() {
     assertContains(R.id.enabled_button, "Disabled");
   }
