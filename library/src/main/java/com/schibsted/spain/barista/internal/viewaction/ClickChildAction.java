@@ -43,7 +43,7 @@ public class ClickChildAction {
           throw new PerformException.Builder()
               .withActionDescription(getDescription())
               .withViewDescription(HumanReadables.describe(view))
-              .withCause(new RuntimeException("Didn't find any view " + HelperFunctionsKt.description(childMatcher)))
+              .withCause(new IllegalArgumentException("Didn't find any view " + HelperFunctionsKt.description(childMatcher)))
               .build();
         }
       }
