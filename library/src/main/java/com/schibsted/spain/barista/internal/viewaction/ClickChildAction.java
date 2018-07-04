@@ -1,10 +1,13 @@
 package com.schibsted.spain.barista.internal.viewaction;
 
 import android.support.annotation.IdRes;
+import android.support.test.espresso.PerformException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 import android.widget.TextView;
+import com.schibsted.spain.barista.internal.failurehandler.HelperFunctionsKt;
 import com.schibsted.spain.barista.internal.util.ViewTreeAnalyzer;
 import org.hamcrest.Matcher;
 
@@ -28,13 +31,21 @@ public class ClickChildAction {
 
       @Override
       public String getDescription() {
-        return "Click on a child view " + childMatcher;
+        return "Click on a child view " + HelperFunctionsKt.description(childMatcher);
       }
 
       @Override
       public void perform(UiController uiController, View view) {
         View child = view.findViewById(childId);
-        child.performClick();
+        if (child != null) {
+          child.performClick();
+        } else {
+          throw new PerformException.Builder()
+              .withActionDescription(getDescription())
+              .withViewDescription(HumanReadables.describe(view))
+              .withCause(new IllegalArgumentException("Didn't find any view " + HelperFunctionsKt.description(childMatcher)))
+              .build();
+        }
       }
     };
   }
