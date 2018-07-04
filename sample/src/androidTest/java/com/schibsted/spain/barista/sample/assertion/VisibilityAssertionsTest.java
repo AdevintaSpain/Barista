@@ -55,8 +55,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage(
-            "View (with id: com.schibsted.spain.barista.sample:id/invisible_view) didn't match condition (is displayed on the screen to the user)");
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/invisible_view) "
+            + "didn't match condition (is displayed on the screen to the user)");
   }
 
   @Test
@@ -82,8 +82,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage(
-            "View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (with text: is \"This is not the text you are looking for\")");
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition "
+                + "(with text: is \"This is not the text you are looking for\")");
   }
 
   @Test
@@ -118,8 +118,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage(
-            "View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (not with text: is \"Hello world!\")");
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) "
+            + "didn't match condition (not with text: is \"Hello world!\")");
   }
 
   @Test
@@ -128,7 +128,8 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition (not is displayed on the screen to the user)");
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) "
+            + "didn't match condition (not is displayed on the screen to the user)");
   }
 
   @Test
