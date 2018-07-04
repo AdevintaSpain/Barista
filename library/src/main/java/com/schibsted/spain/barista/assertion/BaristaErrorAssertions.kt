@@ -11,6 +11,7 @@ import com.schibsted.spain.barista.internal.assertAny
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
+import java.lang.UnsupportedOperationException
 
 object BaristaErrorAssertions {
 
@@ -27,19 +28,17 @@ object BaristaErrorAssertions {
 
   private fun matchError(expectedError: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
-      override fun describeTo(description: Description?) {
-        description?.let {
-          description.appendText(" $expectedError")
-        }
+      override fun describeTo(description: Description) {
+        description.appendText(" $expectedError")
       }
 
       override fun matchesSafely(item: View): Boolean {
-        if (item is TextView) {
-          return expectedError == item.error.toString()
-        } else if (item is TextInputLayout) {
-          return expectedError == item.error.toString()
-        } else {
-          return false
+        return when (item) {
+          is TextView -> expectedError == item.error.toString()
+          is TextInputLayout -> expectedError == item.error.toString()
+          else -> {
+            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
+          }
         }
       }
     }
