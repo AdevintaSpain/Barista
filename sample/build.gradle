@@ -19,6 +19,10 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 dependencies {
@@ -29,10 +33,15 @@ dependencies {
   implementation "com.android.support:support-annotations:$supportLibVersion"
   implementation 'com.github.bumptech.glide:glide:4.7.1'
 
-  androidTestApi "com.android.support.test.espresso:espresso-core:$espressoVersion"
-  androidTestApi "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-  androidTestApi "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
-  androidTestApi "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+  androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+  androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+  androidTestImplementation "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
+  androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+  androidTestImplementation "org.assertj:assertj-core:2.9.1"
+  androidTestImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+  androidTestImplementation "org.mockito:mockito-android:2.16.0"
+
+
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

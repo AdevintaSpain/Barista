@@ -4,7 +4,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.PerformException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
+import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 @RunWith(AndroidJUnit4.class)
 public class ListsChildClickTest {
@@ -23,10 +26,10 @@ public class ListsChildClickTest {
   public ActivityTestRule<ListsActivity> activity = new ActivityTestRule<>(ListsActivity.class, true, false);
 
   @Rule
-  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
+  public SpyFailureHandlerRule spyFailureHandlerRule = new SpyFailureHandlerRule();
 
   @Test
-  public void clickRecyclerItemChild() throws Exception {
+  public void clickRecyclerItemChild() {
     openActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler)
     );
@@ -34,10 +37,11 @@ public class ListsChildClickTest {
     clickListItemChild(20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickListViewItemChild() throws Exception {
+  public void clickListViewItemChild() {
     openActivity(ListsActivity.buildIntent()
         .withComplexLists(R.id.listview)
     );
@@ -45,21 +49,23 @@ public class ListsChildClickTest {
     clickListItemChild(20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
-
   @Test
-  public void clickGridViewItemChild() throws Exception {
+  public void clickGridViewItemChild() {
     openActivity(ListsActivity.buildIntent()
-            .withComplexGrids(R.id.gridview)
+        .withComplexGrids(R.id.gridview)
     );
 
     clickListItemChild(20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
+
   @Test
-  public void clickMultipleRecyclerItemChild_byId() throws Exception {
+  public void clickMultipleRecyclerItemChild_byId() {
     openActivity(ListsActivity.buildIntent()
         .withRecyclers(R.id.recycler, R.id.recycler2)
     );
@@ -67,10 +73,11 @@ public class ListsChildClickTest {
     clickListItemChild(R.id.recycler, 20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickMultipleListViewItemChild_byId() throws Exception {
+  public void clickMultipleListViewItemChild_byId() {
     openActivity(ListsActivity.buildIntent()
         .withComplexLists(R.id.listview, R.id.listview2)
     );
@@ -78,39 +85,50 @@ public class ListsChildClickTest {
     clickListItemChild(R.id.listview, 20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
-  public void clickMultipleGridViewItemChild_byId() throws Exception {
+  public void clickMultipleGridViewItemChild_byId() {
     openActivity(ListsActivity.buildIntent()
-            .withComplexGrids(R.id.gridview, R.id.gridview2)
+        .withComplexGrids(R.id.gridview, R.id.gridview2)
     );
 
     clickListItemChild(R.id.gridview, 20, R.id.yes);
 
     assertResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
-  @Test(expected = PerformException.class)
-  public void fails_whenListViewChildNotExist() throws Exception {
+  @Test
+  public void fails_whenRecyclerChildNotExist() {
+    openActivity(ListsActivity.buildIntent()
+        .withRecyclers(R.id.recycler)
+    );
+
+    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.unknown));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("Could not perform action (actionOnItemAtPosition performing ViewAction: Click on a child view ")
+        .hasMessageContaining("on item at position: 20) on RecyclerView")
+        .hasCauseInstanceOf(PerformException.class)
+        .hasStackTraceContaining("Didn't find any view with id");
+  }
+
+  @Test
+  public void fails_whenListViewChildNotExist() {
     openActivity(ListsActivity.buildIntent()
         .withComplexLists(R.id.listview)
     );
 
-    clickListItemChild(20, R.id.unknown);
+    Throwable thrown = catchThrowable(() -> clickListItemChild(20, R.id.unknown));
 
-    assertResult("");
-  }
-
-  @Test(expected = PerformException.class)
-  public void fails_whenGridViewChildNotExist() throws Exception {
-    openActivity(ListsActivity.buildIntent()
-            .withComplexGrids(R.id.gridview)
-    );
-
-    clickListItemChild(20, R.id.unknown);
-
-    assertResult("");
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("Could not perform action (Click on a child view ")
+        .hasMessageContaining("on ListView")
+        .hasCauseInstanceOf(PerformException.class);
   }
 
   private void openActivity(IntentBuilder intentBuilder) {

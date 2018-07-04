@@ -5,9 +5,12 @@ import android.support.test.espresso.getFailureHandler
 import android.view.View
 import org.hamcrest.Matcher
 
-class SpyFailureHandler : FailureHandler {
+open class SpyFailureHandler : FailureHandler {
 
-    val capturedFailures: MutableList<EspressoFailure> = ArrayList()
+    val capturedFailures = mutableListOf<EspressoFailure>()
+
+    open val capturedFailuresCount: Int
+        get() = capturedFailures.size
 
     override fun handle(error: Throwable, viewMatcher: Matcher<View>) {
         capturedFailures.add(EspressoFailure(error, viewMatcher))

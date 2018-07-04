@@ -7,6 +7,7 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
+@Deprecated("Use the more explicit [SpyFailureHandlerRule] instead")
 class FailureHandlerValidatorRule : TestRule {
 
     override fun apply(base: Statement, description: Description): Statement {
