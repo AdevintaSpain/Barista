@@ -19,7 +19,7 @@
     <activity android:name=".RadioButtonsActivity"/>
     <activity android:name=".CheckBoxActivity"/>
     <activity android:name=".EditTextActivity"/>
-    <activity android:name=".DatePickerActivity"/>
+    <activity android:name=".PickersActivity"/>
     <activity android:name=".AutoCompleteTextViewActivity"/>
     <activity android:name=".SpinnerActivity"/>
     <activity android:name=".ListsActivity" />
