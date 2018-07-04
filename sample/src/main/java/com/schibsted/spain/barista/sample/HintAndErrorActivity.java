@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.EditText;
 
 public class HintAndErrorActivity extends AppCompatActivity {
@@ -14,40 +13,17 @@ public class HintAndErrorActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_hintanderrortext);
 
-    findViewById(R.id.hintanderror_showLayoutErrorButton).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        showLayoutError();
-      }
-    });
-
-    findViewById(R.id.hintanderror_showInputEditTextError).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        showTextInputLayoutError();
-      }
-    });
-
-    findViewById(R.id.hintanderror_showEditTextError).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        showEditTextError();
-      }
-    });
+    showError();
   }
 
-  private void showLayoutError() {
-    TextInputLayout layout = (TextInputLayout) findViewById(R.id.hintanderror_inputlayout1);
-    layout.setError(getString(R.string.hintanderror_layout_error));
-  }
+  private void showError() {
+    TextInputLayout inputLayout = findViewById(R.id.hintanderror_inputlayout);
+    inputLayout.setError(getString(R.string.hintanderror_inputlayout_error));
 
-  private void showTextInputLayoutError() {
-    TextInputEditText editText = (TextInputEditText) findViewById(R.id.hintanderror_inputEditText1);
-    editText.setError(getString(R.string.hintanderror_text_input_layout_error));
-  }
+    TextInputEditText inputEditText = findViewById(R.id.hintanderror_inputedittext);
+    inputEditText.setError(getString(R.string.hintanderror_inputedittext_error));
 
-  private void showEditTextError() {
-    EditText editText = (EditText) findViewById(R.id.hintanderror_edittext);
+    EditText editText = findViewById(R.id.hintanderror_edittext);
     editText.setError(getString(R.string.hintanderror_edittext_error));
   }
 }
