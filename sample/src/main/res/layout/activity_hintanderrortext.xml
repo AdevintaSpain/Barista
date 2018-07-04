@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp"
+    >
+
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/hintanderror_inputlayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hintanderror_inputlayout_hint"
+      >
+
+    <android.support.design.widget.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+  </android.support.design.widget.TextInputLayout>
+
+  <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/hintanderror_inputedittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintanderror_inputedittext_hint"
+        />
+  </android.support.design.widget.TextInputLayout>
+
+  <EditText
+      android:id="@+id/hintanderror_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hintanderror_edittext_hint"
+      />
+</LinearLayout>

@@ -19,4 +19,11 @@
   <string name="edittext_with_focus">EditText with focus</string>
   <string name="edittext_with_no_focus">EditText with no focus</string>
   <string name="button_close_activity">Close activity</string>
+
+  <string name="hintanderror_inputlayout_hint">TextInputLayout hint</string>
+  <string name="hintanderror_inputlayout_error">TextInputLayout error</string>
+  <string name="hintanderror_inputedittext_hint">TextInputEditText hint</string>
+  <string name="hintanderror_inputedittext_error">TextInputEditText error</string>
+  <string name="hintanderror_edittext_hint">EditText hint</string>
+  <string name="hintanderror_edittext_error">EditText error</string>
 </resources>
