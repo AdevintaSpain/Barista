@@ -185,11 +185,11 @@ assertDrawerIsOpenWithGravity(Gravity.RIGHT);
 assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
 
-// Check TextInputLayout, TextInputEditText and EditText's hints
+// Check TextInputLayout and EditText's hints
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
 
-//Check TextView and TextInputLayout's error text
+// Check TextInputLayout and EditText's errors
 assertError(R.id.edittext, R.string.error);
 assertError(R.id.edittext, "Error message");assertHint
 
