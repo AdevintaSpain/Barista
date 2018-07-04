@@ -29,7 +29,7 @@ object BaristaErrorAssertions {
   private fun matchError(expectedError: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText(" $expectedError")
+        description.appendText("with error: ").appendText(expectedError)
       }
 
       override fun matchesSafely(item: View): Boolean {

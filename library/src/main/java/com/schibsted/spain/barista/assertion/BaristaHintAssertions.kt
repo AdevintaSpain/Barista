@@ -31,7 +31,7 @@ object BaristaHintAssertions {
   private fun matchHint(expectedHint: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText(" $expectedHint")
+        description.appendText("with hint: ").appendText(expectedHint)
       }
 
       override fun matchesSafely(item: View): Boolean {
