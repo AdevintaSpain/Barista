@@ -6,5 +6,5 @@
   <item name="recycler2" type="id" />
   <item name="gridview" type="id" />
   <item name="gridview2" type="id" />
-  <item name="unknown" type="id" />
+  <item name="not_exists" type="id" />
 </resources>

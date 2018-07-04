@@ -6,7 +6,7 @@
   <string name="hello_world">Hello world!</string>
   <string name="repeated">Repeated</string>
   <string name="im_invisible">I\'m invisible!</string>
-  <string name="unknown">Unknown</string>
+  <string name="not_exists">Not exists</string>
   <string name="enabled_button">Enabled button</string>
   <string name="disabled_button">Disabled button</string>
   <string name="centered_edittext">I\'m a centered edittext!</string>
