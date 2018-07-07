@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
 import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
 
@@ -16,6 +17,13 @@ public class PartiallyVisibleViewPagerTest {
   @Rule
   public ActivityTestRule<PartiallyVisibleViewPagerActivity> activityRule =
       new ActivityTestRule<>(PartiallyVisibleViewPagerActivity.class);
+
+  @Test
+  public void checkSwipeForwardDoesNotOpenDrawer() {
+    swipeViewPagerForward(R.id.pager);
+
+    assertNotDisplayed(R.id.drawer);
+  }
 
   @Test
   public void checkSwipeForward() {
