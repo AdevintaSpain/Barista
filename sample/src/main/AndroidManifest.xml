@@ -68,6 +68,7 @@
     <activity android:name=".ColorsActivity" android:exported="true" />
     <activity android:name=".KeyboardActivity" />
     <activity android:name=".HintAndErrorActivity" />
+      <activity android:name=".SearchViewActivity" />
 
   </application>
 
