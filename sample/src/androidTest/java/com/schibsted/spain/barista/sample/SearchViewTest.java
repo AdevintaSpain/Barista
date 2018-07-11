@@ -16,33 +16,33 @@ import static com.schibsted.spain.barista.interaction.BaristaEditTextInteraction
 @RunWith(AndroidJUnit4.class)
 public class SearchViewTest {
 
-    @Rule
-    public ActivityTestRule<SearchViewActivity> activityRule = new ActivityTestRule<>(SearchViewActivity.class);
+  @Rule
+  public ActivityTestRule<SearchViewActivity> activityRule = new ActivityTestRule<>(SearchViewActivity.class);
 
-    @Rule
-    public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
+  @Rule
+  public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
-    @Test
-    public void checkWriteTo_whenIsVisible() {
-        writeTo(R.id.searchview, "Apple");
-        assertDisplayed(R.id.searchResult, "Apple");
-    }
+  @Test
+  public void checkWriteTo_whenIsVisible() {
+    writeTo(R.id.searchview, "Apple");
+    assertDisplayed(R.id.searchResult, "Apple");
+  }
 
-    @Test
-    public void checkWriteTo_whenScrollIsNeeded() {
-        writeTo(R.id.searchview_very_far_away, "Banana");
-        assertDisplayed(R.id.searchResult, "Banana");
-    }
+  @Test
+  public void checkWriteTo_whenScrollIsNeeded() {
+    writeTo(R.id.searchview_very_far_away, "Banana");
+    assertDisplayed(R.id.searchResult, "Banana");
+  }
 
-    @Test
-    public void checkWriteOnAutoComplete_whenIsVisible() {
-        writeToAutoComplete(R.id.searchview, "Apple");
-        assertDisplayed(R.id.searchResult, "Apple");
-    }
+  @Test
+  public void checkWriteOnAutoComplete_whenIsVisible() {
+    writeToAutoComplete(R.id.searchview, "Apple");
+    assertDisplayed(R.id.searchResult, "Apple");
+  }
 
-    @Test
-    public void checkWriteOnAutoComplete_whenScrollIsNeeded() {
-        writeToAutoComplete(R.id.searchview_very_far_away, "Banana");
-        assertDisplayed(R.id.searchResult, "Banana");
-    }
+  @Test
+  public void checkWriteOnAutoComplete_whenScrollIsNeeded() {
+    writeToAutoComplete(R.id.searchview_very_far_away, "Banana");
+    assertDisplayed(R.id.searchResult, "Banana");
+  }
 }
