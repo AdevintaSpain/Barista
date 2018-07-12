@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent" android:layout_height="match_parent"
+              android:orientation="vertical">
+
+  <TextView
+          android:id="@+id/searchResult"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+  <SearchView
+          android:id="@+id/searchview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="I'm a searchView!"
+          android:iconifiedByDefault="false"/>
+
+  <android.support.v7.widget.SearchView
+          android:id="@+id/supportSearchView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:hint="I'm a support searchView!"
+          app:iconifiedByDefault="false"/>
+
+  <android.support.design.widget.TextInputLayout
+          android:id="@+id/textInput"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:hint="I'm a TextInputLayout!">
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+  </android.support.design.widget.TextInputLayout>
+</LinearLayout>

@@ -5,28 +5,36 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class SearchViewActivity extends AppCompatActivity {
+public class WrappedEditTextActivity extends AppCompatActivity {
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_searchview);
+    setContentView(R.layout.activity_wrapped_edittext);
 
     TextView searchResult = findViewById(R.id.searchResult);
+
     android.widget.SearchView searchView = findViewById(R.id.searchview);
-    SearchView veryFarSearchView = findViewById(R.id.searchview_very_far_away);
+    SearchView supportSearchView = findViewById(R.id.supportSearchView);
 
     applyListener(searchResult, searchView);
-    applySupportListener(searchResult, veryFarSearchView);
+    applySupportListener(searchResult, supportSearchView);
 
     applyAdapter(searchView);
-    applySupportAdapter(veryFarSearchView);
+    applySupportAdapter(supportSearchView);
+
+    TextInputLayout textInputLayout = findViewById(R.id.textInput);
+    applyTextInputListener(searchResult, textInputLayout);
   }
 
   private void applyListener(TextView searchResult, android.widget.SearchView searchView) {
@@ -59,6 +67,28 @@ public class SearchViewActivity extends AppCompatActivity {
         return true;
       }
     });
+  }
+
+  private void applyTextInputListener(TextView searchResult, TextInputLayout textInputLayout) {
+    EditText editText = textInputLayout.getEditText();
+    if (editText != null) {
+      editText.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+          searchResult.setText(charSequence);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+      });
+    }
   }
 
   private void applyAdapter(android.widget.SearchView searchView) {
