@@ -50,13 +50,4 @@ public class EditTextTest {
   public void assertHintByString() {
     assertHint(R.id.edittext_centered, "I'm a centered edittext!");
   }
-
-  @Test
-  public void checkTextCleared() {
-    writeTo(R.id.edittext_centered, "Hello!");
-    assertDisplayed("Hello!");
-
-    clearText(R.id.edittext_centered);
-    assertDisplayed("");
-  }
 }
