@@ -71,6 +71,9 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
+assertRecyclerViewItemCount(R.id.recycler, 10);
+assertDisplayedAtPosition(R.id.recycler, 0, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.id.text_field, "text");
 
 clickSpinnerItem(R.id.spinner, 1);
 
@@ -210,11 +213,6 @@ assertTextColorIs(R.id.someColorListText, R.color.state_list);
 // ...or not?
 assertTextColorIsNot(R.id.someRedText, R.color.blue);
 assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
-
-// Check recyclerView item count against expected item count
-assertRecyclerViewItemCount(R.id.recycler, 10);
-assertDisplayedAtPosition(R.id.recycler, 0, "text");
-assertDisplayedAtPosition(R.id.recycler, 0, R.id.text_field, "text");
 
 // And another tricky feature
 assertThatBackButtonClosesTheApp();
