@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.ColorRes
 import android.support.annotation.IdRes
+import android.support.annotation.StringRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
 import android.support.test.espresso.matcher.ViewMatchers.*
@@ -27,6 +28,11 @@ object BaristaVisibilityAssertions {
     @JvmStatic
     fun assertDisplayed(@IdRes viewId: Int, text: String) {
         viewId.resourceMatcher().assertAny(withText(text))
+    }
+
+    @JvmStatic
+    fun assertDisplayed(@IdRes viewId: Int, @StringRes stringId: Int) {
+        viewId.resourceMatcher().assertAny(withText(stringId))
     }
 
     @JvmStatic
