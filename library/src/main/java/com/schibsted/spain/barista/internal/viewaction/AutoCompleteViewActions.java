@@ -6,9 +6,13 @@ import android.support.test.espresso.action.ReplaceTextAction;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
-import javax.annotation.Nonnull;
+import android.widget.ListAdapter;
+
 import org.hamcrest.Matcher;
+
+import javax.annotation.Nonnull;
 
 import static android.support.test.espresso.action.ViewActions.actionWithAssertions;
 import static android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
@@ -48,12 +52,18 @@ public class AutoCompleteViewActions {
     public void perform(UiController uiController, View view) {
       AutoCompleteTextView autoComplete = (AutoCompleteTextView) view;
 
-      ArrayAdapter adapter = (ArrayAdapter) autoComplete.getAdapter();
+      ListAdapter adapter = autoComplete.getAdapter();
       autoComplete.setAdapter(null);
 
       ((EditText) view).setText(stringToBeSet);
 
-      autoComplete.setAdapter(adapter);
+      if (adapter instanceof ArrayAdapter) {
+        autoComplete.setAdapter((ArrayAdapter) adapter);
+      } else if (adapter instanceof CursorAdapter) {
+        autoComplete.setAdapter((CursorAdapter) adapter);
+      } else if (adapter instanceof android.support.v4.widget.CursorAdapter) {
+        autoComplete.setAdapter((android.support.v4.widget.CursorAdapter) adapter);
+      }
     }
 
     @Override
