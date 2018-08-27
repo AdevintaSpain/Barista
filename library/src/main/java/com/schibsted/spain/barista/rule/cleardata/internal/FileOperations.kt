@@ -20,14 +20,8 @@ class FileOperations {
     if (dir?.listFiles() == null) {
       return emptySet()
     }
-    val fileTree = HashSet<File>()
-    dir.listFiles().forEach { entry ->
-      if (entry.isFile) {
-        fileTree.add(entry)
-      } else {
-        fileTree.addAll(listFileTree(entry))
-      }
-    }
-    return fileTree
+    return dir.walkTopDown()
+        .filter { it.isFile }
+        .toList()
   }
 }
