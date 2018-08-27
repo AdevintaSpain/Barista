@@ -72,6 +72,7 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkDisplayedIdAndText() {
     assertDisplayed(R.id.visible_view, "Hello world!");
+    assertDisplayed(R.id.visible_view, R.string.hello_world);
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
