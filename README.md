@@ -71,6 +71,10 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
+assertRecyclerViewItemCount(R.id.recycler, 10);
+assertListItemCount(R.id.listId, 5)
+assertDisplayedAtPosition(R.id.recycler, 0, "text");
+assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
 
 clickSpinnerItem(R.id.spinner, 1);
 

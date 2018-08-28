@@ -12,24 +12,28 @@ import android.support.test.espresso.action.ViewActions.scrollTo
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.widget.AbsListView
+import android.widget.ListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
+import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
+import org.hamcrest.CoreMatchers
+import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.anyOf
-import org.hamcrest.Matchers.anything
+import org.hamcrest.Matchers.*
+import org.hamcrest.TypeSafeMatcher
 
 object BaristaListInteractions {
+
+    const val NO_VIEW_ID: Int = -1
 
     @JvmStatic
     @JvmOverloads
@@ -56,6 +60,40 @@ object BaristaListInteractions {
                 recyclerAction = actionOnItemAtPosition<ViewHolder>(position, clickChildWithId(childId)),
                 listViewAction = clickChildWithId(childId)
         )
+    }
+
+    @JvmStatic
+    fun assertListItemCount(@IdRes listId: Int, expectedItemCount: Int) {
+        val spyFailureHandler = SpyFailureHandler()
+        val recyclerMatcher = findRecyclerMatcher(listId)
+        val listViewMatcher = findListViewMatcher(listId)
+
+        try {
+            onView(recyclerMatcher).check(RecyclerViewItemCountAssertion(expectedItemCount))
+        } catch (noRecyclerMatching: NoMatchingViewException) {
+            try {
+                onView(listViewMatcher).check(ListViewItemCountAssertion(expectedItemCount))
+            } catch (listViewError: Throwable) {
+                spyFailureHandler.resendLastError("Item count mismatch on ListView. Expected $expectedItemCount items in the list.")
+            }
+        } catch (recyclerError: Throwable) {
+            spyFailureHandler.resendLastError("Item count mismatch on RecyclerView. Expected $expectedItemCount items in the list.")
+        }
+    }
+
+    @JvmStatic
+    fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, text: String) {
+        assertDisplayedAtPosition(listId = listId, position = position, targetViewId = NO_VIEW_ID, text = text)
+    }
+
+    @JvmStatic
+    fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, text: String) {
+        scrollListToPosition(listId, position)
+
+        onView(atPositionOnList(listId = listId,
+                position = position,
+                targetViewId = targetViewId))
+                .check(matches(CoreMatchers.anyOf(withChild(withText(text)), withText(text))))
     }
 
     private fun performMagicAction(@IdRes id: Int?, position: Int, recyclerAction: ViewAction, listViewAction: ViewAction) {
@@ -121,4 +159,72 @@ object BaristaListInteractions {
     }
 
     private fun resourceName(resId: Int) = InstrumentationRegistry.getTargetContext().resources.getResourceName(resId)
+
+    private fun atPositionOnList(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+            override fun describeTo(description: Description) {
+                description.appendText("Text not found in list with id $listId at position $position")
+            }
+
+            override fun matchesSafely(view: View): Boolean {
+                val listView: View? = view.rootView.findViewById(listId)
+
+                listView?.let {
+                    return when (it) {
+                        is RecyclerView -> matchRecyclerView(listId, position, targetViewId, view)
+                        is ListView -> matchListView(listId, position, targetViewId, view)
+                        else -> false
+                    }
+                } ?: return false
+            }
+        }
+    }
+
+    private fun matchListView(@IdRes listViewId: Int, position: Int, @IdRes targetViewId: Int, view: View): Boolean {
+        var childView: View? = null
+
+        if (childView == null) {
+            val listView: ListView? = view.rootView.findViewById(listViewId) as ListView
+            if (listView != null && listView.id == listViewId) {
+                val positionOnScreen = position - listView.firstVisiblePosition
+                val viewAtPosition = listView.getChildAt(positionOnScreen)
+
+                viewAtPosition?.let {
+                    childView = it
+                }
+            } else {
+                return false
+            }
+        }
+
+        if (targetViewId == NO_VIEW_ID) {
+            return view == childView
+        } else {
+            val targetView: View? = childView?.findViewById(targetViewId)
+            return view == targetView
+        }
+    }
+
+    private fun matchRecyclerView(@IdRes recyclerViewId: Int, position: Int, @IdRes targetViewId: Int, view: View): Boolean {
+        var childView: View? = null
+
+        if (childView == null) {
+            val recyclerView: RecyclerView? = view.rootView.findViewById(recyclerViewId) as RecyclerView
+            if (recyclerView != null && recyclerView.id == recyclerViewId) {
+                val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
+                viewHolder?.let { checkedViewHolder ->
+                    childView = checkedViewHolder.itemView
+                }
+            } else {
+                return false
+            }
+        }
+
+        if (targetViewId == NO_VIEW_ID) {
+            return view == childView
+        } else {
+            val targetView: View? = childView?.findViewById(targetViewId)
+            return view == targetView
+        }
+    }
 }
