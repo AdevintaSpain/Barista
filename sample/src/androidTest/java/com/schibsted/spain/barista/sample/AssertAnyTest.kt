@@ -5,8 +5,8 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.widget.EditText
 import android.widget.ImageView
+import com.schibsted.spain.barista.assertion.BaristaAssertions.assertAny
 import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
-import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule
 import org.assertj.core.api.Assertions.assertThat

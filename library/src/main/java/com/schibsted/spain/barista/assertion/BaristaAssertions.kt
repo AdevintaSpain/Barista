@@ -3,8 +3,14 @@ package com.schibsted.spain.barista.assertion
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.NoActivityResumedException
 import android.support.test.espresso.action.ViewActions
+import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.isRoot
+import android.view.View
+import com.schibsted.spain.barista.internal.assertAnyView
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
+import com.schibsted.spain.barista.internal.matcher.BooleanMatcher
+import com.schibsted.spain.barista.internal.util.resourceMatcher
+import org.hamcrest.Matcher
 import org.junit.Assert.fail
 
 object BaristaAssertions {
@@ -21,6 +27,30 @@ object BaristaAssertions {
         } catch (noActivityException: NoActivityResumedException) {
             //Yey!
         }
+    }
+
+    /**
+     * Extension function alias for [assertAnyView]
+     */
+    @JvmStatic
+    inline fun <reified T : View> assertAny(resId: Int, message: String? = null, noinline block: (T) -> Boolean) {
+        assertAny(resId.resourceMatcher(), message, block)
+    }
+
+    /**
+     * Extension function alias for [assertAnyView]
+     */
+    @JvmStatic
+    inline fun <reified T : View> assertAny(text: String, message: String? = null, noinline block: (T) -> Boolean) {
+        assertAny(ViewMatchers.withText(text), message, block)
+    }
+
+    /**
+     * Extension function alias for [assertAnyView]
+     */
+    @JvmStatic
+    inline fun <reified T : View> assertAny(matcher: Matcher<View>, message: String? = null, noinline block: (T) -> Boolean) {
+        assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(message, block) as Matcher<View>)
     }
 
 }
