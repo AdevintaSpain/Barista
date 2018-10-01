@@ -26,7 +26,7 @@ class AssertAnyTest {
     var spyFailureHandlerRule = SpyFailureHandlerRule()
 
     @Test
-    fun checkWriteOnEditText_whenEditTextIsVisible_id() {
+    fun assertAny_with_idMatcher() {
         spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
@@ -36,7 +36,24 @@ class AssertAnyTest {
     }
 
     @Test
-    fun checkWriteOnEditText_whenEditTextIsVisible_text() {
+    fun assertAny_with_valid_cast_custom_error() {
+        val thrown = catchThrowable {
+            assertAny<EditText>(R.id.edittext, "String is not the same") {
+                it.text.toString() == "Hello"
+            }
+        }
+
+        spyFailureHandlerRule.assertEspressoFailures(1)
+
+        writeTo(R.id.edittext, "Hello!")
+
+        assertThat(thrown).isInstanceOf(BaristaException::class.java)
+                .hasMessageContaining("didn't match condition")
+                .hasMessageContaining("String is not the same")
+    }
+
+    @Test
+    fun assertAny_with_textMatcher() {
         spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
@@ -46,7 +63,7 @@ class AssertAnyTest {
     }
 
     @Test
-    fun checkWriteOnEditText_whenEditTextIsVisible_matcher() {
+    fun assertAny_with_MatcherCustom() {
         spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
@@ -56,7 +73,7 @@ class AssertAnyTest {
     }
 
     @Test
-    fun checkNoMatchesWriteOnEditText_whenAssertOnDifferentTypeOfView() {
+    fun assertAny_with_wrong_view_cast_error_default_message() {
         val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext) { true } }
 
         spyFailureHandlerRule.assertEspressoFailures(1)
@@ -69,7 +86,7 @@ class AssertAnyTest {
     }
 
     @Test
-    fun checkNoMatchesWriteOnEditText_whenAssertOnDifferentTypeOfView_customMessage() {
+    fun assertAny_with_wrong_view_cast_error_custom_message() {
         val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "Not an ImageView") { true } }
 
         spyFailureHandlerRule.assertEspressoFailures(1)
