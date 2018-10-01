@@ -11,7 +11,7 @@ class BooleanMatcher<T : View>(
     override fun describeTo(description: Description) {
         message?.let {
             description.appendText(message)
-        } ?: description.appendText(" (custom condition)")
+        } ?: description.appendText("custom condition")
     }
 
     override fun matchesSafely(item: T): Boolean = (item as? T)?.let(block) ?: false

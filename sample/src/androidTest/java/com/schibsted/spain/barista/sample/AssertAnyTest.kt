@@ -48,8 +48,7 @@ class AssertAnyTest {
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition")
-                .hasMessageContaining("String is not the same")
+                .hasMessageContaining("didn't match condition (String is not the same)")
     }
 
     @Test
@@ -81,8 +80,7 @@ class AssertAnyTest {
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition")
-                .hasMessageContaining("(custom condition)")
+                .hasMessageContaining("didn't match condition (custom condition)")
     }
 
     @Test
@@ -94,7 +92,6 @@ class AssertAnyTest {
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition")
-                .hasMessageContaining("Not an ImageView")
+                .hasMessageContaining("didn't match condition (Not an ImageView)")
     }
 }
