@@ -25,13 +25,21 @@ fun Matcher<View>.assertAny(condition: Matcher<View>) {
  * Extension function alias for [assertAnyView]
  */
 inline fun <reified T: View> assertAny(resId: Int, noinline block: (T) -> Boolean) {
-    assertAnyView(viewMatcher = resId.resourceMatcher(), condition = BooleanMatcher(block) as Matcher<View>)
+    assertAny(resId.resourceMatcher(), block)
 }
+
 /**
  * Extension function alias for [assertAnyView]
  */
 inline fun <reified T: View> assertAny(text: String, noinline block: (T) -> Boolean) {
-    assertAnyView(viewMatcher = withText(text), condition = BooleanMatcher(block) as Matcher<View>)
+    assertAny(withText(text), block)
+}
+
+/**
+ * Extension function alias for [assertAnyView]
+ */
+inline fun <reified T: View> assertAny(matcher: Matcher<View>, noinline block: (T) -> Boolean) {
+    assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(block) as Matcher<View>)
 }
 
 /**

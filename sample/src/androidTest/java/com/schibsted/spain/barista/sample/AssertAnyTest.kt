@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample
 
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.widget.EditText
@@ -18,13 +19,28 @@ class AssertAnyTest {
     var activityRule = ActivityTestRule(EditTextActivity::class.java)
 
     @Test
-    fun checkWriteOnEditText_whenEditTextIsVisible() {
+    fun checkWriteOnEditText_whenEditTextIsVisible_id() {
         writeTo(R.id.edittext, "Hello!")
 
         assertAny<EditText>(R.id.edittext) {
             it.text.toString() == "Hello!"
         }
+    }
+
+    @Test
+    fun checkWriteOnEditText_whenEditTextIsVisible_text() {
+        writeTo(R.id.edittext, "Hello!")
+
         assertAny<EditText>("Hello!") {
+            it.text.toString() == "Hello!"
+        }
+    }
+
+    @Test
+    fun checkWriteOnEditText_whenEditTextIsVisible_matcher() {
+        writeTo(R.id.edittext, "Hello!")
+
+        assertAny<EditText>(withId(R.id.edittext)) {
             it.text.toString() == "Hello!"
         }
     }
