@@ -64,6 +64,20 @@ class AssertAnyTest {
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("matches provided condition")
+                .hasMessageContaining("didn't match condition")
+                .hasMessageContaining("(custom condition)")
+    }
+
+    @Test
+    fun checkNoMatchesWriteOnEditText_whenAssertOnDifferentTypeOfView_customMessage() {
+        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "Not an ImageView") { true } }
+
+        spyFailureHandlerRule.assertEspressoFailures(1)
+
+        writeTo(R.id.edittext, "Hello!")
+
+        assertThat(thrown).isInstanceOf(BaristaException::class.java)
+                .hasMessageContaining("didn't match condition")
+                .hasMessageContaining("Not an ImageView")
     }
 }

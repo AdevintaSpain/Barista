@@ -4,9 +4,14 @@ import android.view.View
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
-class BooleanMatcher<T : View>(private val block: (T) -> Boolean) : TypeSafeMatcher<T>() {
+class BooleanMatcher<T : View>(
+        private val message: String? = null,
+        private val block: (T) -> Boolean
+) : TypeSafeMatcher<T>() {
     override fun describeTo(description: Description) {
-        description.appendText(" matches provided condition")
+        message?.let {
+            description.appendText(message)
+        } ?: description.appendText(" (custom condition)")
     }
 
     override fun matchesSafely(item: T): Boolean = (item as? T)?.let(block) ?: false

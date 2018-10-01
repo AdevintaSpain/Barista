@@ -24,22 +24,22 @@ fun Matcher<View>.assertAny(condition: Matcher<View>) {
 /**
  * Extension function alias for [assertAnyView]
  */
-inline fun <reified T: View> assertAny(resId: Int, noinline block: (T) -> Boolean) {
-    assertAny(resId.resourceMatcher(), block)
+inline fun <reified T: View> assertAny(resId: Int, message: String? = null, noinline block: (T) -> Boolean) {
+    assertAny(resId.resourceMatcher(), message, block)
 }
 
 /**
  * Extension function alias for [assertAnyView]
  */
-inline fun <reified T: View> assertAny(text: String, noinline block: (T) -> Boolean) {
-    assertAny(withText(text), block)
+inline fun <reified T: View> assertAny(text: String, message: String? = null, noinline block: (T) -> Boolean) {
+    assertAny(withText(text), message, block)
 }
 
 /**
  * Extension function alias for [assertAnyView]
  */
-inline fun <reified T: View> assertAny(matcher: Matcher<View>, noinline block: (T) -> Boolean) {
-    assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(block) as Matcher<View>)
+inline fun <reified T: View> assertAny(matcher: Matcher<View>, message: String? = null, noinline block: (T) -> Boolean) {
+    assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(message, block) as Matcher<View>)
 }
 
 /**
