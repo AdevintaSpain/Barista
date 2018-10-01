@@ -24,10 +24,10 @@ import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
+import org.hamcrest.CoreMatchers.anyOf
+import org.hamcrest.CoreMatchers.anything
+import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.anyOf
-import org.hamcrest.Matchers.anything
 
 object BaristaListInteractions {
 
@@ -67,11 +67,11 @@ object BaristaListInteractions {
         try {
             performOnRecycler(recyclerMatcher, recyclerAction, spyFailureHandler)
         } catch (noRecyclerMatching: NoMatchingViewException) {
-          try {
-            performOnListView(listViewMatcher, position, listViewAction, spyFailureHandler)
-          } catch (listViewError: Throwable) {
-            spyFailureHandler.resendLastError("Could not perform action (${listViewAction.description}) on ListView ${listViewMatcher.description()}")
-          }
+            try {
+                performOnListView(listViewMatcher, position, listViewAction, spyFailureHandler)
+            } catch (listViewError: Throwable) {
+                spyFailureHandler.resendLastError("Could not perform action (${listViewAction.description}) on ListView ${listViewMatcher.description()}")
+            }
         } catch (recyclerError: Throwable) {
             spyFailureHandler.resendLastError("Could not perform action (${recyclerAction.description}) on RecyclerView ${recyclerMatcher.description()}")
         }
@@ -110,12 +110,12 @@ object BaristaListInteractions {
         }
     }
 
-    private fun findRecyclerMatcher(@IdRes id: Int?) = when (id) {
+    fun findRecyclerMatcher(@IdRes id: Int?): Matcher<View> = when (id) {
         null -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java))
         else -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java), withId(id))
     }
 
-    private fun findListViewMatcher(@IdRes id: Int?) = when (id) {
+    fun findListViewMatcher(@IdRes id: Int?): Matcher<View> = when (id) {
         null -> allOf(isDisplayed(), isAssignableFrom(AbsListView::class.java))
         else -> allOf(isDisplayed(), isAssignableFrom(AbsListView::class.java), withId(id))
     }
