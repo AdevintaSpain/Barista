@@ -85,13 +85,13 @@ class AssertAnyTest {
 
     @Test
     fun assertAny_with_wrong_view_cast_error_custom_message() {
-        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "Not an ImageView") { true } }
+        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "is an ImageView") { true } }
 
         spyFailureHandlerRule.assertEspressoFailures(1)
 
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition (Not an ImageView)")
+                .hasMessageContaining("didn't match condition (is an ImageView)")
     }
 }
