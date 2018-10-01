@@ -8,9 +8,13 @@ import android.widget.ImageView
 import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
+import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.ThrowableAssert.catchThrowable
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class AssertAnyTest {
@@ -18,8 +22,12 @@ class AssertAnyTest {
     @get:Rule
     var activityRule = ActivityTestRule(EditTextActivity::class.java)
 
+    @get:Rule
+    var spyFailureHandlerRule = SpyFailureHandlerRule()
+
     @Test
     fun checkWriteOnEditText_whenEditTextIsVisible_id() {
+        spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
         assertAny<EditText>(R.id.edittext) {
@@ -29,6 +37,7 @@ class AssertAnyTest {
 
     @Test
     fun checkWriteOnEditText_whenEditTextIsVisible_text() {
+        spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
         assertAny<EditText>("Hello!") {
@@ -38,6 +47,7 @@ class AssertAnyTest {
 
     @Test
     fun checkWriteOnEditText_whenEditTextIsVisible_matcher() {
+        spyFailureHandlerRule.assertNoEspressoFailures()
         writeTo(R.id.edittext, "Hello!")
 
         assertAny<EditText>(withId(R.id.edittext)) {
@@ -45,10 +55,15 @@ class AssertAnyTest {
         }
     }
 
-    @Test(expected = BaristaException::class)
+    @Test
     fun checkNoMatchesWriteOnEditText_whenAssertOnDifferentTypeOfView() {
+        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext) { true } }
+
+        spyFailureHandlerRule.assertEspressoFailures(1)
+
         writeTo(R.id.edittext, "Hello!")
 
-        assertAny<ImageView>(R.id.edittext) { true }
+        assertThat(thrown).isInstanceOf(BaristaException::class.java)
+                .hasMessageContaining("matches provided condition")
     }
 }
