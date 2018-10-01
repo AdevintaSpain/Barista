@@ -233,6 +233,39 @@ assertProgressIsMax(R.id.seek_bar)
 
 ```
 
+### Barista custom assert
+
+Do your own asserts on given view, no more custom *Matcher*
+
+```kotlin
+
+assertAny<ViewType>(R.id.editText) {
+    it.text.toString() == "Hello!"
+}
+
+assertAny<ViewType>("Hello!") {
+    it.text.toString() == "Hello!"
+}
+
+assertAny<ViewType>(withId(R.id.editText)) {
+    it.text.toString() == "Hello!"
+}
+
+// With custom matcher description
+
+assertAny<ViewType>(R.id.editText, "error message") {
+    it.text.toString() == "Hello!"
+}
+
+assertAny<ViewType>("Hello!", "error message") {
+    it.text.toString() == "Hello!"
+}
+
+assertAny<ViewType>(withId(R.id.editText), "error message") {
+    it.text.toString() == "Hello!"
+}
+```
+
 ## Barista’s Intents API
 ```java
 // Creates a Bitmap on a camera provided URI
