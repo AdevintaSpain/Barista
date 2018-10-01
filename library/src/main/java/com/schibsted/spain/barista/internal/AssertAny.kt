@@ -4,10 +4,13 @@ import android.support.test.espresso.AmbiguousViewMatcherException
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.NoMatchingViewException
 import android.support.test.espresso.assertion.ViewAssertions
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
+import com.schibsted.spain.barista.internal.matcher.BooleanMatcher
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers.firstViewOf
+import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 
@@ -16,6 +19,19 @@ import org.hamcrest.Matchers.allOf
  */
 fun Matcher<View>.assertAny(condition: Matcher<View>) {
     assertAnyView(viewMatcher = this, condition = condition)
+}
+
+/**
+ * Extension function alias for [assertAnyView]
+ */
+inline fun <reified T: View> assertAny(resId: Int, noinline block: (T) -> Boolean) {
+    assertAnyView(viewMatcher = resId.resourceMatcher(), condition = BooleanMatcher(block) as Matcher<View>)
+}
+/**
+ * Extension function alias for [assertAnyView]
+ */
+inline fun <reified T: View> assertAny(text: String, noinline block: (T) -> Boolean) {
+    assertAnyView(viewMatcher = withText(text), condition = BooleanMatcher(block) as Matcher<View>)
 }
 
 /**
