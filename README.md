@@ -238,7 +238,7 @@ assertProgressIsMax(R.id.seek_bar)
 
 ### Custom assertions
 
-If you have a special case not covered by the given assertions API, we encourage you to assert these special cases with our custom assertions API. It's a convenient way to replace plain `Matcher`s with complex assertions. With Barista, you can match any kind of view by knowing its type and passing its `viewId`, `text`, `Matcher<View>`, and also specifying the view's `description` if needed. Once you matched it, you will be able to assert all its properties without adding any complex `Matcher` to your project.
+If you have a special case not covered by the given assertions API, we encourage you to assert these special cases with our custom assertions API. It's a convenient way to replace plain `Matcher`s with complex assertions. With Barista, you can match any kind of view by knowing its type and passing its `viewId`, `text`, or a common `Matcher<View>`. Once you matched it, you will be able to assert all its properties without adding any complex `Matcher` to your project.
 
 ```kotlin
 
@@ -257,14 +257,14 @@ assertAny<TextView>(withId(R.id.textView)) {
     it.text.toString() == "Hello!"
 }
 
-// You can also use the View's description if needed
-assertAny<EditText>(R.id.editText, "description message") {
+// You can also define the assertion error message if the assertion fails
+assertAny<TextView>(R.id.textView, "text wasn't Hello!") {
     it.text.toString() == "Hello!"
 }
-assertAny<EditText>("Hello!", "description message") {
+assertAny<TextView>("Hello!", "text wasn't Hello!") {
     it.text.toString() == "Hello!"
 }
-assertAny<EditText>(withId(R.id.editText), "description message") {
+assertAny<TextView>(withId(R.id.textView), "text wasn't Hello!") {
     it.text.toString() == "Hello!"
 }
 ```
