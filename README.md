@@ -236,35 +236,35 @@ assertProgressIsMax(R.id.seek_bar)
 
 ```
 
-### Barista custom assert
+### Custom assertions
 
-Do your own asserts on given view, no more custom *Matcher*
+If you have a special case not covered by the given assertions API, we encourage you to assert these special cases with our custom assertions API. It's a convenient way to replace plain `Matcher`s with complex assertions. With Barista, you can match any kind of view by knowing its type and passing its `viewId`, `text`, `Matcher<View>`, and also specifying the view's `description` if needed. Once you matched it, you will be able to assert all its properties without adding any complex `Matcher` to your project.
 
 ```kotlin
 
-assertAny<ViewType>(R.id.editText) {
+// Matching a TextView by viewId
+assertAny<TextView>(R.id.textView) {
     it.text.toString() == "Hello!"
 }
 
-assertAny<ViewType>("Hello!") {
+// Matching a TextView by text
+assertAny<TextView>("Hello!") {
     it.text.toString() == "Hello!"
 }
 
-assertAny<ViewType>(withId(R.id.editText)) {
+// Matching a TextView by a Matcher
+assertAny<TextView>(withId(R.id.textView)) {
     it.text.toString() == "Hello!"
 }
 
-// With custom matcher description
-
-assertAny<ViewType>(R.id.editText, "error message") {
+// You can also use the View's description if needed
+assertAny<EditText>(R.id.editText, "description message") {
     it.text.toString() == "Hello!"
 }
-
-assertAny<ViewType>("Hello!", "error message") {
+assertAny<EditText>("Hello!", "description message") {
     it.text.toString() == "Hello!"
 }
-
-assertAny<ViewType>(withId(R.id.editText), "error message") {
+assertAny<EditText>(withId(R.id.editText), "description message") {
     it.text.toString() == "Hello!"
 }
 ```
