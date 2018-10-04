@@ -257,7 +257,7 @@ assertAny<TextView>(withId(R.id.textView)) {
     it.text.toString() == "Hello!"
 }
 
-// You can also define the assertion error message if the assertion fails
+// You can also define the assertion error message that will be shown if the assertion fails
 assertAny<TextView>(R.id.textView, "text wasn't Hello!") {
     it.text.toString() == "Hello!"
 }
