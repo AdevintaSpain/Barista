@@ -11,7 +11,7 @@ class BooleanMatcher<T : View>(
     override fun describeTo(description: Description) {
         message?.let {
             description.appendText(message)
-        } ?: description.appendText("custom condition [use `message` parameter on `assertAny` to setup descriptive message]")
+        } ?: description.appendText("custom condition [use `assertionErrorMessage` parameter on `assertAny` to setup descriptive message]")
     }
 
     override fun matchesSafely(item: T): Boolean = (item as? T)?.let(block) ?: false
