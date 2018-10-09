@@ -257,9 +257,12 @@ assertAny<Progressbar>(withId(R.id.progressBar)) {
     it.progress == 42
 }
 
-// You can also define the assertion error message that will be shown if the assertion fails
-assertAny<TextView>(R.id.textView, "text wasn't Hello!") {
-    it.text.toString() == "Hello!"
+// You can also define the assertion description that will be shown if the assertion fails
+assertAny<RadioGroup>(R.id.radioGroup, "selected option is the second one") {
+    it.checkedRadioButtonId == R.id.option1
+}
+assertAny<Progressbar>(withId(R.id.progressBar, "progress is 42")) {
+    it.progress == 42
 }
 ```
 
