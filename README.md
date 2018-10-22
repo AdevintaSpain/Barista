@@ -261,9 +261,6 @@ assertAny<Progressbar>(withId(R.id.progressBar)) {
 assertAny<RadioGroup>(R.id.radioGroup, "selected option is the second one") {
     it.checkedRadioButtonId == R.id.option1
 }
-assertAny<Progressbar>(withId(R.id.progressBar, "progress is 42")) {
-    it.progress == 42
-}
 ```
 
 ## Barista’s Intents API
