@@ -355,4 +355,4 @@ In order to speed up testing, Barista keeps in mind some considerations.
 - **Just interacts with displayed Views**: Interacting with `View`s inside a `ViewPager` throws `AmbiguousViewMatcherException`, because the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.
 
 # License
-**[Apache License, Version 2.0 (the "License")](LICENSE)**
+**[Apache License, Version 2.0 (the "License")](LICENSE.md)**
