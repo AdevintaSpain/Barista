@@ -1,11 +1,11 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.ColorRes
-import android.support.annotation.IdRes
-import android.support.annotation.StringRes
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
-import android.support.test.espresso.matcher.ViewMatchers.*
+import androidx.annotation.ColorRes
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
+import androidx.test.espresso.matcher.ViewMatchers.*
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
 import com.schibsted.spain.barista.internal.util.resourceMatcher

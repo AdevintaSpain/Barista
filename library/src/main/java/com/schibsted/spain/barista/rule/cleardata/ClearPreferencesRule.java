@@ -2,8 +2,8 @@ package com.schibsted.spain.barista.rule.cleardata;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.test.InstrumentationRegistry;
+import androidx.annotation.NonNull;
+import androidx.test.InstrumentationRegistry;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;

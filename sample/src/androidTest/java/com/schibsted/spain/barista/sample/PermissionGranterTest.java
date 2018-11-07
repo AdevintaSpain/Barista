@@ -4,8 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.test.InstrumentationRegistry;
+import androidx.annotation.RequiresApi;
+import androidx.test.InstrumentationRegistry;
 
 import com.schibsted.spain.barista.rule.BaristaRule;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;

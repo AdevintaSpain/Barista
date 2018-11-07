@@ -1,10 +1,10 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.annotation.IdRes
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers.withParentId
 import com.schibsted.spain.barista.internal.performAction
 import org.hamcrest.Matchers.allOf

@@ -44,7 +44,7 @@ task findbugs (type: FindBugs, dependsOn: assemble) {
   description 'Run findbugs'
   group 'verification'
 
-  classes = fileTree('build/intermediates/classes/')
+  classes = fileTree('build/intermediates/javac/')
   source = fileTree('src/main/java/')
   classpath = files()
   includeFilter = file("$rootProject.projectDir/config/findbugs/findbugs-config.xml")

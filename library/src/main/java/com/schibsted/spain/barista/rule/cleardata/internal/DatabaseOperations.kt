@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.rule.cleardata.internal
 
 import android.database.sqlite.SQLiteDatabase
-import android.support.test.InstrumentationRegistry
+import androidx.test.InstrumentationRegistry
 import java.io.File
 import java.util.*
 

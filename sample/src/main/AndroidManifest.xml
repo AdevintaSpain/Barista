@@ -12,8 +12,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity">
-    </activity>
+    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity"/>
     <activity android:name=".FlowFirstScreen"/>
     <activity android:name=".FlowSecondScreen"/>
     <activity android:name=".RadioButtonsActivity"/>
@@ -30,8 +29,7 @@
     <activity android:name=".DialogActivity"/>
     <activity android:name=".PreferencesActivity"/>
     <activity android:name=".DatabaseActivity"/>
-    <activity android:name=".FileActivity">
-    </activity>
+    <activity android:name=".FileActivity"/>
     <activity android:name=".HelloWorldActivity"/>
     <activity android:name=".WrappedViewActivity"/>
     <activity android:name=".SwipeRefreshActivity"/>
@@ -54,7 +52,7 @@
     </activity>
 
     <provider
-        android:name="android.support.v4.content.FileProvider"
+        android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.barista.sample.provider"
         android:exported="false"
         android:grantUriPermissions="true">

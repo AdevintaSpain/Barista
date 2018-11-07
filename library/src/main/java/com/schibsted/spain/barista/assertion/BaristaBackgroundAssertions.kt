@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.IdRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withAnyBackground
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withBackground

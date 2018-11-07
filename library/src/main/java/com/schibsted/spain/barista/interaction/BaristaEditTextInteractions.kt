@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.action.ViewActions.clearText
-import android.support.test.espresso.action.ViewActions.replaceText
-import android.support.test.espresso.matcher.ViewMatchers.*
+import androidx.annotation.IdRes
+import androidx.test.espresso.action.ViewActions.clearText
+import androidx.test.espresso.action.ViewActions.replaceText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import android.widget.EditText
 import com.schibsted.spain.barista.internal.performAction
 import org.hamcrest.Matchers.allOf

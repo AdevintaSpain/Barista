@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.internal.util
 
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
 import org.hamcrest.Matcher
 

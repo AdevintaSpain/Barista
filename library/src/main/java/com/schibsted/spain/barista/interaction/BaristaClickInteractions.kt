@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.test.espresso.Espresso.pressBack
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.longClick
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.longClick
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.performAction
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 

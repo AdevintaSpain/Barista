@@ -5,7 +5,7 @@ import android.app.Instrumentation
 import android.content.Intent
 import android.os.Bundle
 
-import android.support.test.espresso.intent.Intents.intending
+import androidx.test.espresso.intent.Intents.intending
 import com.schibsted.spain.barista.intents.BaristaIntentMatchers.captureImage
 
 object BaristaIntents {

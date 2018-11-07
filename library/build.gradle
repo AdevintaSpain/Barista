@@ -9,7 +9,7 @@ android {
     defaultConfig {
         minSdkVersion minSdkVersionDeclared
         targetSdkVersion compileSdkVersionDeclared
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     lintOptions {
@@ -18,15 +18,15 @@ android {
 }
 
 dependencies {
-    api "com.android.support.test.espresso:espresso-core:$espressoVersion"
-    api "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-    api "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
-    api "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    api "androidx.test.espresso:espresso-core:$espressoVersion"
+    api "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    api "androidx.test.uiautomator:uiautomator:$uiAutomatorVersion"
+    api "androidx.test.espresso:espresso-intents:$espressoVersion"
 
-    implementation "com.android.support:support-annotations:$supportLibVersion"
-    implementation "com.android.support:support-core-ui:$supportLibVersion"
-    implementation "com.android.support:animated-vector-drawable:$supportLibVersion"
-    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "androidx.annotation:annotation:$supportLibVersion"
+    implementation "androidx.legacy:legacy-support-core-ui:$supportLibVersion"
+    implementation "androidx.vectordrawable:vectordrawable-animated:$supportLibVersion"
+    implementation "androidx.recyclerview:recyclerview:$supportLibVersion"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

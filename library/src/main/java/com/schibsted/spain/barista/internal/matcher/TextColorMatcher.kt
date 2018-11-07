@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.internal.matcher
 
 import android.content.Context
-import android.support.annotation.ColorRes
-import android.support.test.espresso.matcher.BoundedMatcher
-import android.support.v4.content.ContextCompat
+import androidx.annotation.ColorRes
+import androidx.test.espresso.matcher.BoundedMatcher
+import androidx.core.content.ContextCompat
 import android.view.View
 import android.widget.TextView
 import org.hamcrest.Description

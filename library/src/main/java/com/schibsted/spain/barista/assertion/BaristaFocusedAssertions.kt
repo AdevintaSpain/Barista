@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.matcher.ViewMatchers.hasFocus
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.annotation.IdRes
+import androidx.test.espresso.matcher.ViewMatchers.hasFocus
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not

@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.rule.flaky.internal;
 
 import android.app.Activity;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
-import android.support.test.runner.lifecycle.Stage;
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
+import androidx.test.runner.lifecycle.Stage;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -27,7 +27,7 @@ public class FlakyUtil {
   }
 
   /**
-   * Copied from {@link android.support.test.runner.MonitoringInstrumentation.ActivityFinisher}
+   * Copied from {@link androidx.test.runner.MonitoringInstrumentation.ActivityFinisher}
    */
   private static void finishAllActivities() {
     List<Activity> activities = new ArrayList<>();

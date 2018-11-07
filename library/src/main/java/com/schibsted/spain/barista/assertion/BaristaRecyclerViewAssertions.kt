@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.Espresso.onView
+import androidx.annotation.IdRes
+import androidx.test.espresso.Espresso.onView
 import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 
