@@ -5,15 +5,24 @@ import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.view.View
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.not
 
 object BaristaVisibilityAssertions {
+
+    @JvmStatic
+    fun assertDisplayed(viewMatcher: Matcher<View>) {
+        viewMatcher.assertAny(isDisplayed())
+    }
 
     @JvmStatic
     fun assertDisplayed(viewId: Int) {
@@ -54,6 +63,12 @@ object BaristaVisibilityAssertions {
     fun assertNotDisplayed(text: String) {
         withText(text).assertAny(not(isDisplayed()))
     }
+
+    @JvmStatic
+    fun assertNotDisplayed(viewMatcher: Matcher<View>) {
+        viewMatcher.assertAny(not(isDisplayed()))
+    }
+
 
     @JvmStatic
     fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
