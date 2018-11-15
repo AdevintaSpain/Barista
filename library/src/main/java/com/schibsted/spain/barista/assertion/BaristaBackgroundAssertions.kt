@@ -1,3 +1,5 @@
+@file:JvmName("BaristaBackgroundAssertions")
+
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.DrawableRes
@@ -8,20 +10,14 @@ import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.
 import com.schibsted.spain.barista.internal.matcher.BackgroundMatcher.Companion.withoutBackground
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 
-object BaristaBackgroundAssertions {
+fun assertHasBackground(@IdRes viewId: Int, @DrawableRes drawable: Int) {
+  viewId.resourceMatcher().assertAny(withBackground(drawable))
+}
 
-    @JvmStatic
-    fun assertHasBackground(@IdRes viewId: Int, @DrawableRes drawable: Int) {
-        viewId.resourceMatcher().assertAny(withBackground(drawable))
-    }
+fun assertHasAnyBackground(@IdRes viewId: Int) {
+  viewId.resourceMatcher().assertAny(withAnyBackground())
+}
 
-    @JvmStatic
-    fun assertHasAnyBackground(@IdRes viewId: Int) {
-        viewId.resourceMatcher().assertAny(withAnyBackground())
-    }
-
-    @JvmStatic
-    fun assertHasNoBackground(@IdRes viewId: Int) {
-        viewId.resourceMatcher().assertAny(withoutBackground())
-    }
+fun assertHasNoBackground(@IdRes viewId: Int) {
+  viewId.resourceMatcher().assertAny(withoutBackground())
 }

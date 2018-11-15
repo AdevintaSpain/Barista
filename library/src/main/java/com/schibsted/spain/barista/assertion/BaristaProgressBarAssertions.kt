@@ -1,3 +1,5 @@
+@file:JvmName("BaristaProgressBarAssertions")
+
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.IdRes
@@ -8,20 +10,14 @@ import com.schibsted.spain.barista.internal.matcher.ProgressBarMatchers.withMaxP
 import com.schibsted.spain.barista.internal.matcher.ProgressBarMatchers.withMinProgress
 import com.schibsted.spain.barista.internal.matcher.ProgressBarMatchers.withProgress
 
-object BaristaProgressBarAssertions {
+fun assertProgress(@IdRes progressBarId: Int, expectedProgress: Int) {
+  onView(displayedWithId(progressBarId)).check(matches(withProgress(expectedProgress)))
+}
 
-  @JvmStatic
-  fun assertProgress(@IdRes progressBarId: Int, expectedProgress: Int) {
-    onView(displayedWithId(progressBarId)).check(matches(withProgress(expectedProgress)))
-  }
+fun assertProgressIsMin(@IdRes progressBarId: Int) {
+  onView(displayedWithId(progressBarId)).check(matches(withMinProgress()))
+}
 
-  @JvmStatic
-  fun assertProgressIsMin(@IdRes progressBarId: Int) {
-    onView(displayedWithId(progressBarId)).check(matches(withMinProgress()))
-  }
-
-  @JvmStatic
-  fun assertProgressIsMax(@IdRes progressBarId: Int) {
-    onView(displayedWithId(progressBarId)).check(matches(withMaxProgress()))
-  }
+fun assertProgressIsMax(@IdRes progressBarId: Int) {
+  onView(displayedWithId(progressBarId)).check(matches(withMaxProgress()))
 }

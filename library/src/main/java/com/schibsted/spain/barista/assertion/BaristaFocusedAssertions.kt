@@ -1,3 +1,5 @@
+@file:JvmName("BaristaFocusedAssertions")
+
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.IdRes
@@ -7,25 +9,18 @@ import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not
 
-object BaristaFocusedAssertions {
+fun assertFocused(resId: Int) {
+  resId.resourceMatcher().assertAny(hasFocus())
+}
 
-    @JvmStatic
-    fun assertFocused(resId: Int) {
-        resId.resourceMatcher().assertAny(hasFocus())
-    }
+fun assertNotFocused(@IdRes resId: Int) {
+  resId.resourceMatcher().assertAny(not(hasFocus()))
+}
 
-    @JvmStatic
-    fun assertNotFocused(@IdRes resId: Int) {
-        resId.resourceMatcher().assertAny(not(hasFocus()))
-    }
+fun assertFocused(text: String) {
+  withText(text).assertAny(hasFocus())
+}
 
-    @JvmStatic
-    fun assertFocused(text: String) {
-        withText(text).assertAny(hasFocus())
-    }
-
-    @JvmStatic
-    fun assertNotFocused(text: String) {
-        withText(text).assertAny(not(hasFocus()))
-    }
+fun assertNotFocused(text: String) {
+  withText(text).assertAny(not(hasFocus()))
 }

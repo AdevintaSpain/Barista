@@ -1,3 +1,5 @@
+@file:JvmName("BaristaImageViewAssertions")
+
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.DrawableRes
@@ -8,20 +10,14 @@ import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.wi
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.withDrawable
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.withoutDrawable
 
-object BaristaImageViewAssertions {
+fun assertHasDrawable(@IdRes imageViewId: Int, @DrawableRes drawable: Int) {
+  withId(imageViewId).assertAny(withDrawable(drawable))
+}
 
-    @JvmStatic
-    fun assertHasDrawable(@IdRes imageViewId: Int, @DrawableRes drawable: Int) {
-        withId(imageViewId).assertAny(withDrawable(drawable))
-    }
+fun assertHasAnyDrawable(@IdRes imageViewId: Int) {
+  withId(imageViewId).assertAny(withAnyDrawable())
+}
 
-    @JvmStatic
-    fun assertHasAnyDrawable(@IdRes imageViewId: Int) {
-        withId(imageViewId).assertAny(withAnyDrawable())
-    }
-
-    @JvmStatic
-    fun assertHasNoDrawable(@IdRes imageViewId: Int) {
-        withId(imageViewId).assertAny(withoutDrawable())
-    }
+fun assertHasNoDrawable(@IdRes imageViewId: Int) {
+  withId(imageViewId).assertAny(withoutDrawable())
 }

@@ -11,18 +11,18 @@ import org.hamcrest.Matchers.anyOf
 
 object BaristaEditTextInteractions {
 
-    @JvmStatic
-    fun writeTo(@IdRes editTextId: Int, text: String) {
-        val withId = withId(editTextId)
-        val assignableFrom = isAssignableFrom(EditText::class.java)
-        val simpleMatcher = allOf(withId, assignableFrom)
-        val wrapperMatcher = allOf(isDescendantOfA(withId), assignableFrom)
-        val combinedMatcher = anyOf(simpleMatcher, wrapperMatcher)
-        combinedMatcher.performAction(replaceText(text))
-    }
+  @JvmStatic
+  fun writeTo(@IdRes editTextId: Int, text: String) {
+    val withId = withId(editTextId)
+    val assignableFrom = isAssignableFrom(EditText::class.java)
+    val simpleMatcher = allOf(withId, assignableFrom)
+    val wrapperMatcher = allOf(isDescendantOfA(withId), assignableFrom)
+    val combinedMatcher = anyOf(simpleMatcher, wrapperMatcher)
+    combinedMatcher.performAction(replaceText(text))
+  }
 
-    @JvmStatic
-    fun clearText(@IdRes editTextId: Int) {
-        withId(editTextId).performAction(clearText())
-    }
+  @JvmStatic
+  fun clearText(@IdRes editTextId: Int) {
+    withId(editTextId).performAction(clearText())
+  }
 }
