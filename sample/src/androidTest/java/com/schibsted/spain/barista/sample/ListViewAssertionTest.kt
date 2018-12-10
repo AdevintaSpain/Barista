@@ -5,6 +5,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import junit.framework.AssertionFailedError
 import org.junit.Rule
 import org.junit.Test
@@ -22,6 +23,13 @@ class ListViewAssertionTest {
         openSimpleListActivity()
         val expectedListLength = ListsActivity.FRUITS.size
         assertListItemCount(R.id.listview, expectedListLength)
+    }
+
+    @Test(expected = BaristaException::class)
+    fun shouldFailWhenNumberOfEntriesInListViewDoesNotMatchExpected() {
+        openSimpleListActivity()
+        val expectedListLength = ListsActivity.FRUITS.size
+        assertListItemCount(R.id.listview, expectedListLength + 1)
     }
 
     @Test
