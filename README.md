@@ -20,6 +20,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
       - [Dealing with Flaky tests](#dealing-with-flaky-tests)
       - [One rule to rule them all](#one-rule-to-rule-them-all)
   - [Magic that Barista does for you](#magic-that-barista-does-for-you)
+  - [Contributing](#contributing)
   - [License](#license)
 
 # Download
@@ -353,6 +354,13 @@ In order to speed up testing, Barista keeps in mind some considerations.
 - **Scrolls when needed**: Interacting with Espresso in a `ScrollView` requires you to scroll to each view, which sometimes doesn't work the first time. Also trying to scroll outside a `ScrollView` produces an `Exception`, forcing you to change the test depending on the layout. To keep tests simpler, Barista scrolls automatically before interacting with any `View`, and only does it if needed.
 - **Scrolls on all views**: Barista scrolls on all scrollable views, including `NestedScrollView`. Espresso only handles `ScrollView` and `HorizontalScrollView`, so people need to open questions on [StackOverflow like this](https://stackoverflow.com/questions/35272953/espresso-scrolling-not-working-when-nestedscrollview-or-recyclerview-is-in-coor). Or... just use **Barista**.
 - **Just interacts with displayed Views**: Interacting with `View`s inside a `ViewPager` throws `AmbiguousViewMatcherException`, because the views you interact with will be potentially repeated on different pages. Barista only interacts with displayed widgets, so you can focus on the behavior instead of wasting time on details.
+
+# Contributing
+
+We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/SchibstedSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
+
+## Formatting
+We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "SchibstedAndroid" schema in preferences.
 
 # License
 **[Apache License, Version 2.0 (the "License")](LICENSE.md)**
