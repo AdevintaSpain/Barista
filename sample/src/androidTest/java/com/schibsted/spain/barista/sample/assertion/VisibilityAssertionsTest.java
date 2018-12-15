@@ -1,11 +1,13 @@
 package com.schibsted.spain.barista.sample.assertion;
 
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import com.schibsted.spain.barista.sample.R;
 import com.schibsted.spain.barista.sample.SomeViewsWithDifferentVisibilitiesActivity;
 import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule;
+import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -84,7 +86,7 @@ public class VisibilityAssertionsTest {
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition "
-                + "(with text: is \"This is not the text you are looking for\")");
+            + "(with text: is \"This is not the text you are looking for\")");
   }
 
   @Test
@@ -149,5 +151,70 @@ public class VisibilityAssertionsTest {
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(AssertionError.class)
         .hasMessageContaining("View is present in the hierarchy");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
+    String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
+    Throwable thrown = catchThrowable(() ->
+        assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("No view matching (with tag value: is \"notPresentTagValue\") was found");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesFindTheGivenPredicateButViewIsHidden() {
+    String aTagValueThatDoesNotExistsInTheView = "presentTagValueHidden";
+    Throwable thrown = catchThrowable(() ->
+        assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("View (with tag value: is \"presentTagValueHidden\") didn't match condition (is displayed on the screen to the user)");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsShown() {
+    String aTagValueThatDoesExistsInTheView = "presentTagValue";
+
+    assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesExistsInTheView)));
+
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void assertNotVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
+    String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
+
+    Throwable thrown = catchThrowable(() ->
+        assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("No view matching (with tag value: is \"notPresentTagValue\") was found");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsHidden() {
+    String aTagValueThatIsHidden = "presentTagValueHidden";
+
+    assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatIsHidden)));
+
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherMatchesAViewThatIsNotHidden() {
+    String aTagValueThatIsShown = "presentTagValue";
+
+    Throwable thrown = catchThrowable(() ->
+        assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatIsShown))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    String expectedMessage =
+        "View (with tag value: is \"presentTagValue\") didn't match condition (not is displayed on the screen to the user)";
+    assertThat(thrown).isInstanceOf(BaristaException.class).hasMessage(expectedMessage);
   }
 }
