@@ -12,6 +12,7 @@ import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListV
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
+import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import org.hamcrest.CoreMatchers
@@ -29,10 +30,10 @@ object BaristaListAssertions {
         val listViewMatcher = findListViewMatcher(listId)
 
         try {
-            Espresso.onView(recyclerMatcher).check(RecyclerViewItemCountAssertion(expectedItemCount))
+            Espresso.onView(recyclerMatcher).withFailureHandler(spyFailureHandler).check(RecyclerViewItemCountAssertion(expectedItemCount))
         } catch (noRecyclerMatching: NoMatchingViewException) {
             try {
-                Espresso.onView(listViewMatcher).check(ListViewItemCountAssertion(expectedItemCount))
+                Espresso.onView(listViewMatcher).withFailureHandler(spyFailureHandler).check(ListViewItemCountAssertion(expectedItemCount))
             } catch (listViewError: Throwable) {
                 spyFailureHandler.resendLastError("Item count mismatch on ListView. Expected $expectedItemCount items in the list.")
             }
