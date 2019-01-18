@@ -131,12 +131,16 @@ assertDisplayed("Hello world");
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
+// you can also pass custom matchers
+assertDisplayed(withTagValue(is("tagName")))
 
 // ...or not?
 assertNotDisplayed("Hello world");
 assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
 assertNotDisplayed(R.id.button, "Hello world")
+// you can also pass custom matchers
+assertNotDisplayed(withTagValue(is("tagName")))
 
 // Is this view enabled?
 assertEnabled("Hello world");

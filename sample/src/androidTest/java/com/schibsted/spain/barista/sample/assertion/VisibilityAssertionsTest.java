@@ -10,11 +10,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
+import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(AndroidJUnit4.class)
 public class VisibilityAssertionsTest {
@@ -84,7 +86,7 @@ public class VisibilityAssertionsTest {
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition "
-                + "(with text: is \"This is not the text you are looking for\")");
+            + "(with text: is \"This is not the text you are looking for\")");
   }
 
   @Test
@@ -149,5 +151,70 @@ public class VisibilityAssertionsTest {
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(AssertionError.class)
         .hasMessageContaining("View is present in the hierarchy");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
+    String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
+    Throwable thrown = catchThrowable(() ->
+        assertDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("No view matching (with tag value: is \"notPresentTagValue\") was found");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesFindTheGivenPredicateButViewIsHidden() {
+    String nonExistingTag = "presentTagValueHidden";
+    Throwable thrown = catchThrowable(() ->
+        assertDisplayed(withTagValue(is(nonExistingTag))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("View (with tag value: is \"presentTagValueHidden\") didn't match condition (is displayed on the screen to the user)");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsShown() {
+    String existingTag = "presentTagValue";
+
+    assertDisplayed(withTagValue(is(existingTag)));
+
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void assertNotVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
+    String nonExistingTag = "notPresentTagValue";
+
+    Throwable thrown = catchThrowable(() ->
+        assertNotDisplayed(withTagValue(is(nonExistingTag))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessage("No view matching (with tag value: is \"notPresentTagValue\") was found");
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsHidden() {
+    String hiddenTag = "presentTagValueHidden";
+
+    assertNotDisplayed(withTagValue(is(hiddenTag)));
+
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherMatchesAViewThatIsNotHidden() {
+    String shownTag = "presentTagValue";
+
+    Throwable thrown = catchThrowable(() ->
+        assertNotDisplayed(withTagValue(is(shownTag))));
+
+    spyFailureHandlerRule.assertEspressoFailures(1);
+    String expectedMessage =
+        "View (with tag value: is \"presentTagValue\") didn't match condition (not is displayed on the screen to the user)";
+    assertThat(thrown).isInstanceOf(BaristaException.class).hasMessage(expectedMessage);
   }
 }
