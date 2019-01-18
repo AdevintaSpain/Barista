@@ -360,7 +360,7 @@ In order to speed up testing, Barista keeps in mind some considerations.
 We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/SchibstedSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
 
 ## Formatting
-We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "SchibstedAndroid" schema in preferences.
+We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "BaristaAndroid" schema in preferences.
 
 # License
 **[Apache License, Version 2.0 (the "License")](LICENSE.md)**
