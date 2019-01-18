@@ -1,22 +1,22 @@
 package com.schibsted.spain.barista.sample.assertion;
 
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import com.schibsted.spain.barista.sample.R;
 import com.schibsted.spain.barista.sample.SomeViewsWithDifferentVisibilitiesActivity;
 import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule;
-import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
+import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(AndroidJUnit4.class)
 public class VisibilityAssertionsTest {
@@ -157,7 +157,7 @@ public class VisibilityAssertionsTest {
   public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
     String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
     Throwable thrown = catchThrowable(() ->
-        assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+        assertDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -168,7 +168,7 @@ public class VisibilityAssertionsTest {
   public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesFindTheGivenPredicateButViewIsHidden() {
     String aTagValueThatDoesNotExistsInTheView = "presentTagValueHidden";
     Throwable thrown = catchThrowable(() ->
-        assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+        assertDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -179,7 +179,7 @@ public class VisibilityAssertionsTest {
   public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsShown() {
     String aTagValueThatDoesExistsInTheView = "presentTagValue";
 
-    assertDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesExistsInTheView)));
+    assertDisplayed(withTagValue(is(aTagValueThatDoesExistsInTheView)));
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
@@ -189,7 +189,7 @@ public class VisibilityAssertionsTest {
     String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
 
     Throwable thrown = catchThrowable(() ->
-        assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatDoesNotExistsInTheView))));
+        assertNotDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -200,7 +200,7 @@ public class VisibilityAssertionsTest {
   public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsHidden() {
     String aTagValueThatIsHidden = "presentTagValueHidden";
 
-    assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatIsHidden)));
+    assertNotDisplayed(withTagValue(is(aTagValueThatIsHidden)));
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
@@ -210,7 +210,7 @@ public class VisibilityAssertionsTest {
     String aTagValueThatIsShown = "presentTagValue";
 
     Throwable thrown = catchThrowable(() ->
-        assertNotDisplayed(ViewMatchers.withTagValue(CoreMatchers.is(aTagValueThatIsShown))));
+        assertNotDisplayed(withTagValue(is(aTagValueThatIsShown))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     String expectedMessage =
