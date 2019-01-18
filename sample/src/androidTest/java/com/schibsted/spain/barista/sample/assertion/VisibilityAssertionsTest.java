@@ -166,9 +166,9 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesFindTheGivenPredicateButViewIsHidden() {
-    String aTagValueThatDoesNotExistsInTheView = "presentTagValueHidden";
+    String nonExistingTag = "presentTagValueHidden";
     Throwable thrown = catchThrowable(() ->
-        assertDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
+        assertDisplayed(withTagValue(is(nonExistingTag))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -177,19 +177,19 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsShown() {
-    String aTagValueThatDoesExistsInTheView = "presentTagValue";
+    String existingTag = "presentTagValue";
 
-    assertDisplayed(withTagValue(is(aTagValueThatDoesExistsInTheView)));
+    assertDisplayed(withTagValue(is(existingTag)));
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
   public void assertNotVisibleWithCustomMatcher_Fails_WhenTheMatcherDoesNotFindTheGivenPredicate() {
-    String aTagValueThatDoesNotExistsInTheView = "notPresentTagValue";
+    String nonExistingTag = "notPresentTagValue";
 
     Throwable thrown = catchThrowable(() ->
-        assertNotDisplayed(withTagValue(is(aTagValueThatDoesNotExistsInTheView))));
+        assertNotDisplayed(withTagValue(is(nonExistingTag))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
@@ -198,19 +198,19 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void assertVisibleWithCustomMatcher_Succeeds_WhenTheMatcherMatchesAViewThatIsHidden() {
-    String aTagValueThatIsHidden = "presentTagValueHidden";
+    String hiddenTag = "presentTagValueHidden";
 
-    assertNotDisplayed(withTagValue(is(aTagValueThatIsHidden)));
+    assertNotDisplayed(withTagValue(is(hiddenTag)));
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
   @Test
   public void assertVisibleWithCustomMatcher_Fails_WhenTheMatcherMatchesAViewThatIsNotHidden() {
-    String aTagValueThatIsShown = "presentTagValue";
+    String shownTag = "presentTagValue";
 
     Throwable thrown = catchThrowable(() ->
-        assertNotDisplayed(withTagValue(is(aTagValueThatIsShown))));
+        assertNotDisplayed(withTagValue(is(shownTag))));
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     String expectedMessage =
