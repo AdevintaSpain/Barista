@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
 import java.util.Calendar;
 
 public class PickersActivity extends AppCompatActivity {
@@ -68,7 +67,6 @@ public class PickersActivity extends AppCompatActivity {
       final int minute = calendar.get(Calendar.MINUTE);
 
       return new TimePickerDialog(getActivity(), this, hour, minute, true);
-
     }
 
     @Override

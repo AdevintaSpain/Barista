@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
 
   <SeekBar
       android:id="@+id/seek_bar_progress_27"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:progress="27"
-      android:max="100"/>
+      android:max="100"
+      />
 
   <SeekBar
       android:id="@+id/seek_bar_min_progress"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:progress="0"
-      android:max="100"/>
+      android:max="100"
+      />
 
   <SeekBar
       android:id="@+id/seek_bar_max_progress"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:progress="100"
-      android:max="100"/>
+      android:max="100"
+      />
 
 </LinearLayout>

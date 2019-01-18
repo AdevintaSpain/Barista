@@ -15,83 +15,83 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
 class AssertAnyTest {
 
-    @get:Rule
-    var activityRule = ActivityTestRule(EditTextActivity::class.java)
+  @get:Rule
+  var activityRule = ActivityTestRule(EditTextActivity::class.java)
 
-    @get:Rule
-    var spyFailureHandlerRule = SpyFailureHandlerRule()
+  @get:Rule
+  var spyFailureHandlerRule = SpyFailureHandlerRule()
 
-    @Test
-    fun assertAny_with_idMatcher() {
-        spyFailureHandlerRule.assertNoEspressoFailures()
-        writeTo(R.id.edittext, "Hello!")
+  @Test
+  fun assertAny_with_idMatcher() {
+    spyFailureHandlerRule.assertNoEspressoFailures()
+    writeTo(R.id.edittext, "Hello!")
 
-        assertAny<EditText>(R.id.edittext) {
-            it.text.toString() == "Hello!"
-        }
+    assertAny<EditText>(R.id.edittext) {
+      it.text.toString() == "Hello!"
+    }
+  }
+
+  @Test
+  fun assertAny_with_valid_cast_custom_error() {
+    val thrown = catchThrowable {
+      assertAny<EditText>(R.id.edittext, "String is not the same") {
+        it.text.toString() == "Hello"
+      }
     }
 
-    @Test
-    fun assertAny_with_valid_cast_custom_error() {
-        val thrown = catchThrowable {
-            assertAny<EditText>(R.id.edittext, "String is not the same") {
-                it.text.toString() == "Hello"
-            }
-        }
+    spyFailureHandlerRule.assertEspressoFailures(1)
 
-        spyFailureHandlerRule.assertEspressoFailures(1)
+    writeTo(R.id.edittext, "Hello!")
 
-        writeTo(R.id.edittext, "Hello!")
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+        .hasMessageContaining("didn't match condition (String is not the same)")
+  }
 
-        assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition (String is not the same)")
+  @Test
+  fun assertAny_with_textMatcher() {
+    spyFailureHandlerRule.assertNoEspressoFailures()
+    writeTo(R.id.edittext, "Hello!")
+
+    assertAny<EditText>("Hello!") {
+      it.text.toString() == "Hello!"
     }
+  }
 
-    @Test
-    fun assertAny_with_textMatcher() {
-        spyFailureHandlerRule.assertNoEspressoFailures()
-        writeTo(R.id.edittext, "Hello!")
+  @Test
+  fun assertAny_with_MatcherCustom() {
+    spyFailureHandlerRule.assertNoEspressoFailures()
+    writeTo(R.id.edittext, "Hello!")
 
-        assertAny<EditText>("Hello!") {
-            it.text.toString() == "Hello!"
-        }
+    assertAny<EditText>(withId(R.id.edittext)) {
+      it.text.toString() == "Hello!"
     }
+  }
 
-    @Test
-    fun assertAny_with_MatcherCustom() {
-        spyFailureHandlerRule.assertNoEspressoFailures()
-        writeTo(R.id.edittext, "Hello!")
+  @Test
+  fun assertAny_with_wrong_view_cast_error_default_message() {
+    val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext) { true } }
 
-        assertAny<EditText>(withId(R.id.edittext)) {
-            it.text.toString() == "Hello!"
-        }
-    }
+    spyFailureHandlerRule.assertEspressoFailures(1)
 
-    @Test
-    fun assertAny_with_wrong_view_cast_error_default_message() {
-        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext) { true } }
+    writeTo(R.id.edittext, "Hello!")
 
-        spyFailureHandlerRule.assertEspressoFailures(1)
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+        .hasMessageContaining(
+            "didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
+  }
 
-        writeTo(R.id.edittext, "Hello!")
+  @Test
+  fun assertAny_with_wrong_view_cast_error_custom_message() {
+    val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "is an ImageView") { true } }
 
-        assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
-    }
+    spyFailureHandlerRule.assertEspressoFailures(1)
 
-    @Test
-    fun assertAny_with_wrong_view_cast_error_custom_message() {
-        val thrown = catchThrowable { assertAny<ImageView>(R.id.edittext, "is an ImageView") { true } }
+    writeTo(R.id.edittext, "Hello!")
 
-        spyFailureHandlerRule.assertEspressoFailures(1)
-
-        writeTo(R.id.edittext, "Hello!")
-
-        assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition (is an ImageView)")
-    }
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+        .hasMessageContaining("didn't match condition (is an ImageView)")
+  }
 }

@@ -1,11 +1,7 @@
 package com.schibsted.spain.barista.internal.matcher
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.view.View
-import android.widget.ImageView
 import com.schibsted.spain.barista.internal.util.BitmapComparator
 import com.schibsted.spain.barista.internal.util.DrawableToBitmapConverter
 import org.hamcrest.Description
@@ -37,7 +33,7 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
     if (expectedDrawableRes == ANY) {
       return view.background != null
     }
-    if (view.background == null){
+    if (view.background == null) {
       return false
     }
     val resources = target.context.resources

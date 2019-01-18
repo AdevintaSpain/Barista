@@ -7,9 +7,8 @@ import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAsserti
 
 object BaristaRecyclerViewAssertions {
 
-    @JvmStatic
-    fun assertRecyclerViewItemCount(@IdRes recyclerViewId: Int, expectedItemCount: Int) {
-        onView(displayedWithId(recyclerViewId)).check(RecyclerViewItemCountAssertion(expectedItemCount))
-    }
-
+  @JvmStatic
+  fun assertRecyclerViewItemCount(@IdRes recyclerViewId: Int, expectedItemCount: Int) {
+    onView(displayedWithId(recyclerViewId)).check(RecyclerViewItemCountAssertion(expectedItemCount))
+  }
 }

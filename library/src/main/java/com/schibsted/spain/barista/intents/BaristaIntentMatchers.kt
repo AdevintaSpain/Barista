@@ -20,77 +20,76 @@ import java.io.OutputStream
 
 internal object BaristaIntentMatchers {
 
-    private val DEFAULT_SIZE = 100
+  private val DEFAULT_SIZE = 100
 
-    @JvmStatic
-    fun captureImage(width: Int = DEFAULT_SIZE, height: Int = DEFAULT_SIZE): Matcher<Intent> {
-        return hasAction(`is`(MediaStore.ACTION_IMAGE_CAPTURE), width, height)
-    }
+  @JvmStatic
+  fun captureImage(width: Int = DEFAULT_SIZE, height: Int = DEFAULT_SIZE): Matcher<Intent> {
+    return hasAction(`is`(MediaStore.ACTION_IMAGE_CAPTURE), width, height)
+  }
 
-    private fun hasAction(actionMatcher: Matcher<String>, width: Int, height: Int): Matcher<Intent> {
-        checkNotNull(actionMatcher)
+  private fun hasAction(actionMatcher: Matcher<String>, width: Int, height: Int): Matcher<Intent> {
+    checkNotNull(actionMatcher)
 
-        return object : TypeSafeMatcher<Intent>() {
-            override fun describeTo(description: Description) {
-                description.appendText("has action: ")
-                description.appendDescriptionOf(actionMatcher)
+    return object : TypeSafeMatcher<Intent>() {
+      override fun describeTo(description: Description) {
+        description.appendText("has action: ")
+        description.appendDescriptionOf(actionMatcher)
+      }
+
+      public override fun matchesSafely(intent: Intent): Boolean {
+        if (actionMatcher.matches(intent.action)) {
+          val extras = intent.extras
+          if (extras != null) {
+            val uri = extras.getParcelable<Uri>(MediaStore.EXTRA_OUTPUT)
+
+            try {
+              generateBitmapOnGivenUri(uri, width, height)
+            } catch (e: IOException) {
+              throw BaristaException("Not able to create Bitmap at $uri", e)
             }
-
-            public override fun matchesSafely(intent: Intent): Boolean {
-                if (actionMatcher.matches(intent.action)) {
-                    val extras = intent.extras
-                    if (extras != null) {
-                        val uri = extras.getParcelable<Uri>(MediaStore.EXTRA_OUTPUT)
-
-                        try {
-                            generateBitmapOnGivenUri(uri, width, height)
-                        } catch (e: IOException) {
-                            throw BaristaException("Not able to create Bitmap at $uri", e)
-                        }
-
-                    }
-                    return true
-                }
-                return false
-            }
+          }
+          return true
         }
+        return false
+      }
     }
+  }
 
-    @Throws(IOException::class)
-    private fun generateBitmapOnGivenUri(uri: Uri?, width: Int, height: Int) {
-        val stream = InstrumentationRegistry.getTargetContext().contentResolver.openOutputStream(uri)
-        if (stream != null) {
-            val bmp = createBitmap(width, height)
+  @Throws(IOException::class)
+  private fun generateBitmapOnGivenUri(uri: Uri?, width: Int, height: Int) {
+    val stream = InstrumentationRegistry.getTargetContext().contentResolver.openOutputStream(uri)
+    if (stream != null) {
+      val bmp = createBitmap(width, height)
 
-            writeBitmap(stream, bmp)
-        }
+      writeBitmap(stream, bmp)
     }
+  }
 
-    private fun createBitmap(width: Int, height: Int): Bitmap {
-        val conf = Bitmap.Config.ARGB_8888
-        val bmp = Bitmap.createBitmap(width, height, conf)
+  private fun createBitmap(width: Int, height: Int): Bitmap {
+    val conf = Bitmap.Config.ARGB_8888
+    val bmp = Bitmap.createBitmap(width, height, conf)
 
-        val canvas = Canvas(bmp)
+    val canvas = Canvas(bmp)
 
-        val paint = Paint()
-        paint.color = Color.RED
+    val paint = Paint()
+    paint.color = Color.RED
 
-        val widthPart = width / 10
-        val heightPart = height / 10
-        canvas.drawRect(widthPart.toFloat(), heightPart.toFloat(), (width - widthPart).toFloat(), (height - heightPart).toFloat(), paint)
+    val widthPart = width / 10
+    val heightPart = height / 10
+    canvas.drawRect(widthPart.toFloat(), heightPart.toFloat(), (width - widthPart).toFloat(), (height - heightPart).toFloat(), paint)
 
-        canvas.save()
+    canvas.save()
 
-        return bmp
-    }
+    return bmp
+  }
 
-    @Throws(IOException::class)
-    private fun writeBitmap(stream: OutputStream, bmp: Bitmap) {
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val bitmapData = byteArrayOutputStream.toByteArray()
-        stream.write(bitmapData)
-        stream.flush()
-        stream.close()
-    }
+  @Throws(IOException::class)
+  private fun writeBitmap(stream: OutputStream, bmp: Bitmap) {
+    val byteArrayOutputStream = ByteArrayOutputStream()
+    bmp.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+    val bitmapData = byteArrayOutputStream.toByteArray()
+    stream.write(bitmapData)
+    stream.flush()
+    stream.close()
+  }
 }

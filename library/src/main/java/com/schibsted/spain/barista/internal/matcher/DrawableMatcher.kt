@@ -1,8 +1,5 @@
 package com.schibsted.spain.barista.internal.matcher
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
@@ -44,7 +41,7 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
     if (expectedDrawableRes == ANY) {
       return imageView.drawable != null
     }
-    if (imageView.drawable == null){
+    if (imageView.drawable == null) {
       return false
     }
     val resources = target.context.resources
@@ -58,7 +55,6 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
     val viewBitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
     val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
     return BitmapComparator.compare(viewBitmap, expectedBitmap)
-
   }
 
   override fun describeTo(description: Description) {

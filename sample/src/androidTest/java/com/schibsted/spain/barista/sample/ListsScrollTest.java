@@ -8,9 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition;
 import static com.schibsted.spain.barista.sample.ListsActivity.FRUITS;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
 
@@ -58,7 +58,6 @@ public class ListsScrollTest {
 
     assertDisplayed(FRUITS[30]);
   }
-
 
   @Test
   public void scrollMultipleRecyclerView_byId() throws Exception {

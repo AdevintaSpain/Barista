@@ -3,7 +3,6 @@ package com.schibsted.spain.barista.interaction;
 import android.support.test.espresso.contrib.PickerActions;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-
 import org.hamcrest.Matchers;
 
 import static android.support.test.espresso.Espresso.onView;

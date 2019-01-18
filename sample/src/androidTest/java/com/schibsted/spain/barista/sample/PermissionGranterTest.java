@@ -6,10 +6,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.test.InstrumentationRegistry;
-
-import com.schibsted.spain.barista.rule.BaristaRule;
-import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import com.schibsted.spain.barista.interaction.PermissionGranter;
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
+import com.schibsted.spain.barista.rule.BaristaRule;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

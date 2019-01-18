@@ -10,23 +10,22 @@ import com.schibsted.spain.barista.intents.BaristaIntentMatchers.captureImage
 
 object BaristaIntents {
 
-    private val DEFAULT_SIZE = 100
+  private val DEFAULT_SIZE = 100
 
-    @JvmStatic
-    @JvmOverloads
-    fun mockAndroidCamera(width: Int = DEFAULT_SIZE, height: Int = DEFAULT_SIZE) {
-        val result = createImageCaptureStub()
-        intending(captureImage(width, height)).respondWith(result)
-    }
+  @JvmStatic
+  @JvmOverloads
+  fun mockAndroidCamera(width: Int = DEFAULT_SIZE, height: Int = DEFAULT_SIZE) {
+    val result = createImageCaptureStub()
+    intending(captureImage(width, height)).respondWith(result)
+  }
 
-    @JvmStatic
-    private fun createImageCaptureStub(): Instrumentation.ActivityResult {
-        val resultBundle = Bundle()
+  @JvmStatic
+  private fun createImageCaptureStub(): Instrumentation.ActivityResult {
+    val resultBundle = Bundle()
 
-        val resultData = Intent()
-        resultData.putExtras(resultBundle)
+    val resultData = Intent()
+    resultData.putExtras(resultBundle)
 
-        return Instrumentation.ActivityResult(Activity.RESULT_OK, resultData)
-    }
-
+    return Instrumentation.ActivityResult(Activity.RESULT_OK, resultData)
+  }
 }

@@ -27,7 +27,6 @@ public class FlakyTestRuleTest {
   public RuleChain chain = RuleChain.outerRule(flakyRule)
       .around(activityRule);
 
-
   // WARNING: this test must fail when run
   @Test
   @Repeat(times = 5)

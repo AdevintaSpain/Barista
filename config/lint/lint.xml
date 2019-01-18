@@ -2,7 +2,7 @@
 <lint>
   <issue id="InvalidPackage">
     <ignore regexp=".*okio.*"/>
-    <ignore regexp=".*retrofit.*" />
+    <ignore regexp=".*retrofit.*"/>
   </issue>
   <issue id="NewApi">
     <ignore regexp="Try-with-resources requires API level 19"/>

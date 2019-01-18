@@ -167,7 +167,7 @@
   <rule ref="rulesets/java/codesize.xml/NcssMethodCount">
     <priority>3</priority>
     <properties>
-      <property name="minimum" value="50" />
+      <property name="minimum" value="50"/>
     </properties>
   </rule>
   <rule ref="rulesets/java/logging-java.xml/AvoidPrintStackTrace">
@@ -182,7 +182,7 @@
   <rule ref="rulesets/java/codesize.xml/NcssTypeCount">
     <priority>3</priority>
     <properties>
-      <property name="minimum" value="800" />
+      <property name="minimum" value="800"/>
     </properties>
   </rule>
   <rule ref="rulesets/java/design.xml/AvoidInstanceofChecksInCatchClause">
@@ -230,7 +230,8 @@
   <rule ref="rulesets/java/strictexception.xml/SignatureDeclareThrowsException">
     <priority>3</priority>
     <properties>
-      <property name="violationSuppressXPath" value="//MethodDeclaration[../Annotation/MarkerAnnotation/Name[@Image='Test' or @Image='Before' or @Image='After' or @Image='BeforeClass' or @Image='AfterClass']]"/>
+      <property name="violationSuppressXPath"
+                value="//MethodDeclaration[../Annotation/MarkerAnnotation/Name[@Image='Test' or @Image='Before' or @Image='After' or @Image='BeforeClass' or @Image='AfterClass']]"/>
     </properties>
   </rule>
   <rule ref="rulesets/java/finalizers.xml/EmptyFinalizer">
@@ -280,7 +281,7 @@
   <rule ref="rulesets/java/codesize.xml/ExcessiveMethodLength">
     <priority>3</priority>
     <properties>
-      <property name="minimum" value="100" />
+      <property name="minimum" value="100"/>
     </properties>
   </rule>
   <rule ref="rulesets/java/basic.xml/DoubleCheckedLocking">

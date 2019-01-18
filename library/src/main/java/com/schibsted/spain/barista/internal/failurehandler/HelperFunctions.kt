@@ -8,18 +8,17 @@ import org.hamcrest.Matcher
 import org.hamcrest.StringDescription
 
 fun withFailureHandler(temporaryHandler: FailureHandler, testCode: () -> Unit) {
-    val globalHandler = getFailureHandler()
-    Espresso.setFailureHandler(temporaryHandler)
-    try {
-        testCode()
-    } finally {
-        Espresso.setFailureHandler(globalHandler)
-    }
+  val globalHandler = getFailureHandler()
+  Espresso.setFailureHandler(temporaryHandler)
+  try {
+    testCode()
+  } finally {
+    Espresso.setFailureHandler(globalHandler)
+  }
 }
 
-
 fun Matcher<View>.description(): String {
-    val matcherDescription = StringDescription()
-    describeTo(matcherDescription)
-    return matcherDescription.toString()
+  val matcherDescription = StringDescription()
+  describeTo(matcherDescription)
+  return matcherDescription.toString()
 }

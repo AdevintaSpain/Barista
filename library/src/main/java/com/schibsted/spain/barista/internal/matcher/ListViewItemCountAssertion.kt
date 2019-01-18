@@ -9,14 +9,14 @@ import org.hamcrest.Matchers.`is`
 
 class ListViewItemCountAssertion(val expectedCount: Int) : ViewAssertion {
 
-    override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
-        if (noViewFoundException != null) {
-            throw noViewFoundException
-        }
-
-        val listView = view as ListView
-        val adapter = listView.adapter
-        val listViewItemCount = adapter.count
-        assertThat<Int>("List item count mismatch. ", listViewItemCount, `is`<Int>(expectedCount))
+  override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
+    if (noViewFoundException != null) {
+      throw noViewFoundException
     }
+
+    val listView = view as ListView
+    val adapter = listView.adapter
+    val listViewItemCount = adapter.count
+    assertThat<Int>("List item count mismatch. ", listViewItemCount, `is`<Int>(expectedCount))
+  }
 }

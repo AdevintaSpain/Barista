@@ -5,7 +5,7 @@ import android.view.View
 import org.hamcrest.Matcher
 
 class RethrowingFailureHandler : FailureHandler {
-    override fun handle(error: Throwable, viewMatcher: Matcher<View>) {
-        throw error
-    }
+  override fun handle(error: Throwable, viewMatcher: Matcher<View>) {
+    throw error
+  }
 }

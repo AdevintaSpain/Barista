@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <item name="listview" type="id" />
-  <item name="listview2" type="id" />
-  <item name="recycler" type="id" />
-  <item name="recycler2" type="id" />
-  <item name="gridview" type="id" />
-  <item name="gridview2" type="id" />
-  <item name="not_exists" type="id" />
+  <item name="listview"
+        type="id"/>
+  <item name="listview2"
+        type="id"/>
+  <item name="recycler"
+        type="id"/>
+  <item name="recycler2"
+        type="id"/>
+  <item name="gridview"
+        type="id"/>
+  <item name="gridview2"
+        type="id"/>
+  <item name="not_exists"
+        type="id"/>
 </resources>

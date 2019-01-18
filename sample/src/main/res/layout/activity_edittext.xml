@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
 
   <ScrollView
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
       <EditText
           android:id="@+id/edittext"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="I'm an edittext"/>
+          android:hint="I'm an edittext"
+          />
 
       <EditText
           android:id="@+id/edittext_very_far_away"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="800dp"
-          android:hint="I'm an edittext, too!"/>
+          android:hint="I'm an edittext, too!"
+          />
 
     </LinearLayout>
   </ScrollView>
@@ -33,5 +38,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:hint="@string/centered_edittext"/>
+      android:hint="@string/centered_edittext"
+      />
 </FrameLayout>

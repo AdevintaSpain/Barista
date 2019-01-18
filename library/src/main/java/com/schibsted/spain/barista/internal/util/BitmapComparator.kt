@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.internal.util
 
 import android.graphics.Bitmap
-import java.util.*
+import java.util.Arrays
 
 internal class BitmapComparator {
   companion object {

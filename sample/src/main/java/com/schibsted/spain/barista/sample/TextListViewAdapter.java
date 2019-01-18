@@ -58,7 +58,6 @@ public class TextListViewAdapter extends BaseAdapter {
       @Override
       public void onClick(View view) {
         clickedResult.setText("yes");
-
       }
     });
     noButton.setOnClickListener(new View.OnClickListener() {

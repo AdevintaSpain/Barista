@@ -4,49 +4,49 @@ apply plugin: 'com.novoda.bintray-release'
 apply from: '../config/android-quality.gradle'
 
 android {
-    compileSdkVersion compileSdkVersionDeclared
+  compileSdkVersion compileSdkVersionDeclared
 
-    defaultConfig {
-        minSdkVersion minSdkVersionDeclared
-        targetSdkVersion compileSdkVersionDeclared
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
+  defaultConfig {
+    minSdkVersion minSdkVersionDeclared
+    targetSdkVersion compileSdkVersionDeclared
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
 
-    lintOptions {
-        disable 'InvalidPackage'
-    }
+  lintOptions {
+    disable 'InvalidPackage'
+  }
 }
 
 dependencies {
-    api "com.android.support.test.espresso:espresso-core:$espressoVersion"
-    api "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-    api "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
-    api "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+  api "com.android.support.test.espresso:espresso-core:$espressoVersion"
+  api "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+  api "com.android.support.test.uiautomator:uiautomator-v18:$uiAutomatorVersion"
+  api "com.android.support.test.espresso:espresso-intents:$espressoVersion"
 
-    implementation "com.android.support:support-annotations:$supportLibVersion"
-    implementation "com.android.support:support-core-ui:$supportLibVersion"
-    implementation "com.android.support:animated-vector-drawable:$supportLibVersion"
-    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+  implementation "com.android.support:support-annotations:$supportLibVersion"
+  implementation "com.android.support:support-core-ui:$supportLibVersion"
+  implementation "com.android.support:animated-vector-drawable:$supportLibVersion"
+  implementation "com.android.support:recyclerview-v7:$supportLibVersion"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'pl.pragmatists:JUnitParams:1.1.0'
-    testImplementation 'org.assertj:assertj-core:1.7.0'
-    testImplementation 'org.mockito:mockito-core:2.13.0'
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'pl.pragmatists:JUnitParams:1.1.0'
+  testImplementation 'org.assertj:assertj-core:1.7.0'
+  testImplementation 'org.mockito:mockito-core:2.13.0'
 }
 
 publish {
-    userOrg = 'schibstedspain'
-    groupId = 'com.schibsted.spain'
-    artifactId = 'barista'
-    publishVersion = baristaVersion
-    desc = 'The guy who serves a great Espresso'
-    website = 'https://github.com/SchibstedSpain/Barista'
+  userOrg = 'schibstedspain'
+  groupId = 'com.schibsted.spain'
+  artifactId = 'barista'
+  publishVersion = baristaVersion
+  desc = 'The guy who serves a great Espresso'
+  website = 'https://github.com/SchibstedSpain/Barista'
 }
 
 // Exclude Kotlin files from Javadoc due to an error generating docs from Kotlin files.
 // More info: https://github.com/novoda/bintray-release/issues/71
 tasks.withType(Javadoc) {
-    excludes = ['**/*.kt']
+  excludes = ['**/*.kt']
 }
