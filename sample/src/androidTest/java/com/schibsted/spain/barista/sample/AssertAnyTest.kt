@@ -80,7 +80,7 @@ class AssertAnyTest {
         writeTo(R.id.edittext, "Hello!")
 
         assertThat(thrown).isInstanceOf(BaristaException::class.java)
-                .hasMessageContaining("didn't match condition (custom condition [use `assertionErrorMessage` parameter on `assertAny` to setup descriptive message])")
+                .hasMessageContaining("didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
     }
 
     @Test

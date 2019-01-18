@@ -33,24 +33,24 @@ object BaristaAssertions {
      * Extension function alias for [assertAnyView]
      */
     @JvmStatic
-    inline fun <reified T : View> assertAny(resId: Int, assertionErrorMessage: String? = null, noinline block: (T) -> Boolean) {
-        assertAny(resId.resourceMatcher(), assertionErrorMessage, block)
+    inline fun <reified T : View> assertAny(resId: Int, assertionDescription: String? = null, noinline block: (T) -> Boolean) {
+        assertAny(resId.resourceMatcher(), assertionDescription, block)
     }
 
     /**
      * Extension function alias for [assertAnyView]
      */
     @JvmStatic
-    inline fun <reified T : View> assertAny(text: String, assertionErrorMessage: String? = null, noinline block: (T) -> Boolean) {
-        assertAny(ViewMatchers.withText(text), assertionErrorMessage, block)
+    inline fun <reified T : View> assertAny(text: String, assertionDescription: String? = null, noinline block: (T) -> Boolean) {
+        assertAny(ViewMatchers.withText(text), assertionDescription, block)
     }
 
     /**
      * Extension function alias for [assertAnyView]
      */
     @JvmStatic
-    inline fun <reified T : View> assertAny(matcher: Matcher<View>, assertionErrorMessage: String? = null, noinline block: (T) -> Boolean) {
-        assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(assertionErrorMessage, block) as Matcher<View>)
+    inline fun <reified T : View> assertAny(matcher: Matcher<View>, assertionDescription: String? = null, noinline block: (T) -> Boolean) {
+        assertAnyView(viewMatcher = matcher, condition = BooleanMatcher(assertionDescription, block) as Matcher<View>)
     }
 
 }
