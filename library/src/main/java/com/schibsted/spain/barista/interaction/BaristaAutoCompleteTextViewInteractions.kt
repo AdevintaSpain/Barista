@@ -1,7 +1,9 @@
 package com.schibsted.spain.barista.interaction
 
 import android.support.annotation.IdRes
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.widget.EditText
 import com.schibsted.spain.barista.internal.performAction
 import com.schibsted.spain.barista.internal.viewaction.AutoCompleteViewActions.replaceAutoComplete
@@ -10,13 +12,13 @@ import org.hamcrest.Matchers.anyOf
 
 object BaristaAutoCompleteTextViewInteractions {
 
-    @JvmStatic
-    fun writeToAutoComplete(@IdRes autoCompleteId: Int, text: String) {
-        val withId = withId(autoCompleteId)
-        val assignableFrom = isAssignableFrom(EditText::class.java)
-        val simpleMatcher = allOf(withId, assignableFrom)
-        val wrapperMatcher = allOf(isDescendantOfA(withId), assignableFrom)
-        val combinedMatcher = anyOf(simpleMatcher, wrapperMatcher)
-        combinedMatcher.performAction(replaceAutoComplete(text))
-    }
+  @JvmStatic
+  fun writeToAutoComplete(@IdRes autoCompleteId: Int, text: String) {
+    val withId = withId(autoCompleteId)
+    val assignableFrom = isAssignableFrom(EditText::class.java)
+    val simpleMatcher = allOf(withId, assignableFrom)
+    val wrapperMatcher = allOf(isDescendantOfA(withId), assignableFrom)
+    val combinedMatcher = anyOf(simpleMatcher, wrapperMatcher)
+    combinedMatcher.performAction(replaceAutoComplete(text))
+  }
 }

@@ -2,7 +2,6 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,5 +56,4 @@ public class LongClickTest {
     longClickOn("Centered button");
     assertDisplayed("I was long pressed");
   }
-
 }

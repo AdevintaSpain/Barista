@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
 
   <ScrollView
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
       <AutoCompleteTextView
           android:id="@+id/autocomplete"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="I'm an autocomplete!"/>
+          android:hint="I'm an autocomplete!"
+          />
 
       <AutoCompleteTextView
           android:id="@+id/autocomplete_very_far_away"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="800dp"
-          android:hint="I'm an autocomplete, too!"/>
+          android:hint="I'm an autocomplete, too!"
+          />
 
     </LinearLayout>
   </ScrollView>
@@ -33,5 +38,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:hint="I'm a centered autocomplete!"/>
+      android:hint="I'm a centered autocomplete!"
+      />
 </FrameLayout>

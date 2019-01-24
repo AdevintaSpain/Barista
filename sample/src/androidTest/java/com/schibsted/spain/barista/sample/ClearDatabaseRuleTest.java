@@ -5,8 +5,8 @@ import com.schibsted.spain.barista.rule.cleardata.ClearDatabaseRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
 public class ClearDatabaseRuleTest {
 

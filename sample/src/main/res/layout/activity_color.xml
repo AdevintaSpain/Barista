@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
 
-        <TextView
-            android:id="@+id/textRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Simple color red"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/red" />
+  <TextView
+      android:id="@+id/textRed"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Simple color red"
+      android:layout_marginBottom="16dp"
+      android:textColor="@color/red"
+      />
 
-        <TextView
-            android:id="@+id/textSelectorDefault"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selector default"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/selector_default_disabled_checked" />
+  <TextView
+      android:id="@+id/textSelectorDefault"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Selector default"
+      android:layout_marginBottom="16dp"
+      android:textColor="@color/selector_default_disabled_checked"
+      />
 
-        <TextView
-            android:id="@+id/textSelectorDisabled"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="Selector disabled"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/selector_default_disabled_checked" />
+  <TextView
+      android:id="@+id/textSelectorDisabled"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:enabled="false"
+      android:text="Selector disabled"
+      android:layout_marginBottom="16dp"
+      android:textColor="@color/selector_default_disabled_checked"
+      />
 
-        <CheckBox
-            android:id="@+id/textSelectorChecked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selector checked"
-            android:checked="true"
-            android:textColor="@color/selector_default_disabled_checked" />
+  <CheckBox
+      android:id="@+id/textSelectorChecked"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Selector checked"
+      android:checked="true"
+      android:textColor="@color/selector_default_disabled_checked"
+      />
 
-    </LinearLayout>
+</LinearLayout>

@@ -105,9 +105,9 @@ public class WrappedEditTextActivity extends AppCompatActivity {
 
   @NonNull
   private MatrixCursor generateCursor() {
-    MatrixCursor cursor = new MatrixCursor(new String[]{"_id", "name"});
-    cursor.addRow(new Object[]{0, "a"});
-    cursor.addRow(new Object[]{1, "b"});
+    MatrixCursor cursor = new MatrixCursor(new String[] { "_id", "name" });
+    cursor.addRow(new Object[] { 0, "a" });
+    cursor.addRow(new Object[] { 1, "b" });
     return cursor;
   }
 

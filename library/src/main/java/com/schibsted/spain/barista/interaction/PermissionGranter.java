@@ -18,7 +18,7 @@ public class PermissionGranter {
 
   private static final int PERMISSIONS_DIALOG_DELAY = 3000;
   private static final String PERMISSIONS_DIALOG_ALLOW_ID = "com.android.packageinstaller:id/permission_allow_button";
-//    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
+  //    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
 
   public static void allowPermissionsIfNeeded(String permissionNeeded) {
     try {

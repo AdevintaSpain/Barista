@@ -4,25 +4,29 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.schibsted.spain.barista.sample.NavigationDrawerActivity">
+    tools:context="com.schibsted.spain.barista.sample.NavigationDrawerActivity"
+    >
 
   <LinearLayout
       android:id="@+id/main_container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      >
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        android:background="?attr/colorPrimary"
+        />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        />
 
   </LinearLayout>
 
@@ -31,12 +35,14 @@
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:layout_gravity="start"
-      android:fitsSystemWindows="true">
+      android:fitsSystemWindows="true"
+      >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="menu item"/>
+        android:text="menu item"
+        />
 
   </android.support.design.widget.NavigationView>
 

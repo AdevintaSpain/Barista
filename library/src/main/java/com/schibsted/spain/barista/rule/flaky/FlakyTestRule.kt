@@ -14,26 +14,25 @@ import org.junit.runners.model.Statement
  */
 class FlakyTestRule : TestRule {
 
-    private val flakyStatementBuilder = FlakyStatementBuilder()
+  private val flakyStatementBuilder = FlakyStatementBuilder()
 
-    /**
-     * Utility method to use @[AllowFlaky] by default in all test methods.
-     * <br></br>
-     * Use this method when constructing the Rule to apply a default behavior of @[AllowFlaky] without having to add the annotation to
-     * each test. Use it wisely when your tests are very flaky, something quite common with Espresso.
-     * <br></br>
-     * The default behavior can be overridden with [Repeat] or [AllowFlaky].
-     */
-    fun allowFlakyAttemptsByDefault(defaultAttempts: Int): FlakyTestRule {
-        flakyStatementBuilder.allowFlakyAttemptsByDefault(defaultAttempts)
-        return this
-    }
+  /**
+   * Utility method to use @[AllowFlaky] by default in all test methods.
+   * <br></br>
+   * Use this method when constructing the Rule to apply a default behavior of @[AllowFlaky] without having to add the annotation to
+   * each test. Use it wisely when your tests are very flaky, something quite common with Espresso.
+   * <br></br>
+   * The default behavior can be overridden with [Repeat] or [AllowFlaky].
+   */
+  fun allowFlakyAttemptsByDefault(defaultAttempts: Int): FlakyTestRule {
+    flakyStatementBuilder.allowFlakyAttemptsByDefault(defaultAttempts)
+    return this
+  }
 
-    override fun apply(base: Statement, description: Description): Statement {
-        return flakyStatementBuilder
-                .setBase(base)
-                .setDescription(description)
-                .build()
-    }
-
+  override fun apply(base: Statement, description: Description): Statement {
+    return flakyStatementBuilder
+        .setBase(base)
+        .setDescription(description)
+        .build()
+  }
 }

@@ -10,28 +10,28 @@ import org.junit.runners.model.Statement
 @Deprecated("Use the more explicit [SpyFailureHandlerRule] instead")
 class FailureHandlerValidatorRule : TestRule {
 
-    override fun apply(base: Statement, description: Description): Statement {
-        val testAnnotation = description.getAnnotation(Test::class.java)
-        val hasExpectedError = Test.None::class.java != testAnnotation.expected.java
-        val errorsAllowed = if (hasExpectedError) 1 else 0
-        val failureHandler = SpyFailureHandler()
+  override fun apply(base: Statement, description: Description): Statement {
+    val testAnnotation = description.getAnnotation(Test::class.java)
+    val hasExpectedError = Test.None::class.java != testAnnotation.expected.java
+    val errorsAllowed = if (hasExpectedError) 1 else 0
+    val failureHandler = SpyFailureHandler()
 
-        return object : Statement() {
-            override fun evaluate() {
-                Espresso.setFailureHandler(failureHandler)
+    return object : Statement() {
+      override fun evaluate() {
+        Espresso.setFailureHandler(failureHandler)
 
-                base.evaluate()
+        base.evaluate()
 
-                checkFailureHandler(errorsAllowed, failureHandler)
-            }
-        }
+        checkFailureHandler(errorsAllowed, failureHandler)
+      }
     }
+  }
 
-    private fun checkFailureHandler(errorsAllowed: Int, failureHandler: SpyFailureHandler) {
-        val espressoErrorsCount = failureHandler.capturedFailures.size
-        val exceptions = failureHandler.capturedFailures.map { it.throwable }
-        if (espressoErrorsCount > errorsAllowed) {
-            throw AssertionError("Expected at most $errorsAllowed exception, but $espressoErrorsCount were sent to Espresso: $exceptions")
-        }
+  private fun checkFailureHandler(errorsAllowed: Int, failureHandler: SpyFailureHandler) {
+    val espressoErrorsCount = failureHandler.capturedFailures.size
+    val exceptions = failureHandler.capturedFailures.map { it.throwable }
+    if (espressoErrorsCount > errorsAllowed) {
+      throw AssertionError("Expected at most $errorsAllowed exception, but $espressoErrorsCount were sent to Espresso: $exceptions")
     }
+  }
 }

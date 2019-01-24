@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
 
   <TextView
       android:id="@+id/visible_view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:tag="presentTagValue"
-      android:text="@string/hello_world"/>
+      android:text="@string/hello_world"
+      />
   <TextView
       android:id="@+id/repeated_view_1_gone"
       android:layout_width="wrap_content"
@@ -36,14 +38,16 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/im_invisible"
-      android:visibility="invisible"/>
+      android:visibility="invisible"
+      />
 
   <TextView
       android:id="@+id/gone_view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="I'm hidden!"
-      android:visibility="gone"/>
+      android:visibility="gone"
+      />
 
   <CheckBox
       android:id="@+id/checked_checkbox"
@@ -65,20 +69,23 @@
       android:id="@+id/enabled_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/enabled_button"/>
+      android:text="@string/enabled_button"
+      />
 
   <Button
       android:id="@+id/disabled_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:enabled="false"
-      android:text="@string/disabled_button"/>
+      android:text="@string/disabled_button"
+      />
 
   <Button
       android:id="@+id/button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="The last button"/>
+      android:text="The last button"
+      />
 
   <ImageView
       android:id="@+id/image_view"
@@ -91,13 +98,15 @@
       android:id="@+id/edittext_with_focus"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/edittext_with_focus"/>
+      android:text="@string/edittext_with_focus"
+      />
 
   <EditText
       android:id="@+id/edittext_without_focus"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/edittext_with_no_focus"/>
+      android:text="@string/edittext_with_no_focus"
+      />
 
   <ImageView
       android:id="@+id/image_view_without_image"

@@ -37,7 +37,6 @@ public class TextRecyclerViewAdapter extends RecyclerView.Adapter<TextRecyclerVi
       @Override
       public void onClick(View view) {
         clickedResult.setText("yes");
-
       }
     });
     holder.noButton.setOnClickListener(new View.OnClickListener() {

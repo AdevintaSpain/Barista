@@ -8,16 +8,16 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawer;
-import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawerWithGravity;
-import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawer;
-import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawerWithGravity;
-import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosedWithGravity;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpenWithGravity;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawerWithGravity;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawerWithGravity;
 
 @RunWith(AndroidJUnit4.class)
 public class DrawerActivityTest {

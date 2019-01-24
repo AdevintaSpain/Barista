@@ -66,7 +66,7 @@ public class RecyclerViewsInsideViewPagerActivity extends AppCompatActivity {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        Bundle savedInstanceState) {
       ViewGroup rootView =
           (ViewGroup) inflater.inflate(R.layout.activity_recyclerview, container, false);
 

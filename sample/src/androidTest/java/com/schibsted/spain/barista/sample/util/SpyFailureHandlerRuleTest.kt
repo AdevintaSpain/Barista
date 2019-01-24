@@ -56,5 +56,4 @@ class SpyFailureHandlerRuleTest {
 
     spyFailureHandlerRule.apply(testMethod, description).evaluate()
   }
-
 }

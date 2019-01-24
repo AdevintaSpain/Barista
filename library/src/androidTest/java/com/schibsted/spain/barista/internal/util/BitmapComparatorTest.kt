@@ -3,8 +3,8 @@ package com.schibsted.spain.barista.internal.util
 import android.graphics.BitmapFactory
 import android.support.test.InstrumentationRegistry
 import com.schibsted.spain.barista.test.R
-import org.junit.Assert.assertTrue
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BitmapComparatorTest {

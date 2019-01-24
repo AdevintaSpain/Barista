@@ -23,10 +23,9 @@ android.lintOptions {
   lintConfig file("${project.rootDir}/config/lint/lint.xml")
   textReport isTravis
   textOutput 'stdout'
-
 }
 
-task pmd (type: Pmd) {
+task pmd(type: Pmd) {
   description 'Run pmd'
   group 'verification'
 
@@ -40,7 +39,7 @@ task pmd (type: Pmd) {
   }
 }
 
-task findbugs (type: FindBugs, dependsOn: assemble) {
+task findbugs(type: FindBugs, dependsOn: assemble) {
   description 'Run findbugs'
   group 'verification'
 
@@ -97,6 +96,5 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
   sourceDirectories = files([mainSrc])
   classDirectories = files([debugTree])
   executionData = files(["${buildDir}/jacoco/testDebugUnitTest.exec",
-                         "${buildDir}/outputs/code-coverage/connected/coverage.ec"
-  ])
+                         "${buildDir}/outputs/code-coverage/connected/coverage.ec"])
 }

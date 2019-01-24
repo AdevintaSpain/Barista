@@ -15,7 +15,7 @@ import static com.schibsted.spain.barista.assertion.BaristaProgressBarAssertions
 public class ProgressBarMatchersTest {
 
   @Rule public ActivityTestRule<SomeSeekBarsWithDifferentProgressesActivity> activityRule =
-          new ActivityTestRule<>(SomeSeekBarsWithDifferentProgressesActivity.class);
+      new ActivityTestRule<>(SomeSeekBarsWithDifferentProgressesActivity.class);
 
   @Test
   public void checkProgress() {

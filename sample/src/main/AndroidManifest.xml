@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.schibsted.spain.barista.sample"
+          package="com.schibsted.spain.barista.sample"
     >
 
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -22,7 +22,7 @@
     <activity android:name=".PickersActivity"/>
     <activity android:name=".AutoCompleteTextViewActivity"/>
     <activity android:name=".SpinnerActivity"/>
-    <activity android:name=".ListsActivity" />
+    <activity android:name=".ListsActivity"/>
     <activity android:name=".LabelActivity"/>
     <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
     <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
@@ -38,7 +38,8 @@
     <activity android:name=".MenuActivity"/>
     <activity
         android:name=".MenuSupportActionBarActivity"
-        android:theme="@style/AppTheme.NoActionBar"/>
+        android:theme="@style/AppTheme.NoActionBar"
+        />
     <activity
         android:name=".NavigationDrawerActivity"
         android:theme="@style/AppTheme.NoActionBar"
@@ -57,19 +58,24 @@
         android:name="android.support.v4.content.FileProvider"
         android:authorities="${applicationId}.barista.sample.provider"
         android:exported="false"
-        android:grantUriPermissions="true">
+        android:grantUriPermissions="true"
+        >
       <meta-data
           android:name="android.support.FILE_PROVIDER_PATHS"
-          android:resource="@xml/provider_paths"/>
+          android:resource="@xml/provider_paths"
+          />
     </provider>
 
-    <activity android:name=".RuntimePermissionActivity" />
-    <activity android:name=".SeekBarActivity" />
-    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity" />
-    <activity android:name=".ColorsActivity" android:exported="true" />
-    <activity android:name=".KeyboardActivity" />
-    <activity android:name=".HintAndErrorActivity" />
-    <activity android:name=".WrappedEditTextActivity" />
+    <activity android:name=".RuntimePermissionActivity"/>
+    <activity android:name=".SeekBarActivity"/>
+    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity"/>
+    <activity
+        android:name=".ColorsActivity"
+        android:exported="true"
+        />
+    <activity android:name=".KeyboardActivity"/>
+    <activity android:name=".HintAndErrorActivity"/>
+    <activity android:name=".WrappedEditTextActivity"/>
 
   </application>
 

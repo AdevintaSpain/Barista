@@ -20,7 +20,6 @@ public class KeyboardTest {
   @Rule
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
-
   @Test
   public void checkPressedImeActionButton_whenIdProvided() {
     final String expectedText = "Edit text ime action button pressed!";

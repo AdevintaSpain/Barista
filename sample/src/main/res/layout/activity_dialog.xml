@@ -9,19 +9,22 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="com.schibsted.spain.barista.sample.DialogActivity">
+    tools:context="com.schibsted.spain.barista.sample.DialogActivity"
+    >
 
   <Button
       android:id="@+id/button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Open dialog"/>
+      android:text="Open dialog"
+      />
 
   <TextView
       android:id="@+id/dialog_selected_button_value"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@id/button"
-      android:layout_marginTop="24dp"/>
+      android:layout_marginTop="24dp"
+      />
 
 </RelativeLayout>

@@ -9,10 +9,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
-
-import org.hamcrest.Matcher;
-
 import javax.annotation.Nonnull;
+import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.action.ViewActions.actionWithAssertions;
 import static android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
