@@ -15,6 +15,8 @@ import static com.schibsted.spain.barista.assertion.BaristaBackgroundAssertions.
 import static com.schibsted.spain.barista.assertion.BaristaBackgroundAssertions.assertHasNoBackground;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked;
 import static com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked;
+import static com.schibsted.spain.barista.assertion.BaristaClickableAssertions.assertClickable;
+import static com.schibsted.spain.barista.assertion.BaristaClickableAssertions.assertNotClickable;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
@@ -151,6 +153,58 @@ public class AssertionsTest {
     }
     try {
       assertUnchecked(R.id.button);
+      fail();
+    } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void checkClickableView() {
+    assertClickable(R.id.enabled_button);
+    assertClickable(R.string.enabled_button);
+    assertClickable("Enabled button");
+  }
+
+  @Test
+  public void checkClickableView_breaksWhenNeeded() {
+    try {
+      assertClickable(R.id.disabled_button);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertClickable(R.string.disabled_button);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertClickable("Disabled button");
+      fail();
+    } catch (Throwable expected) {
+    }
+  }
+
+  @Test
+  public void checkNonClickableView() {
+    assertNotClickable(R.id.disabled_button);
+    assertNotClickable(R.string.disabled_button);
+    assertNotClickable("Disabled button");
+  }
+
+  @Test
+  public void checkNonClickableView_breaksWhenNeeded() {
+    try {
+      assertNotClickable(R.id.enabled_button);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertNotClickable(R.string.enabled_button);
+      fail();
+    } catch (Throwable expected) {
+    }
+    try {
+      assertNotClickable("Enabled button");
       fail();
     } catch (Throwable expected) {
     }
