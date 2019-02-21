@@ -4,6 +4,7 @@ import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.NoMatchingViewException
+import android.support.test.espresso.ViewAssertion
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.v7.widget.RecyclerView
@@ -71,6 +72,16 @@ object BaristaListAssertions {
         position = position,
         targetViewId = targetViewId))
         .check(ViewAssertions.matches(CoreMatchers.anyOf(ViewMatchers.withChild(ViewMatchers.withText(textId)), ViewMatchers.withText(textId))))
+  }
+
+  @JvmStatic
+  fun assertCustomAssertionAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, viewAssertion: ViewAssertion) {
+    BaristaListInteractions.scrollListToPosition(listId, position)
+
+    Espresso.onView(atPositionOnList(listId = listId,
+        position = position,
+        targetViewId = targetViewId))
+        .check(viewAssertion)
   }
 
   private fun atPositionOnList(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int): Matcher<View> {
