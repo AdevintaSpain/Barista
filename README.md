@@ -75,6 +75,9 @@ scrollListToPosition(R.id.list, 4);
 assertListItemCount(R.id.listId, 5)
 assertDisplayedAtPosition(R.id.recycler, 0, "text");
 assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, R.string.hello_world);
+assertCustomAssertionAtPosition(R.id.recycler, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 
