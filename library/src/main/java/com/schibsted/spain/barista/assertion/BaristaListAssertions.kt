@@ -53,10 +53,17 @@ object BaristaListAssertions {
   fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, text: String) {
     scrollListToPosition(listId, position)
 
-    Espresso.onView(atPositionOnList(listId = listId,
+    assertCustomAssertionAtPosition(
+        listId = listId,
         position = position,
-        targetViewId = targetViewId))
-        .check(ViewAssertions.matches(CoreMatchers.anyOf(ViewMatchers.withChild(ViewMatchers.withText(text)), ViewMatchers.withText(text))))
+        targetViewId = targetViewId,
+        viewAssertion = ViewAssertions.matches(
+            CoreMatchers.anyOf(
+                ViewMatchers.withChild(ViewMatchers.withText(text)),
+                ViewMatchers.withText(text)
+            )
+        )
+    )
   }
 
   @JvmStatic
@@ -65,13 +72,20 @@ object BaristaListAssertions {
   }
 
   @JvmStatic
-  fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID,  @StringRes textId: Int) {
+  fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, @StringRes textId: Int) {
     BaristaListInteractions.scrollListToPosition(listId, position)
 
-    Espresso.onView(atPositionOnList(listId = listId,
+    assertCustomAssertionAtPosition(
+        listId = listId,
         position = position,
-        targetViewId = targetViewId))
-        .check(ViewAssertions.matches(CoreMatchers.anyOf(ViewMatchers.withChild(ViewMatchers.withText(textId)), ViewMatchers.withText(textId))))
+        targetViewId = targetViewId,
+        viewAssertion = ViewAssertions.matches(
+            CoreMatchers.anyOf(
+                ViewMatchers.withChild(ViewMatchers.withText(textId)),
+                ViewMatchers.withText(textId)
+            )
+        )
+    )
   }
 
   @JvmStatic
