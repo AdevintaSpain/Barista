@@ -26,4 +26,13 @@
   <string name="hintanderror_inputedittext_error">TextInputEditText error</string>
   <string name="hintanderror_edittext_hint">EditText hint</string>
   <string name="hintanderror_edittext_error">EditText error</string>
+
+  <string name="avocado">Avocado</string>
+  <string name="bilberry">Bilberry</string>
+  <string name="tamarind">Tamarind</string>
+  <string name="dragonfruit">Dragonfruit</string>
+
+  <string name="not_there">NotThere</string>
+  <string name="missing">Missing</string>
+
 </resources>
