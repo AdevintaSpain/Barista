@@ -204,11 +204,8 @@ assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
 ```
 
-<<<<<<< HEAD
-#### Does this view have the focus?
+#### Is this view clickable?
 ```java
-=======
-// Is this view clickable?
 assertClickable("Hello world")
 assertClickable(R.string.hello_world)
 assertClickable(R.id.button)
@@ -217,9 +214,10 @@ assertClickable(R.id.button)
 assertNotClickable("Hello world")
 assertNotClickable(R.string.hello_world)
 assertNotClickable(R.id.button)
+```
 
-// Does this view have the focus?
->>>>>>> master
+#### Does this view have the focus?
+```java
 assertFocused(R.id.focused_view)
 assertFocused("Button")
 
