@@ -167,11 +167,21 @@ assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
 
+// Is this view clickable?
+assertClickable("Hello world")
+assertClickable(R.string.hello_world)
+assertClickable(R.id.button)
+
+// ...or not?
+assertNotClickable("Hello world")
+assertNotClickable(R.string.hello_world)
+assertNotClickable(R.id.button)
+
 // Does this view have the focus?
 assertFocused(R.id.focused_view)
 assertFocused("Button")
 
-// ... or not?
+// ...or not?
 assertNotFocused(R.id.focused_view)
 assertNotFocused("Button")
 

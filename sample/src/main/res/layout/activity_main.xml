@@ -70,6 +70,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/enabled_button"
+      android:clickable="true"
+      android:focusable="true"
       />
 
   <Button
@@ -77,6 +79,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:enabled="false"
+      android:clickable="false"
       android:text="@string/disabled_button"
       />
 
