@@ -1,13 +1,16 @@
 package com.schibsted.spain.barista.assertion
 
 import android.support.annotation.IdRes
+import android.support.annotation.StringRes
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.NoMatchingViewException
+import android.support.test.espresso.ViewAssertion
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ListView
+import com.schibsted.spain.barista.interaction.BaristaListInteractions
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
@@ -50,10 +53,49 @@ object BaristaListAssertions {
   fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, text: String) {
     scrollListToPosition(listId, position)
 
+    assertCustomAssertionAtPosition(
+        listId = listId,
+        position = position,
+        targetViewId = targetViewId,
+        viewAssertion = ViewAssertions.matches(
+            CoreMatchers.anyOf(
+                ViewMatchers.withChild(ViewMatchers.withText(text)),
+                ViewMatchers.withText(text)
+            )
+        )
+    )
+  }
+
+  @JvmStatic
+  fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @StringRes textId: Int) {
+    assertDisplayedAtPosition(listId = listId, position = position, targetViewId = NO_VIEW_ID, textId = textId)
+  }
+
+  @JvmStatic
+  fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, @StringRes textId: Int) {
+    BaristaListInteractions.scrollListToPosition(listId, position)
+
+    assertCustomAssertionAtPosition(
+        listId = listId,
+        position = position,
+        targetViewId = targetViewId,
+        viewAssertion = ViewAssertions.matches(
+            CoreMatchers.anyOf(
+                ViewMatchers.withChild(ViewMatchers.withText(textId)),
+                ViewMatchers.withText(textId)
+            )
+        )
+    )
+  }
+
+  @JvmStatic
+  fun assertCustomAssertionAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, viewAssertion: ViewAssertion) {
+    BaristaListInteractions.scrollListToPosition(listId, position)
+
     Espresso.onView(atPositionOnList(listId = listId,
         position = position,
         targetViewId = targetViewId))
-        .check(ViewAssertions.matches(CoreMatchers.anyOf(ViewMatchers.withChild(ViewMatchers.withText(text)), ViewMatchers.withText(text))))
+        .check(viewAssertion)
   }
 
   private fun atPositionOnList(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int): Matcher<View> {
