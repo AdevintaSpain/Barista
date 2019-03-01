@@ -48,27 +48,36 @@ Barista already includes `espresso-core` and `espresso-contrib`. If you need [an
 # API Overview
 
 ## Barista’s Interactions API
+
+#### Click widgets
 ```java
-// Click widgets
 clickOn(R.id.button);
 clickOn(R.string.button_text);
 clickOn("Next");
 clickBack();
+```
 
-// Long click widgets
+#### Long click widgets
+```java
 longClickOn(R.id.button);
 longClickOn(R.string.button_text);
 longClickOn("Next");
+```
 
-// Click menu items, with or without overflow
+#### Click menu items, with or without overflow
+```java
 clickMenu(R.id.menu_item);
+```
 
-// Writing into widgets
+#### Writing into widgets
+```java
 writeTo(R.id.edittext, "A great text");
 writeToAutoComplete(R.id.autocomplete, "Another great text");
 clearText(R.id.edittext)
+```
 
-// Operate on ListViews and RecyclerViews indistinctly by position
+#### Operate on ListViews and RecyclerViews indistinctly by position
+```java
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
@@ -80,56 +89,74 @@ assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, R.string.hello_world)
 assertCustomAssertionAtPosition(R.id.recycler, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
+```
 
-// Select items on RadioButtons
+#### Select items on RadioButtons
+```java
 clickRadioButtonItem(R.id.radiogroup, R.id.radio_item);
 clickRadioButtonItem(R.id.radiogroup, "The radio text");
 clickRadioButtonPosition(R.id.radiogroup, 42);
+```
 
-// Pick data on pickers
+#### Pick data on pickers
+```java
 setDateOnPicker(1986, 03, 23);
 setTimeOnPicker(17, 2);
+```
 
-// Interact with dialogs
+#### Interact with dialogs
+```java
 clickDialogPositiveButton();
 clickDialogNeutralButton();
 clickDialogNegativeButton();
+```
 
-// Scroll on scrolls and pagers
+#### Scroll on scrolls and pagers
+```java
 scrollTo(R.id.far_away_widget);
 scrollTo(R.string.text);
 scrollTo("A widget with this text");
 swipeViewPagerForward();
 swipeViewPagerBack();
+```
 
-// Interact with the navigation drawer
+#### Interact with the navigation drawer
+```java
 openDrawer();
 openDrawerWithGravity(Gravity.RIGHT);
 closeDrawer();
 closeDrawerWithGravity(Gravity.RIGHT);
+```
 
-// Interact with SeekBars
+#### Interact with SeekBars
+```java
 setProgressTo(R.id.seek_bar, 5);
 setProgressToMin(R.id.seek_bar);
 setProgressToMax(R.id.seek_bar);
+```
 
-
-// Pull to refresh in SwipeRefreshLayout
+#### Pull to refresh in SwipeRefreshLayout
+```java
 refresh(R.id.swipe_refresh);
 refresh(); // Id is optional! We'll find it for you :D
+```
 
-// Close or press ime actions on the Keyboard
+#### Close or press ime actions on the Keyboard
+```java
 closeKeyboard()
 pressImeActionButton()
+```
 
-// And another tricky feature, but try not to use it
+#### And another tricky feature, but try not to use it
+```java
 sleep(2000);
 sleep(2, SECONDS);
 ```
 
 ## Barista’s Assertions API
+
+#### Is this view displayed?
 ```java
-// Is this view displayed?
 assertDisplayed("Hello world");
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
@@ -144,8 +171,10 @@ assertNotDisplayed(R.id.button);
 assertNotDisplayed(R.id.button, "Hello world")
 // you can also pass custom matchers
 assertNotDisplayed(withTagValue(is("tagName")))
+```
 
-// Is this view enabled?
+#### Is this view enabled?
+```java
 assertEnabled("Hello world");
 assertEnabled(R.string.hello_world);
 assertEnabled(R.id.button);
@@ -154,13 +183,17 @@ assertEnabled(R.id.button);
 assertDisabled("Hello world");
 assertDisabled(R.string.hello_world);
 assertDisabled(R.id.button);
+```
 
-// Hope this view doesn't exist!
+#### Hope this view doesn't exist!
+```java
 assertNotExist("Hello world");
 assertNotExist(R.string.hello_world);
 assertNotExist(R.id.button);
+```
 
-// Is the expected checkbox checked?
+#### Is the expected checkbox checked?
+```java
 assertChecked("Checked checkbox");
 assertChecked(R.string.checked_checkbox);
 assertChecked(R.id.checked_checkbox);
@@ -169,8 +202,10 @@ assertChecked(R.id.checked_checkbox);
 assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
+```
 
-// Is this view clickable?
+#### Is this view clickable?
+```java
 assertClickable("Hello world")
 assertClickable(R.string.hello_world)
 assertClickable(R.id.button)
@@ -179,79 +214,99 @@ assertClickable(R.id.button)
 assertNotClickable("Hello world")
 assertNotClickable(R.string.hello_world)
 assertNotClickable(R.id.button)
+```
 
-// Does this view have the focus?
+#### Does this view have the focus?
+```java
 assertFocused(R.id.focused_view)
 assertFocused("Button")
 
 // ...or not?
 assertNotFocused(R.id.focused_view)
 assertNotFocused("Button")
+```
 
-// Is this ImageView showing a drawable?
+#### Is this ImageView showing a drawable?
+```java
 assertHasAnyDrawable(R.id.image_view);
 assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
 
 // ...or not?
 assertHasNoDrawable(R.id.image_view);
+```
 
-// Does this View have a background?
+#### Does this View have a background?
+```java
 assertHasAnyBackground(R.id.view);
 assertHasBackground(R.id.view, R.drawable.ic_barista);
 
 // ...or not?
 assertHasNoBackground(R.id.view);
+```
 
-// What's the state of the Drawer?
+#### What's the state of the Drawer?
+```java
 assertDrawerIsOpen();
 assertDrawerIsOpenWithGravity(Gravity.RIGHT);
 assertDrawerIsClosed();
 assertDrawerIsClosedWithGravity(Gravity.RIGHT);
+```
 
-// Check TextInputLayout and EditText's hints
+#### Check TextInputLayout and EditText's hints
+```java
 assertHint(R.id.edittext, R.string.hint);
 assertHint(R.id.edittext, "Hint");
+```
 
-// Check TextInputLayout and EditText's errors
+#### Check TextInputLayout and EditText's errors
+```java
 assertError(R.id.edittext, R.string.error);
 assertError(R.id.edittext, "Error message");
+```
 
-// Check if text on screen contains given text
+#### Check if text on screen contains given text
+```java
 assertContains("text");
 assertContains(R.id.textview, "text");
 
 // ...or not?
 assertNotContains("text");
 assertNotContains(R.id.textview, "text");
+```
 
-// Check text is given color
+#### Check text is given color
+```java
 assertTextColorIs(R.id.someRedText, R.color.red);
 assertTextColorIs(R.id.someColorListText, R.color.state_list);
 
 // ...or not?
 assertTextColorIsNot(R.id.someRedText, R.color.blue);
 assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
+```
 
-// Check recyclerView item count against expected item count
+#### Check recyclerView item count against expected item count
+```java
 assertRecyclerViewItemCount(R.id.recycler, 10);
+```
 
-// And another tricky feature
+#### And another tricky feature
+```java
 assertThatBackButtonClosesTheApp();
-
-// Is this ImageView showing a drawable?
+```
+#### Is this ImageView showing a drawable?
+```java
 assertHasAnyDrawable(R.id.image_view);
 assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
 
 // ...or not?
 assertHasNoDrawable(R.id.image_view);
+```
 
-
-// Is this ProgressBar/SeekBar progress?
+#### Is this ProgressBar/SeekBar progress?
+```java
 assertProgress(R.id.seek_bar, 5)
 assertProgressIsMin(R.id.seek_bar)
 assertProgressIsMax(R.id.seek_bar)
-
-
 ```
 
 ### Custom assertions
