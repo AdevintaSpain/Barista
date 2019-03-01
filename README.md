@@ -84,6 +84,9 @@ scrollListToPosition(R.id.list, 4);
 assertListItemCount(R.id.listId, 5)
 assertDisplayedAtPosition(R.id.recycler, 0, "text");
 assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.recycler, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, R.string.hello_world);
+assertCustomAssertionAtPosition(R.id.recycler, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -201,12 +204,26 @@ assertUnchecked(R.string.unchecked_checkbox);
 assertUnchecked(R.id.unchecked_checkbox);
 ```
 
+<<<<<<< HEAD
 #### Does this view have the focus?
 ```java
+=======
+// Is this view clickable?
+assertClickable("Hello world")
+assertClickable(R.string.hello_world)
+assertClickable(R.id.button)
+
+// ...or not?
+assertNotClickable("Hello world")
+assertNotClickable(R.string.hello_world)
+assertNotClickable(R.id.button)
+
+// Does this view have the focus?
+>>>>>>> master
 assertFocused(R.id.focused_view)
 assertFocused("Button")
 
-// ... or not?
+// ...or not?
 assertNotFocused(R.id.focused_view)
 assertNotFocused("Button")
 ```
