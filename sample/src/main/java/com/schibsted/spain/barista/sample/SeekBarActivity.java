@@ -37,11 +37,10 @@ public class SeekBarActivity extends AppCompatActivity {
   }
 
   private class PutRatingBarProgressOnTextView implements RatingBar.OnRatingBarChangeListener {
-
-      @Override
-      public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-          TextView textView = findViewById(R.id.ratingbar_progress);
-          textView.setText(String.valueOf(rating));
-      }
+    @Override
+    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+      TextView textView = findViewById(R.id.ratingbar_progress);
+      textView.setText(String.valueOf(rating));
+    }
   }
 }
