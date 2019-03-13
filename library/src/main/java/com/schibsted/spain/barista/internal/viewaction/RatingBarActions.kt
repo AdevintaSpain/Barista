@@ -12,7 +12,7 @@ import org.hamcrest.Matchers.allOf
 object RatingBarActions {
     const val DESCRIPTION = "Set RatingBar progress."
 
-    fun setRatingBarProgressTo(rating: Float): ViewAction {
+    fun setRatingBarRatingTo(rating: Float): ViewAction {
         return object : ViewAction {
             override fun getConstraints(): Matcher<View> {
                 return allOf(isDisplayed(), isAssignableFrom(RatingBar::class.java))
@@ -29,9 +29,9 @@ object RatingBarActions {
         }
     }
 
-    fun setRatingBarProgressToMin(): ViewAction = setRatingBarProgressTo(0f)
+    fun setRatingBarRatingToMin(): ViewAction = setRatingBarRatingTo(0f)
 
-    fun setRatingBarProgressToMax(): ViewAction {
+    fun setRatingBarRatingToMax(): ViewAction {
         return object : ViewAction {
             override fun getConstraints(): Matcher<View> {
                 return allOf(isDisplayed(), isAssignableFrom(RatingBar::class.java))
