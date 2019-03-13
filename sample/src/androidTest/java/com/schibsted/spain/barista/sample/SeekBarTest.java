@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaRatingBarInteractions.setRatingTo;
+import static com.schibsted.spain.barista.interaction.BaristaRatingBarInteractions.setRatingToMax;
+import static com.schibsted.spain.barista.interaction.BaristaRatingBarInteractions.setRatingToMin;
 import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressTo;
 import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMax;
 import static com.schibsted.spain.barista.interaction.BaristaSeekBarInteractions.setProgressToMin;
@@ -22,20 +25,39 @@ public class SeekBarTest {
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
 
   @Test
-  public void checkSetProgress() {
+  public void checkSeekBarSetProgress() {
     setProgressTo(R.id.seek_bar, 16);
     assertDisplayed("16");
   }
 
   @Test
-  public void checkSetProgressToMax() {
+  public void checkSeekBarSetProgressToMax() {
     setProgressToMax(R.id.seek_bar);
     assertDisplayed("100");
   }
 
   @Test
-  public void checkSetProgressToMin() {
+  public void checkSeekBarSetProgressToMin() {
     setProgressToMin(R.id.seek_bar);
     assertDisplayed("0");
+  }
+
+  @Test
+  public void checkRatingBarSetProgress() {
+    setRatingTo(R.id.rating_bar, 3);
+    assertDisplayed("3.0");
+  }
+
+  @Test
+  public void checkRatingBarSetProgressToMax() {
+    setRatingToMax(R.id.rating_bar);
+    assertDisplayed("7.0");
+  }
+
+  @Test
+  public void checkRatingBarSetProgressToMin() {
+    setRatingTo(R.id.rating_bar, 3);
+    setRatingToMin(R.id.rating_bar);
+    assertDisplayed("0.0");
   }
 }

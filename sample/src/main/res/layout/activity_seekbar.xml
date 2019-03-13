@@ -13,11 +13,28 @@
       android:progress="50"
       />
 
-  <TextView
-      android:id="@+id/progress"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="start|bottom"
-      />
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="7"
+        android:numStars="7"
+        android:stepSize="1"
+        />
+
+    <TextView
+        android:id="@+id/seekbar_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        />
+
+
+    <TextView
+        android:id="@+id/ratingbar_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        />
 
 </LinearLayout>
