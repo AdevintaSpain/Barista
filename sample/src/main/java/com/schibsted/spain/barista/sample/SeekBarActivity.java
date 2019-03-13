@@ -2,6 +2,7 @@ package com.schibsted.spain.barista.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -10,14 +11,17 @@ public class SeekBarActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_seekbar);
-    SeekBar seekBar = (SeekBar) findViewById(R.id.seek_bar);
-    seekBar.setOnSeekBarChangeListener(new PutProgressOnTextView());
+
+    SeekBar seekBar = findViewById(R.id.seek_bar);
+    seekBar.setOnSeekBarChangeListener(new PutSeekBarProgressOnTextView());
+    RatingBar ratingBar = findViewById(R.id.rating_bar);
+    ratingBar.setOnRatingBarChangeListener(new PutRatingBarProgressOnTextView());
   }
 
-  private class PutProgressOnTextView implements SeekBar.OnSeekBarChangeListener {
+  private class PutSeekBarProgressOnTextView implements SeekBar.OnSeekBarChangeListener {
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-      TextView textView = (TextView) findViewById(R.id.progress);
+      TextView textView = findViewById(R.id.seekbar_progress);
       textView.setText(String.valueOf(progress));
     }
 
@@ -30,5 +34,14 @@ public class SeekBarActivity extends AppCompatActivity {
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
+  }
+
+  private class PutRatingBarProgressOnTextView implements RatingBar.OnRatingBarChangeListener {
+
+      @Override
+      public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+          TextView textView = findViewById(R.id.ratingbar_progress);
+          textView.setText(String.valueOf(rating));
+      }
   }
 }
