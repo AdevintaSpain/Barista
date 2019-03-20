@@ -82,7 +82,7 @@ clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
 assertListItemCount(R.id.listId, 5)
-assertListHasItems(R.id.listId)
+assertListNotEmpty(R.id.listId)
 assertDisplayedAtPosition(R.id.recycler, 0, "text");
 assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
 assertDisplayedAtPosition(R.id.recycler, 0, R.string.hello_world);

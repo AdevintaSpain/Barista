@@ -7,7 +7,7 @@ import android.view.View
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
 
-class RecyclerViewHasItemsAssertion : ViewAssertion {
+class RecyclerViewNotEmptyAssertion : ViewAssertion {
 
   override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
     if (noViewFoundException != null) {

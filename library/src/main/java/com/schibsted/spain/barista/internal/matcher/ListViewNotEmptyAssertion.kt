@@ -7,7 +7,7 @@ import android.widget.ListView
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
 
-class ListViewHasItemsAssertion : ViewAssertion {
+class ListViewNotEmptyAssertion : ViewAssertion {
 
   override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
     if (noViewFoundException != null) {

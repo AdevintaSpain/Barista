@@ -7,8 +7,8 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertCustomAssertionAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
-import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListHasItems
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
+import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import junit.framework.AssertionFailedError
 import org.hamcrest.CoreMatchers
@@ -40,7 +40,7 @@ class ListViewAssertionTest {
   @Test
   fun shouldHaveEntriesInListView() {
     openSimpleListActivity()
-    assertListHasItems(R.id.listview)
+    assertListNotEmpty(R.id.listview)
   }
 
   @Test
