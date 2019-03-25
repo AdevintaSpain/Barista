@@ -34,5 +34,6 @@
 
   <string name="not_there">NotThere</string>
   <string name="missing">Missing</string>
+  <string name="this_text_must_not_be_displayed">This text must not be displayed on the view</string>
 
 </resources>
