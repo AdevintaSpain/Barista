@@ -162,6 +162,7 @@ assertDisplayed("Hello world");
 assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
+assertDisplayed(R.id.button, R.string.hello_world)
 // you can also pass custom matchers
 assertDisplayed(withTagValue(is("tagName")))
 
@@ -170,6 +171,7 @@ assertNotDisplayed("Hello world");
 assertNotDisplayed(R.string.hello_world);
 assertNotDisplayed(R.id.button);
 assertNotDisplayed(R.id.button, "Hello world")
+assertNotDisplayed(R.id.button, R.string.hello_world)
 // you can also pass custom matchers
 assertNotDisplayed(withTagValue(is("tagName")))
 ```
