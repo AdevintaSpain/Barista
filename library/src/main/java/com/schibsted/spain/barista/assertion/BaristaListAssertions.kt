@@ -15,7 +15,9 @@ import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListV
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
+import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
@@ -41,6 +43,25 @@ object BaristaListAssertions {
       }
     } catch (recyclerError: Throwable) {
       spyFailureHandler.resendLastError("Item count mismatch on RecyclerView. Expected $expectedItemCount items in the list.")
+    }
+  }
+
+  @JvmStatic
+  fun assertListNotEmpty(@IdRes listId: Int) {
+    val spyFailureHandler = SpyFailureHandler()
+    val recyclerMatcher = findRecyclerMatcher(listId)
+    val listViewMatcher = findListViewMatcher(listId)
+
+    try {
+      Espresso.onView(recyclerMatcher).withFailureHandler(spyFailureHandler).check(RecyclerViewNotEmptyAssertion())
+    } catch (noRecyclerMatching: NoMatchingViewException) {
+      try {
+        Espresso.onView(listViewMatcher).withFailureHandler(spyFailureHandler).check(ListViewNotEmptyAssertion())
+      } catch (listViewError: Throwable) {
+        spyFailureHandler.resendLastError("Item count mismatch on ListView. Expected one or more items in the list.")
+      }
+    } catch (recyclerError: Throwable) {
+      spyFailureHandler.resendLastError("Item count mismatch on RecyclerView. Expected one or more items in the list.")
     }
   }
 

@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertCustomAssertionAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
+import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import junit.framework.AssertionFailedError
 import org.hamcrest.CoreMatchers
@@ -34,6 +35,12 @@ class ListViewAssertionTest {
     openSimpleListActivity()
     val expectedListLength = ListsActivity.FRUITS.size
     assertListItemCount(R.id.listview, expectedListLength + 1)
+  }
+
+  @Test
+  fun shouldHaveEntriesInListView() {
+    openSimpleListActivity()
+    assertListNotEmpty(R.id.listview)
   }
 
   @Test
