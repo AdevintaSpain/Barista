@@ -111,6 +111,7 @@ public class VisibilityAssertionsTest {
   @Test
   public void checkNotDisplayedIdAndText_whenTextDoesNotMatch() {
     assertNotDisplayed(R.id.visible_view, "This text must not be displayed on the view");
+    assertNotDisplayed(R.id.visible_view, R.string.this_text_must_not_be_displayed);
 
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
