@@ -14,7 +14,7 @@ about: Something is crashing or not working as intended
 
 A clear description of what is the bug is.
 
-**To Reproduce:**
+**Steps to reproduce the bug:**
 1. 
 2. 
 3. 
