@@ -7,7 +7,7 @@
 
 <img src="art/barista-logo.svg" width="30%"/>
 
-Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple an discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
+Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
  - [Download](#download)
  - [API Overview](#api-overview)
