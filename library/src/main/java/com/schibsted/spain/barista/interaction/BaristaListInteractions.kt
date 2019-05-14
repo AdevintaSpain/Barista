@@ -8,6 +8,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.FailureHandler
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -22,7 +23,7 @@ import android.widget.AbsListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
-import com.schibsted.spain.barista.internal.viewaction.ClickChildAction.clickChildWithId
+import com.schibsted.spain.barista.internal.viewaction.ChildActions.performOnChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.anyOf
@@ -52,9 +53,15 @@ object BaristaListInteractions {
   @JvmStatic
   @JvmOverloads
   fun clickListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int) {
+    performCustomActionOnListItemChild(id, position, childId, click())
+  }
+
+  @JvmStatic
+  @JvmOverloads
+  fun performCustomActionOnListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int, viewAction: ViewAction) {
     performMagicAction(id, position,
-        recyclerAction = actionOnItemAtPosition<ViewHolder>(position, clickChildWithId(childId)),
-        listViewAction = clickChildWithId(childId)
+        recyclerAction = actionOnItemAtPosition<ViewHolder>(position, performOnChildWithId(childId, viewAction)),
+        listViewAction = performOnChildWithId(childId, viewAction)
     )
   }
 
