@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +16,8 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This Activity helps testing a variety of scenarios with different ListView and RecyclerView.
@@ -61,6 +65,7 @@ public class ListsActivity extends AppCompatActivity {
 
   private LinearLayout listsContainer;
   private TextView clickedResult;
+  private TextView typedResult;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,7 @@ public class ListsActivity extends AppCompatActivity {
     setContentView(R.layout.activity_lists);
     listsContainer = (LinearLayout) findViewById(R.id.multi_list_container);
     clickedResult = (TextView) findViewById(R.id.clicked_text_result);
+    typedResult = (TextView) findViewById(R.id.typed_text_result);
 
     for (int id : getIntent().getIntArrayExtra(EXTRA_SIMPLE_LISTS)) {
       addSimpleListView(id);
@@ -104,7 +110,7 @@ public class ListsActivity extends AppCompatActivity {
   private void addComplexListView(int id) {
     ListView listView = new ListView(this);
     listView.setId(id);
-    listView.setAdapter(new TextListViewAdapter(this, FRUITS, clickedResult));
+    listView.setAdapter(new TextListViewAdapter(this, FRUITS, clickedResult, createTypedResultTextWatcher()));
     addList(listView);
   }
 
@@ -115,7 +121,7 @@ public class ListsActivity extends AppCompatActivity {
 
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(mLayoutManager);
-    recyclerView.setAdapter(new TextRecyclerViewAdapter(FRUITS, clickedResult));
+    recyclerView.setAdapter(new TextRecyclerViewAdapter(FRUITS, clickedResult, createTypedResultTextWatcher()));
     addList(recyclerView);
   }
 
@@ -135,7 +141,7 @@ public class ListsActivity extends AppCompatActivity {
   private void addComplexGridView(int id) {
     GridView gridView = new GridView(this);
     gridView.setId(id);
-    gridView.setAdapter(new TextListViewAdapter(this, FRUITS, clickedResult));
+    gridView.setAdapter(new TextListViewAdapter(this, FRUITS, clickedResult, createTypedResultTextWatcher()));
     addList(gridView);
   }
 
@@ -146,6 +152,24 @@ public class ListsActivity extends AppCompatActivity {
             ViewGroup.LayoutParams.MATCH_PARENT,
             1
         ));
+  }
+
+  @NotNull
+  private TextWatcher createTypedResultTextWatcher() {
+    return new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+      }
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        typedResult.setText(s);
+      }
+    };
   }
 
   public static class IntentBuilder {
