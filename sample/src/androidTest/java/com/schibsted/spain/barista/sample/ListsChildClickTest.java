@@ -15,6 +15,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.performCustomActionOnListItemChild;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -36,7 +37,7 @@ public class ListsChildClickTest {
 
     clickListItemChild(20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -48,7 +49,7 @@ public class ListsChildClickTest {
 
     clickListItemChild(20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -60,7 +61,7 @@ public class ListsChildClickTest {
 
     clickListItemChild(20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -72,7 +73,7 @@ public class ListsChildClickTest {
 
     clickListItemChild(R.id.recycler, 20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -84,7 +85,7 @@ public class ListsChildClickTest {
 
     clickListItemChild(R.id.listview, 20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -96,7 +97,46 @@ public class ListsChildClickTest {
 
     clickListItemChild(R.id.gridview, 20, R.id.yes);
 
-    assertResult("yes");
+    assertClickResult("yes");
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void actionMultipleRecyclerItemChild_byId() {
+    openActivity(ListsActivity.buildIntent()
+        .withRecyclers(R.id.recycler, R.id.recycler2)
+    );
+
+    String text = "It works";
+    performCustomActionOnListItemChild(R.id.recycler, 20, R.id.edittext, replaceText(text));
+
+    assertPerformActionResult(text);
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void actionMultipleListViewItemChild_byId() {
+    openActivity(ListsActivity.buildIntent()
+        .withComplexLists(R.id.listview, R.id.listview2)
+    );
+
+    String text = "It works";
+    performCustomActionOnListItemChild(R.id.listview, 20, R.id.edittext, replaceText(text));
+
+    assertPerformActionResult(text);
+    spyFailureHandlerRule.assertNoEspressoFailures();
+  }
+
+  @Test
+  public void actionMultipleGridViewItemChild_byId() {
+    openActivity(ListsActivity.buildIntent()
+        .withComplexGrids(R.id.gridview, R.id.gridview2)
+    );
+
+    String text = "It works";
+    performCustomActionOnListItemChild(R.id.gridview, 20, R.id.edittext, replaceText(text));
+
+    assertPerformActionResult(text);
     spyFailureHandlerRule.assertNoEspressoFailures();
   }
 
@@ -110,7 +150,8 @@ public class ListsChildClickTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("Could not perform action (actionOnItemAtPosition performing ViewAction: Click on a child view ")
+        .hasMessageContaining(
+            "Could not perform action (actionOnItemAtPosition performing ViewAction: Perform single click on a child view with id: ")
         .hasMessageContaining("on item at position: 20) on RecyclerView")
         .hasCauseInstanceOf(PerformException.class)
         .hasStackTraceContaining("Didn't find any view with id");
@@ -126,7 +167,7 @@ public class ListsChildClickTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("Could not perform action (Click on a child view ")
+        .hasMessageContaining("Could not perform action (Perform single click on a child view with id: ")
         .hasMessageContaining("on ListView")
         .hasCauseInstanceOf(PerformException.class);
   }
@@ -135,7 +176,11 @@ public class ListsChildClickTest {
     activity.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
   }
 
-  private void assertResult(String text) {
+  private void assertClickResult(String text) {
     onView(withId(R.id.clicked_text_result)).check(matches(withText(text)));
+  }
+
+  private void assertPerformActionResult(String text) {
+    onView(withId(R.id.typed_text_result)).check(matches(withText(text)));
   }
 }
