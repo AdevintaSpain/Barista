@@ -80,6 +80,7 @@ clearText(R.id.edittext)
 ```java
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
+performCustomActionOnListItemChild(R.id.list, 5, R.id.edittext, replaceText("Yet another great text"));
 scrollListToPosition(R.id.list, 4);
 assertListItemCount(R.id.listId, 5)
 assertListNotEmpty(R.id.listId)
