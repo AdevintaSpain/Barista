@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.sample.util
 
-import android.support.test.espresso.Espresso
+import androidx.test.espresso.Espresso
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.rules.TestRule

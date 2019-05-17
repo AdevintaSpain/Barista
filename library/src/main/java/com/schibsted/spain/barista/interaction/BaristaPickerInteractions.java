@@ -1,13 +1,13 @@
 package com.schibsted.spain.barista.interaction;
 
-import android.support.test.espresso.contrib.PickerActions;
+import androidx.test.espresso.contrib.PickerActions;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import org.hamcrest.Matchers;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId;
 
 public class BaristaPickerInteractions {

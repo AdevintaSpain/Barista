@@ -1,22 +1,22 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.annotation.IdRes
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.AmbiguousViewMatcherException
-import android.support.test.espresso.Espresso.onData
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.FailureHandler
-import android.support.test.espresso.NoMatchingViewException
-import android.support.test.espresso.ViewAction
-import android.support.test.espresso.action.ViewActions.scrollTo
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.ViewHolder
+import androidx.annotation.IdRes
+import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.AmbiguousViewMatcherException
+import androidx.test.espresso.Espresso.onData
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.FailureHandler
+import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.widget.AbsListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
@@ -114,8 +114,8 @@ object BaristaListInteractions {
   }
 
   fun findRecyclerMatcher(@IdRes id: Int?): Matcher<View> = when (id) {
-    null -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java))
-    else -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java), withId(id))
+    null -> allOf(isDisplayed(), isAssignableFrom(androidx.recyclerview.widget.RecyclerView::class.java))
+    else -> allOf(isDisplayed(), isAssignableFrom(androidx.recyclerview.widget.RecyclerView::class.java), withId(id))
   }
 
   fun findListViewMatcher(@IdRes id: Int?): Matcher<View> = when (id) {

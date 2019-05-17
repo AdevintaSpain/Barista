@@ -1,12 +1,12 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.contrib.DrawerActions.close
-import android.support.test.espresso.contrib.DrawerActions.open
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
+import androidx.annotation.IdRes
+import androidx.test.espresso.contrib.DrawerActions.close
+import androidx.test.espresso.contrib.DrawerActions.open
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.schibsted.spain.barista.internal.performAction
 
 object BaristaDrawerInteractions {
@@ -40,7 +40,7 @@ object BaristaDrawerInteractions {
   }
 
   private fun findDrawerMatcher(drawerLayoutId: Int?) = when (drawerLayoutId) {
-    null -> isAssignableFrom(DrawerLayout::class.java)
+    null -> isAssignableFrom(androidx.drawerlayout.widget.DrawerLayout::class.java)
     else -> withId(drawerLayoutId)
   }
 }

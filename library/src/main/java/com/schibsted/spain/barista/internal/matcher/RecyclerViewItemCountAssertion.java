@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.internal.matcher;
 
-import android.support.test.espresso.NoMatchingViewException;
-import android.support.test.espresso.ViewAssertion;
-import android.support.v7.widget.RecyclerView;
+import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.ViewAssertion;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.rule.flaky;
 
 import android.app.Activity;
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.rule.BaristaRule;
 import com.schibsted.spain.barista.rule.flaky.internal.FlakyStatementBuilder;
 import org.junit.runner.Description;

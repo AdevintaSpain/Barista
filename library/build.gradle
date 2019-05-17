@@ -9,7 +9,7 @@ android {
   defaultConfig {
     minSdkVersion minSdkVersionDeclared
     targetSdkVersion compileSdkVersionDeclared
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
   lintOptions {
@@ -18,15 +18,15 @@ android {
 }
 
 dependencies {
-  api "com.android.support.test.espresso:espresso-core:3.0.2"
-  api "com.android.support.test.espresso:espresso-contrib:3.0.2"
-  api "com.android.support.test.uiautomator:uiautomator-v18:2.1.3"
-  api "com.android.support.test.espresso:espresso-intents:3.0.2"
+  api 'androidx.test.espresso:espresso-core:3.1.0'
+  api 'androidx.test.espresso:espresso-contrib:3.1.0'
+  api 'androidx.test.uiautomator:uiautomator:2.2.0'
+  api 'androidx.test.espresso:espresso-intents:3.1.0'
 
-  implementation "com.android.support:support-annotations:27.1.1"
-  implementation "com.android.support:support-core-ui:27.1.1"
-  implementation "com.android.support:animated-vector-drawable:27.1.1"
-  implementation "com.android.support:recyclerview-v7:27.1.1"
+  implementation 'androidx.annotation:annotation:1.0.0'
+  implementation 'androidx.legacy:legacy-support-core-ui:1.0.0'
+  implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.internal.matcher
 
-import android.support.test.espresso.matcher.BoundedMatcher
+import androidx.test.espresso.matcher.BoundedMatcher
 import android.view.View
 import android.widget.ProgressBar
 import org.hamcrest.Description

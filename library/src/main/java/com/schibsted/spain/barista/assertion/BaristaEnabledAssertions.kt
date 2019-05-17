@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.test.espresso.matcher.ViewMatchers.isEnabled
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not
