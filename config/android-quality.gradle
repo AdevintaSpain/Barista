@@ -1,16 +1,10 @@
 apply plugin: 'pmd'
-apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
 
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 
 pmd {
   ruleSetFiles = files("${project.rootDir}/config/pmd/pmd-ruleset.xml")
-}
-
-findbugs {
-  includeFilter = file("${project.rootDir}/config/findbugs/findbugs-config.xml")
-  excludeFilter = file("${project.rootDir}/config/findbugs/findbugs-excludes.xml")
 }
 
 checkstyle {
@@ -39,23 +33,6 @@ task pmd(type: Pmd) {
   }
 }
 
-task findbugs(type: FindBugs, dependsOn: assemble) {
-  description 'Run findbugs'
-  group 'verification'
-
-  classes = fileTree('build/intermediates/classes/')
-  source = fileTree('src/main/java/')
-  classpath = files()
-  includeFilter = file("$rootProject.projectDir/config/findbugs/findbugs-config.xml")
-  excludeFilter = file("$rootProject.projectDir/config/findbugs/findbugs-excludes.xml")
-  ignoreFailures = false
-
-  reports {
-    xml.enabled = false
-    html.enabled = true
-  }
-}
-
 task checkstyle(type: Checkstyle) {
   description 'Run checkstyle'
   group 'verification'
@@ -68,7 +45,7 @@ task checkstyle(type: Checkstyle) {
   classpath = files()
 }
 
-check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+check.dependsOn 'checkstyle', 'pmd', 'lint'
 
 apply plugin: 'jacoco'
 
