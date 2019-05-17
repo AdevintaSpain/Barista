@@ -12,7 +12,7 @@ object BaristaSwipeRefreshInteractions {
   @JvmStatic
   @JvmOverloads
   fun refresh(@IdRes id: Int? = null) = when (id) {
-    null -> onView(isAssignableFrom(androidx.swiperefreshlayout.widget.SwipeRefreshLayout::class.java)).perform(pullToRefresh())
+    null -> onView(isAssignableFrom(SwipeRefreshLayout::class.java)).perform(pullToRefresh())
     else -> onView(withId(id)).perform(pullToRefresh())
   }
 }

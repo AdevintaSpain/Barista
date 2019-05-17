@@ -40,7 +40,7 @@ object BaristaDrawerInteractions {
   }
 
   private fun findDrawerMatcher(drawerLayoutId: Int?) = when (drawerLayoutId) {
-    null -> isAssignableFrom(androidx.drawerlayout.widget.DrawerLayout::class.java)
+    null -> isAssignableFrom(DrawerLayout::class.java)
     else -> withId(drawerLayoutId)
   }
 }

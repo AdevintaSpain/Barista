@@ -114,8 +114,8 @@ object BaristaListInteractions {
   }
 
   fun findRecyclerMatcher(@IdRes id: Int?): Matcher<View> = when (id) {
-    null -> allOf(isDisplayed(), isAssignableFrom(androidx.recyclerview.widget.RecyclerView::class.java))
-    else -> allOf(isDisplayed(), isAssignableFrom(androidx.recyclerview.widget.RecyclerView::class.java), withId(id))
+    null -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java))
+    else -> allOf(isDisplayed(), isAssignableFrom(RecyclerView::class.java), withId(id))
   }
 
   fun findListViewMatcher(@IdRes id: Int?): Matcher<View> = when (id) {

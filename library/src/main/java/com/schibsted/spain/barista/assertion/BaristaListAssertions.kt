@@ -130,7 +130,7 @@ object BaristaListAssertions {
 
         listView?.let {
           return when (it) {
-            is androidx.recyclerview.widget.RecyclerView -> matchRecyclerView(listId, position, targetViewId, view)
+            is RecyclerView -> matchRecyclerView(listId, position, targetViewId, view)
             is ListView -> matchListView(listId, position, targetViewId, view)
             else -> false
           }
@@ -168,7 +168,7 @@ object BaristaListAssertions {
     var childView: View? = null
 
     if (childView == null) {
-      val recyclerView: androidx.recyclerview.widget.RecyclerView? = view.rootView.findViewById(recyclerViewId) as androidx.recyclerview.widget.RecyclerView
+      val recyclerView: RecyclerView? = view.rootView.findViewById(recyclerViewId) as RecyclerView
       if (recyclerView != null && recyclerView.id == recyclerViewId) {
         val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
         viewHolder?.let { checkedViewHolder ->
