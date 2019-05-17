@@ -1,11 +1,6 @@
-apply plugin: 'pmd'
 apply plugin: 'checkstyle'
 
 def isTravis = "true".equals(System.getenv("TRAVIS"))
-
-pmd {
-  ruleSetFiles = files("${project.rootDir}/config/pmd/pmd-ruleset.xml")
-}
 
 checkstyle {
   toolVersion = "7.1.1"
@@ -17,20 +12,6 @@ android.lintOptions {
   lintConfig file("${project.rootDir}/config/lint/lint.xml")
   textReport isTravis
   textOutput 'stdout'
-}
-
-task pmd(type: Pmd) {
-  description 'Run pmd'
-  group 'verification'
-
-  source = fileTree('src/main/java')
-  consoleOutput = isTravis
-  ignoreFailures = false
-
-  reports {
-    xml.enabled = false
-    html.enabled = !isTravis
-  }
 }
 
 task checkstyle(type: Checkstyle) {
@@ -45,7 +26,7 @@ task checkstyle(type: Checkstyle) {
   classpath = files()
 }
 
-check.dependsOn 'checkstyle', 'pmd', 'lint'
+check.dependsOn 'checkstyle', 'lint'
 
 apply plugin: 'jacoco'
 
