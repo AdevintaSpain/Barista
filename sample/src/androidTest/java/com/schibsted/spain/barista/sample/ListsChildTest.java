@@ -16,7 +16,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
-import static com.schibsted.spain.barista.interaction.BaristaListInteractions.performCustomActionOnListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.doOnListItemChild;
 import static com.schibsted.spain.barista.sample.ListsActivity.IntentBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -109,7 +109,7 @@ public class ListsChildTest {
     );
 
     String text = "It works";
-    performCustomActionOnListItemChild(R.id.recycler, 20, R.id.edittext, replaceText(text));
+    doOnListItemChild(R.id.recycler, 20, R.id.edittext, replaceText(text));
 
     assertPerformActionResult(text);
     spyFailureHandlerRule.assertNoEspressoFailures();
@@ -122,7 +122,7 @@ public class ListsChildTest {
     );
 
     String text = "It works";
-    performCustomActionOnListItemChild(R.id.listview, 20, R.id.edittext, replaceText(text));
+    doOnListItemChild(R.id.listview, 20, R.id.edittext, replaceText(text));
 
     assertPerformActionResult(text);
     spyFailureHandlerRule.assertNoEspressoFailures();
@@ -135,7 +135,7 @@ public class ListsChildTest {
     );
 
     String text = "It works";
-    performCustomActionOnListItemChild(R.id.gridview, 20, R.id.edittext, replaceText(text));
+    doOnListItemChild(R.id.gridview, 20, R.id.edittext, replaceText(text));
 
     assertPerformActionResult(text);
     spyFailureHandlerRule.assertNoEspressoFailures();

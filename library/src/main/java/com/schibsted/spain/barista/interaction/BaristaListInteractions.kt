@@ -23,7 +23,7 @@ import android.widget.AbsListView
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
-import com.schibsted.spain.barista.internal.viewaction.ChildActions.performOnChildWithId
+import com.schibsted.spain.barista.internal.viewaction.ChildActions.onChildWithId
 import com.schibsted.spain.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.anyOf
@@ -53,15 +53,15 @@ object BaristaListInteractions {
   @JvmStatic
   @JvmOverloads
   fun clickListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int) {
-    performCustomActionOnListItemChild(id, position, childId, click())
+    doOnListItemChild(id, position, childId, click())
   }
 
   @JvmStatic
   @JvmOverloads
-  fun performCustomActionOnListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int, viewAction: ViewAction) {
+  fun doOnListItemChild(@IdRes id: Int? = null, position: Int, @IdRes childId: Int, viewAction: ViewAction) {
     performMagicAction(id, position,
-        recyclerAction = actionOnItemAtPosition<ViewHolder>(position, performOnChildWithId(childId, viewAction)),
-        listViewAction = performOnChildWithId(childId, viewAction)
+        recyclerAction = actionOnItemAtPosition<ViewHolder>(position, onChildWithId(childId, viewAction)),
+        listViewAction = onChildWithId(childId, viewAction)
     )
   }
 

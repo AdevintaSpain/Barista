@@ -17,12 +17,12 @@ import org.hamcrest.Matchers.allOf
 object ChildActions {
 
   @JvmStatic
-  fun performOnChildWithId(@IdRes childId: Int, viewAction: ViewAction): ViewAction {
-    return performOnChildWithMatcher(withId(childId), viewAction)
+  fun onChildWithId(@IdRes childId: Int, viewAction: ViewAction): ViewAction {
+    return onChildWithMatcher(withId(childId), viewAction)
   }
 
   @JvmStatic
-  fun performOnChildWithMatcher(childMatcher: Matcher<View>, viewAction: ViewAction): ViewAction {
+  fun onChildWithMatcher(childMatcher: Matcher<View>, viewAction: ViewAction): ViewAction {
     return object : ViewAction {
       override fun getConstraints(): Matcher<View> {
         return allOf<View>(isDisplayed(), hasDescendant(childMatcher))
