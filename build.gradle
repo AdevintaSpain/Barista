@@ -22,7 +22,7 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
-ext.minSdkVersionDeclared = 14
+ext.minSdkVersionDeclared = 19
 ext.compileSdkVersionDeclared = 28
 
 ext.supportLibVersion = '27.1.1'
