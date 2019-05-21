@@ -1,10 +1,10 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.annotation.IdRes
-import android.support.test.espresso.Espresso.onData
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.annotation.IdRes
+import androidx.test.espresso.Espresso.onData
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.widget.AdapterView
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
 import org.hamcrest.Matchers.`is`

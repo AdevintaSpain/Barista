@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.internal.viewaction;
 
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.action.ReplaceTextAction;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.action.ReplaceTextAction;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -12,10 +12,10 @@ import android.widget.ListAdapter;
 import javax.annotation.Nonnull;
 import org.hamcrest.Matcher;
 
-import static android.support.test.espresso.action.ViewActions.actionWithAssertions;
-import static android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
-import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.action.ViewActions.actionWithAssertions;
+import static androidx.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.allOf;
 
 public class AutoCompleteViewActions {
@@ -59,8 +59,8 @@ public class AutoCompleteViewActions {
         autoComplete.setAdapter((ArrayAdapter) adapter);
       } else if (adapter instanceof CursorAdapter) {
         autoComplete.setAdapter((CursorAdapter) adapter);
-      } else if (adapter instanceof android.support.v4.widget.CursorAdapter) {
-        autoComplete.setAdapter((android.support.v4.widget.CursorAdapter) adapter);
+      } else if (adapter instanceof androidx.cursoradapter.widget.CursorAdapter) {
+        autoComplete.setAdapter((androidx.cursoradapter.widget.CursorAdapter) adapter);
       }
     }
 

@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.interaction;
 
-import android.support.annotation.IdRes;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.IdRes;
+import androidx.viewpager.widget.ViewPager;
 
-import static android.support.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.onView;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAssignableFrom;
 import static com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedWithId;
 import static com.schibsted.spain.barista.internal.viewaction.SwipeActions.swipeLeft;

@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.interaction
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.PerformException
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.PerformException
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description

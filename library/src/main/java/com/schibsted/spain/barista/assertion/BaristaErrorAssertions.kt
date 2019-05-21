@@ -1,10 +1,10 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.IdRes
-import android.support.annotation.StringRes
-import android.support.design.widget.TextInputLayout
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.matcher.ViewMatchers
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import com.google.android.material.textfield.TextInputLayout
+import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.matcher.ViewMatchers
 import android.view.View
 import android.widget.TextView
 import com.schibsted.spain.barista.internal.assertAny

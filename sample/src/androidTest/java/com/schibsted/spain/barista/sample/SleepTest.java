@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.sample;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.interaction.BaristaSleepInteractions;
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import java.util.concurrent.TimeUnit;

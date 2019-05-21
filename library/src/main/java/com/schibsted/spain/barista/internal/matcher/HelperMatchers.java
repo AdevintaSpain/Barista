@@ -1,15 +1,15 @@
 package com.schibsted.spain.barista.internal.matcher;
 
-import android.support.annotation.IdRes;
-import android.support.test.espresso.matcher.BoundedMatcher;
+import androidx.annotation.IdRes;
+import androidx.test.espresso.matcher.BoundedMatcher;
 import android.view.MenuItem;
 import android.view.View;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 
 public class HelperMatchers {
 
