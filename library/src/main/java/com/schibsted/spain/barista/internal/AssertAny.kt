@@ -1,9 +1,9 @@
 package com.schibsted.spain.barista.internal
 
-import android.support.test.espresso.AmbiguousViewMatcherException
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.NoMatchingViewException
-import android.support.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.AmbiguousViewMatcherException
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.assertion.ViewAssertions
 import android.view.View
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description

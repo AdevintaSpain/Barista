@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.rule.cleardata.internal
 
-import android.support.test.InstrumentationRegistry.getTargetContext
+import androidx.test.InstrumentationRegistry.getTargetContext
 import java.io.File
 
 class FileOperations {

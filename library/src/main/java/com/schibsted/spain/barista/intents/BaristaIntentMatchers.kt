@@ -7,8 +7,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.net.Uri
 import android.provider.MediaStore
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull
+import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import org.hamcrest.Description
 import org.hamcrest.Matcher

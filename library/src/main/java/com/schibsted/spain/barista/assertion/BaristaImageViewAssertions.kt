@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.assertion
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.IdRes
-import android.support.test.espresso.matcher.ViewMatchers.withId
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.withAnyDrawable
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.withDrawable

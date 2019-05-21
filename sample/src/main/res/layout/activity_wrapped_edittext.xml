@@ -20,7 +20,7 @@
       android:iconifiedByDefault="false"
       />
 
-  <android.support.v7.widget.SearchView
+  <androidx.appcompat.widget.SearchView
       android:id="@+id/supportSearchView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
       app:iconifiedByDefault="false"
       />
 
-  <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/textInput"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -40,5 +40,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-  </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

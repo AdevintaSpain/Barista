@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.sample
 
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.rule.ActivityTestRule
+import androidx.test.runner.AndroidJUnit4
 import android.widget.EditText
 import android.widget.ImageView
 import com.schibsted.spain.barista.assertion.BaristaAssertions.assertAny

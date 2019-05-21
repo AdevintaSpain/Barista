@@ -1,8 +1,8 @@
 package com.schibsted.spain.barista.sample;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
