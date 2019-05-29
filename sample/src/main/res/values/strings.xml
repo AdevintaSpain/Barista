@@ -27,6 +27,9 @@
   <string name="hintanderror_edittext_hint">EditText hint</string>
   <string name="hintanderror_edittext_error">EditText error</string>
 
+  <string name="text_helper_hint">TextInputLayout text helper hint</string>
+  <string name="text_helper_text">This is a sample helper text</string>
+
   <string name="avocado">Avocado</string>
   <string name="bilberry">Bilberry</string>
   <string name="tamarind">Tamarind</string>
@@ -35,5 +38,7 @@
   <string name="not_there">NotThere</string>
   <string name="missing">Missing</string>
   <string name="this_text_must_not_be_displayed">This text must not be displayed on the view</string>
+
+
 
 </resources>
