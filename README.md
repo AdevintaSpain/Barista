@@ -267,10 +267,10 @@ assertError(R.id.edittext, R.string.error);
 assertError(R.id.edittext, "Error message");
 ```
 
-#### Check TextInputLayout's helper text
+#### Check TextInputLayout's assistive helper text
 ```java
-assertHelperText(R.id.textinputlayout, R.string.helper_text);
-assertHelperText(R.id.textinputlayout, "Helper text");
+assertAssistiveText(R.id.textinputlayout, R.string.helper_text);
+assertAssistiveText(R.id.textinputlayout, "Helper text");
 ```
 
 #### Check if text on screen contains given text

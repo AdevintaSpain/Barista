@@ -11,27 +11,27 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
-object BaristaHelperTextAssertions {
+object BaristaAssistiveTextAssertions {
   @JvmStatic
-  fun assertHelperText(@IdRes viewId: Int, @StringRes text: Int) {
+  fun assertAssitiveText(@IdRes viewId: Int, @StringRes text: Int) {
     val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
-    assertHelperText(viewId, resourceString)
+    assertAssitiveText(viewId, resourceString)
   }
 
   @JvmStatic
-  fun assertHelperText(@IdRes viewId: Int, text: String) {
-    ViewMatchers.withId(viewId).assertAny(matchError(text))
+  fun assertAssitiveText(@IdRes viewId: Int, text: String) {
+    ViewMatchers.withId(viewId).assertAny(matchAssistiveText(text))
   }
 
-  private fun matchError(expectedHelperText: String): Matcher<View> {
+  private fun matchAssistiveText(expectedAssistiveText: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with helper text: ").appendText(expectedHelperText)
+        description.appendText("with helper text: ").appendText(expectedAssistiveText)
       }
 
       override fun matchesSafely(item: View): Boolean {
         return when (item) {
-          is TextInputLayout -> expectedHelperText == item.helperText.toString()
+          is TextInputLayout -> expectedAssistiveText == item.helperText.toString()
           else -> {
             throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
           }
