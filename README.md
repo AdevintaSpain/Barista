@@ -270,11 +270,15 @@ assertError(R.id.edittext, "Error message");
 #### Check if text on screen contains given text
 ```java
 assertContains("text");
+assertContains(R.string.text);
 assertContains(R.id.textview, "text");
+assertContains(R.id.textview, R.string.text);
 
 // ...or not?
 assertNotContains("text");
+assertNotContains(R.string.text);
 assertNotContains(R.id.textview, "text");
+assertNotContains(R.id.textview, R.string.text);
 ```
 
 #### Check text is given color

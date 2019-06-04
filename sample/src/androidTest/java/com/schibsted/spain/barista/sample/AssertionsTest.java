@@ -331,6 +331,7 @@ public class AssertionsTest {
   @Test
   public void checkTextViewContainsText_withViewId() {
     assertContains(R.id.enabled_button, "Enabled");
+    assertContains(R.string.enabled);
   }
 
   @Test(expected = BaristaException.class)
@@ -338,9 +339,15 @@ public class AssertionsTest {
     assertContains(R.id.enabled_button, "Disabled");
   }
 
+  @Test(expected = BaristaException.class)
+  public void checkTextViewContainsResourceText_withViewId_failsWhenNeeded() {
+    assertContains(R.id.enabled_button, R.string.unexising_text);
+  }
+
   @Test
   public void checkTextViewContainsText_withoutViewId() {
     assertContains("Enabled");
+    assertContains(R.string.enabled);
   }
 
   @Test(expected = BaristaException.class)
@@ -348,9 +355,15 @@ public class AssertionsTest {
     assertContains("unexisting text");
   }
 
+  @Test(expected = BaristaException.class)
+  public void checkTextViewContainsResourceText_withoutViewId_failsWhenNeeded() {
+    assertContains(R.string.unexising_text);
+  }
+
   @Test
   public void checkTextViewDoesntContainsText_withViewId() {
     assertNotContains(R.id.enabled_button, "unexisting text");
+    assertNotContains(R.id.enabled_button, R.string.unexising_text);
   }
 
   @Test(expected = AssertionFailedError.class)
@@ -361,10 +374,16 @@ public class AssertionsTest {
   @Test
   public void checkTextViewDoesntContainsText_withoutViewId() {
     assertNotContains("unexisting text");
+    assertNotContains(R.string.unexising_text);
   }
 
   @Test(expected = AssertionFailedError.class)
   public void checkTextViewDoesntContainsText_withoutViewId_failsWhenNeeded() {
     assertNotContains("Enabled");
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkTextViewDoesntContainsResourceText_withoutViewId_failsWhenNeeded() {
+    assertNotContains(R.string.enabled);
   }
 }
