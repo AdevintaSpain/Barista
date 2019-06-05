@@ -9,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
+import androidx.test.platform.app.InstrumentationRegistry
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
 import com.schibsted.spain.barista.internal.util.resourceMatcher
@@ -85,8 +86,20 @@ object BaristaVisibilityAssertions {
   }
 
   @JvmStatic
+  fun assertContains(@StringRes stringId: Int) {
+    val resourceText = InstrumentationRegistry.getInstrumentation().targetContext.getString(stringId)
+    assertContains(resourceText)
+  }
+
+  @JvmStatic
   fun assertContains(@IdRes viewId: Int, text: String) {
     viewId.resourceMatcher().assertAny(withText(containsString(text)))
+  }
+
+  @JvmStatic
+  fun assertContains(@IdRes viewId: Int, @StringRes stringId: Int) {
+    val resourceText = InstrumentationRegistry.getInstrumentation().targetContext.getString(stringId)
+    assertContains(viewId, resourceText)
   }
 
   @JvmStatic
@@ -95,8 +108,20 @@ object BaristaVisibilityAssertions {
   }
 
   @JvmStatic
+  fun assertNotContains(@StringRes stringId: Int) {
+    val resourceText = InstrumentationRegistry.getInstrumentation().targetContext.getString(stringId)
+    assertNotContains(resourceText)
+  }
+
+  @JvmStatic
   fun assertNotContains(@IdRes resId: Int, text: String) {
     onView(allOf(withId(resId), withText(containsString(text)))).check(doesNotExist())
+  }
+
+  @JvmStatic
+  fun assertNotContains(@IdRes resId: Int, @StringRes stringId: Int) {
+    val resourceText = InstrumentationRegistry.getInstrumentation().targetContext.getString(stringId)
+    assertNotContains(resId, resourceText)
   }
 
   @JvmStatic
