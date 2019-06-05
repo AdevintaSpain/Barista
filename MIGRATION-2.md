@@ -1,6 +1,6 @@
-# Migration guide from Barista 1.x to 2.0
+# Migration guide from Barista 1.x
 
-You just updated Barista dependency from 1.x to 2.0 and everything is in red?
+You just updated Barista dependency from 1.x and everything is in red?
 We did some breaking changes to improve our public API, and that's why we increased our major version.
 
 But fear not, here are a list of breaking changes and how to solve them:
