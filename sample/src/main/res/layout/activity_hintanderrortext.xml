@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:padding="16dp"
     >
@@ -38,4 +39,20 @@
       android:layout_height="wrap_content"
       android:hint="@string/hintanderror_edittext_hint"
       />
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/texthelper_inputlayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hintanderror_inputedittext_hint"
+      app:helperTextEnabled="true"
+      app:helperText="@string/text_helper_text"
+      >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+  </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>
