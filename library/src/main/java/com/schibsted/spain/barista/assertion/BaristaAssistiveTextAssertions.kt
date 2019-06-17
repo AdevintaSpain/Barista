@@ -13,13 +13,13 @@ import org.hamcrest.TypeSafeMatcher
 
 object BaristaAssistiveTextAssertions {
   @JvmStatic
-  fun assertAssitiveText(@IdRes viewId: Int, @StringRes text: Int) {
+  fun assertAssistiveText(@IdRes viewId: Int, @StringRes text: Int) {
     val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
-    assertAssitiveText(viewId, resourceString)
+    assertAssistiveText(viewId, resourceString)
   }
 
   @JvmStatic
-  fun assertAssitiveText(@IdRes viewId: Int, text: String) {
+  fun assertAssistiveText(@IdRes viewId: Int, text: String) {
     ViewMatchers.withId(viewId).assertAny(matchAssistiveText(text))
   }
 
