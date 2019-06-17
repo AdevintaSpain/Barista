@@ -247,8 +247,9 @@ assertHasNoBackground(R.id.view);
 
 #### Does this View have content description?
 ```java
-assertContentDescription(R.id.textinputlayout, R.string.content_description);
-assertContentDescription(R.id.textinputlayout, "Some text");
+assertHasContentDescription(R.id.anyView);
+assertContentDescription(R.id.anyView, R.string.content_description);
+assertContentDescription(R.id.anyView, "Some text");
 ```
 
 #### What's the state of the Drawer?
