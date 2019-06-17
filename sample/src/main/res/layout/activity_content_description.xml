@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/blue"
+        android:id="@+id/imageBlue"
+        android:contentDescription="@string/content_description_image_color_blue"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/red"
+        android:id="@+id/imageRed"
+        android:contentDescription="Image color red"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:id="@+id/textBlue"
+        android:contentDescription="@string/content_description_text_blue"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Red"
+        android:id="@+id/textRed"
+        android:contentDescription="Text red"
+        />
+
+</LinearLayout>
