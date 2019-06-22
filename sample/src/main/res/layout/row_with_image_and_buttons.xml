@@ -22,6 +22,12 @@
       android:orientation="horizontal"
       >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_barista"
+        tools:ignore="ContentDescription" />
+
     <Button
         android:id="@+id/yes"
         android:layout_width="wrap_content"
