@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.ListView
 import androidx.annotation.DrawableRes
-import com.schibsted.spain.barista.interaction.BaristaListInteractions
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
@@ -96,7 +95,7 @@ object BaristaListAssertions {
 
   @JvmStatic
   fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, @StringRes textId: Int) {
-    BaristaListInteractions.scrollListToPosition(listId, position)
+    scrollListToPosition(listId, position)
 
     assertCustomAssertionAtPosition(
         listId = listId,
@@ -130,7 +129,7 @@ object BaristaListAssertions {
 
   @JvmStatic
   fun assertCustomAssertionAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, viewAssertion: ViewAssertion) {
-    BaristaListInteractions.scrollListToPosition(listId, position)
+    scrollListToPosition(listId, position)
 
     Espresso.onView(atPositionOnList(listId = listId,
         position = position,
