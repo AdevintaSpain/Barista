@@ -120,7 +120,7 @@ object BaristaListAssertions {
         targetViewId = targetViewId,
         viewAssertion = ViewAssertions.matches(
             CoreMatchers.anyOf(
-                ViewMatchers.withChild(DrawableMatcher.withDrawable(drawableRes)),
+                ViewMatchers.hasDescendant(DrawableMatcher.withDrawable(drawableRes)),
                 DrawableMatcher.withDrawable(drawableRes)
             )
         )
