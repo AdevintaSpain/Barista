@@ -40,7 +40,7 @@ public class TextListViewAdapter extends BaseAdapter {
 
     if (convertView == null) {
       LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-      rowView = inflater.inflate(R.layout.row_with_buttons, parent, false);
+      rowView = inflater.inflate(R.layout.row_with_image_and_buttons, parent, false);
     }
 
     TextView textView = (TextView) rowView.findViewById(R.id.textview);
