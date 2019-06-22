@@ -10,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.ListView
+import androidx.annotation.DrawableRes
 import com.schibsted.spain.barista.interaction.BaristaListInteractions
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
@@ -19,6 +20,7 @@ import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.DrawableMatcher
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -104,6 +106,23 @@ object BaristaListAssertions {
             CoreMatchers.anyOf(
                 ViewMatchers.withChild(ViewMatchers.withText(textId)),
                 ViewMatchers.withText(textId)
+            )
+        )
+    )
+  }
+
+  @JvmStatic
+  fun assertDrawableDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, @DrawableRes drawableRes: Int) {
+    scrollListToPosition(listId, position)
+
+    assertCustomAssertionAtPosition(
+        listId = listId,
+        position = position,
+        targetViewId = targetViewId,
+        viewAssertion = ViewAssertions.matches(
+            CoreMatchers.anyOf(
+                ViewMatchers.withChild(DrawableMatcher.withDrawable(drawableRes)),
+                DrawableMatcher.withDrawable(drawableRes)
             )
         )
     )
