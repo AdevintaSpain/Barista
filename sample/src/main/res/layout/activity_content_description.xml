@@ -21,6 +21,13 @@
         android:contentDescription="Image color red"
         />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/green"
+        android:id="@+id/imageGreen"
+        />
+
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -35,6 +42,13 @@
         android:text="Red"
         android:id="@+id/textRed"
         android:contentDescription="Text red"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Green"
+        android:id="@+id/textGreen"
         />
 
 </LinearLayout>
