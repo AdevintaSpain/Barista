@@ -30,14 +30,26 @@ class ContentDescriptionTest {
   fun assertFailsIfNoContentDescription() {
     val thrown = catchThrowable {
       assertContentDescription(R.id.imageGreen, R.string.content_description_image_color_green)
-      assertContentDescription(R.id.textGreen, R.string.content_description_text_green)
     }
 
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/imageGreen)" +
-                    " didn't match condition (with content description: Image color green)")
+            .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/imageGreen) " +
+                    "didn't match condition (with content description: Image color green)")
+  }
+
+  @Test
+  fun assertFailsIfNotHasContentDescription() {
+    val thrown = catchThrowable {
+      assertHasContentDescription(R.id.imageGreen)
+    }
+
+    spyFailureHandlerRule.assertEspressoFailures(1)
+
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+            .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/imageGreen) " +
+                    "didn't match condition (with content description)")
   }
 
   @Test
