@@ -245,6 +245,13 @@ assertHasBackground(R.id.view, R.drawable.ic_barista);
 assertHasNoBackground(R.id.view);
 ```
 
+#### Does this View have content description?
+```java
+assertHasContentDescription(R.id.anyView);
+assertContentDescription(R.id.anyView, R.string.content_description);
+assertContentDescription(R.id.anyView, "Some text");
+```
+
 #### What's the state of the Drawer?
 ```java
 assertDrawerIsOpen();
