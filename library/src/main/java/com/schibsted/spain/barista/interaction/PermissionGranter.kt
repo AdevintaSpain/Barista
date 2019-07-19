@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
-import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObjectNotFoundException
@@ -14,13 +14,17 @@ import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThr
 object PermissionGranter {
 
     private val PERMISSIONS_DIALOG_DELAY = 3000
-    private val PERMISSIONS_DIALOG_ALLOW_ID = "com.android.packageinstaller:id/permission_allow_button"
+    private val PERMISSIONS_DIALOG_ALLOW_ID = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        "com.android.permissioncontroller:id/permission_allow_button"
+    } else {
+        "com.android.packageinstaller:id/permission_allow_button"
+    }
     //    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
 
     @JvmStatic
     fun allowPermissionsIfNeeded(permissionNeeded: String) {
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(ApplicationProvider.getApplicationContext(),
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
                             permissionNeeded)) {
                 sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
                 val device = UiDevice.getInstance(getInstrumentation())
