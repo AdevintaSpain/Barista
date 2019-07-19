@@ -14,7 +14,7 @@ android:
   - tools
   - platform-tools
   - build-tools-28.0.3
-  - android-28
+  - android-29
   - extra
   - addon
 
