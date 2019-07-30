@@ -13,40 +13,40 @@ import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThr
 
 object PermissionGranter {
 
-    private val PERMISSIONS_DIALOG_DELAY = 3000
-    private val PERMISSIONS_DIALOG_ALLOW_ID = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-        "com.android.permissioncontroller:id/permission_allow_button"
-    } else {
-        "com.android.packageinstaller:id/permission_allow_button"
-    }
-    //    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
+  private val PERMISSIONS_DIALOG_DELAY = 3000
+  private val PERMISSIONS_DIALOG_ALLOW_ID = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+    "com.android.permissioncontroller:id/permission_allow_button"
+  } else {
+    "com.android.packageinstaller:id/permission_allow_button"
+  }
+  //    private static final String PERMISSIONS_DIALOG_DENY_ID = "com.android.packageinstaller:id/permission_deny_button";
 
-    @JvmStatic
-    fun allowPermissionsIfNeeded(permissionNeeded: String) {
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
-                            permissionNeeded)) {
-                sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
-                val device = UiDevice.getInstance(getInstrumentation())
-                val allowPermissions = device.findObject(UiSelector()
-                        .clickable(true)
-                        .checkable(false)
-                        .resourceId(PERMISSIONS_DIALOG_ALLOW_ID))
-                if (allowPermissions.exists()) {
-                    allowPermissions.click()
-                }
-            }
-        } catch (e: UiObjectNotFoundException) {
-            Log.e("Barista", "There is no permissions dialog to interact with", e)
+  @JvmStatic
+  fun allowPermissionsIfNeeded(permissionNeeded: String) {
+    try {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
+              permissionNeeded)) {
+        sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
+        val device = UiDevice.getInstance(getInstrumentation())
+        val allowPermissions = device.findObject(UiSelector()
+            .clickable(true)
+            .checkable(false)
+            .resourceId(PERMISSIONS_DIALOG_ALLOW_ID))
+        if (allowPermissions.exists()) {
+          allowPermissions.click()
         }
+      }
+    } catch (e: UiObjectNotFoundException) {
+      Log.e("Barista", "There is no permissions dialog to interact with", e)
     }
+  }
 
-    private fun hasNeededPermission(context: Context, permissionNeeded: String): Boolean {
-        val permissionStatus = checkSelfPermission(context, permissionNeeded)
-        return permissionStatus == PackageManager.PERMISSION_GRANTED
-    }
+  private fun hasNeededPermission(context: Context, permissionNeeded: String): Boolean {
+    val permissionStatus = checkSelfPermission(context, permissionNeeded)
+    return permissionStatus == PackageManager.PERMISSION_GRANTED
+  }
 
-    private fun checkSelfPermission(context: Context, permission: String): Int {
-        return context.checkPermission(permission, android.os.Process.myPid(), android.os.Process.myUid())
-    }
+  private fun checkSelfPermission(context: Context, permission: String): Int {
+    return context.checkPermission(permission, android.os.Process.myPid(), android.os.Process.myUid())
+  }
 }
