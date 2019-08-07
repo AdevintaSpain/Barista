@@ -258,6 +258,10 @@ public class AssertionsTest {
   public void checkDrawable_withId() throws Exception {
     assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
+  @Test
+  public void checkVectorDrawable_withId() throws Exception {
+    assertHasDrawable(R.id.vector_image_view, R.drawable.barista_logo_vector);
+  }
 
   @Test(expected = BaristaException.class)
   public void checkDrawable_withId_failure() throws Exception {
@@ -267,6 +271,11 @@ public class AssertionsTest {
   @Test
   public void checkDrawable_withAnyDrawable() throws Exception {
     assertHasAnyDrawable(R.id.image_view);
+  }
+
+  @Test
+  public void checkVectorDrawable_withAnyDrawable() throws Exception {
+    assertHasAnyDrawable(R.id.vector_image_view);
   }
 
   @Test(expected = BaristaException.class)
