@@ -110,6 +110,12 @@
       android:layout_height="56dp"
       />
 
+  <com.schibsted.spain.barista.sample.widget.SampleImageView
+      android:id="@+id/custom_code_vector_image_view"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      />
+
   <EditText
       android:id="@+id/edittext_with_focus"
       android:layout_width="match_parent"
