@@ -104,6 +104,12 @@
       android:src="@drawable/barista_logo_vector"
       />
 
+  <ImageView
+      android:id="@+id/code_vector_image_view"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      />
+
   <EditText
       android:id="@+id/edittext_with_focus"
       android:layout_width="match_parent"
