@@ -293,12 +293,12 @@ assertNotContains(R.id.textview, R.string.text);
 
 #### Check text is given color
 ```java
-assertTextColorIs(R.id.someRedText, R.color.red);
-assertTextColorIs(R.id.someColorListText, R.color.state_list);
+assertTextColorIs(R.id.some_red_text, R.color.red);
+assertTextColorIs(R.id.some_color_list_text, R.color.state_list);
 
 // ...or not?
-assertTextColorIsNot(R.id.someRedText, R.color.blue);
-assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
+assertTextColorIsNot(R.id.some_red_text, R.color.blue);
+assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
 #### Check recyclerView item count against expected item count
