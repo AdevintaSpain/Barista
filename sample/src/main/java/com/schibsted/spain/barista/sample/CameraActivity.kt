@@ -32,6 +32,8 @@ class CameraActivity : AppCompatActivity() {
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (requestCode == TAKE_PICTURE_REQUEST_CODE) {
       Glide.with(this).load(getPictureUri()).into(image_view)
+    } else {
+      super.onActivityResult(requestCode, resultCode, data)
     }
   }
 
