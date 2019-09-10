@@ -26,6 +26,7 @@
     <activity android:name=".LabelActivity"/>
     <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
     <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
+    <activity android:name=".ViewPager2Activity"/>
     <activity android:name=".PartiallyVisibleViewPagerActivity"/>
     <activity android:name=".DialogActivity"/>
     <activity android:name=".PreferencesActivity"/>
