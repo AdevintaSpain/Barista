@@ -1,31 +1,25 @@
 package com.schibsted.spain.barista.interaction
 
-import android.content.Context
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.M
-import android.os.Build.VERSION_CODES.Q
-import android.util.Log
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
-import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiSelector
 
-private const val DIALOG_TIMEOUT = 3000L
+private const val DIALOG_TIMEOUT = 1500L
 private const val ALLOW_BUTTON_RESID = "permission_allow_button"
 
 object PermissionGranter {
+  @Suppress("UNUSED_PARAMETER") // kept here for backward compatibility
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
-      if (dialogRequestNeededForPermission(permissionNeeded)) {
+      if (userInputNeededForPermission()) {
         clickGrantPermissionButton()
       }
   }
 
-  private fun dialogRequestNeededForPermission(permissionNeeded: String) =
-          SDK_INT >= M && !hasNeededPermission(getApplicationContext(), permissionNeeded)
+  private fun userInputNeededForPermission() = SDK_INT >= M
 
   private fun clickGrantPermissionButton() {
     val device = createDeviceInstance()
@@ -51,15 +45,6 @@ object PermissionGranter {
               .clickable(true)
               .checkable(false)
               .resourceIdMatches(regex)
-  }
-
-  private fun hasNeededPermission(context: Context, permissionNeeded: String): Boolean {
-    val permissionStatus = checkSelfPermission(context, permissionNeeded)
-    return permissionStatus == PERMISSION_GRANTED
-  }
-
-  private fun checkSelfPermission(context: Context, permission: String): Int {
-    return context.checkPermission(permission, android.os.Process.myPid(), android.os.Process.myUid())
   }
 
 }
