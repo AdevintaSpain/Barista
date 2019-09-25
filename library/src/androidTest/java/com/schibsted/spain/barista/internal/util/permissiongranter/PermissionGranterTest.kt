@@ -1,39 +1,49 @@
 package com.schibsted.spain.barista.internal.util.permissiongranter
 
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObjectNotFoundException
+import androidx.test.uiautomator.UiSelector
 import com.schibsted.spain.barista.interaction.PermissionGranter.allowPermissionsIfNeeded
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
-import org.junit.Rule
 import org.junit.Test
 
-class PermissionGranterTest: TestFixtures() {
+class PermissionGranterTest : TestFixtures() {
+    private val uiTimeout = 500L
+    private val grantPermissionButtonSelector
+    get() = UiSelector()
+            .clickable(true)
+            .checkable(false)
+            .resourceIdMatches(".*permission_allow_button")
 
     @Test
     fun grantOneNeededPermission() {
-        var granted = hasPermission(notGrantedA)
-        assumeFalse(granted)
+        assumeFalse(hasPermission(notGrantedA))
 
-        activity.requestPermissions(arrayOf(notGrantedA), requestCode)
+        requestPermission(notGrantedA)
+        assumeTrue(isPermissionButtonDisplayed())
+
         allowPermissionsIfNeeded(notGrantedA)
 
-        granted = hasPermission(notGrantedA)
-        assertTrue(granted)
+        assertTrue(isPermissionButtonGone())
+        assertTrue(hasPermission(notGrantedA))
     }
 
     @Test
     fun requestOneAlreadyGranted() {
-        var granted = hasPermission(grantedA)
-        assumeTrue(granted)
+        assumeTrue(hasPermission(grantedA))
 
-        activity.requestPermissions(arrayOf(grantedA), requestCode)
+        requestPermission(grantedA)
+        assumeTrue(isPermissionButtonDisplayed())
+
         allowPermissionsIfNeeded(grantedA)
 
-        granted = hasPermission(grantedA)
-        assertTrue(granted)
+        assertTrue(isPermissionButtonGone())
+        assertTrue(hasPermission(grantedA))
     }
 
     // Cannot request a permission not requested in the manifest
@@ -42,11 +52,30 @@ class PermissionGranterTest: TestFixtures() {
         val granted = hasPermission(notInManifest)
         assumeFalse(granted)
 
-        activity.requestPermissions(arrayOf(notInManifest), requestCode)
-        allowPermissionsIfNeeded(notInManifest)
-    }
+        requestPermission(notInManifest)
+        assumeFalse(isPermissionButtonDisplayed())
 
+        allowPermissionsIfNeeded(notInManifest)
+
+        assertTrue(isPermissionButtonGone())
+        assertFalse(hasPermission(notInManifest))
+    }
 
     private fun hasPermission(permission: String) =
             activity.checkSelfPermission(permission) == PERMISSION_GRANTED
+
+    private fun requestPermission(vararg permission: String) =
+            activity.requestPermissions(permission, requestCode)
+
+    private fun isPermissionButtonDisplayed(): Boolean {
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        return device.findObject(grantPermissionButtonSelector).waitForExists(uiTimeout)
+    }
+
+    private fun isPermissionButtonGone() : Boolean {
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        return device.findObject(grantPermissionButtonSelector).waitUntilGone(uiTimeout)
+    }
+
+
 }
