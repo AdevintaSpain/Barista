@@ -12,6 +12,7 @@ abstract class TestFixtures {
     protected val grantedB = CAMERA
     protected val notGrantedA = READ_CONTACTS
     protected val notGrantedB = CALL_PHONE
+    protected val notInManifest = ACCESS_WIFI_STATE
 
     protected val requestCode = 100
 
@@ -22,5 +23,5 @@ abstract class TestFixtures {
         get() = activityRule.activity
 
     @get:Rule
-    val grantPermissions = GrantPermissionRule.grant(grantedA, grantedB)
+    val grantPermissions: GrantPermissionRule = GrantPermissionRule.grant(grantedA, grantedB)
 }
