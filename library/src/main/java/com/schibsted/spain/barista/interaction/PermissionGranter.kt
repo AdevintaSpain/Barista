@@ -19,13 +19,9 @@ private const val ALLOW_BUTTON_RESID = "permission_allow_button"
 object PermissionGranter {
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
-    try {
       if (dialogRequestNeededForPermission(permissionNeeded)) {
         clickGrantPermissionButton()
       }
-    } catch (e: UiObjectNotFoundException) {
-      Log.e("Barista", "There is no permissions dialog to interact with", e)
-    }
   }
 
   private fun dialogRequestNeededForPermission(permissionNeeded: String) =
