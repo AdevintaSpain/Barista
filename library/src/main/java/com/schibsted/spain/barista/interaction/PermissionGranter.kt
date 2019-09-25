@@ -9,7 +9,6 @@ import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiSelector
-import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThread
 
 object PermissionGranter {
 
@@ -26,7 +25,7 @@ object PermissionGranter {
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
               permissionNeeded)) {
-        sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
+        Thread.sleep(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
         val allowPermissions = device.findObject(UiSelector()
             .clickable(true)

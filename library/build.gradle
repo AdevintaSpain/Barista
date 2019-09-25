@@ -10,6 +10,12 @@ android {
     minSdkVersion minSdkVersionDeclared
     targetSdkVersion compileSdkVersionDeclared
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArguments clearPackageData: 'true'
+  }
+
+  testOptions {
+    animationsDisabled true
+    execution 'ANDROIDX_TEST_ORCHESTRATOR'
   }
 
   lintOptions {
@@ -34,6 +40,11 @@ dependencies {
   testImplementation 'pl.pragmatists:JUnitParams:1.1.0'
   testImplementation 'org.assertj:assertj-core:1.7.0'
   testImplementation 'org.mockito:mockito-core:2.13.0'
+
+  androidTestImplementation 'androidx.test:core:1.1.0'
+  androidTestImplementation 'androidx.test:runner:1.1.1'
+  androidTestImplementation 'androidx.test:rules:1.1.1'
+
 }
 
 publish {
