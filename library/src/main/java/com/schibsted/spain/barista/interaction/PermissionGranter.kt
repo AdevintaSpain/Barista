@@ -14,11 +14,7 @@ import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiSelector
 
 private const val DIALOG_TIMEOUT = 3000L
-private val PERMISSIONS_DIALOG_ALLOW_ID = if (SDK_INT >= Q) {
-  "com.android.permissioncontroller:id/permission_allow_button"
-} else {
-  "com.android.packageinstaller:id/permission_allow_button"
-}
+private const val ALLOW_BUTTON_RESID = "permission_allow_button"
 
 object PermissionGranter {
   @JvmStatic
@@ -51,13 +47,15 @@ object PermissionGranter {
   }
 
   private fun UiDevice.findGrantPermissionButton() : UiObject =
-          findObject(dialogButtonSelector(PERMISSIONS_DIALOG_ALLOW_ID))
+          findObject(dialogButtonSelector(ALLOW_BUTTON_RESID))
 
-  private fun dialogButtonSelector(resId: String) : UiSelector =
-          UiSelector()
-            .clickable(true)
-            .checkable(false)
-            .resourceId(resId)
+  private fun dialogButtonSelector(resId: String) : UiSelector {
+      val regex = ".*$resId"
+      return UiSelector()
+              .clickable(true)
+              .checkable(false)
+              .resourceIdMatches(regex)
+  }
 
   private fun hasNeededPermission(context: Context, permissionNeeded: String): Boolean {
     val permissionStatus = checkSelfPermission(context, permissionNeeded)
