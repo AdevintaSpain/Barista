@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,5 +30,87 @@
       android:checked="false"
       android:id="@+id/uncheckedChip"
       />
+
+
+  <com.google.android.material.chip.ChipGroup
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/singleSelectionChildGroup"
+      app:singleSelection="true"
+      >
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 1"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/chip1"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 2"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/chip2"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 3"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/chip3"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 4"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/chip4"
+        />
+
+  </com.google.android.material.chip.ChipGroup>
+
+  <com.google.android.material.chip.ChipGroup
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/multiSelectionChildGroup"
+      >
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 1"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/multiChip1"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 2"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/multiChip2"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 3"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/multiChip3"
+        />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chip 4"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:id="@+id/multiChip4"
+        />
+
+  </com.google.android.material.chip.ChipGroup>
 
 </LinearLayout>
