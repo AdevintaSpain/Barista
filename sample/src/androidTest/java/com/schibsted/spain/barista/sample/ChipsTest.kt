@@ -1,10 +1,11 @@
 package com.schibsted.spain.barista.sample
 
 import androidx.test.rule.ActivityTestRule
-import com.schibsted.spain.barista.BaristaChipAssertions.assertAnyChipSelected
-import com.schibsted.spain.barista.BaristaChipAssertions.assertChipsSelected
 import com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertChecked
 import com.schibsted.spain.barista.assertion.BaristaCheckedAssertions.assertUnchecked
+import com.schibsted.spain.barista.assertion.BaristaChipAssertions.assertAnyChipSelected
+import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
+import com.schibsted.spain.barista.interaction.BaristaChipInteractions.closeChip
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
 import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule
 import org.junit.Rule
@@ -40,13 +41,12 @@ class ChipsTest {
 
     spyFailureHandlerRule.assertNoEspressoFailures()
   }
-
+  
   @Test
-  fun checkOnChipOnChipGroup_hasChipsSelected() {
-    clickOn(R.id.multiChip1)
-    clickOn(R.id.multiChip2)
+  fun assertCloseChip() {
+    closeChip(R.id.closeChip)
 
-    assertChipsSelected(R.id.multiChip1, R.id.multiChip2)
+    assertDisplayed(R.id.closeChipText)
 
     spyFailureHandlerRule.assertNoEspressoFailures()
   }

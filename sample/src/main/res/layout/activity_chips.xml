@@ -31,6 +31,22 @@
       android:id="@+id/uncheckedChip"
       />
 
+  <com.google.android.material.chip.Chip
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Close"
+      style="@style/Widget.MaterialComponents.Chip.Entry"
+      android:checked="false"
+      android:id="@+id/closeChip"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      android:id="@+id/closeChipText"
+      android:text="closed"
+      />
 
   <com.google.android.material.chip.ChipGroup
       android:layout_width="match_parent"
