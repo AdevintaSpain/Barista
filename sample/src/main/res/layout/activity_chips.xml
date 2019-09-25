@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+  <com.google.android.material.chip.Chip
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Chip"
+      android:id="@+id/chip"
+      />
+
+  <com.google.android.material.chip.Chip
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Checked"
+      style="@style/Widget.MaterialComponents.Chip.Choice"
+      android:checked="true"
+      android:id="@+id/checkedChip"
+      />
+
+  <com.google.android.material.chip.Chip
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Unchecked"
+      style="@style/Widget.MaterialComponents.Chip.Choice"
+      android:checked="false"
+      android:id="@+id/uncheckedChip"
+      />
+
+</LinearLayout>
