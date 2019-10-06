@@ -27,8 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.1.0') {
-  exclude group: 'com.android.support'
+androidTestImplementation('com.schibsted.spain:barista:3.2.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -79,14 +78,14 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.listId, 5)
-assertListNotEmpty(R.id.listId)
-assertDisplayedAtPosition(R.id.recycler, 0, "text");
-assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.recycler, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, R.string.hello_world);
+assertListItemCount(R.id.list, 5)
+assertListNotEmpty(R.id.list)
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
 assertDrawableDisplayedAtPosition(R.id.recycler, 0, R.id.imageview, R.drawable.ic_barista);
-assertCustomAssertionAtPosition(R.id.recycler, 0, customViewAssertion);
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -246,6 +245,13 @@ assertHasBackground(R.id.view, R.drawable.ic_barista);
 assertHasNoBackground(R.id.view);
 ```
 
+#### Does this View have content description?
+```java
+assertHasContentDescription(R.id.anyView);
+assertContentDescription(R.id.anyView, R.string.content_description);
+assertContentDescription(R.id.anyView, "Some text");
+```
+
 #### What's the state of the Drawer?
 ```java
 assertDrawerIsOpen();
@@ -288,12 +294,12 @@ assertNotContains(R.id.textview, R.string.text);
 
 #### Check text is given color
 ```java
-assertTextColorIs(R.id.someRedText, R.color.red);
-assertTextColorIs(R.id.someColorListText, R.color.state_list);
+assertTextColorIs(R.id.some_red_text, R.color.red);
+assertTextColorIs(R.id.some_color_list_text, R.color.state_list);
 
 // ...or not?
-assertTextColorIsNot(R.id.someRedText, R.color.blue);
-assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
+assertTextColorIsNot(R.id.some_red_text, R.color.blue);
+assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
 #### Check recyclerView item count against expected item count

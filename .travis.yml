@@ -1,5 +1,6 @@
 language: android
 jdk: oraclejdk8
+dist: trusty
 branches:
   only:
   - master
@@ -14,7 +15,7 @@ android:
   - tools
   - platform-tools
   - build-tools-28.0.3
-  - android-28
+  - android-29
   - extra
   - addon
 

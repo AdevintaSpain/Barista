@@ -42,5 +42,10 @@
   <string name="unexising_text">unexisting text</string>
 
 
+  <string name="content_description_image_color_blue">Image color blue</string>
+  <string name="content_description_text_blue">Text blue</string>
+
+  <string name="content_description_image_color_green">Image color green</string>
+  <string name="content_description_text_green">Text green</string>
 
 </resources>
