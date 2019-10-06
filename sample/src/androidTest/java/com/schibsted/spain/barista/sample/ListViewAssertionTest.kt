@@ -153,7 +153,7 @@ class ListViewAssertionTest {
     openComplexListActivity()
     assertDrawableDisplayedAtPosition(
         listId = R.id.listview,
-        position = 10,
+        position = 0,
         drawableRes = R.drawable.ic_barista
     )
   }
@@ -163,9 +163,20 @@ class ListViewAssertionTest {
     openComplexListActivity()
     assertDrawableDisplayedAtPosition(
         listId = R.id.listview,
-        position = 4,
+        position = 1,
         targetViewId = R.id.imageview,
         drawableRes = R.drawable.ic_barista
+    )
+  }
+
+  @Test(expected = AssertionFailedError::class)
+  fun shouldFailWhenUnableToFindItemInListViewWithSpecificDrawable() {
+    openComplexListActivity()
+    assertDrawableDisplayedAtPosition(
+            listId = R.id.listview,
+            position = 4,
+            targetViewId = R.id.imageview,
+            drawableRes = R.drawable.ic_barista
     )
   }
 
