@@ -7,7 +7,10 @@ import com.schibsted.spain.barista.assertion.BaristaChipAssertions.assertAnyChip
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaChipInteractions.closeChip
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException
 import com.schibsted.spain.barista.sample.util.SpyFailureHandlerRule
+import junit.framework.AssertionFailedError
+import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.ThrowableAssert.catchThrowable
 import org.junit.Rule
 import org.junit.Test
@@ -38,8 +41,11 @@ class ChipsTest {
   fun assertUncheckedChip_failsWhenNeeded() {
     val thrown = catchThrowable{assertUnchecked(R.id.checkedChip)}
 
-
     spyFailureHandlerRule.assertEspressoFailures(1)
+
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+            .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/checkedChip) didn't match condition (not with checkbox state: is <true>)")
+            .hasCauseInstanceOf(AssertionFailedError::class.java)
   }
 
   @Test
@@ -56,6 +62,10 @@ class ChipsTest {
     val thrown = catchThrowable{assertAnyChipSelected(R.id.singleSelectionChildGroup)}
 
     spyFailureHandlerRule.assertEspressoFailures(1)
+
+    assertThat(thrown).isInstanceOf(BaristaException::class.java)
+            .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/singleSelectionChildGroup) didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
+            .hasCauseInstanceOf(AssertionFailedError::class.java)
   }
 
   @Test
