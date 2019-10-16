@@ -69,7 +69,7 @@ class ChipsTest {
   }
 
   @Test
-  fun assertCloseChip() {
+  fun testCloseChip() {
     closeChip(R.id.closeChip)
 
     assertDisplayed("A chip has been closed")
