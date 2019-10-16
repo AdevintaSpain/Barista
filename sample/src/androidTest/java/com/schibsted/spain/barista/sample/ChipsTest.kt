@@ -72,7 +72,7 @@ class ChipsTest {
   fun assertCloseChip() {
     closeChip(R.id.closeChip)
 
-    assertDisplayed(R.id.closeChipText)
+    assertDisplayed("A chip has been closed")
 
     spyFailureHandlerRule.assertNoEspressoFailures()
   }

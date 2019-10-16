@@ -34,7 +34,7 @@
   <com.google.android.material.chip.Chip
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Close"
+      android:text="A chip has been closed"
       style="@style/Widget.MaterialComponents.Chip.Entry"
       android:checked="false"
       android:id="@+id/closeChip"
