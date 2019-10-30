@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaScrollInteractions.safelyScrollTo;
@@ -21,6 +22,15 @@ public class ScrollsTest {
 
   @Rule
   public FailureHandlerValidatorRule handlerValidator = new FailureHandlerValidatorRule();
+
+  @Test
+  public void scrollsInsideScrollable_byCustomMatcher() {
+    assertTopVisible();
+
+    scrollTo(withId(R.id.really_far_away_button));
+
+    assertBottomVisible();
+  }
 
   @Test
   public void scrollsInsideScrollable_byId() {
@@ -54,6 +64,15 @@ public class ScrollsTest {
     assertTopVisible();
 
     scrollTo(R.id.centered_button);
+  }
+
+  @Test
+  public void safelyScrollsInsideScrollable_byCustomMatcher() throws Exception {
+    assertTopVisible();
+
+    safelyScrollTo(withId(R.id.really_far_away_button));
+
+    assertBottomVisible();
   }
 
   @Test
