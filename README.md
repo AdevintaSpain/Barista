@@ -353,10 +353,17 @@ assertAny<RadioGroup>(R.id.radioGroup, "selected option is the second one") {
 }
 ```
 
-## Barista’s Intents API
+## Mocking the Intent results
+
+Mocking the Android Camera Intent is a tricky thing to do. To accomplish it in no time, Barista gives a way to do it in one line: the method `mockAndroidCamera()`. This method does all the magic to mock the result of the camera. One more thing to do: you have to call `Intents.init()` before calling `mockAndroidCamera()`, and `Intents.release()` after doing the action that launches the camera. You could also use `IntentsTestRule` instead of the common `ActivityTestRule` to skip it, but as we recommend the use of `BaristaRule`, it's easier to just call both methods manually when needed.
+
+Here's an example to copy paste:
+
 ```java
-// Creates a Bitmap on a camera provided URI
+Intents.init();
 mockAndroidCamera();
+clickOn(R.id.launch_camera);
+Intents.release();
 ```
 
 ## Runtime Permissions
