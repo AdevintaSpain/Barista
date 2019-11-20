@@ -66,6 +66,11 @@ longClickOn("Next");
 clickMenu(R.id.menu_item);
 ```
 
+#### Open the overflow menu without clicking any item
+```java
+openMenu();
+```
+
 #### Writing into widgets
 ```java
 writeTo(R.id.edittext, "A great text");
