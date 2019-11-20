@@ -53,6 +53,11 @@ object BaristaMenuClickInteractions {
     }
   }
 
+  @JvmStatic
+  fun openMenu() {
+    openOverflow()
+  }
+
   private fun clickDisplayedView(matcher: Matcher<View>, spyFailureHandler: SpyFailureHandler) {
     onView(displayedAnd(matcher)).withFailureHandler(spyFailureHandler).perform(click())
   }
