@@ -3,6 +3,7 @@ package com.schibsted.spain.barista.sample;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
+import com.schibsted.spain.barista.rule.flaky.AllowFlaky;
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -52,12 +53,14 @@ public class MenuClickTest {
   }
 
   @Test
+  @AllowFlaky(attempts = 10)
   public void overflowMenuClick_byTitle() {
     clickMenu("Menu 3");
     assertDisplayed("Third menu option");
   }
 
   @Test
+  @AllowFlaky(attempts = 10)
   public void openOverflowMenu_withoutClickingAnyOption() {
     openMenu();
     assertDisplayed("Menu 3");
