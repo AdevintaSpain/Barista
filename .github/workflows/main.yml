@@ -20,3 +20,9 @@ jobs:
       with:
         api-level: 29
         script: ./gradlew connectedCheck
+
+    - uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+        restore-keys: ${{ runner.os }}-gradle-
