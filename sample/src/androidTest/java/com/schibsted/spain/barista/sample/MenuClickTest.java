@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaMenuClickInteractions.clickMenu;
+import static com.schibsted.spain.barista.interaction.BaristaMenuClickInteractions.openMenu;
 
 @RunWith(AndroidJUnit4.class)
 public class MenuClickTest {
@@ -54,6 +55,13 @@ public class MenuClickTest {
   public void overflowMenuClick_byTitle() {
     clickMenu("Menu 3");
     assertDisplayed("Third menu option");
+  }
+
+  @Test
+  public void openOverflowMenu_withoutClickingAnyOption() {
+    openMenu();
+    assertDisplayed("Menu 3");
+    assertDisplayed("Menu 4");
   }
 
   @Test(expected = BaristaException.class)
