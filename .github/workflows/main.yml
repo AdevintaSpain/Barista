@@ -15,10 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       name: Checkout
-    - uses: reactivecircus/android-emulator-runner@v1
+    - uses: ReactiveCircus/android-emulator-runner@v1.0.2
       name: Run tests
       with:
         api-level: 29
+        headless: true
+        disable-animations: true
         script: ./gradlew connectedCheck
 
     - uses: actions/cache@v1
