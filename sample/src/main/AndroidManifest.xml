@@ -19,6 +19,7 @@
     <activity android:name=".RadioButtonsActivity"/>
     <activity android:name=".CheckBoxActivity"/>
     <activity android:name=".EditTextActivity"/>
+    <activity android:name=".TestAtPositionActivity"/>
     <activity android:name=".PickersActivity"/>
     <activity android:name=".AutoCompleteTextViewActivity"/>
     <activity android:name=".SpinnerActivity"/>
