@@ -22,6 +22,7 @@ import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.
 public class AtPositionTest {
 
     private static final int THIRD_POSITION = 2;
+    private static final String THIRD_POSITION_TEXT = "3";
 
     @Rule
     public ActivityTestRule<TestAtPositionActivity> activityRule =
@@ -33,18 +34,19 @@ public class AtPositionTest {
      */
     @Test
     public void useViewElementFoundWithAtPositionOnce() {
-       Matcher<View> thirdTextView = HelperMatchers.atPosition(THIRD_POSITION, ViewMatchers.isAssignableFrom(TextView.class));
-       assertDisplayed(thirdTextView);
+        Matcher<View> thirdTextView = HelperMatchers.atPosition(THIRD_POSITION, ViewMatchers.isAssignableFrom(TextView.class));
+        assertDisplayed(thirdTextView);
     }
 
     /**
      * This test fails if the counter used in atPosition is not set back to 0
      */
-    @Test (expected = BaristaException.class)
+    @Test
     public void useViewElementFoundWithAtPositionTwice() {
         Matcher<View> thirdTextView = HelperMatchers.atPosition(THIRD_POSITION, ViewMatchers.isAssignableFrom(TextView.class));
         assertDisplayed(thirdTextView);
         assertDisplayed(thirdTextView);
+        assertDisplayed(THIRD_POSITION_TEXT);
     }
 
 }
