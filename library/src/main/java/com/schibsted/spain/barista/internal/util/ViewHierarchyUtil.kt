@@ -16,18 +16,18 @@ private const val START_INDEX = 0
  * @return list of view's that are child of the view and the view itself
  */
 internal fun getViewHierarchyOf(view: View): List<View> {
-    val undiscovered = ArrayList<View>()
-    undiscovered.add(view)
-    val discovered = ArrayList<View>()
-    while (!undiscovered.isEmpty()) {
-        val childView = undiscovered.removeAt(START_INDEX)
-        discovered.add(childView)
-        if (childView !is ViewGroup) {
-            continue
-        }
-        for (index in START_INDEX until childView.childCount) {
-            undiscovered.add(childView.getChildAt(index))
-        }
+  val undiscovered = ArrayList<View>()
+  undiscovered.add(view)
+  val discovered = ArrayList<View>()
+  while (!undiscovered.isEmpty()) {
+    val childView = undiscovered.removeAt(START_INDEX)
+    discovered.add(childView)
+    if (childView !is ViewGroup) {
+      continue
     }
-    return discovered
+    for (index in START_INDEX until childView.childCount) {
+      undiscovered.add(childView.getChildAt(index))
+    }
+  }
+  return discovered
 }
