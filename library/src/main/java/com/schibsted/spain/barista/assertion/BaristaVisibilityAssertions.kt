@@ -10,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
 import androidx.test.platform.app.InstrumentationRegistry
+import com.schibsted.spain.barista.assertion.BaristaAssertions.assertAny
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
 import com.schibsted.spain.barista.internal.util.resourceMatcher
@@ -43,6 +44,13 @@ object BaristaVisibilityAssertions {
   @JvmStatic
   fun assertDisplayed(@IdRes viewId: Int, @StringRes stringId: Int) {
     viewId.resourceMatcher().assertAny(withText(stringId))
+  }
+
+  @JvmStatic
+  fun assertParentDisplayed(@IdRes viewId: Int) {
+    assertAny<View>(viewId.resourceMatcher()) {
+      (it.parent as View).visibility == View.VISIBLE
+    }
   }
 
   @JvmStatic
