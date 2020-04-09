@@ -269,11 +269,6 @@ public class AssertionsTest {
     assertHasDrawable(R.id.code_vector_image_view, R.drawable.barista_logo_vector);
   }
 
-  @Test
-  public void checkVectorDrawableFromCodeInCustomImageVIew_withId() throws Exception {
-    assertHasDrawable(R.id.custom_code_vector_image_view, R.drawable.barista_logo_vector);
-  }
-
   @Test(expected = BaristaException.class)
   public void checkDrawable_withId_failure() throws Exception {
     assertHasDrawable(R.id.image_view, R.drawable.ic_action_menu);
@@ -292,11 +287,6 @@ public class AssertionsTest {
   @Test
   public void checkVectorDrawableFromCode_withAnyDrawable() throws Exception {
     assertHasAnyDrawable(R.id.code_vector_image_view);
-  }
-
-  @Test
-  public void checkVectorDrawableFromCodeInCustomImageView_withAnyDrawable() throws Exception {
-    assertHasAnyDrawable(R.id.custom_code_vector_image_view);
   }
 
   @Test(expected = BaristaException.class)
@@ -415,5 +405,15 @@ public class AssertionsTest {
   @Test(expected = AssertionFailedError.class)
   public void checkTextViewDoesntContainsResourceText_withoutViewId_failsWhenNeeded() {
     assertNotContains(R.string.enabled);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkVectorDrawable_fails() {
+    assertHasDrawable(R.id.vector_image_view, R.drawable.barista_logo_vector_2);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkAnyDrawable_fails() {
+    assertHasAnyDrawable(R.id.no_drawable_image);
   }
 }

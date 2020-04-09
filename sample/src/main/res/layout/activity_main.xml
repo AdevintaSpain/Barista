@@ -105,13 +105,13 @@
       />
 
   <ImageView
-      android:id="@+id/code_vector_image_view"
+      android:id="@+id/no_drawable_image"
       android:layout_width="56dp"
       android:layout_height="56dp"
       />
 
-  <com.schibsted.spain.barista.sample.widget.SampleImageView
-      android:id="@+id/custom_code_vector_image_view"
+  <ImageView
+      android:id="@+id/code_vector_image_view"
       android:layout_width="56dp"
       android:layout_height="56dp"
       />
