@@ -16,7 +16,7 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
 
   override fun matchesSafely(textView: TextView): Boolean {
 
-    colorName = when(expectedColor.colorResourceType) {
+    colorName = when (expectedColor.colorResourceType) {
       ColorResourceType.COLOR_RES -> textView.context.resources.getResourceEntryName(expectedColor)
       ColorResourceType.COLOR_ATTR -> textView.context.resources.getResourceEntryName(expectedColor)
       ColorResourceType.COLOR_INT -> "$expectedColor"
@@ -50,10 +50,16 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
   }
 
   override fun describeTo(description: Description) {
-    if (colorName == null) {
-      description.appendText("with text color: [$expectedColor]")
+    if (colorName != null) {
+      val text = when (expectedColor.colorResourceType) {
+        ColorResourceType.COLOR_RES -> "with text color resource: [$colorName]"
+        ColorResourceType.COLOR_INT -> "with text color: [$expectedColor]"
+        ColorResourceType.COLOR_ATTR -> "with text color attribute: [$colorName]"
+      }
+
+      description.appendText(text)
     } else {
-      description.appendText("with text color: [$colorName]")
+      description.appendText("with text color: [$expectedColor]")
     }
   }
 }
