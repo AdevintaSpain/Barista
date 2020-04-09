@@ -33,6 +33,26 @@
       android:textColor="@color/selector_default_disabled_checked"
       />
 
+  <TextView
+      android:id="@+id/textColorAttribute"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:enabled="false"
+      android:text="Text from attribute"
+      android:layout_marginBottom="16dp"
+      android:textColor="?colorPrimary"
+      />
+
+  <TextView
+      android:id="@+id/textColorInt"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:enabled="false"
+      android:text="Text from color"
+      android:layout_marginBottom="16dp"
+      android:textColor="#FF0000"
+      />
+
   <CheckBox
       android:id="@+id/textSelectorChecked"
       android:layout_width="wrap_content"

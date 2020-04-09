@@ -25,4 +25,10 @@ class ColorResourceTypeTest {
     val type = Color.BLUE.colorResourceType
     assertEquals(type, ColorResourceType.COLOR_INT)
   }
+
+  @Test
+  fun color_resource_type_color_state_list() {
+    val type = R.color.selector_default_disabled_checked.colorResourceType
+    assertEquals(type, ColorResourceType.COLOR_RES)
+  }
 }
