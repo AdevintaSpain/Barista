@@ -12,7 +12,6 @@ import android.view.View
 import androidx.test.platform.app.InstrumentationRegistry
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
-import com.schibsted.spain.barista.internal.util.colorResourceType
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
@@ -126,12 +125,12 @@ object BaristaVisibilityAssertions {
   }
 
   @JvmStatic
-  fun assertTextColorIs(@IdRes viewId: Int, @ColorRes colorRes: Int) {
-    viewId.resourceMatcher().assertAny(TextColorMatcher(colorRes))
+  fun assertTextColorIs(@IdRes viewId: Int, color: Int) {
+    viewId.resourceMatcher().assertAny(TextColorMatcher(color))
   }
 
   @JvmStatic
-  fun assertTextColorIsNot(@IdRes viewId: Int, @ColorRes colorRes: Int) {
-    viewId.resourceMatcher().assertAny(not(TextColorMatcher(colorRes)))
+  fun assertTextColorIsNot(@IdRes viewId: Int, color: Int) {
+    viewId.resourceMatcher().assertAny(not(TextColorMatcher(color)))
   }
 }
