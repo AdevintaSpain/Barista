@@ -6,17 +6,21 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
 import androidx.test.espresso.matcher.BoundedMatcher
+import com.schibsted.spain.barista.internal.util.ColorResourceType
+import com.schibsted.spain.barista.internal.util.colorResourceType
 import org.hamcrest.Description
 
 class TextStyleableColorMatcher(
     @StyleableRes private val styleableRes: IntArray,
     @StyleRes private val styleRes: Int,
-    @AttrRes private val attrColor: Int
+    @StyleableRes private val attrColor: Int
 ) : BoundedMatcher<View, TextView>(TextView::class.java) {
 
-    private var colorName: String? = null
+    private var styleResName: String? = null
 
     override fun matchesSafely(textView: TextView): Boolean {
+        styleResName = textView.context.resources.getResourceEntryName(styleRes)
+
         return matchesColor(textView) || matchesColorList(textView)
     }
 
@@ -61,6 +65,6 @@ class TextStyleableColorMatcher(
     }
 
     override fun describeTo(description: Description) {
-        description.appendText("pending text")
+        description.appendText("with style matching [$styleResName]")
     }
 }
