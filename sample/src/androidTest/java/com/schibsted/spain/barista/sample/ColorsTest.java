@@ -112,6 +112,10 @@ public class ColorsTest {
   @Test(expected = BaristaException.class)
   public void checkColorStyleable_fail() {
     assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_Green, R.styleable.SampleCustomView_customColor);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkNotColorStyleable_fail() {
     assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle, R.styleable.SampleCustomView_customColor);
   }
 }

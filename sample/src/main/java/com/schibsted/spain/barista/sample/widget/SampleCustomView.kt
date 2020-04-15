@@ -32,6 +32,7 @@ constructor(
     LayoutInflater.from(context).inflate(R.layout.sample_custom_view, this, true)
     layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
+    customTextView.text = "Demo text"
     customTextView.setTextColor(customColor)
   }
 }

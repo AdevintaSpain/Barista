@@ -27,4 +27,12 @@
     <item name="otherColor">#FF0000</item>
   </style>
 
+  <style name="SampleCustomStyle.ColorState">
+    <item name="customColor">@color/selector_default_disabled_checked</item>
+  </style>
+
+  <style name="SampleCustomStyle.ColorState.Secondary">
+    <item name="customColor">@color/secondary_selector_default_disabled_checked</item>
+  </style>
+
 </resources>
