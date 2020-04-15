@@ -22,18 +22,38 @@ public class ColorsSecondaryTest {
 
   @Test
   public void checkColorStyleable_colorStateList() {
-    assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_ColorState, R.styleable.SampleCustomView_customColor);
+    assertTextColorIs(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_ColorState,
+        R.styleable.SampleCustomView_customColor
+    );
 
-    assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_ColorState_Secondary, R.styleable.SampleCustomView_otherColor);
+    assertTextColorIsNot(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_ColorState_Secondary,
+        R.styleable.SampleCustomView_otherColor
+    );
   }
 
   @Test(expected = BaristaException.class)
   public void checkColorStyleable_colorStateList_fail() {
-    assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_ColorState_Secondary, R.styleable.SampleCustomView_customColor);
+    assertTextColorIs(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_ColorState_Secondary,
+        R.styleable.SampleCustomView_customColor
+    );
   }
 
   @Test(expected = BaristaException.class)
   public void checkNotColorStyleable_colorStateList_fail() {
-    assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_ColorState, R.styleable.SampleCustomView_customColor);
+    assertTextColorIsNot(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_ColorState,
+        R.styleable.SampleCustomView_customColor
+    );
   }
 }
