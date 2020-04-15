@@ -7,6 +7,7 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+    <item name="sampleCustomViewStyle">@style/SampleCustomStyle</item>
   </style>
 
   <style name="MaterialAppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"/>
@@ -14,6 +15,16 @@
   <style name="AppTheme.NoActionBar">
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
+  </style>
+
+  <style name="SampleCustomStyle">
+    <item name="customColor">#FF0000</item>
+    <item name="otherColor">#00FF00</item>
+  </style>
+
+  <style name="SampleCustomStyle.Green">
+    <item name="customColor">#00FF00</item>
+    <item name="otherColor">#FF0000</item>
   </style>
 
 </resources>
