@@ -41,7 +41,31 @@ public class ColorsTest {
   @Test
   public void checkColorInt() {
     assertTextColorIs(R.id.textColorInt, Color.parseColor("#ff0000"));
-    assertTextColorIsNot(R.id.textColorInt,  Color.parseColor("#ff00ff"));
+    assertTextColorIsNot(R.id.textColorInt, Color.parseColor("#ff00ff"));
+  }
+
+  @Test
+  public void checkColorStyleable() {
+    assertTextColorIs(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle,
+        R.styleable.SampleCustomView_customColor
+    );
+
+    assertTextColorIsNot(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_Green,
+        R.styleable.SampleCustomView_customColor
+    );
+
+    assertTextColorIsNot(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle,
+        R.styleable.SampleCustomView_otherColor
+    );
   }
 
   @Test
@@ -99,5 +123,25 @@ public class ColorsTest {
   @Test(expected = BaristaException.class)
   public void checkColorList_whenChecked_fails() {
     assertTextColorIs(R.id.textSelectorChecked, R.color.disabled);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkColorStyleable_fail() {
+    assertTextColorIs(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle_Green,
+        R.styleable.SampleCustomView_customColor
+    );
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkNotColorStyleable_fail() {
+    assertTextColorIsNot(
+        R.id.customTextView,
+        R.styleable.SampleCustomView,
+        R.style.SampleCustomStyle,
+        R.styleable.SampleCustomView_customColor
+    );
   }
 }

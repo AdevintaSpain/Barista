@@ -1,17 +1,20 @@
 package com.schibsted.spain.barista.assertion
 
-import androidx.annotation.ColorRes
+import android.view.View
+import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.annotation.StyleRes
+import androidx.annotation.StyleableRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import android.view.View
 import androidx.test.platform.app.InstrumentationRegistry
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
+import com.schibsted.spain.barista.internal.matcher.TextStyleableColorMatcher
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
@@ -132,5 +135,31 @@ object BaristaVisibilityAssertions {
   @JvmStatic
   fun assertTextColorIsNot(@IdRes viewId: Int, color: Int) {
     viewId.resourceMatcher().assertAny(not(TextColorMatcher(color)))
+  }
+
+  @JvmStatic
+  fun assertTextColorIs(
+      @IdRes viewId: Int,
+      @StyleableRes styleableRes: IntArray,
+      @StyleRes styleRes: Int,
+      @StyleableRes attrColor: Int
+  ) {
+    viewId.resourceMatcher().assertAny(TextStyleableColorMatcher(
+        styleableRes, styleRes, attrColor
+    ))
+  }
+
+  @JvmStatic
+  fun assertTextColorIsNot(
+      @IdRes viewId: Int,
+      @StyleableRes styleableRes: IntArray,
+      @StyleRes styleRes: Int,
+      @StyleableRes attrColor: Int
+  ) {
+    viewId.resourceMatcher().assertAny(not(
+        TextStyleableColorMatcher(
+            styleableRes, styleRes, attrColor
+        )
+    ))
   }
 }

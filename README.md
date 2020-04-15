@@ -306,6 +306,20 @@ assertTextColorIsNot(R.id.some_red_text, R.color.blue);
 assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
+`assertTextColorIs` and its variant `assertTextColorIsNot` work with:
+
+- *Color int*: `Color.parse("#ff00ff")`
+- *Color resource*: `R.color.green`
+- *Color attribute*: `R.attr.colorPrimary`
+
+Also Barista can check colors parsed from `declarable-style` custom attribute:
+```java
+assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle, R.styleable.SampleCustomView_customColor);
+
+// ...or not?
+assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_Green, R.styleable.SampleCustomView_customColor);
+```
+
 #### Check recyclerView item count against expected item count
 ```java
 assertRecyclerViewItemCount(R.id.recycler, 10);
