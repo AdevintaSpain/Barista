@@ -306,7 +306,7 @@ assertTextColorIsNot(R.id.some_red_text, R.color.blue);
 assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
-`assertTextColorIs`and it `variant` assertTextColorIsNot` work with:
+`assertTextColorIs` and its variant `assertTextColorIsNot` work with:
 
 - *Color int*: `Color.parse("#ff00ff")`
 - *Color resource*: `R.color.green`
