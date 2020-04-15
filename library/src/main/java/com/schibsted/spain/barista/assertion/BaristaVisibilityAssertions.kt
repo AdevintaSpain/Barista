@@ -142,7 +142,7 @@ object BaristaVisibilityAssertions {
       @IdRes viewId: Int,
       @StyleableRes styleableRes: IntArray,
       @StyleRes styleRes: Int,
-      @AttrRes attrColor: Int
+      @StyleableRes attrColor: Int
   ) {
     viewId.resourceMatcher().assertAny(TextStyleableColorMatcher(
         styleableRes, styleRes, attrColor
@@ -154,7 +154,7 @@ object BaristaVisibilityAssertions {
       @IdRes viewId: Int,
       @StyleableRes styleableRes: IntArray,
       @StyleRes styleRes: Int,
-      @AttrRes attrColor: Int
+      @StyleableRes attrColor: Int
   ) {
     viewId.resourceMatcher().assertAny(not(
         TextStyleableColorMatcher(
