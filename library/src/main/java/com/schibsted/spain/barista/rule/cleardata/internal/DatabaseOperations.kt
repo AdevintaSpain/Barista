@@ -1,14 +1,14 @@
 package com.schibsted.spain.barista.rule.cleardata.internal
 
 import android.database.sqlite.SQLiteDatabase
-import androidx.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import java.io.File
 import java.util.ArrayList
 
 class DatabaseOperations {
 
   fun getAllDatabaseFiles(): List<File> {
-    return InstrumentationRegistry.getTargetContext()
+    return InstrumentationRegistry.getInstrumentation().targetContext
         .let { context ->
           context.databaseList()
               .map { context.getDatabasePath(it) }
