@@ -14,12 +14,18 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
   companion object {
     @JvmField
     internal val UNWANTED_FILENAME_SUFFIXES = arrayOf("-journal", "-shm", "-uid", "-wal")
+    const val ROOM_METADATA = "room_master_table"
   }
 
   private var excludeTablesRegex: Regex? = null
 
   fun excludeTablesMatching(tableNameRegexFilter: String): ClearDatabaseRule {
     excludeTablesRegex = Regex(tableNameRegexFilter)
+    return this
+  }
+
+  fun excludeRoomMetadataTable(): ClearDatabaseRule {
+    excludeTablesRegex = Regex(ROOM_METADATA)
     return this
   }
 

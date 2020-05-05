@@ -117,6 +117,20 @@ public class ClearDatabaseRuleTest {
     verify(operations, atLeastOnce()).deleteTableContent(DB_1, "some_table");
   }
 
+  @Test
+  public void doesNotDeleteRoomMetadata() throws Throwable {
+    String givenTableName = "some_table";
+    given(operations.getAllDatabaseFiles()).willReturn(singletonList(DB_1_FILE));
+    given(operations.getTableNames(DB_1)).willReturn(asList(givenTableName, ClearDatabaseRule.ROOM_METADATA));
+
+    ClearDatabaseRule rule = new ClearDatabaseRule(operations)
+            .excludeRoomMetadataTable();
+    executeRule(rule);
+
+    verify(operations, never()).deleteTableContent(DB_1, ClearDatabaseRule.ROOM_METADATA);
+    verify(operations, atLeastOnce()).deleteTableContent(DB_1, givenTableName);
+  }
+
   private void executeRule(ClearDatabaseRule rule) throws Throwable {
     rule.apply(dummyStatement, dummyDescription).evaluate();
   }
