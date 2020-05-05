@@ -24,11 +24,6 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
     return this
   }
 
-  fun excludeRoomMetadataTable(): ClearDatabaseRule {
-    excludeTablesRegex = Regex(ROOM_METADATA)
-    return this
-  }
-
   override fun apply(base: Statement, description: Description): Statement {
     return object : Statement() {
       override fun evaluate() {
@@ -48,6 +43,7 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
                 .use { database ->
                   getTableNames(database)
                       .filterNot { excludeTablesRegex?.matches(it) ?: false }
+                      .filterNot { it == ROOM_METADATA }
                       .forEach { tableName ->
                         deleteTableContent(database, tableName)
                       }

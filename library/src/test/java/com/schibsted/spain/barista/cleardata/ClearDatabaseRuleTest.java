@@ -123,8 +123,7 @@ public class ClearDatabaseRuleTest {
     given(operations.getAllDatabaseFiles()).willReturn(singletonList(DB_1_FILE));
     given(operations.getTableNames(DB_1)).willReturn(asList(givenTableName, ClearDatabaseRule.ROOM_METADATA));
 
-    ClearDatabaseRule rule = new ClearDatabaseRule(operations)
-            .excludeRoomMetadataTable();
+    ClearDatabaseRule rule = new ClearDatabaseRule(operations);
     executeRule(rule);
 
     verify(operations, never()).deleteTableContent(DB_1, ClearDatabaseRule.ROOM_METADATA);
