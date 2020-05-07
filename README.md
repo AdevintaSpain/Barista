@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.4.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.5.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
