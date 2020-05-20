@@ -15,6 +15,7 @@ android {
   lintOptions {
     disable 'InvalidPackage'
   }
+  kotlinOptions.freeCompilerArgs += ["-module-name", "barista"]
 }
 
 dependencies {
