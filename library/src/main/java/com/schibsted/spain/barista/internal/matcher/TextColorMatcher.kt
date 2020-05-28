@@ -47,7 +47,7 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
     val currentColorList = textView.textColors
     val expectedColorList = ContextCompat.getColorStateList(textView.context, expectedColor)!!
 
-    val allStates = ALL_COLOR_STATE_LIST_STATES.flatMap { state -> listOf(state, -state) }.map { state -> intArrayOf(state) }
+    val allStates = (ALL_COLOR_STATE_LIST_STATES + ALL_COLOR_DISABLED_STATE_LIST_STATES).map { state -> intArrayOf(state) }
 
     return allStates.all { state ->
       val currentStateColor = currentColorList.getColorForState(state, currentColorList.defaultColor)
@@ -90,5 +90,7 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
       android.R.attr.state_drag_can_accept,
       android.R.attr.state_drag_hovered
     )
+
+    private val ALL_COLOR_DISABLED_STATE_LIST_STATES = ALL_COLOR_STATE_LIST_STATES.map { -it }
   }
 }
