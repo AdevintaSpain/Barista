@@ -22,6 +22,7 @@ jobs:
       name: Run tests
       with:
         api-level: ${{ matrix.api-level }}
+        profile: Nexus 6
         headless: true
         disable-animations: true
         script: ./gradlew connectedCheck
