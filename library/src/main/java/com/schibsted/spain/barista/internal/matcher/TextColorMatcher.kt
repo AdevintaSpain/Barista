@@ -45,8 +45,15 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
 
   private fun matchesColorList(textView: TextView): Boolean {
     val currentColorList = textView.textColors
-    val expectedColorInt = ContextCompat.getColorStateList(textView.context, expectedColor)
-    return currentColorList == expectedColorInt
+    val expectedColorList = ContextCompat.getColorStateList(textView.context, expectedColor)!!
+
+    val allStates = ALL_COLOR_STATE_LIST_STATES.flatMap { state -> listOf(state, -state) }.map { state -> intArrayOf(state) }
+
+    return allStates.all { state ->
+      val currentStateColor = currentColorList.getColorForState(state, currentColorList.defaultColor)
+      val expectedStateColor = expectedColorList.getColorForState(state, expectedColorList.defaultColor)
+      currentStateColor == expectedStateColor
+    }
   }
 
   override fun describeTo(description: Description) {
@@ -61,5 +68,27 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
     } else {
       description.appendText("with text color: [$expectedColor]")
     }
+  }
+
+  companion object {
+    private val ALL_COLOR_STATE_LIST_STATES = listOf(
+      android.R.attr.state_focused,
+      android.R.attr.state_window_focused,
+      android.R.attr.state_enabled,
+      android.R.attr.state_checkable,
+      android.R.attr.state_checked,
+      android.R.attr.state_selected,
+      android.R.attr.state_pressed,
+      android.R.attr.state_activated,
+      android.R.attr.state_active,
+      android.R.attr.state_single,
+      android.R.attr.state_first,
+      android.R.attr.state_middle,
+      android.R.attr.state_last,
+      android.R.attr.state_accelerated,
+      android.R.attr.state_hovered,
+      android.R.attr.state_drag_can_accept,
+      android.R.attr.state_drag_hovered
+    )
   }
 }
