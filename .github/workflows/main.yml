@@ -11,14 +11,17 @@ on:
 jobs:
   tests:
     runs-on: macOS-latest
+    strategy:
+      matrix:
+        api-level: [22, 29]
 
     steps:
     - uses: actions/checkout@v1
       name: Checkout
-    - uses: ReactiveCircus/android-emulator-runner@v1.0.2
+    - uses: reactivecircus/android-emulator-runner@v2
       name: Run tests
       with:
-        api-level: 29
+        api-level: ${{ matrix.api-level }}
         headless: true
         disable-animations: true
         script: ./gradlew connectedCheck
