@@ -47,13 +47,17 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
     val currentColorList = textView.textColors
     val expectedColorList = ContextCompat.getColorStateList(textView.context, expectedColor)!!
 
-    val allStates = (ALL_COLOR_STATE_LIST_STATES + ALL_COLOR_DISABLED_STATE_LIST_STATES).map { state -> intArrayOf(state) }
-
-    return allStates.all { state ->
+    return getAllColorStateListStates().all { state ->
       val currentStateColor = currentColorList.getColorForState(state, currentColorList.defaultColor)
       val expectedStateColor = expectedColorList.getColorForState(state, expectedColorList.defaultColor)
       currentStateColor == expectedStateColor
     }
+  }
+
+  private fun getAllColorStateListStates(): List<IntArray> {
+    return ALL_COLOR_STATE_LIST_STATES
+      .flatMap { state -> listOf(state, createDisabledState(state)) }
+      .map { state -> intArrayOf(state) }
   }
 
   override fun describeTo(description: Description) {
@@ -69,6 +73,13 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
       description.appendText("with text color: [$expectedColor]")
     }
   }
+
+  /**
+   * To create the oposite value of a given state is needed to "-" sign before the state
+   *
+   * @see <a href="https://stackoverflow.com/a/5368765/1798470">Check documentation on StackOverflow</a>
+   */
+  private fun createDisabledState(state: Int) = -state
 
   companion object {
     private val ALL_COLOR_STATE_LIST_STATES = listOf(
@@ -90,7 +101,5 @@ class TextColorMatcher(private val expectedColor: Int) : BoundedMatcher<View, Te
       android.R.attr.state_drag_can_accept,
       android.R.attr.state_drag_hovered
     )
-
-    private val ALL_COLOR_DISABLED_STATE_LIST_STATES = ALL_COLOR_STATE_LIST_STATES.map { -it }
   }
 }
