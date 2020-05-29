@@ -11,9 +11,6 @@ on:
 jobs:
   tests:
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        api-level: [22, 29]
 
     steps:
     - uses: actions/checkout@v1
@@ -21,7 +18,7 @@ jobs:
     - uses: reactivecircus/android-emulator-runner@v2
       name: Run tests
       with:
-        api-level: ${{ matrix.api-level }}
+        api-level: 29
         profile: Nexus 6
         headless: true
         disable-animations: true
