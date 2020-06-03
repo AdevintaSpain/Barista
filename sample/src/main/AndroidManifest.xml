@@ -46,6 +46,8 @@
         android:theme="@style/AppTheme.NoActionBar"
         />
     <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
+    <activity android:name=".RecyclerViewsWithDifferentDataInsideViewPagerActivity"/>
+    <activity android:name=".ListViewsWithDifferentDataInsideViewPagerActivity"/>
     <activity android:name=".NestedScrollViewActivity"/>
     <activity android:name=".CameraActivity">
       <intent-filter>

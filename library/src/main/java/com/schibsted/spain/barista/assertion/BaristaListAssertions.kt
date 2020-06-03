@@ -1,24 +1,26 @@
 package com.schibsted.spain.barista.assertion
 
+import android.content.res.Resources
+import android.graphics.Rect
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ListView
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.recyclerview.widget.RecyclerView
-import android.view.View
-import android.widget.ListView
 import com.schibsted.spain.barista.interaction.BaristaListInteractions
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
-import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
-import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
-import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
+import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -72,8 +74,6 @@ object BaristaListAssertions {
 
   @JvmStatic
   fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, text: String) {
-    scrollListToPosition(listId, position)
-
     assertCustomAssertionAtPosition(
         listId = listId,
         position = position,
@@ -94,8 +94,6 @@ object BaristaListAssertions {
 
   @JvmStatic
   fun assertDisplayedAtPosition(@IdRes listId: Int, position: Int, @IdRes targetViewId: Int = NO_VIEW_ID, @StringRes textId: Int) {
-    BaristaListInteractions.scrollListToPosition(listId, position)
-
     assertCustomAssertionAtPosition(
         listId = listId,
         position = position,
@@ -143,13 +141,18 @@ object BaristaListAssertions {
     var childView: View? = null
 
     if (childView == null) {
-      val listView: ListView? = view.rootView.findViewById(listViewId) as ListView
-      if (listView != null && listView.id == listViewId) {
-        val positionOnScreen = position - listView.firstVisiblePosition
-        val viewAtPosition = listView.getChildAt(positionOnScreen)
+      val views = getShownViewsById(view.rootView as ViewGroup, listViewId)
+      if (views != null && views.isNotEmpty()) {
+        val listView: ListView = views[0] as ListView
+        if (listView.id == listViewId) {
+          val positionOnScreen = position - listView.firstVisiblePosition
+          val viewAtPosition = listView.getChildAt(positionOnScreen)
 
-        viewAtPosition?.let {
-          childView = it
+          viewAtPosition?.let {
+            childView = it
+          }
+        } else {
+          return false
         }
       } else {
         return false
@@ -168,11 +171,16 @@ object BaristaListAssertions {
     var childView: View? = null
 
     if (childView == null) {
-      val recyclerView: RecyclerView? = view.rootView.findViewById(recyclerViewId) as RecyclerView
-      if (recyclerView != null && recyclerView.id == recyclerViewId) {
-        val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
-        viewHolder?.let { checkedViewHolder ->
-          childView = checkedViewHolder.itemView
+      val views = getShownViewsById(view.rootView as ViewGroup, recyclerViewId)
+      if (views != null && views.isNotEmpty()) {
+        val recyclerView: RecyclerView = views[0] as RecyclerView
+        if (recyclerView.id == recyclerViewId) {
+          val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
+          viewHolder?.let { checkedViewHolder ->
+            childView = checkedViewHolder.itemView
+          }
+        } else {
+          return false
         }
       } else {
         return false
@@ -185,5 +193,32 @@ object BaristaListAssertions {
       val targetView: View? = childView?.findViewById(targetViewId)
       view == targetView
     }
+  }
+
+  private fun getShownViewsById(root: ViewGroup, viewId: Int): ArrayList<View>? {
+    val views = ArrayList<View>()
+    val childCount = root.childCount
+    for (i in 0 until childCount) {
+      val child = root.getChildAt(i)
+      if (child is ViewGroup) {
+        views.addAll(getShownViewsById(child, viewId)!!)
+      }
+      val childId = child.id
+      if (childId == viewId && isShowOnScreen(child)) {
+        views.add(child)
+      }
+    }
+    return views
+  }
+
+  private fun isShowOnScreen(view: View): Boolean {
+    if (!view.isShown) {
+      return false
+    }
+    val actualPosition = Rect().also { view.getGlobalVisibleRect(it) }
+    val screen = Resources.getSystem().displayMetrics.run {
+      Rect(0, 0, widthPixels, heightPixels)
+    }
+    return actualPosition.intersect(screen)
   }
 }
