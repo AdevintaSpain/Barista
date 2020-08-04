@@ -1,60 +1,87 @@
 package com.schibsted.spain.barista.sample
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
-import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.test.core.app.ActivityScenario
 import com.schibsted.spain.barista.interaction.PermissionGranter
-import com.schibsted.spain.barista.internal.failurehandler.BaristaException
-import com.schibsted.spain.barista.rule.BaristaRule
-import org.junit.Assume.assumeFalse
+import org.junit.Assert.assertEquals
 import org.junit.Assume.assumeTrue
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.ExpectedException
 
 class PermissionGranterTest {
 
-    @get:Rule
-    var thrown = ExpectedException.none()
-
-    @get:Rule
-    var activityRule = BaristaRule.create(RuntimePermissionActivity::class.java)
-
     @Before
-    @Throws(Exception::class)
     fun setUp() {
-        assumeTrue("This test needs to run on a device with Android 23 or above",
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        assumeFalse("This test expects you to not have the permission granted. Remember to clear data.",
-                hasNeededPermission(getApplicationContext(), RuntimePermissionActivity.SOME_PERMISSION))
-    }
-
-    @Test(expected = BaristaException::class)
-    fun fails_when_using_permission() {
-        activityRule.launchActivity()
-
-        clickOn(R.id.use_permission_button)
+        assumeTrue("This test needs to run on a device with Android 23 or above", Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
     }
 
     @Test
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    fun works_after_granting_permission() {
-        activityRule.launchActivity()
+    fun grants_simple_permission() {
+        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
+            scenario.verifyPermissionNotGranted(SIMPLE_PERMISSION_1)
+            scenario.requestPermission(SIMPLE_PERMISSION_1)
 
-        clickOn(R.id.request_permission_button)
+            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_1)
 
-        PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.READ_CONTACTS)
-
-        clickOn(R.id.use_permission_button)
+            scenario.verifyPermissionGranted(SIMPLE_PERMISSION_1)
+        }
     }
 
-    private fun hasNeededPermission(context: Context, permissionNeeded: String): Boolean {
-        val permissionStatus = context.checkPermission(permissionNeeded, android.os.Process.myPid(), android.os.Process.myUid())
-        return permissionStatus == PackageManager.PERMISSION_GRANTED
+    /**
+     * Since Android Q the Location permission dialog is different to the others
+     */
+    @Test
+    fun grants_location_permission() {
+        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
+            scenario.verifyPermissionNotGranted(LOCATION_PERMISSION)
+            scenario.requestPermission(LOCATION_PERMISSION)
+
+            PermissionGranter.allowPermissionsIfNeeded(LOCATION_PERMISSION)
+
+            scenario.verifyPermissionGranted(LOCATION_PERMISSION)
+        }
+    }
+
+    @Test
+    fun ignores_already_granted_permission() {
+        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
+            scenario.verifyPermissionNotGranted(SIMPLE_PERMISSION_2)
+            scenario.requestPermission(SIMPLE_PERMISSION_2)
+            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
+            scenario.verifyPermissionGranted(SIMPLE_PERMISSION_2)
+
+            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
+        }
+    }
+
+
+}
+
+// We can't reuse permission from one test to another, because they stay granted after each test
+private const val SIMPLE_PERMISSION_1 = Manifest.permission.READ_CONTACTS
+private const val SIMPLE_PERMISSION_2 = Manifest.permission.CAMERA
+private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
+
+private fun ActivityScenario<*>.requestPermission(permission: String) {
+    onActivity { activity ->
+        ActivityCompat.requestPermissions(activity, arrayOf(permission), 1)
+    }
+}
+
+private fun ActivityScenario<*>.verifyPermissionNotGranted(permission: String) {
+    onActivity { activity ->
+        val permissionValue = ContextCompat.checkSelfPermission(activity, permission)
+        assertEquals("Permission $permission expected to be denied but was granted;", PackageManager.PERMISSION_DENIED, permissionValue)
+    }
+}
+
+private fun ActivityScenario<*>.verifyPermissionGranted(permission: String) {
+    onActivity { activity ->
+        val permissionValue = ContextCompat.checkSelfPermission(activity, permission)
+        assertEquals("Expected permission $permission was not granted;", PackageManager.PERMISSION_GRANTED, permissionValue)
     }
 }
