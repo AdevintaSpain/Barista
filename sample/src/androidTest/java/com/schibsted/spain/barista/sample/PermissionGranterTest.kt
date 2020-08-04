@@ -21,13 +21,13 @@ class PermissionGranterTest {
 
     @Test
     fun grants_simple_permission() {
-        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
-            scenario.verifyPermissionNotGranted(SIMPLE_PERMISSION_1)
-            scenario.requestPermission(SIMPLE_PERMISSION_1)
+        launchActivity {
+            verifyPermissionNotGranted(SIMPLE_PERMISSION_1)
+            requestPermission(SIMPLE_PERMISSION_1)
 
             PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_1)
 
-            scenario.verifyPermissionGranted(SIMPLE_PERMISSION_1)
+            verifyPermissionGranted(SIMPLE_PERMISSION_1)
         }
     }
 
@@ -36,23 +36,23 @@ class PermissionGranterTest {
      */
     @Test
     fun grants_location_permission() {
-        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
-            scenario.verifyPermissionNotGranted(LOCATION_PERMISSION)
-            scenario.requestPermission(LOCATION_PERMISSION)
+        launchActivity {
+            verifyPermissionNotGranted(LOCATION_PERMISSION)
+            requestPermission(LOCATION_PERMISSION)
 
             PermissionGranter.allowPermissionsIfNeeded(LOCATION_PERMISSION)
 
-            scenario.verifyPermissionGranted(LOCATION_PERMISSION)
+            verifyPermissionGranted(LOCATION_PERMISSION)
         }
     }
 
     @Test
     fun ignores_already_granted_permission() {
-        ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
-            scenario.verifyPermissionNotGranted(SIMPLE_PERMISSION_2)
-            scenario.requestPermission(SIMPLE_PERMISSION_2)
+        launchActivity {
+            verifyPermissionNotGranted(SIMPLE_PERMISSION_2)
+            requestPermission(SIMPLE_PERMISSION_2)
             PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
-            scenario.verifyPermissionGranted(SIMPLE_PERMISSION_2)
+            verifyPermissionGranted(SIMPLE_PERMISSION_2)
 
             PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
         }
@@ -83,5 +83,11 @@ private fun ActivityScenario<*>.verifyPermissionGranted(permission: String) {
     onActivity { activity ->
         val permissionValue = ContextCompat.checkSelfPermission(activity, permission)
         assertEquals("Expected permission $permission was not granted;", PackageManager.PERMISSION_GRANTED, permissionValue)
+    }
+}
+
+private fun launchActivity(block: ActivityScenario<*>.() -> Unit) {
+    ActivityScenario.launch<EmptyActivity>(EmptyActivity::class.java).use { scenario ->
+        scenario.block()
     }
 }
