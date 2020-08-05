@@ -10,7 +10,6 @@ import com.schibsted.spain.barista.interaction.PermissionGranter
 import org.junit.Assert.assertEquals
 import org.junit.Assume.assumeTrue
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 
 class PermissionGranterTest {
@@ -36,7 +35,6 @@ class PermissionGranterTest {
      * Since Android Q the Location permission dialog is different to the others
      */
     @Test
-    @Ignore("Won't pass without the fix in https://github.com/AdevintaSpain/Barista/pull/356")
     fun grants_location_permission() {
         launchActivity {
             verifyPermissionNotGranted(LOCATION_PERMISSION)
