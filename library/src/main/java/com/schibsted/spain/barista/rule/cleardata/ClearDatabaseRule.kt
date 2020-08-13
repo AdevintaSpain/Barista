@@ -14,6 +14,7 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
   companion object {
     @JvmField
     internal val UNWANTED_FILENAME_SUFFIXES = arrayOf("-journal", "-shm", "-uid", "-wal")
+    const val ROOM_METADATA = "room_master_table"
   }
 
   private var excludeTablesRegex: Regex? = null
@@ -42,6 +43,7 @@ class ClearDatabaseRule(private val databaseOperations: DatabaseOperations = Dat
                 .use { database ->
                   getTableNames(database)
                       .filterNot { excludeTablesRegex?.matches(it) ?: false }
+                      .filterNot { it == ROOM_METADATA }
                       .forEach { tableName ->
                         deleteTableContent(database, tableName)
                       }

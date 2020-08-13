@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout
+    - uses: reactivecircus/android-emulator-runner@v2.11.0
+      name: Run tests
+      with:
+        api-level: 29
+        profile: Nexus 6
+        headless: true
+        disable-animations: true
+        script: ./gradlew connectedCheck
+
+    - uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+        restore-keys: ${{ runner.os }}-gradle-

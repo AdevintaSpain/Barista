@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="SampleCustomView">
+    <attr name="customColor" format="color"/>
+    <attr name="otherColor" format="color"/>
+  </declare-styleable>
+
+  <attr name="sampleCustomViewStyle" format="reference" />
+
+</resources>

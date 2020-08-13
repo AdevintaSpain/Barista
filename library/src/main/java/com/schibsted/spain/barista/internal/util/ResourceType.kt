@@ -1,9 +1,10 @@
 package com.schibsted.spain.barista.internal.util
 
+import android.content.res.Resources
+import android.view.View
 import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import android.view.View
 import org.hamcrest.Matcher
 
 class BaristaResourceTypeException(message: String) : RuntimeException(message)
@@ -26,3 +27,20 @@ fun Int.resourceMatcher(): Matcher<View> = when (resourceType) {
   ResourceType.ID -> withId(this)
   ResourceType.STRING -> withText(this)
 }
+
+enum class ColorResourceType {
+  COLOR_RES, COLOR_INT, COLOR_ATTR
+}
+
+val Int.colorResourceType: ColorResourceType
+  get() {
+    return try {
+      when (val resourceTypeName = InstrumentationRegistry.getTargetContext().resources.getResourceTypeName(this)) {
+        "color" -> ColorResourceType.COLOR_RES
+        "attr" -> ColorResourceType.COLOR_ATTR
+        else -> throw BaristaResourceTypeException("The argument must be ColorInt or R.color.* or R.attr.*, but was $resourceTypeName")
+      }
+    } catch (e: Resources.NotFoundException) {
+      ColorResourceType.COLOR_INT
+    }
+  }

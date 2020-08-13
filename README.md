@@ -1,7 +1,7 @@
 # Barista
 **The guy who serves a great Espresso**
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/SchibstedSpain/Barista)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.2.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.5.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -306,15 +306,25 @@ assertTextColorIsNot(R.id.some_red_text, R.color.blue);
 assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
+`assertTextColorIs` and its variant `assertTextColorIsNot` work with:
+
+- *Color int*: `Color.parse("#ff00ff")`
+- *Color resource*: `R.color.green`
+- *Color attribute*: `R.attr.colorPrimary`
+
+Also Barista can check colors parsed from `declarable-style` custom attribute:
+```java
+assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle, R.styleable.SampleCustomView_customColor);
+
+// ...or not?
+assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_Green, R.styleable.SampleCustomView_customColor);
+```
+
 #### Check recyclerView item count against expected item count
 ```java
 assertRecyclerViewItemCount(R.id.recycler, 10);
 ```
 
-#### And another tricky feature
-```java
-assertThatBackButtonClosesTheApp();
-```
 #### Is this ImageView showing a drawable?
 ```java
 assertHasAnyDrawable(R.id.image_view);
@@ -329,6 +339,11 @@ assertHasNoDrawable(R.id.image_view);
 assertProgress(R.id.seek_bar, 5)
 assertProgressIsMin(R.id.seek_bar)
 assertProgressIsMax(R.id.seek_bar)
+```
+
+#### And another tricky feature
+```java
+assertThatBackButtonClosesTheApp();
 ```
 
 ### Custom assertions
