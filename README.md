@@ -325,10 +325,6 @@ assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.
 assertRecyclerViewItemCount(R.id.recycler, 10);
 ```
 
-#### And another tricky feature
-```java
-assertThatBackButtonClosesTheApp();
-```
 #### Is this ImageView showing a drawable?
 ```java
 assertHasAnyDrawable(R.id.image_view);
@@ -343,6 +339,11 @@ assertHasNoDrawable(R.id.image_view);
 assertProgress(R.id.seek_bar, 5)
 assertProgressIsMin(R.id.seek_bar)
 assertProgressIsMax(R.id.seek_bar)
+```
+
+#### And another tricky feature
+```java
+assertThatBackButtonClosesTheApp();
 ```
 
 ### Custom assertions
