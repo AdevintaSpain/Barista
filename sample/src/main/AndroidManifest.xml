@@ -4,6 +4,8 @@
     >
 
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
   <application
       android:allowBackup="true"
@@ -69,7 +71,7 @@
           />
     </provider>
 
-    <activity android:name=".RuntimePermissionActivity"/>
+    <activity android:name=".EmptyActivity"/>
     <activity android:name=".SeekBarActivity"/>
     <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity"/>
     <activity
