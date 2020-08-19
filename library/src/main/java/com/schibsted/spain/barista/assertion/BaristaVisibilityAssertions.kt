@@ -40,12 +40,12 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertDisplayed(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(withText(text))
+    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withText(text)))
   }
 
   @JvmStatic
   fun assertDisplayed(@IdRes viewId: Int, @StringRes stringId: Int) {
-    viewId.resourceMatcher().assertAny(withText(stringId))
+    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withText(stringId)))
   }
 
   @JvmStatic
@@ -75,12 +75,12 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(not(withText(text)))
+    viewId.resourceMatcher().assertAny(not(allOf(isDisplayed(), withText(text))))
   }
 
   @JvmStatic
   fun assertNotDisplayed(@IdRes viewId: Int, @StringRes stringId: Int) {
-    viewId.resourceMatcher().assertAny(not(withText(stringId)))
+    viewId.resourceMatcher().assertAny(not(allOf(isDisplayed(), withText(stringId))))
   }
 
   @JvmStatic
