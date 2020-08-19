@@ -9,11 +9,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
 public class FlakyTestRuleTest {
 
   private static boolean hasRunAllowFlakyTest = false;
@@ -34,8 +29,6 @@ public class FlakyTestRuleTest {
   public void repeatAnnotationTest() throws Exception {
     activityRule.launchActivity(null);
 
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
-
     if (hasRunRepeatTest) {
       throw new TestException("Test failure on second try");
     } else {
@@ -48,8 +41,6 @@ public class FlakyTestRuleTest {
   public void allowFlakyAnnotationTest() throws Exception {
     activityRule.launchActivity(null);
 
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
-
     if (!hasRunAllowFlakyTest) {
       hasRunAllowFlakyTest = true;
       throw new TestException("Test failure on first try");
@@ -59,8 +50,6 @@ public class FlakyTestRuleTest {
   @Test
   public void testWithoutAnnotations() throws Exception {
     activityRule.launchActivity(null);
-
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
   }
 
   private static class TestException extends Exception {
