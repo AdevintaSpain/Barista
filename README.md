@@ -1,7 +1,7 @@
 # Barista
 **The guy who serves a great Espresso**
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/SchibstedSpain/Barista)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
@@ -27,8 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.2.0') {
-  exclude group: 'com.android.support'
+androidTestImplementation('com.schibsted.spain:barista:3.5.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -67,6 +66,11 @@ longClickOn("Next");
 clickMenu(R.id.menu_item);
 ```
 
+#### Open the overflow menu without clicking any item
+```java
+openMenu();
+```
+
 #### Writing into widgets
 ```java
 writeTo(R.id.edittext, "A great text");
@@ -79,13 +83,13 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.listId, 5)
-assertListNotEmpty(R.id.listId)
-assertDisplayedAtPosition(R.id.recycler, 0, "text");
-assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.recycler, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.listId, 0, R.id.text_field, R.string.hello_world);
-assertCustomAssertionAtPosition(R.id.recycler, 0, customViewAssertion);
+assertListItemCount(R.id.list, 5)
+assertListNotEmpty(R.id.list)
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -294,12 +298,26 @@ assertNotContains(R.id.textview, R.string.text);
 
 #### Check text is given color
 ```java
-assertTextColorIs(R.id.someRedText, R.color.red);
-assertTextColorIs(R.id.someColorListText, R.color.state_list);
+assertTextColorIs(R.id.some_red_text, R.color.red);
+assertTextColorIs(R.id.some_color_list_text, R.color.state_list);
 
 // ...or not?
-assertTextColorIsNot(R.id.someRedText, R.color.blue);
-assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
+assertTextColorIsNot(R.id.some_red_text, R.color.blue);
+assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
+```
+
+`assertTextColorIs` and its variant `assertTextColorIsNot` work with:
+
+- *Color int*: `Color.parse("#ff00ff")`
+- *Color resource*: `R.color.green`
+- *Color attribute*: `R.attr.colorPrimary`
+
+Also Barista can check colors parsed from `declarable-style` custom attribute:
+```java
+assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle, R.styleable.SampleCustomView_customColor);
+
+// ...or not?
+assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_Green, R.styleable.SampleCustomView_customColor);
 ```
 
 #### Check recyclerView item count against expected item count
@@ -307,10 +325,6 @@ assertTextColorIsNot(R.id.someColorListText, R.color.another_state_list);
 assertRecyclerViewItemCount(R.id.recycler, 10);
 ```
 
-#### And another tricky feature
-```java
-assertThatBackButtonClosesTheApp();
-```
 #### Is this ImageView showing a drawable?
 ```java
 assertHasAnyDrawable(R.id.image_view);
@@ -325,6 +339,11 @@ assertHasNoDrawable(R.id.image_view);
 assertProgress(R.id.seek_bar, 5)
 assertProgressIsMin(R.id.seek_bar)
 assertProgressIsMax(R.id.seek_bar)
+```
+
+#### And another tricky feature
+```java
+assertThatBackButtonClosesTheApp();
 ```
 
 ### Custom assertions
@@ -354,10 +373,17 @@ assertAny<RadioGroup>(R.id.radioGroup, "selected option is the second one") {
 }
 ```
 
-## Barista’s Intents API
+## Mocking the Intent results
+
+Mocking the Android Camera Intent is a tricky thing to do. To accomplish it in no time, Barista gives a way to do it in one line: the method `mockAndroidCamera()`. This method does all the magic to mock the result of the camera. One more thing to do: you have to call `Intents.init()` before calling `mockAndroidCamera()`, and `Intents.release()` after doing the action that launches the camera. You could also use `IntentsTestRule` instead of the common `ActivityTestRule` to skip it, but as we recommend the use of `BaristaRule`, it's easier to just call both methods manually when needed.
+
+Here's an example to copy paste:
+
 ```java
-// Creates a Bitmap on a camera provided URI
+Intents.init();
 mockAndroidCamera();
+clickOn(R.id.launch_camera);
+Intents.release();
 ```
 
 ## Runtime Permissions

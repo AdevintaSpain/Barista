@@ -8,7 +8,7 @@ about: Suggest an idea for this library
 
 **Description what you'd like to happen:**
 
-A clear description if the feature or behavior you'd like implemented.
+A clear description of the feature or behavior you'd like implemented.
 
 **Example espresso code if available**
 

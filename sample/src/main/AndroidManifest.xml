@@ -4,6 +4,8 @@
     >
 
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
   <application
       android:allowBackup="true"
@@ -36,6 +38,7 @@
     <activity android:name=".WrappedViewActivity"/>
     <activity android:name=".SwipeRefreshActivity"/>
     <activity android:name=".MenuActivity"/>
+    <activity android:name=".ChipsActivity" />
     <activity
         android:name=".MenuSupportActionBarActivity"
         android:theme="@style/AppTheme.NoActionBar"
@@ -66,11 +69,15 @@
           />
     </provider>
 
-    <activity android:name=".RuntimePermissionActivity"/>
+    <activity android:name=".EmptyActivity"/>
     <activity android:name=".SeekBarActivity"/>
     <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity"/>
     <activity
         android:name=".ColorsActivity"
+        android:exported="true"
+        />
+    <activity
+        android:name=".ColorsSecondActivity"
         android:exported="true"
         />
     <activity android:name=".KeyboardActivity"/>
