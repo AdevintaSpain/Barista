@@ -101,7 +101,8 @@ public class VisibilityAssertionsTest {
     Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.visible_view, R.string.not_exists));
     assertThat(thrown).isInstanceOf(BaristaException.class)
         .hasMessageMatching("View \\(with id: com.schibsted.spain.barista.sample:id/visible_view\\) didn't match condition "
-            + "\\(\\(is displayed on the screen to the user and with string from resource id: <(\\d+)>\\[not_exists\\] value: Not exists\\)\\)");
+            + "\\(\\(is displayed on the screen to the user "
+            + "and with string from resource id: <(\\d+)>\\[not_exists\\] value: Not exists\\)\\)");
 
     Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.visible_view, "This is not the text you are looking for"));
     assertThat(thrown2).isInstanceOf(BaristaException.class)
