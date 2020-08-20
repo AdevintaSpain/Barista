@@ -4,20 +4,15 @@ import androidx.test.rule.ActivityTestRule;
 import com.schibsted.spain.barista.rule.flaky.AllowFlaky;
 import com.schibsted.spain.barista.rule.flaky.FlakyTestRule;
 import com.schibsted.spain.barista.rule.flaky.Repeat;
-import java.util.Random;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
 public class FlakyTestRuleTest {
 
-  private final Random random = new Random();
+  private static boolean hasRunAllowFlakyTest = false;
+  private static boolean hasRunRepeatTest = false;
 
   private ActivityTestRule<HelloWorldActivity> activityRule = new ActivityTestRule<>(HelloWorldActivity.class, true, false);
   private FlakyTestRule flakyRule = new FlakyTestRule()
@@ -29,35 +24,32 @@ public class FlakyTestRuleTest {
 
   // WARNING: this test must fail when run
   @Test
-  @Repeat(times = 5)
+  @Repeat(times = 2)
   @Ignore
-  public void someImportantFlakyTest() throws Exception {
+  public void repeatAnnotationTest() throws Exception {
     activityRule.launchActivity(null);
 
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
-
-    if (random.nextFloat() > 0.3) {
-      throw new TestException("Random test failure");
+    if (hasRunRepeatTest) {
+      throw new TestException("Test failure on second try");
+    } else {
+      hasRunRepeatTest = true;
     }
   }
 
   @Test
-  @AllowFlaky(attempts = 10)
-  public void someFlakyTest() throws Exception {
+  @AllowFlaky(attempts = 2)
+  public void allowFlakyAnnotationTest() throws Exception {
     activityRule.launchActivity(null);
 
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
-
-    if (random.nextFloat() > 0.3) {
-      throw new TestException("Random test failure");
+    if (!hasRunAllowFlakyTest) {
+      hasRunAllowFlakyTest = true;
+      throw new TestException("Test failure on first try");
     }
   }
 
   @Test
-  public void someDeterministicTest() throws Exception {
+  public void testWithoutAnnotations() throws Exception {
     activityRule.launchActivity(null);
-
-    onView(withId(R.id.some_view)).check(matches(isDisplayed()));
   }
 
   private static class TestException extends Exception {
