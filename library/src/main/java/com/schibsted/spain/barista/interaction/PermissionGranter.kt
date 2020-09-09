@@ -15,8 +15,14 @@ object PermissionGranter {
 
   private val PERMISSIONS_DIALOG_DELAY = 3000
 
-  private val PERMISSION_DIALOG_ALLOW_IDS = listOf(
+  private val PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS = listOf(
     "com.android.permissioncontroller:id/permission_allow_foreground_only_button",
+    "com.android.permissioncontroller:id/permission_allow_button",
+    "com.android.packageinstaller:id/permission_allow_button"
+  )
+
+  private val PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS = listOf(
+    "com.android.permissioncontroller:id/permission_allow_one_time_button",
     "com.android.permissioncontroller:id/permission_allow_button",
     "com.android.packageinstaller:id/permission_allow_button"
   )
@@ -29,7 +35,34 @@ object PermissionGranter {
         sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
 
-        val regex = PERMISSION_DIALOG_ALLOW_IDS.joinToString(
+        val regex = PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.joinToString(
+          prefix = "^(",
+          separator = "|",
+          postfix = ")$"
+        ) { it }
+        val allowPermissions = device.findObject(UiSelector()
+            .clickable(true)
+            .checkable(false)
+            .resourceIdMatches(regex)
+        )
+        if (allowPermissions.exists()) {
+          allowPermissions.click()
+        }
+      }
+    } catch (e: UiObjectNotFoundException) {
+      Log.e("Barista", "There is no permissions dialog to interact with", e)
+    }
+  }
+
+  @JvmStatic
+  fun allowPermissionOneTime(permissionNeeded: String) {
+    try {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
+              permissionNeeded)) {
+        sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
+        val device = UiDevice.getInstance(getInstrumentation())
+
+        val regex = PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.joinToString(
           prefix = "^(",
           separator = "|",
           postfix = ")$"
