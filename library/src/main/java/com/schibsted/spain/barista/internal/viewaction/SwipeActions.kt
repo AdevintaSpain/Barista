@@ -1,5 +1,8 @@
 package com.schibsted.spain.barista.internal.viewaction
 
+import android.view.View
+import android.view.ViewConfiguration
+import androidx.core.view.ViewCompat
 import androidx.test.espresso.PerformException
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
@@ -9,10 +12,19 @@ import androidx.test.espresso.action.Press
 import androidx.test.espresso.action.Swipe
 import androidx.test.espresso.action.Swiper
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.swipeDown
+import androidx.test.espresso.action.ViewActions.swipeUp
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.util.HumanReadables
-import android.view.View
-import android.view.ViewConfiguration
+import androidx.viewpager2.widget.ViewPager2
+import com.schibsted.spain.barista.internal.viewaction.SwipeActions.swipeLeft
+import com.schibsted.spain.barista.internal.viewaction.SwipeActions.swipeRight
+import com.schibsted.spain.barista.internal.viewaction.ViewPager2SwipeAction.Direction.BACKWARD
+import com.schibsted.spain.barista.internal.viewaction.ViewPager2SwipeAction.Direction.FORWARD
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.anyOf
 import org.hamcrest.Matcher
 
 object SwipeActions {
@@ -43,6 +55,12 @@ object SwipeActions {
           NormalizedLocation(from.first, from.second),
           NormalizedLocation(to.first, to.second),
           Press.FINGER))
+
+  @JvmStatic
+  fun swipeViewPager2Forward(): ViewAction = ViewPager2SwipeAction(direction = FORWARD)
+
+  @JvmStatic
+  fun swipeViewPager2Backward(): ViewAction = ViewPager2SwipeAction(direction = BACKWARD)
 }
 
 private class NormalizedLocation(val normalizedXPosition: Float, val normalizedYPosition: Float) : CoordinatesProvider {
@@ -130,5 +148,48 @@ private class GeneralSwipeWithPartiallyVisibleViewAction(
   companion object {
     /** Maximum number of times to attempt sending a swipe action.  */
     private const val MAX_TRIES = 3
+  }
+}
+
+/**
+ * This class will find a [ViewPager2] and perform the correct swipe given [direction] based on the
+ * current [ViewPager2.Orientation] and the right-to-left layout direction.
+ */
+private class ViewPager2SwipeAction(private val direction: Direction) : ViewAction {
+
+  enum class Direction {
+    FORWARD,
+    BACKWARD
+  }
+
+  override fun getDescription(): String = "Swiping ViewPager2 $direction"
+
+  override fun getConstraints(): Matcher<View> = allOf(anyOf(
+      isAssignableFrom(ViewPager2::class.java),
+      isDescendantOfA(isAssignableFrom(ViewPager2::class.java))
+  ))
+
+  override fun perform(uiController: UiController, view: View) {
+    val viewPager = if (view is ViewPager2) {
+      view
+    } else {
+      var parent = view.parent
+      while (parent !is ViewPager2 && parent != null) {
+        parent = parent.parent
+      }
+      parent as ViewPager2
+    }
+
+    val isForward = direction == FORWARD
+    val swipeAction: ViewAction = if (viewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
+      if (isForward == viewPager.isRtl()) swipeRight() else swipeLeft()
+    } else {
+      if (isForward) swipeUp() else swipeDown()
+    }
+    swipeAction.perform(uiController, view)
+  }
+
+  private fun ViewPager2.isRtl(): Boolean {
+    return ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
   }
 }
