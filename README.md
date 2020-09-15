@@ -325,15 +325,6 @@ assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.
 assertRecyclerViewItemCount(R.id.recycler, 10);
 ```
 
-#### Is this ImageView showing a drawable?
-```java
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
-```
-
 #### Is this ProgressBar/SeekBar progress?
 ```java
 assertProgress(R.id.seek_bar, 5)
