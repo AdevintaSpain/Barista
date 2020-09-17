@@ -383,6 +383,9 @@ The new Marshmallow permissions system requires checking for permissions at runt
 ```java
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
 ```
+```java
+PermissionGranter.allowPermissionOneTime(Manifest.permission.GET_ACCOUNTS);
+```
 
 ## Useful test rules
 Barista includes a set of useful test rules to help you:
