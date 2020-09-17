@@ -10,6 +10,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiSelector
 import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThread
+import com.schibsted.spain.barista.interaction.PermissionGranter.toPermissionButtonRegex
 
 object PermissionGranter {
 
@@ -27,6 +28,12 @@ object PermissionGranter {
     "com.android.packageinstaller:id/permission_allow_button"
   )
 
+  private fun List<String>.toPermissionButtonRegex() = joinToString(
+    prefix = "^(",
+    separator = "|",
+    postfix = ")$"
+  ) { it }
+
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
     try {
@@ -35,11 +42,8 @@ object PermissionGranter {
         sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
 
-        val regex = PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.joinToString(
-          prefix = "^(",
-          separator = "|",
-          postfix = ")$"
-        ) { it }
+        val regex = PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.toPermissionButtonRegex()
+
         val allowPermissions = device.findObject(UiSelector()
             .clickable(true)
             .checkable(false)
@@ -62,11 +66,8 @@ object PermissionGranter {
         sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
 
-        val regex = PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.joinToString(
-          prefix = "^(",
-          separator = "|",
-          postfix = ")$"
-        ) { it }
+        val regex = PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex()
+
         val allowPermissions = device.findObject(UiSelector()
             .clickable(true)
             .checkable(false)
