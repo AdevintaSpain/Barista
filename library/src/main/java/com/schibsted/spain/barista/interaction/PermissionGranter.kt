@@ -10,7 +10,6 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiSelector
 import com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleepThread
-import com.schibsted.spain.barista.interaction.PermissionGranter.toPermissionButtonRegex
 
 object PermissionGranter {
 
@@ -36,39 +35,27 @@ object PermissionGranter {
 
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
-              permissionNeeded)) {
-        sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
-        val device = UiDevice.getInstance(getInstrumentation())
-
-        val regex = PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.toPermissionButtonRegex()
-
-        val allowPermissions = device.findObject(UiSelector()
-            .clickable(true)
-            .checkable(false)
-            .resourceIdMatches(regex)
-        )
-        if (allowPermissions.exists()) {
-          allowPermissions.click()
-        }
-      }
-    } catch (e: UiObjectNotFoundException) {
-      Log.e("Barista", "There is no permissions dialog to interact with", e)
-    }
+    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS)
   }
 
   @JvmStatic
   fun allowPermissionOneTime(permissionNeeded: String) {
+    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS)
+  }
+
+  private fun allowPermission(permissionNeeded: String, permissionsIds: List<String>) {
     try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(getApplicationContext(),
-              permissionNeeded)) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(
+          getApplicationContext(),
+          permissionNeeded
+        )) {
         sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
 
-        val regex = PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex()
+        val regex = this.PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex()
 
-        val allowPermissions = device.findObject(UiSelector()
+        val allowPermissions = device.findObject(
+          UiSelector()
             .clickable(true)
             .checkable(false)
             .resourceIdMatches(regex)
