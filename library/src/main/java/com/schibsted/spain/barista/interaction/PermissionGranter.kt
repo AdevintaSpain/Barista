@@ -35,15 +35,15 @@ object PermissionGranter {
 
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
-    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS)
+    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.toPermissionButtonRegex())
   }
 
   @JvmStatic
   fun allowPermissionOneTime(permissionNeeded: String) {
-    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS)
+    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex())
   }
 
-  private fun allowPermission(permissionNeeded: String, permissionsIds: List<String>) {
+  private fun allowPermission(permissionNeeded: String, permissionsIds: String) {
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(
           getApplicationContext(),
@@ -52,13 +52,11 @@ object PermissionGranter {
         sleepThread(PERMISSIONS_DIALOG_DELAY.toLong())
         val device = UiDevice.getInstance(getInstrumentation())
 
-        val regex = this.PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex()
-
         val allowPermissions = device.findObject(
           UiSelector()
             .clickable(true)
             .checkable(false)
-            .resourceIdMatches(regex)
+            .resourceIdMatches(permissionsIds)
         )
         if (allowPermissions.exists()) {
           allowPermissions.click()
