@@ -306,7 +306,7 @@ public class AssertionsTest {
 
   @Test
   public void checkBackground_withId() throws Exception {
-    assertHasBackground(R.id.view_with_backbround, R.drawable.ic_barista);
+    assertHasBackground(R.id.view_with_drawable_backbround, R.drawable.ic_barista);
   }
 
   @Test(expected = BaristaException.class)
@@ -316,7 +316,7 @@ public class AssertionsTest {
 
   @Test
   public void checkBackground_withAnyDrawable() throws Exception {
-    assertHasAnyBackground(R.id.view_with_backbround);
+    assertHasAnyBackground(R.id.view_with_drawable_backbround);
   }
 
   @Test(expected = BaristaException.class)
@@ -331,7 +331,7 @@ public class AssertionsTest {
 
   @Test(expected = BaristaException.class)
   public void checkBackground_withoutDrawable_failure() throws Exception {
-    assertHasNoBackground(R.id.view_with_backbround);
+    assertHasNoBackground(R.id.view_with_drawable_backbround);
   }
 
   @Test
