@@ -18,7 +18,7 @@ jobs:
     - uses: reactivecircus/android-emulator-runner@v2.11.0
       name: Run tests
       with:
-        api-level: 29
+        api-level: 28
         profile: Nexus 6
         headless: true
         disable-animations: true

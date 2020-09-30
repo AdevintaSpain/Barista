@@ -38,7 +38,7 @@
     <activity android:name=".WrappedViewActivity"/>
     <activity android:name=".SwipeRefreshActivity"/>
     <activity android:name=".MenuActivity"/>
-    <activity android:name=".ChipsActivity" android:theme="@style/MaterialAppTheme"/>
+    <activity android:name=".ChipsActivity" />
     <activity
         android:name=".MenuSupportActionBarActivity"
         android:theme="@style/AppTheme.NoActionBar"

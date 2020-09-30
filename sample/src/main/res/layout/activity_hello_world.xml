@@ -12,9 +12,16 @@
       android:text="@string/hello_world"
       />
   <Button
-      android:text="@string/button_close_activity"
+      android:id="@+id/btn_closed"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/btn_closed"
+      android:text="@string/button_close_activity"
+      />
+  <TextView
+      android:id="@+id/text_night"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Good night"
+      android:visibility="gone"
       />
 </LinearLayout>

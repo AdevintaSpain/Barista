@@ -22,12 +22,12 @@ class PermissionGranterTest {
     @Test
     fun grants_simple_permission() {
         launchActivity {
-            verifyPermissionNotGranted(SIMPLE_PERMISSION_1)
-            requestPermission(SIMPLE_PERMISSION_1)
+            verifyPermissionNotGranted(PERMISSION_1_CONTACTS)
+            requestPermission(PERMISSION_1_CONTACTS)
 
-            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_1)
+            PermissionGranter.allowPermissionsIfNeeded(PERMISSION_1_CONTACTS)
 
-            verifyPermissionGranted(SIMPLE_PERMISSION_1)
+            verifyPermissionGranted(PERMISSION_1_CONTACTS)
         }
     }
 
@@ -49,12 +49,12 @@ class PermissionGranterTest {
     @Test
     fun ignores_already_granted_permission() {
         launchActivity {
-            verifyPermissionNotGranted(SIMPLE_PERMISSION_2)
-            requestPermission(SIMPLE_PERMISSION_2)
-            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
-            verifyPermissionGranted(SIMPLE_PERMISSION_2)
+            verifyPermissionNotGranted(PERMISSION_2_CAMERA)
+            requestPermission(PERMISSION_2_CAMERA)
+            PermissionGranter.allowPermissionOneTime(PERMISSION_2_CAMERA)
+            verifyPermissionGranted(PERMISSION_2_CAMERA)
 
-            PermissionGranter.allowPermissionsIfNeeded(SIMPLE_PERMISSION_2)
+            PermissionGranter.allowPermissionsIfNeeded(PERMISSION_2_CAMERA)
         }
     }
 
@@ -62,8 +62,8 @@ class PermissionGranterTest {
 }
 
 // We can't reuse permission from one test to another, because they stay granted after each test
-private const val SIMPLE_PERMISSION_1 = Manifest.permission.READ_CONTACTS
-private const val SIMPLE_PERMISSION_2 = Manifest.permission.CAMERA
+private const val PERMISSION_1_CONTACTS = Manifest.permission.READ_CONTACTS
+private const val PERMISSION_2_CAMERA = Manifest.permission.CAMERA
 private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
 
 private fun ActivityScenario<*>.requestPermission(permission: String) {

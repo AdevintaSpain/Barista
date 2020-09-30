@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.5.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.6.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -325,15 +325,6 @@ assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.
 assertRecyclerViewItemCount(R.id.recycler, 10);
 ```
 
-#### Is this ImageView showing a drawable?
-```java
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
-```
-
 #### Is this ProgressBar/SeekBar progress?
 ```java
 assertProgress(R.id.seek_bar, 5)
@@ -391,6 +382,9 @@ The new Marshmallow permissions system requires checking for permissions at runt
 
 ```java
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
+```
+```java
+PermissionGranter.allowPermissionOneTime(Manifest.permission.GET_ACCOUNTS);
 ```
 
 ## Useful test rules
