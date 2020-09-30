@@ -144,6 +144,13 @@
       />
 
   <View
+      android:id="@+id/view_with_color_backbround"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:background="@color/red"
+      />
+
+  <View
       android:id="@+id/view_without_backbround"
       android:layout_width="48dp"
       android:layout_height="48dp"
