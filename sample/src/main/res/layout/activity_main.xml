@@ -137,10 +137,17 @@
       />
 
   <View
-      android:id="@+id/view_with_backbround"
+      android:id="@+id/view_with_drawable_backbround"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:background="@drawable/ic_barista"
+      />
+
+  <View
+      android:id="@+id/view_with_color_backbround"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:background="@color/red"
       />
 
   <View
