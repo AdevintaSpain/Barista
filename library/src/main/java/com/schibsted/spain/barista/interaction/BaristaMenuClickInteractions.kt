@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.interaction
 
+import android.content.Context
 import androidx.annotation.IdRes
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
@@ -12,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.view.View
+import androidx.test.core.app.ApplicationProvider
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
 import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedAnd
@@ -74,6 +75,6 @@ object BaristaMenuClickInteractions {
   }
 
   private fun openOverflow() {
-    openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
+    openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext<Context>())
   }
 }
