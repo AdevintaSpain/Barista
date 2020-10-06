@@ -1,5 +1,5 @@
 # Barista
-**The guy who serves a great Espresso**
+**The tool that serves a great Espresso**
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
