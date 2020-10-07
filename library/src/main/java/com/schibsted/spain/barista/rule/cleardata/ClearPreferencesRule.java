@@ -3,7 +3,8 @@ package com.schibsted.spain.barista.rule.cleardata;
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
-import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,7 +39,7 @@ public class ClearPreferencesRule implements TestRule {
 
   @NonNull
   private List<SharedPreferences> getAllPreferencesFiles() {
-    Context context = InstrumentationRegistry.getTargetContext().getApplicationContext();
+    Context context = ApplicationProvider.getApplicationContext();
     String rootPath = context.getApplicationInfo().dataDir + "/shared_prefs";
     File prefsFolder = new File(rootPath);
 
