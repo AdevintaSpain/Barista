@@ -1,14 +1,15 @@
 package com.schibsted.spain.barista.assertion
 
+import android.content.Context
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
+import androidx.test.core.app.ApplicationProvider
 import com.schibsted.spain.barista.internal.assertAny
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -18,7 +19,7 @@ object BaristaHintAssertions {
 
   @JvmStatic
   fun assertHint(@IdRes viewId: Int, @StringRes text: Int) {
-    val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
+    val resourceString = ApplicationProvider.getApplicationContext<Context>().resources.getString(text)
     assertHint(viewId, resourceString)
   }
 

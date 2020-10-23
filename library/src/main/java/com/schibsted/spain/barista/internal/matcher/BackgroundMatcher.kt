@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.internal.matcher
 
+import android.graphics.drawable.ColorDrawable
 import androidx.annotation.DrawableRes
 import android.view.View
 import com.schibsted.spain.barista.internal.util.BitmapComparator
@@ -44,9 +45,16 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
       return false
     }
 
-    val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
-    val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return BitmapComparator.compare(viewBitmap, expectedBitmap)
+    if (expectedDrawable is ColorDrawable) {
+      val viewDrawable = view.background as ColorDrawable
+      return viewDrawable.color == expectedDrawable.color &&
+              viewDrawable.alpha == expectedDrawable.alpha &&
+              viewDrawable.opacity == expectedDrawable.opacity
+    } else {
+      val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
+      val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
+      return BitmapComparator.compare(viewBitmap, expectedBitmap)
+    }
   }
 
   override fun describeTo(description: Description) {

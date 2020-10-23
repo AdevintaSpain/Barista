@@ -1,8 +1,9 @@
 package com.schibsted.spain.barista.internal.util
 
+import android.content.Context
 import android.content.res.Resources
 import android.view.View
-import androidx.test.InstrumentationRegistry
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
@@ -15,7 +16,7 @@ enum class ResourceType {
 
 val Int.resourceType: ResourceType
   get() {
-    val resourceTypeName = InstrumentationRegistry.getTargetContext().resources.getResourceTypeName(this)
+    val resourceTypeName = ApplicationProvider.getApplicationContext<Context>().resources.getResourceTypeName(this)
     return when (resourceTypeName) {
       "id" -> ResourceType.ID
       "string" -> ResourceType.STRING
@@ -35,7 +36,7 @@ enum class ColorResourceType {
 val Int.colorResourceType: ColorResourceType
   get() {
     return try {
-      when (val resourceTypeName = InstrumentationRegistry.getTargetContext().resources.getResourceTypeName(this)) {
+      when (val resourceTypeName = ApplicationProvider.getApplicationContext<Context>().resources.getResourceTypeName(this)) {
         "color" -> ColorResourceType.COLOR_RES
         "attr" -> ColorResourceType.COLOR_ATTR
         else -> throw BaristaResourceTypeException("The argument must be ColorInt or R.color.* or R.attr.*, but was $resourceTypeName")
