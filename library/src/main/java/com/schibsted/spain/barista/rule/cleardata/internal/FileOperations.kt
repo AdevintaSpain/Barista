@@ -1,11 +1,12 @@
 package com.schibsted.spain.barista.rule.cleardata.internal
 
-import androidx.test.InstrumentationRegistry.getTargetContext
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import java.io.File
 
 class FileOperations {
 
-  private val appContext = getTargetContext()
+  private val appContext = ApplicationProvider.getApplicationContext<Context>()
   private val androidDirectories = arrayOf(appContext.cacheDir, appContext.filesDir)
 
   fun deleteFile(file: File) {

@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.interaction
 
+import android.content.Context
 import androidx.annotation.IdRes
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.AmbiguousViewMatcherException
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.widget.AbsListView
+import androidx.test.core.app.ApplicationProvider
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
 import com.schibsted.spain.barista.internal.failurehandler.description
 import com.schibsted.spain.barista.internal.failurehandler.withFailureHandler
@@ -130,5 +131,5 @@ object BaristaListInteractions {
     else -> allOf(isDisplayed(), isAssignableFrom(AbsListView::class.java), withId(id))
   }
 
-  private fun resourceName(resId: Int) = InstrumentationRegistry.getTargetContext().resources.getResourceName(resId)
+  private fun resourceName(resId: Int) = ApplicationProvider.getApplicationContext<Context>().resources.getResourceName(resId)
 }

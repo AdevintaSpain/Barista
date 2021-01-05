@@ -1,5 +1,6 @@
 package com.schibsted.spain.barista.sample
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -29,6 +30,7 @@ class CameraActivity : AppCompatActivity() {
     }
   }
 
+  @SuppressLint("MissingSuperCall")
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (requestCode == TAKE_PICTURE_REQUEST_CODE) {
       Glide.with(this).load(getPictureUri()).into(image_view)

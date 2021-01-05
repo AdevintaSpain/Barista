@@ -18,6 +18,11 @@ public class DisplayedMatchers {
   }
 
   @NonNull
+  public static Matcher<View> displayedWithIdAndClass(@IdRes int id, final Class<? extends View> viewClass) {
+    return allOf(isDisplayed(), withId(id), isAssignableFrom(viewClass));
+  }
+
+  @NonNull
   public static Matcher<View> displayedAssignableFrom(final Class<? extends View> viewClass) {
     return allOf(isDisplayed(), isAssignableFrom(viewClass));
   }

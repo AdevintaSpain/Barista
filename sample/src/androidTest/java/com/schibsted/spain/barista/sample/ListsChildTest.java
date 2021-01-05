@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
-import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.PerformException;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -175,7 +175,7 @@ public class ListsChildTest {
   }
 
   private void openActivity(IntentBuilder intentBuilder) {
-    activity.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
+    activity.launchActivity(intentBuilder.build(ApplicationProvider.getApplicationContext()));
     closeKeyboard();
   }
 
