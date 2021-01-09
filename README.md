@@ -1,7 +1,7 @@
 # Barista
-**The guy who serves a great Espresso**
+**The one who serves a great Espresso**
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/SchibstedSpain/Barista)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.2.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.7.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -64,6 +64,11 @@ longClickOn("Next");
 #### Click menu items, with or without overflow
 ```java
 clickMenu(R.id.menu_item);
+```
+
+#### Open the overflow menu without clicking any item
+```java
+openMenu();
 ```
 
 #### Writing into widgets
@@ -302,22 +307,23 @@ assertTextColorIsNot(R.id.some_red_text, R.color.blue);
 assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 ```
 
+`assertTextColorIs` and its variant `assertTextColorIsNot` work with:
+
+- *Color int*: `Color.parse("#ff00ff")`
+- *Color resource*: `R.color.green`
+- *Color attribute*: `R.attr.colorPrimary`
+
+Also Barista can check colors parsed from `declarable-style` custom attribute:
+```java
+assertTextColorIs(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle, R.styleable.SampleCustomView_customColor);
+
+// ...or not?
+assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.SampleCustomStyle_Green, R.styleable.SampleCustomView_customColor);
+```
+
 #### Check recyclerView item count against expected item count
 ```java
 assertRecyclerViewItemCount(R.id.recycler, 10);
-```
-
-#### And another tricky feature
-```java
-assertThatBackButtonClosesTheApp();
-```
-#### Is this ImageView showing a drawable?
-```java
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
 ```
 
 #### Is this ProgressBar/SeekBar progress?
@@ -325,6 +331,11 @@ assertHasNoDrawable(R.id.image_view);
 assertProgress(R.id.seek_bar, 5)
 assertProgressIsMin(R.id.seek_bar)
 assertProgressIsMax(R.id.seek_bar)
+```
+
+#### And another tricky feature
+```java
+assertThatBackButtonClosesTheApp();
 ```
 
 ### Custom assertions
@@ -354,10 +365,17 @@ assertAny<RadioGroup>(R.id.radioGroup, "selected option is the second one") {
 }
 ```
 
-## Barista’s Intents API
+## Mocking the Intent results
+
+Mocking the Android Camera Intent is a tricky thing to do. To accomplish it in no time, Barista gives a way to do it in one line: the method `mockAndroidCamera()`. This method does all the magic to mock the result of the camera. One more thing to do: you have to call `Intents.init()` before calling `mockAndroidCamera()`, and `Intents.release()` after doing the action that launches the camera. You could also use `IntentsTestRule` instead of the common `ActivityTestRule` to skip it, but as we recommend the use of `BaristaRule`, it's easier to just call both methods manually when needed.
+
+Here's an example to copy paste:
+
 ```java
-// Creates a Bitmap on a camera provided URI
+Intents.init();
 mockAndroidCamera();
+clickOn(R.id.launch_camera);
+Intents.release();
 ```
 
 ## Runtime Permissions
@@ -365,6 +383,9 @@ The new Marshmallow permissions system requires checking for permissions at runt
 
 ```java
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
+```
+```java
+PermissionGranter.allowPermissionOneTime(Manifest.permission.GET_ACCOUNTS);
 ```
 
 ## Useful test rules

@@ -1,14 +1,14 @@
 package com.schibsted.spain.barista.rule.cleardata.internal
 
 import android.database.sqlite.SQLiteDatabase
-import androidx.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import java.io.File
 import java.util.ArrayList
 
-class DatabaseOperations {
+open class DatabaseOperations {
 
-  fun getAllDatabaseFiles(): List<File> {
-    return InstrumentationRegistry.getTargetContext()
+  open fun getAllDatabaseFiles(): List<File> {
+    return InstrumentationRegistry.getInstrumentation().targetContext
         .let { context ->
           context.databaseList()
               .map { context.getDatabasePath(it) }
@@ -16,14 +16,14 @@ class DatabaseOperations {
         }
   }
 
-  fun openDatabase(databaseFile: File): SQLiteDatabase {
+  open fun openDatabase(databaseFile: File): SQLiteDatabase {
     return SQLiteDatabase.openDatabase(
         databaseFile.absolutePath,
         null /* cursorFactory */,
         0 /* flags */)
   }
 
-  fun getTableNames(sqLiteDatabase: SQLiteDatabase): List<String> {
+  open fun getTableNames(sqLiteDatabase: SQLiteDatabase): List<String> {
     sqLiteDatabase.rawQuery("SELECT name FROM sqlite_master WHERE type IN (?, ?)", arrayOf("table", "view"))
         .use { cursor ->
           val tableNames = ArrayList<String>()
@@ -34,7 +34,7 @@ class DatabaseOperations {
         }
   }
 
-  fun deleteTableContent(sqLiteDatabase: SQLiteDatabase, tableName: String) {
+  open fun deleteTableContent(sqLiteDatabase: SQLiteDatabase, tableName: String) {
     sqLiteDatabase.delete(tableName, null, null)
   }
 }

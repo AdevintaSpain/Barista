@@ -1,7 +1,8 @@
 package com.schibsted.spain.barista.internal.util
 
+import android.content.Context
 import android.graphics.BitmapFactory
-import androidx.test.InstrumentationRegistry
+import androidx.test.core.app.ApplicationProvider
 import com.schibsted.spain.barista.test.R
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -11,8 +12,8 @@ class BitmapComparatorTest {
 
   @Test
   fun returnTrueWhenComparingTheSameDrawable() {
-    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
-    val theSameBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
+    val aBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
+    val theSameBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
 
     val result = BitmapComparator.compare(aBitmap, theSameBitmap)
 
@@ -21,8 +22,8 @@ class BitmapComparatorTest {
 
   @Test
   fun returnFalseWhenComparingDifferentDrawables() {
-    val aBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_barista)
-    val aDifferentBitmap = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().resources, R.drawable.ic_launcher)
+    val aBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
+    val aDifferentBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_launcher)
 
     val result = BitmapComparator.compare(aBitmap, aDifferentBitmap)
 

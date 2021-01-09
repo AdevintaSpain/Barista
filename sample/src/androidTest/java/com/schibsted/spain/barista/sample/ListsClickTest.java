@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
-import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
@@ -228,6 +228,6 @@ public class ListsClickTest {
   }
 
   private void launchTestActivity(ListsActivity.IntentBuilder intentBuilder) {
-    activity.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
+    activity.launchActivity(intentBuilder.build(ApplicationProvider.getApplicationContext()));
   }
 }
