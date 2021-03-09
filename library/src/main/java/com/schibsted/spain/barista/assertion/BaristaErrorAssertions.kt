@@ -26,6 +26,17 @@ object BaristaErrorAssertions {
     ViewMatchers.withId(viewId).assertAny(matchError(text))
   }
 
+  @JvmStatic
+  fun assertNoError(@IdRes viewId: Int, @StringRes text: Int) {
+    val resourceString = ApplicationProvider.getApplicationContext<Context>().resources.getString(text)
+    assertNoError(viewId, resourceString)
+  }
+
+  @JvmStatic
+  fun assertNoError(@IdRes viewId: Int, text: String) {
+    ViewMatchers.withId(viewId).assertAny(matchNoError(text))
+  }
+
   private fun matchError(expectedError: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
@@ -36,6 +47,24 @@ object BaristaErrorAssertions {
         return when (item) {
           is TextView -> expectedError == item.error.toString()
           is TextInputLayout -> expectedError == item.error.toString()
+          else -> {
+            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
+          }
+        }
+      }
+    }
+  }
+
+  private fun matchNoError(notExpectedError: String): Matcher<View> {
+    return object : TypeSafeMatcher<View>() {
+      override fun describeTo(description: Description) {
+        description.appendText("without error: ").appendText(notExpectedError)
+      }
+
+      override fun matchesSafely(item: View): Boolean {
+        return when (item) {
+          is TextView -> item.error == null || notExpectedError != item.error.toString()
+          is TextInputLayout -> item.error == null || notExpectedError != item.error.toString()
           else -> {
             throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
           }

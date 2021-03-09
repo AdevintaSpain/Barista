@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertError;
+import static com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertNoError;
 import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class HintAndErrorTest {
@@ -31,6 +33,7 @@ public class HintAndErrorTest {
 
   @Test
   public void assertErrorByString() {
+    clickOn(R.id.showErrors);
     assertError(R.id.hintanderror_inputlayout, "TextInputLayout error");
     assertError(R.id.hintanderror_inputedittext, "TextInputEditText error");
     assertError(R.id.hintanderror_edittext, "EditText error");
@@ -38,8 +41,23 @@ public class HintAndErrorTest {
 
   @Test
   public void assertErrorByResource() {
+    clickOn(R.id.showErrors);
     assertError(R.id.hintanderror_inputlayout, R.string.hintanderror_inputlayout_error);
     assertError(R.id.hintanderror_inputedittext, R.string.hintanderror_inputedittext_error);
     assertError(R.id.hintanderror_edittext, R.string.hintanderror_edittext_error);
+  }
+
+  @Test
+  public void assertNoErrorByString() {
+    assertNoError(R.id.hintanderror_inputlayout, "TextInputLayout NoError");
+    assertNoError(R.id.hintanderror_inputedittext, "TextInputEditText NoError");
+    assertNoError(R.id.hintanderror_edittext, "EditText NoError");
+  }
+
+  @Test
+  public void assertNoErrorByResource() {
+    assertNoError(R.id.hintanderror_inputlayout, R.string.hintanderror_inputlayout_error);
+    assertNoError(R.id.hintanderror_inputedittext, R.string.hintanderror_inputedittext_error);
+    assertNoError(R.id.hintanderror_edittext, R.string.hintanderror_edittext_error);
   }
 }
