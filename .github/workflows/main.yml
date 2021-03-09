@@ -53,5 +53,6 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86
+          profile: pixel_2
           disable-animations: true
           script: ./gradlew connectedCheck
