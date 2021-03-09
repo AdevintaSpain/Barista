@@ -32,9 +32,6 @@ jobs:
     needs: build
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
     timeout-minutes: 30
-    strategy:
-      matrix:
-        api-level: [23, 26, 29]
 
     steps:
       - name: Checkout
@@ -51,7 +48,7 @@ jobs:
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
+          api-level: 26
           arch: x86
           profile: pixel_2
           disable-animations: true
