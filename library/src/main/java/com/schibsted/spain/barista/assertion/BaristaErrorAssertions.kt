@@ -16,18 +16,18 @@ import org.hamcrest.TypeSafeMatcher
 object BaristaErrorAssertions {
 
   @JvmStatic
-  fun assertError(@IdRes viewId: Int, @StringRes text: Int) {
+  fun assertErrorDisplayed(@IdRes viewId: Int, @StringRes text: Int) {
     val resourceString = ApplicationProvider.getApplicationContext<Context>().resources.getString(text)
-    assertError(viewId, resourceString)
+    assertErrorDisplayed(viewId, resourceString)
   }
 
   @JvmStatic
-  fun assertError(@IdRes viewId: Int, text: String) {
+  fun assertErrorDisplayed(@IdRes viewId: Int, text: String) {
     ViewMatchers.withId(viewId).assertAny(matchError(text))
   }
 
   @JvmStatic
-  fun assertNoError(@IdRes viewId: Int) {
+  fun assertNoErrorDisplayed(@IdRes viewId: Int) {
     ViewMatchers.withId(viewId).assertAny(matchNoError())
   }
 
