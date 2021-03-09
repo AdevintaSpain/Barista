@@ -50,6 +50,12 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
       return viewDrawable.color == expectedDrawable.color &&
               viewDrawable.alpha == expectedDrawable.alpha &&
               viewDrawable.opacity == expectedDrawable.opacity
+    } else if (expectedDrawable is GradientDrawable) {
+      val viewDrawable = target.background as GradientDrawable
+      return viewDrawable.color == expectedDrawable.color &&
+              viewDrawable.alpha == expectedDrawable.alpha &&
+              viewDrawable.opacity == expectedDrawable.opacity &&
+              viewDrawable.shape == expectedDrawable.shape
     } else {
       val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
       val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
