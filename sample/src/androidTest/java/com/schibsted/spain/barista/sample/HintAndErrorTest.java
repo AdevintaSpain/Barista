@@ -63,24 +63,17 @@ public class HintAndErrorTest {
   }
 
   @Test
-  public void assertNoErrorByString() {
-    assertNoError(R.id.hintanderror_inputlayout, "TextInputLayout NoError");
-    assertNoError(R.id.hintanderror_inputedittext, "TextInputEditText NoError");
-    assertNoError(R.id.hintanderror_edittext, "EditText NoError");
-  }
-
-  @Test
   public void assertNoErrorByResource() {
-    assertNoError(R.id.hintanderror_inputlayout, R.string.hintanderror_inputlayout_error);
-    assertNoError(R.id.hintanderror_inputedittext, R.string.hintanderror_inputedittext_error);
-    assertNoError(R.id.hintanderror_edittext, R.string.hintanderror_edittext_error);
+    assertNoError(R.id.hintanderror_inputlayout);
+    assertNoError(R.id.hintanderror_inputedittext);
+    assertNoError(R.id.hintanderror_edittext);
   }
 
   @Test(expected = BaristaException.class)
   public void assertNoErrorByResourceFails() {
     clickOn(R.id.showErrors);
-    assertNoError(R.id.hintanderror_inputlayout, R.string.hintanderror_inputlayout_error);
-    assertNoError(R.id.hintanderror_inputedittext, R.string.hintanderror_inputedittext_error);
-    assertNoError(R.id.hintanderror_edittext, R.string.hintanderror_edittext_error);
+    assertNoError(R.id.hintanderror_inputlayout);
+    assertNoError(R.id.hintanderror_inputedittext);
+    assertNoError(R.id.hintanderror_edittext);
   }
 }
