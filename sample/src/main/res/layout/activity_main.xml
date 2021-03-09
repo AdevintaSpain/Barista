@@ -138,21 +138,28 @@
       />
 
   <View
-      android:id="@+id/view_with_drawable_backbround"
+      android:id="@+id/view_with_drawable_background"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:background="@drawable/ic_barista"
       />
 
   <View
-      android:id="@+id/view_with_color_backbround"
+      android:id="@+id/view_with_gradient_drawable_background"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:background="@drawable/gradient_drawable"
+      />
+
+  <View
+      android:id="@+id/view_with_color_background"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:background="@color/red"
       />
 
   <View
-      android:id="@+id/view_without_backbround"
+      android:id="@+id/view_without_background"
       android:layout_width="48dp"
       android:layout_height="48dp"
       />

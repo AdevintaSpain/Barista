@@ -311,42 +311,52 @@ public class AssertionsTest {
 
   @Test
   public void checkBackgroundDrawable_withId() throws Exception {
-    assertHasBackground(R.id.view_with_drawable_backbround, R.drawable.ic_barista);
+    assertHasBackground(R.id.view_with_drawable_background, R.drawable.ic_barista);
+  }
+
+  @Test
+  public void checkBackgroundGradientDrawable_withId() throws Exception {
+    assertHasBackground(R.id.view_with_gradient_drawable_background, R.drawable.gradient_drawable);
   }
 
   @Test
   public void checkBackgroundColor_withId() throws Exception {
-    assertHasBackground(R.id.view_with_color_backbround, R.color.red);
+    assertHasBackground(R.id.view_with_color_background, R.color.red);
   }
 
   @Test(expected = BaristaException.class)
   public void checkBackgroundDrawable_withId_failure() throws Exception {
-    assertHasBackground(R.id.view_without_backbround, R.drawable.ic_action_menu);
+    assertHasBackground(R.id.view_without_background, R.drawable.ic_action_menu);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkBackgroundGradientDrawable_withId_failure() throws Exception {
+    assertHasBackground(R.id.view_without_background, R.drawable.gradient_drawable);
   }
 
   @Test(expected = BaristaException.class)
   public void checkBackgroundColor_withId_failure() throws Exception {
-    assertHasBackground(R.id.view_with_color_backbround, R.color.blue);
+    assertHasBackground(R.id.view_with_color_background, R.color.blue);
   }
 
   @Test
   public void checkBackground_withAnyDrawable() throws Exception {
-    assertHasAnyBackground(R.id.view_with_drawable_backbround);
+    assertHasAnyBackground(R.id.view_with_drawable_background);
   }
 
   @Test(expected = BaristaException.class)
   public void checkBackground_withAnyDrawable_failure() throws Exception {
-    assertHasAnyBackground(R.id.view_without_backbround);
+    assertHasAnyBackground(R.id.view_without_background);
   }
 
   @Test
   public void checkBackground_withoutDrawable() throws Exception {
-    assertHasNoBackground(R.id.view_without_backbround);
+    assertHasNoBackground(R.id.view_without_background);
   }
 
   @Test(expected = BaristaException.class)
   public void checkBackground_withoutDrawable_failure() throws Exception {
-    assertHasNoBackground(R.id.view_with_drawable_backbround);
+    assertHasNoBackground(R.id.view_with_drawable_background);
   }
 
   @Test

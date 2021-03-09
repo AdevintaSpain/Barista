@@ -1,6 +1,8 @@
 package com.schibsted.spain.barista.internal.matcher
 
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import androidx.annotation.DrawableRes
 import android.view.View
 import com.schibsted.spain.barista.internal.util.BitmapComparator
@@ -45,21 +47,33 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
       return false
     }
 
-    if (expectedDrawable is ColorDrawable) {
-      val viewDrawable = view.background as ColorDrawable
-      return viewDrawable.color == expectedDrawable.color &&
-              viewDrawable.alpha == expectedDrawable.alpha &&
-              viewDrawable.opacity == expectedDrawable.opacity
-    } else if (expectedDrawable is GradientDrawable) {
-      val viewDrawable = target.background as GradientDrawable
-      return viewDrawable.color == expectedDrawable.color &&
-              viewDrawable.alpha == expectedDrawable.alpha &&
-              viewDrawable.opacity == expectedDrawable.opacity &&
-              viewDrawable.shape == expectedDrawable.shape
+    return when (expectedDrawable) {
+      is ColorDrawable -> isSameColorDrawable(view.background as ColorDrawable, expectedDrawable)
+      is GradientDrawable -> isSameGradientDrawable(view.background as GradientDrawable, expectedDrawable)
+      else -> hasSameBitmap(view, expectedDrawable)
+    }
+  }
+
+  private fun hasSameBitmap(view: View, expectedDrawable: Drawable?): Boolean {
+    val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
+    val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
+    return BitmapComparator.compare(viewBitmap, expectedBitmap)
+  }
+
+  private fun isSameColorDrawable(viewDrawable: ColorDrawable, expectedDrawable: ColorDrawable) =
+    viewDrawable.color == expectedDrawable.color &&
+        viewDrawable.alpha == expectedDrawable.alpha &&
+        viewDrawable.opacity == expectedDrawable.opacity
+
+  private fun isSameGradientDrawable(viewDrawable: GradientDrawable, expectedDrawable: GradientDrawable): Boolean {
+    return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+      viewDrawable.alpha == expectedDrawable.alpha &&
+          viewDrawable.opacity == expectedDrawable.opacity &&
+          viewDrawable.color == expectedDrawable.color &&
+          viewDrawable.shape == expectedDrawable.shape
     } else {
-      val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
-      val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-      return BitmapComparator.compare(viewBitmap, expectedBitmap)
+      viewDrawable.alpha == expectedDrawable.alpha &&
+          viewDrawable.opacity == expectedDrawable.opacity
     }
   }
 
