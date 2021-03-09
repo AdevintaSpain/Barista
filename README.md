@@ -2,6 +2,7 @@
 **The one who serves a great Espresso**
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
+[![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
