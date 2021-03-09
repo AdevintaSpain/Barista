@@ -275,6 +275,9 @@ assertHint(R.id.edittext, "Hint");
 ```java
 assertError(R.id.edittext, R.string.error);
 assertError(R.id.edittext, "Error message");
+
+assertNoError(R.id.edittext, R.string.error);
+assertNoError(R.id.edittext, "Error message");
 ```
 
 #### Check TextInputLayout's assistive helper text
