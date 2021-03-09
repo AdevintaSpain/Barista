@@ -2,7 +2,6 @@ package com.schibsted.spain.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
-import com.schibsted.spain.barista.assertion.BaristaErrorAssertions;
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,8 +9,6 @@ import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertErrorDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertNoErrorDisplayed;
-import static com.schibsted.spain.barista.assertion.assertErrorDisplayed;
-import static com.schibsted.spain.barista.assertion.assertNoErrorDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
