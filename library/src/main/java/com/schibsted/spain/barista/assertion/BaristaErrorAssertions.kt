@@ -64,7 +64,9 @@ object BaristaErrorAssertions {
       override fun matchesSafely(item: View): Boolean {
         return when (item) {
           is TextView -> item.error == null || notExpectedError != item.error.toString()
-          is TextInputLayout -> item.error == null || notExpectedError != item.error.toString()
+          is TextInputLayout -> {
+            item.error == null || notExpectedError != item.error.toString()
+          }
           else -> {
             throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
           }
