@@ -36,6 +36,7 @@ public class HintAndErrorTest {
   public void assertErrorByString() {
     clickOn(R.id.showErrors);
     assertErrorDisplayed(R.id.hintanderror_inputlayout, "TextInputLayout error");
+    assertErrorDisplayed(R.id.hintanderror_inputlayout, "TextInputLayout error");
     assertErrorDisplayed(R.id.hintanderror_inputedittext, "TextInputEditText error");
     assertErrorDisplayed(R.id.hintanderror_edittext, "EditText error");
   }

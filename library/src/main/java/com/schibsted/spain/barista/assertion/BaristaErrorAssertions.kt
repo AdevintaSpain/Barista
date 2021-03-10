@@ -15,6 +15,30 @@ import org.hamcrest.TypeSafeMatcher
 
 object BaristaErrorAssertions {
 
+  @Deprecated(
+    message = "Use assertErrorDisplayed(id, text)",
+    replaceWith = ReplaceWith(
+      "assertErrorDisplayed(viewId, text)",
+      "com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertErrorDisplayed"
+    )
+  )
+  @JvmStatic
+  fun assertError(@IdRes viewId: Int, @StringRes text: Int) {
+    assertErrorDisplayed(viewId, text)
+  }
+
+  @Deprecated(
+    message = "Use assertErrorDisplayed(id, text)",
+    replaceWith = ReplaceWith(
+      "assertErrorDisplayed(viewId, text)",
+      "com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertErrorDisplayed"
+    )
+  )
+  @JvmStatic
+  fun assertError(@IdRes viewId: Int, text: String) {
+    assertErrorDisplayed(viewId, text)
+  }
+
   @JvmStatic
   fun assertErrorDisplayed(@IdRes viewId: Int, @StringRes text: Int) {
     val resourceString = ApplicationProvider.getApplicationContext<Context>().resources.getString(text)
