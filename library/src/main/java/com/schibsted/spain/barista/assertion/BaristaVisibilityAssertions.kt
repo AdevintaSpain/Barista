@@ -1,7 +1,6 @@
 package com.schibsted.spain.barista.assertion
 
 import android.view.View
-import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
@@ -15,6 +14,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.matcher.TextColorMatcher
 import com.schibsted.spain.barista.internal.matcher.TextStyleableColorMatcher
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
@@ -40,7 +40,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertDisplayed(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withText(text)))
+    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withCompatText(text)))
   }
 
   @JvmStatic
