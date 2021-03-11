@@ -10,7 +10,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import android.view.View
 import androidx.test.core.app.ApplicationProvider
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
@@ -40,7 +40,7 @@ object BaristaMenuClickInteractions {
   fun clickMenu(text: String) {
     val spyFailureHandler = SpyFailureHandler()
     try {
-      clickDisplayedView(withText(text), spyFailureHandler)
+      clickDisplayedView(withCompatText(text), spyFailureHandler)
     } catch (noMatchingViewException: NoMatchingViewException) {
       try {
         clickViewWithDescription(text, spyFailureHandler)

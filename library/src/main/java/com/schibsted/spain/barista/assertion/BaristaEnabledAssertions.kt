@@ -1,7 +1,7 @@
 package com.schibsted.spain.barista.assertion
 
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import com.schibsted.spain.barista.internal.assertAny
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not
@@ -15,7 +15,7 @@ object BaristaEnabledAssertions {
 
   @JvmStatic
   fun assertEnabled(text: String) {
-    withText(text).assertAny(isEnabled())
+    withCompatText(text).assertAny(isEnabled())
   }
 
   @JvmStatic
@@ -25,6 +25,6 @@ object BaristaEnabledAssertions {
 
   @JvmStatic
   fun assertDisabled(text: String) {
-    withText(text).assertAny(not(isEnabled()))
+    withCompatText(text).assertAny(not(isEnabled()))
   }
 }

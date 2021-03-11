@@ -9,6 +9,7 @@ import android.view.View
 import com.schibsted.spain.barista.internal.assertAnyView
 import com.schibsted.spain.barista.internal.failurehandler.RethrowingFailureHandler
 import com.schibsted.spain.barista.internal.matcher.BooleanMatcher
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.junit.Assert.fail
@@ -42,7 +43,7 @@ object BaristaAssertions {
    */
   @JvmStatic
   inline fun <reified T : View> assertAny(text: String, assertionDescription: String? = null, noinline block: (T) -> Boolean) {
-    assertAny(ViewMatchers.withText(text), assertionDescription, block)
+    assertAny(withCompatText(text), assertionDescription, block)
   }
 
   /**

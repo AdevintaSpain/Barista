@@ -1,25 +1,26 @@
 package com.schibsted.spain.barista.assertion
 
+import android.view.View
+import android.widget.ListView
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.recyclerview.widget.RecyclerView
-import android.view.View
-import android.widget.ListView
 import androidx.annotation.DrawableRes
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
 import com.schibsted.spain.barista.internal.failurehandler.SpyFailureHandler
-import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.ListViewItemCountAssertion
-import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
+import com.schibsted.spain.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.RecyclerViewNotEmptyAssertion
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -81,8 +82,8 @@ object BaristaListAssertions {
         targetViewId = targetViewId,
         viewAssertion = ViewAssertions.matches(
             CoreMatchers.anyOf(
-                ViewMatchers.withChild(ViewMatchers.withText(text)),
-                ViewMatchers.withText(text)
+                ViewMatchers.withChild(withCompatText(text)),
+                withCompatText(text)
             )
         )
     )

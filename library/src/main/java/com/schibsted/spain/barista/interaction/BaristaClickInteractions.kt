@@ -3,7 +3,7 @@ package com.schibsted.spain.barista.interaction
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.schibsted.spain.barista.internal.matcher.withCompatText
 import com.schibsted.spain.barista.internal.performAction
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 
@@ -21,7 +21,7 @@ object BaristaClickInteractions {
 
   @JvmStatic
   fun clickOn(text: String) {
-    withText(text).performAction(click())
+    withCompatText(text).performAction(click())
   }
 
   @JvmStatic
@@ -31,6 +31,6 @@ object BaristaClickInteractions {
 
   @JvmStatic
   fun longClickOn(text: String) {
-    withText(text).performAction(longClick())
+    withCompatText(text).performAction(longClick())
   }
 }
