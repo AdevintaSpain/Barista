@@ -3,7 +3,6 @@ jdk: oraclejdk8
 dist: trusty
 branches:
   only:
-  - master
   - /^v\d+\.\d+\.\d+$/
 env:
   global:
