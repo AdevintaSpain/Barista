@@ -2,6 +2,7 @@
 **The one who serves a great Espresso**
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
+[![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
 [![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
@@ -27,7 +28,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.8.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -272,8 +273,11 @@ assertHint(R.id.edittext, "Hint");
 
 #### Check TextInputLayout and EditText's errors
 ```java
-assertError(R.id.edittext, R.string.error);
-assertError(R.id.edittext, "Error message");
+assertErrorDisplayed(R.id.edittext, R.string.error);
+assertErrorDisplayed(R.id.edittext, "Error message");
+
+assertNoErrorDisplayed(R.id.edittext, R.string.error);
+assertNoErrorDisplayed(R.id.edittext, "Error message");
 ```
 
 #### Check TextInputLayout's assistive helper text
