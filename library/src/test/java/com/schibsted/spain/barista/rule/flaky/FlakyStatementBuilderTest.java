@@ -45,6 +45,20 @@ public class FlakyStatementBuilderTest {
   }
 
   @Test
+  public void repeatStatementReturnedWhenRepeatSetRepeatAttemptsByDefault() throws Exception {
+    Statement baseStatement = new SomeStatement();
+    Description description = Description.EMPTY;
+
+    Statement resultStatement = new FlakyStatementBuilder()
+        .setBase(baseStatement)
+        .setDescription(description)
+        .setRepeatAttemptsByDefault(3)
+        .build();
+
+    assertTrue(resultStatement instanceof RepeatStatement);
+  }
+
+  @Test
   public void allowFlakyStatementReturnedWhenAllowFlakyAnnotationFound() throws Exception {
     Statement baseStatement = new SomeStatement();
     Description description = withAnnotations(allowFlaky());
@@ -66,6 +80,36 @@ public class FlakyStatementBuilderTest {
         .build();
 
     assertTrue(resultStatement instanceof AllowFlakyStatement);
+  }
+
+  @Test
+  public void lastStatementReturnedWhenRepeatSetRepeatAttemptsByDefaultAndAllowFlakyStatementAtTheSameTime() throws Exception {
+    Statement baseStatement = new SomeStatement();
+    Description description = Description.EMPTY;
+
+    Statement resultStatement = new FlakyStatementBuilder()
+        .setBase(baseStatement)
+        .setDescription(description)
+        .allowFlakyAttemptsByDefault(5)
+        .setRepeatAttemptsByDefault(3)
+        .build();
+
+    assertTrue(resultStatement instanceof RepeatStatement);
+  }
+
+  @Test
+  public void allowFlakyStatementReturnedWhenAllowFlakyAnnotationFoundEvenRepeatStatement() throws Exception {
+    Statement baseStatement = new SomeStatement();
+    Description description = Description.EMPTY;
+
+    Statement resultStatement = new FlakyStatementBuilder()
+        .setBase(baseStatement)
+        .setDescription(description)
+        .allowFlakyAttemptsByDefault(5)
+        .setRepeatAttemptsByDefault(3)
+        .build();
+
+    assertTrue(resultStatement instanceof RepeatStatement);
   }
 
   //region Shortcut methods
