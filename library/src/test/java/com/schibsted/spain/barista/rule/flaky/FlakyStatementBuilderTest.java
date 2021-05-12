@@ -49,11 +49,7 @@ public class FlakyStatementBuilderTest {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
-    Statement resultStatement = new FlakyStatementBuilder()
-        .setBase(baseStatement)
-        .setDescription(description)
-        .setRepeatAttemptsByDefault(3)
-        .build();
+    Statement resultStatement = createStatementWithRepeatAttemptsByDefault(baseStatement, description);
 
     assertTrue(resultStatement instanceof RepeatStatement);
   }
@@ -73,43 +69,36 @@ public class FlakyStatementBuilderTest {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
-    Statement resultStatement = new FlakyStatementBuilder()
-        .setBase(baseStatement)
-        .setDescription(description)
-        .allowFlakyAttemptsByDefault(5)
-        .build();
+    Statement resultStatement = createStatementWithAllowFlakyByDefault(baseStatement, description);
 
     assertTrue(resultStatement instanceof AllowFlakyStatement);
   }
 
   @Test
-  public void lastStatementReturnedWhenRepeatSetRepeatAttemptsByDefaultAndAllowFlakyStatementAtTheSameTime() throws Exception {
+  public void lastStatementReturnedWhenRepeatAttemptsByDefaultAndAllowFlakyStatementUsedAtTheSameTime() throws Exception {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
-    Statement resultStatement = new FlakyStatementBuilder()
-        .setBase(baseStatement)
-        .setDescription(description)
-        .allowFlakyAttemptsByDefault(5)
-        .setRepeatAttemptsByDefault(3)
-        .build();
+    Statement resultStatement = createStatementWithFlakyAndReturn(baseStatement, description);
 
     assertTrue(resultStatement instanceof RepeatStatement);
   }
 
-  @Test
-  public void allowFlakyStatementReturnedWhenAllowFlakyAnnotationFoundEvenRepeatStatement() throws Exception {
-    Statement baseStatement = new SomeStatement();
-    Description description = Description.EMPTY;
-
-    Statement resultStatement = new FlakyStatementBuilder()
+  private Statement createStatementWithFlakyAndReturn(Statement baseStatement, Description description) {
+    return new FlakyStatementBuilder()
         .setBase(baseStatement)
         .setDescription(description)
         .allowFlakyAttemptsByDefault(5)
         .setRepeatAttemptsByDefault(3)
         .build();
+  }
 
-    assertTrue(resultStatement instanceof RepeatStatement);
+  private Statement createStatementWithAllowFlakyByDefault(Statement baseStatement, Description description) {
+    return new FlakyStatementBuilder()
+        .setBase(baseStatement)
+        .setDescription(description)
+        .allowFlakyAttemptsByDefault(5)
+        .build();
   }
 
   //region Shortcut methods
@@ -117,6 +106,14 @@ public class FlakyStatementBuilderTest {
     return new FlakyStatementBuilder()
         .setBase(baseStatement)
         .setDescription(description)
+        .build();
+  }
+
+  private Statement createStatementWithRepeatAttemptsByDefault(Statement baseStatement, Description description) {
+    return new FlakyStatementBuilder()
+        .setBase(baseStatement)
+        .setDescription(description)
+        .setRepeatAttemptsByDefault(3)
         .build();
   }
 
