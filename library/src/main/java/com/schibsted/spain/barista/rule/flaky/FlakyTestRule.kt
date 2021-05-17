@@ -35,7 +35,7 @@ class FlakyTestRule : TestRule {
    * Use this method when constructing the Rule to apply a default behavior of @[Repeat] without having to add the annotation to
    * each test. This can help you to find flaky tests.
    * <br></br>
-   * The default behavior can be overridden with [Repeat] or [Repeat].
+   * The default behavior can be overridden with [Repeat] or [AllowFlaky].
    */
   fun repeatAttemptsByDefault(defaultAttempts: Int): FlakyTestRule {
     flakyStatementBuilder.setRepeatAttemptsByDefault(defaultAttempts)

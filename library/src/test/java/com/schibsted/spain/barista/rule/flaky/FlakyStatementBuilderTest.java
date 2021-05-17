@@ -45,7 +45,7 @@ public class FlakyStatementBuilderTest {
   }
 
   @Test
-  public void repeatStatementReturnedWhenRepeatSetRepeatAttemptsByDefault() throws Exception {
+  public void repeatStatementReturnedWhenSettingDefaultRepeatAttempts() throws Exception {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
@@ -75,7 +75,7 @@ public class FlakyStatementBuilderTest {
   }
 
   @Test
-  public void lastStatementReturnedWhenRepeatAttemptsByDefaultAndAllowFlakyStatementUsedAtTheSameTime() throws Exception {
+  public void lastStatementReturnedWhenDefaultRepeatAttemptsAndAllowFlakyStatementUsedAtTheSameTime() throws Exception {
     Statement baseStatement = new SomeStatement();
     Description description = Description.EMPTY;
 
