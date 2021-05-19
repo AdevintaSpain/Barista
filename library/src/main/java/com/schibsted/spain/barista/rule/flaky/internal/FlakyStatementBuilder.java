@@ -11,6 +11,8 @@ public class FlakyStatementBuilder {
   private Description description;
   private boolean useAllowFlakyByDefault = false;
   private int defaultAllowFlakyAttempts = 0;
+  private int defaultRepeatAttempts = 1;
+  private boolean useRepeatByDefault = false;
 
   public FlakyStatementBuilder setBase(Statement base) {
     this.base = base;
@@ -22,8 +24,16 @@ public class FlakyStatementBuilder {
     return this;
   }
 
+  public FlakyStatementBuilder setRepeatAttemptsByDefault(int attempts) {
+    useAllowFlakyByDefault = false;
+    useRepeatByDefault = true;
+    defaultRepeatAttempts = attempts;
+    return this;
+  }
+
   public FlakyStatementBuilder allowFlakyAttemptsByDefault(int attempts) {
     useAllowFlakyByDefault = true;
+    useRepeatByDefault = false;
     defaultAllowFlakyAttempts = attempts;
     return this;
   }
@@ -46,6 +56,8 @@ public class FlakyStatementBuilder {
       return new AllowFlakyStatement(attempts, base);
     } else if (useAllowFlakyByDefault) {
       return new AllowFlakyStatement(defaultAllowFlakyAttempts, base);
+    } else if (useRepeatByDefault) {
+      return new RepeatStatement(defaultRepeatAttempts, base);
     } else {
       return base;
     }
