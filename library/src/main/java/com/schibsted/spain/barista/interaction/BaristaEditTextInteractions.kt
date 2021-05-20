@@ -17,7 +17,7 @@ object BaristaEditTextInteractions {
   /**
    * This uses [androidx.test.espresso.action.ViewActions.replaceText],
    * to remove any existing text and insert the characters directly,
-   * disregarding any EditText properties like `maxLength`, `textFilter`, etc.
+   * ignoring any EditText properties like `maxLength`, `textFilter`, etc.
    */
   @JvmStatic
   fun writeTo(@IdRes editTextId: Int, text: String) {
