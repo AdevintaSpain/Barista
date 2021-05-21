@@ -142,7 +142,7 @@ setProgressToMax(R.id.seek_bar);
 #### Pull to refresh in SwipeRefreshLayout
 ```java
 refresh(R.id.swipe_refresh);
-refresh(); // Id is optional! We'll find it for you :D
+refresh(); // Id is optional. Barista will find it for you.
 ```
 
 #### Close or press ime actions on the Keyboard
