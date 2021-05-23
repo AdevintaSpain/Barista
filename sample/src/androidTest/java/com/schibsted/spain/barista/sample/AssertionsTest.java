@@ -260,6 +260,11 @@ public class AssertionsTest {
   }
 
   @Test
+  public void checkMaterialButtonDrawable_withId() throws Exception {
+    assertHasDrawable(R.id.material_button_view, R.drawable.ic_barista);
+  }
+
+  @Test
   public void checkVectorDrawable_withId() throws Exception {
     assertHasDrawable(R.id.vector_image_view, R.drawable.barista_logo_vector);
   }
