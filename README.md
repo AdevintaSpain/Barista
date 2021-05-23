@@ -1,8 +1,8 @@
 # Barista
-**The guy who serves a great Espresso**
+**The one who serves a great Espresso**
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
-[![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
+[![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
 <img src="art/barista-logo.svg" width="30%"/>
@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.5.0') {
+androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -141,7 +141,7 @@ setProgressToMax(R.id.seek_bar);
 #### Pull to refresh in SwipeRefreshLayout
 ```java
 refresh(R.id.swipe_refresh);
-refresh(); // Id is optional! We'll find it for you :D
+refresh(); // Id is optional. Barista will find it for you.
 ```
 
 #### Close or press ime actions on the Keyboard
@@ -272,8 +272,11 @@ assertHint(R.id.edittext, "Hint");
 
 #### Check TextInputLayout and EditText's errors
 ```java
-assertError(R.id.edittext, R.string.error);
-assertError(R.id.edittext, "Error message");
+assertErrorDisplayed(R.id.edittext, R.string.error);
+assertErrorDisplayed(R.id.edittext, "Error message");
+
+assertNoErrorDisplayed(R.id.edittext, R.string.error);
+assertNoErrorDisplayed(R.id.edittext, "Error message");
 ```
 
 #### Check TextInputLayout's assistive helper text
@@ -323,15 +326,6 @@ assertTextColorIsNot(R.id.customTextView, R.styleable.SampleCustomView, R.style.
 #### Check recyclerView item count against expected item count
 ```java
 assertRecyclerViewItemCount(R.id.recycler, 10);
-```
-
-#### Is this ImageView showing a drawable?
-```java
-assertHasAnyDrawable(R.id.image_view);
-assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
-
-// ...or not?
-assertHasNoDrawable(R.id.image_view);
 ```
 
 #### Is this ProgressBar/SeekBar progress?
@@ -391,6 +385,9 @@ The new Marshmallow permissions system requires checking for permissions at runt
 
 ```java
 PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.GET_ACCOUNTS);
+```
+```java
+PermissionGranter.allowPermissionOneTime(Manifest.permission.GET_ACCOUNTS);
 ```
 
 ## Useful test rules

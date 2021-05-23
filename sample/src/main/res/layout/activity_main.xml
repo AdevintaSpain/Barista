@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
     >
 
@@ -137,15 +138,29 @@
       />
 
   <View
-      android:id="@+id/view_with_backbround"
+      android:id="@+id/view_with_drawable_backbround"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:background="@drawable/ic_barista"
       />
 
   <View
+      android:id="@+id/view_with_color_backbround"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:background="@color/red"
+      />
+
+  <View
       android:id="@+id/view_without_backbround"
       android:layout_width="48dp"
       android:layout_height="48dp"
+      />
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/material_button_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:icon="@drawable/ic_barista"
       />
 </LinearLayout>

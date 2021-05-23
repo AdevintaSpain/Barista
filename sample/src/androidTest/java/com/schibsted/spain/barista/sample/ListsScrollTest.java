@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.sample;
 
-import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
@@ -72,6 +72,6 @@ public class ListsScrollTest {
   }
 
   private void openActivity(IntentBuilder intentBuilder) {
-    activity.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()));
+    activity.launchActivity(intentBuilder.build(ApplicationProvider.getApplicationContext()));
   }
 }

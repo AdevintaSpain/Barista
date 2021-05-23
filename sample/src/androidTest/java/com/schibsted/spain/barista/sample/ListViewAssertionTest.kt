@@ -1,6 +1,6 @@
 package com.schibsted.spain.barista.sample
 
-import androidx.test.InstrumentationRegistry
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
@@ -148,7 +148,7 @@ class ListViewAssertionTest {
   }
 
   private fun openActivity(intentBuilder: ListsActivity.IntentBuilder) {
-    activityTestRule.launchActivity(intentBuilder.build(InstrumentationRegistry.getTargetContext()))
+    activityTestRule.launchActivity(intentBuilder.build(ApplicationProvider.getApplicationContext()))
   }
 
   private fun openSimpleListActivity() {

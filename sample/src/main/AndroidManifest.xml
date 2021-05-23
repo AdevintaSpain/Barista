@@ -14,8 +14,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity">
-    </activity>
+    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity"/>
     <activity android:name=".FlowFirstScreen"/>
     <activity android:name=".FlowSecondScreen"/>
     <activity android:name=".RadioButtonsActivity"/>
@@ -30,16 +29,16 @@
     <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
     <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
     <activity android:name=".PartiallyVisibleViewPagerActivity"/>
+    <activity android:name=".ViewPager2Activity"/>
     <activity android:name=".DialogActivity"/>
     <activity android:name=".PreferencesActivity"/>
     <activity android:name=".DatabaseActivity"/>
-    <activity android:name=".FileActivity">
-    </activity>
+    <activity android:name=".FileActivity"/>
     <activity android:name=".HelloWorldActivity"/>
     <activity android:name=".WrappedViewActivity"/>
     <activity android:name=".SwipeRefreshActivity"/>
     <activity android:name=".MenuActivity"/>
-    <activity android:name=".ChipsActivity" android:theme="@style/MaterialAppTheme"/>
+    <activity android:name=".ChipsActivity" />
     <activity
         android:name=".MenuSupportActionBarActivity"
         android:theme="@style/AppTheme.NoActionBar"

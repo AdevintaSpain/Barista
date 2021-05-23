@@ -53,22 +53,39 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkDisplayedViews_failsWhenInvisible() {
-    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.invisible_view));
-
-    spyFailureHandlerRule.assertEspressoFailures(1);
-    assertThat(thrown).isInstanceOf(BaristaException.class)
+    Throwable thrown1 = catchThrowable(() -> assertDisplayed(R.id.invisible_view));
+    assertThat(thrown1).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/invisible_view) "
             + "didn't match condition (is displayed on the screen to the user)");
+
+    Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.string.im_invisible)); // test fails
+    assertThat(thrown2).isInstanceOf(BaristaException.class)
+        .hasMessageMatching("View \\(with string from resource id: <(\\d+)>\\[im_invisible\\] value: I'm invisible!\\) "
+            + "didn't match condition \\(is displayed on the screen to the user\\)");
+
+    Throwable thrown3 = catchThrowable(() -> assertDisplayed("I'm invisible!"));
+    assertThat(thrown3).isInstanceOf(BaristaException.class)
+        .hasMessage("View (with text: is \"I'm invisible!\") "
+            + "didn't match condition (is displayed on the screen to the user)");
+
+    spyFailureHandlerRule.assertEspressoFailures(3);
   }
 
   @Test
   public void checkDisplayed_failsWhenNotExists() {
-    Throwable thrown = catchThrowable(() -> assertDisplayed(R.string.not_exists));
-
-    spyFailureHandlerRule.assertEspressoFailures(1);
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.no));
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("No view matching (with string from resource id")
-        .hasMessageContaining("[not_exists] value: Not exists) was found");
+        .hasMessageContaining("No view matching (with id: com.schibsted.spain.barista.sample:id/no) was found");
+
+    Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.string.not_exists));
+    assertThat(thrown2).isInstanceOf(BaristaException.class)
+        .hasMessageMatching("No view matching \\(with string from resource id: <(\\d+)>\\[not_exists\\] value: Not exists\\) was found");
+
+    Throwable thrown3 = catchThrowable(() -> assertDisplayed("Not exists"));
+    assertThat(thrown3).isInstanceOf(BaristaException.class)
+        .hasMessageContaining("No view matching (with text: is \"Not exists\") was found");
+
+    spyFailureHandlerRule.assertEspressoFailures(3);
   }
 
   @Test
@@ -81,21 +98,46 @@ public class VisibilityAssertionsTest {
 
   @Test
   public void checkDisplayedIdAndText_failsWhenTextIsNotTheExpected() {
-    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.visible_view, "This is not the text you are looking for"));
-
-    spyFailureHandlerRule.assertEspressoFailures(1);
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.visible_view, R.string.not_exists));
     assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageMatching("View \\(with id: com.schibsted.spain.barista.sample:id/visible_view\\) didn't match condition "
+            + "\\(\\(is displayed on the screen to the user "
+            + "and with string from resource id: <(\\d+)>\\[not_exists\\] value: Not exists\\)\\)");
+
+    Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.visible_view, "This is not the text you are looking for"));
+    assertThat(thrown2).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) didn't match condition "
-            + "(with text: is \"This is not the text you are looking for\")");
+            + "((is displayed on the screen to the user and with text: is \"This is not the text you are looking for\"))");
+
+    spyFailureHandlerRule.assertEspressoFailures(2);
+  }
+
+  @Test
+  public void checkDisplayedIdAndText_failsWhenInvisible() {
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.invisible_view, R.string.im_invisible));
+    assertThat(thrown).isInstanceOf(BaristaException.class)
+        .hasMessageMatching("View \\(with id: com.schibsted.spain.barista.sample:id/invisible_view\\) didn't match condition "
+            + "\\(\\(is displayed on the screen to the user and with string from resource id: <(\\d+)>\\)\\)");
+
+    Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.invisible_view, "I'm invisible!"));
+    assertThat(thrown2).isInstanceOf(BaristaException.class)
+        .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/invisible_view) didn't match condition "
+            + "((is displayed on the screen to the user and with text: is \"I'm invisible!\"))");
+
+    spyFailureHandlerRule.assertEspressoFailures(2);
   }
 
   @Test
   public void checkDisplayedIdAndText_failsWhenViewDoesNotExist() {
-    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.not_exists, "This is not the text you are looking for"));
-
-    spyFailureHandlerRule.assertEspressoFailures(1);
+    Throwable thrown = catchThrowable(() -> assertDisplayed(R.id.not_exists, R.string.im_invisible));
     assertThat(thrown).isInstanceOf(BaristaException.class)
         .hasMessage("No view matching (with id: com.schibsted.spain.barista.sample:id/not_exists) was found");
+
+    Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.not_exists, "This is not the text you are looking for"));
+    assertThat(thrown2).isInstanceOf(BaristaException.class)
+        .hasMessage("No view matching (with id: com.schibsted.spain.barista.sample:id/not_exists) was found");
+
+    spyFailureHandlerRule.assertEspressoFailures(2);
   }
 
   @Test
@@ -123,7 +165,7 @@ public class VisibilityAssertionsTest {
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.schibsted.spain.barista.sample:id/visible_view) "
-            + "didn't match condition (not with text: is \"Hello world!\")");
+            + "didn't match condition (not (is displayed on the screen to the user and with text: is \"Hello world!\"))");
   }
 
   @Test

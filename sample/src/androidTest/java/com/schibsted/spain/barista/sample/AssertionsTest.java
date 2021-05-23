@@ -260,6 +260,11 @@ public class AssertionsTest {
   }
 
   @Test
+  public void checkMaterialButtonDrawable_withId() throws Exception {
+    assertHasDrawable(R.id.material_button_view, R.drawable.ic_barista);
+  }
+
+  @Test
   public void checkVectorDrawable_withId() throws Exception {
     assertHasDrawable(R.id.vector_image_view, R.drawable.barista_logo_vector);
   }
@@ -305,18 +310,28 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkBackground_withId() throws Exception {
-    assertHasBackground(R.id.view_with_backbround, R.drawable.ic_barista);
+  public void checkBackgroundDrawable_withId() throws Exception {
+    assertHasBackground(R.id.view_with_drawable_backbround, R.drawable.ic_barista);
+  }
+
+  @Test
+  public void checkBackgroundColor_withId() throws Exception {
+    assertHasBackground(R.id.view_with_color_backbround, R.color.red);
   }
 
   @Test(expected = BaristaException.class)
-  public void checkBackground_withId_failure() throws Exception {
+  public void checkBackgroundDrawable_withId_failure() throws Exception {
     assertHasBackground(R.id.view_without_backbround, R.drawable.ic_action_menu);
+  }
+
+  @Test(expected = BaristaException.class)
+  public void checkBackgroundColor_withId_failure() throws Exception {
+    assertHasBackground(R.id.view_with_color_backbround, R.color.blue);
   }
 
   @Test
   public void checkBackground_withAnyDrawable() throws Exception {
-    assertHasAnyBackground(R.id.view_with_backbround);
+    assertHasAnyBackground(R.id.view_with_drawable_backbround);
   }
 
   @Test(expected = BaristaException.class)
@@ -331,7 +346,7 @@ public class AssertionsTest {
 
   @Test(expected = BaristaException.class)
   public void checkBackground_withoutDrawable_failure() throws Exception {
-    assertHasNoBackground(R.id.view_with_backbround);
+    assertHasNoBackground(R.id.view_with_drawable_backbround);
   }
 
   @Test
