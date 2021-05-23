@@ -3,7 +3,6 @@
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
-[![Download](https://api.bintray.com/packages/schibstedspain/maven/barista/images/download.svg)](https://bintray.com/schibstedspain/maven/barista/_latestVersion)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
 <img src="art/barista-logo.svg" width="30%"/>
@@ -142,7 +141,7 @@ setProgressToMax(R.id.seek_bar);
 #### Pull to refresh in SwipeRefreshLayout
 ```java
 refresh(R.id.swipe_refresh);
-refresh(); // Id is optional! We'll find it for you :D
+refresh(); // Id is optional. Barista will find it for you.
 ```
 
 #### Close or press ime actions on the Keyboard
