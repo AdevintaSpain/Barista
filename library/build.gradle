@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.novoda.bintray-release'
 apply from: '../config/android-quality.gradle'
 
 android {
@@ -32,25 +31,8 @@ dependencies {
 
   implementation 'com.google.android.material:material:1.2.0'
 
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
   testImplementation 'junit:junit:4.12'
   testImplementation 'pl.pragmatists:JUnitParams:1.1.0'
   testImplementation 'org.assertj:assertj-core:1.7.0'
   testImplementation 'org.mockito:mockito-core:2.28.2'
-}
-
-publish {
-  userOrg = 'schibstedspain'
-  groupId = 'com.schibsted.spain'
-  artifactId = 'barista'
-  publishVersion = baristaVersion
-  desc = 'The guy who serves a great Espresso'
-  website = 'https://github.com/SchibstedSpain/Barista'
-}
-
-// Exclude Kotlin files from Javadoc due to an error generating docs from Kotlin files.
-// More info: https://github.com/novoda/bintray-release/issues/71
-tasks.withType(Javadoc) {
-  excludes = ['**/*.kt']
 }

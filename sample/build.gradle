@@ -11,7 +11,10 @@ android {
     targetSdkVersion compileSdkVersionDeclared
     versionCode 1
     versionName "1.0"
+    vectorDrawables.useSupportLibrary = true
+
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArguments clearPackageData: 'true'
   }
   buildTypes {
     release {
@@ -23,13 +26,12 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
-  defaultConfig {
-    vectorDrawables.useSupportLibrary = true
+  testOptions {
+    execution 'ANDROIDX_TEST_ORCHESTRATOR'
   }
 }
 
 dependencies {
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation 'androidx.legacy:legacy-support-v4:1.0.0'
   implementation 'androidx.appcompat:appcompat:1.0.2'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -39,6 +41,7 @@ dependencies {
   implementation 'com.google.android.material:material:1.2.0'
   implementation 'androidx.core:core-ktx:1.0.1'
 
+  androidTestUtil 'androidx.test:orchestrator:1.3.0'
   androidTestImplementation project(':library')
   androidTestImplementation "org.assertj:assertj-core:2.9.1"
   androidTestImplementation "com.nhaarman:mockito-kotlin:1.5.0"
