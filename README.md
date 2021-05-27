@@ -262,7 +262,7 @@ assertContentDescription(R.id.anyView, "Some text");
 assertListNotEmpty(R.id.list)
 assertListItemCount(R.id.list, 5)
 
-// you can also pass custom assertion
+// You can also pass custom assertions
 assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 ````
 
