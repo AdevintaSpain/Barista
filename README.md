@@ -73,7 +73,8 @@ openMenu();
 
 #### Writing into widgets
 ```java
-writeTo(R.id.edittext, "A great text");
+writeTo(R.id.edittext, "A great text"); // Ignores the EditText restrictions like maxLength and textFilter. It's blazing fast.
+typeTo(R.id.edittext, "A great text"); // Honors the EditText restrictions like maxLength and textFilter. It slows down the test.
 writeToAutoComplete(R.id.autocomplete, "Another great text");
 clearText(R.id.edittext)
 ```

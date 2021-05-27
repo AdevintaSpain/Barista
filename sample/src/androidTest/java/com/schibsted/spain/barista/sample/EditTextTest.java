@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import static com.schibsted.spain.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.clearText;
+import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.typeTo;
 import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
 
 @RunWith(AndroidJUnit4.class)
@@ -37,6 +38,24 @@ public class EditTextTest {
   public void checkWriteOnEditText_whenParentIsNotAScrollView() {
     writeTo(R.id.edittext_centered, "Hello!");
     assertDisplayed("Hello!");
+  }
+
+  @Test
+  public void checkTypeToEditText_whenEditTextIsVisible() {
+    typeTo(R.id.edittext_constrained, "Hello1=What's-Your*Name?");
+    assertDisplayed("Hello1What");
+  }
+
+  @Test
+  public void checkTypeToEditText_whenScrollIsNeeded() {
+    typeTo(R.id.edittext_constrained_very_far_away, "Hello,ABC/123");
+    assertDisplayed("HelloABC12");
+  }
+
+  @Test
+  public void checkTypeToEditText_whenParentIsNotAScrollView() {
+    typeTo(R.id.edittext_constrained_centered, " Hello 123 ");
+    assertDisplayed("Hello123");
   }
 
   @Test
