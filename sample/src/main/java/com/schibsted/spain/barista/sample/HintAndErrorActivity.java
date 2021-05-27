@@ -1,11 +1,11 @@
 package com.schibsted.spain.barista.sample;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.EditText;
 
 public class HintAndErrorActivity extends AppCompatActivity {
   @Override
@@ -13,7 +13,7 @@ public class HintAndErrorActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_hintanderrortext);
 
-    showError();
+    findViewById(R.id.showErrors).setOnClickListener(v -> showError());
   }
 
   private void showError() {

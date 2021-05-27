@@ -7,6 +7,13 @@
               android:padding="16dp"
     >
 
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/showErrors"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Show errrors"
+      />
+
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/hintanderror_inputlayout"
       android:layout_width="match_parent"

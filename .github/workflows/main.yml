@@ -9,23 +9,47 @@ on:
       - master
 
 jobs:
-  tests:
-    runs-on: macOS-latest
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout
-    - uses: reactivecircus/android-emulator-runner@v2.11.0
-      name: Run tests
-      with:
-        api-level: 28
-        profile: Nexus 6
-        headless: true
-        disable-animations: true
-        script: ./gradlew connectedCheck
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - uses: actions/cache@v1
-      with:
-        path: ~/.gradle/caches
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-        restore-keys: ${{ runner.os }}-gradle-
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Build project
+        run: ./gradlew assembleDebug
+
+  test:
+    needs: build
+    runs-on: macOS-latest # enables hardware acceleration in the virtual machine
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Run instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 26
+          arch: x86
+          profile: pixel_2
+          disable-animations: true
+          script: ./gradlew connectedCheck
