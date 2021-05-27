@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.material.button.MaterialButton
 import com.schibsted.spain.barista.internal.util.BitmapComparator
@@ -77,7 +78,7 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
   }
 
   private fun View.getExpectedBitmap(): Bitmap? {
-    return resources.getDrawable(expectedDrawableRes)?.let { drawable ->
+    return AppCompatResources.getDrawable(context, expectedDrawableRes)?.let { drawable ->
       when (this) {
         is MaterialButton -> DrawableToBitmapConverter.getBitmap(setTargetDrawableTint(drawable))
         is ImageView -> DrawableToBitmapConverter.getBitmap(drawable)
