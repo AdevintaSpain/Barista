@@ -102,7 +102,7 @@
       android:id="@+id/vector_image_view"
       android:layout_width="56dp"
       android:layout_height="56dp"
-      android:src="@drawable/barista_logo_vector"
+      app:srcCompat="@drawable/barista_logo_vector"
       />
 
   <ImageView
