@@ -201,12 +201,12 @@ assertNotExist(R.id.button);
 ```java
 assertChecked("Checked checkbox");
 assertChecked(R.string.checked_checkbox);
-assertChecked(R.id.checked_checkbox);
+assertChecked(R.id.checkbox);
 
-// ...and the other checkbox unchecked?
+// ...or not?
 assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
-assertUnchecked(R.id.unchecked_checkbox);
+assertUnchecked(R.id.checkbox);
 ```
 
 #### Is this view clickable?
