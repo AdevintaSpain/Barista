@@ -83,13 +83,6 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.list, 5)
-assertListNotEmpty(R.id.list)
-assertDisplayedAtPosition(R.id.list, 0, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
-assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -165,6 +158,13 @@ assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
 assertDisplayed(R.id.button, R.string.hello_world)
+
+// on ListViews and RecyclerViews by position
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+
 // you can also pass custom matchers
 assertDisplayed(withTagValue(is("tagName")))
 
@@ -255,6 +255,16 @@ assertHasContentDescription(R.id.anyView);
 assertContentDescription(R.id.anyView, R.string.content_description);
 assertContentDescription(R.id.anyView, "Some text");
 ```
+
+#### Is this List empty? How many items does it have?
+````java
+// Works with both ListView and RecyclerView
+assertListNotEmpty(R.id.list)
+assertListItemCount(R.id.list, 5)
+
+// you can also pass custom assertion
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
+````
 
 #### What's the state of the Drawer?
 ```java
