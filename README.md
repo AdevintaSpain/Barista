@@ -83,13 +83,6 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.list, 5)
-assertListNotEmpty(R.id.list)
-assertDisplayedAtPosition(R.id.list, 0, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
-assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -195,6 +188,17 @@ assertDisabled(R.id.button);
 assertNotExist("Hello world");
 assertNotExist(R.string.hello_world);
 assertNotExist(R.id.button);
+```
+
+#### What's on the list?
+```java
+assertListItemCount(R.id.list, 5)
+assertListNotEmpty(R.id.list)
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 ```
 
 #### Is the expected checkbox checked?
