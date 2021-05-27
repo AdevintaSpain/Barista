@@ -11,7 +11,9 @@ android {
     targetSdkVersion compileSdkVersionDeclared
     versionCode 1
     versionName "1.0"
+
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArguments clearPackageData: 'true'
   }
   buildTypes {
     release {
@@ -22,6 +24,9 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
+  }
+  testOptions {
+    execution 'ANDROIDX_TEST_ORCHESTRATOR'
   }
 }
 
@@ -36,6 +41,7 @@ dependencies {
   implementation 'com.google.android.material:material:1.2.0'
   implementation 'androidx.core:core-ktx:1.0.1'
 
+  androidTestUtil 'androidx.test:orchestrator:1.1.0'
   androidTestImplementation project(':library')
   androidTestImplementation "org.assertj:assertj-core:2.9.1"
   androidTestImplementation "com.nhaarman:mockito-kotlin:1.5.0"
