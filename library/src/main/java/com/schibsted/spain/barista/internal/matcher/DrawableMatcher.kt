@@ -1,8 +1,14 @@
 package com.schibsted.spain.barista.internal.matcher
 
-import androidx.annotation.DrawableRes
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.DrawableCompat
+import com.google.android.material.button.MaterialButton
 import com.schibsted.spain.barista.internal.util.BitmapComparator
 import com.schibsted.spain.barista.internal.util.DrawableToBitmapConverter
 import org.hamcrest.Description
@@ -31,30 +37,26 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
   private var resourceName: String? = null
 
   override fun matchesSafely(target: View): Boolean {
-    if (target !is ImageView) {
+    val context = target.context
+    if (target !is ImageView && target !is MaterialButton) {
       return false
     }
-    val imageView = target
+    val drawable = target.getTargetDrawable()
     if (expectedDrawableRes == EMPTY) {
-      return imageView.drawable == null
+      return drawable == null
     }
     if (expectedDrawableRes == ANY) {
-      return imageView.drawable != null
+      return drawable != null
     }
-    if (imageView.drawable == null) {
+    if (drawable == null) {
       return false
     }
-    val resources = target.context.resources
-    val expectedDrawable = resources.getDrawable(expectedDrawableRes)
+    val resources = context.resources
+
     resourceName = resources.getResourceEntryName(expectedDrawableRes)
 
-    if (expectedDrawable == null) {
-      return false
-    }
-
-    val viewBitmap = DrawableToBitmapConverter.getBitmap(imageView.drawable)
-    val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return BitmapComparator.compare(viewBitmap, expectedBitmap)
+    val viewBitmap = DrawableToBitmapConverter.getBitmap(drawable)
+    return target.getExpectedBitmap()?.let { BitmapComparator.compare(viewBitmap, it) } ?: false
   }
 
   override fun describeTo(description: Description) {
@@ -65,5 +67,29 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
       description.appendText(resourceName)
       description.appendText("]")
     }
+  }
+
+  private fun View.getTargetDrawable(): Drawable? {
+    return when (this) {
+      is MaterialButton -> this.icon
+      is ImageView -> this.drawable
+      else -> error("View not supported: $this")
+    }
+  }
+
+  private fun View.getExpectedBitmap(): Bitmap? {
+    return AppCompatResources.getDrawable(context, expectedDrawableRes)?.let { drawable ->
+      when (this) {
+        is MaterialButton -> DrawableToBitmapConverter.getBitmap(setTargetDrawableTint(drawable))
+        is ImageView -> DrawableToBitmapConverter.getBitmap(drawable)
+        else -> error("")
+      }
+    }
+  }
+
+  private fun MaterialButton.setTargetDrawableTint(drawable: Drawable): Drawable {
+    DrawableCompat.setTint(drawable, this.iconTint.getColorForState(icon.state, Color.BLACK))
+    if (iconTintMode != null) DrawableCompat.setTintMode(drawable, iconTintMode)
+    return drawable
   }
 }
