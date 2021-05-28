@@ -73,7 +73,8 @@ openMenu();
 
 #### Writing into widgets
 ```java
-writeTo(R.id.edittext, "A great text");
+writeTo(R.id.edittext, "A great text"); // Ignores the EditText restrictions like maxLength and textFilter. It's blazing fast.
+typeTo(R.id.edittext, "A great text"); // Honors the EditText restrictions like maxLength and textFilter. It slows down the test.
 writeToAutoComplete(R.id.autocomplete, "Another great text");
 clearText(R.id.edittext)
 ```
@@ -119,6 +120,7 @@ clickDialogNegativeButton();
 scrollTo(R.id.far_away_widget);
 scrollTo(R.string.text);
 scrollTo("A widget with this text");
+scrollTo(withTagValue(is("tagName"))) // using custom matchers
 swipeViewPagerForward();
 swipeViewPagerBack();
 ```
@@ -201,12 +203,12 @@ assertNotExist(R.id.button);
 ```java
 assertChecked("Checked checkbox");
 assertChecked(R.string.checked_checkbox);
-assertChecked(R.id.checked_checkbox);
+assertChecked(R.id.checkbox);
 
-// ...and the other checkbox unchecked?
+// ...or not?
 assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
-assertUnchecked(R.id.unchecked_checkbox);
+assertUnchecked(R.id.checkbox);
 ```
 
 #### Is this view clickable?
@@ -474,6 +476,9 @@ We welcome contributions! If you found a bug or have a feature request, feel fre
 
 ## Formatting
 We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "BaristaAndroid" schema in preferences.
+
+## Prefer Java-written test classes
+As most parts of Barista are Java-compatible, please do write Java tests when possible. Writing them in Kotlin might lead to using Kotlin-only shortcuts, breaking the Java compatibility Barista aims for.
 
 # License
 **[Apache License, Version 2.0 (the "License")](LICENSE.md)**
