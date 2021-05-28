@@ -120,6 +120,7 @@ clickDialogNegativeButton();
 scrollTo(R.id.far_away_widget);
 scrollTo(R.string.text);
 scrollTo("A widget with this text");
+scrollTo(withTagValue(is("tagName"))) // using custom matchers
 swipeViewPagerForward();
 swipeViewPagerBack();
 ```
