@@ -27,6 +27,15 @@ object PermissionGranter {
     "com.android.packageinstaller:id/permission_allow_button"
   )
 
+  // In API 30 the "Deny" button has the first ID when it is shown the first time. Second time
+  // it has the second ID (do not ask again), although text is the same. In API 29 the buttons
+  // are shown separately.
+  private val PERMISSION_DIALOG_DENY_IDS = listOf(
+    "com.android.permissioncontroller:id/permission_deny_button",
+    "com.android.permissioncontroller:id/permission_deny_and_dont_ask_again_button",
+    "com.android.packageinstaller:id/permission_deny_button"
+  )
+
   private fun List<String>.toPermissionButtonRegex() = joinToString(
     prefix = "^(",
     separator = "|",
@@ -35,15 +44,20 @@ object PermissionGranter {
 
   @JvmStatic
   fun allowPermissionsIfNeeded(permissionNeeded: String) {
-    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.toPermissionButtonRegex())
+    clickPermissionDialogButton(permissionNeeded, PERMISSION_DIALOG_ALLOW_FOREGROUND_IDS.toPermissionButtonRegex())
   }
 
   @JvmStatic
   fun allowPermissionOneTime(permissionNeeded: String) {
-    allowPermission(permissionNeeded, PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex())
+    clickPermissionDialogButton(permissionNeeded, PERMISSION_DIALOG_ALLOW_ONE_TIME_IDS.toPermissionButtonRegex())
   }
 
-  private fun allowPermission(permissionNeeded: String, permissionsIds: String) {
+  @JvmStatic
+  fun denyPermissions(permissionRequested: String) {
+    clickPermissionDialogButton(permissionRequested, PERMISSION_DIALOG_DENY_IDS.toPermissionButtonRegex())
+  }
+
+  private fun clickPermissionDialogButton(permissionNeeded: String, permissionsIds: String) {
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(
           getApplicationContext(),
