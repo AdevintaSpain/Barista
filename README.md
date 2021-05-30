@@ -166,6 +166,7 @@ assertDisplayedAtPosition(R.id.list, 0, "text");
 assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
 assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
 assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+assertDrawableDisplayedAtPosition(R.id.recycler, 0, R.id.imageview, R.drawable.ic_barista);
 
 // you can also pass custom matchers
 assertDisplayed(withTagValue(is("tagName")))

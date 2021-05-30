@@ -7,6 +7,7 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertCustomAssertionAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
+import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDrawableDisplayedAtPosition
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
@@ -144,6 +145,38 @@ class ListViewAssertionTest {
                     ViewMatchers.withText("Dragonfruit")
             )
         )
+    )
+  }
+
+  @Test
+  fun shouldFindItemInListViewWithSpecificDrawableWithoutIdInComplexList() {
+    openComplexListActivity()
+    assertDrawableDisplayedAtPosition(
+        listId = R.id.listview,
+        position = 0,
+        drawableRes = R.drawable.ic_barista
+    )
+  }
+
+  @Test
+  fun shouldFindItemInListViewWithSpecificDrawableWithIdInComplexList() {
+    openComplexListActivity()
+    assertDrawableDisplayedAtPosition(
+        listId = R.id.listview,
+        position = 1,
+        targetViewId = R.id.imageview,
+        drawableRes = R.drawable.ic_barista
+    )
+  }
+
+  @Test(expected = AssertionFailedError::class)
+  fun shouldFailWhenUnableToFindItemInListViewWithSpecificDrawable() {
+    openComplexListActivity()
+    assertDrawableDisplayedAtPosition(
+            listId = R.id.listview,
+            position = 4,
+            targetViewId = R.id.imageview,
+            drawableRes = R.drawable.ic_barista
     )
   }
 

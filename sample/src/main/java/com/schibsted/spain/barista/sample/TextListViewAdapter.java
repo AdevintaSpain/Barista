@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TextListViewAdapter extends BaseAdapter {
@@ -40,13 +41,20 @@ public class TextListViewAdapter extends BaseAdapter {
 
     if (convertView == null) {
       LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-      rowView = inflater.inflate(R.layout.row_with_buttons, parent, false);
+      rowView = inflater.inflate(R.layout.row_with_image_and_buttons, parent, false);
     }
 
     TextView textView = (TextView) rowView.findViewById(R.id.textview);
     View yesButton = rowView.findViewById(R.id.yes);
     View noButton = rowView.findViewById(R.id.no);
     textView.setText(items[position]);
+
+    ImageView imageView = rowView.findViewById(R.id.imageview);
+    if (position == 0 || position == 1) {
+      imageView.setImageResource(R.drawable.ic_barista);
+    } else {
+      imageView.setImageResource(R.drawable.ic_action_menu);
+    }
 
     rowView.setOnClickListener(new View.OnClickListener() {
       @Override
