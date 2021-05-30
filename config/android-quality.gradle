@@ -27,32 +27,3 @@ task checkstyle(type: Checkstyle) {
 }
 
 check.dependsOn 'checkstyle', 'lint'
-
-apply plugin: 'jacoco'
-
-task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
-  group = 'reporting'
-  description = 'Generate Jacoco coverage reports after running tests.'
-  reports {
-    xml.enabled = true
-    html.enabled = true
-  }
-
-  def fileFilter = ['**/R.class',
-                    '**/R$*.class',
-                    '**/*$ViewInjector*.*',
-                    '**/BuildConfig.*',
-                    '**/Manifest*.*',
-                    '**/*Test*.*',
-                    '**/*$InjectAdapter.class',
-                    '**/*$ModuleAdapter.class',
-                    '**/*$$*',
-                    'android/**/*.*']
-  def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-  def mainSrc = "${project.projectDir}/src/main/java"
-
-  sourceDirectories = files([mainSrc])
-  classDirectories = files([debugTree])
-  executionData = files(["${buildDir}/jacoco/testDebugUnitTest.exec",
-                         "${buildDir}/outputs/code-coverage/connected/coverage.ec"])
-}

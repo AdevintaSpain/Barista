@@ -58,12 +58,25 @@ class PermissionGranterTest {
         }
     }
 
+    @Test
+    fun denies_simple_permission() {
+        launchActivity {
+            verifyPermissionNotGranted(PERMISSION_3_CALLS)
+            requestPermission(PERMISSION_3_CALLS)
+
+            PermissionGranter.denyPermissions(PERMISSION_3_CALLS)
+
+            verifyPermissionNotGranted(PERMISSION_3_CALLS)
+        }
+    }
+
 
 }
 
 // We can't reuse permission from one test to another, because they stay granted after each test
 private const val PERMISSION_1_CONTACTS = Manifest.permission.READ_CONTACTS
 private const val PERMISSION_2_CAMERA = Manifest.permission.CAMERA
+private const val PERMISSION_3_CALLS = Manifest.permission.ANSWER_PHONE_CALLS
 private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
 
 private fun ActivityScenario<*>.requestPermission(permission: String) {

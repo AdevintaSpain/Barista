@@ -73,7 +73,8 @@ openMenu();
 
 #### Writing into widgets
 ```java
-writeTo(R.id.edittext, "A great text");
+writeTo(R.id.edittext, "A great text"); // Ignores the EditText restrictions like maxLength and textFilter. It's blazing fast.
+typeTo(R.id.edittext, "A great text"); // Honors the EditText restrictions like maxLength and textFilter. It slows down the test.
 writeToAutoComplete(R.id.autocomplete, "Another great text");
 clearText(R.id.edittext)
 ```
@@ -83,14 +84,6 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.list, 5)
-assertListNotEmpty(R.id.list)
-assertDisplayedAtPosition(R.id.list, 0, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
-assertDrawableDisplayedAtPosition(R.id.recycler, 0, R.id.imageview, R.drawable.ic_barista);
-assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -120,6 +113,7 @@ clickDialogNegativeButton();
 scrollTo(R.id.far_away_widget);
 scrollTo(R.string.text);
 scrollTo("A widget with this text");
+scrollTo(withTagValue(is("tagName"))) // using custom matchers
 swipeViewPagerForward();
 swipeViewPagerBack();
 ```
@@ -166,6 +160,14 @@ assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
 assertDisplayed(R.id.button, R.string.hello_world)
+
+// on ListViews and RecyclerViews by position
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+assertDrawableDisplayedAtPosition(R.id.recycler, 0, R.id.imageview, R.drawable.ic_barista);
+
 // you can also pass custom matchers
 assertDisplayed(withTagValue(is("tagName")))
 
@@ -202,12 +204,12 @@ assertNotExist(R.id.button);
 ```java
 assertChecked("Checked checkbox");
 assertChecked(R.string.checked_checkbox);
-assertChecked(R.id.checked_checkbox);
+assertChecked(R.id.checkbox);
 
-// ...and the other checkbox unchecked?
+// ...or not?
 assertUnchecked("Unchecked checkbox");
 assertUnchecked(R.string.unchecked_checkbox);
-assertUnchecked(R.id.unchecked_checkbox);
+assertUnchecked(R.id.checkbox);
 ```
 
 #### Is this view clickable?
@@ -256,6 +258,16 @@ assertHasContentDescription(R.id.anyView);
 assertContentDescription(R.id.anyView, R.string.content_description);
 assertContentDescription(R.id.anyView, "Some text");
 ```
+
+#### Is this List empty? How many items does it have?
+````java
+// Works with both ListView and RecyclerView
+assertListNotEmpty(R.id.list)
+assertListItemCount(R.id.list, 5)
+
+// You can also pass custom assertions
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
+````
 
 #### What's the state of the Drawer?
 ```java
@@ -475,6 +487,9 @@ We welcome contributions! If you found a bug or have a feature request, feel fre
 
 ## Formatting
 We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "BaristaAndroid" schema in preferences.
+
+## Prefer Java-written test classes
+As most parts of Barista are Java-compatible, please do write Java tests when possible. Writing them in Kotlin might lead to using Kotlin-only shortcuts, breaking the Java compatibility Barista aims for.
 
 # License
 **[Apache License, Version 2.0 (the "License")](LICENSE.md)**
