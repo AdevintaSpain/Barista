@@ -5,6 +5,7 @@ import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertD
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
 import com.schibsted.spain.barista.internal.failurehandler.BaristaException
+import com.schibsted.spain.barista.rule.flaky.Repeat
 import org.junit.Rule
 import org.junit.Test
 
@@ -15,8 +16,8 @@ class TextInputLayoutWithTextTest {
 
   @Test
   fun assertText() {
-    writeTo(R.id.hintanderror_inputlayout_editText, "Test text")
-    assertDisplayed(R.id.hintanderror_inputlayout, "Test text")
+    writeTo(R.id.hintanderror_inputlayout, "Test text")
+    assertDisplayed("Test text")
   }
 
   @Test
@@ -28,12 +29,12 @@ class TextInputLayoutWithTextTest {
   @Test(expected = BaristaException::class)
   fun assertTextFail() {
     writeTo(R.id.hintanderror_inputlayout_editText, "Test text")
-    assertDisplayed(R.id.hintanderror_inputlayout, "Other test text")
+    assertDisplayed("Other test text")
   }
 
   @Test(expected = BaristaException::class)
   fun assertNoTextFail() {
     writeTo(R.id.hintanderror_inputlayout_editText, "Test text")
-    assertNotDisplayed(R.id.hintanderror_inputlayout, "Test text")
+    assertNotDisplayed("Test text")
   }
 }
