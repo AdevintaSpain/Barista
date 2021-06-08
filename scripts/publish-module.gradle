@@ -58,7 +58,7 @@ afterEvaluate {
                         }
                         developer {
                             id = 'sloy'
-                            name = 'Rafael Vazquez'
+                            name = 'Rafa Vazquez'
                             email = 'rafa.vazsan@gmail.com'
                         }
                         developer {
