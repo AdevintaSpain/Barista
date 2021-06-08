@@ -7,11 +7,11 @@ plugins {
 apply(from = "../config/android-quality.gradle")
 
 android {
-  compileSdk = ext["compileSdkVersionDeclared"] as Int
+  compileSdk = 30
 
   defaultConfig {
-    minSdk = ext["minSdkVersionDeclared"] as Int
-    targetSdk = ext["compileSdkVersionDeclared"] as Int
+    minSdk = 19
+    targetSdk = 30
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments["clearPackageData"] = "true"
