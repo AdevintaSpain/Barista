@@ -50,22 +50,9 @@ afterEvaluate {
                             url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
                         }
                     }
-                    developers {
-                        developer {
-                            id = 'alorma'
-                            name = 'Bernat Borrás'
-                            email = 'bernatbor15@gmail.com'
-                        }
-                        developer {
-                            id = 'sloy'
-                            name = 'Rafa Vazquez'
-                            email = 'rafa.vazsan@gmail.com'
-                        }
-                        developer {
-                            id = 'rocboronat'
-                            name = 'Roc Boronat'
-                            email = 'pipobcn@gmail.com'
-                        }
+                    organization {
+                     name = "Adevinta Spain"
+                        url = "https://github.com/AdevintaSpain"
                     }
                     scm {
                         connection = 'scm:git:github.com/AdevintaSpain/Barista.git'
