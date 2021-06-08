@@ -27,7 +27,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
+androidTestImplementation('com.adevinta.android:barista:3.9.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -472,7 +472,7 @@ The rule assumes some sane defaults:
 - Clear files
 
 ### Writing tests in Kotlin?
-[Check this link](https://github.com/SchibstedSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
+[Check this link](https://github.com/AdevintaSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
 
 # Magic that Barista does for you
 
@@ -483,7 +483,7 @@ In order to speed up testing, Barista keeps in mind some considerations.
 
 # Contributing
 
-We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/SchibstedSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
+We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/AdevintaSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
 
 ## Formatting
 We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "BaristaAndroid" schema in preferences.
