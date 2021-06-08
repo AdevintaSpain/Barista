@@ -1,0 +1,87 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    } else {
+        from sourceSets.main.java.srcDirs
+        from sourceSets.main.kotlin.srcDirs
+    }
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier.set('javadoc')
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives javadocJar
+}
+
+group = project.property("libGroup")
+version = project.property("libVersion")
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId project.property("libGroup")
+                artifactId project.project.getName()
+                version project.property("libVersion")
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
+                }
+
+                artifact androidSourcesJar
+                artifact javadocJar
+
+                pom {
+                    name = project.project.getName()
+                    description = 'Compose settings'
+                    url = 'https://github.com/AdevintaSpain/Barista'
+                    licenses {
+                        license {
+                            name = 'Stream License'
+                            url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'alorma'
+                            name = 'Bernat Borrás'
+                            email = 'bernatbor15@gmail.com'
+                        }
+                        developer {
+                            id = 'sloy'
+                            name = 'Rafael Vazquez'
+                            email = 'rafa.vazsan@gmail.com'
+                        }
+                        developer {
+                            id = 'rocboronat'
+                            name = 'Roc Boronat'
+                            email = 'pipobcn@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:github.com/AdevintaSpain/Barista.git'
+                        developerConnection = 'scm:git:ssh://github.com/AdevintaSpain/Barista.git'
+                        url = 'https://github.com/AdevintaSpain/Barista/tree/master'
+                    }
+                }
+            }
+        }
+    }
+}
+
+ext["signing.keyId"] = rootProject.ext["signing.keyId"]
+ext["signing.password"] = rootProject.ext["signing.password"]
+ext["signing.secretKeyRingFile"] = rootProject.ext["signing.secretKeyRingFile"]
+
+signing {
+    sign publishing.publications
+}
