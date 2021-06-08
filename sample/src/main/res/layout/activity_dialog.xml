@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="com.schibsted.spain.barista.sample.DialogActivity"
+    tools:context="com.adevinta.android.barista.sample.DialogActivity"
     >
 
   <Button

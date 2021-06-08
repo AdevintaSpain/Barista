@@ -5,7 +5,7 @@
     android:orientation="vertical"
     >
 
-  <com.schibsted.spain.barista.sample.widget.SampleCustomView
+  <com.adevinta.android.barista.sample.widget.SampleCustomView
       android:id="@+id/sampleView"
       style="@style/SampleCustomStyle.ColorState"
       android:layout_width="match_parent"
