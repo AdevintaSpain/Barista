@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.internal.matcher;
 
-import androidx.annotation.IdRes;
-import androidx.test.espresso.matcher.BoundedMatcher;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.annotation.IdRes;
+import androidx.test.espresso.matcher.BoundedMatcher;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

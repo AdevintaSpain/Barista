@@ -1,5 +1,6 @@
 package com.adevinta.android.barista.interaction
 
+import android.widget.EditText
 import androidx.annotation.IdRes
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.replaceText
@@ -7,7 +8,6 @@ import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import android.widget.EditText
 import com.adevinta.android.barista.internal.performAction
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf

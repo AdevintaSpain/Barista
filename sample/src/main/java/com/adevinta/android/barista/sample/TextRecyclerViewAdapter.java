@@ -1,12 +1,12 @@
 package com.adevinta.android.barista.sample;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static com.adevinta.android.barista.sample.ListsActivity.getRecyclerViewTextAt;
 

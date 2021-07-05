@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.internal
 
+import android.view.View
 import androidx.test.espresso.AmbiguousViewMatcherException
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.assertion.ViewAssertions
-import android.view.View
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.description
 import com.adevinta.android.barista.internal.matcher.HelperMatchers.firstViewOf

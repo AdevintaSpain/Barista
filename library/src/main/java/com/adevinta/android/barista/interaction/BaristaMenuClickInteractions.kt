@@ -1,7 +1,9 @@
 package com.adevinta.android.barista.interaction
 
 import android.content.Context
+import android.view.View
 import androidx.annotation.IdRes
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
@@ -10,13 +12,11 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
-import android.view.View
-import androidx.test.core.app.ApplicationProvider
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.withFailureHandler
 import com.adevinta.android.barista.internal.matcher.DisplayedMatchers.displayedAnd
 import com.adevinta.android.barista.internal.matcher.HelperMatchers.menuIdMatcher
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.hasToString
 
@@ -40,7 +40,7 @@ object BaristaMenuClickInteractions {
   fun clickMenu(text: String) {
     val spyFailureHandler = SpyFailureHandler()
     try {
-      clickDisplayedView(withText(text), spyFailureHandler)
+      clickDisplayedView(withCompatText(text), spyFailureHandler)
     } catch (noMatchingViewException: NoMatchingViewException) {
       try {
         clickViewWithDescription(text, spyFailureHandler)

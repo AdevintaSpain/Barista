@@ -1,7 +1,12 @@
 package com.adevinta.android.barista.interaction
 
 import android.content.Context
+import android.view.View
+import android.widget.AbsListView
 import androidx.annotation.IdRes
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.AmbiguousViewMatcherException
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
@@ -16,11 +21,6 @@ import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import android.view.View
-import android.widget.AbsListView
-import androidx.test.core.app.ApplicationProvider
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.description
 import com.adevinta.android.barista.internal.failurehandler.withFailureHandler

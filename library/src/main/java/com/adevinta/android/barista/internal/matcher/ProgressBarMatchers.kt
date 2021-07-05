@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.internal.matcher
 
-import androidx.test.espresso.matcher.BoundedMatcher
 import android.view.View
 import android.widget.ProgressBar
+import androidx.test.espresso.matcher.BoundedMatcher
 import org.hamcrest.Description
 
 object ProgressBarMatchers {
