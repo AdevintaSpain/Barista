@@ -4,7 +4,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.schibsted.spain.barista.sample.NavigationDrawerActivity"
+    tools:context="com.adevinta.android.barista.sample.NavigationDrawerActivity"
     >
 
   <LinearLayout
