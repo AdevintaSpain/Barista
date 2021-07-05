@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.internal.failurehandler
 
+import android.view.View
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.FailureHandler
 import androidx.test.espresso.getFailureHandler
-import android.view.View
 import org.hamcrest.Matcher
 import org.hamcrest.StringDescription
 

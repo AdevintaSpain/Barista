@@ -5,8 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.core.content.FileProvider
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_camera.image_view
 import kotlinx.android.synthetic.main.activity_camera.take_picture

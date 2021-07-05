@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.internal.matcher;
 
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.ViewAssertion;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

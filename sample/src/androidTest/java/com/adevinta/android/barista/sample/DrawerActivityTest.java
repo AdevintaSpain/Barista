@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.sample;
 
+import androidx.core.view.GravityCompat;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
-import androidx.core.view.GravityCompat;
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;

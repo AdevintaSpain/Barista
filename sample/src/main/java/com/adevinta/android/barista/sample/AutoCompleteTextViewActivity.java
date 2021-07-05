@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.sample;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AutoCompleteTextViewActivity extends AppCompatActivity {
 

@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.assertion
 
 import androidx.test.espresso.matcher.ViewMatchers.isClickable
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.assertAny
 import com.adevinta.android.barista.internal.util.resourceMatcher
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matchers.not
 
 object BaristaClickableAssertions {
@@ -15,7 +15,7 @@ object BaristaClickableAssertions {
 
   @JvmStatic
   fun assertClickable(text: String) {
-    withText(text).assertAny(isClickable())
+    withCompatText(text).assertAny(isClickable())
   }
 
   @JvmStatic
@@ -25,6 +25,6 @@ object BaristaClickableAssertions {
 
   @JvmStatic
   fun assertNotClickable(text: String) {
-    withText(text).assertAny(not(isClickable()))
+    withCompatText(text).assertAny(not(isClickable()))
   }
 }

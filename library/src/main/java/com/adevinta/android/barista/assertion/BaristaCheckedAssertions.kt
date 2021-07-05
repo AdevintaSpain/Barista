@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.assertion
 
 import androidx.test.espresso.matcher.ViewMatchers.isChecked
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.assertAny
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import com.adevinta.android.barista.internal.util.resourceMatcher
 import org.hamcrest.Matchers.not
 
@@ -15,7 +15,7 @@ object BaristaCheckedAssertions {
 
   @JvmStatic
   fun assertChecked(text: String) {
-    withText(text).assertAny(isChecked())
+    withCompatText(text).assertAny(isChecked())
   }
 
   @JvmStatic
@@ -25,6 +25,6 @@ object BaristaCheckedAssertions {
 
   @JvmStatic
   fun assertUnchecked(text: String) {
-    withText(text).assertAny(not(isChecked()))
+    withCompatText(text).assertAny(not(isChecked()))
   }
 }

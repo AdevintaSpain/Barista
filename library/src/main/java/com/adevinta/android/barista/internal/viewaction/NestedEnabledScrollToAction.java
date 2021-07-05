@@ -1,13 +1,13 @@
 package com.adevinta.android.barista.internal.viewaction;
 
+import android.view.View;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
+import androidx.core.widget.NestedScrollView;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.action.ScrollToAction;
 import androidx.test.espresso.matcher.ViewMatchers;
-import androidx.core.widget.NestedScrollView;
-import android.view.View;
-import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
 import org.hamcrest.Matcher;
 
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;

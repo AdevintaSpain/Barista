@@ -3,9 +3,9 @@ package com.adevinta.android.barista.interaction
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.performAction
 import com.adevinta.android.barista.internal.util.resourceMatcher
+import com.adevinta.android.barista.internal.matcher.withCompatText
 
 object BaristaClickInteractions {
 
@@ -21,7 +21,7 @@ object BaristaClickInteractions {
 
   @JvmStatic
   fun clickOn(text: String) {
-    withText(text).performAction(click())
+    withCompatText(text).performAction(click())
   }
 
   @JvmStatic
@@ -31,6 +31,6 @@ object BaristaClickInteractions {
 
   @JvmStatic
   fun longClickOn(text: String) {
-    withText(text).performAction(longClick())
+    withCompatText(text).performAction(longClick())
   }
 }

@@ -2,11 +2,11 @@ package com.adevinta.android.barista.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ScrollView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FlowFirstScreen extends AppCompatActivity {
 

@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.interaction;
 
-import androidx.test.espresso.contrib.PickerActions;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import androidx.test.espresso.contrib.PickerActions;
 import org.hamcrest.Matchers;
 
 import static androidx.test.espresso.Espresso.onView;

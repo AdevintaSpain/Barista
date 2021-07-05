@@ -1,25 +1,26 @@
 package com.adevinta.android.barista.assertion
 
+import android.view.View
+import android.widget.ListView
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.recyclerview.widget.RecyclerView
-import android.view.View
-import android.widget.ListView
-import androidx.annotation.DrawableRes
 import com.adevinta.android.barista.interaction.BaristaListInteractions.findListViewMatcher
 import com.adevinta.android.barista.interaction.BaristaListInteractions.findRecyclerMatcher
 import com.adevinta.android.barista.interaction.BaristaListInteractions.scrollListToPosition
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
-import com.adevinta.android.barista.internal.matcher.ListViewNotEmptyAssertion
-import com.adevinta.android.barista.internal.matcher.ListViewItemCountAssertion
-import com.adevinta.android.barista.internal.matcher.RecyclerViewNotEmptyAssertion
-import com.adevinta.android.barista.internal.matcher.RecyclerViewItemCountAssertion
 import com.adevinta.android.barista.internal.matcher.DrawableMatcher
+import com.adevinta.android.barista.internal.matcher.ListViewItemCountAssertion
+import com.adevinta.android.barista.internal.matcher.ListViewNotEmptyAssertion
+import com.adevinta.android.barista.internal.matcher.RecyclerViewItemCountAssertion
+import com.adevinta.android.barista.internal.matcher.RecyclerViewNotEmptyAssertion
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -81,8 +82,8 @@ object BaristaListAssertions {
         targetViewId = targetViewId,
         viewAssertion = ViewAssertions.matches(
             CoreMatchers.anyOf(
-                ViewMatchers.withChild(ViewMatchers.withText(text)),
-                ViewMatchers.withText(text)
+                ViewMatchers.withChild(withCompatText(text)),
+                withCompatText(text)
             )
         )
     )

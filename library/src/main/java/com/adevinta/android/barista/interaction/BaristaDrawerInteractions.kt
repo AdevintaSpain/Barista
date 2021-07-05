@@ -1,12 +1,12 @@
 package com.adevinta.android.barista.interaction
 
 import androidx.annotation.IdRes
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.test.espresso.contrib.DrawerActions.close
 import androidx.test.espresso.contrib.DrawerActions.open
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import com.adevinta.android.barista.internal.performAction
 
 object BaristaDrawerInteractions {

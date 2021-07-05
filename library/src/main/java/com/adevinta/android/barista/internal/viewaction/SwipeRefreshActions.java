@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.internal.viewaction;
 
+import android.view.View;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import android.view.View;
 import org.hamcrest.Matcher;
 
 import static androidx.test.espresso.action.ViewActions.actionWithAssertions;

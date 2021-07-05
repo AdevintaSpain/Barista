@@ -1,11 +1,11 @@
 package com.adevinta.android.barista.interaction
 
+import android.widget.AdapterView
 import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.widget.AdapterView
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf

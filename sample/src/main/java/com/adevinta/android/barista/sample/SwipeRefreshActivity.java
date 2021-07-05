@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.sample;
 
 import android.os.Bundle;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class SwipeRefreshActivity extends AppCompatActivity {
 
