@@ -11,7 +11,7 @@
       android:id="@+id/showErrors"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Show errrors"
+      android:text="Show errors"
       />
 
   <com.google.android.material.textfield.TextInputLayout
@@ -24,6 +24,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/hintanderror_inputlayout_editText"
         />
   </com.google.android.material.textfield.TextInputLayout>
 

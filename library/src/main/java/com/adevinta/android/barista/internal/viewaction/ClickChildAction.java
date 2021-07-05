@@ -1,20 +1,19 @@
 package com.adevinta.android.barista.internal.viewaction;
 
+import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.IdRes;
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.util.HumanReadables;
-import android.view.View;
-import android.widget.TextView;
 import com.adevinta.android.barista.internal.failurehandler.HelperFunctionsKt;
 import com.adevinta.android.barista.internal.util.ViewTreeAnalyzer;
 import org.hamcrest.Matcher;
-
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.adevinta.android.barista.internal.matcher.TextMatcherKt.withCompatText;
 import static org.hamcrest.Matchers.allOf;
 
 public class ClickChildAction {
@@ -50,11 +49,11 @@ public class ClickChildAction {
     };
   }
 
-  public static ViewAction clickChildWithText(final String text) {
+  public static ViewAction clickChildwithCompatText(final String text) {
     return new ViewAction() {
       @Override
       public Matcher<View> getConstraints() {
-        return allOf(isDisplayed(), hasDescendant(withText(text)));
+        return allOf(isDisplayed(), hasDescendant(withCompatText(text)));
       }
 
       @Override

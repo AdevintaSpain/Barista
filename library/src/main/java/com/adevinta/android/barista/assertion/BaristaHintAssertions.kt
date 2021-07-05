@@ -1,16 +1,16 @@
 package com.adevinta.android.barista.assertion
 
 import android.content.Context
-import androidx.annotation.IdRes
-import androidx.annotation.StringRes
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.adevinta.android.barista.internal.assertAny
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher

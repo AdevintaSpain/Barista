@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.internal.matcher
 
-import androidx.test.espresso.NoMatchingViewException
-import androidx.test.espresso.ViewAssertion
 import android.view.View
 import android.widget.ListView
+import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.ViewAssertion
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
 

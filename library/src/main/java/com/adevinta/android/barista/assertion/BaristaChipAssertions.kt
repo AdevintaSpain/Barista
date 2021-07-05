@@ -2,8 +2,8 @@ package com.adevinta.android.barista.assertion
 
 import android.view.View
 import androidx.annotation.IdRes
-import com.google.android.material.chip.ChipGroup
 import com.adevinta.android.barista.assertion.BaristaAssertions.assertAny
+import com.google.android.material.chip.ChipGroup
 
 object BaristaChipAssertions {
 

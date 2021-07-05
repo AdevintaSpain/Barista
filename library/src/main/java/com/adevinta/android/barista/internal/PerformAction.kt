@@ -1,16 +1,16 @@
 package com.adevinta.android.barista.internal
 
+import android.view.View
+import android.widget.AbsListView
+import android.widget.HorizontalScrollView
+import android.widget.ScrollView
+import androidx.core.widget.NestedScrollView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.core.widget.NestedScrollView
-import android.view.View
-import android.widget.AbsListView
-import android.widget.HorizontalScrollView
-import android.widget.ScrollView
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.description
 import com.adevinta.android.barista.internal.matcher.DisplayedMatchers.displayedAnd

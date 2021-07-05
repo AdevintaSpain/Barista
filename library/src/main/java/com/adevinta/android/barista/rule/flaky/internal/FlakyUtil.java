@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.rule.flaky.internal;
 
 import android.app.Activity;
+import android.util.Log;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import androidx.test.runner.lifecycle.Stage;
-import android.util.Log;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;

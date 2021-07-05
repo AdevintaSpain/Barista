@@ -1,13 +1,13 @@
 package com.adevinta.android.barista.assertion
 
 import androidx.annotation.IdRes
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.DrawerMatchers.isClosed
 import androidx.test.espresso.contrib.DrawerMatchers.isOpen
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 
 object BaristaDrawerAssertions {
 

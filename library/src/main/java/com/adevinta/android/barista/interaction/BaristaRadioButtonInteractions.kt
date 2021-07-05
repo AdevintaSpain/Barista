@@ -4,9 +4,9 @@ import androidx.annotation.IdRes
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.matcher.HelperMatchers.withParentId
 import com.adevinta.android.barista.internal.performAction
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matchers.allOf
 
 object BaristaRadioButtonInteractions {
@@ -19,7 +19,7 @@ object BaristaRadioButtonInteractions {
 
   @JvmStatic
   fun clickRadioButtonItem(@IdRes radioGroupId: Int, text: String) {
-    allOf(withParentId(radioGroupId), withText(text))
+    allOf(withParentId(radioGroupId), withCompatText(text))
         .performAction(click())
   }
 

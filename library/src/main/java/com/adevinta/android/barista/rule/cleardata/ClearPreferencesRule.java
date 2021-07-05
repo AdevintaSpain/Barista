@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;

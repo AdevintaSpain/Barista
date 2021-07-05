@@ -2,9 +2,9 @@ package com.adevinta.android.barista.assertion
 
 import androidx.annotation.IdRes
 import androidx.test.espresso.matcher.ViewMatchers.hasFocus
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.assertAny
 import com.adevinta.android.barista.internal.util.resourceMatcher
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matchers.not
 
 object BaristaFocusedAssertions {
@@ -21,11 +21,11 @@ object BaristaFocusedAssertions {
 
   @JvmStatic
   fun assertFocused(text: String) {
-    withText(text).assertAny(hasFocus())
+    withCompatText(text).assertAny(hasFocus())
   }
 
   @JvmStatic
   fun assertNotFocused(text: String) {
-    withText(text).assertAny(not(hasFocus()))
+    withCompatText(text).assertAny(not(hasFocus()))
   }
 }

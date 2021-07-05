@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.sample
 
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import android.widget.EditText
-import android.widget.ImageView
 import com.adevinta.android.barista.assertion.BaristaAssertions.assertAny
 import com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo
 import com.adevinta.android.barista.internal.failurehandler.BaristaException
