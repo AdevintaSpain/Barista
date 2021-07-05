@@ -28,7 +28,7 @@ jobs:
 
         # Builds the release artifacts of the library
       - name: Release build
-        run: ./gradlew assembleRelease -x :app:assembleRelease
+        run: ./gradlew assembleRelease -x :sample:assembleRelease
 
         # Generates other artifacts (javadocJar is optional)
       - name: Source jar
