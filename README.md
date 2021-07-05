@@ -25,6 +25,12 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 # Download
 
+## New versions (Maven Central)
+> We are on it! Follow https://github.com/AdevintaSpain/Barista/issues/382 for updates.
+
+## Old versions (JCenter)
+> Previous versions of Barista were published on JCenter with a different dependency name. [Since JCenter doesn't allow uploading dependencies anymore](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/), they won't be updated. Consider migrating to the newest version of Barista on Maven Central.
+
 Import Barista as a testing dependency:
 ```gradle
 androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
@@ -36,9 +42,9 @@ You might need to include the Google Maven repository, required by Espresso 3:
 ```gradle
 repositories {
     google()
+    jcenter()
 }
 ```
-
 
 Barista already includes `espresso-core` and `espresso-contrib`. If you need [any other Espresso package](https://developer.android.com/topic/libraries/testing-support-library/packages.html#atsl-dependencies) you can add them yourself.
 
@@ -84,13 +90,6 @@ clearText(R.id.edittext)
 clickListItem(R.id.list, 4);
 clickListItemChild(R.id.list, 3, R.id.row_button);
 scrollListToPosition(R.id.list, 4);
-assertListItemCount(R.id.list, 5)
-assertListNotEmpty(R.id.list)
-assertDisplayedAtPosition(R.id.list, 0, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
-assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
-assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
-assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
 
 clickSpinnerItem(R.id.spinner, 1);
 ```
@@ -167,6 +166,14 @@ assertDisplayed(R.string.hello_world);
 assertDisplayed(R.id.button);
 assertDisplayed(R.id.button, "Hello world")
 assertDisplayed(R.id.button, R.string.hello_world)
+
+// on ListViews and RecyclerViews by position
+assertDisplayedAtPosition(R.id.list, 0, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, "text");
+assertDisplayedAtPosition(R.id.list, 0, R.string.hello_world);
+assertDisplayedAtPosition(R.id.list, 0, R.id.text_field, R.string.hello_world);
+assertDrawableDisplayedAtPosition(R.id.recycler, 0, R.id.imageview, R.drawable.ic_barista);
+
 // you can also pass custom matchers
 assertDisplayed(withTagValue(is("tagName")))
 
@@ -257,6 +264,16 @@ assertHasContentDescription(R.id.anyView);
 assertContentDescription(R.id.anyView, R.string.content_description);
 assertContentDescription(R.id.anyView, "Some text");
 ```
+
+#### Is this List empty? How many items does it have?
+````java
+// Works with both ListView and RecyclerView
+assertListNotEmpty(R.id.list)
+assertListItemCount(R.id.list, 5)
+
+// You can also pass custom assertions
+assertCustomAssertionAtPosition(R.id.list, 0, customViewAssertion);
+````
 
 #### What's the state of the Drawer?
 ```java
@@ -461,7 +478,7 @@ The rule assumes some sane defaults:
 - Clear files
 
 ### Writing tests in Kotlin?
-[Check this link](https://github.com/SchibstedSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
+[Check this link](https://github.com/AdevintaSpain/Barista/issues/219) to know how to use `@Rule` in Kotlin.
 
 # Magic that Barista does for you
 
@@ -472,7 +489,7 @@ In order to speed up testing, Barista keeps in mind some considerations.
 
 # Contributing
 
-We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/SchibstedSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
+We welcome contributions! If you found a bug or have a feature request, feel free to [open an issue](https://github.com/AdevintaSpain/Barista/issues/new) to discuss it. Remember that bugs reported with a reproducible test are more likely to be investigated and fixed. You can also submit a Pull Request.
 
 ## Formatting
 We use our company's IntelliJ code style for the project, which is very similar to the official Kotlin Android code style. When submitting code please make sure you use the proper format. You can install the code style into Android Studio by running the script in `./config/androidstudio/install-codestyle.sh`. Then restart Android Studio and pick the "BaristaAndroid" schema in preferences.
