@@ -23,11 +23,31 @@
           />
 
       <EditText
+          android:id="@+id/edittext_constrained"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLength="10"
+          android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+          android:inputType="textFilter"
+          android:hint="I'm a constrained EditText"
+          />
+
+      <EditText
           android:id="@+id/edittext_very_far_away"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="800dp"
           android:hint="I'm an edittext, too!"
+          />
+
+      <EditText
+          android:id="@+id/edittext_constrained_very_far_away"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLength="10"
+          android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+          android:inputType="textFilter"
+          android:hint="I'm a constrained EditText"
           />
 
     </LinearLayout>
@@ -39,5 +59,17 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:hint="@string/centered_edittext"
+      />
+
+  <EditText
+      android:id="@+id/edittext_constrained_centered"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="50dp"
+      android:maxLength="10"
+      android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+      android:inputType="textFilter"
+      android:hint="I'm a constrained EditText"
       />
 </FrameLayout>
