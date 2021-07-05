@@ -16,7 +16,7 @@ import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.withFailureHandler
 import com.adevinta.android.barista.internal.matcher.DisplayedMatchers.displayedAnd
 import com.adevinta.android.barista.internal.matcher.HelperMatchers.menuIdMatcher
-import com.schibsted.spain.barista.internal.matcher.withCompatText
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.hasToString
 

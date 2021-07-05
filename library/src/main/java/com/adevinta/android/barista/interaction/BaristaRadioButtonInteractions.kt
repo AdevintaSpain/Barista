@@ -6,7 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.adevinta.android.barista.internal.matcher.HelperMatchers.withParentId
 import com.adevinta.android.barista.internal.performAction
-import com.schibsted.spain.barista.internal.matcher.withCompatText
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.Matchers.allOf
 
 object BaristaRadioButtonInteractions {

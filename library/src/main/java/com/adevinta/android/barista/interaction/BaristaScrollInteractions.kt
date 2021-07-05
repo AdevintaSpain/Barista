@@ -5,9 +5,9 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.PerformException
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.description
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import com.adevinta.android.barista.internal.util.resourceMatcher
 import com.adevinta.android.barista.internal.viewaction.NestedEnabledScrollToAction.nestedScrollToAction
-import com.schibsted.spain.barista.internal.matcher.withCompatText
 import org.hamcrest.Matcher
 
 /**

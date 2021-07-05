@@ -5,7 +5,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
 import com.adevinta.android.barista.internal.performAction
 import com.adevinta.android.barista.internal.util.resourceMatcher
-import com.schibsted.spain.barista.internal.matcher.withCompatText
+import com.adevinta.android.barista.internal.matcher.withCompatText
 
 object BaristaClickInteractions {
 

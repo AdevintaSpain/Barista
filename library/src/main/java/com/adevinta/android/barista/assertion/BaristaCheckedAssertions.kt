@@ -2,8 +2,8 @@ package com.adevinta.android.barista.assertion
 
 import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import com.adevinta.android.barista.internal.assertAny
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import com.adevinta.android.barista.internal.util.resourceMatcher
-import com.schibsted.spain.barista.internal.matcher.withCompatText
 import org.hamcrest.Matchers.not
 
 object BaristaCheckedAssertions {
