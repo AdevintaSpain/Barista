@@ -5,7 +5,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.1.0-alpha01'
+    classpath 'com.android.tools.build:gradle:4.2.2'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
     classpath "io.github.gradle-nexus:publish-plugin:1.1.0"
     classpath("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0")
