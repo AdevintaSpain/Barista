@@ -2,10 +2,10 @@ package com.adevinta.android.barista.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

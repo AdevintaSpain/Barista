@@ -2,12 +2,9 @@ package com.adevinta.android.barista.internal.matcher
 import android.content.res.ColorStateList
 import android.view.View
 import android.widget.TextView
-import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
 import androidx.test.espresso.matcher.BoundedMatcher
-import com.adevinta.android.barista.internal.util.ColorResourceType
-import com.adevinta.android.barista.internal.util.colorResourceType
 import org.hamcrest.Description
 
 class TextStyleableColorMatcher(

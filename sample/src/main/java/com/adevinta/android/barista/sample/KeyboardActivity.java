@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.sample;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class KeyboardActivity extends AppCompatActivity {
 

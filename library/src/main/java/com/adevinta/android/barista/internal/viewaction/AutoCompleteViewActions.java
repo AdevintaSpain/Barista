@@ -1,14 +1,14 @@
 package com.adevinta.android.barista.internal.viewaction;
 
-import androidx.test.espresso.UiController;
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.action.ReplaceTextAction;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.action.ReplaceTextAction;
 import javax.annotation.Nonnull;
 import org.hamcrest.Matcher;
 

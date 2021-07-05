@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.internal.viewaction;
 
+import android.view.View;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
-import android.view.View;
 import org.hamcrest.Matcher;
 
 import static androidx.test.espresso.action.ViewActions.click;

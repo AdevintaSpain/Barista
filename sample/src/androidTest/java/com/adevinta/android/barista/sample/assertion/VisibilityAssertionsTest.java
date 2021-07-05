@@ -1,14 +1,12 @@
 package com.adevinta.android.barista.sample.assertion;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.sample.R;
 import com.adevinta.android.barista.sample.SomeViewsWithDifferentVisibilitiesActivity;
 import com.adevinta.android.barista.sample.util.SpyFailureHandlerRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
@@ -18,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 import static org.hamcrest.CoreMatchers.is;
 
-@RunWith(AndroidJUnit4.class)
 public class VisibilityAssertionsTest {
 
   @Rule
@@ -65,8 +62,10 @@ public class VisibilityAssertionsTest {
 
     Throwable thrown3 = catchThrowable(() -> assertDisplayed("I'm invisible!"));
     assertThat(thrown3).isInstanceOf(BaristaException.class)
-        .hasMessage("View (with text: is \"I'm invisible!\") "
-            + "didn't match condition (is displayed on the screen to the user)");
+        .hasMessage("View ((with text: is \"I'm invisible!\" "
+            + "or (has parent matching: is assignable from class: class com.google.android.material.textfield.TextInputLayout "
+            + "and has descendant: with text: is \"I'm invisible!\"))) didn't match condition "
+            + "(is displayed on the screen to the user)");
 
     spyFailureHandlerRule.assertEspressoFailures(3);
   }
@@ -83,7 +82,9 @@ public class VisibilityAssertionsTest {
 
     Throwable thrown3 = catchThrowable(() -> assertDisplayed("Not exists"));
     assertThat(thrown3).isInstanceOf(BaristaException.class)
-        .hasMessageContaining("No view matching (with text: is \"Not exists\") was found");
+        .hasMessageContaining("No view matching ((with text: is \"Not exists\" "
+            + "or (has parent matching: is assignable from class: class com.google.android.material.textfield.TextInputLayout "
+            + "and has descendant: with text: is \"Not exists\"))) was found");
 
     spyFailureHandlerRule.assertEspressoFailures(3);
   }
@@ -107,7 +108,9 @@ public class VisibilityAssertionsTest {
     Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.visible_view, "This is not the text you are looking for"));
     assertThat(thrown2).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.adevinta.android.barista.sample:id/visible_view) didn't match condition "
-            + "((is displayed on the screen to the user and with text: is \"This is not the text you are looking for\"))");
+            + "((is displayed on the screen to the user and (with text: is \"This is not the text you are looking for\" "
+            + "or (has parent matching: is assignable from class: class com.google.android.material.textfield.TextInputLayout "
+            + "and has descendant: with text: is \"This is not the text you are looking for\"))))");
 
     spyFailureHandlerRule.assertEspressoFailures(2);
   }
@@ -122,7 +125,9 @@ public class VisibilityAssertionsTest {
     Throwable thrown2 = catchThrowable(() -> assertDisplayed(R.id.invisible_view, "I'm invisible!"));
     assertThat(thrown2).isInstanceOf(BaristaException.class)
         .hasMessage("View (with id: com.adevinta.android.barista.sample:id/invisible_view) didn't match condition "
-            + "((is displayed on the screen to the user and with text: is \"I'm invisible!\"))");
+            + "((is displayed on the screen to the user and (with text: is \"I'm invisible!\" "
+            + "or (has parent matching: is assignable from class: class com.google.android.material.textfield.TextInputLayout "
+            + "and has descendant: with text: is \"I'm invisible!\"))))");
 
     spyFailureHandlerRule.assertEspressoFailures(2);
   }
@@ -164,8 +169,10 @@ public class VisibilityAssertionsTest {
 
     spyFailureHandlerRule.assertEspressoFailures(1);
     assertThat(thrown).isInstanceOf(BaristaException.class)
-        .hasMessage("View (with id: com.adevinta.android.barista.sample:id/visible_view) "
-            + "didn't match condition (not (is displayed on the screen to the user and with text: is \"Hello world!\"))");
+        .hasMessage("View (with id: com.adevinta.android.barista.sample:id/visible_view) didn't match condition "
+            + "(not (is displayed on the screen to the user and (with text: is \"Hello world!\" "
+            + "or (has parent matching: is assignable from class: class com.google.android.material.textfield.TextInputLayout "
+            + "and has descendant: with text: is \"Hello world!\"))))");
   }
 
   @Test

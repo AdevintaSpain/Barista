@@ -8,9 +8,9 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
-import com.google.android.material.button.MaterialButton
 import com.adevinta.android.barista.internal.util.BitmapComparator
 import com.adevinta.android.barista.internal.util.DrawableToBitmapConverter
+import com.google.android.material.button.MaterialButton
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 

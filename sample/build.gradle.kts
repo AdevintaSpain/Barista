@@ -1,7 +1,7 @@
 plugins {
   id("com.android.application")
-  id("kotlin-android-extensions")
   kotlin("android")
+  id("kotlin-android-extensions")
 }
 
 apply(from = "../config/android-quality.gradle")

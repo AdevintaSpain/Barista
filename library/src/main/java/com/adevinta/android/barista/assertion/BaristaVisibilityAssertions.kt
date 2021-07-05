@@ -1,7 +1,6 @@
 package com.adevinta.android.barista.assertion
 
 import android.view.View
-import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
@@ -16,6 +15,7 @@ import com.adevinta.android.barista.internal.assertAny
 import com.adevinta.android.barista.internal.matcher.TextColorMatcher
 import com.adevinta.android.barista.internal.matcher.TextStyleableColorMatcher
 import com.adevinta.android.barista.internal.util.resourceMatcher
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -35,12 +35,12 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertDisplayed(text: String) {
-    withText(text).assertAny(isDisplayed())
+    withCompatText(text).assertAny(isDisplayed())
   }
 
   @JvmStatic
   fun assertDisplayed(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withText(text)))
+    viewId.resourceMatcher().assertAny(allOf(isDisplayed(), withCompatText(text)))
   }
 
   @JvmStatic
@@ -55,7 +55,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotExist(text: String) {
-    onView(withText(text)).check(doesNotExist())
+    onView(withCompatText(text)).check(doesNotExist())
   }
 
   @JvmStatic
@@ -65,7 +65,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotDisplayed(text: String) {
-    withText(text).assertAny(not(isDisplayed()))
+    withCompatText(text).assertAny(not(isDisplayed()))
   }
 
   @JvmStatic
@@ -75,7 +75,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotDisplayed(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(not(allOf(isDisplayed(), withText(text))))
+    viewId.resourceMatcher().assertAny(not(allOf(isDisplayed(), withCompatText(text))))
   }
 
   @JvmStatic
@@ -85,7 +85,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertContains(text: String) {
-    withText(containsString(text)).assertAny(isDisplayed())
+    withCompatText(containsString(text)).assertAny(isDisplayed())
   }
 
   @JvmStatic
@@ -96,7 +96,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertContains(@IdRes viewId: Int, text: String) {
-    viewId.resourceMatcher().assertAny(withText(containsString(text)))
+    viewId.resourceMatcher().assertAny(withCompatText(containsString(text)))
   }
 
   @JvmStatic
@@ -107,7 +107,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotContains(text: String) {
-    onView(withText(containsString(text))).check(doesNotExist())
+    onView(withCompatText(containsString(text))).check(doesNotExist())
   }
 
   @JvmStatic
@@ -118,7 +118,7 @@ object BaristaVisibilityAssertions {
 
   @JvmStatic
   fun assertNotContains(@IdRes resId: Int, text: String) {
-    onView(allOf(withId(resId), withText(containsString(text)))).check(doesNotExist())
+    onView(allOf(withId(resId), withCompatText(containsString(text)))).check(doesNotExist())
   }
 
   @JvmStatic

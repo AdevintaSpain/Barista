@@ -3,9 +3,9 @@ package com.adevinta.android.barista.interaction
 import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.PerformException
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.adevinta.android.barista.internal.failurehandler.description
+import com.adevinta.android.barista.internal.matcher.withCompatText
 import com.adevinta.android.barista.internal.util.resourceMatcher
 import com.adevinta.android.barista.internal.viewaction.NestedEnabledScrollToAction.nestedScrollToAction
 import org.hamcrest.Matcher
@@ -32,7 +32,7 @@ object BaristaScrollInteractions {
 
     @JvmStatic
     fun scrollTo(text: String) {
-        scrollWithMultipleAttempts(withText(text), failAtEnd = true)
+        scrollWithMultipleAttempts(withCompatText(text), failAtEnd = true)
     }
 
     @JvmStatic
@@ -47,7 +47,7 @@ object BaristaScrollInteractions {
 
     @JvmStatic
     fun safelyScrollTo(text: String) {
-        scrollWithMultipleAttempts(withText(text), failAtEnd = false)
+        scrollWithMultipleAttempts(withCompatText(text), failAtEnd = false)
     }
 
     private fun scrollWithMultipleAttempts(matcher: Matcher<View>, failAtEnd: Boolean) {

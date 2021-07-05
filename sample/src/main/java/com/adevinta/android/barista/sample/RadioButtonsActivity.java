@@ -1,10 +1,10 @@
 package com.adevinta.android.barista.sample;
 
 import android.os.Bundle;
-import androidx.annotation.IdRes;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RadioButtonsActivity extends AppCompatActivity {
 

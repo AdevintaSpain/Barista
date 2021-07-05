@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.internal.matcher;
 
+import android.view.View;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import android.view.View;
 import org.hamcrest.Matcher;
 
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;

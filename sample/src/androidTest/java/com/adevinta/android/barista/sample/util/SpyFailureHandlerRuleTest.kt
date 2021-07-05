@@ -1,8 +1,8 @@
 package com.adevinta.android.barista.sample.util
 
+import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
-import com.adevinta.android.barista.internal.failurehandler.SpyFailureHandler
 import org.junit.Test
 import org.junit.runner.Description
 import org.junit.runners.model.Statement

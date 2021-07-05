@@ -1,9 +1,9 @@
 package com.adevinta.android.barista.sample;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SpinnerActivity extends AppCompatActivity {
 

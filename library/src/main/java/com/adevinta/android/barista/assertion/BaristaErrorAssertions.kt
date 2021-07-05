@@ -7,8 +7,8 @@ import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.matcher.ViewMatchers
-import com.google.android.material.textfield.TextInputLayout
 import com.adevinta.android.barista.internal.assertAny
+import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
