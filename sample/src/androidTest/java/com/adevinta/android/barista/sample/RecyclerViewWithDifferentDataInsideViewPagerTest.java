@@ -1,4 +1,4 @@
-package com.schibsted.spain.barista.sample;
+package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -7,10 +7,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition;
-import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
-import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
-import static com.schibsted.spain.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
+import static com.adevinta.android.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition;
+import static com.adevinta.android.barista.interaction.BaristaSleepInteractions.sleep;
+import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
+import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
 
 @RunWith(AndroidJUnit4.class)
 public class RecyclerViewWithDifferentDataInsideViewPagerTest {
