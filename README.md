@@ -394,10 +394,13 @@ Mocking the Android Camera Intent is a tricky thing to do. To accomplish it in n
 Here's an example to copy paste:
 
 ```java
-Intents.init();
-mockAndroidCamera();
-clickOn(R.id.launch_camera);
-Intents.release();
+try {
+  Intents.init();
+  BaristaIntents.mockAndroidCamera();
+  clickOn(R.id.launch_camera);
+} finally {
+  Intents.release();
+}
 ```
 
 ## Runtime Permissions
