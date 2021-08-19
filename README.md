@@ -1,7 +1,6 @@
 # Barista
 **The one who serves a great Espresso**
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?label=Travis+CI)](https://travis-ci.org/github/AdevintaSpain/Barista)
 [![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
@@ -25,15 +24,9 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 # Download
 
-## New versions (Maven Central)
-> We are on it! Follow https://github.com/AdevintaSpain/Barista/issues/382 for updates.
-
-## Old versions (JCenter)
-> Previous versions of Barista were published on JCenter with a different dependency name. [Since JCenter doesn't allow uploading dependencies anymore](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/), they won't be updated. Consider migrating to the newest version of Barista on Maven Central.
-
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
+androidTestImplementation('com.adevinta.spain:barista:4.0.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
