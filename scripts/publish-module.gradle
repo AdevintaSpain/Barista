@@ -50,8 +50,15 @@ afterEvaluate {
                             url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
                         }
                     }
+                    developers {
+                        developer {
+                            id = 'AdevintaSpain'
+                            name = 'Adevinta Spain'
+                            email = 'engineers@adevinta.com'
+                        }
+                    }
                     organization {
-                     name = "Adevinta Spain"
+                        name = "Adevinta Spain"
                         url = "https://github.com/AdevintaSpain"
                     }
                     scm {
