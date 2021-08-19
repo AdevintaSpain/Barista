@@ -26,7 +26,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
 
 Import Barista as a testing dependency:
 ```gradle
-androidTestImplementation('com.adevinta.spain:barista:4.0.0') {
+androidTestImplementation('com.adevinta.android:barista:4.0.0') {
   exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
 }
 ```
@@ -35,7 +35,6 @@ You might need to include the Google Maven repository, required by Espresso 3:
 ```gradle
 repositories {
     google()
-    jcenter()
 }
 ```
 
