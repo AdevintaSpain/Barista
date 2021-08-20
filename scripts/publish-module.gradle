@@ -29,7 +29,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 groupId project.property("libGroup")
-                artifactId project.project.getName()
+                artifactId project.property("libArtifact")
                 version project.property("libVersion")
                 if (project.plugins.findPlugin("com.android.library")) {
                     from components.release
@@ -50,8 +50,15 @@ afterEvaluate {
                             url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
                         }
                     }
+                    developers {
+                        developer {
+                            id = 'AdevintaSpain'
+                            name = 'Adevinta Spain'
+                            email = 'engineers@adevinta.com'
+                        }
+                    }
                     organization {
-                     name = "Adevinta Spain"
+                        name = "Adevinta Spain"
                         url = "https://github.com/AdevintaSpain"
                     }
                     scm {
