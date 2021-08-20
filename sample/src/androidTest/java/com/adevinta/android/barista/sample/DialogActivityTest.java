@@ -14,7 +14,7 @@ import static com.adevinta.android.barista.interaction.BaristaDialogInteractions
 import static com.adevinta.android.barista.interaction.BaristaDialogInteractions.clickDialogNeutralButton;
 import static com.adevinta.android.barista.interaction.BaristaDialogInteractions.clickDialogPositiveButton;
 
-@RunWith(AndroidJUnit4.class)
+
 public class DialogActivityTest {
 
   @Rule

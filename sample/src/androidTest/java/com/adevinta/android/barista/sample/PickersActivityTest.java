@@ -12,7 +12,7 @@ import static com.adevinta.android.barista.interaction.BaristaClickInteractions.
 import static com.adevinta.android.barista.interaction.BaristaPickerInteractions.setDateOnPicker;
 import static com.adevinta.android.barista.interaction.BaristaPickerInteractions.setTimeOnPicker;
 
-@RunWith(AndroidJUnit4.class)
+
 public class PickersActivityTest {
 
   @Rule

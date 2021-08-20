@@ -20,7 +20,7 @@ import static com.adevinta.android.barista.sample.ListsActivity.getSimpleListVie
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ListsClickTest {
 
   @Rule

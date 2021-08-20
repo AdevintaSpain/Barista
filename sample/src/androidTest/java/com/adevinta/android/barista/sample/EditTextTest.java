@@ -13,7 +13,7 @@ import static com.adevinta.android.barista.interaction.BaristaEditTextInteractio
 import static com.adevinta.android.barista.interaction.BaristaEditTextInteractions.typeTo;
 import static com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo;
 
-@RunWith(AndroidJUnit4.class)
+
 public class EditTextTest {
 
   @Rule

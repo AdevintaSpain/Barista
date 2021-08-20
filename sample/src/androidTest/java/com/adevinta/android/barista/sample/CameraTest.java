@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaImageViewAssertions.
 import static com.adevinta.android.barista.intents.BaristaIntents.mockAndroidCamera;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
 
-@RunWith(AndroidJUnit4.class)
+
 public class CameraTest {
 
   @Rule

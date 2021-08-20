@@ -1,9 +1,10 @@
 package com.adevinta.android.barista.rule.flaky.internal;
 
-import android.util.Log;
-import org.junit.runners.model.Statement;
-
 import static com.adevinta.android.barista.rule.flaky.internal.FlakyUtil.finishAllActivitiesOnUiThread;
+
+import android.util.Log;
+
+import org.junit.runners.model.Statement;
 
 public class AllowFlakyStatement extends Statement {
 

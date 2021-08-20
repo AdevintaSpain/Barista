@@ -12,7 +12,7 @@ import static com.adevinta.android.barista.interaction.BaristaListInteractions.c
 import static com.adevinta.android.barista.interaction.BaristaListInteractions.clickListItemChild;
 import static com.adevinta.android.barista.interaction.BaristaListInteractions.scrollListToPosition;
 
-@RunWith(AndroidJUnit4.class)
+
 public class RecyclerViewInsideViewPagerTest {
 
   private static int POSITION_AT_LAST_PAGE = 60;

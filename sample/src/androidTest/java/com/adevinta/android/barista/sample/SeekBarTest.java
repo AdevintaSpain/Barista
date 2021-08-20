@@ -15,7 +15,7 @@ import static com.adevinta.android.barista.interaction.BaristaSeekBarInteraction
 import static com.adevinta.android.barista.interaction.BaristaSeekBarInteractions.setProgressToMax;
 import static com.adevinta.android.barista.interaction.BaristaSeekBarInteractions.setProgressToMin;
 
-@RunWith(AndroidJUnit4.class)
+
 public class SeekBarTest {
 
   @Rule

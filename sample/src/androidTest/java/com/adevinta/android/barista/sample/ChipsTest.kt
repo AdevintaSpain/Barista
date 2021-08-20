@@ -44,7 +44,9 @@ class ChipsTest {
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (with id: com.adevinta.android.barista.sample:id/checkedChip) didn't match condition (not with checkbox state: is <true>)")
+            .hasMessage("View (view.getId() is <${R.id.checkedChip}/com.adevinta.android.barista.sample:id/checkedChip)>" +
+                    " didn't match condition (not (an instance of android.view.View and an instance of android.widget.Checkable)" +
+                    " and view.isChecked() matching: is <true>)")
             .hasCauseInstanceOf(AssertionFailedError::class.java)
   }
 
@@ -64,7 +66,8 @@ class ChipsTest {
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (with id: com.adevinta.android.barista.sample:id/singleSelectionChildGroup) didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
+            .hasMessage("View (view.getId() is <${R.id.singleSelectionChildGroup}/com.adevinta.android.barista.sample:id/singleSelectionChildGroup>)" +
+                    " didn't match condition (custom condition [use `assertionDescription` parameter on `assertAny` to setup descriptive message])")
             .hasCauseInstanceOf(AssertionFailedError::class.java)
   }
 

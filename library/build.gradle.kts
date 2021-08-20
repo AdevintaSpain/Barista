@@ -24,7 +24,6 @@ android {
 }
 
 dependencies {
-  api("androidx.test.ext:junit:1.0.0")
   api("androidx.test.espresso:espresso-core:3.4.0")
   api("androidx.test.espresso:espresso-contrib:3.4.0")
   api("androidx.test.uiautomator:uiautomator:2.2.0")

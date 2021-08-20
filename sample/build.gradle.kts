@@ -10,9 +10,8 @@ android {
   compileSdk = 30
 
   defaultConfig {
-    minSdk = 19
+    minSdk = 21
     targetSdk = 30
-    multiDexEnabled = true
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments["clearPackageData"] = "true"
@@ -39,7 +38,6 @@ dependencies {
   implementation("com.github.bumptech.glide:glide:4.10.0")
   implementation("com.google.android.material:material:1.2.0")
   implementation("androidx.core:core-ktx:1.0.1")
-  implementation("androidx.multidex:multidex:2.0.1")
 
   androidTestUtil("androidx.test:orchestrator:1.3.0")
   androidTestImplementation(project(":library"))

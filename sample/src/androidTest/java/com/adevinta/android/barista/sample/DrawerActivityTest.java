@@ -19,7 +19,7 @@ import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions
 import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions.openDrawer;
 import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions.openDrawerWithGravity;
 
-@RunWith(AndroidJUnit4.class)
+
 public class DrawerActivityTest {
 
   @Rule

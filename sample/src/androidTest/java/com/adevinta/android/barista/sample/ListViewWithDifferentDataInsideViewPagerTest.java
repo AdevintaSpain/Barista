@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.interaction.BaristaSleepInteractions.
 import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
 import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ListViewWithDifferentDataInsideViewPagerTest {
 
   @Rule

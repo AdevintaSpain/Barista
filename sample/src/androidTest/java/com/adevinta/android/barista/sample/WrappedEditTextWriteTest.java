@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaAutoCompleteTextViewInteractions.writeToAutoComplete;
 import static com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo;
 
-@RunWith(AndroidJUnit4.class)
+
 public class WrappedEditTextWriteTest {
 
   @Rule

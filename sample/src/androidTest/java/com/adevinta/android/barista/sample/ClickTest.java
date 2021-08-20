@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickBack;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ClickTest {
 
   @Rule

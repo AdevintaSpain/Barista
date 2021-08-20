@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.adevinta.android.barista.interaction.BaristaSwipeRefreshInteractions.refresh;
 
-@RunWith(AndroidJUnit4.class)
+
 public class SwipeRefreshTest {
 
   @Rule public ActivityTestRule<SwipeRefreshActivity> activityRule =

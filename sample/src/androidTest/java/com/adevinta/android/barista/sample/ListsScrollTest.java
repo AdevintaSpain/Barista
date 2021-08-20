@@ -14,7 +14,7 @@ import static com.adevinta.android.barista.interaction.BaristaListInteractions.s
 import static com.adevinta.android.barista.sample.ListsActivity.FRUITS;
 import static com.adevinta.android.barista.sample.ListsActivity.IntentBuilder;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ListsScrollTest {
 
   @Rule

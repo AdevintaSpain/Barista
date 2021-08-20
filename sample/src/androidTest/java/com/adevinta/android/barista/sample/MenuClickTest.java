@@ -13,7 +13,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaMenuClickInteractions.clickMenu;
 import static com.adevinta.android.barista.interaction.BaristaMenuClickInteractions.openMenu;
 
-@RunWith(AndroidJUnit4.class)
+
 public class MenuClickTest {
 
   @Rule

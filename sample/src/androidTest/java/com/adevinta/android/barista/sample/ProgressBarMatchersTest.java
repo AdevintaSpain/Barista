@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertion
 import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMax;
 import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMin;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ProgressBarMatchersTest {
 
   @Rule public ActivityTestRule<SomeSeekBarsWithDifferentProgressesActivity> activityRule =

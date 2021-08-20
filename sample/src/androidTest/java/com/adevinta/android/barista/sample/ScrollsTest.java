@@ -14,7 +14,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaScrollInteractions.safelyScrollTo;
 import static com.adevinta.android.barista.interaction.BaristaScrollInteractions.scrollTo;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ScrollsTest {
 
   @Rule

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.adevinta.android.barista.interaction.BaristaMenuClickInteractions.clickMenu;
 
-@RunWith(AndroidJUnit4.class)
+
 public class MenuSupportActionBarClickTest {
 
   @Rule

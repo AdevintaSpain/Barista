@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.adevinta.android.barista.interaction.BaristaScrollInteractions.scrollTo;
 
-@RunWith(AndroidJUnit4.class)
+
 public class NestedScrollViewTest {
 
   @Rule

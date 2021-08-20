@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonItem;
 import static com.adevinta.android.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonPosition;
 
-@RunWith(AndroidJUnit4.class)
+
 public class RadioButtonsTest {
 
   @Rule

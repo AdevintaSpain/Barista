@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIs;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIsNot;
 
-@RunWith(AndroidJUnit4.class)
+
 public class ColorsSecondaryTest {
 
   @Rule

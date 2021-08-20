@@ -35,8 +35,8 @@ class ContentDescriptionTest {
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (with id: com.adevinta.android.barista.sample:id/imageGreen) " +
-                    "didn't match condition (with content description: Image color green)")
+            .hasMessage("View (view.getId() is <${R.id.imageGreen}/com.adevinta.android.barista.sample:id/imageGreen>)" +
+                    " didn't match condition (with content description: Image color green)")
   }
 
   @Test
@@ -48,8 +48,7 @@ class ContentDescriptionTest {
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (with id: com.adevinta.android.barista.sample:id/imageGreen) " +
-                    "didn't match condition (with content description)")
+            .hasMessage("View (view.getId() is <${R.id.imageGreen}/com.adevinta.android.barista.sample:id/imageGreen>) didn't match condition (with content description)")
   }
 
   @Test

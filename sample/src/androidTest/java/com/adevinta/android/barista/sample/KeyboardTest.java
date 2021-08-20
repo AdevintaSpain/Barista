@@ -11,7 +11,7 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static com.adevinta.android.barista.interaction.BaristaKeyboardInteractions.pressImeActionButton;
 
-@RunWith(AndroidJUnit4.class)
+
 public class KeyboardTest {
 
   @Rule

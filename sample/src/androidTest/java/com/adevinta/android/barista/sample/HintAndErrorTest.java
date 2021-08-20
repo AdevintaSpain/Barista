@@ -12,7 +12,7 @@ import static com.adevinta.android.barista.assertion.BaristaErrorAssertions.asse
 import static com.adevinta.android.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
 
-@RunWith(AndroidJUnit4.class)
+
 public class HintAndErrorTest {
 
   @Rule
