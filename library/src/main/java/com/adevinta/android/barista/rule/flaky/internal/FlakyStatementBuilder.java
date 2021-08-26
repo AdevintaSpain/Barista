@@ -2,7 +2,6 @@ package com.adevinta.android.barista.rule.flaky.internal;
 
 import com.adevinta.android.barista.rule.flaky.AllowFlaky;
 import com.adevinta.android.barista.rule.flaky.Repeat;
-
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 

@@ -1,15 +1,12 @@
 package com.adevinta.android.barista.sample;
 
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.rule.BaristaRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
-
 
 public class BaristaRuleActivityTest {
 

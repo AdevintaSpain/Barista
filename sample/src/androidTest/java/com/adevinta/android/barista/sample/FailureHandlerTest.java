@@ -12,7 +12,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
-import static org.junit.Assert.assertEquals;
 
 public class FailureHandlerTest {
 

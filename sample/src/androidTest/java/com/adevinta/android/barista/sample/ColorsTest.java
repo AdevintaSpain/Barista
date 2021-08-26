@@ -2,16 +2,13 @@ package com.adevinta.android.barista.sample;
 
 import android.graphics.Color;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIs;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIsNot;
-
 
 public class ColorsTest {
 

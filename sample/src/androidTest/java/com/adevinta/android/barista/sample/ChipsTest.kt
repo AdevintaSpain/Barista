@@ -44,7 +44,7 @@ class ChipsTest {
     spyFailureHandlerRule.assertEspressoFailures(1)
 
     assertThat(thrown).isInstanceOf(BaristaException::class.java)
-            .hasMessage("View (view.getId() is <${R.id.checkedChip}/com.adevinta.android.barista.sample:id/checkedChip)>" +
+            .hasMessage("View (view.getId() is <${R.id.checkedChip}/com.adevinta.android.barista.sample:id/checkedChip>)" +
                     " didn't match condition (not (an instance of android.view.View and an instance of android.widget.Checkable)" +
                     " and view.isChecked() matching: is <true>)")
             .hasCauseInstanceOf(AssertionFailedError::class.java)

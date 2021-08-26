@@ -1,16 +1,13 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertions.assertProgress;
 import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMax;
 import static com.adevinta.android.barista.assertion.BaristaProgressBarAssertions.assertProgressIsMin;
-
 
 public class ProgressBarMatchersTest {
 

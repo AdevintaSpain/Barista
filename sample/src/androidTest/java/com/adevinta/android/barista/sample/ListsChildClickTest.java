@@ -3,12 +3,10 @@ package com.adevinta.android.barista.sample;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.PerformException;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.sample.util.SpyFailureHandlerRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -18,7 +16,6 @@ import static com.adevinta.android.barista.interaction.BaristaListInteractions.c
 import static com.adevinta.android.barista.sample.ListsActivity.IntentBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-
 
 public class ListsChildClickTest {
 

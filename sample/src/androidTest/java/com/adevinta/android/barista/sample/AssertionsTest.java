@@ -1,13 +1,11 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.internal.util.BaristaResourceTypeException;
 import junit.framework.AssertionFailedError;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaAssertions.assertThatBackButtonClosesTheApp;
 import static com.adevinta.android.barista.assertion.BaristaBackgroundAssertions.assertHasAnyBackground;
@@ -30,7 +28,6 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotExist;
 import static junit.framework.Assert.fail;
-
 
 public class AssertionsTest {
 

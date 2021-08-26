@@ -1,7 +1,6 @@
 package com.adevinta.android.barista.rule.flaky.internal;
 
 import android.util.Log;
-
 import org.junit.runners.model.Statement;
 
 public class RepeatStatement extends Statement {
