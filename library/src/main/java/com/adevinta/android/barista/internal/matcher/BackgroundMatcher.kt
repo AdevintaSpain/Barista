@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import androidx.annotation.DrawableRes
 import android.view.View
-import com.adevinta.android.barista.internal.util.BitmapComparator
 import com.adevinta.android.barista.internal.util.DrawableToBitmapConverter
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
@@ -57,7 +56,7 @@ class BackgroundMatcher private constructor(@DrawableRes private val expectedDra
   private fun hasSameBitmap(view: View, expectedDrawable: Drawable?): Boolean {
     val viewBitmap = DrawableToBitmapConverter.getBitmap(view.background)
     val expectedBitmap = DrawableToBitmapConverter.getBitmap(expectedDrawable)
-    return BitmapComparator.compare(viewBitmap, expectedBitmap)
+    return viewBitmap.sameAs(expectedBitmap)
   }
 
   private fun isSameColorDrawable(viewDrawable: ColorDrawable, expectedDrawable: ColorDrawable) =

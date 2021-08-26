@@ -1,11 +1,9 @@
-package com.adevinta.android.barista.internal.util
+package com.adevinta.android.barista.sample
 
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.test.core.app.ApplicationProvider
-import com.adevinta.android.barista.test.R
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Test
 
 class BitmapComparatorTest {
@@ -15,18 +13,19 @@ class BitmapComparatorTest {
     val aBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
     val theSameBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
 
-    val result = BitmapComparator.compare(aBitmap, theSameBitmap)
+    val result = aBitmap.sameAs(theSameBitmap)
 
-    assertTrue(result)
+    Assert.assertTrue(result)
   }
 
   @Test
   fun returnFalseWhenComparingDifferentDrawables() {
     val aBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_barista)
-    val aDifferentBitmap = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_launcher)
+    val aDifferentBitmap =
+      BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext<Context>().resources, R.drawable.ic_action_menu)
 
-    val result = BitmapComparator.compare(aBitmap, aDifferentBitmap)
+    val result = aBitmap.sameAs(aDifferentBitmap)
 
-    assertFalse(result)
+    Assert.assertFalse(result)
   }
 }
