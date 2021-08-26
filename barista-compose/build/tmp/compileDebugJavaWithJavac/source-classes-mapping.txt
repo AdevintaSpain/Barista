@@ -1,0 +1,2 @@
+com/alorma/barista_compose/BuildConfig.java
+ com.alorma.barista_compose.BuildConfig
