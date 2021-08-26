@@ -51,4 +51,4 @@ jobs:
           arch: x86
           profile: pixel_2
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: ./gradlew :sample:connectedCheck
