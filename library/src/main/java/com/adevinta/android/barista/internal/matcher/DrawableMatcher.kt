@@ -8,7 +8,6 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
-import com.adevinta.android.barista.internal.util.BitmapComparator
 import com.adevinta.android.barista.internal.util.DrawableToBitmapConverter
 import com.google.android.material.button.MaterialButton
 import org.hamcrest.Description
@@ -56,7 +55,7 @@ class DrawableMatcher private constructor(@DrawableRes private val expectedDrawa
     resourceName = resources.getResourceEntryName(expectedDrawableRes)
 
     val viewBitmap = DrawableToBitmapConverter.getBitmap(drawable)
-    return target.getExpectedBitmap()?.let { BitmapComparator.compare(viewBitmap, it) } ?: false
+    return target.getExpectedBitmap()?.let { viewBitmap.sameAs(it) } ?: false
   }
 
   override fun describeTo(description: Description) {
