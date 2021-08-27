@@ -1,18 +1,15 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaErrorAssertions.assertErrorDisplayed;
 import static com.adevinta.android.barista.assertion.BaristaErrorAssertions.assertNoErrorDisplayed;
 import static com.adevinta.android.barista.assertion.BaristaHintAssertions.assertHint;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
 
-@RunWith(AndroidJUnit4.class)
 public class HintAndErrorTest {
 
   @Rule

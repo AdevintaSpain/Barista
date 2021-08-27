@@ -51,6 +51,6 @@ public class FailureHandlerTest {
   }
 
   private void assertBaseHandlerCalledOnce() {
-    assertEquals(1, baseFailureHandler.getCapturedFailures().size());
+    assertEquals(1, baseFailureHandler.getCapturedFailuresCount());
   }
 }

@@ -1,17 +1,14 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack;
 import static com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerForward;
 
-@RunWith(AndroidJUnit4.class)
 public class PartiallyVisibleViewPagerTest {
 
   @Rule

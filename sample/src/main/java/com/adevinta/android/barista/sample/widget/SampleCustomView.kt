@@ -11,20 +11,20 @@ import kotlinx.android.synthetic.main.sample_custom_view.view.customTextView
 
 class SampleCustomView @JvmOverloads
 constructor(
-    context: Context,
-    attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.sampleCustomViewStyle,
-    defStyleRes: Int = R.style.SampleCustomStyle
+  context: Context,
+  attributeSet: AttributeSet? = null,
+  defStyleAttr: Int = R.attr.sampleCustomViewStyle,
+  defStyleRes: Int = R.style.SampleCustomStyle
 ) : LinearLayout(context, attributeSet, defStyleAttr) {
 
   private var customColor: Int = Color.GRAY
 
   init {
     context.withStyledAttributes(
-        attributeSet,
-        R.styleable.SampleCustomView,
-        defStyleAttr,
-        defStyleRes
+      attributeSet,
+      R.styleable.SampleCustomView,
+      defStyleAttr,
+      defStyleRes
     ) {
       customColor = getColor(R.styleable.SampleCustomView_customColor, customColor)
     }

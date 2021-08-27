@@ -1,12 +1,10 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
@@ -14,7 +12,6 @@ import static com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
 import static com.adevinta.android.barista.interaction.BaristaScrollInteractions.safelyScrollTo;
 import static com.adevinta.android.barista.interaction.BaristaScrollInteractions.scrollTo;
 
-@RunWith(AndroidJUnit4.class)
 public class ScrollsTest {
 
   @Rule

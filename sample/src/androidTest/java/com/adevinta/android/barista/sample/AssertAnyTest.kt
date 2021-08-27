@@ -4,7 +4,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import com.adevinta.android.barista.assertion.BaristaAssertions.assertAny
 import com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo
 import com.adevinta.android.barista.internal.failurehandler.BaristaException
@@ -15,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
+
 class AssertAnyTest {
 
   @get:Rule

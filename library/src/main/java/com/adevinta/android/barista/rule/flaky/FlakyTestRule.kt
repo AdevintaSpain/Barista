@@ -44,8 +44,8 @@ class FlakyTestRule : TestRule {
 
   override fun apply(base: Statement, description: Description): Statement {
     return flakyStatementBuilder
-        .setBase(base)
-        .setDescription(description)
-        .build()
+      .setBase(base)
+      .setDescription(description)
+      .build()
   }
 }

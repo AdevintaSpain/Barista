@@ -2,11 +2,9 @@ package com.adevinta.android.barista.sample;
 
 import androidx.core.view.GravityCompat;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static com.adevinta.android.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
 import static com.adevinta.android.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosedWithGravity;
@@ -19,7 +17,6 @@ import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions
 import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions.openDrawer;
 import static com.adevinta.android.barista.interaction.BaristaDrawerInteractions.openDrawerWithGravity;
 
-@RunWith(AndroidJUnit4.class)
 public class DrawerActivityTest {
 
   @Rule
