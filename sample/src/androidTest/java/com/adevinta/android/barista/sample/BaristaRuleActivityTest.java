@@ -4,8 +4,8 @@ import com.adevinta.android.barista.rule.BaristaRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class BaristaRuleActivityTest {

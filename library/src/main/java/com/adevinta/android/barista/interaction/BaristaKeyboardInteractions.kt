@@ -10,7 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.hasFocus
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.adevinta.android.barista.internal.performAction
-import org.hamcrest.core.AllOf.allOf
+import org.hamcrest.Matchers.allOf
 
 object BaristaKeyboardInteractions {
 

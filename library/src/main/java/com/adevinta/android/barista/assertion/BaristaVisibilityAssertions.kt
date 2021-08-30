@@ -16,9 +16,9 @@ import com.adevinta.android.barista.internal.matcher.TextColorMatcher
 import com.adevinta.android.barista.internal.matcher.TextStyleableColorMatcher
 import com.adevinta.android.barista.internal.util.resourceMatcher
 import com.adevinta.android.barista.internal.matcher.withCompatText
-import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.containsString
 import org.hamcrest.Matchers.not
 
 object BaristaVisibilityAssertions {

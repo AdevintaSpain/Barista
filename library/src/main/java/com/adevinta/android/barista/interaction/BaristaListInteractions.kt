@@ -25,10 +25,10 @@ import com.adevinta.android.barista.internal.failurehandler.description
 import com.adevinta.android.barista.internal.failurehandler.withFailureHandler
 import com.adevinta.android.barista.internal.viewaction.ClickChildAction.clickChildWithId
 import com.adevinta.android.barista.internal.viewaction.PerformClickAction.clickUsingPerformClick
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.anyOf
-import org.hamcrest.CoreMatchers.anything
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.anyOf
+import org.hamcrest.Matchers.anything
 
 object BaristaListInteractions {
 

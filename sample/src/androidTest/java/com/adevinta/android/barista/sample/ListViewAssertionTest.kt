@@ -12,7 +12,7 @@ import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListIt
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.adevinta.android.barista.internal.failurehandler.BaristaException
 import junit.framework.AssertionFailedError
-import org.hamcrest.CoreMatchers
+import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -124,7 +124,7 @@ class ListViewAssertionTest {
         position = 4,
         targetViewId = android.R.id.text1,
         viewAssertion = ViewAssertions.matches(
-            CoreMatchers.anyOf(
+            Matchers.anyOf(
                 ViewMatchers.withChild(ViewMatchers.withText("Bilberry")),
                 ViewMatchers.withText("Bilberry")
             )
@@ -140,7 +140,7 @@ class ListViewAssertionTest {
         position = 19,
         targetViewId = R.id.textview,
         viewAssertion = ViewAssertions.matches(
-            CoreMatchers.anyOf(
+            Matchers.anyOf(
                     ViewMatchers.withChild(ViewMatchers.withText("Dragonfruit")),
                     ViewMatchers.withText("Dragonfruit")
             )
