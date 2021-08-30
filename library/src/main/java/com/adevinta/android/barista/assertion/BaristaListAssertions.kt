@@ -24,9 +24,9 @@ import com.adevinta.android.barista.internal.matcher.ListViewNotEmptyAssertion
 import com.adevinta.android.barista.internal.matcher.RecyclerViewItemCountAssertion
 import com.adevinta.android.barista.internal.matcher.RecyclerViewNotEmptyAssertion
 import com.adevinta.android.barista.internal.matcher.withCompatText
-import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import org.hamcrest.TypeSafeMatcher
 
 object BaristaListAssertions {
@@ -82,7 +82,7 @@ object BaristaListAssertions {
       position = position,
       targetViewId = targetViewId,
       viewAssertion = ViewAssertions.matches(
-        CoreMatchers.anyOf(
+        Matchers.anyOf(
           ViewMatchers.withChild(withCompatText(text)),
           withCompatText(text)
         )
@@ -102,7 +102,7 @@ object BaristaListAssertions {
       position = position,
       targetViewId = targetViewId,
       viewAssertion = ViewAssertions.matches(
-        CoreMatchers.anyOf(
+        Matchers.anyOf(
           ViewMatchers.withChild(ViewMatchers.withText(textId)),
           ViewMatchers.withText(textId)
         )
@@ -124,7 +124,7 @@ object BaristaListAssertions {
       position = position,
       targetViewId = targetViewId,
       viewAssertion = ViewAssertions.matches(
-        CoreMatchers.anyOf(
+        Matchers.anyOf(
           ViewMatchers.hasDescendant(DrawableMatcher.withDrawable(drawableRes)),
           DrawableMatcher.withDrawable(drawableRes)
         )

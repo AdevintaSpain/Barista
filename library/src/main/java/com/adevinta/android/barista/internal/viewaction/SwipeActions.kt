@@ -23,9 +23,9 @@ import com.adevinta.android.barista.internal.viewaction.SwipeActions.swipeLeft
 import com.adevinta.android.barista.internal.viewaction.SwipeActions.swipeRight
 import com.adevinta.android.barista.internal.viewaction.ViewPager2SwipeAction.Direction.BACKWARD
 import com.adevinta.android.barista.internal.viewaction.ViewPager2SwipeAction.Direction.FORWARD
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.anyOf
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.anyOf
 
 object SwipeActions {
 
