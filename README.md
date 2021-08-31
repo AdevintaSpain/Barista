@@ -15,7 +15,7 @@ Barista makes developing UI test faster, easier and more predictable. Built on t
     - [Intents](#baristas-intents-api)
     - [Runtime Permissions](#runtime-permissions)
     - [Useful test rules](#useful-test-rules)
-      - [Reseting app data](#reseting-app-data)
+      - [Resetting app data](#resetting-app-data)
       - [Dealing with Flaky tests](#dealing-with-flaky-tests)
       - [One rule to rule them all](#one-rule-to-rule-them-all)
   - [Magic that Barista does for you](#magic-that-barista-does-for-you)
@@ -407,7 +407,7 @@ PermissionGranter.allowPermissionOneTime(Manifest.permission.GET_ACCOUNTS);
 ## Useful test rules
 Barista includes a set of useful test rules to help you:
 
-### Reseting app data
+### Resetting app data
 
 As tests should be isolated, they need to set the environment before running. Espresso doesn't help achieving it but Barista offers a set of rules to clear the app's data before running each test.
 
