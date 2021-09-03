@@ -26,6 +26,7 @@ import com.adevinta.android.barista.internal.viewaction.ViewPager2SwipeAction.Di
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
+import java.util.Locale
 
 object SwipeActions {
 
@@ -142,7 +143,7 @@ private class GeneralSwipeWithPartiallyVisibleViewAction(
   }
 
   override fun getDescription(): String {
-    return swiper.toString().toLowerCase() + " swipe"
+    return swiper.toString().lowercase(Locale.getDefault()) + " swipe"
   }
 
   companion object {

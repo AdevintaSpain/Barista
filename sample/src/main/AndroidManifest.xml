@@ -3,10 +3,10 @@
           package="com.adevinta.android.barista.sample"
     >
 
-  <uses-permission android:name="android.permission.READ_CONTACTS"/>
-  <uses-permission android:name="android.permission.CAMERA"/>
-  <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS"/>
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
   <application
       android:allowBackup="true"
@@ -15,29 +15,35 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity"/>
-    <activity android:name=".FlowFirstScreen"/>
-    <activity android:name=".FlowSecondScreen"/>
-    <activity android:name=".RadioButtonsActivity"/>
-    <activity android:name=".CheckBoxActivity"/>
-    <activity android:name=".EditTextActivity"/>
-    <activity android:name=".PickersActivity"/>
-    <activity android:name=".AutoCompleteTextViewActivity"/>
-    <activity android:name=".SpinnerActivity"/>
-    <activity android:name=".ListsActivity"/>
-    <activity android:name=".LabelActivity"/>
-    <activity android:name=".ViewPagerWithTwoDifferentPagesActivity"/>
-    <activity android:name=".ViewPagerWithFiveSamePagesActivity"/>
-    <activity android:name=".PartiallyVisibleViewPagerActivity"/>
-    <activity android:name=".ViewPager2Activity"/>
-    <activity android:name=".DialogActivity"/>
-    <activity android:name=".PreferencesActivity"/>
-    <activity android:name=".DatabaseActivity"/>
-    <activity android:name=".FileActivity"/>
-    <activity android:name=".HelloWorldActivity"/>
-    <activity android:name=".WrappedViewActivity"/>
-    <activity android:name=".SwipeRefreshActivity"/>
-    <activity android:name=".MenuActivity"/>
+    <activity
+        android:name=".MainActivity"
+        android:exported="true"
+        android:label="@string/title_activity_main"
+        android:theme="@style/AppTheme.NoActionBar"
+        />
+    <activity android:name=".SomeViewsWithDifferentVisibilitiesActivity" />
+    <activity android:name=".FlowFirstScreen" />
+    <activity android:name=".FlowSecondScreen" />
+    <activity android:name=".RadioButtonsActivity" />
+    <activity android:name=".CheckBoxActivity" />
+    <activity android:name=".EditTextActivity" />
+    <activity android:name=".PickersActivity" />
+    <activity android:name=".AutoCompleteTextViewActivity" />
+    <activity android:name=".SpinnerActivity" />
+    <activity android:name=".ListsActivity" />
+    <activity android:name=".LabelActivity" />
+    <activity android:name=".ViewPagerWithTwoDifferentPagesActivity" />
+    <activity android:name=".ViewPagerWithFiveSamePagesActivity" />
+    <activity android:name=".PartiallyVisibleViewPagerActivity" />
+    <activity android:name=".ViewPager2Activity" />
+    <activity android:name=".DialogActivity" />
+    <activity android:name=".PreferencesActivity" />
+    <activity android:name=".DatabaseActivity" />
+    <activity android:name=".FileActivity" />
+    <activity android:name=".HelloWorldActivity" />
+    <activity android:name=".WrappedViewActivity" />
+    <activity android:name=".SwipeRefreshActivity" />
+    <activity android:name=".MenuActivity" />
     <activity android:name=".ChipsActivity" />
     <activity
         android:name=".MenuSupportActionBarActivity"
@@ -47,15 +53,15 @@
         android:name=".NavigationDrawerActivity"
         android:theme="@style/AppTheme.NoActionBar"
         />
-    <activity android:name=".RecyclerViewsInsideViewPagerActivity"/>
-    <activity android:name=".RecyclerViewsWithDifferentDataInsideViewPagerActivity"/>
-    <activity android:name=".ListViewsWithDifferentDataInsideViewPagerActivity"/>
-    <activity android:name=".NestedScrollViewActivity"/>
+    <activity android:name=".RecyclerViewsInsideViewPagerActivity" />
+    <activity android:name=".RecyclerViewsWithDifferentDataInsideViewPagerActivity" />
+    <activity android:name=".ListViewsWithDifferentDataInsideViewPagerActivity" />
+    <activity android:name=".NestedScrollViewActivity" />
     <activity android:name=".CameraActivity">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
 
@@ -71,9 +77,9 @@
           />
     </provider>
 
-    <activity android:name=".EmptyActivity"/>
-    <activity android:name=".SeekBarActivity"/>
-    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity"/>
+    <activity android:name=".EmptyActivity" />
+    <activity android:name=".SeekBarActivity" />
+    <activity android:name=".SomeSeekBarsWithDifferentProgressesActivity" />
     <activity
         android:name=".ColorsActivity"
         android:exported="true"
@@ -82,11 +88,10 @@
         android:name=".ColorsSecondActivity"
         android:exported="true"
         />
-    <activity android:name=".KeyboardActivity"/>
-    <activity android:name=".HintAndErrorActivity"/>
-    <activity android:name=".WrappedEditTextActivity"/>
-    <activity android:name=".ContentDescriptionActivity"/>
-
+    <activity android:name=".KeyboardActivity" />
+    <activity android:name=".HintAndErrorActivity" />
+    <activity android:name=".WrappedEditTextActivity" />
+    <activity android:name=".ContentDescriptionActivity" />
   </application>
 
 </manifest>

@@ -9,3 +9,4 @@ gradleEnterprise {
   }
 }
 include ':sample', ':library'
+include ':barista-compose'

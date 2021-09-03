@@ -47,5 +47,6 @@
 
   <string name="content_description_image_color_green">Image color green</string>
   <string name="content_description_text_green">Text green</string>
+  <string name="title_activity_main">MainActivity</string>
 
 </resources>
