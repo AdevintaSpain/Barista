@@ -1,13 +1,14 @@
 package com.alorma.barista_compose.assertion
 
 import androidx.annotation.StringRes
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.ComposeTestRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import com.alorma.barista_compose.assertion.internal.resources
 
 fun ComposeTestRule.assertIsDisplayed(
   useUnmergedTree: Boolean = false,
@@ -15,31 +16,21 @@ fun ComposeTestRule.assertIsDisplayed(
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ): SemanticsNodeInteraction {
-  return onRoot(useUnmergedTree = useUnmergedTree)
-    .assert(
-      hasText(
-        text = text,
-        substring = substring,
-        ignoreCase = ignoreCase,
-      )
-    )
+  return onNodeWithText(
+    text = text,
+    substring = substring,
+    ignoreCase = ignoreCase,
+    useUnmergedTree = useUnmergedTree
+  ).assertIsDisplayed()
 }
 
-@Composable
 fun ComposeTestRule.assertIsDisplayed(
   useUnmergedTree: Boolean = false,
-  @StringRes text: Int,
+  @StringRes textRes: Int,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ): SemanticsNodeInteraction {
-  return onRoot(useUnmergedTree = useUnmergedTree)
-    .assert(
-      hasText(
-        text = stringResource(text),
-        substring = substring,
-        ignoreCase = ignoreCase,
-      )
-    )
+  return assertIsDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
 }
 
 fun ComposeTestRule.assertIsNotDisplayed(
@@ -58,19 +49,11 @@ fun ComposeTestRule.assertIsNotDisplayed(
     )
 }
 
-@Composable
 fun ComposeTestRule.assertIsNotDisplayed(
   useUnmergedTree: Boolean = false,
-  @StringRes text: Int,
+  @StringRes textRes: Int,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ): SemanticsNodeInteraction {
-  return onRoot(useUnmergedTree = useUnmergedTree)
-    .assert(
-      hasText(
-        text = stringResource(text),
-        substring = substring,
-        ignoreCase = ignoreCase,
-      ).not()
-    )
+  return assertIsNotDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
 }
