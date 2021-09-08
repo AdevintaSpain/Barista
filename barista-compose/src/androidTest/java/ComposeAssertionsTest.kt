@@ -2,7 +2,9 @@ package com.alorma.barista_compose.assertion
 
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import com.adevinta.android.barista.sample.TextComposable
+import com.adevinta.android.barista.sample.WrappedTextComposable
 import com.alorma.barista_compose.R
 import org.junit.Rule
 import org.junit.Test
@@ -45,6 +47,36 @@ class ComposeAssertionsTest {
     composeTestRule.assertIsDisplayed(textRes = R.string.next)
   }
 
+  @Test
+  fun onNode_assertIsDisplayed_StringTest() {
+    val text = "Barista"
+    composeTestRule.setContent {
+      WrappedTextComposable(text = text, nodeTestTag = "Node test")
+    }
+
+    composeTestRule.onNodeWithTag("Node test").assertIsDisplayed(text = "Barista")
+  }
+
+  @Test(expected = AssertionError::class)
+  fun onNode_assertIsDisplayed_StringTest_fail_nodeNotFound() {
+    val text = "Barista"
+    composeTestRule.setContent {
+      WrappedTextComposable(text = text, nodeTestTag = "Node test")
+    }
+
+    composeTestRule.onNodeWithTag("Node test X").assertIsDisplayed(text = "Barista")
+  }
+
+  @Test(expected = AssertionError::class)
+  fun onNode_assertIsDisplayed_StringTest_fail() {
+    val text = "Barista"
+    composeTestRule.setContent {
+      WrappedTextComposable(text = text, nodeTestTag = "Node test")
+    }
+
+    composeTestRule.onNodeWithTag("Node test").assertIsDisplayed(text = "Barista Compose")
+  }
+
   // assertIsNotDisplayed tests
   @Test
   fun assertIsNotDisplayed_StringTest() {
@@ -74,5 +106,25 @@ class ComposeAssertionsTest {
     }
 
     composeTestRule.assertIsNotDisplayed(textRes = R.string.next)
+  }
+
+  @Test(expected = AssertionError::class)
+  fun onNode_assertIsNotDisplayed_StringTest_fail_nodeNotFound() {
+    val text = "Barista"
+    composeTestRule.setContent {
+      WrappedTextComposable(text = text, nodeTestTag = "Node test")
+    }
+
+    composeTestRule.onNodeWithTag("Node test X").assertIsNotDisplayed(text = "Barista Compose")
+  }
+
+  @Test(expected = AssertionError::class)
+  fun onNode_assertIsNotDisplayed_StringTest_fail() {
+    val text = "Barista"
+    composeTestRule.setContent {
+      WrappedTextComposable(text = text, nodeTestTag = "Node test")
+    }
+
+    composeTestRule.onNodeWithTag("Node test").assertIsNotDisplayed(text = "Barista")
   }
 }
