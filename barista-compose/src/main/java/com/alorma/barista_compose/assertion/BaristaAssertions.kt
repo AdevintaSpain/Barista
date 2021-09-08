@@ -41,3 +41,36 @@ fun ComposeTestRule.assertIsDisplayed(
       )
     )
 }
+
+fun ComposeTestRule.assertIsNotDisplayed(
+  useUnmergedTree: Boolean = false,
+  text: String,
+  substring: Boolean = false,
+  ignoreCase: Boolean = false
+): SemanticsNodeInteraction {
+  return onRoot(useUnmergedTree = useUnmergedTree)
+    .assert(
+      hasText(
+        text = text,
+        substring = substring,
+        ignoreCase = ignoreCase,
+      ).not()
+    )
+}
+
+@Composable
+fun ComposeTestRule.assertIsNotDisplayed(
+  useUnmergedTree: Boolean = false,
+  @StringRes text: Int,
+  substring: Boolean = false,
+  ignoreCase: Boolean = false
+): SemanticsNodeInteraction {
+  return onRoot(useUnmergedTree = useUnmergedTree)
+    .assert(
+      hasText(
+        text = stringResource(text),
+        substring = substring,
+        ignoreCase = ignoreCase,
+      ).not()
+    )
+}

@@ -70,9 +70,4 @@ dependencies {
   androidTestImplementation("org.mockito:mockito-android:2.28.2")
 
   testImplementation("junit:junit:4.12")
-
-  androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["compose_version"]}")
-  androidTestImplementation("androidx.compose.ui:ui-test-manifest:${rootProject.extra["compose_version"]}")
-  debugImplementation("androidx.compose.ui:ui-tooling:${rootProject.extra["compose_version"]}")
-
 }
