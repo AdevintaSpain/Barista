@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithText
@@ -38,15 +39,8 @@ fun ComposeTestRule.assertIsNotDisplayed(
   text: String,
   substring: Boolean = false,
   ignoreCase: Boolean = false
-): SemanticsNodeInteraction {
-  return onRoot(useUnmergedTree = useUnmergedTree)
-    .assert(
-      hasText(
-        text = text,
-        substring = substring,
-        ignoreCase = ignoreCase,
-      ).not()
-    )
+) {
+  return onNodeWithText(text, substring, ignoreCase, useUnmergedTree).assertDoesNotExist()
 }
 
 fun ComposeTestRule.assertIsNotDisplayed(
@@ -54,6 +48,6 @@ fun ComposeTestRule.assertIsNotDisplayed(
   @StringRes textRes: Int,
   substring: Boolean = false,
   ignoreCase: Boolean = false
-): SemanticsNodeInteraction {
+) {
   return assertIsNotDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
 }
