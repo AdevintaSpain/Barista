@@ -29,8 +29,9 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 groupId project.property("libGroup")
-                artifactId project.property("libArtifact")
+                artifactId PUBLISH_ARTIFACT_ID
                 version project.property("libVersion")
+
                 if (project.plugins.findPlugin("com.android.library")) {
                     from components.release
                 } else {

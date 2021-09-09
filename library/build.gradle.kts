@@ -5,6 +5,8 @@ plugins {
 
 apply(from = "../config/android-quality.gradle")
 
+ext["PUBLISH_ARTIFACT_ID"] = "barista"
+
 apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
 
 android {
