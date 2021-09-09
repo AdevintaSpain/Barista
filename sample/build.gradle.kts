@@ -31,19 +31,6 @@ android {
   }
   kotlinOptions {
     jvmTarget = "1.8"
-    useIR = true
-  }
-  buildFeatures {
-    compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
-    kotlinCompilerVersion = "1.5.21"
-  }
-  packagingOptions {
-    resources {
-      excludes += "/META-INF/{AL2.0,LGPL2.1}"
-    }
   }
 }
 
@@ -56,11 +43,7 @@ dependencies {
   implementation("com.github.bumptech.glide:glide:4.10.0")
   implementation("com.google.android.material:material:1.2.0")
   implementation("androidx.core:core-ktx:1.0.1")
-  implementation("androidx.compose.ui:ui:${rootProject.extra["compose_version"]}")
-  implementation("androidx.compose.material:material:${rootProject.extra["compose_version"]}")
-  implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["compose_version"]}")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-  implementation("androidx.activity:activity-compose:1.3.1")
 
   androidTestUtil("androidx.test:orchestrator:1.3.0")
   androidTestImplementation(project(":library"))
