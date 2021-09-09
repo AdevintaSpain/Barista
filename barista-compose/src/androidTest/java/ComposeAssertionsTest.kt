@@ -42,7 +42,7 @@ class ComposeAssertionsTest {
       TextComposable(text = text)
     }
 
-    composeTestRule.assertDisplayed(textRes = R.string.next)
+    composeTestRule.assertDisplayed(R.string.next)
   }
 
   // assertNotDisplayed tests
@@ -51,7 +51,7 @@ class ComposeAssertionsTest {
     val text = "Hello world"
     composeTestRule.setContent { TextComposable(text = text) }
 
-    composeTestRule.assertNotDisplayed(text = "next")
+    composeTestRule.assertNotDisplayed("next")
   }
 
   @Test
@@ -62,7 +62,7 @@ class ComposeAssertionsTest {
       TextComposable(text = text)
     }
 
-    composeTestRule.assertNotDisplayed(textRes = R.string.next)
+    composeTestRule.assertNotDisplayed(R.string.next)
   }
 
   @Test(expected = AssertionError::class)
@@ -73,6 +73,6 @@ class ComposeAssertionsTest {
       TextComposable(text = text)
     }
 
-    composeTestRule.assertNotDisplayed(textRes = R.string.next)
+    composeTestRule.assertNotDisplayed(R.string.next)
   }
 }

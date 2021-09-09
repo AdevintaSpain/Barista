@@ -8,8 +8,8 @@ import androidx.compose.ui.test.onNodeWithText
 import com.alorma.barista_compose.assertion.internal.resources
 
 fun ComposeTestRule.assertDisplayed(
-  useUnmergedTree: Boolean = false,
   text: String,
+  useUnmergedTree: Boolean = false,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ): SemanticsNodeInteraction {
@@ -22,17 +22,17 @@ fun ComposeTestRule.assertDisplayed(
 }
 
 fun ComposeTestRule.assertDisplayed(
-  useUnmergedTree: Boolean = false,
   @StringRes textRes: Int,
+  useUnmergedTree: Boolean = false,
   substring: Boolean = false,
   ignoreCase: Boolean = false,
 ): SemanticsNodeInteraction {
-  return assertDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
+  return assertDisplayed(resources().getString(textRes), useUnmergedTree, substring, ignoreCase)
 }
 
 fun ComposeTestRule.assertNotDisplayed(
-  useUnmergedTree: Boolean = false,
   text: String,
+  useUnmergedTree: Boolean = false,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ) {
@@ -40,10 +40,10 @@ fun ComposeTestRule.assertNotDisplayed(
 }
 
 fun ComposeTestRule.assertNotDisplayed(
-  useUnmergedTree: Boolean = false,
   @StringRes textRes: Int,
+  useUnmergedTree: Boolean = false,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ) {
-  return assertNotDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
+  return assertNotDisplayed(resources().getString(textRes), useUnmergedTree, substring, ignoreCase)
 }
