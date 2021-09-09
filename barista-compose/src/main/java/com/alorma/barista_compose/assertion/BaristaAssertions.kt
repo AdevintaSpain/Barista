@@ -7,7 +7,7 @@ import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithText
 import com.alorma.barista_compose.assertion.internal.resources
 
-fun ComposeTestRule.assertIsDisplayed(
+fun ComposeTestRule.assertDisplayed(
   useUnmergedTree: Boolean = false,
   text: String,
   substring: Boolean = false,
@@ -21,16 +21,16 @@ fun ComposeTestRule.assertIsDisplayed(
   ).assertIsDisplayed()
 }
 
-fun ComposeTestRule.assertIsDisplayed(
+fun ComposeTestRule.assertDisplayed(
   useUnmergedTree: Boolean = false,
   @StringRes textRes: Int,
   substring: Boolean = false,
   ignoreCase: Boolean = false,
 ): SemanticsNodeInteraction {
-  return assertIsDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
+  return assertDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
 }
 
-fun ComposeTestRule.assertIsNotDisplayed(
+fun ComposeTestRule.assertNotDisplayed(
   useUnmergedTree: Boolean = false,
   text: String,
   substring: Boolean = false,
@@ -39,11 +39,11 @@ fun ComposeTestRule.assertIsNotDisplayed(
   return onNodeWithText(text, substring, ignoreCase, useUnmergedTree).assertDoesNotExist()
 }
 
-fun ComposeTestRule.assertIsNotDisplayed(
+fun ComposeTestRule.assertNotDisplayed(
   useUnmergedTree: Boolean = false,
   @StringRes textRes: Int,
   substring: Boolean = false,
   ignoreCase: Boolean = false
 ) {
-  return assertIsNotDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
+  return assertNotDisplayed(useUnmergedTree, resources().getString(textRes), substring, ignoreCase)
 }

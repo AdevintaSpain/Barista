@@ -12,67 +12,67 @@ class ComposeAssertionsTest {
   @get:Rule
   val composeTestRule = createComposeRule()
 
-  // assertIsDisplayed tests
+  // assertDisplayed tests
   @Test
-  fun assertIsDisplayed_StringTest() {
+  fun assertDisplayed_StringTest() {
     val text = "Hello world"
     composeTestRule.setContent {
       TextComposable(text = text)
     }
 
-    composeTestRule.assertIsDisplayed(text = text)
+    composeTestRule.assertDisplayed(text = text)
   }
 
   @Test
-  fun assertIsDisplayed_ResourceTest() {
+  fun assertDisplayed_ResourceTest() {
     val textRes = R.string.app_name
     composeTestRule.setContent {
       val text = stringResource(id = textRes)
       TextComposable(text = text)
     }
 
-    composeTestRule.assertIsDisplayed(textRes = R.string.app_name)
+    composeTestRule.assertDisplayed(textRes = R.string.app_name)
   }
 
   @Test(expected = AssertionError::class)
-  fun assertIsDisplayed_ResourceTest_fail() {
+  fun assertDisplayed_ResourceTest_fail() {
     val textRes = R.string.app_name
     composeTestRule.setContent {
       val text = stringResource(id = textRes)
       TextComposable(text = text)
     }
 
-    composeTestRule.assertIsDisplayed(textRes = R.string.next)
+    composeTestRule.assertDisplayed(textRes = R.string.next)
   }
 
-  // assertIsNotDisplayed tests
+  // assertNotDisplayed tests
   @Test
-  fun assertIsNotDisplayed_StringTest() {
+  fun assertNotDisplayed_StringTest() {
     val text = "Hello world"
     composeTestRule.setContent { TextComposable(text = text) }
 
-    composeTestRule.assertIsNotDisplayed(text = "next")
+    composeTestRule.assertNotDisplayed(text = "next")
   }
 
   @Test
-  fun assertIsNotDisplayed_ResourceTest() {
+  fun assertNotDisplayed_ResourceTest() {
     val textRes = R.string.app_name
     composeTestRule.setContent {
       val text = stringResource(id = textRes)
       TextComposable(text = text)
     }
 
-    composeTestRule.assertIsNotDisplayed(textRes = R.string.next)
+    composeTestRule.assertNotDisplayed(textRes = R.string.next)
   }
 
   @Test(expected = AssertionError::class)
-  fun assertIsNotDisplayed_ResourceTest_fail() {
+  fun assertNotDisplayed_ResourceTest_fail() {
     val textRes = R.string.next
     composeTestRule.setContent {
       val text = stringResource(id = textRes)
       TextComposable(text = text)
     }
 
-    composeTestRule.assertIsNotDisplayed(textRes = R.string.next)
+    composeTestRule.assertNotDisplayed(textRes = R.string.next)
   }
 }
