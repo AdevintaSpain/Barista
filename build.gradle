@@ -1,4 +1,7 @@
 buildscript {
+  ext {
+    compose_version = '1.0.2'
+  }
   repositories {
     maven { url "https://plugins.gradle.org/m2/" }
     google()
