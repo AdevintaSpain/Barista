@@ -43,7 +43,7 @@ class ComposeAssertionsTest {
   // assertNotDisplayed tests
   @Test
   fun assertNotDisplayed_StringTest() {
-    val "Hello world"
+    val text = "Hello world"
     composeTestRule.setContent { TextComposable(text) }
 
     composeTestRule.assertNotDisplayed("next")
