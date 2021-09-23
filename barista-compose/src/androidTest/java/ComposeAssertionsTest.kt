@@ -16,25 +16,25 @@ class ComposeAssertionsTest {
   @Test
   fun assertDisplayed_StringTest() {
     composeTestRule.setContent {
-      TextComposable(text = "Hello world")
+      TextComposable("Hello world")
     }
 
-    composeTestRule.assertDisplayed(text = "Hello world")
+    composeTestRule.assertDisplayed("Hello world")
   }
 
   @Test
   fun assertDisplayed_ResourceTest() {
     composeTestRule.setContent {
-      TextComposable(text = stringResource(id = R.string.app_name))
+      TextComposable(stringResource(R.string.app_name))
     }
 
-    composeTestRule.assertDisplayed(textRes = R.string.app_name)
+    composeTestRule.assertDisplayed(R.string.app_name)
   }
 
   @Test(expected = AssertionError::class)
   fun assertDisplayed_ResourceTest_fail() {
     composeTestRule.setContent {
-      TextComposable(text = stringResource(id = R.string.app_name))
+      TextComposable(stringResource(R.string.app_name))
     }
 
     composeTestRule.assertDisplayed(R.string.next)
@@ -43,8 +43,8 @@ class ComposeAssertionsTest {
   // assertNotDisplayed tests
   @Test
   fun assertNotDisplayed_StringTest() {
-    val text = "Hello world"
-    composeTestRule.setContent { TextComposable(text = text) }
+    val "Hello world"
+    composeTestRule.setContent { TextComposable(text) }
 
     composeTestRule.assertNotDisplayed("next")
   }
@@ -52,7 +52,7 @@ class ComposeAssertionsTest {
   @Test
   fun assertNotDisplayed_ResourceTest() {
     composeTestRule.setContent {
-      TextComposable(text = stringResource(id = R.string.app_name))
+      TextComposable(stringResource(R.string.app_name))
     }
 
     composeTestRule.assertNotDisplayed(R.string.next)
@@ -61,7 +61,7 @@ class ComposeAssertionsTest {
   @Test(expected = AssertionError::class)
   fun assertNotDisplayed_ResourceTest_fail() {
     composeTestRule.setContent {
-      TextComposable(text = stringResource(id = R.string.next))
+      TextComposable(stringResource(R.string.next))
     }
 
     composeTestRule.assertNotDisplayed(R.string.next)
