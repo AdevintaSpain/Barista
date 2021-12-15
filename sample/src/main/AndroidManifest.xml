@@ -17,99 +17,99 @@
       >
     <activity
         android:name=".SomeViewsWithDifferentVisibilitiesActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".FlowFirstScreen"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".FlowSecondScreen"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".RadioButtonsActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".CheckBoxActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".EditTextActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".PickersActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".AutoCompleteTextViewActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".SpinnerActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ListsActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".LabelActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ViewPagerWithTwoDifferentPagesActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ViewPagerWithFiveSamePagesActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".PartiallyVisibleViewPagerActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ViewPager2Activity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".DialogActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".PreferencesActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".DatabaseActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".FileActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".HelloWorldActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".WrappedViewActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".SwipeRefreshActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".MenuActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ChipsActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".MenuSupportActionBarActivity"
@@ -117,28 +117,28 @@
         />
     <activity
         android:name=".NavigationDrawerActivity"
-        android:exported="false"
+        android:exported="true"
         android:theme="@style/AppTheme.NoActionBar"
         />
     <activity
         android:name=".RecyclerViewsInsideViewPagerActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".RecyclerViewsWithDifferentDataInsideViewPagerActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ListViewsWithDifferentDataInsideViewPagerActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".NestedScrollViewActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".CameraActivity"
-        android:exported="false"
+        android:exported="true"
         >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -161,15 +161,15 @@
 
     <activity
         android:name=".EmptyActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".SeekBarActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".SomeSeekBarsWithDifferentProgressesActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ColorsActivity"
@@ -177,25 +177,24 @@
         />
     <activity
         android:name=".ColorsSecondActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".KeyboardActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".HintAndErrorActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".WrappedEditTextActivity"
-        android:exported="false"
+        android:exported="true"
         />
     <activity
         android:name=".ContentDescriptionActivity"
-        android:exported="false"
+        android:exported="true"
         />
-
   </application>
 
 </manifest>
