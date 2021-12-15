@@ -29,14 +29,13 @@ dependencies {
   api("androidx.test.uiautomator:uiautomator:2.2.0")
   api("androidx.test.espresso:espresso-intents:3.4.0")
 
-
   implementation("androidx.annotation:annotation:1.0.2")
   implementation("androidx.legacy:legacy-support-core-ui:1.0.0")
-  implementation("androidx.vectordrawable:vectordrawable-animated:1.0.0")
-  implementation("androidx.recyclerview:recyclerview:1.0.0")
-  api("androidx.viewpager2:viewpager2:1.0.0")
+  implementation("androidx.vectordrawable:vectordrawable-animated:1.1.0")
+  implementation("androidx.recyclerview:recyclerview:1.2.1")
+  api("androidx.viewpager2:viewpager2:1.1.0")
 
-  implementation("com.google.android.material:material:1.2.0")
+  implementation("com.google.android.material:material:1.4.0")
 
   testImplementation("junit:junit:4.12")
   testImplementation("pl.pragmatists:JUnitParams:1.1.0")
