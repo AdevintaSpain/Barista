@@ -39,7 +39,8 @@ dependencies {
   implementation("com.google.android.material:material:1.2.0")
   implementation("androidx.core:core-ktx:1.0.1")
 
-  androidTestUtil("androidx.test:orchestrator:1.3.0")
+  androidTestUtil("androidx.test:orchestrator:1.4.1")
+
   androidTestImplementation(project(":library"))
   androidTestImplementation("org.assertj:assertj-core:2.9.1")
   androidTestImplementation("com.nhaarman:mockito-kotlin:1.5.0")
