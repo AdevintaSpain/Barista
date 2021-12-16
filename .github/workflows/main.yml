@@ -48,7 +48,7 @@ jobs:
           java-version: 11
 
       - name: Run instrumentation tests
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: ReactiveCircus/android-emulator-runner@v2.21.0
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
