@@ -30,6 +30,14 @@ jobs:
 
   test:
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        api-level: [ 26, 31 ]
+        include:
+          - node: 31
+            experimental: true
+      fail-fast: false
     timeout-minutes: 60
 
     steps:
@@ -45,10 +53,10 @@ jobs:
           java-version: 11
 
       - name: Run instrumentation tests
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: ReactiveCircus/android-emulator-runner@v2.21.0
         with:
-          api-level: 26
-          arch: x86
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
           profile: pixel_2
           disable-animations: true
           script: ./gradlew :sample:connectedCheck :barista-compose:connectedCheck
