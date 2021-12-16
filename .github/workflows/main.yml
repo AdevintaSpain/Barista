@@ -30,14 +30,9 @@ jobs:
 
   test:
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
         api-level: [ 26, 31 ]
-        include:
-          - node: 31
-            experimental: true
-      fail-fast: false
     timeout-minutes: 60
 
     steps:
