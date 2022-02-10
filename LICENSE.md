@@ -1,4 +1,4 @@
-Copyright 2017 Schibsted Classified Media Spain S.L.
+Copyright 2022 Adevinta Spain SL
 
 
 Licensed under the Apache License, Version 2.0 (the "License");
