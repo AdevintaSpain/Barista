@@ -1,7 +1,6 @@
 # Barista
 **The one who serves a great Espresso**
 
-[![CI](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml/badge.svg)](https://github.com/AdevintaSpain/Barista/actions/workflows/main.yml)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
 <img src="art/barista-logo.svg" width="30%"/>
