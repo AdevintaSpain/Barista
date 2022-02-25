@@ -7,11 +7,11 @@ plugins {
 apply(from = "../config/android-quality.gradle")
 
 android {
-  compileSdk = 30
+  compileSdk = 31
 
   defaultConfig {
     minSdk = 21
-    targetSdk = 30
+    targetSdk = 31
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments["clearPackageData"] = "true"
@@ -38,6 +38,8 @@ dependencies {
   implementation("com.github.bumptech.glide:glide:4.10.0")
   implementation("com.google.android.material:material:1.2.0")
   implementation("androidx.core:core-ktx:1.0.1")
+  implementation("androidx.activity:activity-ktx:1.4.0")
+  implementation("androidx.fragment:fragment-ktx:1.4.1")
 
   androidTestUtil("androidx.test:orchestrator:1.4.1")
 

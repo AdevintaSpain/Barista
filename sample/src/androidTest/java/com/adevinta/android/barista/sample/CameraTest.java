@@ -9,6 +9,10 @@ import static com.adevinta.android.barista.assertion.BaristaImageViewAssertions.
 import static com.adevinta.android.barista.intents.BaristaIntents.mockAndroidCamera;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
 
+import android.Manifest;
+
+import com.adevinta.android.barista.interaction.PermissionGranter;
+
 public class CameraTest {
 
   @Rule
@@ -25,6 +29,19 @@ public class CameraTest {
 
     clickOn(R.id.take_picture);
 
+    PermissionGranter.allowPermissionOneTime(Manifest.permission.CAMERA);
+
     assertHasAnyDrawable(R.id.image_view);
+  }
+
+  @Test
+  public void denyPermissionForCamera() {
+    mockAndroidCamera();
+
+    clickOn(R.id.take_picture);
+
+    PermissionGranter.denyPermissions(Manifest.permission.CAMERA);
+
+    assertHasNoDrawable(R.id.image_view);
   }
 }
