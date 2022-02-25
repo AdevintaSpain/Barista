@@ -1,6 +1,7 @@
 package com.adevinta.android.barista.sample;
 
 import androidx.test.espresso.intent.rule.IntentsTestRule;
+
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -8,6 +9,7 @@ import static com.adevinta.android.barista.assertion.BaristaImageViewAssertions.
 import static com.adevinta.android.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
 import static com.adevinta.android.barista.intents.BaristaIntents.mockAndroidCamera;
 import static com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn;
+import static com.adevinta.android.barista.interaction.BaristaSleepInteractions.sleep;
 
 import android.Manifest;
 
@@ -30,6 +32,9 @@ public class CameraTest {
     clickOn(R.id.take_picture);
 
     PermissionGranter.allowPermissionOneTime(Manifest.permission.CAMERA);
+
+    // Allow time for the assertion to complete
+    sleep(50);
 
     assertHasAnyDrawable(R.id.image_view);
   }
