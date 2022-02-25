@@ -79,8 +79,4 @@ class CameraActivity : ComponentActivity() {
         )
     }
 
-    private fun checkCameraHardware(): Boolean {
-        return packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
-    }
-
 }
