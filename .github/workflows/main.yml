@@ -30,12 +30,15 @@ jobs:
 
   test:
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
+    strategy:
+      matrix:
+        api-level: [ 26, 31 ]
     timeout-minutes: 60
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      
       - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
@@ -47,7 +50,7 @@ jobs:
       - name: Run instrumentation tests
         uses: ReactiveCircus/android-emulator-runner@v2.21.0
         with:
-          api-level: 26
+          api-level: ${{ matrix.api-level }}
           arch: x86_64
           profile: pixel_2
           disable-animations: true
