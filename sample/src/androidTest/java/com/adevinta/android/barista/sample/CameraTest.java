@@ -33,9 +33,7 @@ public class CameraTest {
 
     PermissionGranter.allowPermissionOneTime(Manifest.permission.CAMERA);
 
-    // Allow time for the assertion to complete
-    sleep(50);
-
+    sleep(500);
     assertHasAnyDrawable(R.id.image_view);
   }
 
