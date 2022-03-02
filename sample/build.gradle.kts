@@ -38,8 +38,6 @@ dependencies {
   implementation("com.github.bumptech.glide:glide:4.10.0")
   implementation("com.google.android.material:material:1.2.0")
   implementation("androidx.core:core-ktx:1.0.1")
-  implementation("androidx.activity:activity-ktx:1.4.0")
-  implementation("androidx.fragment:fragment-ktx:1.4.1")
 
   androidTestUtil("androidx.test:orchestrator:1.4.1")
 
