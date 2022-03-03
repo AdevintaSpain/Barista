@@ -5,7 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * It let's flaky tests pass.
+ * It lets flaky tests pass.
  * <br>
  * This annotation together with {@link FlakyTestRule} repeats the annotated test several times, and makes the test pass if any of
  * the executions passed. It's the opposite of {@link Repeat}.
