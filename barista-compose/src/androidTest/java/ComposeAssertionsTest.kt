@@ -1,9 +1,18 @@
 package com.alorma.barista_compose.assertion
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.IconButton
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.unit.dp
 import com.adevinta.android.barista.sample.TextComposable
 import com.alorma.barista_compose.R
+import com.alorma.barista_compose.assertion.internal.matcher.onNodeWithDrawable
+import com.alorma.barista_compose.assertion.internal.matcher.setDrawableSemantic
 import org.junit.Rule
 import org.junit.Test
 
@@ -65,5 +74,22 @@ class ComposeAssertionsTest {
     }
 
     composeTestRule.assertNotDisplayed(R.string.next)
+  }
+
+  @Test
+  fun assertDisplayed_DrawableTest() {
+    composeTestRule.setContent {
+      IconButton(onClick = { }) {
+        Image(
+          painter = painterResource(id = R.drawable.barista_logo_vector),
+          modifier = Modifier
+            .size(24.dp)
+            .setDrawableSemantic(R.drawable.barista_logo_vector),
+          contentDescription = null
+        )
+      }
+    }
+
+    composeTestRule.onNodeWithDrawable(R.drawable.barista_logo_vector).assertIsDisplayed()
   }
 }
