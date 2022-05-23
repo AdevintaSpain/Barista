@@ -37,6 +37,10 @@ object BaristaContentDescriptionAssertions {
       override fun matchesSafely(item: View): Boolean {
         return item.contentDescription.isNotBlank()
       }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with content description: ").appendValue(item.contentDescription.toString())
+      }
     }
   }
 
@@ -48,6 +52,10 @@ object BaristaContentDescriptionAssertions {
 
       override fun matchesSafely(item: View): Boolean {
         return item.contentDescription == expectedContentDescription
+      }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with content description: ").appendValue(item.contentDescription.toString())
       }
     }
   }

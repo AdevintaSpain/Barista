@@ -30,10 +30,18 @@ object BaristaAssistiveTextAssertions {
       }
 
       override fun matchesSafely(item: View): Boolean {
-        return when (item) {
-          is TextInputLayout -> expectedAssistiveText == item.helperText.toString()
+        return item.tryGetHelperText() == expectedAssistiveText
+      }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with helper text: ").appendValue(item.tryGetHelperText())
+      }
+
+      private fun View.tryGetHelperText(): String? {
+        return when (this) {
+          is TextInputLayout -> helperText?.toString()
           else -> {
-            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
+            throw UnsupportedOperationException("View of class ${javaClass.simpleName} not supported")
           }
         }
       }
