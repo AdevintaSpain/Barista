@@ -47,7 +47,7 @@ object BaristaContentDescriptionAssertions {
   private fun matchContentDescription(expectedContentDescription: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with content description: ").appendText(expectedContentDescription)
+        description.appendText("with content description: ").appendValue(expectedContentDescription)
       }
 
       override fun matchesSafely(item: View): Boolean {

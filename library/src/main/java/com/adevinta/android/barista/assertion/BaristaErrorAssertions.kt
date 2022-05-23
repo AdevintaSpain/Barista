@@ -58,7 +58,7 @@ object BaristaErrorAssertions {
   private fun matchError(expectedError: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with error: ").appendText(expectedError)
+        description.appendText("with error: ").appendValue(expectedError)
       }
 
       override fun describeMismatchSafely(item: View, mismatchDescription: Description) {

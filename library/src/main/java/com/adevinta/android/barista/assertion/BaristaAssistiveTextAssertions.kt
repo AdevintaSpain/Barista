@@ -26,7 +26,7 @@ object BaristaAssistiveTextAssertions {
   private fun matchAssistiveText(expectedAssistiveText: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with helper text: ").appendText(expectedAssistiveText)
+        description.appendText("with helper text: ").appendValue(expectedAssistiveText)
       }
 
       override fun matchesSafely(item: View): Boolean {
