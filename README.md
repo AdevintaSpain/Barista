@@ -5,7 +5,7 @@
 
 <img src="art/barista-logo.svg" width="30%"/>
 
-Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
+Barista makes developing UI tests faster, easier, and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.
 
  - [Download](#download)
  - [API Overview](#api-overview)
@@ -295,7 +295,7 @@ assertAssistiveText(R.id.textinputlayout, R.string.helper_text);
 assertAssistiveText(R.id.textinputlayout, "Helper text");
 ```
 
-#### Check if text on screen contains given text
+#### Check if the text on screen contains the given text
 ```java
 assertContains("text");
 assertContains(R.string.text);
