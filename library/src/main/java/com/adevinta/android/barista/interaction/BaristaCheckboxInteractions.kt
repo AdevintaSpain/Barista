@@ -8,7 +8,12 @@ import com.adevinta.android.barista.internal.viewaction.CheckableViewActions.set
 object BaristaCheckboxInteractions {
 
   @JvmStatic
-  fun setChecked(@IdRes checkboxId: Int, checked: Boolean) {
-    withId(checkboxId).performAction(setCheckedState(checked))
+  fun check(@IdRes checkboxId: Int) {
+    withId(checkboxId).performAction(setCheckedState(true))
+  }
+
+  @JvmStatic
+  fun uncheck(@IdRes checkboxId: Int) {
+    withId(checkboxId).performAction(setCheckedState(false))
   }
 }

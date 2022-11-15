@@ -3,7 +3,8 @@ package com.adevinta.android.barista.sample
 import androidx.test.rule.ActivityTestRule
 import com.adevinta.android.barista.assertion.BaristaCheckedAssertions.assertChecked
 import com.adevinta.android.barista.assertion.BaristaCheckedAssertions.assertUnchecked
-import com.adevinta.android.barista.interaction.BaristaCheckboxInteractions.setChecked
+import com.adevinta.android.barista.interaction.BaristaCheckboxInteractions.check
+import com.adevinta.android.barista.interaction.BaristaCheckboxInteractions.uncheck
 import com.adevinta.android.barista.sample.util.SpyFailureHandlerRule
 import org.junit.Rule
 import org.junit.Test
@@ -18,7 +19,7 @@ class CheckboxTest {
 
   @Test
   fun check_checkBox() {
-    setChecked(R.id.first_item, true)
+    check(R.id.first_item)
 
     assertChecked(R.id.first_item)
     assertUnchecked(R.id.second_item)
@@ -27,10 +28,10 @@ class CheckboxTest {
 
   @Test
   fun uncheck_checkBox() {
-    setChecked(R.id.first_item, true)
-    setChecked(R.id.second_item, true)
+    check(R.id.first_item)
+    check(R.id.second_item)
 
-    setChecked(R.id.first_item, false)
+    uncheck(R.id.first_item)
 
     assertUnchecked(R.id.first_item)
     assertChecked(R.id.second_item)
