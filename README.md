@@ -92,6 +92,12 @@ clickRadioButtonItem(R.id.radiogroup, "The radio text");
 clickRadioButtonPosition(R.id.radiogroup, 42);
 ```
 
+#### Check/Uncheck a Checkbox
+```java
+setChecked(R.id.check_box_item_1, true);
+setChecked(R.id.check_box_item_2, false);
+```
+
 #### Pick data on pickers
 ```java
 setDateOnPicker(1986, 03, 23);
