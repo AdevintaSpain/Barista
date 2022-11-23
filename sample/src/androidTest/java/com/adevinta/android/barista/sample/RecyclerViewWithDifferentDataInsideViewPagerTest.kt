@@ -1,6 +1,6 @@
 package com.adevinta.android.barista.sample
 
-import androidx.test.rule.ActivityTestRule
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
 import com.adevinta.android.barista.interaction.BaristaSleepInteractions
 import com.adevinta.android.barista.interaction.BaristaViewPagerInteractions.swipeViewPagerBack
@@ -10,7 +10,7 @@ import org.junit.Test
 
 class RecyclerViewWithDifferentDataInsideViewPagerTest {
     @Rule
-    var activityRule = ActivityTestRule(
+    var activityRule = ActivityScenarioRule(
         RecyclerViewsWithDifferentDataInsideViewPagerActivity::class.java
     )
 
