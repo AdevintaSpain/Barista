@@ -31,23 +31,31 @@ object BaristaHintAssertions {
   private fun matchHint(expectedHint: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with hint: ").appendText(expectedHint)
+        description.appendText("with hint: ").appendValue(expectedHint)
       }
 
       override fun matchesSafely(item: View): Boolean {
-        return when (item) {
+        return item.tryGetHintText() == expectedHint
+      }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with hint: ").appendValue(item.tryGetHintText())
+      }
+
+      private fun View.tryGetHintText(): String? {
+        return when (this) {
           is TextInputLayout -> {
-            expectedHint == item.hint.toString()
+            hint?.toString()
           }
           is TextInputEditText -> {
-            val hint = ((item.parent as FrameLayout).parent as TextInputLayout).hint
-            expectedHint == hint
+            val hint = ((this.parent as FrameLayout).parent as TextInputLayout).hint
+            hint?.toString()
           }
           is EditText -> {
-            item.hint == expectedHint
+            hint?.toString()
           }
           else -> {
-            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
+            throw UnsupportedOperationException("View of class ${javaClass.simpleName} not supported")
           }
         }
       }

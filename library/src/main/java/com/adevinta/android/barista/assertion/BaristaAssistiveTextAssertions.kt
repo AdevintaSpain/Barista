@@ -26,14 +26,22 @@ object BaristaAssistiveTextAssertions {
   private fun matchAssistiveText(expectedAssistiveText: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with helper text: ").appendText(expectedAssistiveText)
+        description.appendText("with helper text: ").appendValue(expectedAssistiveText)
       }
 
       override fun matchesSafely(item: View): Boolean {
-        return when (item) {
-          is TextInputLayout -> expectedAssistiveText == item.helperText.toString()
+        return item.tryGetHelperText() == expectedAssistiveText
+      }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with helper text: ").appendValue(item.tryGetHelperText())
+      }
+
+      private fun View.tryGetHelperText(): String? {
+        return when (this) {
+          is TextInputLayout -> helperText?.toString()
           else -> {
-            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
+            throw UnsupportedOperationException("View of class ${javaClass.simpleName} not supported")
           }
         }
       }

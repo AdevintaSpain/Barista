@@ -58,17 +58,15 @@ object BaristaErrorAssertions {
   private fun matchError(expectedError: String): Matcher<View> {
     return object : TypeSafeMatcher<View>() {
       override fun describeTo(description: Description) {
-        description.appendText("with error: ").appendText(expectedError)
+        description.appendText("with error: ").appendValue(expectedError)
+      }
+
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with error: ").appendValue(item.tryGetErrorText())
       }
 
       override fun matchesSafely(item: View): Boolean {
-        return when (item) {
-          is TextView -> expectedError == item.error.toString()
-          is TextInputLayout -> expectedError == item.error.toString()
-          else -> {
-            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
-          }
-        }
+        return expectedError == item.tryGetErrorText()
       }
     }
   }
@@ -79,14 +77,22 @@ object BaristaErrorAssertions {
         description.appendText("without error")
       }
 
+      override fun describeMismatchSafely(item: View, mismatchDescription: Description) {
+        mismatchDescription.appendText("with error: ").appendValue(item.tryGetErrorText())
+      }
+
       override fun matchesSafely(item: View): Boolean {
-        return when (item) {
-          is TextView -> item.error.isNullOrEmpty()
-          is TextInputLayout -> item.error.isNullOrEmpty()
-          else -> {
-            throw UnsupportedOperationException("View of class ${item.javaClass.simpleName} not supported")
-          }
-        }
+        return item.tryGetErrorText().isNullOrEmpty()
+      }
+    }
+  }
+
+  private fun View.tryGetErrorText(): String? {
+    return when (this) {
+      is TextView -> error?.toString()
+      is TextInputLayout -> error?.toString()
+      else -> {
+        throw UnsupportedOperationException("View of class ${javaClass.simpleName} not supported")
       }
     }
   }
