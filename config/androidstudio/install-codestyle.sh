@@ -15,11 +15,9 @@ for i in $HOME/Library/Preferences/IntelliJIdea*  \
          $HOME/Library/Application\ Support/Google/AndroidStudio* \
          $HOME/Library/Application\ Support/JetBrains/IdeaIC*
 do
-  if [[ -d $i ]]; then
-    # create codestyle folders
-    mkdir -p $i/codestyles
-    # copy xmls
-    cp -frv "$CONFIGS/codestyle"/* $i/codestyles
+  if [[ -d "$i" ]]; then
+    mkdir -p "$i/codestyles"
+    cp -frv "$CONFIGS/codestyle"/* "$i/codestyles"
   fi
 done
 
