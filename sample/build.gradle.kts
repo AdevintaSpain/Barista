@@ -40,8 +40,8 @@ dependencies {
   implementation("androidx.core:core-ktx:1.0.1")
 
   androidTestUtil("androidx.test:orchestrator:1.4.1")
+  androidTestImplementation(project(":barista"))
 
-  androidTestImplementation(project(":library"))
   androidTestImplementation("org.assertj:assertj-core:2.9.1")
   androidTestImplementation("com.nhaarman:mockito-kotlin:1.5.0")
   androidTestImplementation("org.mockito:mockito-android:2.28.2")

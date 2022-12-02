@@ -8,5 +8,5 @@ gradleEnterprise {
     publishAlways()
   }
 }
-include ':sample', ':library'
+include ':sample', ':barista'
 include ':barista-compose'
