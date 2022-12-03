@@ -24,10 +24,10 @@ android {
 }
 
 dependencies {
-  api(libs.androidx.espresso.core)
-  api(libs.androidx.espresso.contrib)
-  api("androidx.test.uiautomator:uiautomator:2.2.0")
-  api(libs.androidx.espresso.intents)
+  api(libs.androidX.test.espresso.core)
+  api(libs.androidX.test.espresso.contrib)
+  api(libs.androidX.test.uiAutomator)
+  api(libs.androidX.test.espresso.intents)
 
 
   implementation("androidx.annotation:annotation:1.0.2")
