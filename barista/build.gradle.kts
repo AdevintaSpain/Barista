@@ -41,5 +41,5 @@ dependencies {
   testImplementation(libs.testing.jUnitParams)
   testImplementation(libs.testing.assertJ)
   
-  testImplementation(libs.testing.mockito)
+  testImplementation(libs.testing.mockito.core)
 }
