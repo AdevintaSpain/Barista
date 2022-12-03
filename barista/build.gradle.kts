@@ -36,9 +36,10 @@ dependencies {
   api(libs.androidX.viewPager2)
   
   implementation(libs.androidX.material)
-
-  testImplementation("junit:junit:4.12")
-  testImplementation("pl.pragmatists:JUnitParams:1.1.0")
-  testImplementation("org.assertj:assertj-core:1.7.0")
-  testImplementation("org.mockito:mockito-core:2.28.2")
+  
+  testImplementation(libs.testing.jUnit)
+  testImplementation(libs.testing.jUnitParams)
+  testImplementation(libs.testing.assertJ)
+  
+  testImplementation(libs.testing.mockito)
 }

@@ -46,6 +46,6 @@ dependencies {
   androidTestImplementation("com.nhaarman:mockito-kotlin:1.5.0")
   androidTestImplementation("org.mockito:mockito-android:2.28.2")
 
-  testImplementation("junit:junit:4.12")
+  testImplementation(libs.testing.jUnit)
 
 }
