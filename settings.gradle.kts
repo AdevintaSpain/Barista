@@ -9,5 +9,5 @@ pluginManagement {
 
 include(":sample")
 
-include(":taggingviewer")
-include(":taggingviewer-no-op")
+include(":barista")
+include(":barista-compose")
