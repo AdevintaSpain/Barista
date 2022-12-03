@@ -10,11 +10,11 @@ ext["PUBLISH_ARTIFACT_ID"] = "barista-compose"
 apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
 
 android {
-  compileSdk = 31
+  compileSdk = 33
 
   defaultConfig {
     minSdk = 21
-    targetSdk = 31
+    targetSdk = 33
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments["clearPackageData"] = "true"
