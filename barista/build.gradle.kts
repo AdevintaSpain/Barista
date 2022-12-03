@@ -28,15 +28,14 @@ dependencies {
   api(libs.androidX.test.espresso.contrib)
   api(libs.androidX.test.uiAutomator)
   api(libs.androidX.test.espresso.intents)
-
-
-  implementation("androidx.annotation:annotation:1.0.2")
-  implementation("androidx.legacy:legacy-support-core-ui:1.0.0")
-  implementation("androidx.vectordrawable:vectordrawable-animated:1.0.0")
-  implementation("androidx.recyclerview:recyclerview:1.0.0")
-  api("androidx.viewpager2:viewpager2:1.0.0")
-
-  implementation("com.google.android.material:material:1.2.0")
+  
+  implementation(libs.androidX.annotation)
+  implementation(libs.androidX.legacy.support)
+  implementation(libs.androidX.vectorDrawable.animated)
+  implementation(libs.androidX.recyclerView)
+  api(libs.androidX.viewPager2)
+  
+  implementation(libs.androidX.material)
 
   testImplementation("junit:junit:4.12")
   testImplementation("pl.pragmatists:JUnitParams:1.1.0")
