@@ -51,7 +51,7 @@
     <activity android:name=".RecyclerViewsWithDifferentDataInsideViewPagerActivity"/>
     <activity android:name=".ListViewsWithDifferentDataInsideViewPagerActivity"/>
     <activity android:name=".NestedScrollViewActivity"/>
-    <activity android:name=".CameraActivity">
+    <activity android:name=".CameraActivity" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
