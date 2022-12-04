@@ -1,0 +1,71 @@
+[versions]
+gradlePlugin = "7.3.1"
+kotlin = "1.7.20"
+nexusPublish = "1.1.0"
+nexusStaging = "0.22.0"
+compose = "1.3.1"
+composeCompiler = "1.3.2"
+androidXAppCompat = "1.0.2"
+androidXAnnotation = "1.0.2"
+androidXCore = "1.0.1"
+androidXEspresso = "3.4.0"
+androidXJUnit = "1.1.3"
+androidXLegacy = "1.0.0"
+androidXLifecycle = "2.3.1"
+androidXMaterial = "1.2.0"
+androidXOrchestrator = "1.4.1"
+androidXRecyclerView = "1.0.0"
+androidXVectorDrawable = "1.0.0"
+androidXViewPager2 = "1.0.0"
+uiAutomator = "2.2.0"
+
+glide = "4.10.0"
+
+assertJ = "2.9.1"
+jUnit = "4.12"
+jUnitParams = "1.1.0"
+mockito = "2.28.2"
+mockitoKotlin = "1.5.0"
+
+[libraries]
+
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugin" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+nexus-publish = { module = "io.github.gradle-nexus:publish-plugin", version.ref = "nexusPublish" }
+nexus-staging = { module = "io.codearte.gradle.nexus:gradle-nexus-staging-plugin", version.ref = "nexusStaging" }
+
+androidX-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidXEspresso" }
+androidX-test-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidXEspresso" }
+androidX-test-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidXEspresso" }
+androidX-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidXJUnit" }
+androidX-test-orchestrator = { module = "androidx.test:orchestrator", version.ref = "androidXOrchestrator" }
+androidX-test-uiAutomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiAutomator" }
+
+androidX-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "compose" }
+androidX-annotation = { module = "androidx.annotation:annotation", version.ref = "androidXAnnotation" }
+androidX-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidXAppCompat" }
+androidX-core = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
+androidX-legacy-support = { module = "androidx.legacy:legacy-support-core-ui", version.ref = "androidXLegacy" }
+androidX-legacy-supportV4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "androidXLegacy" }
+androidX-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidXLifecycle" }
+androidX-material = { module = "com.google.android.material:material", version.ref = "androidXMaterial" }
+androidX-recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "androidXRecyclerView" }
+androidX-vectorDrawable-animated = { module = "androidx.vectordrawable:vectordrawable-animated", version.ref = "androidXVectorDrawable" }
+androidX-viewPager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "androidXViewPager2" }
+
+androidX-compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+androidX-compose-ui-tooling-core = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+androidX-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+androidX-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+
+androidX-compose-test-ui-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+androidX-compose-test-ui-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+
+testing-assertJ = { module = "org.assertj:assertj-core", version.ref = "assertJ" }
+testing-jUnit = { module = "junit:junit", version.ref = "jUnit" }
+testing-jUnitParams = { module = "pl.pragmatists:JUnitParams", version.ref = "jUnitParams" }
+testing-mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
+testing-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+testing-mockito-kotlin = { module = "com.nhaarman:mockito-kotlin", version.ref = "mockitoKotlin" }

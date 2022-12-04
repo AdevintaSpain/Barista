@@ -7,11 +7,11 @@ plugins {
 apply(from = "../config/android-quality.gradle")
 
 android {
-  compileSdk = 30
+  compileSdk = 33
 
   defaultConfig {
     minSdk = 21
-    targetSdk = 30
+    targetSdk = 33
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments["clearPackageData"] = "true"
@@ -30,22 +30,24 @@ android {
 }
 
 dependencies {
-  implementation("androidx.legacy:legacy-support-v4:1.0.0")
-  implementation("androidx.appcompat:appcompat:1.0.2")
-  implementation("androidx.recyclerview:recyclerview:1.0.0")
-  implementation("com.google.android.material:material:1.2.0")
-  implementation("androidx.annotation:annotation:1.0.2")
-  implementation("com.github.bumptech.glide:glide:4.10.0")
-  implementation("com.google.android.material:material:1.2.0")
-  implementation("androidx.core:core-ktx:1.0.1")
+  implementation(libs.androidX.legacy.supportV4)
+  
+  implementation(libs.androidX.appCompat)
+  implementation(libs.androidX.recyclerView)
+  implementation(libs.androidX.material)
+  implementation(libs.androidX.annotation)
+  
+  implementation(libs.glide)
+  implementation(libs.androidX.material)
+  implementation(libs.androidX.core)
 
-  androidTestUtil("androidx.test:orchestrator:1.4.1")
+  androidTestUtil(libs.androidX.test.orchestrator)
   androidTestImplementation(project(":barista"))
 
-  androidTestImplementation("org.assertj:assertj-core:2.9.1")
-  androidTestImplementation("com.nhaarman:mockito-kotlin:1.5.0")
-  androidTestImplementation("org.mockito:mockito-android:2.28.2")
+  androidTestImplementation(libs.testing.assertJ)
+  androidTestImplementation(libs.testing.mockito.kotlin)
+  androidTestImplementation(libs.testing.mockito.android)
 
-  testImplementation("junit:junit:4.12")
+  testImplementation(libs.testing.jUnit)
 
 }
