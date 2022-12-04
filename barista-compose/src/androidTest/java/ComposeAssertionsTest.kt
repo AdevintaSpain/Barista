@@ -2,6 +2,8 @@ package com.alorma.barista_compose.assertion
 
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.junit4.createComposeRule
+import com.adevinta.android.barista.compose.assertion.assertDisplayed
+import com.adevinta.android.barista.compose.assertion.assertNotDisplayed
 import com.adevinta.android.barista.sample.TextComposable
 import com.alorma.barista_compose.R
 import org.junit.Rule

@@ -1,4 +1,4 @@
-package com.alorma.barista_compose.assertion.internal
+package com.adevinta.android.barista.compose.assertion.internal
 
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.ComposeTestRule

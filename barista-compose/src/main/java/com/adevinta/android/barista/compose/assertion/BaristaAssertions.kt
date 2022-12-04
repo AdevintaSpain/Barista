@@ -1,11 +1,11 @@
-package com.alorma.barista_compose.assertion
+package com.adevinta.android.barista.compose.assertion
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithText
-import com.alorma.barista_compose.assertion.internal.resources
+import com.adevinta.android.barista.compose.assertion.internal.resources
 
 fun ComposeTestRule.assertDisplayed(
   text: String,
