@@ -17,6 +17,7 @@ android {
     targetSdk = 30
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
+  namespace = "com.adevinta.android.barista"
 
   lintOptions {
     disable.add("InvalidPackage")
