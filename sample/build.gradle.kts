@@ -27,6 +27,7 @@ android {
   testOptions {
     execution = "ANDROIDX_TEST_ORCHESTRATOR"
   }
+  namespace = "com.adevinta.android.barista.sample"
 }
 
 dependencies {
