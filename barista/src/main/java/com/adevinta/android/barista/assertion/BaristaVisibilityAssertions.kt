@@ -7,19 +7,15 @@ import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import com.adevinta.android.barista.internal.assertAny
 import com.adevinta.android.barista.internal.matcher.TextColorMatcher
 import com.adevinta.android.barista.internal.matcher.TextStyleableColorMatcher
-import com.adevinta.android.barista.internal.util.resourceMatcher
 import com.adevinta.android.barista.internal.matcher.withCompatText
+import com.adevinta.android.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.containsString
-import org.hamcrest.Matchers.not
+import org.hamcrest.Matchers.*
 
 object BaristaVisibilityAssertions {
 
@@ -56,6 +52,11 @@ object BaristaVisibilityAssertions {
   @JvmStatic
   fun assertNotExist(text: String) {
     onView(withCompatText(text)).check(doesNotExist())
+  }
+
+  @JvmStatic
+  fun assertNotExist(viewMatcher: Matcher<View>) {
+    onView(viewMatcher).check(doesNotExist())
   }
 
   @JvmStatic
