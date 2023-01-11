@@ -3,7 +3,7 @@ package com.adevinta.android.barista.sample
 import android.view.View
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertDisplayedAtPosition
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions
@@ -14,7 +14,7 @@ import com.adevinta.android.barista.internal.matcher.withCompatText
 import junit.framework.AssertionFailedError
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matcher
-import org.hamcrest.core.AllOf
+import org.hamcrest.core.AllOf.allOf
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -36,6 +36,31 @@ class RecyclerViewWithDifferentDataInsideViewPagerTest {
     }
 
     @Test
+    fun assertExistingView() {
+        BaristaVisibilityAssertions.assertDisplayed("Apple")
+        BaristaVisibilityAssertions.assertExist(
+            allOf(
+                withCompatText("Apple"),
+                withId(R.id.textview)
+            )
+        )
+        BaristaVisibilityAssertions.assertExist("Apple")
+        BaristaVisibilityAssertions.assertExist(R.id.pager)
+
+        swipeViewPagerForward(R.id.pager)
+        BaristaSleepInteractions.sleep(500)
+        BaristaVisibilityAssertions.assertNotDisplayed("Apple")
+        BaristaVisibilityAssertions.assertExist(
+            allOf(
+                withCompatText("Apple"),
+                withId(R.id.textview)
+            )
+        )
+        BaristaVisibilityAssertions.assertExist(R.id.pager)
+
+    }
+
+    @Test
     fun assertNotExistingView() {
         swipeViewPagerForward(R.id.pager)
         BaristaSleepInteractions.sleep(500)
@@ -46,15 +71,15 @@ class RecyclerViewWithDifferentDataInsideViewPagerTest {
             Assert.assertTrue(true)
         }
         Espresso.onView(withCompatText("Apple"))
-            .check(ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
+            .check(ViewAssertions.matches(withEffectiveVisibility(Visibility.VISIBLE)))
 
         val displayedRecyclerView: Matcher<View> =
-            AllOf.allOf(ViewMatchers.withId(R.id.recycler), ViewMatchers.isDisplayed())
+            allOf(withId(R.id.recycler), isDisplayed())
 
         BaristaVisibilityAssertions.assertNotExist(
             CoreMatchers.allOf(
-                ViewMatchers.withText("Apple"),
-                ViewMatchers.isDescendantOfA(displayedRecyclerView)
+                withText("Apple"),
+                isDescendantOfA(displayedRecyclerView)
             )
         )
 
