@@ -48,6 +48,7 @@ dependencies {
   androidTestImplementation(libs.testing.assertJ)
   androidTestImplementation(libs.testing.mockito.kotlin)
   androidTestImplementation(libs.testing.mockito.android)
+  androidTestImplementation("androidx.test.ext:junit:1.1.3")
 
   testImplementation(libs.testing.jUnit)
 

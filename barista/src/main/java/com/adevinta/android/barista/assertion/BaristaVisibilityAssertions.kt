@@ -7,19 +7,16 @@ import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import com.adevinta.android.barista.internal.assertAny
 import com.adevinta.android.barista.internal.matcher.TextColorMatcher
 import com.adevinta.android.barista.internal.matcher.TextStyleableColorMatcher
-import com.adevinta.android.barista.internal.util.resourceMatcher
 import com.adevinta.android.barista.internal.matcher.withCompatText
+import com.adevinta.android.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.containsString
-import org.hamcrest.Matchers.not
+import org.hamcrest.Matchers.*
 
 object BaristaVisibilityAssertions {
 
@@ -56,6 +53,40 @@ object BaristaVisibilityAssertions {
   @JvmStatic
   fun assertNotExist(text: String) {
     onView(withCompatText(text)).check(doesNotExist())
+  }
+
+  /**
+   * Assert that no view match the viewMatcher in the hierarchy
+   */
+  @JvmStatic
+  fun assertNotExist(viewMatcher: Matcher<View>) {
+    onView(viewMatcher).check(doesNotExist())
+  }
+
+  /**
+   * Assert that a view match the viewMatcher is in the hierarchy
+   */
+  @JvmStatic
+  fun assertExist(viewMatcher: Matcher<View>) {
+    onView(viewMatcher).check(matches(not(doesNotExist())))
+  }
+
+  /**
+   * Assert that a view with this text is in the hierarchy
+   */
+  @JvmStatic
+  fun assertExist(text: String) {
+    onView(withCompatText(text)).check(matches(not(doesNotExist())))
+  }
+
+  /**
+   * Assert that a view with this id is in the hierarchy
+   *
+   * Id must be unique
+   */
+  @JvmStatic
+  fun assertExist(viewId: Int) {
+    onView(withId(viewId)).check(matches(not(doesNotExist())))
   }
 
   @JvmStatic
