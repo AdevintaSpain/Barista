@@ -1,13 +1,17 @@
 package com.adevinta.android.barista.sample
 
+import android.R.*
 import android.graphics.Color
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIs
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertTextColorIsNot
 import com.adevinta.android.barista.internal.failurehandler.BaristaException
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule
+import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
 import org.junit.Test
+
 
 class ColorsTest {
   @Rule
@@ -20,6 +24,12 @@ class ColorsTest {
   fun checkSimpleColor() {
     assertTextColorIs(R.id.textRed, R.color.red)
   }
+
+  @Test
+  fun checkColorInNested() {
+    assertTextColorIs(allOf(withText("Simple color red"), isDescendantOfA(withId(R.id.subLayout))), R.color.red)
+  }
+
 
   @Test
   fun checkColorList_whenDefault() {
@@ -71,6 +81,11 @@ class ColorsTest {
   fun checkColorList_whenChecked() {
     assertTextColorIs(R.id.textSelectorChecked, R.color.selector_default_disabled_checked)
     assertTextColorIs(R.id.textSelectorChecked, R.color.checked)
+  }
+
+  @Test(expected = BaristaException::class)
+  fun checkNotSimpleColorInNested_fails() {
+    assertTextColorIsNot(allOf(withText("Simple color red"), isDescendantOfA(withId(R.id.subLayout))), R.color.red)
   }
 
   @Test(expected = BaristaException::class)
