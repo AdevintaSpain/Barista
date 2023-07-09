@@ -19,6 +19,15 @@ android {
   }
   namespace = "com.adevinta.android.barista"
 
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+  }
+
   lint {
     disable.add("InvalidPackage")
   }
