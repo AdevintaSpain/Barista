@@ -5,6 +5,7 @@ nexusPublish = "1.1.0"
 nexusStaging = "0.22.0"
 compose = "1.4.3"
 composeCompiler = "1.4.8"
+hamcrest = "2.2"
 androidXAppCompat = "1.6.1"
 androidXAnnotation = "1.6.0"
 androidXCore = "1.10.1"
@@ -62,6 +63,7 @@ androidX-compose-test-ui-junit4 = { module = "androidx.compose.ui:ui-test-junit4
 androidX-compose-test-ui-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 
 testing-assertJ = { module = "org.assertj:assertj-core", version.ref = "assertJ" }
 testing-jUnit = { module = "junit:junit", version.ref = "jUnit" }
