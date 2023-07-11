@@ -38,7 +38,6 @@ dependencies {
   api(libs.androidX.test.espresso.contrib)
   api(libs.androidX.test.uiAutomator)
   api(libs.androidX.test.espresso.intents)
-  api(libs.hamcrest)
 
   implementation(libs.androidX.annotation)
   implementation(libs.androidX.legacy.support)
