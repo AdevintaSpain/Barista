@@ -100,7 +100,7 @@ uncheck(R.id.check_box_item_2);
 
 #### Pick data on pickers
 ```java
-setDateOnPicker(1986, 03, 23);
+setDateOnPicker(1986, 3, 23);
 setTimeOnPicker(17, 2);
 ```
 
