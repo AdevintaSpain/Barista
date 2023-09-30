@@ -7,32 +7,32 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.withStyledAttributes
 import com.adevinta.android.barista.sample.R
-import kotlinx.android.synthetic.main.sample_custom_view.view.customTextView
+import com.adevinta.android.barista.sample.databinding.SampleCustomViewBinding
 
 class SampleCustomView @JvmOverloads
 constructor(
-  context: Context,
-  attributeSet: AttributeSet? = null,
-  defStyleAttr: Int = R.attr.sampleCustomViewStyle,
-  defStyleRes: Int = R.style.SampleCustomStyle
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.sampleCustomViewStyle,
+    defStyleRes: Int = R.style.SampleCustomStyle
 ) : LinearLayout(context, attributeSet, defStyleAttr) {
 
-  private var customColor: Int = Color.GRAY
+    private var customColor: Int = Color.GRAY
 
-  init {
-    context.withStyledAttributes(
-      attributeSet,
-      R.styleable.SampleCustomView,
-      defStyleAttr,
-      defStyleRes
-    ) {
-      customColor = getColor(R.styleable.SampleCustomView_customColor, customColor)
+    init {
+        context.withStyledAttributes(
+            attributeSet,
+            R.styleable.SampleCustomView,
+            defStyleAttr,
+            defStyleRes
+        ) {
+            customColor = getColor(R.styleable.SampleCustomView_customColor, customColor)
+        }
+
+        val binding = SampleCustomViewBinding.inflate(LayoutInflater.from(context), this)
+        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+
+        binding.customTextView.text = "Demo text"
+        binding.customTextView.setTextColor(customColor)
     }
-
-    LayoutInflater.from(context).inflate(R.layout.sample_custom_view, this, true)
-    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-
-    customTextView.text = "Demo text"
-    customTextView.setTextColor(customColor)
-  }
 }

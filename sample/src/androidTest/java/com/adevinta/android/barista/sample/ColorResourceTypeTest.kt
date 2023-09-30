@@ -3,6 +3,7 @@ package com.adevinta.android.barista.sample
 import android.graphics.Color
 import com.adevinta.android.barista.internal.util.ColorResourceType
 import com.adevinta.android.barista.internal.util.colorResourceType
+import com.adevinta.android.barista.sample.util.MaterialAttributes
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 
@@ -16,7 +17,7 @@ class ColorResourceTypeTest {
 
   @Test
   fun color_resource_type_color_attr() {
-    val type = R.attr.colorPrimary.colorResourceType
+    val type = MaterialAttributes.colorPrimary.colorResourceType
     assertEquals(type, ColorResourceType.COLOR_ATTR)
   }
 

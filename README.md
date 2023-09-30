@@ -341,7 +341,7 @@ assertTextColorIsNot(R.id.some_color_list_text, R.color.another_state_list);
 
 - *Color int*: `Color.parse("#ff00ff")`
 - *Color resource*: `R.color.green`
-- *Color attribute*: `R.attr.colorPrimary`
+- *Color attribute*: `MaterialAttributes.colorPrimary`
 
 Also Barista can check colors parsed from `declarable-style` custom attribute:
 ```java
