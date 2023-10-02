@@ -1,7 +1,7 @@
 plugins {
   id("com.android.application")
   kotlin("android")
-  id("kotlin-android-extensions")
+  kotlin("android.extensions")
 }
 
 apply(from = "../config/android-quality.gradle")
@@ -32,12 +32,12 @@ android {
 
 dependencies {
   implementation(libs.androidX.legacy.supportV4)
-  
+
   implementation(libs.androidX.appCompat)
   implementation(libs.androidX.recyclerView)
   implementation(libs.androidX.material)
   implementation(libs.androidX.annotation)
-  
+
   implementation(libs.glide)
   implementation(libs.androidX.material)
   implementation(libs.androidX.core)
@@ -48,8 +48,15 @@ dependencies {
   androidTestImplementation(libs.testing.assertJ)
   androidTestImplementation(libs.testing.mockito.kotlin)
   androidTestImplementation(libs.testing.mockito.android)
-  androidTestImplementation("androidx.test.ext:junit:1.1.3")
 
   testImplementation(libs.testing.jUnit)
-
+  // testImplementation("org.hamcrest:hamcrest:2.2")
+  // testImplementation("androidx.test.ext:junit-ktx:1.1.5")
+  androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
+  //testImplementation("androidx.test:core:1.5.0")
+  androidTestImplementation("androidx.test:core:1.5.0")
+  //testImplementation("androidx.test:rules:1.5.0")
+  androidTestImplementation("androidx.test:rules:1.5.0")
+  //testImplementation("androidx.test.ext:truth:1.5.0")
+  //androidTestImplementation("androidx.test.ext:truth:1.5.0")
 }
