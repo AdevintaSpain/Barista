@@ -158,9 +158,25 @@ object BaristaVisibilityAssertions {
     assertNotContains(resId, resourceText)
   }
 
+  /**
+   * Assert that the view found with the provided view matcher contains the color
+   */
+  @JvmStatic
+  fun assertTextColorIs(viewMatcher: Matcher<View>, color: Int) {
+    viewMatcher.assertAny(TextColorMatcher(color))
+  }
+
   @JvmStatic
   fun assertTextColorIs(@IdRes viewId: Int, color: Int) {
     viewId.resourceMatcher().assertAny(TextColorMatcher(color))
+  }
+
+  /**
+   * Assert that the view found with the provided view matcher do not contains the color
+   */
+  @JvmStatic
+  fun assertTextColorIsNot(viewMatcher: Matcher<View>, color: Int) {
+    viewMatcher.assertAny(not(TextColorMatcher(color)))
   }
 
   @JvmStatic
