@@ -11,7 +11,6 @@ on:
 jobs:
   test:
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
-    needs: build
     strategy:
       matrix:
         api-level: [ 26, 31 ]
