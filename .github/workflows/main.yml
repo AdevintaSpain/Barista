@@ -72,6 +72,6 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           arch: x86_64
-          profile: pixel_xl
+          profile: pixel_2
 
           script: ./gradlew :sample:connectedCheck :barista-compose:connectedCheck
