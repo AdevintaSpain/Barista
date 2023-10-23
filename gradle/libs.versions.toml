@@ -19,6 +19,7 @@ androidXRecyclerView = "1.0.0"
 androidXVectorDrawable = "1.0.0"
 androidXViewPager2 = "1.0.0"
 uiAutomator = "2.2.0"
+hamcrest = "2.2"
 
 glide = "4.10.0"
 
@@ -53,6 +54,8 @@ androidX-material = { module = "com.google.android.material:material", version.r
 androidX-recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "androidXRecyclerView" }
 androidX-vectorDrawable-animated = { module = "androidx.vectordrawable:vectordrawable-animated", version.ref = "androidXVectorDrawable" }
 androidX-viewPager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "androidXViewPager2" }
+
+hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 
 androidX-compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 androidX-compose-ui-tooling-core = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }

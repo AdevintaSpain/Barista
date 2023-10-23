@@ -38,6 +38,8 @@ dependencies {
 
   implementation(libs.androidX.material)
 
+  implementation(libs.hamcrest)
+
   testImplementation(libs.testing.jUnit)
   testImplementation(libs.testing.jUnitParams)
   testImplementation(libs.testing.assertJ)
