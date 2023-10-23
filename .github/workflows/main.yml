@@ -48,10 +48,10 @@ jobs:
           java-version: 11
 
       - name: Run instrumentation tests
-        uses: ReactiveCircus/android-emulator-runner@v2.21.0
+        uses: ReactiveCircus/android-emulator-runner@v2.28.0
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
-          profile: pixel_2
+          profile: pixel_xl
           disable-animations: true
           script: ./gradlew :sample:connectedCheck :barista-compose:connectedCheck
