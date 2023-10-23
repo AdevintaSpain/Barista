@@ -46,9 +46,11 @@ dependencies {
   androidTestImplementation(project(":barista"))
 
   androidTestImplementation(libs.testing.assertJ)
-  androidTestImplementation(libs.testing.mockito.kotlin)
+  androidTestImplementation(libs.testing.mockito.kotlin) {
+    exclude(group = "org.hamcrest")
+  }
   androidTestImplementation(libs.testing.mockito.android)
-  androidTestImplementation("androidx.test.ext:junit:1.1.3")
+  androidTestImplementation(libs.androidX.test.junit)
 
   testImplementation(libs.testing.jUnit)
 

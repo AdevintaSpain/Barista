@@ -26,6 +26,8 @@ android {
 
 configurations.all {
   resolutionStrategy.force("org.hamcrest:hamcrest:2.2")
+  resolutionStrategy.force("org.hamcrest:hamcrest-library:2.2")
+  resolutionStrategy.force("org.hamcrest:hamcrest-core:2.2")
 }
 
 dependencies {
