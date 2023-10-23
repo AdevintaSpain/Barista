@@ -17,6 +17,7 @@ androidXOrchestrator = "1.4.1"
 androidXRecyclerView = "1.0.0"
 androidXVectorDrawable = "1.0.0"
 androidXViewPager2 = "1.0.0"
+runner = "1.1.0"
 uiAutomator = "2.2.0"
 
 glide = "4.10.0"
@@ -39,6 +40,7 @@ androidX-test-espresso-contrib = { module = "androidx.test.espresso:espresso-con
 androidX-test-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidXEspresso" }
 androidX-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidXJUnit" }
 androidX-test-orchestrator = { module = "androidx.test:orchestrator", version.ref = "androidXOrchestrator" }
+androidX-test-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidX-test-uiAutomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiAutomator" }
 
 androidX-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "compose" }

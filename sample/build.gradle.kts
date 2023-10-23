@@ -43,6 +43,7 @@ dependencies {
   implementation(libs.androidX.core)
 
   androidTestUtil(libs.androidX.test.orchestrator)
+  androidTestImplementation(libs.androidX.test.runner)
   androidTestImplementation(project(":barista"))
 
   androidTestImplementation(libs.testing.assertJ)
