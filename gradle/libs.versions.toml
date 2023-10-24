@@ -19,7 +19,7 @@ androidXVectorDrawable = "1.0.0"
 androidXViewPager2 = "1.0.0"
 uiAutomator = "2.2.0"
 
-glide = "4.10.0"
+glide = "4.16.0"
 
 assertJ = "2.9.1"
 jUnit = "4.12"
