@@ -31,8 +31,8 @@ public class ColorsTest {
 
   @Test
   public void checkColorAttribute() {
-    assertTextColorIs(R.id.textColorAttribute, R.attr.colorPrimary);
-    assertTextColorIsNot(R.id.textColorAttribute, R.attr.colorError);
+    assertTextColorIs(R.id.textColorAttribute, com.google.android.material.R.attr.colorPrimary);
+    assertTextColorIsNot(R.id.textColorAttribute, com.google.android.material.R.attr.colorError);
   }
 
   @Test
@@ -84,7 +84,7 @@ public class ColorsTest {
 
   @Test(expected = BaristaException.class)
   public void checkColorAttr_fails() {
-    assertTextColorIs(R.id.textColorAttribute, R.attr.colorError);
+    assertTextColorIs(R.id.textColorAttribute, com.google.android.material.R.attr.colorError);
   }
 
   @Test(expected = BaristaException.class)
@@ -99,7 +99,7 @@ public class ColorsTest {
 
   @Test(expected = BaristaException.class)
   public void checkNotColorAttr_fails() {
-    assertTextColorIsNot(R.id.textColorAttribute, R.attr.colorPrimary);
+    assertTextColorIsNot(R.id.textColorAttribute, com.google.android.material.R.attr.colorPrimary);
   }
 
   @Test(expected = BaristaException.class)
