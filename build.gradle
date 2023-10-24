@@ -11,6 +11,8 @@ buildscript {
     classpath libs.nexus.staging
   }
 }
+
+apply plugin: 'io.codearte.nexus-staging'
 apply plugin: 'io.github.gradle-nexus.publish-plugin'
 
 allprojects {

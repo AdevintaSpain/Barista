@@ -1,76 +1,60 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
-task androidSourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    if (project.plugins.findPlugin("com.android.library")) {
-        from android.sourceSets.main.java.srcDirs
-        from android.sourceSets.main.kotlin.srcDirs
-    } else {
-        from sourceSets.main.java.srcDirs
-        from sourceSets.main.kotlin.srcDirs
+android {
+  publishing {
+    singleVariant("release") {
+      withSourcesJar()
     }
-}
-
-task javadocJar(type: Jar) {
-    archiveClassifier.set('javadoc')
-}
-
-artifacts {
-    archives androidSourcesJar
-    archives javadocJar
+  }
 }
 
 group = project.property("libGroup")
 version = project.property("libVersion")
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId project.property("libGroup")
-                artifactId PUBLISH_ARTIFACT_ID
-                version project.property("libVersion")
+publishing {
+  publications {
+    release(MavenPublication) {
+      groupId project.property("libGroup")
+      artifactId project.project.getName()
+      version project.property("libVersion")
 
-                if (project.plugins.findPlugin("com.android.library")) {
-                    from components.release
-                } else {
-                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
-                }
+      afterEvaluate {
+        from components.release
+      }
 
-                artifact androidSourcesJar
-                artifact javadocJar
-
-                pom {
-                    name = project.project.getName()
-                    description = 'Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.'
-                    url = 'https://github.com/AdevintaSpain/Barista'
-                    licenses {
-                        license {
-                            name = 'Stream License'
-                            url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'AdevintaSpain'
-                            name = 'Adevinta Spain'
-                            email = 'engineers@adevinta.com'
-                        }
-                    }
-                    organization {
-                        name = "Adevinta Spain"
-                        url = "https://github.com/AdevintaSpain"
-                    }
-                    scm {
-                        connection = 'scm:git:github.com/AdevintaSpain/Barista.git'
-                        developerConnection = 'scm:git:ssh://github.com/AdevintaSpain/Barista.git'
-                        url = 'https://github.com/AdevintaSpain/Barista/tree/master'
-                    }
-                }
-            }
+      pom {
+        name = project.project.getName()
+        description =
+            'Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.'
+        url = 'https://github.com/AdevintaSpain/Barista'
+        licenses {
+          license {
+            name = 'Stream License'
+            url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
+          }
         }
+        developers {
+          developer {
+            id = 'AdevintaSpain'
+            name = 'Adevinta Spain'
+            email = 'engineers@adevinta.com'
+          }
+        }
+        organization {
+          name = "Adevinta Spain"
+          url = "https://github.com/AdevintaSpain"
+        }
+        scm {
+          connection = 'scm:git:github.com/AdevintaSpain/Barista.git'
+          developerConnection = 'scm:git:ssh://github.com/AdevintaSpain/Barista.git'
+          url = 'https://github.com/AdevintaSpain/Barista/tree/master'
+        }
+      }
     }
+  }
 }
 
 ext["signing.keyId"] = rootProject.ext["signing.keyId"]
@@ -78,5 +62,5 @@ ext["signing.password"] = rootProject.ext["signing.password"]
 ext["signing.secretKeyRingFile"] = rootProject.ext["signing.secretKeyRingFile"]
 
 signing {
-    sign publishing.publications
+  sign publishing.publications
 }
