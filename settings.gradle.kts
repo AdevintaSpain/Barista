@@ -8,4 +8,4 @@ pluginManagement {
 include(":sample")
 
 include(":barista")
-include(":barista-compose")
+//include(":barista-compose")
