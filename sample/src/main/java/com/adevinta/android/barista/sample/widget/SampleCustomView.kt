@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.withStyledAttributes
 import com.adevinta.android.barista.sample.R
-import kotlinx.android.synthetic.main.sample_custom_view.view.customTextView
+import com.adevinta.android.barista.sample.databinding.SampleCustomViewBinding
 
 class SampleCustomView @JvmOverloads
 constructor(
@@ -32,7 +32,12 @@ constructor(
     LayoutInflater.from(context).inflate(R.layout.sample_custom_view, this, true)
     layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
-    customTextView.text = "Demo text"
-    customTextView.setTextColor(customColor)
+    val binding = SampleCustomViewBinding.inflate(
+      LayoutInflater.from(context),
+      this
+    )
+
+    binding.customTextView.text = "Demo text"
+    binding.customTextView.setTextColor(customColor)
   }
 }
