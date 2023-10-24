@@ -16,7 +16,7 @@ class ColorResourceTypeTest {
 
   @Test
   fun color_resource_type_color_attr() {
-    val type = R.attr.colorPrimary.colorResourceType
+    val type = com.google.android.material.R.attr.colorPrimary.colorResourceType
     assertEquals(type, ColorResourceType.COLOR_ATTR)
   }
 
