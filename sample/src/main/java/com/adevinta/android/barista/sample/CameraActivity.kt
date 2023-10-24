@@ -7,9 +7,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.adevinta.android.barista.sample.databinding.ActivityCameraBinding
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_camera.image_view
-import kotlinx.android.synthetic.main.activity_camera.take_picture
 import java.io.File
 
 class CameraActivity : AppCompatActivity() {
@@ -18,10 +17,13 @@ class CameraActivity : AppCompatActivity() {
     val TAKE_PICTURE_REQUEST_CODE = 42
   }
 
+  private lateinit var binding: ActivityCameraBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_camera)
-    take_picture.setOnClickListener {
+    binding = ActivityCameraBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    binding.takePicture.setOnClickListener {
       val uri = getPictureUri()
       val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
       intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
@@ -33,14 +35,16 @@ class CameraActivity : AppCompatActivity() {
   @SuppressLint("MissingSuperCall")
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (requestCode == TAKE_PICTURE_REQUEST_CODE) {
-      Glide.with(this).load(getPictureUri()).into(image_view)
+      Glide.with(this).load(getPictureUri()).into(binding.imageView)
     }
   }
 
   private fun getPictureUri(): Uri {
     val path = applicationContext.cacheDir.path + "/test.jpg"
-    return FileProvider.getUriForFile(this,
-        applicationContext.packageName + ".barista.sample.provider",
-        File(path))
+    return FileProvider.getUriForFile(
+      this,
+      applicationContext.packageName + ".barista.sample.provider",
+      File(path)
+    )
   }
 }
