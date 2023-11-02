@@ -200,31 +200,31 @@ assertDisabled(R.id.button);
 
 ```java
 assertNotExist("Hello world");
-        assertNotExist(R.string.hello_world);
-        assertNotExist(R.id.button);
-        assertNotExist(allOf(withId(R.id.recycler),isDisplayed()));
+assertNotExist(R.string.hello_world);
+assertNotExist(R.id.button);
+assertNotExist(allOf(withId(R.id.recycler),isDisplayed()));
 ```
 
 #### Hope this view does exist!
 
 ```java
 assertExist("Hello world");
-        assertExist(R.string.hello_world);
-        assertExist(R.id.button);
-        assertExist(allOf(withId(R.id.recycler),isDisplayed()));
+assertExist(R.string.hello_world);
+assertExist(R.id.button);
+assertExist(allOf(withId(R.id.recycler),isDisplayed()));
 ```
 
 #### Is the expected checkbox checked?
 
 ```java
 assertChecked("Checked checkbox");
-        assertChecked(R.string.checked_checkbox);
-        assertChecked(R.id.checkbox);
+assertChecked(R.string.checked_checkbox);
+assertChecked(R.id.checkbox);
 
 // ...or not?
-        assertUnchecked("Unchecked checkbox");
-        assertUnchecked(R.string.unchecked_checkbox);
-        assertUnchecked(R.id.checkbox);
+assertUnchecked("Unchecked checkbox");
+assertUnchecked(R.string.unchecked_checkbox);
+assertUnchecked(R.id.checkbox);
 ```
 
 #### Is this view clickable?
