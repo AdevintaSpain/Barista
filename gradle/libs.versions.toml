@@ -21,7 +21,7 @@ uiAutomator = "2.2.0"
 
 glide = "4.10.0"
 
-assertJ = "2.9.1"
+assertJ = "3.25.1"
 jUnit = "4.12"
 jUnitParams = "1.1.0"
 mockito = "2.28.2"
