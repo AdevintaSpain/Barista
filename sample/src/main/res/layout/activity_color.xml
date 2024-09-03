@@ -68,4 +68,19 @@
       android:layout_height="wrap_content"
       />
 
+  <LinearLayout
+      android:id="@+id/subLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textRed2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Simple color red"
+        android:textColor="@color/red" />
+  </LinearLayout>
+
 </LinearLayout>
