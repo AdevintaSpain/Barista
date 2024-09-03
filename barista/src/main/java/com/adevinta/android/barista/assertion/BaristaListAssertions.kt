@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
+import android.widget.AbsListView
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
@@ -162,8 +162,13 @@ object BaristaListAssertions {
 
         listView?.let {
           return when (it) {
-            is RecyclerView -> matchRecyclerView(listId, position, targetViewId, view)
-            is ListView -> matchListView(listId, position, targetViewId, view)
+            is RecyclerView -> matchRecyclerView(
+              listId,
+              position,
+              targetViewId,
+              view
+            )
+            is AbsListView -> matchListView(listId, position, targetViewId, view)
             else -> false
           }
         } ?: return false
@@ -175,9 +180,10 @@ object BaristaListAssertions {
     var childView: View? = null
 
     if (childView == null) {
-      val views = getShownViewsById(view.rootView as ViewGroup, listViewId)
+      val views =
+       getShownViewsById(view.rootView as ViewGroup, listViewId)
       if (views != null && views.isNotEmpty()) {
-        val listView: ListView = views[0] as ListView
+        val listView: AbsListView = views[0] as AbsListView
         if (listView.id == listViewId) {
           val positionOnScreen = position - listView.firstVisiblePosition
           val viewAtPosition = listView.getChildAt(positionOnScreen)
