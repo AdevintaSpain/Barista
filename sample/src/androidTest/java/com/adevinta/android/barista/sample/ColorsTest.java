@@ -4,6 +4,8 @@ import android.graphics.Color;
 import androidx.test.rule.ActivityTestRule;
 import com.adevinta.android.barista.internal.failurehandler.BaristaException;
 import com.adevinta.android.barista.sample.util.FailureHandlerValidatorRule;
+import com.adevinta.android.barista.sample.util.MaterialAttributes;
+
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -31,8 +33,8 @@ public class ColorsTest {
 
   @Test
   public void checkColorAttribute() {
-    assertTextColorIs(R.id.textColorAttribute, R.attr.colorPrimary);
-    assertTextColorIsNot(R.id.textColorAttribute, R.attr.colorError);
+    assertTextColorIs(R.id.textColorAttribute, MaterialAttributes.colorPrimary);
+    assertTextColorIsNot(R.id.textColorAttribute, MaterialAttributes.colorError);
   }
 
   @Test
@@ -84,7 +86,7 @@ public class ColorsTest {
 
   @Test(expected = BaristaException.class)
   public void checkColorAttr_fails() {
-    assertTextColorIs(R.id.textColorAttribute, R.attr.colorError);
+    assertTextColorIs(R.id.textColorAttribute, MaterialAttributes.colorError);
   }
 
   @Test(expected = BaristaException.class)
@@ -99,7 +101,7 @@ public class ColorsTest {
 
   @Test(expected = BaristaException.class)
   public void checkNotColorAttr_fails() {
-    assertTextColorIsNot(R.id.textColorAttribute, R.attr.colorPrimary);
+    assertTextColorIsNot(R.id.textColorAttribute, MaterialAttributes.colorPrimary);
   }
 
   @Test(expected = BaristaException.class)
