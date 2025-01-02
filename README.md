@@ -148,6 +148,14 @@ closeKeyboard()
 pressImeActionButton()
 ```
 
+#### Capturing screenshots or images of views
+```java
+captureView(R.id.view, "bitmap-filename");
+captureView("Text", "bitmap-filename");
+captureActivity("bitmap-filename");
+captureScreenshot("bitmap-filename");
+```
+
 #### And another tricky feature, but try not to use it
 ```java
 sleep(2000);
